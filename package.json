@@ -1,0 +1,19 @@
+{
+  "name": "eferro-picks-site",
+  "version": "1.0.0",
+  "description": "A curated content web application for talks",
+  "scripts": {
+    "preprocess": "ts-node scripts/preprocess-data.ts",
+    "build": "tsc",
+    "start": "npm run preprocess && npm run build"
+  },
+  "dependencies": {
+    "better-sqlite3": "^8.6.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.9",
+    "@types/node": "^20.11.19",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+} 
