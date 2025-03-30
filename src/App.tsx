@@ -20,7 +20,7 @@ function App() {
           </p>
         </div>
       </header>
-      <main className="flex-grow">
+      <main className="flex-1">
         <TalksList />
       </main>
       <Footer />
