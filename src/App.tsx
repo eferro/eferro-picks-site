@@ -4,7 +4,7 @@ import { Footer } from './components/Footer'
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
+    <div className="flex flex-col min-h-screen">
       <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center">
@@ -20,7 +20,7 @@ function App() {
           </p>
         </div>
       </header>
-      <main className="flex-1">
+      <main className="flex-1 bg-gray-100">
         <TalksList />
       </main>
       <Footer />
