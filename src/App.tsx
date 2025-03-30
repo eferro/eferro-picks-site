@@ -1,29 +1,27 @@
 import logoHorizontal from './assets/logo-horizontal.png'
+import { TalksList } from './components/TalksList'
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
-      <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-        <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
-          <div className="max-w-md mx-auto">
-            <div className="flex justify-center mb-8">
-              <img 
-                src={logoHorizontal} 
-                alt="eferro's picks logo" 
-                className="h-12 w-auto"
-              />
-            </div>
-            <div className="divide-y divide-gray-200">
-              <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-                <p className="text-gray-600">
-                  A curated collection of talks about software development, XP, lean, agile, 
-                  product management, cloud, operations, and technology.
-                </p>
-              </div>
-            </div>
+    <div className="min-h-screen bg-gray-100">
+      <header className="bg-white shadow-sm">
+        <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-center">
+            <img 
+              src={logoHorizontal} 
+              alt="eferro's picks logo" 
+              className="h-12 w-auto"
+            />
           </div>
+          <p className="text-center text-gray-600 mt-4">
+            A curated collection of talks about software development, XP, lean, agile, 
+            product management, cloud, operations, and technology.
+          </p>
         </div>
-      </div>
+      </header>
+      <main>
+        <TalksList />
+      </main>
     </div>
   )
 }
