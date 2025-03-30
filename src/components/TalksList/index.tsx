@@ -1,6 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Talk } from '../../types/talks';
 import { TalkSection } from './TalkSection';
+
+function LoadingSpinner() {
+  return (
+    <div className="flex justify-center items-center py-12">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
+    </div>
+  );
+}
+
+function ErrorMessage({ message }: { message: string }) {
+  return (
+    <div className="text-center py-8">
+      <p className="text-red-600 text-lg">{message}</p>
+      <p className="text-gray-600 mt-2">Check the console for more details.</p>
+    </div>
+  );
+}
 
 export function TalksList() {
   const [talks, setTalks] = useState<Talk[]>([]);
@@ -27,36 +44,25 @@ export function TalksList() {
     loadTalks();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center py-12">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
-      </div>
-    );
-  }
+  // Memoize the grouped and sorted talks
+  const sortedTopics = useMemo(() => {
+    // Group talks by core topic
+    const talksByTopic = talks.reduce((acc, talk) => {
+      const topic = talk.core_topic || 'Uncategorized';
+      if (!acc[topic]) {
+        acc[topic] = [];
+      }
+      acc[topic].push(talk);
+      return acc;
+    }, {} as Record<string, Talk[]>);
 
-  if (error) {
-    return (
-      <div className="text-center py-8">
-        <p className="text-red-600 text-lg">{error}</p>
-        <p className="text-gray-600 mt-2">Check the console for more details.</p>
-      </div>
-    );
-  }
+    // Sort topics by number of talks (descending)
+    return Object.entries(talksByTopic)
+      .sort(([, a], [, b]) => b.length - a.length);
+  }, [talks]);
 
-  // Group talks by core topic
-  const talksByTopic = talks.reduce((acc, talk) => {
-    const topic = talk.core_topic || 'Uncategorized';
-    if (!acc[topic]) {
-      acc[topic] = [];
-    }
-    acc[topic].push(talk);
-    return acc;
-  }, {} as Record<string, Talk[]>);
-
-  // Sort topics by number of talks (descending)
-  const sortedTopics = Object.entries(talksByTopic)
-    .sort(([, a], [, b]) => b.length - a.length);
+  if (loading) return <LoadingSpinner />;
+  if (error) return <ErrorMessage message={error} />;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

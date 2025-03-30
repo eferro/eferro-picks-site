@@ -1,15 +1,21 @@
+import { useMemo } from 'react';
 import { Talk } from '../../types/talks';
+import { formatDuration } from '../../utils/format';
 
 interface TalkCardProps {
   talk: Talk;
 }
 
 export function TalkCard({ talk }: TalkCardProps) {
-  const formatDuration = (minutes: number): string => {
-    const hours = Math.floor(minutes / 60);
-    const mins = minutes % 60;
-    return hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
-  };
+  // Memoize topics to avoid unnecessary re-renders
+  const topicElements = useMemo(() => (
+    talk.topics.map((topic) => (
+      <span key={topic} 
+            className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
+        {topic}
+      </span>
+    ))
+  ), [talk.topics]);
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
@@ -24,12 +30,7 @@ export function TalkCard({ talk }: TalkCardProps) {
       </p>
       <p className="text-gray-700 mb-4 line-clamp-2">{talk.description}</p>
       <div className="flex flex-wrap gap-2">
-        {talk.topics.map((topic) => (
-          <span key={topic} 
-                className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
-            {topic}
-          </span>
-        ))}
+        {topicElements}
       </div>
     </div>
   );
