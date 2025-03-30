@@ -1350,22 +1350,6 @@
       "core_topic": "Testing"
     },
     {
-      "airtable_id": "reckOvXE3NZFY8kj3",
-      "title": "Patterns of Effective Delivery",
-      "url": "https://vimeo.com/24681032",
-      "duration": 3540,
-      "topics": [
-        "Inspirational",
-        "Engineering Culture",
-        "Agile"
-      ],
-      "speakers": [
-        "Dan North"
-      ],
-      "description": "This talk explores patterns of effective software delivery, emphasizing that delivery means solving problems, not just writing code, and focusing on optimizing for the right outcomes rather than just process",
-      "core_topic": "Lean-Agile"
-    },
-    {
       "airtable_id": "reccMJEetzG9ZqHYQ",
       "title": "Platforms at Twilio: Unlocking Developer Effectiveness",
       "url": "https://www.youtube.com/watch?v=OQYF6HkoZdw",
@@ -1478,22 +1462,6 @@
       ],
       "description": "This talk strips away the veil and offers simple, practical guidelines for choosing what to test and how to test it. Finding the right testing balance isn't magic, it's a magic trick; come and learn the secret of writing stable tests that protect your application at the lowest possible cost.",
       "core_topic": "Testing"
-    },
-    {
-      "airtable_id": "reczOXoBpcxfVfN2x",
-      "title": "RailsConf 2015 - Nothing is Something",
-      "url": "https://www.youtube.com/watch?v=OMPfEXIlTVE",
-      "duration": 2100,
-      "topics": [
-        "Technical Practices",
-        "Software Design",
-        "OOP"
-      ],
-      "speakers": [
-        "Sandi Metz"
-      ],
-      "description": "Another great talk about OO Design from Sandi Metz.",
-      "core_topic": "Software Design"
     },
     {
       "airtable_id": "recNuR7PNPTKDGUJb",
@@ -1927,23 +1895,6 @@
       "core_topic": "Product"
     },
     {
-      "airtable_id": "rec42snEPpunYVroW",
-      "title": "The Most Dangerous Phrase: SOLID, Scrum And Other Antiques",
-      "url": "https://www.youtube.com/watch?v=L2dh1bqrLC4",
-      "duration": 2280,
-      "topics": [
-        "Agile",
-        "Engineering Culture",
-        "Management",
-        "Technical Practices"
-      ],
-      "speakers": [
-        "Dan North"
-      ],
-      "description": "This presentation challenges the idea of blindly following software development practices like SOLID and Scrum, urging a re-evaluation of their continued relevance in light of changing contexts and technology, advocating for a more fluid, context-driven approach that prioritizes outcomes, learning, and continuous improvement",
-      "core_topic": "Engineering Culture"
-    },
-    {
       "airtable_id": "recr9psXCCS4XmZA6",
       "title": "The Sociotechnical Path to High-Performing Teams",
       "url": "https://vimeo.com/723450508",
@@ -2301,13 +2252,13 @@
     }
   ],
   "metadata": {
-    "total": 138,
-    "generated_at": "2025-03-30T19:33:02.200490",
+    "total": 135,
+    "generated_at": "2025-03-30T19:34:43.178961",
     "stats": {
-      "total_processed": 140,
-      "valid_talks": 138,
-      "skipped_talks": 2,
-      "total_duration_hours": 93.6
+      "total_processed": 136,
+      "valid_talks": 135,
+      "skipped_talks": 1,
+      "total_duration_hours": 91.4
     }
   }
 }
