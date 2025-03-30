@@ -1,0 +1,2265 @@
+{
+  "talks": [
+    {
+      "airtable_id": "rec0Zn0xNpLa4HaZn",
+      "title": "\"Simple Made Easy\" (12-minute redux) by Rich Hickey (2011)",
+      "url": "https://www.youtube.com/watch?v=F87PtAoJNtg",
+      "duration": 720,
+      "topics": [
+        "Software Design",
+        "Architecture",
+        "Inspirational",
+        "Scalability"
+      ],
+      "speakers": [
+        "Rich Hickey"
+      ],
+      "description": "This is a 12-minute redux of the 1-hour talk by Rich Hickey, for really impatient people. Original: https://www.youtube.com/watch?v=SxdOUGdseq4",
+      "core_topic": "Architecture"
+    },
+    {
+      "airtable_id": "recgmP18mKuy7sIVf",
+      "title": "7 minutes, 26 seconds, and the Fundamental Theorem of Agile Software Development",
+      "url": "https://www.youtube.com/watch?v=WSes_PexXcA",
+      "duration": 420,
+      "topics": [
+        "Agile",
+        "Software Design",
+        "XP"
+      ],
+      "speakers": [
+        "J.B. Rainsberger"
+      ],
+      "description": "Short excellent talk (7:26') that distilled the essence of software development and agile development. Essential. A must.",
+      "core_topic": "Agile"
+    },
+    {
+      "airtable_id": "recuJC0elQtyoMJIS",
+      "title": "A Case for Outside-In Design",
+      "url": "https://www.youtube.com/watch?v=QP6ltkj4Qik",
+      "duration": 3060,
+      "topics": [
+        "Architecture",
+        "Product",
+        "DDD",
+        "OOP"
+      ],
+      "speakers": [
+        "Sandro Mancuso"
+      ],
+      "description": "another version  (NEWCRAFTS Conferences Paris). A very interesting for any developer, product manager o business person. Technics to understand the whole picture for a system and help to define the design from the outside. A good approach for domain modeling.",
+      "core_topic": "Architecture"
+    },
+    {
+      "airtable_id": "recxOMnJ8i6GxhPbc",
+      "title": "A Young Lady's Illustrated Primer to Technical Decision-Making",
+      "url": "https://www.youtube.com/watch?v=PSIPhVjWBO0",
+      "duration": 2460,
+      "topics": [
+        "Engineering Culture",
+        "Technical leadership"
+      ],
+      "speakers": [
+        "Charity Majors"
+      ],
+      "description": "Fun and interesting talk about the context and process for making technical decisions. Very good ideas. The talk is a few years old, but the ideas are still very valid. Charity talks about how to decide to introduce new technologies, the cost of maintaining them, the importance of migrations, failure modes, etc.",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "rectcpSR95TCD5yxR",
+      "title": "AWS re:Invent 2018: Close Loops & Opening Minds: How to Take Control of Systems, Big & Small ARC337",
+      "url": "https://www.youtube.com/watch?v=O8xLxNje30M",
+      "duration": 3480,
+      "topics": [
+        "Platform",
+        "Scalability",
+        "Architecture patterns",
+        "Software Design"
+      ],
+      "speakers": [
+        "Colm MacCárthaigh"
+      ],
+      "description": "Whether it’s distributing configurations and customer settings, launching instances, or responding to surges in load, having a great control plane is key to the success of any system or service. Come hear about the techniques we use to build stable and scalable control planes at Amazon. We dive deep into the designs that power the most reliable systems at AWS. We share hard-earned operational lessons and explain academic control theory in easy-to-apply patterns and principles that are immediately useful in your own designs.\nA must to learn how to design Control Panels.",
+      "core_topic": "Architecture"
+    },
+    {
+      "airtable_id": "rec3E0KiheJHZzqvy",
+      "title": "AWS re:Invent 2019: Data modeling with Amazon DynamoDB (CMY304)",
+      "url": "https://www.youtube.com/watch?v=DIQVJqiSUkE",
+      "duration": 2340,
+      "topics": [
+        "Scalability",
+        "Technical Practices",
+        "Architecture",
+        "Software Design",
+        "Serverless",
+        "Technology"
+      ],
+      "speakers": [
+        "Alex DeBrie"
+      ],
+      "description": "Modeling your data in the DynamoDB database structure requires a different approach from modeling in traditional relational databases. Alex DeBrie has written a number of applications using DynamoDB and is the creator of DynamoDBGuide.com, a free resource for learning DynamoDB",
+      "core_topic": "Architecture"
+    },
+    {
+      "airtable_id": "recoRHsRlGCAsIFus",
+      "title": "Adam Ralph - Finding your service boundaries — a practical guide - SCBCN 24",
+      "url": "https://www.youtube.com/watch?v=cxLGc5YRFBs",
+      "duration": 2880,
+      "topics": [
+        "Architecture",
+        "Architecture patterns",
+        "Microservices"
+      ],
+      "speakers": [
+        "Adam Ralph"
+      ],
+      "description": "This presentation is about identifying service boundaries in software architecture to avoid coupling and ending up with a \"big ball of mud\", even when using microservices. I recommend this talk because it provides practical advice on how to define services as technical authorities for specific business capabilities, leading to more maintainable and scalable systems.",
+      "core_topic": "Architecture"
+    },
+    {
+      "airtable_id": "recQGfbwsNl5WtAws",
+      "title": "Adaptive Planning Beyond User Stories",
+      "url": "https://www.youtube.com/watch?v=mCC10nTOgTE",
+      "duration": 3300,
+      "topics": [
+        "Lean Software Development",
+        "Lean Product Management",
+        "Product",
+        "Product Discovery"
+      ],
+      "speakers": [
+        "Gojko Adzic"
+      ],
+      "description": "Gojko gives a masterclass on how to focus on impacts, understand the need, and improve product decisions. Good ideas to postpone decisions, focus on behavioral changes, and be cautious with metrics. An essential talk for any product developer.",
+      "core_topic": "Lean-Product Engineering"
+    },
+    {
+      "airtable_id": "reczZxGtIAoCz9tsI",
+      "title": "Agile as if you meant it",
+      "url": "https://www.youtube.com/watch?v=YibNG8xx15c",
+      "duration": 3300,
+      "topics": [
+        "Agile",
+        "Product",
+        "Product Strategy",
+        "Lean Product Management",
+        "Teams"
+      ],
+      "speakers": [
+        "Maaret Pyhäjärvi"
+      ],
+      "description": "A good example of what Modern Agile looks like. Customer-focused team, with direct contact with the customer and without a proxy. Very interesting. It reminds me a lot of the way I used to work at [@AleaSolucionesS](https://twitter.com/AleaSolucionesS) and at TheMotion ([@HoneyBadgersDev](https://twitter.com/HoneyBadgersDev)).",
+      "core_topic": "Agile-XP"
+    },
+    {
+      "airtable_id": "recoqZIHQYaQMiCaE",
+      "title": "AgileByExample 2016: Henrik Kniberg - Keynote - Focus (or Stop Starting, Start Finishing)",
+      "url": "https://www.youtube.com/watch?v=n7wH2XdOWpM",
+      "duration": 2580,
+      "topics": [
+        "Agile",
+        "Inspirational"
+      ],
+      "speakers": [
+        "Henrik Kniberg"
+      ],
+      "description": "As usualy Henrik deliver a great talk that inspired me a lot.",
+      "core_topic": "Agile"
+    },
+    {
+      "airtable_id": "reczYEOBiA6KzE1Gv",
+      "title": "Alan Kay at OOPSLA 1997 - The computer revolution hasnt happened yet",
+      "url": "https://www.youtube.com/watch?v=oKg1hTOQXoY",
+      "duration": 3840,
+      "topics": [
+        "Nature of Software Development",
+        "Engineering Culture",
+        "Inspirational",
+        "OOP",
+        "Software Design",
+        "Evolutionary Design"
+      ],
+      "speakers": [
+        "Alan Kay"
+      ],
+      "description": "Classic presentation by Alan Kay talks about the nature of software, the design that systems should have, scalability, and how, to some extent, we could compare it to how biological systems work. Many of the ideas behind Smalltalk can be identified in the talk.. Inspirational.",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "recIHgDgxmcGBHQJk",
+      "title": "Architecture for Flow with Wardley Mapping, DDD, and Team Topologies",
+      "url": "https://www.youtube.com/watch?v=qKLnlaWKkb4",
+      "duration": 2580,
+      "topics": [
+        "Technology Strategy",
+        "Engineering Culture",
+        "DDD",
+        "Wardley maps",
+        "team topologies"
+      ],
+      "speakers": [
+        "Susanne Kaiser"
+      ],
+      "description": "This talk illustrates the concepts, connects the dots between DDD, Wardley mapping and team topologies, and demonstrates how these techniques help to evolve a fictitious legacy system for a fast flow of change.",
+      "core_topic": "Architecture"
+    },
+    {
+      "airtable_id": "recOuZnBtAOlBoiwo",
+      "title": "Artificial Intelligence seen from the software development lifecycle perspective",
+      "url": "https://www.youtube.com/watch?v=a_T21Lf26pc",
+      "duration": 3240,
+      "topics": [
+        "MLOps",
+        "AI"
+      ],
+      "speakers": [
+        "Nerea Luis"
+      ],
+      "description": "Great introduction to the differences between traditional software development and the development cycle with AI models. Nerea introduces concepts such as Continuous training, model deployment, MLOps, and collaboration between data scientists and software engineers. Highly recommended for software engineers looking to delve into these topics and collaborate more closely on AI-based feature development.",
+      "core_topic": "AI"
+    },
+    {
+      "airtable_id": "recv9A1iANh1bT52j",
+      "title": "Attitude Determines Altitude- Engineering Yourself",
+      "url": "https://www.infoq.com/presentations/improve-engineer-designer-leader",
+      "duration": null,
+      "topics": [
+        "Engineering Culture",
+        "Management",
+        "Engineering Career"
+      ],
+      "speakers": [
+        "Randy Shoup"
+      ],
+      "description": "This talk explores how attitude impacts success, focusing on growth mindset, trust, and confidence. It emphasizes the importance of continuous improvement, psychological safety, and overcoming the impostor phenomenon.",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "recw6EE8eDR1c0AiI",
+      "title": "Avoid These Common Mistakes Junior Developers Make",
+      "url": "https://www.youtube.com/watch?v=JL1lMPxR7KQ",
+      "duration": 1080,
+      "topics": [
+        "Inspirational",
+        "Software Design",
+        "Engineering Career"
+      ],
+      "speakers": [
+        "Dave Farley"
+      ],
+      "description": "A must-see talk. Dave Farley describes 8 common mistakes that junior developers often make and offers his advice on how to avoid them. Whatever your approach to software engineering and software development, whether you are practicing Continuous Delivery, DevOps, or something else, we think that you may find some helpful ideas in this video.",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "recUU1sBQWcwX539J",
+      "title": "Beyond Developer",
+      "url": "https://www.youtube.com/watch?v=_P1ZdVV_yic",
+      "duration": 2580,
+      "topics": [
+        "Inspirational",
+        "Agile",
+        "Engineering Culture",
+        "Company Culture"
+      ],
+      "speakers": [
+        "Dan North"
+      ],
+      "description": "The modern developer needs to be constantly reinventing themselves, learning, and helping others to do the same. In this session, Dan explores some of the skills and characteristics of the modern developer, and suggests some ways you can grow them for yourself.",
+      "core_topic": "Agile"
+    },
+    {
+      "airtable_id": "recXAwtzoEcLOlfWu",
+      "title": "Beyond Features: rethinking agile software delivery",
+      "url": "https://www.youtube.com/watch?v=EoJFWdhv8q0",
+      "duration": 4440,
+      "topics": [
+        "Agile",
+        "Inspirational",
+        "Lean",
+        "Lean Software Development"
+      ],
+      "speakers": [
+        "Dan North"
+      ],
+      "description": "Maybe we've been thinking about delivery all wrong. Maybe features aren’t the point after all. Maybe there are other kinds of work that we should recognise, schedule and track as first class citizens. Maybe this could take some of the uncertainty out of the delivery process, and give us back our sanity. Maybe.",
+      "core_topic": "Lean-Product Engineering"
+    },
+    {
+      "airtable_id": "recgdsK7S2ExHfRYk",
+      "title": "Big Transitions in Small Steps",
+      "url": "https://www.youtube.com/watch?v=44sJLFgzhn4",
+      "duration": 3540,
+      "topics": [
+        "Agile",
+        "Technical Practices",
+        "Software Design"
+      ],
+      "speakers": [
+        "Kent Beck"
+      ],
+      "description": "Very deep ideas about how to make any kind of huge technical change using small and incremental changes. This part of the core of agile... Vertical slicing to make changes in small (low risk) steps.",
+      "core_topic": "Agile-XP"
+    },
+    {
+      "airtable_id": "rec5ausknvBSEt8z3",
+      "title": "Boundaries",
+      "url": "https://www.youtube.com/watch?v=eOYal8elnZk",
+      "duration": 1800,
+      "topics": [
+        "Software Design",
+        "Architecture",
+        "Architecture patterns",
+        "Evolutionary Design"
+      ],
+      "speakers": [
+        "Gary Bernhardt"
+      ],
+      "description": "An exploration of the boundaries between pieces of code, including: isolated testing, behavior vs. data, mutation vs. immutability, how data shape affords parallelism, transforming interface dependencies into data dependencies,  and what a system optimizing each of these for natural isolation might look like.",
+      "core_topic": "Software Design"
+    },
+    {
+      "airtable_id": "recZW4aFGILBBfNv1",
+      "title": "Building DevX Teams, my story",
+      "url": "https://www.youtube.com/watch?v=xX5zeVy8Ta4",
+      "duration": 2520,
+      "topics": [
+        "Devex",
+        "Developer Productivity",
+        "Teams"
+      ],
+      "speakers": [
+        "Cirpo Cinelli"
+      ],
+      "description": "In this presentation, Cirpo talks about his past 4 years of experience setting up a DevX team from scratch, the main challenges, the pain, the gain, and the lessons learned.",
+      "core_topic": "Platform Engineering"
+    },
+    {
+      "airtable_id": "rec60loGe7MPQViCd",
+      "title": "Building and Scaling a High-Performance Culture",
+      "url": "https://www.infoq.com/presentations/autonomy-trust-pragmacy-teams/",
+      "duration": null,
+      "topics": [
+        "Engineering Culture",
+        "Inspirational",
+        "Devops",
+        "Continuous Delivery"
+      ],
+      "speakers": [
+        "Randy Shoup"
+      ],
+      "description": "A great talk about culture for high-performance tech organizations. Good complement for Accelerate and based in his experience at ebay and google.",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "recQSVPLU6svtsxEE",
+      "title": "CONSTANT Changes To User Requirements Drive Me CRAZY",
+      "url": "https://www.youtube.com/watch?v=kKbQ2-dXsmE",
+      "duration": 780,
+      "topics": [
+        "Inspirational",
+        "Continuous Delivery",
+        "Lean Software Development",
+        "Lean Product Management",
+        "Agile"
+      ],
+      "speakers": [
+        "Dave Farley"
+      ],
+      "description": "This presentation by Dave Farley shows that software development is not just about translating perfect requirements into code, but rather a process of discovery and exploration. It acknowledges that the nature of the problems being solved has changed and that it is impossible to have all the answers. It emphasizes that successful software products must be able to adapt and evolve over time, and that the key to success is embracing change and making it easy, safe, and low-cost.",
+      "core_topic": null
+    },
+    {
+      "airtable_id": "recfMTIUpBbEYLUth",
+      "title": "Code for Ukraine #2: Tidy First? Daily Empirical Software Design & Why It Works",
+      "url": "https://www.youtube.com/watch?v=VrkRAVX1h4I",
+      "duration": 3480,
+      "topics": [
+        "Software Design",
+        "XP"
+      ],
+      "speakers": [
+        "Kent Beck"
+      ],
+      "description": "Interesting presentation about software design and trade-offs and techniques to refactor the code before applying a change. The talk is full of interesting insights. It is also very interesting the Q&A part that is not only focused on the content of the talk.",
+      "core_topic": "Software Design"
+    },
+    {
+      "airtable_id": "reciUkxVDCZbYLk2E",
+      "title": "Competing On The Basis Of Speed",
+      "url": "https://www.youtube.com/watch?v=ZSdsjpCcpFw",
+      "duration": 3600,
+      "topics": [
+        "Lean Software Development",
+        "Engineering Culture",
+        "Lean Product Management"
+      ],
+      "speakers": [
+        "Mary Poppendieck"
+      ],
+      "description": "Optimizing for speed, flow, and waste reduction. Lean Software Development",
+      "core_topic": "Lean-Agile"
+    },
+    {
+      "airtable_id": "recicunl34WGqbaUv",
+      "title": "Complexity is Outside the Code",
+      "url": "https://www.infoq.com/presentations/complexity-simplicity-esb/",
+      "duration": 2400,
+      "topics": [
+        "Engineering Culture",
+        "Agile",
+        "Inspirational",
+        "Technology Strategy"
+      ],
+      "speakers": [
+        "Dan North",
+        "Jessica Kerr"
+      ],
+      "description": "The presentation discusses the complexity of modern software development, moving beyond simple \"box arrow cylinder\" architectures to a landscape of diverse services and technologies1.... It emphasizes the importance of minimizing lead time to business impact rather than focusing solely on code, and suggests that teams should embrace con\ttinuous learning, research and experimentation to manage uncertainty and deliver value",
+      "core_topic": "Architecture"
+    },
+    {
+      "airtable_id": "recN2IkHwFljS5u2x",
+      "title": "Continuous Delivery",
+      "url": "https://www.youtube.com/watch?v=skLJuksCRTw",
+      "duration": 2820,
+      "topics": [
+        "Continuous Delivery",
+        "Engineering Culture",
+        "Agile",
+        "Lean Software Development"
+      ],
+      "speakers": [
+        "Jez Humble"
+      ],
+      "description": "Great 2012 presentation on Continuous Delivery. Jez discusses the value of CD to the business. He presents the principles and related practices, including value stream mapping, deployment pipelines, acceptance test-driven development, zero-downtime releases, etc. This talk is a while old, but still as relevant as the first day.",
+      "core_topic": "Continuous Delivery"
+    },
+    {
+      "airtable_id": "reczwtffHNw0fqzfl",
+      "title": "Continuous Delivery - Sounds Great But It Won't Work Here",
+      "url": "https://www.youtube.com/watch?v=IvWr29afDF8",
+      "duration": 2940,
+      "topics": [
+        "Continuous Delivery",
+        "Engineering Culture"
+      ],
+      "speakers": [
+        "Jez Humble"
+      ],
+      "description": "Since the Continuous Delivery book came out in 2010, it’s gone from being a controversial idea to a commonplace… until you consider that many people who say they are doing it aren’t really, and there are still plenty of places that consider it crazy talk. In this session Jez will present some of the highlights and lowlights of the past six years listening to people explain why continuous delivery won’t work, and what he learned in the process.",
+      "core_topic": "Continuous Delivery"
+    },
+    {
+      "airtable_id": "rec6vxNvl606hoeCB",
+      "title": "Continuous Delivery Sounds Great But It Won’t Work Here",
+      "url": "https://www.infoq.com/presentations/continuous-delivery-highlights",
+      "duration": 2400,
+      "topics": [
+        "Continuous Delivery"
+      ],
+      "speakers": [
+        "Jez Humble"
+      ],
+      "description": "A new version of a classic one. A great talk.",
+      "core_topic": "Continuous Delivery"
+    },
+    {
+      "airtable_id": "recChBYalg4Q2xv3Y",
+      "title": "Continuous Delivery and the Theory of Constraints",
+      "url": "https://vimeo.com/338843900",
+      "duration": 2640,
+      "topics": [
+        "Continuous Delivery",
+        "Engineering Culture",
+        "Architecture",
+        "Technical Practices"
+      ],
+      "speakers": [
+        "Steve Smith"
+      ],
+      "description": "In this talk, Steve Smith will explain how easy it is for a Continuous Delivery programme to be unsuccessful, how the Theory Of Constraints works, how to apply the Five Focussing Steps to Continuous Delivery, and how to home in on the constrained activities that are your keys to success. It includes tales of glorious failures and ignominious successes when adopting Continuous Delivery.",
+      "core_topic": "Continuous Delivery"
+    },
+    {
+      "airtable_id": "recpdRwvheycRamLE",
+      "title": "Continuous Integration vs Feature Branch Workflow",
+      "url": "https://www.youtube.com/watch?v=v4Ijkq6Myfc",
+      "duration": 1020,
+      "topics": [
+        "Agile",
+        "Continuous Delivery",
+        "Technical Practices",
+        "XP"
+      ],
+      "speakers": [
+        "Dave Farley"
+      ],
+      "description": "Essential 5-minute video. In this video Dave Farley explains the difference and why the two are largely mutually exclusive, and then explains how to live in the CI world by describing three different approaches to keeping the software working as it evolves.",
+      "core_topic": "Continuous Delivery"
+    },
+    {
+      "airtable_id": "recclNm0J3dDOzoHt",
+      "title": "Continuous Integration: That’s Not What They Meant",
+      "url": "https://www.youtube.com/watch?v=97qyNQz7fxY",
+      "duration": 3360,
+      "topics": [
+        "Technical Practices",
+        "XP",
+        "CI",
+        "Trunk Based Development"
+      ],
+      "speakers": [
+        "Clare Sudbery"
+      ],
+      "description": "Very good talk about the benefits of using Trunk Based Development (or in other words, the practice of CI as it was originally created).",
+      "core_topic": "Agile-XP"
+    },
+    {
+      "airtable_id": "recbPgwllMN0O9rA6",
+      "title": "Creating Value and Flow in Product Development",
+      "url": "https://www.youtube.com/watch?v=NGdx-f-aGXs",
+      "duration": 420,
+      "topics": [
+        "Product",
+        "Engineering Culture",
+        "Teams",
+        "Agile",
+        "Lean Software Development",
+        "Lean"
+      ],
+      "speakers": [
+        "John Cutler"
+      ],
+      "description": "John Cutler, Product Evangelist at Amplitude explains why most of a product developers time is spent waiting and how limiting work in progress, the scope of work and handoffs can increase flow and value.",
+      "core_topic": "Agile"
+    },
+    {
+      "airtable_id": "rec0wGILzKUBU6YKD",
+      "title": "DOES14 On the Care and Feeding of Feedback Cycles",
+      "url": "https://www.youtube.com/watch?v=fMucUohYWI4",
+      "duration": 1860,
+      "topics": [
+        "Quality",
+        "Devops",
+        "Continuous Delivery",
+        "Inspirational",
+        "Feedback cycles"
+      ],
+      "speakers": [
+        "Elisabeth Hendrickson"
+      ],
+      "description": "This talk examines the many forms of feedback, the questions each can answer, and the risks each can mitigate. Agile practices involve testing early and often. However feedback comes in many forms, only some of which are traditionally considered testing. Continuous integration, acceptance testing with users, even cohort analysis to validate business hypotheses are all examples of feedback cycles.",
+      "core_topic": "Devops"
+    },
+    {
+      "airtable_id": "recBR96pE4GvW4b8m",
+      "title": "DOES17 London - The Key to High Performance What the Data Says",
+      "url": "https://www.youtube.com/watch?v=cabzxfM_vWE",
+      "duration": 1860,
+      "topics": [
+        "Devops",
+        "Inspirational",
+        "Engineering Culture",
+        "Engineering productivity"
+      ],
+      "speakers": [
+        "Nicole Forsgren",
+        "Jez Humble",
+        "Nigel Kersten"
+      ],
+      "description": "This talk presents the findings of the 2017 State of DevOps Report, emphasizing that high-performing organizations achieve both better throughput and stability. It explores how transformational leadership, technical practices, and lean product management contribute to IT and organizational performance.",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "recCwW8VAoGeNOQhd",
+      "title": "Debt Metaphor",
+      "url": "https://www.youtube.com/watch?v=pqeJFYwnkjE",
+      "duration": 300,
+      "topics": [
+        "XP",
+        "Technical Practices",
+        "Technology Strategy",
+        "Inspirational"
+      ],
+      "speakers": [
+        "Ward Cunningham"
+      ],
+      "description": "Ward Cunningham reflects on the history, motivation and common misunderstanding of the \"debt metaphor\" as motivation for refactoring.",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "recDy9NVQflmwSa4B",
+      "title": "Digital Transformation",
+      "url": "https://www.youtube.com/watch?v=7lDWXtNjVyQ",
+      "duration": 840,
+      "topics": [
+        "Engineering Culture",
+        "Cloud",
+        "Scalability",
+        "Technology Strategy"
+      ],
+      "speakers": [
+        "Adrian Cockcroft"
+      ],
+      "description": "A good summary of how accelerating the iteration pace is fundamental for innovation and how the cloud can help with it.",
+      "core_topic": "Cloud"
+    },
+    {
+      "airtable_id": "recjbpDvIdAU6xkFw",
+      "title": "Driving a Tech-led Reimagination of eBay Through DevOps (US 2021)",
+      "url": "https://videos.itrevolution.com/watch/624410229/",
+      "duration": 1980,
+      "topics": [
+        "Devops",
+        "Technical leadership"
+      ],
+      "speakers": [
+        "Randy Shoup",
+        "Mark Weinberg"
+      ],
+      "description": "A very interesting session about eBay's strategy to improve delivery performance. A great example of engineering leadership.",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "rec4gLOXuC7vijUrI",
+      "title": "Embracing Uncertainty",
+      "url": "http://vimeo.com/43603453",
+      "duration": 3300,
+      "topics": [
+        "Inspirational",
+        "Engineering Culture"
+      ],
+      "speakers": [
+        "Dan North"
+      ],
+      "description": "Very interesting talk to be aware of our aversion to uncertainty. We usualy make bad decisions in order to avoid the feeling of uncertainty.",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "rec0FlFDAe8nf8BU5",
+      "title": "Engineering Your Organization: Services, Platforms, and Communities",
+      "url": "https://www.infoq.com/presentations/engineering-organization-services-platforms-communities/",
+      "duration": 2280,
+      "topics": [
+        "Engineering Culture",
+        "Inspirational",
+        "Management",
+        "Company Culture",
+        "Platform",
+        "Platform as a product",
+        "Technology Strategy"
+      ],
+      "speakers": [
+        "Randy Shoup"
+      ],
+      "description": "Great summary about the different ways high-performing engineering organizations gain leverage by specialization and sharing.",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "recTLLUeNHzpm3ciV",
+      "title": "Enterprise Architecture = Architecting the Enterprise?",
+      "url": "https://www.youtube.com/watch?v=mS0AJLqmnvQ",
+      "duration": 3660,
+      "topics": [
+        "Architecture",
+        "Architecture patterns",
+        "Engineering Culture"
+      ],
+      "speakers": [
+        "Gregor Hohpe"
+      ],
+      "description": "This session takes a serious but light-hearted look at the role of enterprise architects in modern IT organizations.",
+      "core_topic": "Architecture"
+    },
+    {
+      "airtable_id": "recLu6ITwHRiiZwbF",
+      "title": "Eric Ries: The Science of Lean Startups",
+      "url": "https://businessofsoftware.org/talks/eric-ries-the-science-of-lean-startups/",
+      "duration": 3480,
+      "topics": [
+        "Lean Startup",
+        "Continuous Delivery",
+        "Inspirational"
+      ],
+      "speakers": [
+        "Eric Ries"
+      ],
+      "description": "I believe this is the best talk I have heard from Eric about the ideas of Lean Startup. It is also very enlightening to see how one of the fundamental pieces is continuous deployment and the engineering practices he uses. Essential.",
+      "core_topic": "Lean Startup"
+    },
+    {
+      "airtable_id": "recNTlpS9USi3zTOs",
+      "title": "Escaping the Build Trap",
+      "url": "https://vimeo.com/224453335",
+      "duration": 1560,
+      "topics": [
+        "Product",
+        "Product Discovery",
+        "Product Strategy"
+      ],
+      "speakers": [
+        "Melissa Perri"
+      ],
+      "description": "Mind the Product San Francisco 2017. A classic one to escape from the feature factory mindset.",
+      "core_topic": "Product"
+    },
+    {
+      "airtable_id": "recFo4C6tWCDoJH0Z",
+      "title": "Evolutionary Architecture",
+      "url": "https://www.infoq.com/presentations/evolutionary-architecture/",
+      "duration": null,
+      "topics": [
+        "Architecture",
+        "Evolutionary Architecture"
+      ],
+      "speakers": [
+        "Rebecca Parsons"
+      ],
+      "description": "This talk is a great introduction to the topic.",
+      "core_topic": "Architecture"
+    },
+    {
+      "airtable_id": "recOeXIOfuU3plaew",
+      "title": "Fail Better: Radical Ideas from the Practice of Cloud Computing",
+      "url": "https://www.youtube.com/watch?v=nsrzWEHEWDw",
+      "duration": 3840,
+      "topics": [
+        "Cloud",
+        "Operations",
+        "Technical Practices",
+        "Architecture",
+        "Devops"
+      ],
+      "speakers": [
+        "Tom Limoncelli"
+      ],
+      "description": "Tom highlights radical ideas from _The Practice of Cloud System Administration_ on embracing failure to build resilient distributed systems, focusing on economic resiliency, performing risky procedures frequently, and creating a blameless culture.",
+      "core_topic": "Cloud"
+    },
+    {
+      "airtable_id": "recm4jFcHXCYvjXOz",
+      "title": "Fast-track from Idea to Impact",
+      "url": "https://www.youtube.com/watch?v=67ovutBfXPQ",
+      "duration": 3240,
+      "topics": [
+        "Lean Product Management",
+        "Product"
+      ],
+      "speakers": [
+        "Gojko Adzic"
+      ],
+      "description": "Gojko presents very interesting examples of developments that have achieved very good impacts (by minifying the developed software). He also explains the use of the impact mapping technique, which is very useful for focusing on the impact.",
+      "core_topic": "Lean-Product Engineering"
+    },
+    {
+      "airtable_id": "recWauvTxPOSravWx",
+      "title": "Foundations of Modern Product Organizations",
+      "url": "https://www.youtube.com/watch?v=cOaFm9vm7AI",
+      "duration": 2460,
+      "topics": [
+        "Product",
+        "Lean Product Management",
+        "leadership",
+        "Company Culture"
+      ],
+      "speakers": [
+        "Gerard Chiva"
+      ],
+      "description": "This talk explains the keys to the success of digital product organizations. Technology is an essential part of any business today, not just a cost center.",
+      "core_topic": "Product"
+    },
+    {
+      "airtable_id": "recNZsQIennGhyS5c",
+      "title": "From Kubernetes to PaaS to ... Err, What's Next?",
+      "url": "https://www.youtube.com/watch?v=btUYeOa7JPI",
+      "duration": 1860,
+      "topics": [
+        "Platform",
+        "Platform as a product",
+        "Devex",
+        "Developer Productivity"
+      ],
+      "speakers": [
+        "Daniel Bryant"
+      ],
+      "description": "In this talk Daniel reviews his experience in building platforms, both as an end user and now as part of an organization that helps our clients do the same. She discusses topics such as DevEx, UX, workflows, available tools, etc.",
+      "core_topic": "Platform Engineering"
+    },
+    {
+      "airtable_id": "recsmPxMNicKXDScZ",
+      "title": "From initial request to software in production in 3 weeks",
+      "url": "https://www.youtube.com/watch?v=RjAXEOIfkq8",
+      "duration": 1320,
+      "topics": [
+        "Lean Software Development",
+        "Inspirational"
+      ],
+      "speakers": [
+        "Christin Gorman"
+      ],
+      "description": "Simplicity--the art of maximizing the amount of work not done--is essential. Great talk on how to focus on the essentials and make simple solutions.",
+      "core_topic": "Software Design"
+    },
+    {
+      "airtable_id": "recP6JVPIkZphh1PN",
+      "title": "Full Cycle Developers @Netflix",
+      "url": "https://www.infoq.com/presentations/netflix-devops/",
+      "duration": 3000,
+      "topics": [
+        "Devops",
+        "Operations",
+        "Architecture",
+        "Engineering Culture",
+        "Management"
+      ],
+      "speakers": [
+        "Greg Burrell"
+      ],
+      "description": "Greg Burrell presents Netflix’s journey from siloed teams to their Full Cycle Developer model for building and operating their services at Netflix. He discusses the various approaches they’ve tried, the motivations that pushed them to keep evolving, and the lessons learned along the way.",
+      "core_topic": "Platform Engineering"
+    },
+    {
+      "airtable_id": "recK6Q0fLRWNCL9KI",
+      "title": "Full Cycle Developers at Netflix",
+      "url": "https://www.youtube.com/watch?v=NitqmK9M4wI",
+      "duration": 2880,
+      "topics": [
+        "Devops",
+        "Operations",
+        "Architecture"
+      ],
+      "speakers": [
+        "Greg Burrell"
+      ],
+      "description": "This talk presents Netflix' journey from siloed teams to our Full Cycle Developer model for building and operating our services at Netflix. Greg discusses the various approaches they’ve tried, the motivations that pushed them to keep evolving, and the lessons learned along the way.",
+      "core_topic": null
+    },
+    {
+      "airtable_id": "recrYATbAMaj4fxd7",
+      "title": "GOTO 2020 • Advanced Feature Flagging: It's All About The Data",
+      "url": "https://www.youtube.com/watch?v=f8XDvtfKWQE",
+      "duration": 960,
+      "topics": [
+        "Continuous Delivery",
+        "Product",
+        "Engineering Culture",
+        "Product Discovery"
+      ],
+      "speakers": [
+        "Dave Karow"
+      ],
+      "description": "A great talk on one of the fundamental techniques for making product discovery and continuous release. Excellent information about how to use them, define experiments, and interpret results.",
+      "core_topic": "Continuous Delivery"
+    },
+    {
+      "airtable_id": "recfnyp2AWgJNj0Zp",
+      "title": "GOTO 2020 • Modern Continuous Delivery",
+      "url": "https://www.youtube.com/watch?v=lBi85lNmKFw",
+      "duration": 1140,
+      "topics": [
+        "Continuous Delivery",
+        "Engineering Culture"
+      ],
+      "speakers": [
+        "Ken Mugrage"
+      ],
+      "description": "Great description of a Continuous Delivery process.",
+      "core_topic": "Continuous Delivery"
+    },
+    {
+      "airtable_id": "recm2iTQypzn18KBI",
+      "title": "GOTO 2020 • Talking With Tech Leads",
+      "url": "https://www.youtube.com/watch?v=F81W-JcRgXM",
+      "duration": 2100,
+      "topics": [
+        "leadership",
+        "Technical leadership",
+        "Engineering Culture"
+      ],
+      "speakers": [
+        "Patrick Kua"
+      ],
+      "description": "Practical tips to be a successful Tech Lead. Very interesting for anyone interested in a leadership role for an engineering team.",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "recLOCXTIY9Vp7E3n",
+      "title": "GeePaw Hill \"More Smaller Steps\" ",
+      "url": "https://www.youtube.com/watch?v=WYK4kbrmm84",
+      "duration": 4800,
+      "topics": [
+        "Agile",
+        "Lean Software Development",
+        "XP",
+        "Small Safe Steps (3s)"
+      ],
+      "speakers": [
+        "GeePaw Hill"
+      ],
+      "description": "A great talk for anyone trying to do lean/agile software development. Explain why we need to give small safe steps (3s). Very interesting Q&A session at the end.",
+      "core_topic": "Agile-XP"
+    },
+    {
+      "airtable_id": "recBgNNTaB15VLMCw",
+      "title": "GeePaw Hill on Incremental Software Delivery",
+      "url": "https://www.youtube.com/watch?v=NDXV16uheNs",
+      "duration": 4680,
+      "topics": [
+        "Software Design",
+        "XP",
+        "Small Safe Steps (3s)"
+      ],
+      "speakers": [
+        "GeePaw Hill"
+      ],
+      "description": "Pure wisdom on why working in small, safe steps is the most efficient way to work in software product development when we have environments of high uncertainty (which is almost always).",
+      "core_topic": "Agile-XP"
+    },
+    {
+      "airtable_id": "recFMhog8vblwDnId",
+      "title": "Hibernate should be to programmers what cake mixes are to bakers: beneath their dignity.",
+      "url": "https://vimeo.com/28885655",
+      "duration": 480,
+      "topics": [
+        "Inspirational",
+        "Engineering Culture"
+      ],
+      "speakers": [
+        "Christin Gorman"
+      ],
+      "description": "Great lightning talk, provocative and inspiring.",
+      "core_topic": "Software Design"
+    },
+    {
+      "airtable_id": "recCPjTZloWAjizKF",
+      "title": "How to Deliver Quality Software Against All Odds GOTO 2024",
+      "url": "https://www.youtube.com/watch?v=klqo1oPdbpM",
+      "duration": 3120,
+      "topics": [
+        "Engineering Culture",
+        "Agile",
+        "XP",
+        "Continuous Delivery"
+      ],
+      "speakers": [
+        "Dan North"
+      ],
+      "description": "This podcast features Daniel Terhorst-North, a prominent figure in the software development world, reflecting on 20 years of industry changes and sharing his insights on topics ranging from Agile and DevOps to product management and organizational flow. Drawing on his experiences at Thoughtworks and beyond, Terhorst-North highlights the importance of connecting business needs with technical implementation and emphasizes the value of building evolvable systems with \"simplexity\" in mind.",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "recJ0GIyaO8sh0gf6",
+      "title": "Improving Software Flow Build Stuff",
+      "url": "https://www.youtube.com/watch?v=o2-QLMz2VWw",
+      "duration": 2760,
+      "topics": [
+        "Engineering Culture",
+        "Inspirational",
+        "Agile",
+        "Continuous Delivery",
+        "Technical leadership"
+      ],
+      "speakers": [
+        "Randy Shoup"
+      ],
+      "description": "Great presentation, in which Randy, starts from the 5 ideals of the Unicorn project (Locality and Simplicity, Focus, Flow, and Joy, Improvement of Daily Work, Psychological Safety, Customer Focus) to describe what we can do as technical leaders and as engineers to improve our ability to build and deliver software.",
+      "core_topic": "Continuous Delivery"
+    },
+    {
+      "airtable_id": "recgMNfjEQbF98kc0",
+      "title": "Improving Software Flow YOW! 2022",
+      "url": "https://www.youtube.com/watch?v=XMyt5S8limQ",
+      "duration": 3000,
+      "topics": [
+        "Flow",
+        "Inspirational",
+        "Devops",
+        "Technical leadership",
+        "leadership",
+        "Lean",
+        "Lean Software Development"
+      ],
+      "speakers": [
+        "Randy Shoup"
+      ],
+      "description": "In this session, Randy explains how they improve the overall flow and the engineering capacity following the ideas in the Unicorn Project (Locality and Simplicity, Focus, Flow, and Joy, Improvement of Daily Work, Psychological Safety, and Customer Focus). It is an excellent talk about generating/improving an engineering culture following lean principles.",
+      "core_topic": "Continuous Delivery"
+    },
+    {
+      "airtable_id": "recwznqIb6ycqXb6u",
+      "title": "Industry Keynote: The DevOps Transformation",
+      "url": "https://www.youtube.com/watch?v=Y4H8dW7Ium8",
+      "duration": 2880,
+      "topics": [
+        "Devops",
+        "leadership",
+        "Agile",
+        "Continuous Delivery",
+        "Engineering Culture"
+      ],
+      "speakers": [
+        "Jez Humble"
+      ],
+      "description": "In this talk Jez will describe how to implement devops principles and practices, how to overcome typical obstacles, and the outcomes DevOps enables. A must-see talk.",
+      "core_topic": "Devops"
+    },
+    {
+      "airtable_id": "recirj5AuNw3fWErr",
+      "title": "Inside-Out TDDDD",
+      "url": "https://www.youtube.com/watch?v=HqjrvJbuf3g",
+      "duration": 3600,
+      "topics": [
+        "XP",
+        "testing",
+        "Technical Practices",
+        "Inspirational"
+      ],
+      "speakers": [
+        "Amitai Schleier"
+      ],
+      "description": "Talk about joy and humanity in software development. The talk was primarily concerned with the effects of software craft on our emotional states and working relationships. Along the way, Amitai touched on Theory of Constraints, stable and unstable equilibria in work environments, a significant and deliberate omission from Scrum, my take on “legacy code”, applied empathy (never mentioned explicitly, merely woven in), and what agility looks and feels like when you’ve got it.",
+      "core_topic": "Agile-XP"
+    },
+    {
+      "airtable_id": "recBhYq8BJVoKYAu4",
+      "title": "Integrated Tests Are A Scam",
+      "url": "https://vimeo.com/80533536",
+      "duration": 3840,
+      "topics": [
+        "testing",
+        "Technical Practices"
+      ],
+      "speakers": [
+        "J.B. Rainsberger"
+      ],
+      "description": "Integrated tests are a scam. You’re probably writing 2-5% of the integrated tests you need to test thoroughly. You’re probably duplicating unit tests all over the place. Your integrated tests probably duplicate each other all over the place. When an integrated test fails, who knows what’s broken? Integrated tests probably do you more harm than good. Learn the two-pronged attack that solves the problem: collaboration tests and contract tests.",
+      "core_topic": "Testing"
+    },
+    {
+      "airtable_id": "recTZlj6ecEgPAWIC",
+      "title": "JavaZone 2019, Room 5 - Survival Tips For Women in Tech",
+      "url": "https://www.pscp.tv/w/1BdGYepvvLQGX",
+      "duration": null,
+      "topics": [
+        "Culture",
+        "Inspirational"
+      ],
+      "speakers": [
+        "Patricia Aas"
+      ],
+      "description": "Essential talk especially to open our eyes to privileged people like me (white male in tech).",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "rectJPj8uG0MXkyLy",
+      "title": "KEYNOTE Designing change",
+      "url": "https://www.youtube.com/watch?v=26KypYl5lXA",
+      "duration": 2880,
+      "topics": [
+        "Inspirational",
+        "Software Design",
+        "Architecture",
+        "Evolutionary Design",
+        "Agile"
+      ],
+      "speakers": [
+        "Jessica Kerr",
+        "Avdi Grimm"
+      ],
+      "description": "The journey of a software developer is a climb through abstraction: algorithms, patterns, architecture.... How do we keep expanding scope, without losing focus on the real work? Join us for a journey into the fourth dimension, where we don't just change code; we design change.",
+      "core_topic": "Architecture"
+    },
+    {
+      "airtable_id": "reccvxPY3CPcwRHBk",
+      "title": "Keynote: 8 Lines of Code",
+      "url": "https://www.infoq.com/presentations/8-lines-code-refactoring",
+      "duration": 2700,
+      "topics": [
+        "Inspirational",
+        "Design"
+      ],
+      "speakers": [
+        "Greg Young"
+      ],
+      "description": "Interesting talk to understand some concepts about simplicity and hiden accidental complexity.",
+      "core_topic": "Software Design"
+    },
+    {
+      "airtable_id": "rec0NaKLjOOS7L1Gb",
+      "title": "Keynote: Creating a Holistic Developer Experience",
+      "url": "https://www.youtube.com/watch?v=KGbw2c40q9Q",
+      "duration": 900,
+      "topics": [
+        "Devex",
+        "Developer Productivity"
+      ],
+      "speakers": [
+        "Jasmine James"
+      ],
+      "description": "Great talk to understand what is development experience.",
+      "core_topic": "Platform Engineering"
+    },
+    {
+      "airtable_id": "recAIkpCKXiZCft7V",
+      "title": "LISA17 - Scalability Is Quantifiable: The Universal Scalability Law",
+      "url": "https://www.youtube.com/watch?v=lZU6RK0oazM",
+      "duration": 1740,
+      "topics": [
+        "Scalability",
+        "Performance",
+        "Architecture"
+      ],
+      "speakers": [
+        "Baron Schwartz"
+      ],
+      "description": "Do you know what scalability really is? It's a mathematical function that's simple, precise, and useful. REALLY useful. It describes the relationship between system performance and load. In this talk you'll learn the function (the Universal Scalability Law), how it describes and predicts system behavior you see every day, and how to use it in practice. I'll show you how to understand the function, how to capture the data you need to measure your own system's behavior (you probably already have that), and how to analyze the data with the USL. You'll leave this talk knowing exactly what scalability is and what causes non-linear scaling. There are two factors, and you'll start seeing those everywhere, too. As a result, when systems don't scale you'll know what kind of problem to look for, and you'll avoid building bottlenecks into your systems in the first place. Final note: this talk requires zero mathematical skill.",
+      "core_topic": "Architecture"
+    },
+    {
+      "airtable_id": "recdLIMS2kPAda6MP",
+      "title": "Lean Agile Brighton 2019 - Crossing the River by Feeling the Stones",
+      "url": "https://www.youtube.com/watch?v=KdR8_kqcpPQ",
+      "duration": 3900,
+      "topics": [
+        "Inspirational",
+        "Technology Strategy",
+        "Product Strategy",
+        "Strategy"
+      ],
+      "speakers": [
+        "Simon Wardley"
+      ],
+      "description": "Simon has given this talk several times, in which he presents Wardley maps and how to use them to help with strategy. I particularly like this version because it uses very good examples, including one about when to use Agile development or Lean ideas. Very instructive.",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "recwUMFbKAjcAFrfH",
+      "title": "Less - The Path to Better Design",
+      "url": "https://vimeo.com/53154357",
+      "duration": 3000,
+      "topics": [
+        "OOP",
+        "Software Design"
+      ],
+      "speakers": [
+        "Sandi Metz"
+      ],
+      "description": "This talk strips away the well-known design principles and exposes the hidden, underlying goals of design. It reveals programming techniques that allow you to write less code while creating beautiful, flexible applications.",
+      "core_topic": "Software Design"
+    },
+    {
+      "airtable_id": "recf65jjPPURcp0jt",
+      "title": "Living Domain Model: Continuous Refactoring to Accelerate Delivery",
+      "url": "https://www.youtube.com/watch?v=7c_kuuVBRoo",
+      "duration": 2820,
+      "topics": [
+        "Refactoring",
+        "Technical Practices",
+        "Legacy code"
+      ],
+      "speakers": [
+        "Younes Zeriahi"
+      ],
+      "description": "Useful talk for anyway working with legacy complex systems. Younes Zeriahi shares practical examples and techniques for refactoring code in a way that accelerates delivery and improves the overall design, using concepts like Mikado, expand and contract, and Chesterton's Fence. He also highlights the importance of a strong test suite and a deep understanding of the domain for effective refactoring.",
+      "core_topic": "Agile-XP"
+    },
+    {
+      "airtable_id": "recCZBg2e64L4QsLL",
+      "title": "Make Impacts Not Software",
+      "url": "https://www.youtube.com/watch?v=GnK_n9Udhhs",
+      "duration": 3060,
+      "topics": [
+        "Lean Software Development",
+        "Lean Product Management",
+        "Product",
+        "Product Strategy"
+      ],
+      "speakers": [
+        "Gojko Adzic"
+      ],
+      "description": "An essential talk to understand how to get the most impact with the least amount of software (and thereby reduce basal cost and time to market). Highly recommended.",
+      "core_topic": "Lean-Product Engineering"
+    },
+    {
+      "airtable_id": "reck60FOvatP5hPnd",
+      "title": "Many More Much Smaller Steps with GeePaw Hill",
+      "url": "https://www.youtube.com/watch?v=lHoOUylvfxQ",
+      "duration": 2340,
+      "topics": [
+        "Software Design",
+        "Lean Software Development",
+        "XP",
+        "Technical Practices",
+        "Evolutionary Design"
+      ],
+      "speakers": [
+        "GeePaw Hill",
+        "Chris Lucian",
+        "Austin Chadwick"
+      ],
+      "description": "Good conversation about GeePaw Hill's software development approach based on taking continuous small safe steps (Many More Much Smaller Steps).",
+      "core_topic": "Agile-XP"
+    },
+    {
+      "airtable_id": "recKLS8QeOawn7JwY",
+      "title": "Master Class with Marty Cagan",
+      "url": "https://www.youtube.com/watch?v=mcnxxdzC2fY",
+      "duration": 4860,
+      "topics": [
+        "Product",
+        "Product Discovery",
+        "Product Team",
+        "Inspirational",
+        "leadership",
+        "Product Leadership"
+      ],
+      "speakers": [
+        "Marty Cagan"
+      ],
+      "description": "A great presentation on skilled product teams and leading product organizations. The questions at the end are also very interesting.",
+      "core_topic": "Product"
+    },
+    {
+      "airtable_id": "recYll8adtdvmL9Pc",
+      "title": "Maximum impact minimum effort",
+      "url": "https://www.youtube.com/watch?v=SVo3Tzru9o4",
+      "duration": 2820,
+      "topics": [
+        "Product",
+        "Agile",
+        "Inspirational",
+        "Engineering Culture"
+      ],
+      "speakers": [
+        "Gojko Adzic"
+      ],
+      "description": "Another great talk about product.",
+      "core_topic": "Lean-Product Engineering"
+    },
+    {
+      "airtable_id": "reczX8K9qeisrKC5a",
+      "title": "Microservices: Software that Fits in Your Head",
+      "url": "http://www.infoq.com/presentations/microservices-replaceability-consistency",
+      "duration": 2880,
+      "topics": [
+        "Architecture patterns",
+        "Evolutionary Architecture"
+      ],
+      "speakers": [
+        "Dan North"
+      ],
+      "description": "Dan North describes a model for thinking about the age of code and argues for replaceability as a first class concern. He also discovers that by optimizing for both replaceability and consistency one can end up with something that looks a lot like microservices.",
+      "core_topic": "Architecture"
+    },
+    {
+      "airtable_id": "recVTbzrAhUvzmVba",
+      "title": "Minimum Viable Product for Platforms",
+      "url": "https://www.youtube.com/watch?v=A9wx91rVTms",
+      "duration": 3720,
+      "topics": [
+        "Product",
+        "Platform as a product",
+        "Platform"
+      ],
+      "speakers": [
+        "Marty Cagan"
+      ],
+      "description": "This talk focuses on key product development strategies for developer tools and platforms, highlighting discovery, data-driven decisions, and end-user experience. It also emphasizes collaboration, rapid testing, and iterative development.",
+      "core_topic": "Product"
+    },
+    {
+      "airtable_id": "recT5uMkmujev77nz",
+      "title": "Monolith Decomposition Patterns",
+      "url": "https://www.infoq.com/presentations/microservices-principles-patterns/",
+      "duration": 2940,
+      "topics": [
+        "DDD",
+        "Microservices",
+        "Architecture patterns"
+      ],
+      "speakers": [
+        "Sam Newman"
+      ],
+      "description": "Sam Newman shares some key principles and a number of patterns to use to incrementally decompose an existing system into microservices. He covers patterns that can work to migrate functionality out of systems hard to change, and looks at the use of strangler patterns, change data capture, database decomposition and more.",
+      "core_topic": "Architecture"
+    },
+    {
+      "airtable_id": "recYRu7BJLsggK3xT",
+      "title": "Multiple WIP vs One Piece Flow Example",
+      "url": "https://www.youtube.com/watch?v=Yqi9Gwt-OEA",
+      "duration": 420,
+      "topics": [
+        "Lean",
+        "WIP",
+        "Flow"
+      ],
+      "speakers": [
+        "Henrik Kniberg"
+      ],
+      "description": "Brilliant explanation of the concept of WIP and how limiting it improves delivery flow.",
+      "core_topic": "Lean-Agile"
+    },
+    {
+      "airtable_id": "recit6V6ikU8mDXXT",
+      "title": "Nordstrom Innovation Lab",
+      "url": "https://www.youtube.com/watch?v=2NFH3VC6LNs",
+      "duration": 360,
+      "topics": [
+        "Lean Product Management",
+        "Product Discovery",
+        "Product",
+        "Inspirational"
+      ],
+      "speakers": [
+        "nordstrominnovationlab"
+      ],
+      "description": "The Nordstrom Innovation Lab team uses a flash build to develop an iPad app for sunglass selection, incorporating real-time customer feedback. The team's agile process allows for rapid adaptation and feature implementation throughout the week, resulting in a functional app.",
+      "core_topic": "Lean Startup"
+    },
+    {
+      "airtable_id": "recxDYMICs8pwobsD",
+      "title": "Operations: The Last Mile",
+      "url": "https://www.youtube.com/watch?v=1zUtBLZ4Lus",
+      "duration": 1800,
+      "topics": [
+        "Operations",
+        "Devops",
+        "Engineering Culture",
+        "Inspirational"
+      ],
+      "speakers": [
+        "Damon Edwards"
+      ],
+      "description": "This talk is not only very funny, it is also a great description of the problems generated by a \"classic\" operations mindset and how to change to a modern approach / devops.",
+      "core_topic": "Operations"
+    },
+    {
+      "airtable_id": "recmxMzHk07eCaRVF",
+      "title": "Oredev 2011: Sleeping with the enemy",
+      "url": "https://www.youtube.com/watch?v=hIMwTzAAQ-w",
+      "duration": 3120,
+      "topics": [
+        "testing",
+        "Engineering Culture"
+      ],
+      "speakers": [
+        "Gojko Adzic"
+      ],
+      "description": "Gojko Adzic describes why independent testing should be a thing of the past. He explains how testers engaging with developers and business users create opportunities to accomplish things they cannot do otherwise.",
+      "core_topic": "Testing"
+    },
+    {
+      "airtable_id": "reccMJEetzG9ZqHYQ",
+      "title": "Platforms at Twilio: Unlocking Developer Effectiveness",
+      "url": "https://www.youtube.com/watch?v=OQYF6HkoZdw",
+      "duration": 3000,
+      "topics": [
+        "Platform",
+        "Platform as a product",
+        "Devops",
+        "Developer Productivity",
+        "Devex"
+      ],
+      "speakers": [
+        "Justin Kitigawa"
+      ],
+      "description": "Learn how Twilio’s internal Platform has evolved to reduce their engineers' cognitive load by providing a unified self-service, declarative platform to build, deliver, and run the thousands of global microservices that make up Twilio.",
+      "core_topic": "Platform Engineering"
+    },
+    {
+      "airtable_id": "reczID4D56geuaClD",
+      "title": "Product Management for Continuous Delivery",
+      "url": "https://www.youtube.com/watch?v=39u-WHz-9Cg",
+      "duration": 2400,
+      "topics": [
+        "Product",
+        "Lean Product Management",
+        "Continuous Delivery"
+      ],
+      "speakers": [
+        "Elizabeth Ayer"
+      ],
+      "description": "This presentation explains how Continuous Delivery is very beneficial for excellent product management and growing a customer-focus team. CD enables closing the loop for each product increment, getting feedback, making decisions, and punting the focus on the impact generated (and not creating more and more features).",
+      "core_topic": "Continuous Delivery"
+    },
+    {
+      "airtable_id": "recrZiu65sTc9GX7h",
+      "title": "Product Strategy is About Saying No",
+      "url": "https://www.youtube.com/watch?v=9AM6QQlgLSQ",
+      "duration": 420,
+      "topics": [
+        "Product"
+      ],
+      "speakers": [
+        "Des Traynor"
+      ],
+      "description": "Why Product strategy is mostly about saying no. Funny, short, thought-provoking and actionable. Imprescindible.",
+      "core_topic": "Product"
+    },
+    {
+      "airtable_id": "recEKkIZldl9R5iza",
+      "title": "Product Tank Madrid: Focus on Impact with John Cutler - World Product Day 2020",
+      "url": "https://www.youtube.com/watch?v=7yiudST4bJY",
+      "duration": 3900,
+      "topics": [
+        "Product"
+      ],
+      "speakers": [
+        "John Cutler"
+      ],
+      "description": "Excellent talk. John presents all the learnings he had during the last three years, using his great article as a starting point (<https://cutle.fish/blog/12-signs-youre-working-in-a-feature-factory>). Lots of knowledge and tips to introduce product thinking.",
+      "core_topic": "Product"
+    },
+    {
+      "airtable_id": "recmX18vmHRNPz3Jb",
+      "title": "Production - Designing for Testability",
+      "url": "https://www.infoq.com/presentations/quality-production/",
+      "duration": 3000,
+      "topics": [
+        "testing",
+        "Testing in production",
+        "Devops",
+        "Continuous Delivery",
+        "Engineering Culture"
+      ],
+      "speakers": [
+        "Michael Bryzek"
+      ],
+      "description": "Michael Bryzek explores what it’s like to build quality software with no development, QA, or staging environments. He includes a deep dive into “verification in production” and what it really takes to build software that can safely be tested continuously in production.",
+      "core_topic": "Testing"
+    },
+    {
+      "airtable_id": "rece3oTqtXw1BhZg9",
+      "title": "Queueing Theory in Practice: Performance Modeling for the Working Engineer",
+      "url": "https://www.youtube.com/watch?v=Hda5tMrLJqc",
+      "duration": 2700,
+      "topics": [
+        "Architecture",
+        "Scalability",
+        "Performance",
+        "Software Design"
+      ],
+      "speakers": [
+        "Eben Freeman"
+      ],
+      "description": "Cloud! Autoscaling! Kubernetes! Etc! In theory, it's easier than ever to scale a service based on variable demand. In practice, it's still hard to take observed metrics, and translate them into quantitative predictions about what will happen to service performance as load changes. Resource limits are often chosen by guesstimation, and teams are likely to find themselves reacting to slowdowns and bottlenecks, rather than anticipating them. Queueing theory can help, by treating large-scale software systems as mathematical models that you can rigorously reason about. But it's not necessarily easy to translate between real-world systems and textbook models. This talk will cover practical techniques for turning operational data into actionable predictions. We'll show how to use the Universal Scalability Law to develop a model of system performance, and how to leverage that model to make more informed capacity planning and architectural decisions. We'll discuss what data to gather in production to better inform its predictions -- for example, why it's important to capture the shape of a latency distribution, and not just a few percentiles. We'll also talk about some of the limitations and pitfalls of performance modelling.",
+      "core_topic": "Cloud"
+    },
+    {
+      "airtable_id": "recvcszbn9MUJPKJA",
+      "title": "Rails Conf 2013 The Magic Tricks of Testing",
+      "url": "https://www.youtube.com/watch?v=URSWYvyc42M",
+      "duration": 1920,
+      "topics": [
+        "testing",
+        "XP",
+        "Technical Practices",
+        "Agile"
+      ],
+      "speakers": [
+        "Sandi Metz"
+      ],
+      "description": "This talk strips away the veil and offers simple, practical guidelines for choosing what to test and how to test it. Finding the right testing balance isn't magic, it's a magic trick; come and learn the secret of writing stable tests that protect your application at the lowest possible cost.",
+      "core_topic": "Testing"
+    },
+    {
+      "airtable_id": "recNuR7PNPTKDGUJb",
+      "title": "Reboot Your Team",
+      "url": "https://www.mindtheproduct.com/reboot-your-team-by-christina-wodtke/",
+      "duration": 1920,
+      "topics": [
+        "Engineering Culture",
+        "Teams",
+        "Product",
+        "Product Team"
+      ],
+      "speakers": [
+        "Christina Wodtke"
+      ],
+      "description": "Christina told us how to reboot the team you have, or build a healthy one from the ground up.",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "recy1ap1dYgcQG19U",
+      "title": "Reduce Alerting Noise with One Weird Trick",
+      "url": "https://www.youtube.com/watch?v=DOXk2xoAUkw",
+      "duration": 600,
+      "topics": [
+        "Observability",
+        "Technical Practices"
+      ],
+      "speakers": [
+        "Liz Fong-Jones"
+      ],
+      "description": "A great and concise description of SLI/SLOs and how to use them to improve our lives.",
+      "core_topic": "Operations"
+    },
+    {
+      "airtable_id": "recPeKtcL1bmOHyXS",
+      "title": "Reliable Messaging Without Distributed Transactions",
+      "url": "https://www.youtube.com/watch?v=AfAojdORxHs",
+      "duration": 960,
+      "topics": [
+        "Architecture patterns",
+        "Software Design"
+      ],
+      "speakers": [
+        "Udi Dahan"
+      ],
+      "description": "Particular CEO, Udi Dahan, describes how you can still do reliable messaging without using distributed transactions",
+      "core_topic": "Architecture"
+    },
+    {
+      "airtable_id": "rechDZh2hBLkUULWA",
+      "title": "SLO TheoryWhy the Business needs SLOs",
+      "url": "https://www.honeycomb.io/why-the-business-needs-slos-on-demand/",
+      "duration": 2280,
+      "topics": [
+        "Technical Practices",
+        "Observability",
+        "Operations"
+      ],
+      "speakers": [
+        "Danyel Fisher",
+        "Nathen Harvey"
+      ],
+      "description": "Great explanation about SLI, SLOs, error budgets and how to introduce them to improve our production operations.",
+      "core_topic": "Operations"
+    },
+    {
+      "airtable_id": "recJj5CkUuT3Im6BR",
+      "title": "Second Generation Lean Product Development Flow",
+      "url": "https://www.youtube.com/watch?v=L6v6W7jkwok",
+      "duration": 5220,
+      "topics": [
+        "Product",
+        "Product Strategy",
+        "Lean Product Management",
+        "Lean",
+        "Mental models"
+      ],
+      "speakers": [
+        "Donald Reinertsen"
+      ],
+      "description": "An introduction to Lean Product Development Flow given by Don Reinertsen at Adventures with Agile in London. \nThis talk is a must to understand modern product development (Flow, uncertainty, Little's law, cost of delay, the value of feedback, queues, batch size, etc).",
+      "core_topic": "Product"
+    },
+    {
+      "airtable_id": "recFA4E0K0sw4jVly",
+      "title": "Shared Mental Models Part 1",
+      "url": "https://www.youtube.com/watch?v=cAfdhSUZG4g",
+      "duration": 1980,
+      "topics": [
+        "Engineering Culture",
+        "Mental models",
+        "Inspirational"
+      ],
+      "speakers": [
+        "Jessica Kerr"
+      ],
+      "description": "This was an excellent talk, full of insights that prompted reflection. In this talk Jessica looks at how the shared mental models created while mob programming work throughout the team even when they are not actively mobbing. She also explores the other practices she’s found complementary in creating a high functioning team and how looking at your contribution from a generative (helping other create) vs a productive (what I created, myself) frame can lead to a happier, better and more productive team.",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "receYn9iDUfTj3xBp",
+      "title": "Simon Sinek Performance vs Trust",
+      "url": "https://www.youtube.com/watch?v=kJdXjtSnZTI",
+      "duration": 120,
+      "topics": [
+        "Inspirational",
+        "Culture",
+        "Company Culture"
+      ],
+      "speakers": [
+        "Simon Sinek"
+      ],
+      "description": "Great description of the impact of trust on team members and leaders.",
+      "core_topic": "Company Culture"
+    },
+    {
+      "airtable_id": "recDPS7fNMOi7VkSD",
+      "title": "Simple Made Easy",
+      "url": "http://www.infoq.com/presentations/Simple-Made-Easy",
+      "duration": 3660,
+      "topics": [
+        "Software Design",
+        "Functional",
+        "Architecture",
+        "Inspirational",
+        "Architecture patterns",
+        "Scalability"
+      ],
+      "speakers": [
+        "Rich Hickey"
+      ],
+      "description": "2011\\. Great talk and a good excuse to study functional programming.",
+      "core_topic": "Architecture"
+    },
+    {
+      "airtable_id": "recXooBJg7DRlLquE",
+      "title": "Simplifying The Inventory Management Systems at the World’s Largest Retailer Using Functional Programming Principles",
+      "url": "https://itrevolution.com/the-idealcast-episode-23/",
+      "duration": 7320,
+      "topics": [
+        "Architecture",
+        "Architecture patterns",
+        "Functional",
+        "Technical leadership",
+        "Technology Strategy"
+      ],
+      "speakers": [
+        "Scott Havens",
+        "Gene Kim"
+      ],
+      "description": "Havens shares his views on what makes great architecture great. He details what happened when an API call required 23 other synchronous procedures calls to return a correct answer. He discusses the challenges of managing inventory at Walmart, how one implements event sourcing patterns on that scale, and the functional programming principles that it depends upon. Lastly, he talks about how much category theory you need to know to do functional programming and considerations when creating code in complex systems. It is recommended to first watch the talk https://www.youtube.com/watch?v=n5S3hScE6dU or listen to the podcast https://itrevolution.com/the-idealcast-episode-22/",
+      "core_topic": "Architecture"
+    },
+    {
+      "airtable_id": "rec9S1TCWALLhQvvt",
+      "title": "Six Decades of Software Engineering",
+      "url": "https://www.youtube.com/watch?v=PzI07SBqaPA",
+      "duration": 4980,
+      "topics": [
+        "Lean Software Development",
+        "Engineering Culture",
+        "Agile",
+        "Devops"
+      ],
+      "speakers": [
+        "Mary Poppendieck"
+      ],
+      "description": "Great talk with the evolution of our field from a lean perspective. Great insights about the engineering role, agile, the current painful division between business and development, how we can think about complex systems, the failure of having proxy roles as the product owner, etc... Great talk, lot of computer and development history, and great Q&A session.\nSlides: <https://speakerdeck.com/devopslx/2020-dot-07-meetup-talk-may-poppendieck-six-decades-of-software-engineering>",
+      "core_topic": "Lean-Agile"
+    },
+    {
+      "airtable_id": "rec2DFjI7MRRpAkZH",
+      "title": "Snow White and the 777.777.777 Dwarfs",
+      "url": "https://www.youtube.com/watch?v=UBVHQaI02PQ",
+      "duration": 2700,
+      "topics": [
+        "Product",
+        "Agile",
+        "Cloud",
+        "Inspirational",
+        "Technology Strategy"
+      ],
+      "speakers": [
+        "Gojko Adzic"
+      ],
+      "description": "Great talks about how cloud is changing the risk profile of our application and the software quality practices.",
+      "core_topic": "Cloud"
+    },
+    {
+      "airtable_id": "recrGcqVCRBZi01uH",
+      "title": "Speeding Up Innovation",
+      "url": "https://www.youtube.com/watch?v=rnygCAvVBj8",
+      "duration": 2520,
+      "topics": [
+        "Cloud",
+        "Architecture",
+        "Inspirational",
+        "Technology Strategy",
+        "Devops"
+      ],
+      "speakers": [
+        "Adrian Cockcroft"
+      ],
+      "description": "Interesting talk about how to use the cloud and how it enables innovation.",
+      "core_topic": "Cloud"
+    },
+    {
+      "airtable_id": "recdpnVXleU1WlaCD",
+      "title": "Stop Writing Dead Programs",
+      "url": "https://www.youtube.com/watch?v=8Ab3ArE8W3s",
+      "duration": 2580,
+      "topics": [
+        "Inspirational"
+      ],
+      "speakers": [
+        "Jack Rusher"
+      ],
+      "description": "This talk argues that it would be better to focus on building new live programming environments that can help us solve the problems of the future.",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "recomFIM8h16kGME1",
+      "title": "Stop starting and start finishing",
+      "url": "https://www.youtube.com/watch?v=FOLDDe4ARRs",
+      "duration": 300,
+      "topics": [
+        "Lean",
+        "WIP",
+        "Flow",
+        "TOC"
+      ],
+      "speakers": [
+        "Jason Yip"
+      ],
+      "description": "Great explanation about Lean concepts (Limit WIP, class of services, Root cause analysis...)",
+      "core_topic": "Lean-Agile"
+    },
+    {
+      "airtable_id": "recBglPmZE7Z709Sa",
+      "title": "Sufficiently Advanced Monitoring is Indistinguishable from Testing",
+      "url": "https://www.youtube.com/watch?v=uSo8i1N18oc",
+      "duration": 300,
+      "topics": [
+        "Technical Practices",
+        "testing",
+        "Testing in production"
+      ],
+      "speakers": [
+        "Ed Keyes"
+      ],
+      "description": "Interesting ideas about testing in production.",
+      "core_topic": "Testing"
+    },
+    {
+      "airtable_id": "recWsPImFvQo51sT0",
+      "title": "Systems Thinking for Developers",
+      "url": "https://www.youtube.com/watch?v=xcQVgYzlj8k",
+      "duration": 3300,
+      "topics": [
+        "Mental models",
+        "Inspirational"
+      ],
+      "speakers": [
+        "Jessica Kerr"
+      ],
+      "description": "Great explanation of how system thinking arises and its basic concepts. System thinking is a fundamental tool to work with/in complex systems such as software systems.",
+      "core_topic": "System Thinking"
+    },
+    {
+      "airtable_id": "recTB7wNYxiDwtMeG",
+      "title": "TDD, where did it all go wrong",
+      "url": "https://vimeo.com/68375232",
+      "duration": 3660,
+      "topics": [
+        "tdd",
+        "testing",
+        "Technical Practices"
+      ],
+      "speakers": [
+        "Ian Cooper"
+      ],
+      "description": "Essential talk about how to do TDD in an efficient way and getting a battery of tests that support continuous refactoring. It fundamentally changed my approach to TDD. I highly recommend it.",
+      "core_topic": "Agile-XP"
+    },
+    {
+      "airtable_id": "recBk5M98Nf6b43gM",
+      "title": "Technical leadership and glue work",
+      "url": "https://www.youtube.com/watch?v=KClAPipnKqw",
+      "duration": 1680,
+      "topics": [
+        "Engineering Culture",
+        "Management",
+        "Inspirational",
+        "Engineering Career"
+      ],
+      "speakers": [
+        "Tanya Reilly"
+      ],
+      "description": "Let's talk about how to allocate glue work deliberately, frame it usefully and make sure that everyone is choosing a career path they actually want to be on.",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "reclOYdhJa384pJOo",
+      "title": "Ten (Hard-Won) Lessons of the DevOps Transition",
+      "url": "https://www.youtube.com/watch?v=6tREbJl8e_Y",
+      "duration": 1560,
+      "topics": [
+        "Inspirational",
+        "Devops",
+        "Engineering Culture"
+      ],
+      "speakers": [
+        "Randy Shoup"
+      ],
+      "description": "This talk discusses the cultural change required to adopt a devops mentality. Excellent advice and warnings derived from Randy's experience leading teams at eBay, Google, and KIXEYE.",
+      "core_topic": "Devops"
+    },
+    {
+      "airtable_id": "recXe1EEX4sVeCXP9",
+      "title": "Testing and Refactoring Legacy Code",
+      "url": "https://www.youtube.com/watch?v=LSqbXorkyfQ",
+      "duration": 5340,
+      "topics": [
+        "XP",
+        "Refactoring",
+        "Technical Practices",
+        "Evolutionary Design"
+      ],
+      "speakers": [
+        "Sandro Mancuso"
+      ],
+      "description": "In this live coding session, Sandro will present many techniques that will help you to efficiently retrofit tests to legacy code and then refactor it to show the business logic more clearly.",
+      "core_topic": "Testing"
+    },
+    {
+      "airtable_id": "recgNHgQpgbXMk5nD",
+      "title": "The Art of Simplicity by Venkat Subramaniam",
+      "url": "https://www.youtube.com/watch?v=NMTrlv4nQR8",
+      "duration": 3240,
+      "topics": [
+        "Software Design",
+        "simplicity"
+      ],
+      "speakers": [
+        "Venkat Subramaniam"
+      ],
+      "description": "vJUG KeyNote. A great complementary talk to my talk Simplicidad para desarrolladores (Spanish)",
+      "core_topic": "Software Design"
+    },
+    {
+      "airtable_id": "recp5VZGEHjnR5CHd",
+      "title": "The Efficiency Paradox",
+      "url": "https://www.youtube.com/watch?v=hGJpez7rvc0",
+      "duration": 1080,
+      "topics": [
+        "Agile",
+        "Lean Software Development",
+        "Inspirational",
+        "Company Culture",
+        "Lean",
+        "Flow"
+      ],
+      "speakers": [
+        "Niklas Modig"
+      ],
+      "description": "The best explanation I know about resource efficiency vs flow efficiency, the base of Lean.",
+      "core_topic": "Lean"
+    },
+    {
+      "airtable_id": "recQXhKafE7CbtPIw",
+      "title": "The Journey to Continuous Delivery",
+      "url": "https://www.infoq.com/presentations/cd-business-agility",
+      "duration": 3540,
+      "topics": [
+        "Lean",
+        "Continuous Delivery",
+        "Agile",
+        "Flow"
+      ],
+      "speakers": [
+        "Dan North"
+      ],
+      "description": "Modern agile and how to introduce it. (good ideas about, flow, value, and teams).",
+      "core_topic": "Continuous Delivery"
+    },
+    {
+      "airtable_id": "recjEJNWZaeZVjneQ",
+      "title": "The Limited Red Society",
+      "url": "https://www.infoq.com/presentations/The-Limited-Red-Society/",
+      "duration": 3480,
+      "topics": [
+        "Agile",
+        "Technical Practices",
+        "XP",
+        "Continuous Delivery"
+      ],
+      "speakers": [
+        "Joshua Kerievsky"
+      ],
+      "description": "Joshua Kerievsky discusses the need to reduce “red” periods of time while developing software. One is in the red when he spends too much time designing, or having compilation errors or the tests do not pass. Kerievsky demonstrates a method (Parallel Change) of reducing the red while refactoring code, and discusses another approach called Narrowed Change, and answers refactoring related questions.",
+      "core_topic": "Agile-XP"
+    },
+    {
+      "airtable_id": "rec0cTDqEx18P2i1q",
+      "title": "The Logic of Flow: Some Indispensable Concepts",
+      "url": "https://www.youtube.com/watch?v=rc1MqHsiiKo",
+      "duration": 1980,
+      "topics": [
+        "Lean Product Management",
+        "Product"
+      ],
+      "speakers": [
+        "Donald Reinertsen"
+      ],
+      "description": "This talk explores key concepts and mathematical principles behind achieving flow in processes, like product development, drawing parallels to flow dynamics in traffic and internet systems. Don Reinertsen explains the economics of queuing, batch size reduction, and fast feedback loops, highlighting their impact on cycle time and overall process efficiency.",
+      "core_topic": "Product"
+    },
+    {
+      "airtable_id": "recBfVsYe3o327PKD",
+      "title": "The Marty Cagan special - ProductTank #27 Singapore",
+      "url": "https://www.youtube.com/watch?v=idMN-YwiYOs",
+      "duration": 5280,
+      "topics": [
+        "Product",
+        "Product Discovery"
+      ],
+      "speakers": [
+        "Marty Cagan"
+      ],
+      "description": "An open discussion on Modern Product Management.  The talk contains a lot of interesting discussions during the Q&A. I think it covers all the underpinnings of modern product management.",
+      "core_topic": "Product"
+    },
+    {
+      "airtable_id": "recr9psXCCS4XmZA6",
+      "title": "The Sociotechnical Path to High-Performing Teams",
+      "url": "https://vimeo.com/723450508",
+      "duration": 2460,
+      "topics": [
+        "Engineering Culture",
+        "team topologies",
+        "Teams",
+        "Continuous Delivery",
+        "Devops"
+      ],
+      "speakers": [
+        "Charity Majors"
+      ],
+      "description": "This talk describe the social and technical strategies that great teams all of the world are using to be happier, more productive and make their users happy too.",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "recz6vJxlvcALhp7D",
+      "title": "The Technical Debt Trap",
+      "url": "https://www.youtube.com/watch?v=SfWCRl75Kas",
+      "duration": 3180,
+      "topics": [
+        "Technical Practices",
+        "Engineering Culture"
+      ],
+      "speakers": [
+        "Doc Norton"
+      ],
+      "description": "What is technical debt? What is not technical debt? Why should we care? What is the cost of misunderstanding? What do we do about it? Doc discusses the origins of the metaphor, what it means today, and how we properly identify and manage technical debt.",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "recOxqFBf8ctdFeJt",
+      "title": "The Value of Flow 14 09 17",
+      "url": "https://www.youtube.com/watch?v=1aOItUyZ2wQ",
+      "duration": 1620,
+      "topics": [
+        "Agile",
+        "Flow",
+        "Continuous Delivery",
+        "Lean Software Development"
+      ],
+      "speakers": [
+        "Dan North"
+      ],
+      "description": "Great explanation for flow efficiency for software delivery",
+      "core_topic": "Lean-Agile"
+    },
+    {
+      "airtable_id": "reckjL9O859XqGTqO",
+      "title": "The art of destroying software",
+      "url": "https://www.youtube.com/watch?v=Ed94CfxgsCA",
+      "duration": 2520,
+      "topics": [
+        "Inspirational",
+        "Evolutionary Architecture",
+        "Evolutionary Design"
+      ],
+      "speakers": [
+        "Greg Young"
+      ],
+      "description": "Some good points about the easy evolution of a system when the services are small enough to be understandables and to be rewritten without fear.",
+      "core_topic": "Architecture"
+    },
+    {
+      "airtable_id": "recVFSquUdCuGrS16",
+      "title": "The best programmer I know ",
+      "url": "https://www.youtube.com/watch?v=D6aUoGK2rkk",
+      "duration": 3360,
+      "topics": [
+        "Engineering Culture",
+        "Inspirational",
+        "Agile",
+        "Engineering Career",
+        "Nature of Software Development"
+      ],
+      "speakers": [
+        "Dan North"
+      ],
+      "description": "Very good talk about the nature of software development and the approach to the profession. Dan talks about software as a medium, continuous learning, teamwork, etc. Highly recommended.",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "recHORJ4ydowbim4n",
+      "title": "The future of software engineering",
+      "url": "https://www.youtube.com/watch?v=-hnguwVg-iE",
+      "duration": 4140,
+      "topics": [
+        "Inspirational",
+        "Engineering Culture",
+        "AI"
+      ],
+      "speakers": [
+        "Grady Booch"
+      ],
+      "description": "Interesting journey through the history of our profession and some predictions about the future with one of the main protagonists (Grady Booch). Very interesting, both the talk and the subsequent questions.",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "recZ9d2gvtlLmiStq",
+      "title": "The puzzle of motivation",
+      "url": "https://www.youtube.com/watch?v=rrkrvAUbU9Y",
+      "duration": 1080,
+      "topics": [
+        "Inspirational",
+        "Management"
+      ],
+      "speakers": [
+        "Dan Pink"
+      ],
+      "description": "Dan Pink examines the puzzle of motivation, starting with a fact that social scientists know but most managers don't: Traditional rewards aren't always as effective as we think.",
+      "core_topic": "Company Culture"
+    },
+    {
+      "airtable_id": "recROSkaWuMOkJEi3",
+      "title": "The resource utilization trap",
+      "url": "https://www.youtube.com/watch?v=CostXs2p6r0",
+      "duration": 300,
+      "topics": [
+        "Lean",
+        "WIP",
+        "Flow"
+      ],
+      "speakers": [
+        "Henrik Kniberg"
+      ],
+      "description": "Henrik Kniberg explains the resource utilization trap, how it impacts our ability to deliver and what we can do about it.",
+      "core_topic": "Lean-Agile"
+    },
+    {
+      "airtable_id": "recMGlBhfcLvvKry6",
+      "title": "The subtle difference between a constraint and a bottleneck (Theory of Constraints)",
+      "url": "https://www.youtube.com/watch?v=6UT1EnL7nOc",
+      "duration": 180,
+      "topics": [
+        "Lean",
+        "TOC"
+      ],
+      "speakers": [
+        "Chris Hohmann"
+      ],
+      "description": "Excellent 3-minute video explains the subtle difference between a constraint and a bottleneck in the Theory of Constraints (and, therefore, where to put the focus.)",
+      "core_topic": "Lean"
+    },
+    {
+      "airtable_id": "recoFSbmY4hKAytju",
+      "title": "Tidy First?",
+      "url": "https://www.youtube.com/watch?v=BFFY9Zor6zw",
+      "duration": 900,
+      "topics": [
+        "Agile",
+        "Software Design",
+        "Evolutionary Design",
+        "Technical Practices",
+        "XP"
+      ],
+      "speakers": [
+        "Kent Beck"
+      ],
+      "description": "Great talk about the human relationships generated during software development. Kent explains these relations and uses them to analyze the development flow, the need for small safe steps, and the tension generated between the people involved. For me, this talk is a must.",
+      "core_topic": "Software Design"
+    },
+    {
+      "airtable_id": "reclsxslEsaXTMpfo",
+      "title": "Tips For Technical Startup Founders | Startup School",
+      "url": "https://www.youtube.com/watch?v=rP7bpYsfa6Q",
+      "duration": 1680,
+      "topics": [
+        "Inspirational",
+        "startup",
+        "Lean Software Development",
+        "Lean Startup"
+      ],
+      "speakers": [
+        "Diana Hu"
+      ],
+      "description": "Diana Hu shares her advice for being a technical founder at the earliest stages - including topics like how to ship an MVP fast, how to deal with technology choices and technical debt, and how and when to hire an engineering team.",
+      "core_topic": "Lean Startup"
+    },
+    {
+      "airtable_id": "recGXOnOo7jejkQV7",
+      "title": "Velocity and Volume or Speed Wins",
+      "url": "https://www.youtube.com/watch?v=wyWI3gLpB8o",
+      "duration": 2160,
+      "topics": [
+        "Cloud",
+        "Scalability",
+        "Continuous Delivery",
+        "Engineering Culture",
+        "Architecture",
+        "Devops"
+      ],
+      "speakers": [
+        "Adrian Cockcroft"
+      ],
+      "description": "A classic talk to understand how to leverage the cloud, continuous delivery and devops to create modern web-scale systems.",
+      "core_topic": "Cloud"
+    },
+    {
+      "airtable_id": "recWr0AUmugIvM9fn",
+      "title": "Want More Value Faster? Take Many More Much Smaller Steps",
+      "url": "https://www.youtube.com/watch?v=1mOs1_pvS9A",
+      "duration": 3300,
+      "topics": [
+        "tdd",
+        "XP",
+        "Agile",
+        "Lean Software Development",
+        "Technical Practices"
+      ],
+      "speakers": [
+        "GeePaw Hill"
+      ],
+      "description": "A must-talk for anyone trying to do lean/agile software development. The talk delves into the reasons why the strategy of using small, safe steps is the right one to steadily evolve a software system. I am very much aligned with this approach to software development.",
+      "core_topic": "Agile-XP"
+    },
+    {
+      "airtable_id": "recuMrXQfbSdl8hR1",
+      "title": "What Will The Next 10 Years Of Continuous Delivery Look Like?",
+      "url": "https://www.youtube.com/watch?v=FVEWdatM8Uk",
+      "duration": 2940,
+      "topics": [
+        "Agile",
+        "Engineering Culture",
+        "Scalability",
+        "Technical Practices",
+        "Architecture",
+        "Devops",
+        "Technology Strategy",
+        "Continuous Delivery",
+        "Inspirational"
+      ],
+      "speakers": [
+        "Jez Humble",
+        "Dave Farley"
+      ],
+      "description": "A must. Essential for understanding high performance teams and modern agile development.",
+      "core_topic": "Continuous Delivery"
+    },
+    {
+      "airtable_id": "recazeVUxHdijBZU2",
+      "title": "What got you here won't get you there: How your team can become a high-performing team by embracing observability",
+      "url": "https://www.youtube.com/watch?v=QK6zEFdvXYw",
+      "duration": 6900,
+      "topics": [
+        "Engineering Culture",
+        "Operations",
+        "Observability"
+      ],
+      "speakers": [
+        "Charity Majors"
+      ],
+      "description": "A ton of useful insights and ideas in this excellent Charity presentation. Great description of observability and its need in modern systems.",
+      "core_topic": "Operations"
+    },
+    {
+      "airtable_id": "recOtIG9sYrRR6tQr",
+      "title": "What makes a good developer",
+      "url": "https://vimeo.com/748032161",
+      "duration": 660,
+      "topics": [
+        "Inspirational",
+        "Engineering Career",
+        "Engineering Culture"
+      ],
+      "speakers": [
+        "Christin Gorman"
+      ],
+      "description": "Inspiring lightning talk about the importance of humanities, empathy for users and information management as the basis of our profession (beyond pure technology and knowledge about logic or mathematics).",
+      "core_topic": "Engineering Culture"
+    },
+    {
+      "airtable_id": "recm5NyzuUShg6KDI",
+      "title": "Why Scaling Agile Doesn't Work - GOTO 2015",
+      "url": "https://www.youtube.com/watch?app=desktop&v=2zYxWEZ0gYg",
+      "duration": 3060,
+      "topics": [
+        "Agile",
+        "Lean Software Development",
+        "Continuous Delivery"
+      ],
+      "speakers": [
+        "Jez Humble"
+      ],
+      "description": "Jez Humble examines the common pitfalls of scaling Agile methodologies and presents alternative strategies for achieving organizational agility. He argues that simply implementing Agile practices without addressing underlying systemic issues, such as lengthy feedback loops and inefficient decision-making processes, will not lead to significant improvements. Instead, he proposes that organizations focus on creating rapid feedback loops, reducing batch sizes, and adopting an experimental approach to product development and process improvement, emphasizing value over cost and estimation.",
+      "core_topic": "Continuous Delivery"
+    },
+    {
+      "airtable_id": "recHTVTL3hM9YyEuY",
+      "title": "YOW! 2019 Evolutionary Design Animated (Part1)",
+      "url": "https://www.youtube.com/watch?v=LtBRvsez8DI",
+      "duration": 1440,
+      "topics": [
+        "Engineering Culture",
+        "Agile",
+        "XP",
+        "Evolutionary Design",
+        "Software Design"
+      ],
+      "speakers": [
+        "James Shore"
+      ],
+      "description": "Modern software development welcomes changing requirements, even late in the process, but how can we write our software so that those changes don’t create a mess? Evolutionary design is the key. It’s a technique that emerges from Extreme Programming, the method that brought us test-driven development, merciless refactoring, and continuous integration. James Shore first encountered Extreme Programming and evolutionary design nearly 20 years ago. Initially skeptical, he’s explored its boundaries ever since. In this session, James will share what he’s learned through in-depth animations of real software projects. You’ll see how designs evolve over time and you’ll learn how and when to use evolutionary design for your own projects. Part 2: https://www.youtube.com/watch?v=wDZCF8jfeMc",
+      "core_topic": "Agile-XP"
+    },
+    {
+      "airtable_id": "recRyKUpTpRQJdke4",
+      "title": "YOW! 2019 Evolutionary Design Animated (Part2)",
+      "url": "https://www.youtube.com/watch?v=wDZCF8jfeMc",
+      "duration": 1440,
+      "topics": [
+        "Engineering Culture",
+        "Agile",
+        "XP",
+        "Evolutionary Design",
+        "Software Design"
+      ],
+      "speakers": [
+        "James Shore"
+      ],
+      "description": "The second part of this great talk. Part1 https://www.youtube.com/watch?v=LtBRvsez8DI",
+      "core_topic": "Agile-XP"
+    },
+    {
+      "airtable_id": "recWfUV0NqBVUvrz1",
+      "title": "Yes, I Test in Production (And So Do You)",
+      "url": "https://www.infoq.com/presentations/testing-production-2018",
+      "duration": null,
+      "topics": [
+        "Testing in production",
+        "testing"
+      ],
+      "speakers": [
+        "Charity Majors"
+      ],
+      "description": "A great talk about the need for testing in production and the approach we can use.",
+      "core_topic": "Testing"
+    },
+    {
+      "airtable_id": "rece2CJmPCKHEJ1Zl",
+      "title": "You Must Be CRAZY To Do Pair Programming",
+      "url": "https://www.youtube.com/watch?v=aItVJprLYkg",
+      "duration": 1440,
+      "topics": [
+        "XP",
+        "Agile",
+        "Technical Practices"
+      ],
+      "speakers": [
+        "Dave Farley"
+      ],
+      "description": "One of the best descriptions I have heard of the usefulness of this practice. Dave provides pair programming examples, describes some pair programming best practices, and challenges some thinking about pair programming patterns and anti-patterns.",
+      "core_topic": "Agile-XP"
+    }
+  ],
+  "metadata": {
+    "total": 135,
+    "generated_at": "2025-03-30T19:06:15.002134",
+    "warnings": 1,
+    "stats": {
+      "total_processed": 136,
+      "valid_talks": 135,
+      "invalid_talks": 1,
+      "total_duration_hours": 91.4
+    }
+  }
+}
