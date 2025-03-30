@@ -1,9 +1,10 @@
 import logoHorizontal from './assets/logo-horizontal.png'
 import { TalksList } from './components/TalksList'
+import { Footer } from './components/Footer'
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100 flex flex-col">
       <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center">
@@ -19,9 +20,10 @@ function App() {
           </p>
         </div>
       </header>
-      <main>
+      <main className="flex-grow">
         <TalksList />
       </main>
+      <Footer />
     </div>
   )
 }
