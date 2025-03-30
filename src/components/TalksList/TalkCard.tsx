@@ -6,18 +6,33 @@ interface TalkCardProps {
   talk: Talk;
   onAuthorClick: (author: string) => void;
   selectedAuthor: string | null;
+  onTopicClick: (topic: string) => void;
+  selectedTopics: string[];
 }
 
-export function TalkCard({ talk, onAuthorClick, selectedAuthor }: TalkCardProps) {
+export function TalkCard({ 
+  talk, 
+  onAuthorClick, 
+  selectedAuthor,
+  onTopicClick,
+  selectedTopics 
+}: TalkCardProps) {
   // Memoize topics to avoid unnecessary re-renders
   const topicElements = useMemo(() => (
     talk.topics.map((topic) => (
-      <span key={topic} 
-            className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
+      <button
+        key={topic}
+        onClick={() => onTopicClick(topic)}
+        className={`px-2 py-1 rounded-full text-xs transition-colors ${
+          selectedTopics.includes(topic)
+            ? 'bg-gray-700 text-white'
+            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+        }`}
+      >
         {topic}
-      </span>
+      </button>
     ))
-  ), [talk.topics]);
+  ), [talk.topics, onTopicClick, selectedTopics]);
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
