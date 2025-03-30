@@ -20,7 +20,7 @@ def is_valid_url(url: str) -> bool:
 def validate_talk(talk: Dict[str, Any]) -> Optional[str]:
     """Validate a talk entry and return error message if invalid."""
     # Required fields
-    required_fields = ['airtable_id', 'title', 'url']
+    required_fields = ['airtable_id', 'title', 'url', 'core_topic']
     for field in required_fields:
         if not talk.get(field):
             return f"Missing required field: {field}"

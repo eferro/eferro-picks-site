@@ -352,24 +352,6 @@
       "core_topic": "Engineering Culture"
     },
     {
-      "airtable_id": "recQSVPLU6svtsxEE",
-      "title": "CONSTANT Changes To User Requirements Drive Me CRAZY",
-      "url": "https://www.youtube.com/watch?v=kKbQ2-dXsmE",
-      "duration": 780,
-      "topics": [
-        "Inspirational",
-        "Continuous Delivery",
-        "Lean Software Development",
-        "Lean Product Management",
-        "Agile"
-      ],
-      "speakers": [
-        "Dave Farley"
-      ],
-      "description": "This presentation by Dave Farley shows that software development is not just about translating perfect requirements into code, but rather a process of discovery and exploration. It acknowledges that the nature of the problems being solved has changed and that it is impossible to have all the answers. It emphasizes that successful software products must be able to adapt and evolve over time, and that the key to success is embracing change and making it easy, safe, and low-cost.",
-      "core_topic": null
-    },
-    {
       "airtable_id": "recfMTIUpBbEYLUth",
       "title": "Code for Ukraine #2: Tidy First? Daily Empirical Software Design & Why It Works",
       "url": "https://www.youtube.com/watch?v=VrkRAVX1h4I",
@@ -818,22 +800,6 @@
       ],
       "description": "Greg Burrell presents Netflix’s journey from siloed teams to their Full Cycle Developer model for building and operating their services at Netflix. He discusses the various approaches they’ve tried, the motivations that pushed them to keep evolving, and the lessons learned along the way.",
       "core_topic": "Platform Engineering"
-    },
-    {
-      "airtable_id": "recK6Q0fLRWNCL9KI",
-      "title": "Full Cycle Developers at Netflix",
-      "url": "https://www.youtube.com/watch?v=NitqmK9M4wI",
-      "duration": 2880,
-      "topics": [
-        "Devops",
-        "Operations",
-        "Architecture"
-      ],
-      "speakers": [
-        "Greg Burrell"
-      ],
-      "description": "This talk presents Netflix' journey from siloed teams to our Full Cycle Developer model for building and operating our services at Netflix. Greg discusses the various approaches they’ve tried, the motivations that pushed them to keep evolving, and the lessons learned along the way.",
-      "core_topic": null
     },
     {
       "airtable_id": "recrYATbAMaj4fxd7",
@@ -2301,13 +2267,13 @@
     }
   ],
   "metadata": {
-    "total": 138,
-    "generated_at": "2025-03-30T21:56:10.293531",
+    "total": 136,
+    "generated_at": "2025-03-30T22:14:44.688280",
     "stats": {
       "total_processed": 140,
-      "valid_talks": 138,
-      "skipped_talks": 2,
-      "total_duration_hours": 93.6
+      "valid_talks": 136,
+      "skipped_talks": 4,
+      "total_duration_hours": 92.58
     }
   }
 }
