@@ -63,6 +63,27 @@ def validate_talk(talk: Dict[str, Any]) -> Optional[str]:
     
     return None
 
+def generate_report(skipped_talks: List[Dict[str, Any]], output_dir: Path):
+    """Generate a detailed report of skipped talks."""
+    report_file = output_dir / "processing_report.md"
+    with open(report_file, 'w', encoding='utf-8') as f:
+        f.write("# Talk Processing Report\n\n")
+        f.write(f"Generated at: {datetime.utcnow().isoformat()}\n\n")
+        
+        if not skipped_talks:
+            f.write("✅ All talks processed successfully!\n")
+            return
+        
+        f.write(f"## ⚠️ Skipped Talks ({len(skipped_talks)})\n\n")
+        for talk in skipped_talks:
+            f.write(f"### {talk['title']}\n")
+            f.write(f"- **URL**: {talk['url']}\n")
+            f.write(f"- **Error**: {talk['error']}\n")
+            f.write(f"- **Topics**: {talk.get('topics', [])}\n")
+            f.write(f"- **Speakers**: {talk.get('speakers', [])}\n")
+            f.write(f"- **Duration**: {talk.get('duration')}\n")
+            f.write("\n")
+
 def process_db():
     try:
         # Get the project root directory (where the script is located)
@@ -104,14 +125,16 @@ def process_db():
                 raise Exception(f"Database query failed: {str(e)}")
             
             # Process rows
-            talks = []
-            errors = []
+            valid_talks = []
+            skipped_talks = []
             stats = {
                 'total_processed': 0,
                 'valid_talks': 0,
-                'invalid_talks': 0,
+                'skipped_talks': 0,
                 'total_duration': 0
             }
+            
+            print("\n🔍 Processing talks...")
             
             for row_num, row in enumerate(cursor, 1):
                 stats['total_processed'] += 1
@@ -130,41 +153,39 @@ def process_db():
                     # Validate the talk
                     error = validate_talk(talk)
                     if error:
-                        stats['invalid_talks'] += 1
-                        errors.append(f"Row {row_num}: {error}")
+                        stats['skipped_talks'] += 1
+                        skipped_talks.append({**talk, 'error': error})
+                        print(f"⚠️ Skipping talk {row_num} - {talk['title']}: {error}")
                         continue
                     
                     stats['valid_talks'] += 1
                     if talk.get('duration'):
                         stats['total_duration'] += talk['duration']
                     
-                    talks.append(talk)
+                    valid_talks.append(talk)
                     
                 except Exception as e:
-                    stats['invalid_talks'] += 1
-                    errors.append(f"Error processing row {row_num}: {str(e)}")
+                    stats['skipped_talks'] += 1
+                    error_msg = str(e)
+                    skipped_talks.append({**talk, 'error': error_msg})
+                    print(f"⚠️ Skipping talk {row_num} - {talk.get('title', 'Unknown title')}: {error_msg}")
             
-            if errors:
-                print("⚠️ Warnings during processing:", file=sys.stderr)
-                for error in errors:
-                    print(f"  - {error}", file=sys.stderr)
-                if len(errors) > len(talks):
-                    raise Exception("Too many errors, aborting")
+            # Generate report of skipped talks
+            generate_report(skipped_talks, output_dir)
             
             # Write the processed data
             output_file = output_dir / "talks.json"
             with open(output_file, 'w', encoding='utf-8') as f:
                 json.dump(
                     {
-                        'talks': talks,
+                        'talks': valid_talks,
                         'metadata': {
-                            'total': len(talks),
+                            'total': len(valid_talks),
                             'generated_at': datetime.utcnow().isoformat(),
-                            'warnings': len(errors),
                             'stats': {
                                 'total_processed': stats['total_processed'],
                                 'valid_talks': stats['valid_talks'],
-                                'invalid_talks': stats['invalid_talks'],
+                                'skipped_talks': stats['skipped_talks'],
                                 'total_duration_hours': round(stats['total_duration'] / 3600, 2)
                             }
                         }
@@ -174,16 +195,15 @@ def process_db():
                     ensure_ascii=False
                 )
             
-            print(f"✅ Successfully processed {len(talks)} talks")
+            print(f"\n✅ Processing complete")
             print(f"📊 Stats:")
             print(f"  - Total processed: {stats['total_processed']}")
             print(f"  - Valid talks: {stats['valid_talks']}")
-            print(f"  - Invalid talks: {stats['invalid_talks']}")
+            print(f"  - Skipped talks: {stats['skipped_talks']}")
             print(f"  - Total duration: {round(stats['total_duration'] / 3600, 2)} hours")
-            if errors:
-                print(f"⚠️ Found {len(errors)} warnings")
             print(f"📝 Output written to: {output_file}")
-            return len(errors) == 0
+            print(f"📋 Processing report written to: {output_dir}/processing_report.md")
+            return True
             
     except Exception as e:
         print(f"❌ Error processing database: {str(e)}", file=sys.stderr)
