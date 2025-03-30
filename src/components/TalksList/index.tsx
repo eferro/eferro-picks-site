@@ -21,6 +21,7 @@ function ErrorMessage({ message }: { message: string }) {
 
 export function TalksList() {
   const [talks, setTalks] = useState<Talk[]>([]);
+  const [selectedAuthor, setSelectedAuthor] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -44,10 +45,16 @@ export function TalksList() {
     loadTalks();
   }, []);
 
+  // Filter talks by selected author
+  const filteredTalks = useMemo(() => {
+    if (!selectedAuthor) return talks;
+    return talks.filter(talk => talk.speakers.includes(selectedAuthor));
+  }, [talks, selectedAuthor]);
+
   // Memoize the grouped and sorted talks
   const sortedTopics = useMemo(() => {
     // Group talks by core topic
-    const talksByTopic = talks.reduce((acc, talk) => {
+    const talksByTopic = filteredTalks.reduce((acc, talk) => {
       const topic = talk.core_topic || 'Uncategorized';
       if (!acc[topic]) {
         acc[topic] = [];
@@ -59,18 +66,33 @@ export function TalksList() {
     // Sort topics by number of talks (descending)
     return Object.entries(talksByTopic)
       .sort(([, a], [, b]) => b.length - a.length);
-  }, [talks]);
+  }, [filteredTalks]);
 
   if (loading) return <LoadingSpinner />;
   if (error) return <ErrorMessage message={error} />;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {selectedAuthor && (
+        <div className="mb-6 flex items-center gap-2">
+          <span className="text-sm text-gray-500">Showing talks by:</span>
+          <button
+            className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
+            onClick={() => setSelectedAuthor(null)}
+          >
+            {selectedAuthor}
+            <span className="ml-2 text-blue-600">×</span>
+          </button>
+        </div>
+      )}
+      
       {sortedTopics.map(([topic, topicTalks]) => (
         <TalkSection 
           key={topic} 
           coreTopic={topic} 
-          talks={topicTalks} 
+          talks={topicTalks}
+          onAuthorClick={setSelectedAuthor}
+          selectedAuthor={selectedAuthor}
         />
       ))}
     </div>
