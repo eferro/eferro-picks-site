@@ -10,7 +10,7 @@ export function TalksList() {
   useEffect(() => {
     const loadTalks = async () => {
       try {
-        const response = await fetch('/data/talks.json');
+        const response = await fetch(`${import.meta.env.BASE_URL}data/talks.json`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
