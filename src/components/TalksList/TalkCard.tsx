@@ -40,7 +40,7 @@ export function TalkCard({
 
   return (
     <Link 
-      to={`/talk/${talk.airtable_id}`}
+      to={`/talk/${talk.id}`}
       className="block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
     >
       <div className="p-6">

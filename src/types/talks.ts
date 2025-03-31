@@ -1,5 +1,5 @@
 export interface Talk {
-  airtable_id: string;
+  id: string;
   title: string;
   url: string;
   duration: number;
@@ -7,8 +7,4 @@ export interface Talk {
   speakers: string[];
   description: string;
   core_topic: string;
-}
-
-export interface TalksData {
-  talks: Talk[];
 } 

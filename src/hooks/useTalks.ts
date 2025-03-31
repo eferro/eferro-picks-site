@@ -14,7 +14,12 @@ export function useTalks() {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setTalks(data.talks);
+        // Map airtable_id to id
+        const processedTalks = data.talks.map((talk: any) => ({
+          ...talk,
+          id: talk.airtable_id
+        }));
+        setTalks(processedTalks);
       } catch (err) {
         setError(err instanceof Error ? err : new Error('Failed to load talks'));
       } finally {

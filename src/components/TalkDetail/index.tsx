@@ -25,7 +25,7 @@ const ErrorState = ({ error }: { error: Error }) => (
 export function TalkDetail() {
   const { id } = useParams<{ id: string }>();
   const { talks, isLoading, error } = useTalks();
-  const talk = talks.find((t: Talk) => t.airtable_id === id);
+  const talk = talks.find((t: Talk) => t.id === id);
 
   if (isLoading) return <LoadingState />;
   if (error) return <ErrorState error={error} />;
