@@ -16,7 +16,7 @@ interface AirtableResponse {
 
 export function useTalks() {
   const [talks, setTalks] = useState<Talk[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
@@ -48,12 +48,12 @@ export function useTalks() {
         console.error('Error loading talks:', err);
         setError(err instanceof Error ? err : new Error('Failed to load talks'));
       } finally {
-        setIsLoading(false);
+        setLoading(false);
       }
     };
 
     loadTalks();
   }, []);
 
-  return { talks, isLoading, error };
+  return { talks, loading, error };
 } 

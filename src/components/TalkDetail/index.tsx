@@ -40,16 +40,42 @@ const NotFoundState = () => (
 
 export function TalkDetail() {
   const { id } = useParams<{ id: string }>();
-  const { talks, isLoading, error } = useTalks();
+  const { talks, loading, error } = useTalks();
   
-  if (isLoading) return <LoadingState />;
-  if (error) return <ErrorState error={error} />;
-  
+  if (loading) {
+    return (
+      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div className="text-center text-red-600">
+          Error loading talk details
+        </div>
+      </div>
+    );
+  }
+
   const talk = talks.find((t: Talk) => t.id === id);
-  if (!talk) return <NotFoundState />;
+
+  if (!talk) {
+    return (
+      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div className="text-center text-gray-600">
+          Talk not found
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <Link 
         to="/" 
         className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-8"
@@ -58,38 +84,46 @@ export function TalkDetail() {
         Back to Talks
       </Link>
 
-      <article className="bg-white rounded-lg shadow-lg p-6">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">{talk.title}</h1>
-        
-        <div className="flex items-center mb-6">
-          <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
-            <span className="text-gray-600 font-medium">
-              {getSpeakerInitials(talk.speakers[0])}
-            </span>
+      <article className="bg-white shadow rounded-lg overflow-hidden">
+        <div className="p-6">
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">
+            {talk.title}
+          </h1>
+          
+          <div className="flex items-center text-gray-600 mb-6">
+            <span className="font-medium">{talk.speakers.join(', ')}</span>
+            <span className="mx-2">•</span>
+            <span>{talk.duration}</span>
           </div>
-          <div className="ml-3">
-            <p className="text-sm font-medium text-gray-900">{talk.speakers.join(', ')}</p>
-            <p className="text-sm text-gray-500">{formatDuration(talk.duration)}</p>
+
+          <div className="prose max-w-none">
+            <p className="text-gray-700 mb-6">
+              {talk.description}
+            </p>
+          </div>
+
+          <div className="mt-6 flex flex-wrap gap-2">
+            {talk.topics.map(topic => (
+              <span 
+                key={topic}
+                className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-blue-100 text-blue-800"
+              >
+                {topic}
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-8">
+            <a
+              href={talk.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700"
+            >
+              Watch Talk
+            </a>
           </div>
         </div>
-
-        <p className="text-gray-700 mb-8">{talk.description}</p>
-
-        <div className="flex flex-wrap gap-2 mb-8">
-          {talk.topics.map(topic => (
-            <TopicChip key={topic} topic={topic} />
-          ))}
-        </div>
-
-        <a
-          href={talk.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center px-6 py-3 rounded-md bg-blue-600 text-white hover:bg-blue-700 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-        >
-          <PlayIcon className="h-5 w-5 mr-2" />
-          Watch Talk
-        </a>
       </article>
     </div>
   );
