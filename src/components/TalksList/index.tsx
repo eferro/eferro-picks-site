@@ -23,7 +23,7 @@ function ErrorMessage({ message }: { message: string }) {
 export function TalksList() {
   const [selectedAuthor, setSelectedAuthor] = useState<string | null>(null);
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
-  const { talks, isLoading, error } = useTalks();
+  const { talks, loading, error } = useTalks();
 
   // Handle topic selection
   const handleTopicClick = (topic: string) => {
@@ -65,12 +65,18 @@ export function TalksList() {
       return acc;
     }, {} as Record<string, Talk[]>);
 
-    // Sort topics by number of talks (descending)
+    // Sort topics by number of talks (descending), but keep Uncategorized at the end
     return Object.entries(talksByTopic)
-      .sort(([, a], [, b]) => b.length - a.length);
+      .sort(([topicA, a], [topicB, b]) => {
+        // If one is Uncategorized, it should go last
+        if (topicA === 'Uncategorized') return 1;
+        if (topicB === 'Uncategorized') return -1;
+        // Otherwise sort by number of talks
+        return b.length - a.length;
+      });
   }, [filteredTalks]);
 
-  if (isLoading) return <LoadingSpinner />;
+  if (loading) return <LoadingSpinner />;
   if (error) return <ErrorMessage message={error.message} />;
 
   return (
