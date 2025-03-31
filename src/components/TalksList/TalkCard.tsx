@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Talk } from '../../types/talks';
 import { formatDuration } from '../../utils/format';
 import { DocumentTextIcon, PlayIcon } from '@heroicons/react/24/outline';
@@ -19,13 +19,15 @@ export function TalkCard({
   onTopicClick,
   selectedTopics 
 }: TalkCardProps) {
+  const navigate = useNavigate();
+
   // Memoize topics to avoid unnecessary re-renders
   const topicElements = useMemo(() => (
     talk.topics.map((topic) => (
       <button
         key={topic}
         onClick={(e) => {
-          e.preventDefault(); // Prevent card click
+          e.stopPropagation(); // Prevent card click
           onTopicClick(topic);
         }}
         className={`px-2 py-1 rounded-full text-xs transition-colors ${
@@ -39,10 +41,18 @@ export function TalkCard({
     ))
   ), [talk.topics, onTopicClick, selectedTopics]);
 
+  const handleCardClick = () => {
+    navigate(`/talk/${talk.id}`);
+  };
+
   return (
-    <Link 
-      to={`/talk/${talk.id}`}
-      className="block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+    <div 
+      onClick={handleCardClick}
+      onKeyDown={(e) => e.key === 'Enter' && handleCardClick()}
+      role="article"
+      tabIndex={0}
+      aria-label={`Talk: ${talk.title}`}
+      className="block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
     >
       <div className="p-6 flex flex-col h-full">
         <div className="flex-1">
@@ -51,10 +61,16 @@ export function TalkCard({
               {talk.title}
             </h3>
             {talk.notes && (
-              <DocumentTextIcon 
-                className="h-5 w-5 text-blue-500 flex-shrink-0 ml-2" 
+              <span
+                role="img"
+                aria-label="This talk has detailed notes"
                 title="This talk has detailed notes"
-              />
+              >
+                <DocumentTextIcon 
+                  className="h-5 w-5 text-blue-500 flex-shrink-0 ml-2" 
+                  aria-hidden="true"
+                />
+              </span>
             )}
           </div>
           <div className="flex flex-wrap gap-2 mb-3">
@@ -62,9 +78,10 @@ export function TalkCard({
               <button
                 key={speaker}
                 onClick={(e) => {
-                  e.preventDefault(); // Prevent card click
+                  e.stopPropagation(); // Prevent card click
                   onAuthorClick(speaker);
                 }}
+                aria-label={`Filter by speaker: ${speaker}`}
                 className={`px-2 py-1 rounded-full text-xs transition-colors ${
                   selectedAuthor === speaker
                     ? 'bg-blue-500 text-white'
@@ -74,7 +91,7 @@ export function TalkCard({
                 {speaker}
               </button>
             ))}
-            <span className="px-2 py-1 text-xs text-gray-500">
+            <span className="px-2 py-1 text-xs text-gray-500" aria-label={`Duration: ${formatDuration(talk.duration)}`}>
               {formatDuration(talk.duration)}
             </span>
           </div>
@@ -89,13 +106,14 @@ export function TalkCard({
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
+            aria-label={`Watch ${talk.title}`}
             className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition-colors"
           >
-            <PlayIcon className="h-4 w-4 mr-2" />
+            <PlayIcon className="h-4 w-4 mr-2" aria-hidden="true" />
             Watch Talk
           </a>
         </div>
       </div>
-    </Link>
+    </div>
   );
 } 
