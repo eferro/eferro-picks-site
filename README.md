@@ -6,6 +6,10 @@ A curated collection of software development talks that I find interesting and v
 
 This site showcases a handpicked selection of talks about software development, engineering practices, and technical leadership. The content is managed in Airtable and automatically synchronized with the site.
 
+🌐 **Visit the site**: [eferro's picks](https://eferro.github.io/eferro-picks-site/)
+
+📝 **Author's Blog**: [eferro's random stuff](https://www.eferro.net)
+
 ## Tech Stack
 
 - **Frontend**: React + TypeScript
