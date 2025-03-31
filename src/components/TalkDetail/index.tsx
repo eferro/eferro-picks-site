@@ -3,6 +3,7 @@ import { useTalks } from '../../hooks/useTalks';
 import { PlayIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { Talk } from '../../types/talks';
 import { formatDuration } from '../../utils/format';
+import ReactMarkdown from 'react-markdown';
 
 const LoadingState = () => (
   <div className="animate-pulse">
@@ -99,6 +100,15 @@ export function TalkDetail() {
               {talk.description}
             </p>
           </div>
+
+          {talk.notes && (
+            <div className="mt-8 border-t pt-6">
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Key Notes</h2>
+              <div className="prose prose-blue max-w-none">
+                <ReactMarkdown>{talk.notes}</ReactMarkdown>
+              </div>
+            </div>
+          )}
 
           <div className="mt-6 space-y-4">
             {talk.core_topic && (

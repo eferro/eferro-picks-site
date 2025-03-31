@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Talk } from '../../types/talks';
 import { formatDuration } from '../../utils/format';
+import { DocumentTextIcon } from '@heroicons/react/24/outline';
 
 interface TalkCardProps {
   talk: Talk;
@@ -44,9 +45,17 @@ export function TalkCard({
       className="block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
     >
       <div className="p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-2">
-          {talk.title}
-        </h3>
+        <div className="flex justify-between items-start mb-2">
+          <h3 className="text-lg font-semibold text-gray-900">
+            {talk.title}
+          </h3>
+          {talk.notes && (
+            <DocumentTextIcon 
+              className="h-5 w-5 text-blue-500 flex-shrink-0 ml-2" 
+              title="This talk has detailed notes"
+            />
+          )}
+        </div>
         <div className="flex flex-wrap gap-2 mb-3">
           {talk.speakers.map((speaker) => (
             <button

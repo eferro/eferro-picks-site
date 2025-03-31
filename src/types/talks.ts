@@ -7,4 +7,5 @@ export interface Talk {
   speakers: string[];
   description: string;
   core_topic: string;
+  notes?: string;  // Optional field for rich text notes
 } 
