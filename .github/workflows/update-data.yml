@@ -3,7 +3,13 @@ name: Update Database
 on:
   schedule:
     - cron: "0 */6 * * *"  # Run every 6 hours
-  workflow_dispatch:  # Allow manual trigger
+  workflow_dispatch:
+    inputs:
+      force_update:
+        description: 'Force update even if no changes detected'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   update:
@@ -30,8 +36,10 @@ jobs:
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
           AIRTABLE_DATABASE_ID: ${{ secrets.AIRTABLE_DATABASE_ID }}
         run: |
+          echo "Starting Airtable export..."
           airtable-export --version
           airtable-export --verbose database $AIRTABLE_DATABASE_ID --key=$AIRTABLE_API_KEY --json --ndjson --yaml --http-read-timeout 60 Resources Speakers Topics > public/data/talks.json
+          echo "Airtable export completed"
           
       - name: Install Node.js
         uses: actions/setup-node@v4
@@ -51,7 +59,12 @@ jobs:
           
       - name: Commit and push if changed
         run: |
-          git add public/data/talks.json
-          git add dist
-          git commit -m "chore: Update talks data and rebuild site" || exit 0
-          git push 
+          if [[ ${{ github.event.inputs.force_update }} == 'true' ]] || git diff --quiet; then
+            echo "Changes detected or force update requested"
+            git add public/data/talks.json
+            git add dist
+            git commit -m "chore: Update talks data and rebuild site" || echo "No changes to commit"
+            git push || echo "No changes to push"
+          else
+            echo "No changes detected and no force update requested"
+          fi 
