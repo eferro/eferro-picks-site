@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { Talk } from '../../types/talks';
 import { formatDuration } from '../../utils/format';
 
@@ -22,7 +23,10 @@ export function TalkCard({
     talk.topics.map((topic) => (
       <button
         key={topic}
-        onClick={() => onTopicClick(topic)}
+        onClick={(e) => {
+          e.preventDefault(); // Prevent card click
+          onTopicClick(topic);
+        }}
         className={`px-2 py-1 rounded-full text-xs transition-colors ${
           selectedTopics.includes(topic)
             ? 'bg-gray-700 text-white'
@@ -35,35 +39,40 @@ export function TalkCard({
   ), [talk.topics, onTopicClick, selectedTopics]);
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-      <h3 className="text-lg font-semibold text-gray-900 mb-2">
-        <a href={talk.url} target="_blank" rel="noopener noreferrer" 
-           className="hover:text-blue-600 transition-colors">
+    <Link 
+      to={`/talk/${talk.airtable_id}`}
+      className="block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+    >
+      <div className="p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-2">
           {talk.title}
-        </a>
-      </h3>
-      <div className="flex flex-wrap gap-2 mb-3">
-        {talk.speakers.map((speaker) => (
-          <button
-            key={speaker}
-            onClick={() => onAuthorClick(speaker)}
-            className={`px-2 py-1 rounded-full text-xs transition-colors ${
-              selectedAuthor === speaker
-                ? 'bg-blue-500 text-white'
-                : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
-            }`}
-          >
-            {speaker}
-          </button>
-        ))}
-        <span className="px-2 py-1 text-xs text-gray-500">
-          • {formatDuration(talk.duration)}
-        </span>
+        </h3>
+        <div className="flex flex-wrap gap-2 mb-3">
+          {talk.speakers.map((speaker) => (
+            <button
+              key={speaker}
+              onClick={(e) => {
+                e.preventDefault(); // Prevent card click
+                onAuthorClick(speaker);
+              }}
+              className={`px-2 py-1 rounded-full text-xs transition-colors ${
+                selectedAuthor === speaker
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
+              }`}
+            >
+              {speaker}
+            </button>
+          ))}
+          <span className="px-2 py-1 text-xs text-gray-500">
+            • {formatDuration(talk.duration)}
+          </span>
+        </div>
+        <p className="text-gray-700 mb-4 line-clamp-5">{talk.description}</p>
+        <div className="flex flex-wrap gap-2">
+          {topicElements}
+        </div>
       </div>
-      <p className="text-gray-700 mb-4 line-clamp-5">{talk.description}</p>
-      <div className="flex flex-wrap gap-2">
-        {topicElements}
-      </div>
-    </div>
+    </Link>
   );
 } 
