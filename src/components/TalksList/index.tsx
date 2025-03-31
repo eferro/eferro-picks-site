@@ -1,6 +1,7 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { Talk } from '../../types/talks';
 import { TalkSection } from './TalkSection';
+import { useTalks } from '../../hooks/useTalks';
 
 function LoadingSpinner() {
   return (
@@ -20,31 +21,9 @@ function ErrorMessage({ message }: { message: string }) {
 }
 
 export function TalksList() {
-  const [talks, setTalks] = useState<Talk[]>([]);
   const [selectedAuthor, setSelectedAuthor] = useState<string | null>(null);
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const loadTalks = async () => {
-      try {
-        const response = await fetch(`${import.meta.env.BASE_URL}data/talks.json`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        setTalks(data.talks);
-      } catch (err) {
-        setError('Failed to load talks. Please try again later.');
-        console.error('Error loading talks:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadTalks();
-  }, []);
+  const { talks, isLoading, error } = useTalks();
 
   // Handle topic selection
   const handleTopicClick = (topic: string) => {
@@ -91,8 +70,8 @@ export function TalksList() {
       .sort(([, a], [, b]) => b.length - a.length);
   }, [filteredTalks]);
 
-  if (loading) return <LoadingSpinner />;
-  if (error) return <ErrorMessage message={error} />;
+  if (isLoading) return <LoadingSpinner />;
+  if (error) return <ErrorMessage message={error.message} />;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
