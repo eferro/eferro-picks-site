@@ -22,14 +22,31 @@ const ErrorState = ({ error }: { error: Error }) => (
   </div>
 );
 
+const NotFoundState = () => (
+  <div className="max-w-4xl mx-auto px-4 py-8">
+    <Link 
+      to="/" 
+      className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-8"
+    >
+      <ArrowLeftIcon className="h-5 w-5 mr-2" />
+      Back to Talks
+    </Link>
+    <div className="bg-white rounded-lg shadow-lg p-6">
+      <h1 className="text-2xl font-bold text-gray-900 mb-4">Talk Not Found</h1>
+      <p className="text-gray-700">The talk you're looking for could not be found.</p>
+    </div>
+  </div>
+);
+
 export function TalkDetail() {
   const { id } = useParams<{ id: string }>();
   const { talks, isLoading, error } = useTalks();
-  const talk = talks.find((t: Talk) => t.id === id);
-
+  
   if (isLoading) return <LoadingState />;
   if (error) return <ErrorState error={error} />;
-  if (!talk) return <div>Talk not found</div>;
+  
+  const talk = talks.find((t: Talk) => t.id === id);
+  if (!talk) return <NotFoundState />;
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
