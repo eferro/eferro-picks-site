@@ -75,8 +75,10 @@ jobs:
           git config user.email "<>"
           
       - name: Commit and push if changed
+        shell: bash
         run: |
-          if [[ ${{ github.event.inputs.force_update }} == 'true' ]] || ! git diff --quiet; then
+          FORCE_UPDATE="${{ github.event.inputs.force_update }}"
+          if [ "$FORCE_UPDATE" = "true" ] || ! git diff --quiet; then
             echo "Changes detected or force update requested"
             git add public/data/talks.json
             git commit -m "chore: Update talks data" || echo "No changes to commit"
