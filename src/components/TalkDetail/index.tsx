@@ -2,7 +2,8 @@ import { useParams, Link } from 'react-router-dom';
 import { useTalks } from '../../hooks/useTalks';
 import { PlayIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { Talk } from '../../types/talks';
-import { formatDuration } from '../../utils/format';
+import { formatDuration, getSpeakerInitials } from '../../utils/format';
+import { TopicChip } from '../shared/TopicChip';
 
 const LoadingState = () => (
   <div className="animate-pulse">
@@ -19,12 +20,6 @@ const ErrorState = ({ error }: { error: Error }) => (
   <div className="text-red-600">
     <p>Error loading talk: {error.message}</p>
   </div>
-);
-
-const TopicChip = ({ topic }: { topic: string }) => (
-  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-    {topic}
-  </span>
 );
 
 export function TalkDetail() {
@@ -46,45 +41,39 @@ export function TalkDetail() {
         Back to Talks
       </Link>
 
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-        <div className="p-6">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">{talk.title}</h1>
-          
-          <div className="flex items-center space-x-4 mb-6">
-            <div className="flex items-center">
-              <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-600 font-medium">
-                  {talk.speakers[0].split(' ').map((n: string) => n[0]).join('')}
-                </span>
-              </div>
-              <div className="ml-3">
-                <p className="text-sm font-medium text-gray-900">{talk.speakers.join(', ')}</p>
-                <p className="text-sm text-gray-500">{formatDuration(talk.duration)}</p>
-              </div>
-            </div>
+      <article className="bg-white rounded-lg shadow-lg p-6">
+        <h1 className="text-3xl font-bold text-gray-900 mb-4">{talk.title}</h1>
+        
+        <div className="flex items-center mb-6">
+          <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
+            <span className="text-gray-600 font-medium">
+              {getSpeakerInitials(talk.speakers[0])}
+            </span>
           </div>
-
-          <div className="prose max-w-none mb-8">
-            <p className="text-gray-700">{talk.description}</p>
+          <div className="ml-3">
+            <p className="text-sm font-medium text-gray-900">{talk.speakers.join(', ')}</p>
+            <p className="text-sm text-gray-500">{formatDuration(talk.duration)}</p>
           </div>
-
-          <div className="flex flex-wrap gap-2 mb-8">
-            {talk.topics.map((topic: string) => (
-              <TopicChip key={topic} topic={topic} />
-            ))}
-          </div>
-
-          <a
-            href={talk.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          >
-            <PlayIcon className="h-5 w-5 mr-2" />
-            Watch Talk
-          </a>
         </div>
-      </div>
+
+        <p className="text-gray-700 mb-8">{talk.description}</p>
+
+        <div className="flex flex-wrap gap-2 mb-8">
+          {talk.topics.map(topic => (
+            <TopicChip key={topic} topic={topic} />
+          ))}
+        </div>
+
+        <a
+          href={talk.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center px-6 py-3 rounded-md bg-blue-600 text-white hover:bg-blue-700 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+        >
+          <PlayIcon className="h-5 w-5 mr-2" />
+          Watch Talk
+        </a>
+      </article>
     </div>
   );
 } 
