@@ -63,8 +63,7 @@ jobs:
           if [[ ${{ github.event.inputs.force_update }} == 'true' ]] || ! git diff --quiet; then
             echo "Changes detected or force update requested"
             git add public/data/talks.json
-            git add dist
-            git commit -m "chore: Update talks data and rebuild site" || echo "No changes to commit"
+            git commit -m "chore: Update talks data" || echo "No changes to commit"
             git push || echo "No changes to push"
           else
             echo "No changes detected and no force update requested"
