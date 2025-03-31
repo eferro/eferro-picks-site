@@ -2,7 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useTalks } from '../../hooks/useTalks';
 import { PlayIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { Talk } from '../../types/talks';
-import { formatDuration, getSpeakerInitials } from '../../utils/format';
+import { formatDuration } from '../../utils/format';
 
 const LoadingState = () => (
   <div className="animate-pulse">
