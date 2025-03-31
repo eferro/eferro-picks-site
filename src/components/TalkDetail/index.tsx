@@ -92,8 +92,7 @@ export function TalkDetail() {
           
           <div className="flex items-center text-gray-600 mb-6">
             <span className="font-medium">{talk.speakers.join(', ')}</span>
-            <span className="mx-2">•</span>
-            <span>{talk.duration}</span>
+            <span className="ml-4">{formatDuration(talk.duration)}</span>
           </div>
 
           <div className="prose max-w-none">
@@ -102,15 +101,31 @@ export function TalkDetail() {
             </p>
           </div>
 
-          <div className="mt-6 flex flex-wrap gap-2">
-            {talk.topics.map(topic => (
-              <span 
-                key={topic}
-                className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-blue-100 text-blue-800"
-              >
-                {topic}
-              </span>
-            ))}
+          <div className="mt-6 space-y-4">
+            {talk.core_topic && (
+              <div>
+                <h3 className="text-sm font-medium text-gray-500 mb-2">Core Topic</h3>
+                <span 
+                  className="inline-flex items-center px-4 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800"
+                >
+                  {talk.core_topic}
+                </span>
+              </div>
+            )}
+
+            <div>
+              <h3 className="text-sm font-medium text-gray-500 mb-2">Topics</h3>
+              <div className="flex flex-wrap gap-2">
+                {talk.topics.map(topic => (
+                  <span 
+                    key={topic}
+                    className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-blue-100 text-blue-800"
+                  >
+                    {topic}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="mt-8">
