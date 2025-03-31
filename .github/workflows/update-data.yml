@@ -60,7 +60,7 @@ jobs:
           
       - name: Commit and push if changed
         run: |
-          if [[ ${{ github.event.inputs.force_update }} == 'true' ]] || git diff --quiet; then
+          if [[ ${{ github.event.inputs.force_update }} == 'true' ]] || ! git diff --quiet; then
             echo "Changes detected or force update requested"
             git add public/data/talks.json
             git add dist
