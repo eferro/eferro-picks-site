@@ -37,8 +37,9 @@ jobs:
           AIRTABLE_DATABASE_ID: ${{ secrets.AIRTABLE_DATABASE_ID }}
         run: |
           echo "Starting Airtable export..."
-          airtable-export --version
-          airtable-export --verbose database $AIRTABLE_DATABASE_ID --key=$AIRTABLE_API_KEY --json --ndjson --yaml --http-read-timeout 60 Resources Speakers Topics > public/data/talks.json
+          mkdir -p database
+          airtable-export --verbose database $AIRTABLE_DATABASE_ID --key=$AIRTABLE_API_KEY --json --http-read-timeout 60 Resources
+          mv database/Resources.json public/data/talks.json
           echo "Airtable export completed"
           
       - name: Install Node.js
