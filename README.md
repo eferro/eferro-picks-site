@@ -1,54 +1,76 @@
-# React + TypeScript + Vite
+# eferro's picks
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A curated collection of software development talks that I find interesting and valuable.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This site showcases a handpicked selection of talks about software development, engineering practices, and technical leadership. The content is managed in Airtable and automatically synchronized with the site.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Frontend**: React + TypeScript
+- **Styling**: Tailwind CSS
+- **Data Source**: Airtable
+- **Hosting**: GitHub Pages
+- **Automation**: GitHub Actions
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Architecture
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The site follows a simple and efficient architecture:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Data Management**:
+   - All talk data is managed in Airtable
+   - GitHub Actions syncs data every 6 hours
+   - Data is stored as JSON in the `public/data` directory
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+2. **Frontend**:
+   - React components for UI
+   - TypeScript for type safety
+   - Tailwind CSS for styling
+   - Client-side routing with React Router
+
+3. **Deployment**:
+   - Hosted on GitHub Pages
+   - Automatic builds and deployments via GitHub Actions
+
+## Development
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/eferro/eferro-picks-site.git
+   cd eferro-picks-site
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## Data Updates
+
+The site's content is automatically updated through GitHub Actions:
+
+- **Scheduled Updates**: Every 6 hours
+- **Manual Updates**: Available through GitHub Actions UI
+- **Force Updates**: Option available in manual triggers
+
+## Environment Variables
+
+The following secrets need to be configured in GitHub repository settings:
+
+- `AIRTABLE_API_KEY`: Your Airtable API key
+- `AIRTABLE_DATABASE_ID`: Your Airtable base ID
+- `GH_ACTIONS_PAT`: GitHub Personal Access Token for deployments
+
+## Contributing
+
+Feel free to suggest new talks or improvements by opening an issue or pull request.
+
+## License
+
+MIT License. See [LICENSE](LICENSE) for more information.
