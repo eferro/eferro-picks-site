@@ -60,7 +60,7 @@ export function TalkCard({
           • {formatDuration(talk.duration)}
         </span>
       </div>
-      <p className="text-gray-700 mb-4 line-clamp-2">{talk.description}</p>
+      <p className="text-gray-700 mb-4 line-clamp-5">{talk.description}</p>
       <div className="flex flex-wrap gap-2">
         {topicElements}
       </div>
