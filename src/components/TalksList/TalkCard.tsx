@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Talk } from '../../types/talks';
 import { formatDuration } from '../../utils/format';
-import { DocumentTextIcon } from '@heroicons/react/24/outline';
+import { DocumentTextIcon, PlayIcon } from '@heroicons/react/24/outline';
 
 interface TalkCardProps {
   talk: Talk;
@@ -44,42 +44,56 @@ export function TalkCard({
       to={`/talk/${talk.id}`}
       className="block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
     >
-      <div className="p-6">
-        <div className="flex justify-between items-start mb-2">
-          <h3 className="text-lg font-semibold text-gray-900">
-            {talk.title}
-          </h3>
-          {talk.notes && (
-            <DocumentTextIcon 
-              className="h-5 w-5 text-blue-500 flex-shrink-0 ml-2" 
-              title="This talk has detailed notes"
-            />
-          )}
+      <div className="p-6 flex flex-col h-full">
+        <div className="flex-1">
+          <div className="flex justify-between items-start mb-2">
+            <h3 className="text-lg font-semibold text-gray-900">
+              {talk.title}
+            </h3>
+            {talk.notes && (
+              <DocumentTextIcon 
+                className="h-5 w-5 text-blue-500 flex-shrink-0 ml-2" 
+                title="This talk has detailed notes"
+              />
+            )}
+          </div>
+          <div className="flex flex-wrap gap-2 mb-3">
+            {talk.speakers.map((speaker) => (
+              <button
+                key={speaker}
+                onClick={(e) => {
+                  e.preventDefault(); // Prevent card click
+                  onAuthorClick(speaker);
+                }}
+                className={`px-2 py-1 rounded-full text-xs transition-colors ${
+                  selectedAuthor === speaker
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
+                }`}
+              >
+                {speaker}
+              </button>
+            ))}
+            <span className="px-2 py-1 text-xs text-gray-500">
+              {formatDuration(talk.duration)}
+            </span>
+          </div>
+          <p className="text-gray-700 mb-4 line-clamp-5">{talk.description}</p>
+          <div className="flex flex-wrap gap-2">
+            {topicElements}
+          </div>
         </div>
-        <div className="flex flex-wrap gap-2 mb-3">
-          {talk.speakers.map((speaker) => (
-            <button
-              key={speaker}
-              onClick={(e) => {
-                e.preventDefault(); // Prevent card click
-                onAuthorClick(speaker);
-              }}
-              className={`px-2 py-1 rounded-full text-xs transition-colors ${
-                selectedAuthor === speaker
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
-              }`}
-            >
-              {speaker}
-            </button>
-          ))}
-          <span className="px-2 py-1 text-xs text-gray-500">
-            {formatDuration(talk.duration)}
-          </span>
-        </div>
-        <p className="text-gray-700 mb-4 line-clamp-5">{talk.description}</p>
-        <div className="flex flex-wrap gap-2">
-          {topicElements}
+        <div className="border-t pt-4 mt-4">
+          <a
+            href={talk.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition-colors"
+          >
+            <PlayIcon className="h-4 w-4 mr-2" />
+            Watch Talk
+          </a>
         </div>
       </div>
     </Link>
