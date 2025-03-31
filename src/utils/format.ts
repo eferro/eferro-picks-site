@@ -14,8 +14,4 @@ export function formatDuration(seconds: number): string {
   }
   
   return `${remainingSeconds}s`;
-}
-
-export function getSpeakerInitials(name: string): string {
-  return name.split(' ').map(n => n[0]).join('');
 } 
