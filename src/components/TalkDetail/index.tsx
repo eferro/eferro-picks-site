@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useTalks } from '../../hooks/useTalks';
 import { PlayIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { Talk } from '../../types/talks';
+import { formatDuration } from '../../utils/format';
 
 const LoadingState = () => (
   <div className="animate-pulse">
@@ -58,7 +59,7 @@ export function TalkDetail() {
               </div>
               <div className="ml-3">
                 <p className="text-sm font-medium text-gray-900">{talk.speakers.join(', ')}</p>
-                <p className="text-sm text-gray-500">{talk.duration}</p>
+                <p className="text-sm text-gray-500">{formatDuration(talk.duration)}</p>
               </div>
             </div>
           </div>

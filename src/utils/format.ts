@@ -1,9 +1,10 @@
 export function formatDuration(seconds: number): string {
-  if (!seconds || seconds < 0) return 'Duration not available';
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
   
-  const minutes = Math.floor(seconds / 60);
-  const hours = Math.floor(minutes / 60);
-  const mins = minutes % 60;
+  if (hours > 0) {
+    return `${hours}h ${minutes}m`;
+  }
   
-  return hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
+  return `${minutes}m`;
 } 
