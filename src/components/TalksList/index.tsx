@@ -80,7 +80,7 @@ export function TalksList() {
   if (error) return <ErrorMessage message={error.message} />;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-7xl 2xl:max-w-[96rem] mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Active filters */}
       {(selectedAuthor || selectedTopics.length > 0) && (
         <div className="mb-6 space-y-3">
