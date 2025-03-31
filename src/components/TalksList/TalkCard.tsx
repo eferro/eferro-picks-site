@@ -65,7 +65,7 @@ export function TalkCard({
             </button>
           ))}
           <span className="px-2 py-1 text-xs text-gray-500">
-            • {formatDuration(talk.duration)}
+            {formatDuration(talk.duration)}
           </span>
         </div>
         <p className="text-gray-700 mb-4 line-clamp-5">{talk.description}</p>
