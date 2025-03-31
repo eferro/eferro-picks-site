@@ -1,18 +1,22 @@
 import { useState, useEffect } from 'react';
 import { Talk } from '../types/talks';
 
-interface AirtableResponse {
-  talks: Array<{
-    airtable_id: string;
-    title: string;
-    url: string;
-    duration: number;
-    topics: string[];
-    speakers: string[];
-    description: string;
-    core_topic: string;
-  }>;
+interface AirtableItem {
+  airtable_id: string;
+  Name: string;
+  Url: string;
+  Duration?: number;
+  Topics_Names?: string[];
+  Speakers_Names?: string[];
+  Description?: string;
+  core_topic?: string;
+  Notes?: string;
+  Language?: string;
+  Rating?: number;
+  "Resource type"?: string;
 }
+
+const VALID_RESOURCE_TYPES = ['podcast', 'talk', 'videopodcast'];
 
 export function useTalks() {
   const [talks, setTalks] = useState<Talk[]>([]);
@@ -27,19 +31,34 @@ export function useTalks() {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         
-        const data = await response.json() as AirtableResponse;
+        const data = await response.json() as AirtableItem[];
         
-        if (!data.talks || !Array.isArray(data.talks)) {
-          throw new Error('Invalid data format: talks array not found');
+        if (!Array.isArray(data)) {
+          throw new Error('Invalid data format: expected an array');
         }
 
-        const processedTalks = data.talks.map(talk => {
-          if (!talk.airtable_id) {
-            throw new Error(`Talk missing airtable_id: ${talk.title || 'unknown'}`);
+        // Filter talks: only English, rating 5, and valid resource types
+        const filteredData = data.filter(item => 
+          item.Language === 'English' && 
+          item.Rating === 5 &&
+          item["Resource type"] && 
+          VALID_RESOURCE_TYPES.includes(item["Resource type"].toLowerCase())
+        );
+
+        const processedTalks = filteredData.map(item => {
+          if (!item.airtable_id) {
+            throw new Error(`Talk missing airtable_id: ${item.Name || 'unknown'}`);
           }
           return {
-            ...talk,
-            id: talk.airtable_id
+            id: item.airtable_id,
+            title: item.Name,
+            url: item.Url,
+            duration: item.Duration || 0,
+            topics: item.Topics_Names || [],
+            speakers: item.Speakers_Names || [],
+            description: item.Description || '',
+            core_topic: item.core_topic || '',
+            notes: item.Notes
           };
         });
 
