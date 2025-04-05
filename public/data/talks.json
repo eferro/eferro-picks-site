@@ -278,7 +278,7 @@
         "Description": "Great talk to understand what is development experience. \n",
         "Duration": 900,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:40:59.000Z",
+        "Last Modified": "2025-04-05T17:43:11.000Z",
         "Less 15": 1,
         "Name": "Keynote: Creating a Holistic Developer Experience",
         "Published": true,
@@ -305,8 +305,10 @@
         "Url": "https://www.youtube.com/watch?v=KGbw2c40q9Q",
         "airtable_createdTime": "2022-04-09T18:12:26.000Z",
         "airtable_id": "rec0NaKLjOOS7L1Gb",
+        "conference_name": "KubeCon + CloudNativeCon Europe",
         "core_topic": "Platform Engineering",
-        "registered_at": "2022-04-09T18:12:26.000Z"
+        "registered_at": "2022-04-09T18:12:26.000Z",
+        "year": 2022
     },
     {
         "Blog Url": "https://www.eferro.net/2022/10/good-talkspodcasts-oct-2022-i.html",
@@ -415,7 +417,7 @@
         "Description": "This talk explores key concepts and mathematical principles behind achieving flow in processes, like product development, drawing parallels to flow dynamics in traffic and internet systems. Don Reinertsen explains the economics of queuing, batch size reduction, and fast feedback loops, highlighting their impact on cycle time and overall process efficiency.\n",
         "Duration": 1980,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:42:05.000Z",
+        "Last Modified": "2025-04-05T17:43:29.000Z",
         "Less 15": 0,
         "Name": "The Logic of Flow: Some Indispensable Concepts",
         "Published": true,
@@ -442,8 +444,10 @@
         "Url": "https://www.youtube.com/watch?v=rc1MqHsiiKo",
         "airtable_createdTime": "2024-11-24T08:50:04.000Z",
         "airtable_id": "rec0cTDqEx18P2i1q",
+        "conference_name": "FlowCon",
         "core_topic": "Product",
-        "registered_at": "2024-11-24T08:50:04.000Z"
+        "registered_at": "2024-11-24T08:50:04.000Z",
+        "year": 2014
     },
     {
         "Blog Url": "https://www.eferro.net/2018/10/good-talkspodcasts-oct-2018-ii.html",
@@ -523,7 +527,7 @@
         "Description": "This talk examines the many forms of feedback, the questions each can answer, and the risks each can mitigate. Agile practices involve testing early and often. However feedback comes in many forms, only some of which are traditionally considered testing. Continuous integration, acceptance testing with users, even cohort analysis to validate business hypotheses are all examples of feedback cycles.\n\n",
         "Duration": 1860,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:34:03.000Z",
+        "Last Modified": "2025-04-05T17:43:02.000Z",
         "Less 15": 0,
         "Name": "DOES14 On the Care and Feeding of Feedback Cycles",
         "Published": true,
@@ -556,8 +560,10 @@
         "Url": "https://www.youtube.com/watch?v=fMucUohYWI4",
         "airtable_createdTime": "2022-02-12T21:40:35.000Z",
         "airtable_id": "rec0wGILzKUBU6YKD",
+        "conference_name": "DOES",
         "core_topic": "Devops",
-        "registered_at": "2022-02-12T21:40:35.000Z"
+        "registered_at": "2022-02-12T21:40:35.000Z",
+        "year": 2014
     },
     {
         "Blog Url": "https://www.eferro.net/2020/11/good-talkspodcasts-nov-2020-i.html",
@@ -1522,7 +1528,7 @@
         "Description": "Modeling your data in the DynamoDB database structure requires a different approach from modeling in traditional relational databases. Alex DeBrie has written a number of applications using DynamoDB and is the creator of DynamoDBGuide.com, a free resource for learning DynamoDB\n",
         "Duration": 2340,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:42:55.000Z",
         "Less 15": 0,
         "Name": "AWS re:Invent 2019: Data modeling with Amazon DynamoDB (CMY304)",
         "Published": true,
@@ -1557,8 +1563,10 @@
         "Url": "https://www.youtube.com/watch?v=DIQVJqiSUkE",
         "airtable_createdTime": "2020-03-14T09:01:20.000Z",
         "airtable_id": "rec3E0KiheJHZzqvy",
+        "conference_name": "AWS re:Invent",
         "core_topic": "Architecture",
-        "registered_at": "2020-03-14T09:01:20.000Z"
+        "registered_at": "2020-03-14T09:01:20.000Z",
+        "year": 2019
     },
     {
         "Blog Url": "https://www.eferro.net/2023/10/good-talkspodcasts-oct-2023-i.html",
@@ -2335,7 +2343,7 @@
         "Description": "Very good talk about the \"Agile\" mindset (aka experimentation or growth mindset)\n",
         "Duration": 3480,
         "Language": "English",
-        "Last Modified": "2025-03-30T22:15:39.000Z",
+        "Last Modified": "2025-04-05T17:43:31.000Z",
         "Less 15": 0,
         "Name": "The Power of an Agile Mindset",
         "Published": true,
@@ -2362,8 +2370,10 @@
         "Url": "https://www.youtube.com/watch?v=pQeohrdhvYU",
         "airtable_createdTime": "2020-01-19T20:36:17.000Z",
         "airtable_id": "rec506jFKXhEUAGIr",
+        "conference_name": "IME-USP",
         "core_topic": "Agile",
-        "registered_at": "2020-01-19T20:36:17.000Z"
+        "registered_at": "2020-01-19T20:36:17.000Z",
+        "year": 2020
     },
     {
         "Blog Url": "https://www.eferro.net/2025/03/good-talkspodcasts-march-ii.html",
@@ -4389,7 +4399,7 @@
         "Description": "Great talk with the evolution of our field from a lean perspective. Great insights about the engineering role, agile, the current painful division between business and development, how we can think about complex systems, the failure of having proxy roles as the product owner, etc... Great talk, lot of computer and development history, and great Q&A session.\nSlides: <https://speakerdeck.com/devopslx/2020-dot-07-meetup-talk-may-poppendieck-six-decades-of-software-engineering>\n",
         "Duration": 4980,
         "Language": "English",
-        "Last Modified": "2025-03-06T08:42:29.000Z",
+        "Last Modified": "2025-04-05T17:43:21.000Z",
         "Less 15": 0,
         "Name": "Six Decades of Software Engineering",
         "Notes": "\n",
@@ -4421,8 +4431,10 @@
         "Url": "https://www.youtube.com/watch?v=PzI07SBqaPA",
         "airtable_createdTime": "2020-07-27T09:20:46.000Z",
         "airtable_id": "rec9S1TCWALLhQvvt",
+        "conference_name": "DevOps Lisbon",
         "core_topic": "Lean-Agile",
-        "registered_at": "2020-07-27T09:20:46.000Z"
+        "registered_at": "2020-07-27T09:20:46.000Z",
+        "year": 2020
     },
     {
         "Blog Url": "https://www.eferro.net/2014/09/index.html",
@@ -4848,7 +4860,7 @@
         "Description": "Do you know what scalability really is? It's a mathematical function that's simple, precise, and useful. REALLY useful. It describes the relationship between system performance and load. In this talk you'll learn the function (the Universal Scalability Law), how it describes and predicts system behavior you see every day, and how to use it in practice. I'll show you how to understand the function, how to capture the data you need to measure your own system's behavior (you probably already have that), and how to analyze the data with the USL. You'll leave this talk knowing exactly what scalability is and what causes non-linear scaling. There are two factors, and you'll start seeing those everywhere, too. As a result, when systems don't scale you'll know what kind of problem to look for, and you'll avoid building bottlenecks into your systems in the first place. Final note: this talk requires zero mathematical skill.\n",
         "Duration": 1740,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:11.000Z",
         "Less 15": 0,
         "Name": "LISA17 - Scalability Is Quantifiable: The Universal Scalability Law",
         "Published": true,
@@ -4877,8 +4889,10 @@
         "Url": "https://www.youtube.com/watch?v=lZU6RK0oazM",
         "airtable_createdTime": "2020-01-19T20:31:53.000Z",
         "airtable_id": "recAIkpCKXiZCft7V",
+        "conference_name": "LISA",
         "core_topic": "Architecture",
-        "registered_at": "2020-01-19T20:31:53.000Z"
+        "registered_at": "2020-01-19T20:31:53.000Z",
+        "year": 2017
     },
     {
         "Blog Url": "https://www.eferro.net/2019/11/good-talkspodcasts-october-november.html",
@@ -5399,7 +5413,7 @@
         "Description": "This talk presents the findings of the 2017 State of DevOps Report, emphasizing that high-performing organizations achieve both better throughput and stability. It explores how transformational leadership, technical practices, and lean product management contribute to IT and organizational performance.\n",
         "Duration": 1860,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:03.000Z",
         "Less 15": 0,
         "Name": "DOES17 London - The Key to High Performance What the Data Says",
         "Published": true,
@@ -5436,6 +5450,7 @@
         "Url": "https://www.youtube.com/watch?v=cabzxfM_vWE",
         "airtable_createdTime": "2020-01-19T20:32:54.000Z",
         "airtable_id": "recBR96pE4GvW4b8m",
+        "conference_name": "DevOps Enterprise Summit",
         "core_topic": "Engineering Culture",
         "registered_at": "2020-01-19T20:32:54.000Z"
     },
@@ -5623,7 +5638,7 @@
         "Description": "An open discussion on Modern Product Management.  The talk contains a lot of interesting discussions during the Q&A. I think it covers all the underpinnings of modern product management.\n",
         "Duration": 5280,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:30.000Z",
         "Less 15": 0,
         "Name": "The Marty Cagan special - ProductTank #27 Singapore",
         "Published": true,
@@ -5650,8 +5665,10 @@
         "Url": "https://www.youtube.com/watch?v=idMN-YwiYOs",
         "airtable_createdTime": "2020-06-14T11:13:00.000Z",
         "airtable_id": "recBfVsYe3o327PKD",
+        "conference_name": "ProductTank",
         "core_topic": "Product",
-        "registered_at": "2020-06-14T11:13:00.000Z"
+        "registered_at": "2020-06-14T11:13:00.000Z",
+        "year": 2019
     },
     {
         "Blog Url": "https://www.eferro.net/2024/01/good-talkspodcasts-jan-2024-ii.html",
@@ -5698,7 +5715,7 @@
         "Description": "Interesting ideas about testing in production.\n",
         "Duration": 300,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:23.000Z",
         "Less 15": 1,
         "Name": "Sufficiently Advanced Monitoring is Indistinguishable from Testing",
         "Published": true,
@@ -5727,8 +5744,10 @@
         "Url": "https://www.youtube.com/watch?v=uSo8i1N18oc",
         "airtable_createdTime": "2022-10-09T09:41:07.000Z",
         "airtable_id": "recBglPmZE7Z709Sa",
+        "conference_name": "Google Test Automation Conference",
         "core_topic": "Testing",
-        "registered_at": "2022-10-09T09:41:07.000Z"
+        "registered_at": "2022-10-09T09:41:07.000Z",
+        "year": 2007
     },
     {
         "Blog Url": "https://www.eferro.net/2022/10/good-talkspodcasts-oct-2022-ii.html",
@@ -5772,7 +5791,7 @@
         "Description": "Let's talk about how to allocate glue work deliberately, frame it usefully and make sure that everyone is choosing a career path they actually want to be on.\n",
         "Duration": 1680,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:24.000Z",
         "Less 15": 0,
         "Name": "Technical leadership and glue work",
         "Published": true,
@@ -5803,6 +5822,7 @@
         "Url": "https://www.youtube.com/watch?v=KClAPipnKqw",
         "airtable_createdTime": "2020-03-14T09:06:56.000Z",
         "airtable_id": "recBk5M98Nf6b43gM",
+        "conference_name": "Lead Dev New York",
         "core_topic": "Engineering Culture",
         "registered_at": "2020-03-14T09:06:56.000Z"
     },
@@ -6017,7 +6037,7 @@
         "Description": "This podcast features Daniel Terhorst-North, a prominent figure in the software development world, reflecting on 20 years of industry changes and sharing his insights on topics ranging from Agile and DevOps to product management and organizational flow. Drawing on his experiences at Thoughtworks and beyond, Terhorst-North highlights the importance of connecting business needs with technical implementation and emphasizes the value of building evolvable systems with \"simplexity\" in mind.\n",
         "Duration": 3120,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:09.000Z",
         "Less 15": 0,
         "Name": "How to Deliver Quality Software Against All Odds GOTO 2024",
         "Published": true,
@@ -6048,8 +6068,10 @@
         "Url": "https://www.youtube.com/watch?v=klqo1oPdbpM",
         "airtable_createdTime": "2024-12-08T21:06:39.000Z",
         "airtable_id": "recCPjTZloWAjizKF",
+        "conference_name": "GOTO",
         "core_topic": "Engineering Culture",
-        "registered_at": "2024-12-08T21:06:39.000Z"
+        "registered_at": "2024-12-08T21:06:39.000Z",
+        "year": 2024
     },
     {
         "Blog Url": "https://www.eferro.net/2017/08/good-talkspodcasts-purging-queue-ii.html",
@@ -6221,7 +6243,7 @@
         "Description": "An essential talk to understand how to get the most impact with the least amount of software (and thereby reduce basal cost and time to market). Highly recommended.\n",
         "Duration": 3060,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:12.000Z",
         "Less 15": 0,
         "Name": "Make Impacts Not Software",
         "Published": true,
@@ -6252,8 +6274,10 @@
         "Url": "https://www.youtube.com/watch?v=GnK_n9Udhhs",
         "airtable_createdTime": "2022-06-12T08:29:01.000Z",
         "airtable_id": "recCZBg2e64L4QsLL",
+        "conference_name": "Agile Adria",
         "core_topic": "Lean-Product Engineering",
-        "registered_at": "2022-06-12T08:29:01.000Z"
+        "registered_at": "2022-06-12T08:29:01.000Z",
+        "year": 2013
     },
     {
         "Blog Url": "https://www.eferro.net/2017/01/interesting-talks-and-podcast-episodes.html",
@@ -7159,7 +7183,7 @@
         "Description": "Excellent talk. John presents all the learnings he had during the last three years, using his great article as a starting point (<https://cutle.fish/blog/12-signs-youre-working-in-a-feature-factory>). Lots of knowledge and tips to introduce product thinking.\n",
         "Duration": 3900,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:16.000Z",
         "Less 15": 0,
         "Name": "Product Tank Madrid: Focus on Impact with John Cutler - World Product Day 2020",
         "Published": true,
@@ -7184,8 +7208,10 @@
         "Url": "https://www.youtube.com/watch?v=7yiudST4bJY",
         "airtable_createdTime": "2020-05-31T07:06:27.000Z",
         "airtable_id": "recEKkIZldl9R5iza",
+        "conference_name": "World Product Day",
         "core_topic": "Product",
-        "registered_at": "2020-05-31T07:06:27.000Z"
+        "registered_at": "2020-05-31T07:06:27.000Z",
+        "year": 2020
     },
     {
         "Blog Url": "https://www.eferro.net/2018/05/good-talkspodcasts-may-2018-i.html",
@@ -8242,7 +8268,7 @@
         "Description": "A classic talk to understand how to leverage the cloud, continuous delivery and devops\u00a0to create modern\u00a0web-scale systems.\n",
         "Duration": 2160,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:35.000Z",
         "Less 15": 0,
         "Name": "Velocity and Volume or Speed Wins",
         "Published": true,
@@ -8277,6 +8303,7 @@
         "Url": "https://www.youtube.com/watch?v=wyWI3gLpB8o",
         "airtable_createdTime": "2020-01-19T20:38:31.000Z",
         "airtable_id": "recGXOnOo7jejkQV7",
+        "conference_name": "QCon San Francisco",
         "core_topic": "Cloud",
         "registered_at": "2020-01-19T20:38:31.000Z"
     },
@@ -8624,7 +8651,7 @@
         "Description": "Interesting journey through the history of our profession and some predictions about the future with one of the main protagonists (Grady Booch). Very interesting, both the talk and the subsequent questions.\n",
         "Duration": 4140,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:29.000Z",
         "Less 15": 0,
         "Name": "The future of software engineering",
         "Published": true,
@@ -8653,6 +8680,7 @@
         "Url": "https://www.youtube.com/watch?v=-hnguwVg-iE",
         "airtable_createdTime": "2024-09-15T06:51:12.000Z",
         "airtable_id": "recHORJ4ydowbim4n",
+        "conference_name": "BuildStuffconf",
         "core_topic": "Engineering Culture",
         "registered_at": "2024-09-15T06:51:12.000Z"
     },
@@ -8743,7 +8771,7 @@
         "Description": "Modern software development welcomes changing requirements, even late in the process, but how can we write our software so that those changes don\u2019t create a mess? Evolutionary design is the key. It\u2019s a technique that emerges from Extreme Programming, the method that brought us test-driven development, merciless refactoring, and continuous integration. James Shore first encountered Extreme Programming and evolutionary design nearly 20 years ago. Initially skeptical, he\u2019s explored its boundaries ever since. In this session, James will share what he\u2019s learned through in-depth animations of real software projects. You\u2019ll see how designs evolve over time and you\u2019ll learn how and when to use evolutionary design for your own projects. Part 2: https://www.youtube.com/watch?v=wDZCF8jfeMc\n",
         "Duration": 1440,
         "Language": "English",
-        "Last Modified": "2025-03-06T08:42:37.000Z",
+        "Last Modified": "2025-04-05T17:43:38.000Z",
         "Less 15": 0,
         "Name": "YOW! 2019 Evolutionary Design Animated (Part1)",
         "Notes": "The presentation by James Shore is about evolutionary design, which is a way to achieve the enabling practice principle of modern software development. Here are the key points:\n- **Evolutionary design starts with the simplest possible design and grows it alongside the application\u2019s needs**. It comes out of extreme programming (XP), which was the first popular agile method and set the tone for a lot of what is taken for granted in agile today. XP brought ideas like test-driven development, user stories, and continuous integration.\n- **XP is unique because it provides the technical practices to make agile possible, such as test-driven development and continuous integration**.\n- A core premise of XP is inverting the cost of change so that changes are not more expensive later in the development process.\n- **Evolutionary design depends on refactoring, which is changing the design of code without changing its behavior**. It is not appropriate when refactoring is not possible or very expensive.\n- Evolutionary design may not be appropriate when publishing interfaces to other teams or when multiple teams own the same code base, as a high level of coordination is required.\n- Evolutionary design has three pillars:\n    - **Simple Design:** Only build what is needed right now. Start with a walking skeleton and do the simplest thing that could possibly work. Add one feature at a time, only adding things when there is a proven need.\n    - **Continuous Design:** Constantly review and improve the design. Practices from extreme programming, such as merciless refactoring, collective ownership, pair programming, mob programming, and continuous integration, help make this work.\n    - **Reflective Design:** Make design decisions based on the code that exists, not on speculation about what might be useful in the future. Identify flaws, reverse engineer the design if necessary, imagine how to improve the design, and refactor the code to incrementally reach the new design idea.\n- **Breakthroughs are interesting things that happen with continuous, merciless refactoring**. Eric Evans calls it a breakthrough whenever a little refactoring makes progress in the design.\n    - **Small Scale**: If this is done long enough, new ideas will become visible, resulting in a breakthrough where there is an idea for a dramatic way to improve the design. This can happen at a really small scale or a large scale. Inside of a single module, this kind of breakthrough can happen every hour or two.\n    - **Larger Scale**: Larger scale breakthroughs can also occur across multiple classes or modules, typically multiple times per week. Breakthroughs that are more substantial and involve the larger application architecture can happen a few times a year.\n    - An example of a small-scale breakthrough occurred in the test-driven development exercise, where the common parsing method was factored out. A larger scale breakthrough example can be found in the presenter's content management engine when he was implementing support for Jade and realized that he needed a better way of handling static files and Jade files without spaghetti code, so it was extracted out into new modules.\n- **Simple design is not sloppy design**. For any design decision, ask how hard it will be to change that decision.\n- **The presenter offers seven rules for simple design, all of which are derived from other sources**:\n    - Every concept should be represented in the application once.\n    - Make sure the design intent is clear and obvious.\n    - Make the code concrete, not speculative.\n    - The code should be cohesive.\n    - If a piece of code cannot be seen, it should not be affected by the work being done.\n    - Anything that is used in a lot of places should have some sort of abstraction that can be used to change the implementation without changing the way it is used.\n    - Isolate changes, especially from third-party libraries.\n- When deciding whether to buy or build, consider the cost of maintaining the software that is bought. The presenter's personal rule of thumb is that if something will take less than a week to build, they will seriously consider building it themselves. If it will take less than a day, they will generally build it themselves.\n- **With reflective design, focus efforts on where they will do the most good**. It is okay to stop because the issues will be caught the next time.\n- With evolutionary design, everything is possible as long as the design is kept clean.\n- **Be patient because the best design is rarely known when first working on something**. Take a best shot and let it go, knowing that it can be improved next time.\n- **Reducing the cost of change is critical. If doing Agile development where requirements are taken late, evolutionary design is needed**.\n\n",
@@ -8777,8 +8805,10 @@
         "Url": "https://www.youtube.com/watch?v=LtBRvsez8DI",
         "airtable_createdTime": "2020-06-14T11:18:41.000Z",
         "airtable_id": "recHTVTL3hM9YyEuY",
+        "conference_name": "YOW!",
         "core_topic": "Agile-XP",
-        "registered_at": "2020-06-14T11:18:41.000Z"
+        "registered_at": "2020-06-14T11:18:41.000Z",
+        "year": 2019
     },
     {
         "Blog Url": "https://www.eferro.net/2019/09/good-talkspodcasts-september-2019-i.html",
@@ -9331,7 +9361,7 @@
         "Description": "This talk illustrates the concepts, connects the dots between DDD, Wardley mapping and team topologies, and demonstrates how these techniques help to evolve a fictitious legacy system for a fast flow of change.\n",
         "Duration": 2580,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:42:53.000Z",
         "Less 15": 0,
         "Name": "Architecture for Flow with Wardley Mapping, DDD, and Team Topologies",
         "Published": true,
@@ -9364,8 +9394,10 @@
         "Url": "https://www.youtube.com/watch?v=qKLnlaWKkb4",
         "airtable_createdTime": "2023-02-19T20:43:34.000Z",
         "airtable_id": "recIHgDgxmcGBHQJk",
+        "conference_name": "Agile Meets Architecture",
         "core_topic": "Architecture",
-        "registered_at": "2023-02-19T20:43:34.000Z"
+        "registered_at": "2023-02-19T20:43:34.000Z",
+        "year": 2022
     },
     {
         "Blog Url": "https://www.eferro.net/2014/10/podcaststalks-2014-1-15-oct.html",
@@ -9963,7 +9995,7 @@
         "Description": "An introduction to Lean Product Development Flow given by Don Reinertsen at Adventures with Agile in London. \nThis talk is a must to understand modern product development (Flow, uncertainty, Little's law, cost of delay, the value of feedback, queues, batch size, etc).\n",
         "Duration": 5220,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:20.000Z",
         "Less 15": 0,
         "Name": "Second Generation Lean Product Development Flow",
         "Published": true,
@@ -9996,8 +10028,10 @@
         "Url": "https://www.youtube.com/watch?v=L6v6W7jkwok",
         "airtable_createdTime": "2021-01-30T20:14:08.000Z",
         "airtable_id": "recJj5CkUuT3Im6BR",
+        "conference_name": "Adventures with Agile",
         "core_topic": "Product",
-        "registered_at": "2021-01-30T20:14:08.000Z"
+        "registered_at": "2021-01-30T20:14:08.000Z",
+        "year": 2016
     },
     {
         "Blog Url": "https://www.eferro.net/2020/05/good-talkspodcasts-may-2020-i.html",
@@ -10644,7 +10678,7 @@
         "Description": "A great talk for anyone trying to do lean/agile software development. Explain why we need to give small safe steps (3s). Very interesting Q&A session at the end.\n\n",
         "Duration": 4800,
         "Language": "English",
-        "Last Modified": "2025-03-31T14:47:55.000Z",
+        "Last Modified": "2025-04-05T17:43:05.000Z",
         "Less 15": 0,
         "Name": "GeePaw Hill \"More Smaller Steps\" ",
         "Notes": "Drawing on the information in the YouTube video transcript, here are the most important points of GeePaw Hill's presentation:\n\n\\*\u00a0\u00a0\\*\\*The central proposition is to take many more much smaller steps when making changes, whether in code, product, or organizations.\\*\\* This contrasts with the traditional approach of larger, less frequent changes.\n\n\\*\u00a0\u00a0\\*\\*The presentation introduces \"Rework Avoidance Theory (RAT)\" which assumes a straight, efficient path from A to B with larger steps, aiming to avoid doing anything twice.\\*\\* Hill argues that while the slogan \"doing the same thing twice is inefficient\" is useful, the idea that \"changing the same code twice is inefficient\" is a flawed premise of RAT.\n\n\\*\u00a0\u00a0\\*\\*Hill proposes \"Change Harvesting Theory (CHT)\" as an alternative, characterized by numerous very small steps that don't necessarily follow a straight line.\\*\\* He argues that CHT is often more efficient than RAT despite appearing less so.\n\n\\*\u00a0\u00a0\\*\\*A \"step\" is defined by having a \"before,\" a \"during,\" and an \"after\" state, moving from a \"ready\" (shippable) state to an \"unready\" state and back to \"ready\" (shippable).\\*\\* \"Shippable\" is defined as being the same or better than the previous state, and the presenter uses a \"magic button\" thought experiment to illustrate instant deployment without cost or training.\n\n\\*\u00a0\u00a0\\*\\*RAT has several critical flaws:\\*\\*\n\u00a0\u00a0\\*\u00a0\u00a0It requires \\*\\*incredibly high knowledge\\*\\* of a distant target (\"city on the hill\") which is often unrealistic.\n\u00a0\u00a0\\*\u00a0\u00a0It's difficult to \\*\\*store up enough value\\*\\* to sustain long periods of work without intermediate releases.\n\u00a0\u00a0\\*\u00a0\u00a0It necessitates \\*\\*eliminating ambiguity\\*\\*, leading to excessive planning and analysis paralysis.\n\u00a0\u00a0\\*\u00a0\u00a0It \\*\\*assumes a linear relationship between step size and effort\\*\\*, which is incorrect due to the limitations of human mental bandwidth (the \"magic number five plus or minus one\").\n\u00a0\u00a0\\*\u00a0\u00a0It \\*\\*fails to recognize the intrinsic value of small steps\\*\\*, such as interruptability, steerability, and the dopamine boost from completion (\"juice\").\n\u00a0\u00a0\\*\u00a0\u00a0It \\*\\*doesn't fit the reality of the market or the problem\\*\\*, as market needs can change, other valuable opportunities might be missed, and you can't learn and adjust without being in the field.\n\n\\*\u00a0\u00a0\\*\\*When reframing the work from \"building\" to \"changing\" software, three factors become crucial:\\*\\*\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*Control:\\*\\* You can't change what you don't control, emphasizing the need for isolation in code.\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*Expression:\\*\\* You can't change what you don't understand, highlighting the importance of clear and comprehensible code.\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*Confirmation:\\*\\* You need to know exactly what the current state (\"same\") is to ensure the next step is \"same or better\".\n\n\\*\u00a0\u00a0\\*\\*Adopting a bias for action is recommended over extensive upfront planning.\\*\\* Take a step and then evaluate the outcome.\n\n\\*\u00a0\u00a0\\*\\*When deciding what to do, prioritize step size over the immediate value differential.\\*\\* Choose smaller, manageable steps.\n\n\\*\u00a0\u00a0\\*\\*Concrete step size recommendations include stories being no larger than two team days of effort, emphasizing swarming problems rather than isolating them.\\*\\* For individual coding tasks within a story, the step size should be around 15-45 minutes.\n\n\\*\u00a0\u00a0\\*\\*Change enabling techniques are important for facilitating smaller steps:\\*\\*\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*Microtest-driven development (TDD)\\*\\*.\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*\"Axe sharpening\"\\*\\* (improving development tools and skills).\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*Massive collaboration\\*\\* (swarming).\n\n\\*\u00a0\u00a0\\*\\*Change Harvesting Theory has five key properties for successful change:\\*\\*\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*Human:\\*\\* Focus on changes that leverage human strengths and mitigate weaknesses.\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*Local:\\*\\* Keep changes within a manageable scope; fix the easiest, nearest problem first.\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*Oriented:\\*\\* Take a step, then re-evaluate and re-orient towards the goal.\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*Taken:\\*\\* Change what is already there through refactoring, rather than always building anew.\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*Iterative:\\*\\* Change a thing and change it again, embracing continuous refinement.\n\n\\*\u00a0\u00a0\\*\\*The core message is encapsulated in three points: \"that's too much rice,\" \"not enough garlic,\" and \"take many more much smaller steps\".\\*\\*\n\n\\*\u00a0\u00a0\\*\\*Overcoming resistance to CHT from those entrenched in RAT involves creating experiences rather than arguments, demonstrating the benefits of smaller steps through practical examples and short, focused collaborations.\\*\\* Starting with small, manageable changes and showing quick improvements can build trust and illustrate the value of this approach.\n",
@@ -10676,8 +10710,10 @@
         "Url": "https://www.youtube.com/watch?v=WYK4kbrmm84",
         "airtable_createdTime": "2021-08-14T10:19:49.000Z",
         "airtable_id": "recLOCXTIY9Vp7E3n",
+        "conference_name": "Jersey City Java User Group",
         "core_topic": "Agile-XP",
-        "registered_at": "2021-08-14T10:19:49.000Z"
+        "registered_at": "2021-08-14T10:19:49.000Z",
+        "year": 2020
     },
     {
         "Blog Url": "https://www.eferro.net/2016/12/interesting-talks-ive-seen-during.html",
@@ -11137,7 +11173,7 @@
         "Description": "Excellent 3-minute video explains the subtle difference between a constraint and a bottleneck in the Theory of Constraints (and, therefore, where to put the focus.)\n",
         "Duration": 180,
         "Language": "English",
-        "Last Modified": "2025-03-06T08:42:29.000Z",
+        "Last Modified": "2025-04-05T17:43:32.000Z",
         "Less 15": 1,
         "Name": "The subtle difference between a constraint and a bottleneck (Theory of Constraints)",
         "Notes": "\n",
@@ -11165,8 +11201,10 @@
         "Url": "https://www.youtube.com/watch?v=6UT1EnL7nOc",
         "airtable_createdTime": "2020-07-27T08:02:02.000Z",
         "airtable_id": "recMGlBhfcLvvKry6",
+        "conference_name": "Theory of Constraints",
         "core_topic": "Lean",
-        "registered_at": "2020-07-27T08:02:02.000Z"
+        "registered_at": "2020-07-27T08:02:02.000Z",
+        "year": 2014
     },
     {
         "Blog Url": "https://www.eferro.net/2024/12/good-talkspodcasts-dec-2024-i.html",
@@ -11564,7 +11602,7 @@
         "Description": "Great 2012 presentation on Continuous Delivery. Jez discusses the value of CD to the business. He presents the principles and related practices, including value stream mapping, deployment pipelines, acceptance test-driven development, zero-downtime releases, etc. This talk is a while old, but still as relevant as the first day.\n",
         "Duration": 2820,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:00.000Z",
         "Less 15": 0,
         "Name": "Continuous Delivery",
         "Published": true,
@@ -11595,8 +11633,10 @@
         "Url": "https://www.youtube.com/watch?v=skLJuksCRTw",
         "airtable_createdTime": "2021-10-03T20:50:18.000Z",
         "airtable_id": "recN2IkHwFljS5u2x",
+        "conference_name": "ThoughtWorks Studios",
         "core_topic": "Continuous Delivery",
-        "registered_at": "2021-10-03T20:50:18.000Z"
+        "registered_at": "2021-10-03T20:50:18.000Z",
+        "year": 2010
     },
     {
         "Blog Url": "https://www.eferro.net/2016/12/interesting-talks-ive-seen-during.html",
@@ -11839,7 +11879,7 @@
         "Description": "In this talk Daniel reviews his experience in building platforms, both as an end user and now as part of an organization that helps our clients do the same. She discusses topics such as DevEx, UX, workflows, available tools, etc.\n",
         "Duration": 1860,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:05.000Z",
         "Less 15": 0,
         "Name": "From Kubernetes to PaaS to ... Err, What's Next?",
         "Published": true,
@@ -11870,8 +11910,10 @@
         "Url": "https://www.youtube.com/watch?v=btUYeOa7JPI",
         "airtable_createdTime": "2022-06-12T08:23:05.000Z",
         "airtable_id": "recNZsQIennGhyS5c",
+        "conference_name": "KubeCon + CloudNativeCon North America",
         "core_topic": "Platform Engineering",
-        "registered_at": "2022-06-12T08:23:05.000Z"
+        "registered_at": "2022-06-12T08:23:05.000Z",
+        "year": 2022
     },
     {
         "Created": "2021-06-19T11:36:22.000Z",
@@ -12481,7 +12523,7 @@
         "Description": "Tom highlights radical ideas from _The Practice of Cloud System Administration_ on embracing failure to build resilient distributed systems, focusing on economic resiliency, performing risky procedures frequently, and creating a blameless culture.\n",
         "Duration": 3840,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:04.000Z",
         "Less 15": 0,
         "Name": "Fail Better: Radical Ideas from the Practice of Cloud Computing",
         "Published": true,
@@ -12514,6 +12556,7 @@
         "Url": "https://www.youtube.com/watch?v=nsrzWEHEWDw",
         "airtable_createdTime": "2020-01-19T20:32:56.000Z",
         "airtable_id": "recOeXIOfuU3plaew",
+        "conference_name": "ACM Queue",
         "core_topic": "Cloud",
         "registered_at": "2020-01-19T20:32:56.000Z"
     },
@@ -12692,7 +12735,7 @@
         "Description": "Great explanation for flow efficiency for software delivery\n",
         "Duration": 1620,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:41:27.000Z",
+        "Last Modified": "2025-04-05T17:43:33.000Z",
         "Less 15": 0,
         "Name": "The Value of Flow 14 09 17",
         "Published": true,
@@ -12723,8 +12766,10 @@
         "Url": "https://www.youtube.com/watch?v=1aOItUyZ2wQ",
         "airtable_createdTime": "2020-01-19T20:43:04.000Z",
         "airtable_id": "recOxqFBf8ctdFeJt",
+        "conference_name": "Agile London",
         "core_topic": "Lean-Agile",
-        "registered_at": "2020-01-19T20:43:04.000Z"
+        "registered_at": "2020-01-19T20:43:04.000Z",
+        "year": 2017
     },
     {
         "Created": "2021-06-19T11:36:23.000Z",
@@ -12961,7 +13006,7 @@
         "Description": "Particular CEO, Udi Dahan, describes how you can still do reliable messaging without using distributed transactions\n",
         "Duration": 960,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:19.000Z",
         "Less 15": 0,
         "Name": "Reliable Messaging Without Distributed Transactions",
         "Published": true,
@@ -12988,6 +13033,7 @@
         "Url": "https://www.youtube.com/watch?v=AfAojdORxHs",
         "airtable_createdTime": "2021-03-07T08:27:28.000Z",
         "airtable_id": "recPeKtcL1bmOHyXS",
+        "conference_name": "NServiceBus",
         "core_topic": "Architecture",
         "registered_at": "2021-03-07T08:27:28.000Z"
     },
@@ -13230,7 +13276,7 @@
         "Description": "Gojko gives a masterclass on how to focus on impacts, understand the need, and improve product decisions. Good ideas to postpone decisions, focus on behavioral changes, and be cautious with metrics. An essential talk for any product developer.\n",
         "Duration": 3300,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:42:48.000Z",
         "Less 15": 0,
         "Name": "Adaptive Planning Beyond User Stories",
         "Published": true,
@@ -13261,8 +13307,10 @@
         "Url": "https://www.youtube.com/watch?v=mCC10nTOgTE",
         "airtable_createdTime": "2022-11-06T19:11:42.000Z",
         "airtable_id": "recQGfbwsNl5WtAws",
+        "conference_name": "GOTO",
         "core_topic": "Lean-Product Engineering",
-        "registered_at": "2022-11-06T19:11:42.000Z"
+        "registered_at": "2022-11-06T19:11:42.000Z",
+        "year": 2014
     },
     {
         "Blog Url": "https://www.eferro.net/2019/03/good-talkspodcasts-feb-2019-ii.html",
@@ -15363,7 +15411,7 @@
         "Description": "The modern developer needs to be constantly reinventing themselves, learning, and helping others to do the same. In this session, Dan explores some of the skills and characteristics of the modern developer, and suggests some ways you can grow them for yourself.\n",
         "Duration": 2580,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:42:56.000Z",
         "Less 15": 0,
         "Name": "Beyond Developer",
         "Published": true,
@@ -15394,6 +15442,7 @@
         "Url": "https://www.youtube.com/watch?v=_P1ZdVV_yic",
         "airtable_createdTime": "2021-01-30T19:42:52.000Z",
         "airtable_id": "recUU1sBQWcwX539J",
+        "conference_name": "NDC",
         "core_topic": "Agile",
         "registered_at": "2021-01-30T19:42:52.000Z"
     },
@@ -15703,7 +15752,7 @@
         "Description": "Very good talk about the nature of software development and the approach to the profession. Dan talks about software as a medium, continuous learning, teamwork, etc. Highly recommended.\n",
         "Duration": 3360,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:28.000Z",
         "Less 15": 0,
         "Name": "The best programmer I know ",
         "Published": true,
@@ -15736,8 +15785,10 @@
         "Url": "https://www.youtube.com/watch?v=D6aUoGK2rkk",
         "airtable_createdTime": "2024-08-17T21:10:31.000Z",
         "airtable_id": "recVFSquUdCuGrS16",
+        "conference_name": "KotlinConf",
         "core_topic": "Engineering Culture",
-        "registered_at": "2024-08-17T21:10:31.000Z"
+        "registered_at": "2024-08-17T21:10:31.000Z",
+        "year": 2025
     },
     {
         "Blog Url": "https://www.eferro.net/2021/07/good-talkspodcasts-jul-2021-i.html",
@@ -16003,7 +16054,7 @@
         "Description": "Daniel Pink shares a study about what truly motivates employees. Excerpted from his talk on \"motivation.\"\n",
         "Duration": 180,
         "Language": "English",
-        "Last Modified": "2025-03-31T14:51:39.000Z",
+        "Last Modified": "2025-04-05T17:42:53.000Z",
         "Less 15": 1,
         "Name": "Autonomy, mastery, purpose (Drive summary)",
         "Published": true,
@@ -16030,6 +16081,7 @@
         "Url": "https://www.youtube.com/watch?v=1SfmmuC9IWs",
         "airtable_createdTime": "2022-03-30T06:24:51.000Z",
         "airtable_id": "recVds4erYyaknLBa",
+        "conference_name": "C12 Business Forums",
         "core_topic": "Company Culture",
         "registered_at": "2022-03-30T06:24:51.000Z"
     },
@@ -16474,7 +16526,7 @@
         "Description": "Great explanation of how system thinking arises and its basic concepts. System thinking is a fundamental tool to work with/in complex systems such as software systems.\n",
         "Duration": 3300,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:23.000Z",
         "Less 15": 0,
         "Name": "Systems Thinking for Developers",
         "Published": true,
@@ -16501,8 +16553,10 @@
         "Url": "https://www.youtube.com/watch?v=xcQVgYzlj8k",
         "airtable_createdTime": "2023-02-19T20:49:45.000Z",
         "airtable_id": "recWsPImFvQo51sT0",
+        "conference_name": "Devoxx Poland",
         "core_topic": "System Thinking",
-        "registered_at": "2023-02-19T20:49:45.000Z"
+        "registered_at": "2023-02-19T20:49:45.000Z",
+        "year": 2021
     },
     {
         "Blog Url": "https://www.eferro.net/2018/10/good-talkspodcasts-oct-2018-i.html",
@@ -16561,7 +16615,7 @@
         "Description": "Maybe we've been thinking about delivery all wrong. Maybe features aren\u2019t the point after all. Maybe there are other kinds of work that we should recognise, schedule and track as first class citizens. Maybe this could take some of the uncertainty out of the delivery process, and give us back our sanity. Maybe.\n",
         "Duration": 4440,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:42:57.000Z",
         "Less 15": 0,
         "Name": "Beyond Features: rethinking agile software delivery",
         "Published": true,
@@ -16592,6 +16646,7 @@
         "Url": "https://www.youtube.com/watch?v=EoJFWdhv8q0",
         "airtable_createdTime": "2020-12-19T21:36:18.000Z",
         "airtable_id": "recXAwtzoEcLOlfWu",
+        "conference_name": "Adventures with Agile Meetup",
         "core_topic": "Lean-Product Engineering",
         "registered_at": "2020-12-19T21:36:18.000Z"
     },
@@ -16788,7 +16843,7 @@
         "Description": "In this live coding session, Sandro will present many techniques that will help you to efficiently retrofit tests to legacy code and then refactor it to show the business logic more clearly.\n",
         "Duration": 5340,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:26.000Z",
         "Less 15": 0,
         "Name": "Testing and Refactoring Legacy Code",
         "Published": true,
@@ -16820,7 +16875,8 @@
         "airtable_createdTime": "2022-02-06T22:04:48.000Z",
         "airtable_id": "recXe1EEX4sVeCXP9",
         "core_topic": "Testing",
-        "registered_at": "2022-02-06T22:04:48.000Z"
+        "registered_at": "2022-02-06T22:04:48.000Z",
+        "year": 2021
     },
     {
         "Blog Url": "https://www.eferro.net/2014/09/charlaspodcasts-1-7-septiembre-2014.html",
@@ -17549,7 +17605,7 @@
         "Description": "Dan Pink examines the puzzle of motivation, starting with a fact that social scientists know but most managers don't: Traditional rewards aren't always as effective as we think.\n",
         "Duration": 1080,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:31.000Z",
         "Less 15": 0,
         "Name": "The puzzle of motivation",
         "Published": true,
@@ -17576,6 +17632,7 @@
         "Url": "https://www.youtube.com/watch?v=rrkrvAUbU9Y",
         "airtable_createdTime": "2022-03-30T06:26:30.000Z",
         "airtable_id": "recZ9d2gvtlLmiStq",
+        "conference_name": "TED",
         "core_topic": "Company Culture",
         "registered_at": "2022-03-30T06:26:30.000Z"
     },
@@ -17706,7 +17763,7 @@
         "Description": "In this presentation, Cirpo talks about his past 4 years of experience setting up a DevX team from scratch, the main challenges, the pain, the gain, and the lessons learned.\n",
         "Duration": 2520,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:42:58.000Z",
         "Less 15": 0,
         "Name": "Building DevX Teams, my story",
         "Published": true,
@@ -17735,6 +17792,7 @@
         "Url": "https://www.youtube.com/watch?v=xX5zeVy8Ta4",
         "airtable_createdTime": "2022-05-15T06:33:38.000Z",
         "airtable_id": "recZW4aFGILBBfNv1",
+        "conference_name": "DevXConf",
         "core_topic": "Platform Engineering",
         "registered_at": "2022-05-15T06:33:38.000Z"
     },
@@ -18513,7 +18571,7 @@
         "Description": "A ton of useful insights and ideas in this excellent Charity presentation. Great description of observability and its need in modern systems.\n",
         "Duration": 6900,
         "Language": "English",
-        "Last Modified": "2025-03-06T08:42:29.000Z",
+        "Last Modified": "2025-04-05T17:43:36.000Z",
         "Less 15": 0,
         "Name": "What got you here won't get you there: How your team can become a high-performing team by embracing observability",
         "Notes": "\n",
@@ -18543,8 +18601,10 @@
         "Url": "https://www.youtube.com/watch?v=QK6zEFdvXYw",
         "airtable_createdTime": "2020-08-09T19:42:16.000Z",
         "airtable_id": "recazeVUxHdijBZU2",
+        "conference_name": "BuzzConf",
         "core_topic": "Operations",
-        "registered_at": "2020-08-09T19:42:16.000Z"
+        "registered_at": "2020-08-09T19:42:16.000Z",
+        "year": 2020
     },
     {
         "Blog Url": "https://www.eferro.net/2014/09/charlaspodcasts-8-14-septiembre-2014.html",
@@ -19647,7 +19707,7 @@
         "Description": "\nVery good talk about the benefits of using Trunk Based Development (or in other words, the practice of CI as it was originally created).\t\n",
         "Duration": 3360,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:02.000Z",
         "Less 15": 0,
         "Name": "Continuous Integration: That\u2019s Not What They Meant",
         "Published": true,
@@ -19678,8 +19738,10 @@
         "Url": "https://www.youtube.com/watch?v=97qyNQz7fxY",
         "airtable_createdTime": "2024-08-18T08:13:50.000Z",
         "airtable_id": "recclNm0J3dDOzoHt",
+        "conference_name": "YOW!",
         "core_topic": "Agile-XP",
-        "registered_at": "2024-08-18T08:13:50.000Z"
+        "registered_at": "2024-08-18T08:13:50.000Z",
+        "year": 2023
     },
     {
         "Blog Url": "https://www.eferro.net/2019/01/good-talkspodcasts-jan-2019-i.html",
@@ -20125,7 +20187,7 @@
         "Description": "In this episode, Dave Farley explores how we can move fast with high quality and how one reinforces the other. Speed and quality are both hallmarks of a Continuous Delivery approach and best practices for building great software.\n",
         "Duration": 900,
         "Language": "English",
-        "Last Modified": "2023-06-18T06:28:48.000Z",
+        "Last Modified": "2025-04-05T17:43:08.000Z",
         "Less 15": 1,
         "Name": "How To Build Quality Software Fast",
         "Published": true,
@@ -20152,6 +20214,7 @@
         "Url": "https://www.youtube.com/watch?v=ZmgbjaRfp_Q",
         "airtable_createdTime": "2021-08-14T20:25:44.000Z",
         "airtable_id": "recdMGAoMJz4NnLmW",
+        "conference_name": "Continuous Delivery",
         "registered_at": "2021-08-14T20:25:44.000Z"
     },
     {
@@ -20160,7 +20223,7 @@
         "Description": "Another inspiring talk from Henrik Kniberg with live demo of some of the agile concepts.\n",
         "Duration": 2580,
         "Language": "English",
-        "Last Modified": "2023-06-18T06:28:48.000Z",
+        "Last Modified": "2025-04-05T17:42:51.000Z",
         "Less 15": 0,
         "Name": "Focus (or Stop Starting, Start Finishing)",
         "Published": true,
@@ -20186,7 +20249,9 @@
         "Url": "https://www.youtube.com/watch?v=n7wH2XdOWpM",
         "airtable_createdTime": "2020-01-19T20:41:04.000Z",
         "airtable_id": "recdNt7GihnbZamNQ",
-        "registered_at": "2020-01-19T20:41:04.000Z"
+        "conference_name": "AgileByExample",
+        "registered_at": "2020-01-19T20:41:04.000Z",
+        "year": 2016
     },
     {
         "Created": "2021-06-19T11:36:26.000Z",
@@ -20496,7 +20561,7 @@
         "Description": "This talk argues that it would be better to focus on building new live programming environments that can help us solve the problems of the future.\n",
         "Duration": 2580,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:22.000Z",
         "Less 15": 0,
         "Name": "Stop Writing Dead Programs",
         "Published": true,
@@ -20521,8 +20586,10 @@
         "Url": "https://www.youtube.com/watch?v=8Ab3ArE8W3s",
         "airtable_createdTime": "2022-12-06T20:58:06.000Z",
         "airtable_id": "recdpnVXleU1WlaCD",
+        "conference_name": "Strange Loop",
         "core_topic": "Engineering Culture",
-        "registered_at": "2022-12-06T20:58:06.000Z"
+        "registered_at": "2022-12-06T20:58:06.000Z",
+        "year": 2022
     },
     {
         "Blog Url": "https://www.eferro.net/2021/04/good-talkspodcasts-april-2021-i.html",
@@ -20659,7 +20726,7 @@
         "Description": "One of the best descriptions I have heard of the usefulness of this practice. Dave provides pair programming examples, describes some pair programming best practices, and challenges some thinking about pair programming patterns and anti-patterns.\n",
         "Duration": 1440,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:37.000Z",
         "Less 15": 0,
         "Name": "You Must Be CRAZY To Do Pair Programming",
         "Published": true,
@@ -20688,6 +20755,7 @@
         "Url": "https://www.youtube.com/watch?v=aItVJprLYkg",
         "airtable_createdTime": "2020-11-09T08:45:14.000Z",
         "airtable_id": "rece2CJmPCKHEJ1Zl",
+        "conference_name": "Extreme Programming",
         "core_topic": "Agile-XP",
         "registered_at": "2020-11-09T08:45:14.000Z"
     },
@@ -20697,7 +20765,7 @@
         "Description": "Cloud! Autoscaling! Kubernetes! Etc! In theory, it's easier than ever to scale a service based on variable demand. In practice, it's still hard to take observed metrics, and translate them into quantitative predictions about what will happen to service performance as load changes. Resource limits are often chosen by guesstimation, and teams are likely to find themselves reacting to slowdowns and bottlenecks, rather than anticipating them. Queueing theory can help, by treating large-scale software systems as mathematical models that you can rigorously reason about. But it's not necessarily easy to translate between real-world systems and textbook models. This talk will cover practical techniques for turning operational data into actionable predictions. We'll show how to use the Universal Scalability Law to develop a model of system performance, and how to leverage that model to make more informed capacity planning and architectural decisions. We'll discuss what data to gather in production to better inform its predictions -- for example, why it's important to capture the shape of a latency distribution, and not just a few percentiles. We'll also talk about some of the limitations and pitfalls of performance modelling.\n",
         "Duration": 2700,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:17.000Z",
         "Less 15": 0,
         "Name": "Queueing Theory in Practice: Performance Modeling for the Working Engineer",
         "Published": true,
@@ -20728,8 +20796,10 @@
         "Url": "https://www.youtube.com/watch?v=Hda5tMrLJqc",
         "airtable_createdTime": "2020-01-19T20:40:30.000Z",
         "airtable_id": "rece3oTqtXw1BhZg9",
+        "conference_name": "LISA",
         "core_topic": "Cloud",
-        "registered_at": "2020-01-19T20:40:30.000Z"
+        "registered_at": "2020-01-19T20:40:30.000Z",
+        "year": 2017
     },
     {
         "Blog Url": "https://www.eferro.net/2021/02/good-talkspodcasts-feb-2021-i.html",
@@ -21097,7 +21167,7 @@
         "Description": "Useful talk for anyway working with legacy complex systems. Younes Zeriahi shares practical examples and techniques for refactoring code in a way that accelerates delivery and improves the overall design, using concepts like Mikado, expand and contract, and Chesterton's Fence. He also highlights the importance of a strong test suite and a deep understanding of the domain for effective refactoring.\n",
         "Duration": 2820,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:12.000Z",
         "Less 15": 0,
         "Name": "Living Domain Model: Continuous Refactoring to Accelerate Delivery",
         "Published": true,
@@ -21126,8 +21196,10 @@
         "Url": "https://www.youtube.com/watch?v=7c_kuuVBRoo",
         "airtable_createdTime": "2024-11-24T08:32:45.000Z",
         "airtable_id": "recf65jjPPURcp0jt",
+        "conference_name": "SCBCN",
         "core_topic": "Agile-XP",
-        "registered_at": "2024-11-24T08:32:45.000Z"
+        "registered_at": "2024-11-24T08:32:45.000Z",
+        "year": 24
     },
     {
         "Created": "2021-08-12T07:26:20.000Z",
@@ -21282,7 +21354,7 @@
         "Description": "Interesting presentation about software design and trade-offs and techniques to refactor the code before applying a change. The talk is full of interesting insights. It is also very interesting the Q&A part that is not only focused on the content of the talk.\t\n",
         "Duration": 3480,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:37:21.000Z",
+        "Last Modified": "2025-04-05T17:42:59.000Z",
         "Less 15": 0,
         "Name": "Code for Ukraine #2: Tidy First? Daily Empirical Software Design & Why It Works",
         "Published": true,
@@ -21309,6 +21381,7 @@
         "Url": "https://www.youtube.com/watch?v=VrkRAVX1h4I",
         "airtable_createdTime": "2022-07-25T17:09:43.000Z",
         "airtable_id": "recfMTIUpBbEYLUth",
+        "conference_name": "Code for Ukraine",
         "core_topic": "Software Design",
         "registered_at": "2022-07-25T17:09:43.000Z"
     },
@@ -21447,7 +21520,7 @@
         "Description": "Great description of a Continuous Delivery process.\n",
         "Duration": 1140,
         "Language": "English",
-        "Last Modified": "2025-03-06T08:42:29.000Z",
+        "Last Modified": "2025-04-05T17:43:07.000Z",
         "Less 15": 0,
         "Name": "GOTO 2020 \u2022 Modern Continuous Delivery",
         "Notes": "\n",
@@ -21475,8 +21548,10 @@
         "Url": "https://www.youtube.com/watch?v=lBi85lNmKFw",
         "airtable_createdTime": "2020-08-09T19:34:42.000Z",
         "airtable_id": "recfnyp2AWgJNj0Zp",
+        "conference_name": "GOTO",
         "core_topic": "Continuous Delivery",
-        "registered_at": "2020-08-09T19:34:42.000Z"
+        "registered_at": "2020-08-09T19:34:42.000Z",
+        "year": 2020
     },
     {
         "Blog Url": "https://www.eferro.net/2022/03/good-talkspodcasts-march-2022-i.html",
@@ -21793,7 +21868,7 @@
         "Description": "In this session, Randy explains how they improve the overall flow and the engineering capacity following the ideas in the Unicorn Project (Locality and Simplicity, Focus, Flow, and Joy, Improvement of Daily Work, Psychological Safety, and Customer Focus). It is an excellent talk about generating/improving an engineering culture following lean principles.\n",
         "Duration": 3000,
         "Language": "English",
-        "Last Modified": "2025-01-22T13:13:09.000Z",
+        "Last Modified": "2025-04-05T17:43:09.000Z",
         "Less 15": 0,
         "Name": "Improving Software Flow YOW! 2022",
         "Published": true,
@@ -21830,8 +21905,10 @@
         "Url": "https://www.youtube.com/watch?v=XMyt5S8limQ",
         "airtable_createdTime": "2023-06-18T06:44:04.000Z",
         "airtable_id": "recgMNfjEQbF98kc0",
+        "conference_name": "YOW!",
         "core_topic": "Continuous Delivery",
-        "registered_at": "2023-06-18T06:44:04.000Z"
+        "registered_at": "2023-06-18T06:44:04.000Z",
+        "year": 2022
     },
     {
         "Created": "2021-06-19T11:36:14.000Z",
@@ -21861,7 +21938,7 @@
         "Description": "vJUG KeyNote. A great complementary talk to my talk\u00a0Simplicidad para desarrolladores\u00a0(Spanish)\n",
         "Duration": 3240,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:39:21.000Z",
+        "Last Modified": "2025-04-05T17:43:27.000Z",
         "Less 15": 0,
         "Name": "The Art of Simplicity by Venkat Subramaniam",
         "Published": true,
@@ -21888,8 +21965,10 @@
         "Url": "https://www.youtube.com/watch?v=NMTrlv4nQR8",
         "airtable_createdTime": "2020-01-19T20:43:06.000Z",
         "airtable_id": "recgNHgQpgbXMk5nD",
+        "conference_name": "vJUG",
         "core_topic": "Software Design",
-        "registered_at": "2020-01-19T20:43:06.000Z"
+        "registered_at": "2020-01-19T20:43:06.000Z",
+        "year": 24
     },
     {
         "Created": "2021-06-13T22:02:37.000Z",
@@ -22023,7 +22102,7 @@
         "Description": "Very deep ideas about how to make any kind of huge technical change using small and incremental changes. This part of the core of agile... Vertical slicing to make changes in small (low risk) steps.\n",
         "Duration": 3540,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:42:57.000Z",
         "Less 15": 0,
         "Name": "Big Transitions in Small Steps",
         "Published": true,
@@ -22052,8 +22131,10 @@
         "Url": "https://www.youtube.com/watch?v=44sJLFgzhn4",
         "airtable_createdTime": "2020-01-19T20:39:37.000Z",
         "airtable_id": "recgdsK7S2ExHfRYk",
+        "conference_name": "Patterns & Practices Symposium Online",
         "core_topic": "Agile-XP",
-        "registered_at": "2020-01-19T20:39:37.000Z"
+        "registered_at": "2020-01-19T20:39:37.000Z",
+        "year": 2012
     },
     {
         "Blog Url": "https://www.eferro.net/2018/06/index.html",
@@ -22113,7 +22194,7 @@
         "Description": "Short excellent talk (7:26') that distilled the essence of software development and agile development. Essential. A must.\n",
         "Duration": 420,
         "Language": "English",
-        "Last Modified": "2025-03-06T08:42:29.000Z",
+        "Last Modified": "2025-04-05T17:42:48.000Z",
         "Less 15": 1,
         "Name": "7 minutes, 26 seconds, and the Fundamental Theorem of Agile Software Development",
         "Notes": "\n",
@@ -22143,8 +22224,10 @@
         "Url": "https://www.youtube.com/watch?v=WSes_PexXcA",
         "airtable_createdTime": "2020-08-04T16:11:26.000Z",
         "airtable_id": "recgmP18mKuy7sIVf",
+        "conference_name": "\u00d8redev",
         "core_topic": "Agile",
-        "registered_at": "2020-08-04T16:11:26.000Z"
+        "registered_at": "2020-08-04T16:11:26.000Z",
+        "year": 2013
     },
     {
         "Blog Url": "https://www.eferro.net/2017/05/interesting-technical-talkspodcasts-may.html",
@@ -23004,7 +23087,7 @@
         "Description": "Optimizing for speed, flow, and waste reduction. Lean Software Development\n",
         "Duration": 3600,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:44:22.000Z",
+        "Last Modified": "2025-04-05T17:42:59.000Z",
         "Less 15": 0,
         "Name": "Competing On The Basis Of Speed",
         "Published": true,
@@ -23033,8 +23116,10 @@
         "Url": "https://www.youtube.com/watch?v=ZSdsjpCcpFw",
         "airtable_createdTime": "2020-01-19T20:36:16.000Z",
         "airtable_id": "reciUkxVDCZbYLk2E",
+        "conference_name": "Google Tech Talks",
         "core_topic": "Lean-Agile",
-        "registered_at": "2020-01-19T20:36:16.000Z"
+        "registered_at": "2020-01-19T20:36:16.000Z",
+        "year": 2006
     },
     {
         "Blog Url": "https://www.eferro.net/2025/03/good-talkspodcasts-march-ii.html",
@@ -23392,7 +23477,7 @@
         "Description": "The Nordstrom Innovation Lab team uses a flash build to develop an iPad app for sunglass selection, incorporating real-time customer feedback. The team's agile process allows for rapid adaptation and feature implementation throughout the week, resulting in a functional app.\n",
         "Duration": 360,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:43:27.000Z",
+        "Last Modified": "2025-04-05T17:43:13.000Z",
         "Less 15": 1,
         "Name": "Nordstrom Innovation Lab",
         "Published": true,
@@ -23423,6 +23508,7 @@
         "Url": "https://www.youtube.com/watch?v=2NFH3VC6LNs",
         "airtable_createdTime": "2022-03-02T10:01:43.000Z",
         "airtable_id": "recit6V6ikU8mDXXT",
+        "conference_name": "Nordstrom Innovation Lab",
         "core_topic": "Lean Startup",
         "registered_at": "2022-03-02T10:01:43.000Z"
     },
@@ -24695,7 +24781,7 @@
         "Description": "This talk discusses the cultural change required to adopt a devops mentality. Excellent advice and warnings derived from Randy's experience leading teams at eBay, Google, and KIXEYE.\n",
         "Duration": 1560,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:24.000Z",
         "Less 15": 0,
         "Name": "Ten (Hard-Won) Lessons of the DevOps Transition",
         "Published": true,
@@ -24724,8 +24810,10 @@
         "Url": "https://www.youtube.com/watch?v=6tREbJl8e_Y",
         "airtable_createdTime": "2022-03-13T08:25:50.000Z",
         "airtable_id": "reclOYdhJa384pJOo",
+        "conference_name": "DOES",
         "core_topic": "Devops",
-        "registered_at": "2022-03-13T08:25:50.000Z"
+        "registered_at": "2022-03-13T08:25:50.000Z",
+        "year": 2015
     },
     {
         "Blog Url": "https://www.eferro.net/2015/09/podcaststalks-emptying-queue-ii.html",
@@ -24887,7 +24975,7 @@
         "Description": "In this episode on the Continuous Delivery channel, Dave Farley, who was involved in the creation of BDD, explains his slightly more unusual take on the real value of this approach to creating automated tests. Dave believes that TDD and BDD are at the foundations of a sound software engineering approach to software development and explores these ideas with some real-world examples of good and bad automated tests.\n",
         "Duration": 1080,
         "Language": "English",
-        "Last Modified": "2023-06-18T06:28:48.000Z",
+        "Last Modified": "2025-04-05T17:43:25.000Z",
         "Less 15": 0,
         "Name": "Test Driven Development vs Behavior Driven Development",
         "Published": true,
@@ -24916,7 +25004,9 @@
         "Url": "https://www.youtube.com/watch?v=Bq_oz7nCNUA",
         "airtable_createdTime": "2021-06-13T22:05:50.000Z",
         "airtable_id": "recldyfBXOFYPpLUP",
-        "registered_at": "2021-06-13T22:05:50.000Z"
+        "conference_name": "NATO Software Engineering Conference",
+        "registered_at": "2021-06-13T22:05:50.000Z",
+        "year": 1968
     },
     {
         "Blog Url": "https://www.eferro.net/2019/04/good-talkspodcasts-april-2019-i.html",
@@ -25006,7 +25096,7 @@
         "Description": "Diana Hu shares her advice for being a technical founder at the earliest stages - including topics like how to ship an MVP fast, how to deal with technology choices and technical debt, and how and when to hire an engineering team.\n",
         "Duration": 1680,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:44:59.000Z",
+        "Last Modified": "2025-04-05T17:43:34.000Z",
         "Less 15": 0,
         "Name": "Tips For Technical Startup Founders | Startup School",
         "Published": true,
@@ -25037,6 +25127,7 @@
         "Url": "https://www.youtube.com/watch?v=rP7bpYsfa6Q",
         "airtable_createdTime": "2023-08-26T18:46:07.000Z",
         "airtable_id": "reclsxslEsaXTMpfo",
+        "conference_name": "Startup School",
         "core_topic": "Lean Startup",
         "registered_at": "2023-08-26T18:46:07.000Z"
     },
@@ -25180,7 +25271,7 @@
         "Description": "Practical tips to be a successful Tech Lead. Very interesting for anyone interested in a leadership role for an engineering team.\n\n",
         "Duration": 2100,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:07.000Z",
         "Less 15": 0,
         "Name": "GOTO 2020 \u2022 Talking With Tech Leads",
         "Published": true,
@@ -25209,8 +25300,10 @@
         "Url": "https://www.youtube.com/watch?v=F81W-JcRgXM",
         "airtable_createdTime": "2021-03-07T08:11:42.000Z",
         "airtable_id": "recm2iTQypzn18KBI",
+        "conference_name": "GOTO",
         "core_topic": "Engineering Culture",
-        "registered_at": "2021-03-07T08:11:42.000Z"
+        "registered_at": "2021-03-07T08:11:42.000Z",
+        "year": 2020
     },
     {
         "Blog Url": "https://www.eferro.net/2022/10/good-talkspodcasts-oct-2022-i.html",
@@ -25946,7 +26039,7 @@
         "Description": "Gojko Adzic describes why independent testing should be a thing of the past. He explains how testers engaging with developers and business users create opportunities to accomplish things they cannot do otherwise. \n",
         "Duration": 3120,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:14.000Z",
         "Less 15": 0,
         "Name": "Oredev 2011: Sleeping with the enemy",
         "Published": true,
@@ -25973,8 +26066,10 @@
         "Url": "https://www.youtube.com/watch?v=hIMwTzAAQ-w",
         "airtable_createdTime": "2023-01-08T17:47:32.000Z",
         "airtable_id": "recmxMzHk07eCaRVF",
+        "conference_name": "Oredev",
         "core_topic": "Testing",
-        "registered_at": "2023-01-08T17:47:32.000Z"
+        "registered_at": "2023-01-08T17:47:32.000Z",
+        "year": 2011
     },
     {
         "Created": "2021-10-23T06:48:40.000Z",
@@ -26158,7 +26253,7 @@
         "Description": "In this episode see Continuous Delivery explained by Dave Farley as he explores the fundamentals in a way that helps us to understand the real value in this advanced approach to software development, this engineering-for-software.\n",
         "Duration": 1020,
         "Language": "English",
-        "Last Modified": "2025-03-31T14:56:09.000Z",
+        "Last Modified": "2025-04-05T17:43:01.000Z",
         "Less 15": 0,
         "Name": "Continuous Delivery simply explained",
         "Notes": "Drawing on the information in the YouTube video transcript and our conversation history, here are the most important points of Dave Farley's presentation on applying software engineering principles to data management and machine learning:\n- **Fundamental software engineering principles are crucial for effective data management and machine learning but are often overlooked.** Farley argues that the underlying challenges of working with information are consistent regardless of scale.\n- **Treating data as \"data plus meaning\" is essential.** This perspective allows for the application of established software engineering ideas to data storage, manipulation, and machine learning.\n- **Basic safety measures like backups and reliable data transfer mechanisms are frequently missing in data workflows.** This lack of foundational practices can lead to significant data loss and corruption.\n- **Version control for both data and the code that manipulates it is critically important but often absent.** This hinders reproducibility, collaboration, and the ability to revert mistakes.\n- **Data management tools often lack basic development features like offline testing and version control, which are standard in software development.** This highlights a gap in applying **Technical Practices** to the data domain.\n- **The \"one model to rule them all\" approach for data (e.g., monolithic data warehouses) is flawed, mirroring outdated software designs.** Modern approaches should favor more distributed, targeted models. This relates to **Architecture patterns** and **Microservices**.\n- **Concepts like bounded contexts from Domain-Driven Design (DDD) are relevant to data management for compartmentalizing information.** This supports the idea of subdividing the information space.\n- **Adopting an iterative approach with small, controlled steps is vital for managing complexity and allowing for course correction.** This aligns with **Lean Software Development** and **Agile** principles. This is also related to the concept of **Small Safe Steps (3s)**.\n- **Establishing a \"steel thread\" \u2013 a simple end-to-end implementation \u2013 is a crucial first step when integrating data sources or services.** This provides a solid foundation for incremental development.\n- **Ultimately, the core principles of good software design, such as modularity, testability, deployability, and managing complexity, are directly applicable and necessary for success in data management and machine learning.** Farley emphasizes that the fundamental challenges of working with complex digital information are similar across domains. This reinforces **Software Design** as a core topic of the presentation.\n\n",
@@ -26188,6 +26283,7 @@
         "Url": "https://www.youtube.com/watch?v=qiDIif7JVMo",
         "airtable_createdTime": "2020-12-19T21:31:37.000Z",
         "airtable_id": "recnO35bUXJMOHJxv",
+        "conference_name": "null",
         "core_topic": "Continuous Delivery",
         "registered_at": "2020-12-19T21:31:37.000Z"
     },
@@ -26806,7 +26902,7 @@
         "Description": "Great talk about the human relationships generated during software development. Kent explains these relations and uses them to analyze the development flow, the need for small safe steps, and the tension generated between the people involved. For me, this talk is a must.\n",
         "Duration": 900,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:34.000Z",
         "Less 15": 1,
         "Name": "Tidy First?",
         "Published": true,
@@ -26839,8 +26935,10 @@
         "Url": "https://www.youtube.com/watch?v=BFFY9Zor6zw",
         "airtable_createdTime": "2020-08-31T21:09:25.000Z",
         "airtable_id": "recoFSbmY4hKAytju",
+        "conference_name": "RailsConf",
         "core_topic": "Software Design",
-        "registered_at": "2020-08-31T21:09:25.000Z"
+        "registered_at": "2020-08-31T21:09:25.000Z",
+        "year": 2020
     },
     {
         "Blog Url": "https://www.eferro.net/2023/01/good-talkspodcasts-jan-2023-i.html",
@@ -26889,7 +26987,7 @@
         "Description": "This presentation is about identifying service boundaries in software architecture to avoid coupling and ending up with a \"big ball of mud\", even when using microservices. I recommend this talk because it provides practical advice on how to define services as technical authorities for specific business capabilities, leading to more maintainable and scalable systems.\n",
         "Duration": 2880,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:42:50.000Z",
         "Less 15": 0,
         "Name": "Adam Ralph - Finding your service boundaries \u2014 a practical guide - SCBCN 24",
         "Published": true,
@@ -26918,8 +27016,10 @@
         "Url": "https://www.youtube.com/watch?v=cxLGc5YRFBs",
         "airtable_createdTime": "2024-12-08T20:35:47.000Z",
         "airtable_id": "recoRHsRlGCAsIFus",
+        "conference_name": "SCBCN",
         "core_topic": "Architecture",
-        "registered_at": "2024-12-08T20:35:47.000Z"
+        "registered_at": "2024-12-08T20:35:47.000Z",
+        "year": 24
     },
     {
         "Blog Url": "https://www.eferro.net/2022/09/good-talkspodcasts-sept-2022-i.html",
@@ -27410,7 +27510,7 @@
         "Description": "The best explanation I know about resource efficiency vs flow efficiency, the base of Lean.\n",
         "Duration": 1080,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:28.000Z",
         "Less 15": 0,
         "Name": "The Efficiency Paradox",
         "Published": true,
@@ -27445,6 +27545,7 @@
         "Url": "https://www.youtube.com/watch?v=hGJpez7rvc0",
         "airtable_createdTime": "2020-01-19T20:41:59.000Z",
         "airtable_id": "recp5VZGEHjnR5CHd",
+        "conference_name": "TEDxUme\u00e5",
         "core_topic": "Lean",
         "registered_at": "2020-01-19T20:41:59.000Z"
     },
@@ -28266,7 +28367,7 @@
         "Description": "Interesting talk about how to use the cloud and how it enables innovation.\n",
         "Duration": 2520,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:21.000Z",
         "Less 15": 0,
         "Name": "Speeding Up Innovation",
         "Published": true,
@@ -28299,8 +28400,10 @@
         "Url": "https://www.youtube.com/watch?v=rnygCAvVBj8",
         "airtable_createdTime": "2020-01-19T20:35:41.000Z",
         "airtable_id": "recrGcqVCRBZi01uH",
+        "conference_name": "Craft",
         "core_topic": "Cloud",
-        "registered_at": "2020-01-19T20:35:41.000Z"
+        "registered_at": "2020-01-19T20:35:41.000Z",
+        "year": 2019
     },
     {
         "Blog Url": "https://www.eferro.net/2020/06/good-talkspodcasts-jun-2020-i.html",
@@ -28308,7 +28411,7 @@
         "Description": "A great talk on one of the fundamental techniques for making product discovery and continuous release. Excellent information about how to use them, define experiments, and interpret results.\n",
         "Duration": 960,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:06.000Z",
         "Less 15": 0,
         "Name": "GOTO 2020 \u2022 Advanced Feature Flagging: It's All About The Data",
         "Published": true,
@@ -28339,8 +28442,10 @@
         "Url": "https://www.youtube.com/watch?v=f8XDvtfKWQE",
         "airtable_createdTime": "2020-06-14T11:04:56.000Z",
         "airtable_id": "recrYATbAMaj4fxd7",
+        "conference_name": "GOTO",
         "core_topic": "Continuous Delivery",
-        "registered_at": "2020-06-14T11:04:56.000Z"
+        "registered_at": "2020-06-14T11:04:56.000Z",
+        "year": 2020
     },
     {
         "Blog Url": "https://www.eferro.net/2017/09/good-talkspodcasts-august-2017.html",
@@ -28381,7 +28486,7 @@
         "Description": "Why Product strategy is mostly about saying no. Funny, short, thought-provoking and actionable. Imprescindible.\n",
         "Duration": 420,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:16.000Z",
         "Less 15": 1,
         "Name": "Product Strategy is About Saying No",
         "Published": true,
@@ -28406,8 +28511,10 @@
         "Url": "https://www.youtube.com/watch?v=9AM6QQlgLSQ",
         "airtable_createdTime": "2020-05-17T19:54:35.000Z",
         "airtable_id": "recrZiu65sTc9GX7h",
+        "conference_name": "Business of Software",
         "core_topic": "Product",
-        "registered_at": "2020-05-17T19:54:35.000Z"
+        "registered_at": "2020-05-17T19:54:35.000Z",
+        "year": 2013
     },
     {
         "Blog Url": "https://www.eferro.net/2016/09/interesting-technical-talks.html",
@@ -29091,7 +29198,7 @@
         "Description": "Simplicity--the art of maximizing the amount of work not done--is essential. Great talk on how to focus on the essentials and make simple solutions. \n",
         "Duration": 1320,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:43:51.000Z",
+        "Last Modified": "2025-04-05T17:43:04.000Z",
         "Less 15": 0,
         "Name": "From initial request to software in production in 3 weeks",
         "Published": true,
@@ -29118,8 +29225,10 @@
         "Url": "https://www.youtube.com/watch?v=RjAXEOIfkq8",
         "airtable_createdTime": "2022-06-26T16:01:01.000Z",
         "airtable_id": "recsmPxMNicKXDScZ",
+        "conference_name": "Ada Lovelace Day Conference",
         "core_topic": "Software Design",
-        "registered_at": "2022-06-26T16:01:01.000Z"
+        "registered_at": "2022-06-26T16:01:01.000Z",
+        "year": 2019
     },
     {
         "Blog Url": "https://www.eferro.net/2022/03/good-talkspodcasts-march-2022-ii.html",
@@ -29517,7 +29626,7 @@
         "Description": "The journey of a software developer is a climb through abstraction: algorithms, patterns, architecture.... How do we keep expanding scope, without losing focus on the real work? Join us for a journey into the fourth dimension, where we don't just change code; we design change.\n",
         "Duration": 2880,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:10.000Z",
         "Less 15": 0,
         "Name": "KEYNOTE Designing change",
         "Published": true,
@@ -29553,8 +29662,10 @@
         "Url": "https://www.youtube.com/watch?v=26KypYl5lXA",
         "airtable_createdTime": "2021-07-25T18:53:09.000Z",
         "airtable_id": "rectJPj8uG0MXkyLy",
+        "conference_name": "Code BEAM SF",
         "core_topic": "Architecture",
-        "registered_at": "2021-07-25T18:53:09.000Z"
+        "registered_at": "2021-07-25T18:53:09.000Z",
+        "year": 2020
     },
     {
         "Blog Url": "https://www.eferro.net/2019/06/index.html",
@@ -29662,7 +29773,7 @@
         "Description": "Whether it\u2019s distributing configurations and customer settings, launching instances, or responding to surges in load, having a great control plane is key to the success of any system or service. Come hear about the techniques we use to build stable and scalable control planes at Amazon. We dive deep into the designs that power the most reliable systems at AWS. We share hard-earned operational lessons and explain academic control theory in easy-to-apply patterns and principles that are immediately useful in your own designs.\nA must to learn how to design Control Panels.\n",
         "Duration": 3480,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:42:55.000Z",
         "Less 15": 0,
         "Name": "AWS re:Invent 2018: Close Loops & Opening Minds: How to Take Control of Systems, Big & Small ARC337",
         "Published": true,
@@ -29693,8 +29804,10 @@
         "Url": "https://www.youtube.com/watch?v=O8xLxNje30M",
         "airtable_createdTime": "2020-01-19T20:38:54.000Z",
         "airtable_id": "rectcpSR95TCD5yxR",
+        "conference_name": "AWS re:Invent",
         "core_topic": "Architecture",
-        "registered_at": "2020-01-19T20:38:54.000Z"
+        "registered_at": "2020-01-19T20:38:54.000Z",
+        "year": 2018
     },
     {
         "Blog Url": "https://www.eferro.net/2021/07/good-talkspodcasts-jul-2021-i.html",
@@ -30158,7 +30271,7 @@
         "Description": "another version\u00a0 (NEWCRAFTS Conferences Paris). A very interesting for any developer, product manager o business person. Technics to understand the whole picture for a system and help to define the design from the outside. A good approach for domain modeling.\n",
         "Duration": 3060,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:42:49.000Z",
         "Less 15": 0,
         "Name": "A Case for Outside-In Design",
         "Published": true,
@@ -30189,8 +30302,10 @@
         "Url": "https://www.youtube.com/watch?v=QP6ltkj4Qik",
         "airtable_createdTime": "2020-01-19T20:32:40.000Z",
         "airtable_id": "recuJC0elQtyoMJIS",
+        "conference_name": "JBCNConf",
         "core_topic": "Architecture",
-        "registered_at": "2020-01-19T20:32:40.000Z"
+        "registered_at": "2020-01-19T20:32:40.000Z",
+        "year": 2018
     },
     {
         "Created": "2021-06-19T11:36:27.000Z",
@@ -30220,7 +30335,7 @@
         "Description": "A must. Essential for understanding high performance teams and modern agile development.\n",
         "Duration": 2940,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:36.000Z",
         "Less 15": 0,
         "Name": "What Will The Next 10 Years Of Continuous Delivery Look Like?",
         "Published": true,
@@ -30264,6 +30379,7 @@
         "Url": "https://www.youtube.com/watch?v=FVEWdatM8Uk",
         "airtable_createdTime": "2020-02-09T20:13:02.000Z",
         "airtable_id": "recuMrXQfbSdl8hR1",
+        "conference_name": "null",
         "core_topic": "Continuous Delivery",
         "registered_at": "2020-02-09T20:13:02.000Z"
     },
@@ -30789,7 +30905,7 @@
         "Description": "This YouTube video outlines the 10 essential rules for continuous integration (CI), emphasizing its role as the foundation of a modern deployment pipeline and continuous delivery\n",
         "Duration": 540,
         "Language": "English",
-        "Last Modified": "2025-03-23T11:01:13.000Z",
+        "Last Modified": "2025-04-05T17:43:26.000Z",
         "Less 15": 1,
         "Name": "The 10 COMMANDMENTS Of Continuous Integration (CI)",
         "Notes": "The most important points of the presentation \"The 10 COMMANDMENTS Of Continuous Integration (CI)\" are:\n- **Continuous integration is the first stage of a modern deployment pipeline and is central to continuous delivery**.\n- Continuous integration is a discipline focused on making changes visible and integrating frequently to avoid \"integration hell\".\n- **When done right, continuous integration leads to faster, safer, and more collaborative software development**.\n- The foundational idea of continuous integration is that **there is only one version of the truth**, which is the current version of the software.\n\nThe 10 commandments of continuous integration are:\n1. **Always run commit tests locally before committing**. This aligns with test-driven development.\n2. **Wait for the results of the commit build**. If something breaks, the committer should be the first to know and fix it. Aim to keep continuous integration build times under five minutes.\n3. **Fix or revert failures within 10 minutes**. If a fix isn't possible in that time, revert the change to avoid blocking the pipeline.\n4. **Revert changes when necessary**. If a teammate breaks the build and is unavailable, revert their change.\n5. **Monitor your changes through the pipeline**. Ensure changes pass acceptance, performance, and security tests.\n6. **Treat a broken build as a build scene**. The person who caused the break is responsible for fixing it.\n7. **Commit small, commit often**. Ideally, commit multiple times a day. Small changes are easier to test, debug, and integrate.\n8. **Maintain a fast commit feedback loop**. Aim for feedback on commits within 5 minutes and full pipeline transit within an hour to catch problems early.\n9. **Automate everything**. Automate testing, configuration management, deployment, and build creation to remove manual errors and ensure consistency.\n10. **Take ownership of failures**. The person who introduces a failure is responsible for fixing it, even if it breaks something unexpected.\n\n**Continuous integration requires discipline and accountability**.\n\n",
@@ -30819,6 +30935,7 @@
         "Url": "https://www.youtube.com/watch?v=NcU0oEk6z8Y",
         "airtable_createdTime": "2025-03-09T09:59:37.000Z",
         "airtable_id": "recvZcH5MM0KPtCKZ",
+        "conference_name": "Continuous Delivery",
         "core_topic": "Continuous Delivery",
         "registered_at": "2025-03-09T09:59:37.000Z"
     },
@@ -30828,7 +30945,7 @@
         "Description": "This talk strips away the veil and offers simple, practical guidelines for choosing what to test and how to test it. Finding the right testing balance isn't magic, it's a magic trick; come and learn the secret of writing stable tests that protect your application at the lowest possible cost.\n",
         "Duration": 1920,
         "Language": "English",
-        "Last Modified": "2025-02-09T18:28:34.000Z",
+        "Last Modified": "2025-04-05T17:43:17.000Z",
         "Less 15": 0,
         "Name": "Rails Conf 2013 The Magic Tricks of Testing",
         "Notes": "The presentation focuses on strategies for writing effective unit tests, emphasizing that good tests are not magic, but rather a set of learnable \"magic tricks\". The core idea is to write tests that are **thorough, stable, fast, and few**. Here are the most important points:\n- **Unit tests focus on a single object**: Unit tests should focus on testing one object in isolation, not the interactions between multiple objects, which is the focus of integration tests. The object should be treated like a \"space capsule\" with a clear separation between its inside and outside.\n- **Messages are Key**: The approach to testing is centered around the messages that the object under test receives, sends, or sends to itself. These messages come in two flavors, **queries and commands**. Queries return a value and have no side effects, whereas commands have side effects and do not return a value.\n- **Test incoming query messages by making assertions about what they return**. Focus on the interface not the implementation, so the implementation can be changed without breaking the tests.\n- **Test incoming command messages by making assertions about direct public side effects**. Direct public side effects are the responsibility of the last Ruby class involved.\n- **Do not test messages sent to self (private methods)**. These are implementation details and should not be tested directly. If they need to be tested for development purposes, segregate them and be prepared to delete them.\n- **Do not test outgoing query messages**. These messages have no side effects and are therefore invisible to the rest of the app. Testing them is redundant.\n- **Test outgoing command messages by setting expectations using mocks**. This ensures that the message is sent without depending on all the objects and messages between the object and the distant side effect.\n- **Mocks are essential but must be kept in sync with the real objects**. Mocks are test doubles that play the role of some object in your real app. It is the programmer's job to ensure that the doubles keep the promise that they're going to implement a common API.\n- **Minimalism in Testing**: Write the fewest tests possible to achieve thorough coverage. Every unnecessary test adds cost, and the goal is to find the simplicity that lives at the heart of complexity.\nThe presenter also notes that while these rules are useful, they can be broken when it will save money. The important thing is to understand the rules and then break them consciously, not through ignorance.\n",
@@ -30860,8 +30977,10 @@
         "Url": "https://www.youtube.com/watch?v=URSWYvyc42M",
         "airtable_createdTime": "2021-09-05T15:41:49.000Z",
         "airtable_id": "recvcszbn9MUJPKJA",
+        "conference_name": "Rails Conf",
         "core_topic": "Testing",
-        "registered_at": "2021-09-05T15:41:49.000Z"
+        "registered_at": "2021-09-05T15:41:49.000Z",
+        "year": 2013
     },
     {
         "Blog Url": "https://www.eferro.net/2020/01/good-talkspodcasts-december-2019.html",
@@ -30982,7 +31101,7 @@
         "Description": "A must-see talk. Dave Farley describes 8 common mistakes that junior developers often make and offers his advice on how to avoid them. Whatever your approach to software engineering and software development, whether you are practicing Continuous Delivery, DevOps, or something else, we think that you may find some helpful ideas in this video.\n",
         "Duration": 1080,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:42:54.000Z",
         "Less 15": 0,
         "Name": "Avoid These Common Mistakes Junior Developers Make",
         "Published": true,
@@ -31011,8 +31130,10 @@
         "Url": "https://www.youtube.com/watch?v=JL1lMPxR7KQ",
         "airtable_createdTime": "2021-12-25T07:33:40.000Z",
         "airtable_id": "recw6EE8eDR1c0AiI",
+        "conference_name": "GOTO",
         "core_topic": "Engineering Culture",
-        "registered_at": "2021-12-25T07:33:40.000Z"
+        "registered_at": "2021-12-25T07:33:40.000Z",
+        "year": 2021
     },
     {
         "Created": "2021-06-19T11:36:26.000Z",
@@ -31602,7 +31723,7 @@
         "Description": "This talk\u00a0is not only very funny, it is also a great description of the problems generated by a \"classic\" operations mindset\u00a0and how to change to a modern\u00a0approach / devops.\n",
         "Duration": 1800,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:14.000Z",
         "Less 15": 0,
         "Name": "Operations: The Last Mile",
         "Published": true,
@@ -31633,8 +31754,10 @@
         "Url": "https://www.youtube.com/watch?v=1zUtBLZ4Lus",
         "airtable_createdTime": "2020-01-19T20:34:02.000Z",
         "airtable_id": "recxDYMICs8pwobsD",
+        "conference_name": "DevOps Enterprise Summit",
         "core_topic": "Operations",
-        "registered_at": "2020-01-19T20:34:02.000Z"
+        "registered_at": "2020-01-19T20:34:02.000Z",
+        "year": 2018
     },
     {
         "Blog Url": "https://www.eferro.net/2018/11/good-talkspodcasts-nov-2018-i.html",
@@ -31742,7 +31865,7 @@
         "Description": "Fun and interesting talk about the context and process for making technical decisions. Very good ideas. The talk is a few years old, but the ideas are still very valid. Charity talks about how to decide to introduce new technologies, the cost of maintaining them, the importance of migrations, failure modes, etc.\n",
         "Duration": 2460,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:42:50.000Z",
         "Less 15": 0,
         "Name": "A Young Lady's Illustrated Primer to Technical Decision-Making",
         "Published": true,
@@ -31769,8 +31892,10 @@
         "Url": "https://www.youtube.com/watch?v=PSIPhVjWBO0",
         "airtable_createdTime": "2024-01-14T10:43:16.000Z",
         "airtable_id": "recxOMnJ8i6GxhPbc",
+        "conference_name": "SREcon",
         "core_topic": "Engineering Culture",
-        "registered_at": "2024-01-14T10:43:16.000Z"
+        "registered_at": "2024-01-14T10:43:16.000Z",
+        "year": 2016
     },
     {
         "Blog Url": "https://www.eferro.net/2021/10/good-talkspodcasts-october-2021-i.html",
@@ -32077,7 +32202,7 @@
         "Description": "A great and concise description of SLI/SLOs and how to use them to improve our lives.\n",
         "Duration": 600,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:19.000Z",
         "Less 15": 1,
         "Name": "Reduce Alerting Noise with One Weird Trick",
         "Published": true,
@@ -32104,8 +32229,10 @@
         "Url": "https://www.youtube.com/watch?v=DOXk2xoAUkw",
         "airtable_createdTime": "2021-08-14T10:10:46.000Z",
         "airtable_id": "recy1ap1dYgcQG19U",
+        "conference_name": "PD Summit",
         "core_topic": "Operations",
-        "registered_at": "2021-08-14T10:10:46.000Z"
+        "registered_at": "2021-08-14T10:10:46.000Z",
+        "year": 2021
     },
     {
         "Created": "2021-08-12T13:07:55.000Z",
@@ -32585,7 +32712,7 @@
         "Description": "What is technical debt? What is not technical debt? Why should we care? What is the cost of misunderstanding? What do we do about it? Doc discusses the origins of the metaphor, what it means today, and how we properly identify and manage technical debt.\n",
         "Duration": 3180,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:33.000Z",
         "Less 15": 0,
         "Name": "The Technical Debt Trap",
         "Published": true,
@@ -32612,6 +32739,7 @@
         "Url": "https://www.youtube.com/watch?v=SfWCRl75Kas",
         "airtable_createdTime": "2021-04-24T19:04:21.000Z",
         "airtable_id": "recz6vJxlvcALhp7D",
+        "conference_name": "NDC Conferences",
         "core_topic": "Engineering Culture",
         "registered_at": "2021-04-24T19:04:21.000Z"
     },
@@ -32676,7 +32804,7 @@
         "Description": "This presentation explains how Continuous Delivery is very beneficial for excellent product management and growing a customer-focus team. CD enables closing the loop for each product increment, getting feedback, making decisions, and punting the focus on the impact generated (and not creating more and more features).\n",
         "Duration": 2400,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:15.000Z",
         "Less 15": 0,
         "Name": "Product Management for Continuous Delivery",
         "Published": true,
@@ -32705,8 +32833,10 @@
         "Url": "https://www.youtube.com/watch?v=39u-WHz-9Cg",
         "airtable_createdTime": "2020-08-31T21:07:31.000Z",
         "airtable_id": "reczID4D56geuaClD",
+        "conference_name": "FlowCon France",
         "core_topic": "Continuous Delivery",
-        "registered_at": "2020-08-31T21:07:31.000Z"
+        "registered_at": "2020-08-31T21:07:31.000Z",
+        "year": 2019
     },
     {
         "Blog Url": "https://www.eferro.net/2017/01/interesting-talks-i-saw-these-days-work.html",
@@ -32790,7 +32920,7 @@
         "Description": "Another great talk about OO Design from Sandi Metz.\n",
         "Duration": 2100,
         "Language": "English",
-        "Last Modified": "2025-02-10T12:17:02.000Z",
+        "Last Modified": "2025-04-05T17:43:18.000Z",
         "Less 15": 0,
         "Name": "RailsConf 2015 - Nothing is Something",
         "Notes": "The key points of the presentation, according to the provided transcript, are:\n- **Message Sending is Fundamental**: In Ruby, everything is about sending messages to objects. Even seemingly basic operations like `1 + 1` are syntactic sugar for message sending. This is a core principle of object-oriented programming.\n- **Avoid Special Syntax**: The speaker argues against the use of special syntax for boolean logic (like `if` statements) in object-oriented languages. Instead, boolean behavior can be implemented using message sending to true and false objects. This approach promotes a more consistent object-oriented style.\n- **Conditions Lead to Problems**: Conditions like `if` statements can make code more complex and difficult to maintain, often leading to duplicated code and \"shotgun surgery\" when changes are needed.\n- **Null Object Pattern**: The **null object pattern** is introduced as a way to avoid conditional logic when dealing with potentially absent objects (like `nil`). Instead of checking for `nil`, a \"null object\" can be used to respond to messages without causing errors. This is described as an \"active nothing\".\n- **Inheritance is for Specialization, not Sharing**: The presentation highlights that inheritance is primarily for specialization and not for sharing code. Overusing inheritance can lead to complex and hard-to-maintain hierarchies.\n- **Composition over Inheritance**: When faced with the need to reuse code or implement variations, the speaker advocates for using composition and dependency injection over inheritance. This approach involves creating separate objects to handle different roles or behaviors and then injecting these objects into the main object.\n- **Isolate the Thing that Varies**: To use composition effectively, you have to identify what parts of your system are likely to change, name that concept, and create objects that can be injected to handle that variability. This can lead to more flexible, maintainable code.\n- **Abstractions are Everywhere**: The speaker notes that abstractions are not just about modeling real-world objects, but also apply to fundamental things like numbers and booleans. They also highlight that \"nothing\" (like zero) can be a powerful abstraction that reveals opportunities for more flexible programming.\n- **\"Nothing\" is Something:** The presentation concludes with the idea that in object-oriented programming, seemingly absent or \"nothing\" concepts can be represented by objects and should be treated as such. This way of thinking can lead to simpler and more elegant solutions.\n\n",
@@ -32820,8 +32950,10 @@
         "Url": "https://www.youtube.com/watch?v=OMPfEXIlTVE",
         "airtable_createdTime": "2020-01-19T20:32:30.000Z",
         "airtable_id": "reczOXoBpcxfVfN2x",
+        "conference_name": "RailsConf",
         "core_topic": "Software Design",
-        "registered_at": "2020-01-19T20:32:30.000Z"
+        "registered_at": "2020-01-19T20:32:30.000Z",
+        "year": 2015
     },
     {
         "Blog Url": "https://www.eferro.net/2020/03/good-talkspodcasts-march-2020-ii.html",
@@ -32901,7 +33033,7 @@
         "Description": "Classic presentation by Alan Kay talks about the nature of software, the design that systems should have, scalability, and how, to some extent, we could compare it to how biological systems work. Many of the ideas behind Smalltalk can be identified in the talk.. Inspirational.\n",
         "Duration": 3840,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:42:52.000Z",
         "Less 15": 0,
         "Name": "Alan Kay at OOPSLA 1997 - The computer revolution hasnt happened yet",
         "Published": true,
@@ -32936,8 +33068,10 @@
         "Url": "https://www.youtube.com/watch?v=oKg1hTOQXoY",
         "airtable_createdTime": "2024-08-18T07:55:26.000Z",
         "airtable_id": "reczYEOBiA6KzE1Gv",
+        "conference_name": "OOPSLA",
         "core_topic": "Engineering Culture",
-        "registered_at": "2024-08-18T07:55:26.000Z"
+        "registered_at": "2024-08-18T07:55:26.000Z",
+        "year": 1997
     },
     {
         "Blog Url": "https://www.eferro.net/2020/09/good-talkspodcasts-sept-2020-i.html",
@@ -32945,7 +33079,7 @@
         "Description": "A good example of what Modern Agile looks like. Customer-focused team, with direct contact with the customer and without a proxy. Very interesting. It reminds me a lot of the way I used to work at [@AleaSolucionesS](https://twitter.com/AleaSolucionesS) and at TheMotion ([@HoneyBadgersDev](https://twitter.com/HoneyBadgersDev)).\n",
         "Duration": 3300,
         "Language": "English",
-        "Last Modified": "2025-03-06T08:42:29.000Z",
+        "Last Modified": "2025-04-05T17:42:51.000Z",
         "Less 15": 0,
         "Name": "Agile as if you meant it",
         "Notes": "\n",
@@ -32979,8 +33113,10 @@
         "Url": "https://www.youtube.com/watch?v=YibNG8xx15c",
         "airtable_createdTime": "2020-08-31T21:03:01.000Z",
         "airtable_id": "reczZxGtIAoCz9tsI",
+        "conference_name": "FlowCon France",
         "core_topic": "Agile-XP",
-        "registered_at": "2020-08-31T21:03:01.000Z"
+        "registered_at": "2020-08-31T21:03:01.000Z",
+        "year": 2019
     },
     {
         "Blog Url": "https://www.eferro.net/2022/06/good-talkspodcasts-jun-2022-i.html",
@@ -33107,7 +33243,7 @@
         "Description": "Since the Continuous Delivery book came out in 2010, it\u2019s gone from being a controversial idea to a commonplace\u2026 until you consider that many people who say they are doing it aren\u2019t really, and there are still plenty of places that consider it crazy talk. In this session Jez will present some of the highlights and lowlights of the past six years listening to people explain why continuous delivery won\u2019t work, and what he learned in the process.\n",
         "Duration": 2940,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-05T17:43:00.000Z",
         "Less 15": 0,
         "Name": "Continuous Delivery - Sounds Great But It Won't Work Here",
         "Published": true,
@@ -33135,7 +33271,8 @@
         "airtable_createdTime": "2022-07-25T18:02:56.000Z",
         "airtable_id": "reczwtffHNw0fqzfl",
         "core_topic": "Continuous Delivery",
-        "registered_at": "2022-07-25T18:02:56.000Z"
+        "registered_at": "2022-07-25T18:02:56.000Z",
+        "year": 2010
     },
     {
         "Created": "2021-10-23T06:48:40.000Z",
