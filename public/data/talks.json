@@ -382,47 +382,6 @@
         "year": 2017
     },
     {
-        "Blog Url": "https://www.eferro.net/2023/10/good-talkspodcasts-oct-2023-i.html",
-        "Created": "2023-10-15T18:46:04.000Z",
-        "Description": "This is a 12-minute redux of the 1-hour talk by Rich Hickey, for really impatient people. Original: https://www.youtube.com/watch?v=SxdOUGdseq4\n",
-        "Duration": 720,
-        "Language": "English",
-        "Last Modified": "2025-04-05T20:31:44.000Z",
-        "Less 15": 1,
-        "Name": "\"Simple Made Easy\" (12-minute redux) by Rich Hickey (2011)",
-        "Published": true,
-        "Rating": 5,
-        "Resource": "\"Simple Made Easy\" (12-minute redux) by Rich Hickey (2011) - https://www.youtube.com/watch?v=F87PtAoJNtg",
-        "Resource type": "talk",
-        "Speaker WomenInTech": [
-            null
-        ],
-        "Speakers": [
-            "rec4qkTbXMg9Pt2HC"
-        ],
-        "Speakers_Names": [
-            "Rich Hickey"
-        ],
-        "Topics": [
-            "recm3GCPgEVSDmeVI",
-            "recQ4hio93eTgzFTS",
-            "rec6JMQpL2LSjoP2E",
-            "recgcJy2O48j2V5SW"
-        ],
-        "Topics_Names": [
-            "Software Design",
-            "Architecture",
-            "Inspirational",
-            "Scalability"
-        ],
-        "Url": "https://www.youtube.com/watch?v=F87PtAoJNtg",
-        "airtable_createdTime": "2023-10-15T18:46:04.000Z",
-        "airtable_id": "rec0Zn0xNpLa4HaZn",
-        "core_topic": "Architecture",
-        "registered_at": "2023-10-15T18:46:04.000Z",
-        "year": 2011
-    },
-    {
         "Blog Url": "https://www.eferro.net/2024/11/good-talkspodcasts-nov-2024-i.html",
         "Created": "2024-11-24T08:50:04.000Z",
         "Description": "This talk explores key concepts and mathematical principles behind achieving flow in processes, like product development, drawing parallels to flow dynamics in traffic and internet systems. Don Reinertsen explains the economics of queuing, batch size reduction, and fast feedback loops, highlighting their impact on cycle time and overall process efficiency.\n",
@@ -787,7 +746,7 @@
         "Created": "2024-06-27T12:04:43.000Z",
         "Description": "Inspirational. These two minutes summarize very well why it is important to be fast but maintain control in order to be truly agile.\n",
         "Duration": 120,
-        "Last Modified": "2024-08-18T09:00:31.000Z",
+        "Last Modified": "2025-04-06T08:39:45.000Z",
         "Less 15": 1,
         "Name": "Be Quick But Don't Hurry ",
         "Published": true,
@@ -816,7 +775,8 @@
         "Url": "https://www.youtube.com/watch?v=_pwSyzNwMHM",
         "airtable_createdTime": "2024-06-27T12:04:43.000Z",
         "airtable_id": "rec1V4GfD9UbYT2V4",
-        "registered_at": "2024-06-27T12:04:43.000Z"
+        "registered_at": "2024-06-27T12:04:43.000Z",
+        "year": 2019
     },
     {
         "Blog Url": "https://www.eferro.net/2017/01/interesting-talks-i-saw-these-days-work.html",
@@ -1916,7 +1876,7 @@
         "Description": "This presentation challenges the idea of blindly following software development practices like SOLID and Scrum, urging a re-evaluation of their continued relevance in light of changing contexts and technology, advocating for a more fluid, context-driven approach that prioritizes outcomes, learning, and continuous improvement\n",
         "Duration": 2280,
         "Language": "English",
-        "Last Modified": "2025-02-09T18:51:43.000Z",
+        "Last Modified": "2025-04-06T08:41:32.000Z",
         "Less 15": 0,
         "Name": "The Most Dangerous Phrase: SOLID, Scrum And Other Antiques",
         "Notes": "The presentation discusses why people and organizations cling to outdated practices, using SOLID principles and Scrum as examples, and how to evaluate whether a practice is still useful over time. Here are the most important points:\n- **Habit and \"We've Always Done it That Way\":** The primary reason people and organizations continue with existing practices is habit. The phrase \"we've always done it that way\" is a dangerous one that prevents critical thinking and change.\n- **The Problem with \"Obvious\" Practices:** Many practices are followed because they are considered obviously right, based on received wisdom or how people were taught, without considering whether they still make sense.\n- **The Four Questions to Evaluate Technology**: Drawing on the work of Eli Goldratt, the presenter introduces four questions that should be asked when adopting new technology: what is the power of the technology, what limitation does it diminish, what rules enabled us to manage this limitation, and what new rules do we need to introduce to exploit it. These questions can be applied not only to technology but to practices.\n- **The Need to Re-evaluate Practices Over Time:** Practices should be re-evaluated over time to see if they are still valid. The key questions here are: what has changed since we adopted it, how has the limitation changed over time, and what should we be doing instead.\n- **Context is Crucial:** Understanding the context in which a practice was developed is crucial. This involves talking to \"old people\" who were there at the time to build up a profile of what was going on, and understanding that there are multiple perspectives.\n- **SOLID Principles as an Example of Outdated Advice:** The presenter argues that the SOLID principles, which were relevant when development teams were more siloed, are less relevant now that teams are cross-functional. The single responsibility principle (SRP), for example, suggests separating code based on who is working on it (e.g., DBA vs. accountant), rather than keeping code that changes together in the same place. The presenter suggests that code should be kept together while it fits in a programmer's head, and separated only when it becomes too complex.\n- **Separation of Concerns:** The idea of \"separation of concerns\" is often misunderstood as a way to arrange code (like layered architecture) but was originally conceived as separating concerns such as correctness and efficiency, and involves considering multiple concerns simultaneously.\n- **Scrum's Origins and Limitations:** Scrum emerged in the early 90s to address the problem of slow, large projects, with the idea of shorter sprints and more frequent feedback. While it was revolutionary for its time, it is now optimized for problems that no longer exist, because of advancements in technology.\n- **Technology Changes:** Since the introduction of Scrum, the technology landscape has changed dramatically, with faster languages, continuous delivery, and cloud-based provisioning, enabling much faster iteration and deployment cycles.\n- **Scrum can Hinder Fast Flow:** Scrum is optimized for moving from years to months and weeks, but now, the pace of software development has moved to minutes. As a result, sticking to scrum can mean that competitors are able to move faster.\n- **Alternative Planning Cadences:** The presenter suggests two planning cadences: quarterly planning with OKRs and immediate changes when needed. This includes doing a \"big room planning\" to let teams self-select into work.\n- **Dynamic Teams:** Teams should be fluid, changing as needed based on demand, instead of being fixed and having to work around limitations. The focus should be on bringing people to the work, rather than making the work fit the team.\n- **Separate Deployment from Release:** Deployment should be a technical decision, and releases a commercial one. Deployment can be done continuously, and releases can be timed to fit business needs.\n- **Daily Steering:** Daily steering should be about what is left to do, not about what has already been done. It should be forward-looking, focusing on progress and new learnings.\n- **Structural Inertia and Cognitive Biases:** The persistence of outdated practices is due to structural inertia and cognitive biases such as commitment bias and consistency bias.\n- **Bounded vs. Centered Communities:** Bounded communities are defined by rigid rules (like certifications) and struggle to adapt, whereas centered communities are defined by values that are constantly being communicated. Centered communities are more resilient because people are either closer or further from a set of values, but never outside of the community.\n- **Think For Yourself:** It's essential to think for yourself, look past dogma, challenge the status quo, and assess your own tools and practices. Talk to old people, but remember that they have different perspectives, and no single source should be believed without further investigation.\n- **The Most Dangerous Phrase:** The most dangerous phrase is \"we've always done it that way\".\nThe talk argues for a critical approach to practices and encourages revisiting them in light of changing contexts and technology. The presenter advocates for a more fluid, context-driven approach to software development, and emphasizes the importance of focusing on outcomes, learning, and continuous improvement.\n",
@@ -1948,8 +1908,10 @@
         "Url": "https://www.youtube.com/watch?v=L2dh1bqrLC4",
         "airtable_createdTime": "2025-02-09T09:53:04.000Z",
         "airtable_id": "rec42snEPpunYVroW",
+        "conference_name": "Lean Agile Brighton",
         "core_topic": "Engineering Culture",
-        "registered_at": "2025-02-09T09:53:04.000Z"
+        "registered_at": "2025-02-09T09:53:04.000Z",
+        "year": 2024
     },
     {
         "Blog Url": "https://www.eferro.net/2018/03/interesting-talkspodcasts-2018-march-i.html",
@@ -2554,7 +2516,7 @@
         "Description": "Short example showing how powerful the TPS/Lean ideas are. Kaizen, Flow, remove muda, etc.\n",
         "Duration": 360,
         "Language": "English",
-        "Last Modified": "2025-03-31T09:52:30.000Z",
+        "Last Modified": "2025-04-06T08:14:02.000Z",
         "Less 15": 1,
         "Name": "Meals Per Hour",
         "Published": true,
@@ -2580,7 +2542,8 @@
         "airtable_createdTime": "2022-11-10T17:33:11.000Z",
         "airtable_id": "rec5LT5PqgFMp2cTS",
         "core_topic": "Lean-Agile",
-        "registered_at": "2022-11-10T17:33:11.000Z"
+        "registered_at": "2022-11-10T17:33:11.000Z",
+        "year": 2013
     },
     {
         "Blog Url": "https://www.eferro.net/2021/09/good-talkspodcasts-september-2021-i.html",
@@ -4893,7 +4856,7 @@
         "Description": "Interesting conversation about high performance engineering organizations and how the pace of production is the heartbeat of the organization. They also discuss some very interesting ideas about how great teams generate great engineers, rather than the other way around.\n",
         "Duration": 3060,
         "Language": "English",
-        "Last Modified": "2025-04-05T19:46:03.000Z",
+        "Last Modified": "2025-04-06T07:38:57.000Z",
         "Less 15": 0,
         "Name": "Honeycomb's secret to high-performing teams",
         "Published": true,
@@ -4924,7 +4887,8 @@
         "Url": "https://changelog.com/shipit/11",
         "airtable_createdTime": "2021-09-05T15:44:24.000Z",
         "airtable_id": "recA9PHGexVuNUiRK",
-        "registered_at": "2021-09-05T15:44:24.000Z"
+        "registered_at": "2021-09-05T15:44:24.000Z",
+        "year": 2021
     },
     {
         "Blog Url": "https://www.eferro.net/2018/05/good-talkspodcasts-april-2018.html",
@@ -5032,7 +4996,7 @@
         "Created": "2024-03-30T16:50:29.000Z",
         "Description": "Great episode with Chad Fowler. Interesting ideas about design, architecture, software design, microservices, and the state of the industry.\n",
         "Duration": 3480,
-        "Last Modified": "2024-03-30T21:11:55.000Z",
+        "Last Modified": "2025-04-06T08:30:25.000Z",
         "Less 15": 0,
         "Name": "Maintainable Ep 161: How Small Can We Make This Problem",
         "Published": true,
@@ -5063,7 +5027,8 @@
         "Url": "https://maintainable.fm/episodes/chad-fowler-how-small-can-we-make-this-problem",
         "airtable_createdTime": "2024-03-30T16:50:29.000Z",
         "airtable_id": "recAPAmVnzrSTPDsl",
-        "registered_at": "2024-03-30T16:50:29.000Z"
+        "registered_at": "2024-03-30T16:50:29.000Z",
+        "year": 2024
     },
     {
         "Blog Url": "https://www.eferro.net/2016/04/index.html",
@@ -5650,7 +5615,7 @@
         "Description": "Great interview with great ideas (mocking-free testing, scalability of horizontal organization, FAST framework, code evolution with evolutionary design...). Very worthwhile.\n",
         "Duration": 2880,
         "Language": "English",
-        "Last Modified": "2023-06-18T06:28:48.000Z",
+        "Last Modified": "2025-04-06T08:06:36.000Z",
         "Less 15": 0,
         "Name": "Scaling Organizations and Design with James Shore",
         "Published": true,
@@ -5681,7 +5646,8 @@
         "Url": "https://www.youtube.com/watch?v=duF4e3CwW9k",
         "airtable_createdTime": "2022-06-12T08:06:27.000Z",
         "airtable_id": "recBWtd51w0wIIcKB",
-        "registered_at": "2022-06-12T08:06:27.000Z"
+        "registered_at": "2022-06-12T08:06:27.000Z",
+        "year": 2022
     },
     {
         "Blog Url": "https://www.eferro.net/2015/01/index.html",
@@ -5725,7 +5691,7 @@
         "Description": "A very interesting interview to Marty Cagan. Very good insights about empowered teams, product management, and team organization.\n",
         "Duration": 3540,
         "Language": "English",
-        "Last Modified": "2023-06-18T06:28:48.000Z",
+        "Last Modified": "2025-04-06T08:12:21.000Z",
         "Less 15": 0,
         "Name": "The nature of product",
         "Published": true,
@@ -5752,7 +5718,8 @@
         "Url": "https://www.lennysnewsletter.com/p/the-nature-of-product-marty-cagan",
         "airtable_createdTime": "2022-10-16T16:45:52.000Z",
         "airtable_id": "recBervSRt0ntmH2V",
-        "registered_at": "2022-10-16T16:45:52.000Z"
+        "registered_at": "2022-10-16T16:45:52.000Z",
+        "year": 2022
     },
     {
         "Blog Url": "https://www.eferro.net/2020/06/good-talkspodcasts-jun-2020-i.html",
@@ -5798,7 +5765,7 @@
         "Description": "Pure wisdom on why working in small, safe steps is the most efficient way to work in software product development when we have environments of high uncertainty (which is almost always).\n",
         "Duration": 4680,
         "Language": "English",
-        "Last Modified": "2025-03-31T14:48:52.000Z",
+        "Last Modified": "2025-04-06T08:29:59.000Z",
         "Less 15": 0,
         "Name": "GeePaw Hill on Incremental Software Delivery",
         "Notes": "Drawing on the information in the YouTube video transcript, here are the most important points of GeePaw Hill's presentation on Incremental Software Delivery:\n\n\\*\u00a0\u00a0\\*\\*The core argument of the presentation is that you should probably take many more much smaller steps when making changes, particularly when your app is already shipping.\\*\\* This is presented as a default and powerful piece of advice.\n\n\\*\u00a0\u00a0Hill defines a \\*\\*\"step\" as a gap in time between two points of \"readiness\".\\*\\* At the \"before\" point, you are ready; during the step, you are unready; and at the \"after\" point, you are ready again.\n\n\\*\u00a0\u00a0\\*\\*\"Ready\" means that at any given point, you have source code from which you can regenerate your running app without concerns.\\*\\* This definition explicitly excludes the requirement that the new program be better than the previous one and also ignores the cost of deployment. The focus is solely on whether deployment would cause a problem.\n\n\\*\u00a0\u00a0The traditional approach often involves \\*\\*very large steps\\*\\*, potentially lasting weeks or even a month (e.g., 30-day stories).\n\n\\*\u00a0\u00a0\\*\\*Hill argues for a better approach involving many more much smaller changes.\\*\\* He contends that the trade is deeply invested in the idea that more value comes faster from fewer and larger steps, but \\*\\*\"that's not true\".\\*\\*\n\n\\*\u00a0\u00a0The theory of taking fewer and larger steps has \\*\\*two significant problems\\*\\*:\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*It does not take into account non-linearity.\\*\\* Longer steps don't just get bigger in effort linearly; they get \"bigger bigger\" due to factors like decreased certainty, reduced human mental bandwidth, and increased perturbation.\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*It does not take into account the inherent value in each step.\\*\\* This value is realized multiple times with smaller steps, whereas it's only captured once in a large step.\n\n\\*\u00a0\u00a0\\*\\*There are three aspects to the inherent value of smaller steps:\\*\\*\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*Interruptability:\\*\\* Being in a \"ready\" state more frequently allows for easier interruption and resumption of work without significant loss of context.\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*Steerability:\\*\\* Frequent \"ready\" states enable better responsiveness to changing priorities, market situations, or urgent issues (\"brushfires\").\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*\"Juice\" (Dopamine):\\*\\* Completing smaller steps more often provides regular positive reinforcement and a sense of accomplishment.\n\n\\*\u00a0\u00a0When faced with a big story, the first step is to \\*\\*\"turn the ton of fan out of it\"\\*\\* by removing unnecessary features or functionalities that are not immediately required for the core value. It's also crucial to shift the mindset from requiring improvement with every step to simply ensuring the step doesn't make the user's life worse.\n\n\\*\u00a0\u00a0Articulating a clear definition of \"done\" can help in breaking down stories into smaller, manageable increments.\n\n\\*\u00a0\u00a0Techniques like releasing new, unused code (e.g., CSS classes or non-accessible code) immediately can further enable smaller, more frequent deployments. This aligns with the principle of \\*\\*\"open for extension closed for modification\"\\*\\*.\n\n\\*\u00a0\u00a0The prevailing pedagogy that focuses on greenfield development is misaligned with the reality that most developers work in brownfield environments, emphasizing the need for better teaching of techniques for changing existing code. Keeping methods ridiculously short (e.g., no more than five lines) can naturally lead to smaller, more manageable changes.\n\n\\*\u00a0\u00a0The presenter advocates for a \\*\\*\"human local oriented taken and iterative\"\\*\\* approach to change, applicable not just to code but also to individuals, teams, and organizations.\n\n\\*\u00a0\u00a0The core message is summarized by the analogies: \\*\\*\"that's too much rice\" and \"mmm that's not enough garlic\"\\*\\* for software development, which translates to \"you should probably take many more much smaller steps then you're taking now\".\n\n\\*\u00a0\u00a0Overcoming resistance to taking smaller steps often involves \\*\\*creating experiences\\*\\* that demonstrate the benefits, rather than relying solely on arguments.\n",
@@ -5829,7 +5796,8 @@
         "airtable_createdTime": "2024-01-14T19:04:38.000Z",
         "airtable_id": "recBgNNTaB15VLMCw",
         "core_topic": "Agile-XP",
-        "registered_at": "2024-01-14T19:04:38.000Z"
+        "registered_at": "2024-01-14T19:04:38.000Z",
+        "year": 2020
     },
     {
         "Blog Url": "https://www.eferro.net/2022/10/good-talkspodcasts-oct-2022-i.html",
@@ -5877,7 +5845,7 @@
         "Description": "Integrated tests are a scam. You\u2019re probably writing 2-5% of the integrated tests you need to test thoroughly. You\u2019re probably duplicating unit tests all over the place. Your integrated tests probably duplicate each other all over the place. When an integrated test fails, who knows what\u2019s broken? Integrated tests probably do you more harm than good. Learn the two-pronged attack that solves the problem: collaboration tests and contract tests.\n",
         "Duration": 3840,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:37:36.000Z",
+        "Last Modified": "2025-04-06T08:13:06.000Z",
         "Less 15": 0,
         "Name": "Integrated Tests Are A Scam",
         "Published": true,
@@ -5904,8 +5872,10 @@
         "Url": "https://vimeo.com/80533536",
         "airtable_createdTime": "2022-10-16T17:04:13.000Z",
         "airtable_id": "recBhYq8BJVoKYAu4",
+        "conference_name": "DevConFu",
         "core_topic": "Testing",
-        "registered_at": "2022-10-16T17:04:13.000Z"
+        "registered_at": "2022-10-16T17:04:13.000Z",
+        "year": 2013
     },
     {
         "Blog Url": "http://www.eferro.net/2020/03/good-talkspodcasts-march-2020-i.html",
@@ -7687,9 +7657,10 @@
         "Description": "This was an excellent talk, full of insights that prompted reflection. In this talk Jessica looks at how the shared mental models created while mob programming work throughout the team even when they are not actively mobbing. She also explores the other practices she\u2019s found complementary in creating a high functioning team and how looking at your contribution from a generative (helping other create) vs a productive (what I created, myself) frame can lead to a happier, better and more productive team.\n",
         "Duration": 1980,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-06T08:09:54.000Z",
         "Less 15": 0,
         "Name": "Shared Mental Models Part 1",
+        "Notes": "\n",
         "Published": true,
         "Rating": 5,
         "Resource": "Shared Mental Models Part 1 - https://www.youtube.com/watch?v=cAfdhSUZG4g",
@@ -7716,8 +7687,10 @@
         "Url": "https://www.youtube.com/watch?v=cAfdhSUZG4g",
         "airtable_createdTime": "2022-08-15T15:34:55.000Z",
         "airtable_id": "recFA4E0K0sw4jVly",
+        "conference_name": "Agile New England",
         "core_topic": "Engineering Culture",
-        "registered_at": "2022-08-15T15:34:55.000Z"
+        "registered_at": "2022-08-15T15:34:55.000Z",
+        "year": 2018
     },
     {
         "Blog Url": "https://www.eferro.net/2016/12/interesting-talks-ive-seen-during.html",
@@ -7807,7 +7780,7 @@
         "Description": "Great lightning talk, provocative and inspiring. \n",
         "Duration": 480,
         "Language": "English",
-        "Last Modified": "2025-04-05T19:26:47.000Z",
+        "Last Modified": "2025-04-06T08:13:29.000Z",
         "Less 15": 1,
         "Name": "Hibernate should be to programmers what cake mixes are to bakers: beneath their dignity.",
         "Published": true,
@@ -7834,6 +7807,7 @@
         "Url": "https://vimeo.com/28885655",
         "airtable_createdTime": "2022-10-16T17:13:11.000Z",
         "airtable_id": "recFMhog8vblwDnId",
+        "conference_name": "JavaZone",
         "core_topic": "Software Design",
         "registered_at": "2022-10-16T17:13:11.000Z",
         "year": 2011
@@ -9927,7 +9901,7 @@
         "Description": "Great presentation, in which Randy, starts from the 5 ideals of the Unicorn project (Locality and Simplicity, Focus, Flow, and Joy, Improvement of Daily Work, Psychological Safety, Customer Focus) to describe what we can do as technical leaders and as engineers to improve our ability to build and deliver software.\n",
         "Duration": 2760,
         "Language": "English",
-        "Last Modified": "2025-01-22T13:13:36.000Z",
+        "Last Modified": "2025-04-06T07:39:59.000Z",
         "Less 15": 0,
         "Name": "Improving Software Flow Build Stuff",
         "Published": true,
@@ -9960,8 +9934,10 @@
         "Url": "https://www.youtube.com/watch?v=o2-QLMz2VWw",
         "airtable_createdTime": "2021-10-17T14:10:40.000Z",
         "airtable_id": "recJ0GIyaO8sh0gf6",
+        "conference_name": "Build Stuff",
         "core_topic": "Continuous Delivery",
-        "registered_at": "2021-10-17T14:10:40.000Z"
+        "registered_at": "2021-10-17T14:10:40.000Z",
+        "year": 2021
     },
     {
         "Blog Url": "https://www.eferro.net/2021/01/good-talkspodcasts-jan-2021-i.html",
@@ -10156,7 +10132,7 @@
         "Description": "This was one of the best talks I've heard on software design in a long time. Excellent points on evolutionary design, testing, technical practices, etc. A full three quarters of an hour of wisdom.\n",
         "Duration": 2520,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-06T08:13:37.000Z",
         "Less 15": 0,
         "Name": "Agile Book Club: Evolutionary Design (with Kent Beck)",
         "Published": true,
@@ -10191,7 +10167,8 @@
         "airtable_createdTime": "2022-11-05T13:01:48.000Z",
         "airtable_id": "recJQ6cyJaPhW0dGq",
         "core_topic": "Agile-XP",
-        "registered_at": "2022-11-05T13:01:48.000Z"
+        "registered_at": "2022-11-05T13:01:48.000Z",
+        "year": 2022
     },
     {
         "Blog Url": "https://www.eferro.net/2021/01/good-talkspodcasts-jan-2021-i.html",
@@ -10343,7 +10320,7 @@
         "Description": "Great and concise description of what software engineering is and the forces that apply to our profession.\n",
         "Duration": 1080,
         "Language": "English",
-        "Last Modified": "2023-06-18T06:28:48.000Z",
+        "Last Modified": "2025-04-06T07:41:28.000Z",
         "Less 15": 0,
         "Name": "What It Takes To Be A Software Engineer",
         "Published": true,
@@ -10372,7 +10349,8 @@
         "Url": "https://www.youtube.com/watch?v=TRqYQnCfgH8",
         "airtable_createdTime": "2021-12-04T13:50:37.000Z",
         "airtable_id": "recK9kG7Ch3nWGJJG",
-        "registered_at": "2021-12-04T13:50:37.000Z"
+        "registered_at": "2021-12-04T13:50:37.000Z",
+        "year": 2021
     },
     {
         "Blog Url": "https://www.eferro.net/2017/03/interesting-talkspodcasts-march.html",
@@ -10405,7 +10383,7 @@
         "Description": "A great presentation on skilled product teams and leading product organizations. The questions at the end are also very interesting.\n",
         "Duration": 4860,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-06T08:20:22.000Z",
         "Less 15": 0,
         "Name": "Master Class with Marty Cagan",
         "Published": true,
@@ -10441,7 +10419,8 @@
         "airtable_createdTime": "2023-04-23T18:10:49.000Z",
         "airtable_id": "recKLS8QeOawn7JwY",
         "core_topic": "Product",
-        "registered_at": "2023-04-23T18:10:49.000Z"
+        "registered_at": "2023-04-23T18:10:49.000Z",
+        "year": 2023
     },
     {
         "Blog Url": "https://www.eferro.net/2017/08/good-talkspodcasts-purging-queue-ii.html",
@@ -10548,7 +10527,7 @@
         "Description": "Kent Beck discusses how software development is fundamentally an exercise in human relationships, and how creating a safe, supportive environment (a \"forest\") leads to better results than a resource-scarce, high-pressure one (a \"desert\"). He also touches on remote work, generational teaching, and test-driven development. An interview full of interesting insights.\n",
         "Duration": 3000,
         "Language": "English",
-        "Last Modified": "2025-03-02T23:31:44.000Z",
+        "Last Modified": "2025-04-06T08:42:28.000Z",
         "Less 15": 0,
         "Name": "Kent Beck on why software development is an exercise in human relationships",
         "Notes": "Here are some of the most important points from Kent Beck's discussion on software development:\n- **Software design is fundamentally an exercise in human relationships**. Beck argues that technical problems in software design often stem from relationship problems between developers.\n- **Creating a psychologically safe environment is crucial**.\n    - A supportive environment allows developers to feel safe, which encourages trust and enables conflict resolution.\n    - Feelings of safety can be created through patterns, Test Driven Development (TDD), JUnit, and Extreme Programming.\n- **The \"Forest\" vs. the \"Desert\"**:\n    - Beck introduces the concepts of the \"Forest\" and the \"Desert\" to describe different work environments.\n    - The \"Forest\" is a collegial environment with enough resources where programmers can feel safe, supported, and significant. In the forest, developers have enough time to refactor, write tests and help others.\n    - The \"Desert\" is a resource-constrained environment marked by a lack of time, skills, purpose, management, and support.\n    - Operating in the \"forest\" allows for creative leverage, where desire and capability meet to create significant advancements at a small cost. The \"desert\" focuses on delivering small increments (crumbs) at high risk and cost.\n- **Remote work requires deliberate rituals to maintain team connection**.\n    - Daily team time, weekly prioritization, and quarterly in-person meetings can help to build and maintain teamwork.\n    - Remote work needs a \"teaching-learning attitude,\" especially from senior engineers to junior engineers.\n- **Generational teaching is important for passing down crucial lessons**.\n    - Pairing more experienced engineers with junior engineers, and creating a learning environment are key.\n    - This approach facilitates the teaching of ethics and promotes a sense of community and long-term health within the profession.\n- **The next generation of programmers should be taught that programming can be a place where they can feel collegial, belong, and do significant work**.\n- **To transition from the \"desert\" to the \"forest\", start with small steps like writing tests and addressing design issues, and focus on building relationships and opening communication**.\n- **Leaders should cultivate a clear purpose to help their teams thrive and avoid the \"desert\" mentality**.\n\n",
@@ -10582,7 +10561,8 @@
         "airtable_createdTime": "2025-03-02T17:32:50.000Z",
         "airtable_id": "recKVdulRpgPVbaLK",
         "core_topic": "Engineering Culture",
-        "registered_at": "2025-03-02T17:32:50.000Z"
+        "registered_at": "2025-03-02T17:32:50.000Z",
+        "year": 2025
     },
     {
         "Blog Url": "https://www.eferro.net/2021/09/good-talkspodcasts-september-2021-i.html",
@@ -11217,7 +11197,7 @@
         "Description": "I believe this is the best talk I have heard from Eric about the ideas of Lean Startup. It is also very enlightening to see how one of the fundamental pieces is continuous deployment and the engineering practices he uses. Essential.\n",
         "Duration": 3480,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:43:59.000Z",
+        "Last Modified": "2025-04-06T08:40:03.000Z",
         "Less 15": 0,
         "Name": "Eric Ries: The Science of Lean Startups",
         "Published": true,
@@ -11247,7 +11227,8 @@
         "airtable_createdTime": "2024-09-02T21:27:42.000Z",
         "airtable_id": "recLu6ITwHRiiZwbF",
         "core_topic": "Lean Startup",
-        "registered_at": "2024-09-02T21:27:42.000Z"
+        "registered_at": "2024-09-02T21:27:42.000Z",
+        "year": 2010
     },
     {
         "Created": "2021-06-19T11:36:15.000Z",
@@ -11704,7 +11685,7 @@
         "Description": "Great description of the true nature of software development as an adaptive learning process of customer needs. A must.\n",
         "Duration": 780,
         "Language": "English",
-        "Last Modified": "2025-03-30T22:12:55.000Z",
+        "Last Modified": "2025-04-06T08:39:32.000Z",
         "Less 15": 1,
         "Name": "Fighting User Requirements That CONSTANTLY Change",
         "Published": true,
@@ -11736,7 +11717,8 @@
         "airtable_createdTime": "2024-06-23T07:54:14.000Z",
         "airtable_id": "recMtH696LP1LMtlW",
         "core_topic": "Agile-XP",
-        "registered_at": "2024-06-23T07:54:14.000Z"
+        "registered_at": "2024-06-23T07:54:14.000Z",
+        "year": 2023
     },
     {
         "Created": "2021-08-12T13:07:59.000Z",
@@ -12712,7 +12694,7 @@
         "Description": "This interesting video identifies common pitfalls in software development, such as not building what users want, using big teams, delaying feedback, chasing features over quality, and relying on manual regression testing, and advises optimizing for learning, fast feedback, and automated testing to improve productivity and reduce waste\n",
         "Duration": 900,
         "Language": "English",
-        "Last Modified": "2025-03-02T23:31:45.000Z",
+        "Last Modified": "2025-04-06T08:42:15.000Z",
         "Less 15": 1,
         "Name": "5 Things That Waste Time & Money On A Software Project",
         "Notes": "The most important points from the presentation \"5 Things That Waste Time & Money On A Software Project\" are:\n- **Building what users don't want is a waste of time and money**. It is difficult to know what the right things to build are because even when customers are asked what they want, they may not really know. Optimizing the development process to allow for many ideas and early identification of bad ones is key. Getting ideas into the hands of real users early provides fast feedback to determine if they are good or bad.\n- **Large teams are not as effective as small teams**. Smaller teams are dramatically more productive.\n- **Delaying feedback is costly and risky**. Working in smaller steps provides more opportunities to learn and reduces risk. Continuous integration and validation after each small step provides clarity and keeps the software in a working state.\n- **Chasing features over quality is a common mistake that reduces production speed**. Prioritizing feature production over everything else keeps the work queue full, but leaves no room for urgent work and applies pressure to cut corners. Allowing space for work that isn't directly related to features helps maintain or increase the pace at which new things can be done.\n- **Manual regression testing is slow, inefficient, low quality, and a misuse of human skills**. Regression testing should be done by machines via automated tests. This encourages design choices that result in more testable and better design systems.\n\n",
@@ -12743,7 +12725,8 @@
         "airtable_createdTime": "2025-03-02T17:32:09.000Z",
         "airtable_id": "recOXHMXndyUrCsgY",
         "core_topic": "Agile",
-        "registered_at": "2025-03-02T17:32:09.000Z"
+        "registered_at": "2025-03-02T17:32:09.000Z",
+        "year": 2024
     },
     {
         "Blog Url": "https://www.eferro.net/2018/01/interesting-talkspodcasts-2018-jan.html",
@@ -12881,7 +12864,7 @@
         "Description": "Inspiring lightning talk about the importance of humanities, empathy for users and information management as the basis of our profession (beyond pure technology and knowledge about logic or mathematics).\n",
         "Duration": 660,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-06T08:19:34.000Z",
         "Less 15": 1,
         "Name": "What makes a good developer",
         "Published": true,
@@ -12910,8 +12893,10 @@
         "Url": "https://vimeo.com/748032161",
         "airtable_createdTime": "2022-12-06T20:52:52.000Z",
         "airtable_id": "recOtIG9sYrRR6tQr",
+        "conference_name": "JavaZone",
         "core_topic": "Engineering Culture",
-        "registered_at": "2022-12-06T20:52:52.000Z"
+        "registered_at": "2022-12-06T20:52:52.000Z",
+        "year": 2022
     },
     {
         "Blog Url": "https://www.eferro.net/2023/08/good-talkspodcasts-ago-2023-i.html",
@@ -12919,7 +12904,7 @@
         "Description": "Great introduction to the differences between traditional software development and the development cycle with AI models. Nerea introduces concepts such as Continuous training, model deployment, MLOps, and collaboration between data scientists and software engineers. Highly recommended for software engineers looking to delve into these topics and collaborate more closely on AI-based feature development.\n",
         "Duration": 3240,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-06T08:26:43.000Z",
         "Less 15": 0,
         "Name": "Artificial Intelligence seen from the software development lifecycle perspective",
         "Published": true,
@@ -12946,8 +12931,10 @@
         "Url": "https://www.youtube.com/watch?v=a_T21Lf26pc",
         "airtable_createdTime": "2023-08-26T21:28:04.000Z",
         "airtable_id": "recOuZnBtAOlBoiwo",
+        "conference_name": "DevOps Barcelona Conference",
         "core_topic": "AI",
-        "registered_at": "2023-08-26T21:28:04.000Z"
+        "registered_at": "2023-08-26T21:28:04.000Z",
+        "year": 2023
     },
     {
         "Blog Url": "https://www.eferro.net/2021/03/good-talkspodcasts-march-2021-i.html",
@@ -13340,7 +13327,7 @@
         "Description": "An overview of Frederic Laloux's Reinventing Organizations and how it relates to Lean and Agile Adoption.\n",
         "Duration": 540,
         "Language": "English",
-        "Last Modified": "2024-01-14T21:10:58.000Z",
+        "Last Modified": "2025-04-06T08:27:46.000Z",
         "Less 15": 1,
         "Name": "Laloux Culture Model and Agile",
         "Published": true,
@@ -13373,7 +13360,8 @@
         "Url": "https://www.youtube.com/watch?v=2rUbNSDLfxY",
         "airtable_createdTime": "2023-11-17T09:12:34.000Z",
         "airtable_id": "recPjJcgKz9yZq4Uc",
-        "registered_at": "2023-11-17T09:12:34.000Z"
+        "registered_at": "2023-11-17T09:12:34.000Z",
+        "year": 2018
     },
     {
         "Blog Url": "https://www.eferro.net/2021/09/good-talkspodcasts-september-2021-ii.html",
@@ -13381,7 +13369,7 @@
         "Description": "Insightful quote :)\n",
         "Duration": 60,
         "Language": "English",
-        "Last Modified": "2023-06-18T06:28:48.000Z",
+        "Last Modified": "2025-04-06T07:38:42.000Z",
         "Less 15": 1,
         "Name": "Great teams make great engineers (not the other way around)",
         "Published": true,
@@ -13410,7 +13398,8 @@
         "Url": "https://www.youtube.com/watch?v=L5BRyuPzn78",
         "airtable_createdTime": "2021-09-03T15:32:12.000Z",
         "airtable_id": "recPkHjbOsYO1HFdH",
-        "registered_at": "2021-09-03T15:32:12.000Z"
+        "registered_at": "2021-09-03T15:32:12.000Z",
+        "year": 2021
     },
     {
         "Created": "2021-08-29T11:42:39.000Z",
@@ -14080,7 +14069,7 @@
         "Description": "En esta sesi\u00f3n Carlos se centra en c\u00f3mo saber separar el \"Qu\u00e9\" del \"C\u00f3mo\" para ser eficaces y econ\u00f3micos resolviendo problemas, sin que la calidad de las soluciones se vea afectada. Una muy buena charla para cualquiera que se interese por el desarrollo de software lean (agile real).\n",
         "Duration": 2460,
         "Language": "Spanish",
-        "Last Modified": "2024-02-05T22:01:45.000Z",
+        "Last Modified": "2025-04-06T07:37:37.000Z",
         "Less 15": 0,
         "Name": "Aprender a distinguir el problema de las soluciones",
         "Published": true,
@@ -14113,7 +14102,9 @@
         "Url": "https://www.youtube.com/watch?v=IqUo9kCWQrw",
         "airtable_createdTime": "2021-08-12T13:07:59.000Z",
         "airtable_id": "recRCthMkTETb5Etf",
-        "registered_at": "2021-08-12T13:07:59.000Z"
+        "conference_name": "CAS",
+        "registered_at": "2021-08-12T13:07:59.000Z",
+        "year": 2016
     },
     {
         "Blog Url": "https://www.eferro.net/2018/01/interesting-talkspodcasts-2018-jan-ii.html",
@@ -14729,7 +14720,7 @@
         "Created": "2024-06-23T07:32:56.000Z",
         "Description": "\nInteresting approach to lean software development focused on how to tackle agile development with this lean mindset. It contains a few interesting points.\n",
         "Duration": 3900,
-        "Last Modified": "2024-06-23T08:15:58.000Z",
+        "Last Modified": "2025-04-06T08:39:16.000Z",
         "Less 15": 0,
         "Name": "Lean Code",
         "Published": true,
@@ -14756,7 +14747,9 @@
         "Url": "https://www.youtube.com/watch?v=-nWhH-4wWBU",
         "airtable_createdTime": "2024-06-23T07:32:56.000Z",
         "airtable_id": "recSbISGVjRAxwhX5",
-        "registered_at": "2024-06-23T07:32:56.000Z"
+        "conference_name": "DevTernity",
+        "registered_at": "2024-06-23T07:32:56.000Z",
+        "year": 2019
     },
     {
         "Blog Url": "https://www.eferro.net/2019/04/index.html",
@@ -15189,7 +15182,7 @@
         "Description": "Essential talk about how to do TDD in an efficient way and getting a battery of tests that support continuous refactoring. It fundamentally changed my approach to TDD. I highly recommend it.\n",
         "Duration": 3660,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-06T07:41:48.000Z",
         "Less 15": 0,
         "Name": "TDD, where did it all go wrong",
         "Published": true,
@@ -15218,8 +15211,10 @@
         "Url": "https://vimeo.com/68375232",
         "airtable_createdTime": "2022-01-22T18:36:50.000Z",
         "airtable_id": "recTB7wNYxiDwtMeG",
+        "conference_name": "NDC",
         "core_topic": "Agile-XP",
-        "registered_at": "2022-01-22T18:36:50.000Z"
+        "registered_at": "2022-01-22T18:36:50.000Z",
+        "year": 2013
     },
     {
         "Blog Url": "https://www.eferro.net/2020/05/good-talkspodcasts-may-2020-ii.html",
@@ -15474,7 +15469,7 @@
         "Description": "This talk explores how Shopify builds a high-intensity culture through principles like choosing the hard path, prioritizing intensity over hours, and valuing pair programming, while also emphasizing continuous learning, code deletion, and a unique approach to hiring.\n",
         "Duration": 6000,
         "Language": "English",
-        "Last Modified": "2025-02-09T18:51:45.000Z",
+        "Last Modified": "2025-04-06T08:41:48.000Z",
         "Less 15": 0,
         "Name": "How Shopify builds a high-intensity culture",
         "Notes": "Here are some of the most important points from the presentation, based on the provided sources:\n- **Choosing the Hard Path:** When faced with multiple options, selecting the harder path can lead to greater learning and growth. Even if the hard path doesn't work out, valuable experience, skills, and connections with smart people are gained. This approach is favored over taking the easy path where little learning occurs if it does not work.\n- **Intensity over Hours:** The focus should be on doing more per minute, rather than just working more hours. This involves maximizing productivity within the set work hours instead of expanding the workday.\n- **Pair Programming:** This is a highly effective, yet underutilized management tool in engineering. It involves two people working together on one computer, leading to increased knowledge transfer, higher rates of learning, and less silos. While it might seem like it would reduce output, it often leads to faster progress and better solutions. At Shopify, pair programming is used more strategically, typically for four to eight hours per week, focusing on problem-solving and code development.\n- **\"Looking Stupid\" as a Superpower:** Being comfortable with asking \"dumb\" questions and trying new things is important for learning and innovation. This also encourages others to ask questions they might have been afraid to.\n- **Framework for Decision Making:** Having a written framework of personal values and priorities helps in making better decisions, especially when considering job opportunities. This framework can be used to evaluate whether a job aligns with what one actually cares about and helps avoid distractions.\n- **Importance of a Learning Journey:** Focus on choosing paths that provide the best learning opportunities, which often involves working with smart people. Seeking out challenging situations can lead to intense working relationships and continued growth.\n- **Meeting Cadence & \"Meeting Armageddon\":** Shopify uses a six-week review cycle where teams present their work, resources, and roadmaps to leadership. This regular cadence creates intensity and encourages progress. Additionally, Shopify does a \"meeting armageddon\" once a year, deleting all recurring meetings and forcing teams to rethink their meeting needs. This has resulted in a significant decrease in time spent in meetings for employees.\n- **GSD (Get Shit Done):** This refers to weekly updates shared across the company to show progress. This weekly practice helps maintain a sense of forward movement and accountability.\n- **Remote-First Approach:** Shopify is a remote-first company, aiming to hire the best people worldwide. They also incorporate intentional in-person experiences like summits and \"bursts\" to build trust and collaboration.\n- **Platform Thinking:** Shopify prioritizes building infrastructure that allows others to easily create solutions rather than focusing solely on point solutions. They aim to create platforms with APIs so that anyone can build within the hour.\n- **Code Deletion:** The company has a strong focus on deleting unnecessary code to simplify the codebase which leads to better maintainability, resiliency, and performance.\n- **Hiring Practices:** Shopify focuses on hiring people that fit well within their culture and prefers job trials or internships over traditional interviews. They aim to assess skills by replicating the real job as much as possible.\n- **Internship Programs:** The company views its internship program not just as community service, but as a crucial way to find and assess talent, and to bring fresh ideas and perspectives into the company.\n- **Culture of Impatience & Intensity:** The leadership team emphasizes urgency and is comprised of high-energy people with a bias for action. They encourage taking risks and having some projects that are \"on fire\" to push the company's boundaries.\n- **\"Everything You Know is Wrong\"**: This concept encourages one to always question assumptions and be open to new ways of thinking.\nThese points highlight Shopify's unique approach to building a high-intensity culture, focused on learning, speed, and continuous improvement. The listed topics from the second source provide a good overview of many areas that Shopify focuses on, including engineering culture, agile methods, and product development.\n",
@@ -15508,7 +15503,8 @@
         "airtable_createdTime": "2025-02-09T10:02:59.000Z",
         "airtable_id": "recU96MGQMQDsismv",
         "core_topic": "Engineering Culture",
-        "registered_at": "2025-02-09T10:02:59.000Z"
+        "registered_at": "2025-02-09T10:02:59.000Z",
+        "year": 2024
     },
     {
         "Blog Url": "https://www.eferro.net/2014/10/podcaststalks-2014-1-15-oct.html",
@@ -15608,7 +15604,7 @@
         "Description": "Very interesting conversation with great TDD experts. Some interesting ideas, techniques and tricks. \n",
         "Duration": 2580,
         "Language": "English",
-        "Last Modified": "2025-03-31T14:46:53.000Z",
+        "Last Modified": "2025-04-06T08:13:48.000Z",
         "Less 15": 0,
         "Name": "Agile Book Club: Test-Driven Development (with Mike \u201cGeePaw\u201d Hill and J.B. Rainsberger)",
         "Notes": "Drawing on the information in the YouTube video transcript, here are the most important points of the presentation on Test-Driven Development (TDD):\n- **TDD is a rapid cycle of testing, coding, and refactoring that produces high-quality code in small, verifiable steps**. It ensures the code does what you mean, not just what you say.\n- **TDD helps improve design, documents code, enables refactoring, and guards against future mistakes**. While it has a learning curve and can be difficult to apply to legacy code or code involving the outside world, it is generally beneficial and can be used with almost any code.\n- **Breaking down work into small pieces is crucial for effective TDD.** Several techniques were discussed:\n    - **The \"saf squeeze\"** involves starting with a bigger, failing test and gradually making it smaller and more focused to discover the necessary micro-tests. This can help identify which micro-test to write next, even when the design feels muddled.\n    - **Spikes** are time-boxed periods of exploration where the goal is to answer a question rather than produce production code. They involve temporarily discarding usual coding rules to gain understanding and confidence in unfamiliar areas. The code is typically thrown away, but the knowledge gained informs the subsequent TDD process.\n    - An **outside-in approach** starts with acceptance criteria and writing tests for the desired end state, using test doubles initially, and then working inwards to implement the necessary components.\n    - Starting with the **interface** involves defining and testing the interaction points first before implementing the underlying logic.\n- **Tests written during TDD are intended to live forever**. They sit alongside the source code, are run regularly (before every push and after every pull), and serve as living documentation and regression protection.\n- **Tests should be refactored** to improve readability and better tell a story, especially when revisiting code after some time. While generally kept, tests might be discarded if they become an obstacle or if they haven't been maintained and no longer accurately reflect the code's behavior.\n    - **There are situations where the panelists do not strictly adhere to test-first TDD:UI code** is often tested through manual inspection, especially in frameworks like JavaFX where UI elements are driven by observables, and the underlying model is rigorously TDDed.\n    - When code is **going to be thrown away quickly** (like in spikes) or if it is **not expected to change**, strictly test-first might not be necessary.\n    - If the **cost of test driving outweighs the perceived benefit**, TDD might be skipped, though Joe reframes this by suggesting that even manual inspection can be considered a form of TDD.\n    - **Dealing with slow and flaky tests is crucial for maintaining the benefits of TDD.**It's important to **pay attention to test speed** and address tests that take an unusually long time, as slow tests discourage frequent execution.\n    - **Designing systems with clear boundaries** allows for isolating components and testing them with direct data input/output rather than relying on slower external dependencies or test doubles.\n    - The concept of a **\"functional core, imperative shell\"** aims to isolate the business logic (happy zone) from the slower, interaction-heavy external world. This involves \"moving details up the call stack\" (dependency inversion) to make the core logic easily testable and fast.\n    - For **flaky tests caused by race conditions**, the \"lose every race\" technique suggests intentionally introducing a delay in the code itself (rather than the test) to make the failure consistent and force a proper fix.\n    - **The \"classicist vs. mockist\" debate is viewed as less of a rigid dichotomy and more about different design styles.**Joe Rainsberger uses both approaches and believes neither is inherently superior. He suggests that an aversion to mocks often stems from issues with side effects in the code. He also posits that there's a mechanical way to refactor between the \"tell, don't ask\" object-oriented style (often associated with mockists) and the value-returning function composition style (more aligned with classicists), making the choice less critical.\n    - Mike \"GeePaw\" Hill identifies as a classicist, preferring to test whether an object produces the correct outcome rather than focusing on its internal interactions. He emphasizes that good design is the underlying factor, regardless of the testing style.\n    - The choice between these approaches can be influenced by the **programming paradigm and language** being used. Object-oriented environments might naturally lead to a \"tell, don't ask\" style and more mocking, while functional programming encourages function composition and value-based testing. Ultimately, the goal is to choose an approach that works well for the team and the context.\n\n",
@@ -15647,7 +15643,8 @@
         "airtable_createdTime": "2022-11-06T19:03:09.000Z",
         "airtable_id": "recUIDymP9vqzyyTI",
         "core_topic": "Agile-XP",
-        "registered_at": "2022-11-06T19:03:09.000Z"
+        "registered_at": "2022-11-06T19:03:09.000Z",
+        "year": 2022
     },
     {
         "Blog Url": "https://www.eferro.net/2018/03/interesting-talkspodcasts-2018-march-i.html",
@@ -16485,7 +16482,7 @@
         "Description": "This talk explores a radical idea that acceptance testing, rather than being just a way to verify software, may be the next step in the evolution of how we program computers, using AI to generate code from detailed specifications\n",
         "Duration": 960,
         "Language": "English",
-        "Last Modified": "2025-03-02T23:31:46.000Z",
+        "Last Modified": "2025-04-06T08:42:03.000Z",
         "Less 15": 0,
         "Name": "Acceptance Testing Is the FUTURE of Programming",
         "Published": true,
@@ -16515,7 +16512,8 @@
         "airtable_createdTime": "2025-02-13T14:10:26.000Z",
         "airtable_id": "recW3gn0SujnXIbwQ",
         "core_topic": "AI",
-        "registered_at": "2025-02-13T14:10:26.000Z"
+        "registered_at": "2025-02-13T14:10:26.000Z",
+        "year": 2025
     },
     {
         "Created": "2021-06-19T11:36:31.000Z",
@@ -16627,7 +16625,7 @@
         "Description": "Mike Del Balso co-founder of Tecton discusses Feature Stores and how it helps operationalize Machine Learning.\n",
         "Duration": 3300,
         "Language": "English",
-        "Last Modified": "2023-06-18T06:28:48.000Z",
+        "Last Modified": "2025-04-06T07:39:20.000Z",
         "Less 15": 0,
         "Name": "Software Engineering podcast: Episode 473: Mike Del Balso on Feature Stores",
         "Published": true,
@@ -16656,7 +16654,8 @@
         "Url": "https://www.se-radio.net/2021/08/episode-473-mike-del-balso-on-feature-stores/",
         "airtable_createdTime": "2021-09-05T16:10:38.000Z",
         "airtable_id": "recWP9pM7wNVhBvmR",
-        "registered_at": "2021-09-05T16:10:38.000Z"
+        "registered_at": "2021-09-05T16:10:38.000Z",
+        "year": 2021
     },
     {
         "Blog Url": "https://www.eferro.net/2016/07/index.html",
@@ -16734,7 +16733,7 @@
         "Description": "This talk explains the keys to the success of digital product organizations. Technology is an essential part of any business today, not just a cost center.\n",
         "Duration": 2460,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-06T07:36:27.000Z",
         "Less 15": 0,
         "Name": "Foundations of Modern Product Organizations",
         "Published": true,
@@ -16766,7 +16765,8 @@
         "airtable_createdTime": "2021-07-03T06:55:55.000Z",
         "airtable_id": "recWauvTxPOSravWx",
         "core_topic": "Product",
-        "registered_at": "2021-07-03T06:55:55.000Z"
+        "registered_at": "2021-07-03T06:55:55.000Z",
+        "year": 2021
     },
     {
         "Blog Url": "https://www.eferro.net/2019/04/good-talkspodcasts-april-2019-i.html",
@@ -16811,7 +16811,7 @@
         "Description": "A must-talk for anyone trying to do lean/agile software development. The talk delves into the reasons why the strategy of using small, safe steps is the right one to steadily evolve a software system. I am very much aligned with this approach to software development.\n",
         "Duration": 3300,
         "Language": "English",
-        "Last Modified": "2025-03-31T14:51:07.000Z",
+        "Last Modified": "2025-04-06T07:37:21.000Z",
         "Less 15": 0,
         "Name": "Want More Value Faster? Take Many More Much Smaller Steps",
         "Notes": "Drawing on the information in the YouTube video transcript () and our conversation history, here are the most important points of GeePaw Hill's presentation:\n- **The fundamental message is to embrace significantly smaller and more frequent steps in all areas of change, including software development.** This is presented as a core principle, likened to \"that's too much rice\" and \"that's not enough garlic\" ().\n- **The traditional belief that fewer, larger steps are more efficient is challenged.** Hill argues that this perspective is based on an oversimplified view of software development as linear and predictable, which it is not due to factors like changing requirements and the self-modifying nature of software.\n- **Smaller steps offer substantial intrinsic advantages that are often overlooked.** These include:\n    - **Enhanced Interruptability:** Frequent \"ready\" states allow for easier pausing and resumption of work.\n    - **Improved Steerability:** Smaller increments enable quicker adaptation to new information and changing priorities.\n    - **Intrinsic Benefit:** Each completed small step provides a sense of accomplishment and positive reinforcement (\"the juice\"), contributing to motivation and rhythm.\n- **A \"step\" is defined as a transition from a \"ready\" state (where the software can be deployed without major issues) to another \"ready\" state through a small, shippable change.** The focus is on minimizing the time spent in an \"unready\" state.\n- **The immediate goal of a step doesn't always need to be delivering direct end-user value.** Instead, the criterion should be ensuring a \"non-negative user experience\" \u2013 not making things worse \u2013 while moving towards a larger goal.\n- **Directed parallelism, the strategy of centrally managing multiple large parallel efforts, is inherently complex (NP-hard) and does not scale effectively.** Smaller, independent steps allow for more organic and less overhead-intensive parallel work by multiple individuals or teams. This relates to concepts like **Teams** and **team topologies** mentioned in the topics.\n- **Rework avoidance, the central tenet of many traditional software development processes, is ultimately more costly than embracing changeability.** Smaller steps, supported by practices like **testing** and **Continuous Delivery**, facilitate easier and safer adaptation to evolving needs. **tdd** (Test-Driven Development) is highlighted as a key enabler of changeability through automated consequence detection, context switching support, and collaboration.\n- **Adopting smaller steps requires unlearning certain traditional concepts like rigid pre-commitment to a final target, hierarchical command and control, and additive productive reproduction reasoning.** It also necessitates learning new skills, such as **tdd**, path-focused design (ensuring each step is shippable), and effective collaboration techniques like pairing, mobbing (or **MobProgramming**), and swarming. These practices are relevant to topics like **Agile**, **XP**, and **Culture**.\n- **The principles of taking many more much smaller steps are not limited to code but are applicable to personal growth, team dynamics, and organizational change.** The core idea is about fostering a continuous, iterative approach to improvement in any domain. This aligns with concepts like **Lean Software Development** and the **Lean Startup**.\nThe topics listed in the sources, such as **Agile**, **XP**, **Devops**, **Continuous Delivery**, **Software Design**, **Lean**, **Testing**, **Microservices**, **Teams**, and **Architecture**, are all related to the practices and principles discussed in the presentation, which advocates for a more incremental and adaptive approach to software development that these topics often support.\n",
@@ -16845,8 +16845,10 @@
         "Url": "https://www.youtube.com/watch?v=1mOs1_pvS9A",
         "airtable_createdTime": "2021-07-25T18:02:02.000Z",
         "airtable_id": "recWr0AUmugIvM9fn",
+        "conference_name": "TDD Conference",
         "core_topic": "Agile-XP",
-        "registered_at": "2021-07-25T18:02:02.000Z"
+        "registered_at": "2021-07-25T18:02:02.000Z",
+        "year": 2021
     },
     {
         "Blog Url": "https://www.eferro.net/2023/02/good-talkspodcasts-feb-2023-i.html",
@@ -17243,7 +17245,7 @@
         "Description": "This episode highlights the significant impact of Dr. W. Edwards Deming on lean manufacturing, Total Quality Control (TQC), and the subsequent development of DevOps in software delivery. Deming's focus on holistic thinking, continuous improvement, and understanding the system laid the groundwork for lean principles, which later influenced the emergence of DevOps, revolutionizing software development and operations.\n",
         "Duration": 840,
         "Language": "English",
-        "Last Modified": "2023-06-18T07:08:24.000Z",
+        "Last Modified": "2025-04-06T08:21:04.000Z",
         "Less 15": 1,
         "Name": "Software delivery in small batches: Dr. Deming",
         "Published": true,
@@ -17272,7 +17274,8 @@
         "Url": "https://smallbatches.fm/84",
         "airtable_createdTime": "2023-06-18T06:37:47.000Z",
         "airtable_id": "recXmr49q5ciJGAMp",
-        "registered_at": "2023-06-18T06:37:47.000Z"
+        "registered_at": "2023-06-18T06:37:47.000Z",
+        "year": 2023
     },
     {
         "Blog Url": "https://www.eferro.net/2021/10/good-talkspodcasts-october-2021-ii.html",
@@ -17862,7 +17865,7 @@
         "Description": "In this episode, Dave Farley explores how to manage complexity in software systems, and how to adopt an evolutionary approach to design that ensures that we can change our software as we learn more.\n",
         "Duration": 1140,
         "Language": "English",
-        "Last Modified": "2023-06-18T06:28:48.000Z",
+        "Last Modified": "2025-04-06T08:11:32.000Z",
         "Less 15": 0,
         "Name": "How To Avoid Designing A Big Ball Of Mud (YAGNI)",
         "Published": true,
@@ -17891,7 +17894,8 @@
         "Url": "https://www.youtube.com/watch?v=flxmpq7_tdM",
         "airtable_createdTime": "2022-10-09T09:38:40.000Z",
         "airtable_id": "recZ2WTqH0gFTolwQ",
-        "registered_at": "2022-10-09T09:38:40.000Z"
+        "registered_at": "2022-10-09T09:38:40.000Z",
+        "year": 2022
     },
     {
         "Created": "2021-06-19T11:36:22.000Z",
@@ -18599,7 +18603,7 @@
         "Description": "This interview with Gojko Adzic, the creator of Narakeet and author of \"Lizard Optimization,\" explores his journey in building products that reach millions of users. He shares insights on \"lizard optimization,\" a method of leveraging unexpected user behavior for product innovation and growth, as well as the importance of aligning development with the five stages of product growth.\n",
         "Duration": 3000,
         "Language": "English",
-        "Last Modified": "2024-11-30T17:03:09.000Z",
+        "Last Modified": "2025-04-06T08:40:28.000Z",
         "Less 15": 0,
         "Name": "Product Agility Podcast: 9 Million Users from a Full Stack Product Legend An Interview with Gojko Adzic",
         "Published": true,
@@ -18628,7 +18632,8 @@
         "Url": "https://www.youtube.com/watch?v=fC-AKpO83DI",
         "airtable_createdTime": "2024-11-24T18:55:28.000Z",
         "airtable_id": "recaTxSRbgrtkff9X",
-        "registered_at": "2024-11-24T18:55:28.000Z"
+        "registered_at": "2024-11-24T18:55:28.000Z",
+        "year": 2024
     },
     {
         "Blog Url": "https://www.eferro.net/2020/09/good-talkspodcasts-sept-2020-i.html",
@@ -19136,7 +19141,7 @@
         "Description": "Very interesting conversation with Paul Akers who speaks from experience on how to apply lean thinking and continuous improvement.\n",
         "Duration": 3420,
         "Language": "English",
-        "Last Modified": "2024-01-14T21:11:06.000Z",
+        "Last Modified": "2025-04-06T08:29:43.000Z",
         "Less 15": 0,
         "Name": "Paul Akers - How to apply lean thinking to your business for success",
         "Published": true,
@@ -19163,7 +19168,8 @@
         "Url": "https://podcasts.apple.com/gb/podcast/scalex-insider-podcast/id1566729230?i=1000599670214",
         "airtable_createdTime": "2024-01-14T10:32:53.000Z",
         "airtable_id": "recbHb9Z2j3NTfOeU",
-        "registered_at": "2024-01-14T10:32:53.000Z"
+        "registered_at": "2024-01-14T10:32:53.000Z",
+        "year": 2023
     },
     {
         "Blog Url": "https://www.eferro.net/2024/01/seleccion-de-charlas-recomendadas-en.html",
@@ -19171,7 +19177,7 @@
         "Description": "Excelente charla que se fundamenta en experiencias pr\u00e1cticas acerca de c\u00f3mo colaborar eficazmente en equipo, siguiendo los principios del desarrollo de software Lean y de Programaci\u00f3n Extrema (XP). Constituye un recurso valioso para recomendar o compartir con equipos que buscan optimizar sus metodolog\u00edas de trabajo.\n",
         "Duration": 3300,
         "Language": "Spanish",
-        "Last Modified": "2024-02-02T07:35:36.000Z",
+        "Last Modified": "2025-04-06T08:27:22.000Z",
         "Less 15": 0,
         "Name": "Muda, Mura, Muri: mitos y pr\u00e1cticas aplicando Lean Software Development",
         "Published": true,
@@ -19200,7 +19206,9 @@
         "Url": "https://youtu.be/N6OJg1rxZGE",
         "airtable_createdTime": "2023-09-01T14:38:18.000Z",
         "airtable_id": "recbKqpQDuwM9LVDW",
-        "registered_at": "2023-09-01T14:38:18.000Z"
+        "conference_name": "SCBCN",
+        "registered_at": "2023-09-01T14:38:18.000Z",
+        "year": 2022
     },
     {
         "Blog Url": "https://www.eferro.net/2020/07/good-talkspodcasts-jul-2020-ii.html",
@@ -19727,7 +19735,7 @@
         "Description": "Learn how Twilio\u2019s internal Platform has evolved to reduce their engineers' cognitive load by providing a unified self-service, declarative platform to build, deliver, and run the thousands of global microservices that make up Twilio.\n",
         "Duration": 3000,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-06T08:06:01.000Z",
         "Less 15": 0,
         "Name": "Platforms at Twilio: Unlocking Developer Effectiveness",
         "Published": true,
@@ -19761,7 +19769,8 @@
         "airtable_createdTime": "2022-02-12T21:31:01.000Z",
         "airtable_id": "reccMJEetzG9ZqHYQ",
         "core_topic": "Platform Engineering",
-        "registered_at": "2022-02-12T21:31:01.000Z"
+        "registered_at": "2022-02-12T21:31:01.000Z",
+        "year": 2018
     },
     {
         "Blog Url": "https://www.eferro.net/2022/06/good-talkspodcasts-jun-2022-ii.html",
@@ -19946,7 +19955,7 @@
         "Description": "Adam presents in this episode an interesting mental model that he calls T1 and T2 signals. It's worth understanding this model.\n",
         "Duration": 1020,
         "Language": "English",
-        "Last Modified": "2024-09-15T08:07:45.000Z",
+        "Last Modified": "2025-04-06T08:40:13.000Z",
         "Less 15": 0,
         "Name": "T1 and T2 Signals",
         "Published": true,
@@ -19975,7 +19984,8 @@
         "Url": "https://smallbatches.fm/109",
         "airtable_createdTime": "2024-09-15T07:27:42.000Z",
         "airtable_id": "recceiIXetqPomvUx",
-        "registered_at": "2024-09-15T07:27:42.000Z"
+        "registered_at": "2024-09-15T07:27:42.000Z",
+        "year": 2024
     },
     {
         "Blog Url": "https://www.eferro.net/2024/09/good-talkspodcasts-sept-2024-i.html",
@@ -20572,7 +20582,7 @@
         "Description": "In this episode, Dave Farley explores how we can move fast with high quality and how one reinforces the other. Speed and quality are both hallmarks of a Continuous Delivery approach and best practices for building great software.\n",
         "Duration": 900,
         "Language": "English",
-        "Last Modified": "2025-04-05T19:44:22.000Z",
+        "Last Modified": "2025-04-06T07:38:27.000Z",
         "Less 15": 1,
         "Name": "How To Build Quality Software Fast",
         "Published": true,
@@ -20599,7 +20609,8 @@
         "Url": "https://www.youtube.com/watch?v=ZmgbjaRfp_Q",
         "airtable_createdTime": "2021-08-14T20:25:44.000Z",
         "airtable_id": "recdMGAoMJz4NnLmW",
-        "registered_at": "2021-08-14T20:25:44.000Z"
+        "registered_at": "2021-08-14T20:25:44.000Z",
+        "year": 2021
     },
     {
         "Blog Url": "https://www.eferro.net/2017/02/more-interesting-talks-teams-agile.html",
@@ -21334,7 +21345,7 @@
         "Description": "Great description of the impact of trust on team members and leaders.\n",
         "Duration": 120,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-06T08:24:40.000Z",
         "Less 15": 1,
         "Name": "Simon Sinek Performance vs Trust",
         "Published": true,
@@ -21364,7 +21375,8 @@
         "airtable_createdTime": "2023-06-26T12:40:13.000Z",
         "airtable_id": "receYn9iDUfTj3xBp",
         "core_topic": "Company Culture",
-        "registered_at": "2023-06-26T12:40:13.000Z"
+        "registered_at": "2023-06-26T12:40:13.000Z",
+        "year": 2019
     },
     {
         "Blog Url": "https://www.eferro.net/2019/07/index.html",
@@ -21443,7 +21455,7 @@
         "Description": "Great explanation about the harmful impact of having high work in progress.\n",
         "Duration": 31020,
         "Language": "English",
-        "Last Modified": "2023-06-18T06:28:48.000Z",
+        "Last Modified": "2025-04-06T08:20:35.000Z",
         "Less 15": 0,
         "Name": "High WIP, multi-tasking, etc.",
         "Published": true,
@@ -21470,7 +21482,8 @@
         "Url": "https://www.youtube.com/watch?v=3MxAUurD9gU",
         "airtable_createdTime": "2023-04-23T18:14:54.000Z",
         "airtable_id": "recerQytV322uGb6q",
-        "registered_at": "2023-04-23T18:14:54.000Z"
+        "registered_at": "2023-04-23T18:14:54.000Z",
+        "year": 2023
     },
     {
         "Blog Url": "https://www.eferro.net/2019/04/index.html",
@@ -21968,7 +21981,7 @@
         "Description": "During this episode, Mik and Manuel discuss some of the key issues in Team Topologies with great insights into different types of collaboration, treating platforms as products, and how to improve team flow by aligning teams with value streams. This was a very interesting episode.\n",
         "Duration": 3000,
         "Language": "English",
-        "Last Modified": "2023-06-18T06:28:48.000Z",
+        "Last Modified": "2025-04-06T08:06:22.000Z",
         "Less 15": 0,
         "Name": "Mik + One: Manuel Pais (Episode 42)",
         "Published": true,
@@ -22004,7 +22017,8 @@
         "Url": "https://www.youtube.com/watch?v=NLCz0sxaRMU",
         "airtable_createdTime": "2022-02-27T22:09:57.000Z",
         "airtable_id": "recfodpkUIp7GFrQP",
-        "registered_at": "2022-02-27T22:09:57.000Z"
+        "registered_at": "2022-02-27T22:09:57.000Z",
+        "year": 2022
     },
     {
         "Blog Url": "https://www.eferro.net/2020/07/good-talkspodcasts-jul-2020-i.html",
@@ -22685,7 +22699,7 @@
         "Description": "Very interesting conversation about Empowered Product Teams, Product Culture.\n",
         "Duration": 2400,
         "Language": "English",
-        "Last Modified": "2023-06-18T06:28:48.000Z",
+        "Last Modified": "2025-04-06T07:36:06.000Z",
         "Less 15": 0,
         "Name": "E3: Marty Cagan, Founder & Partner @ Silicon Valley Product Group",
         "Published": true,
@@ -22714,7 +22728,8 @@
         "Url": "https://www.ivoox.com/e3-marty-cagan-founder-amp-partner-a-silicon-audios-mp3_rf_67502194_1.html",
         "airtable_createdTime": "2021-04-24T19:30:29.000Z",
         "airtable_id": "recgqYCXrNqpYmMtI",
-        "registered_at": "2021-04-24T19:30:29.000Z"
+        "registered_at": "2021-04-24T19:30:29.000Z",
+        "year": 2021
     },
     {
         "Blog Url": "https://www.eferro.net/2017/01/interesting-talks-i-saw-these-days-work.html",
@@ -23048,7 +23063,7 @@
         "Description": "In this episode, Dave describes the pitfalls common to platform teams, the principles that are important for platform engineering, the strategic goals that platform teams can use to guide their decisions, and some tips for platform teams that will help them protect their users from changes in services.\n",
         "Duration": 1320,
         "Language": "English",
-        "Last Modified": "2023-06-18T06:28:48.000Z",
+        "Last Modified": "2025-04-06T08:11:18.000Z",
         "Less 15": 0,
         "Name": "Tips For Building Successful Platform Teams",
         "Published": true,
@@ -23077,7 +23092,8 @@
         "Url": "https://www.youtube.com/watch?v=_zH7TIXcjEs",
         "airtable_createdTime": "2022-09-18T21:57:09.000Z",
         "airtable_id": "rechbEi0S7vX0LS7D",
-        "registered_at": "2022-09-18T21:57:09.000Z"
+        "registered_at": "2022-09-18T21:57:09.000Z",
+        "year": 2022
     },
     {
         "Blog Url": "https://www.eferro.net/2023/05/good-talkspodcasts-may-2023-i.html",
@@ -23564,7 +23580,7 @@
         "Description": "This podcast episode features Charity Majors discussing the evolution of observability from her experiences at Parse and Facebook to co-founding Honeycomb, emphasizing its event-based approach for understanding complex systems and contrasting it with traditional metrics and logging, while also covering topics like Open Telemetry, DevOps, and engineering culture.\n",
         "Duration": 3060,
         "Language": "English",
-        "Last Modified": "2025-03-23T11:01:10.000Z",
+        "Last Modified": "2025-04-06T08:43:02.000Z",
         "Less 15": 0,
         "Name": "Charity Majors on Observability, OTEL, AI ops, DevOps and Friday deploys",
         "Notes": "Here are the most important points of the presentation by Charity Majors:\n- **The Limitations of Traditional Metrics and Logging:** Charity emphasizes that relying solely on metrics and aggregates makes it difficult to understand complex, high-cardinality systems, especially multi-tenant platforms. She recounts how at Parse, they often struggled to pinpoint root causes, spending significant time trying to correlate metrics and logs.\n- **The Power of Event-Based Observability:** The introduction of Facebook's \"Scuba\" tool, which allowed slicing and dicing on high-cardinality dimensions and wide events in real time, was a game-changer for understanding system behavior at Parse. This experience led to the realization that being able to treat every request as an event and analyze it with arbitrary dimensions was crucial for effective debugging and problem-solving. This was the foundational idea behind Honeycomb, which Charity co-founded.\n- **Observability as \"Business Intelligence for Systems\":** Charity describes observability as a way for engineers to ask and answer questions about their systems that they didn't know to ask beforehand, similar to how business analysts use BI tools. This contrasts with traditional monitoring, which focuses on pre-defined metrics and known failure modes.\n- **The Evolution and Broad Applicability of Observability:** Initially thought to be a niche solution for platforms with high cardinality, Honeycomb discovered that the need for observability is widespread and increasing due to the growing complexity of modern systems, including microservices, containers, and polyglot persistence.\n- **Open Telemetry as a Positive Industry Standard:** Despite initial cynicism, Charity is now enthusiastic about the success of Open Telemetry (OTEL) as a vendor-neutral standard for instrumenting code and collecting telemetry data. The goal of OTEL is to allow engineers to instrument their code once and then use various backend observability providers without re-instrumentation, reducing vendor lock-in. While noting that not all vendors have been equally cooperative (specifically mentioning Datadog's reluctance to fully embrace OTEL), she sees it as a significant step forward for the industry.\n- **Rethinking DevOps and Ownership:** Charity believes the traditional Dev/Ops divide was a temporary solution to increasing system complexity and advocates for engineers owning their code in production to ensure a tight feedback loop. The ability to deploy frequently, ideally as soon as code is merged, is crucial for this ownership and for quickly identifying and resolving issues. Deploying on Fridays, when done with proper engineering judgment (having time to monitor and verify), is presented as a \"smell test\" for the health of a team's deployment practices.\n- **The Second Half of an Engineering Career:** Charity advises engineers in their 30s and 40s to focus on self-awareness and fulfillment, emphasizing that career progression beyond senior developer doesn't necessarily mean management. She encourages exploring different technologies, industries, and roles while prioritizing autonomy, mastery, and purpose in their work.\n- **AI and Observability for LLMs:** Honeycomb is applying observability principles to the realm of Large Language Models (LLMs), recognizing that traditional testing methods are insufficient for these systems. Their \"Query Assistant\" uses LLMs to help users build Honeycomb queries. Charity highlights that developing with LLMs reinforces good software engineering practices like testing in production, frequent deployments, and the need for robust observability. She sees observability for LLMs as a potential \"Trojan horse\" for wider adoption of modern development practices.\n- **The Importance of Engineering Culture and Teamwork:** Charity emphasizes that building a strong engineering culture that encourages learning from failures through blameless retrospectives and prioritizes psychological safety is crucial for team success. She believes in hiring good teammates who can improve together, rather than solely focusing on brilliant individual engineers.\n\n",
@@ -23598,7 +23614,8 @@
         "airtable_createdTime": "2025-03-23T09:34:09.000Z",
         "airtable_id": "recicia289vkyUb3K",
         "core_topic": "Engineering Culture",
-        "registered_at": "2025-03-23T09:34:09.000Z"
+        "registered_at": "2025-03-23T09:34:09.000Z",
+        "year": 2023
     },
     {
         "Blog Url": "https://www.eferro.net/2016/01/interesting-talks-from-craft-conf-2015.html",
@@ -24418,7 +24435,7 @@
         "Description": "Dave Farley describes his take on what a holistic test-strategy looks like, and gives us examples from the real world to describe it. \n",
         "Duration": 840,
         "Language": "English",
-        "Last Modified": "2023-06-18T06:28:48.000Z",
+        "Last Modified": "2025-04-06T07:36:45.000Z",
         "Less 15": 1,
         "Name": "Testing Strategy for DevOps",
         "Published": true,
@@ -24449,7 +24466,8 @@
         "Url": "https://www.youtube.com/watch?v=z-3aSVfoyBY",
         "airtable_createdTime": "2021-07-03T07:42:12.000Z",
         "airtable_id": "recjwN6WkwLuCtm1h",
-        "registered_at": "2021-07-03T07:42:12.000Z"
+        "registered_at": "2021-07-03T07:42:12.000Z",
+        "year": 2021
     },
     {
         "Blog Url": "https://www.eferro.net/2023/05/good-talkspodcasts-may-2023-i.html",
@@ -24457,7 +24475,7 @@
         "Description": "Good conversation about GeePaw Hill's software development approach based on taking continuous small safe steps (Many More Much Smaller Steps).\n",
         "Duration": 2340,
         "Language": "English",
-        "Last Modified": "2025-03-31T14:50:07.000Z",
+        "Last Modified": "2025-04-06T08:20:50.000Z",
         "Less 15": 0,
         "Name": "Many More Much Smaller Steps with GeePaw Hill",
         "Notes": "Drawing on the information in the YouTube video transcript and our conversation history, here are the most important points of GeePaw Hill's presentation:\n\n\\*\u00a0\u00a0\\*\\*The central idea is to take many more much smaller steps than you are currently taking when making changes, whether in code, in processes, or even in your personal life.\\*\\* This is presented as a broadly applicable piece of \"rice and garlic advice\" \u2013 fundamental and widely relevant.\n\n\\*\u00a0\u00a0\\*\\*The traditional approach often operates under the assumption that the shortest distance between two points is a straight line, leading to the belief that fewer, larger steps are more efficient.\\*\\* GeePaw Hill strongly argues against this, stating that this logic only holds true in Euclidean plane geometry and not in the complex reality of software development or other domains.\n\n\\*\u00a0\u00a0\\*\\*Taking many more much smaller steps offers significant intrinsic benefits that are often ignored.\\*\\* These benefits include:\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*Increased interruptability:\\*\\* Smaller steps mean you are more frequently in a stable, deployable state, making it easier to pause and resume work.\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*Enhanced steerability:\\*\\* Frequent small releases allow for quicker adaptation to changing requirements, feedback, or emerging issues.\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*The \"juice\" factor (dopamine):\\*\\* Completing small steps provides regular positive reinforcement and a sense of progress, which can be crucial for maintaining motivation and joy in the work.\n\n\\*\u00a0\u00a0\\*\\*A \"step\" in this context means moving from an \"activated\" or \"ready\" state to another \"activated\" or \"ready\" state through a small change.\\*\\* \"Activated\" in software development often means code that is shifted, fielded, or deployed, or at least emotionally prepped to be shipped. The key is to make these cycles very short (e.g., 15-45 minutes for code changes, less than a day and a half of team time per story shipment).\n\n\\*\u00a0\u00a0\\*\\*The criterion for a step is not necessarily that it provides immediate positive value to the end-user, but rather that it results in a \"non-negative experience\".\\*\\* The focus is on making a small change and ensuring the system remains stable or better, even if the value hasn't yet increased.\n\n\\*\u00a0\u00a0\\*\\*Resistance to this idea often stems from a belief that each step must deliver significant user value or that larger, planned efforts are more efficient.\\*\\* Hill argues that the intrinsic benefits of small steps and the non-linear nature of larger changes outweigh these concerns. He suggests comparing the outcome of current practices to the potential of taking smaller steps.\n\n\\*\u00a0\u00a0\\*\\*When coaching teams to adopt smaller steps, GeePaw Hill emphasizes understanding what they want to achieve and identifying the smallest, easiest problems to solve first.\\*\\* He focuses on building trust and suggesting changes as experiments rather than mandates. Patience is crucial for this process.\n\n\\*\u00a0\u00a0\\*\\*Techniques like mob programming (or ensemble programming) can facilitate the adoption of smaller steps by providing a collaborative environment for learning and immediate feedback through micro-retrospectives.\\*\\* The shared learning and mutual reinforcement within a mob can help individuals overcome the feeling that they cannot make changes in small increments.\n\n\\*\u00a0\u00a0\\*\\*The principle of \"code works for you, you don't work for the code\" is closely related.\\*\\* If the codebase or development environment makes it difficult to take small, frequent steps or get fast feedback, then the code and processes should be changed to make it easier. This might involve refactoring code to be more modular and testable or simplifying deployment processes. The goal is to empower developers to control their tools and workflows.\n\n\\*\u00a0\u00a0\\*\\*Ultimately, the presentation emphasizes that the focus should be on the process of change itself, not just the specific code being changed.\\*\\* The ability to make frequent, small, safe changes is crucial for adaptability and delivering value faster in the long run. Reawakening the joy in programming by making development more manageable and less frustrating is also a key aspect.\n",
@@ -24498,7 +24516,8 @@
         "airtable_createdTime": "2023-05-06T20:21:25.000Z",
         "airtable_id": "reck60FOvatP5hPnd",
         "core_topic": "Agile-XP",
-        "registered_at": "2023-05-06T20:21:25.000Z"
+        "registered_at": "2023-05-06T20:21:25.000Z",
+        "year": 2021
     },
     {
         "Blog Url": "https://www.eferro.net/2019/03/index.html",
@@ -25580,7 +25599,7 @@
         "Description": "Diana Hu shares her advice for being a technical founder at the earliest stages - including topics like how to ship an MVP fast, how to deal with technology choices and technical debt, and how and when to hire an engineering team.\n",
         "Duration": 1680,
         "Language": "English",
-        "Last Modified": "2025-04-05T19:58:52.000Z",
+        "Last Modified": "2025-04-06T08:25:16.000Z",
         "Less 15": 0,
         "Name": "Tips For Technical Startup Founders | Startup School",
         "Published": true,
@@ -25612,7 +25631,8 @@
         "airtable_createdTime": "2023-08-26T18:46:07.000Z",
         "airtable_id": "reclsxslEsaXTMpfo",
         "core_topic": "Lean Startup",
-        "registered_at": "2023-08-26T18:46:07.000Z"
+        "registered_at": "2023-08-26T18:46:07.000Z",
+        "year": 2023
     },
     {
         "Blog Url": "https://www.eferro.net/2019/04/good-talkspodcasts-april-2019-i.html",
@@ -25798,7 +25818,7 @@
         "Description": "Gojko presents very interesting examples of developments that have achieved very good impacts (by minifying the developed software). He also explains the use of the impact mapping technique, which is very useful for focusing on the impact.\n",
         "Duration": 3240,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-06T08:12:09.000Z",
         "Less 15": 0,
         "Name": "Fast-track from Idea to Impact",
         "Published": true,
@@ -25825,8 +25845,10 @@
         "Url": "https://www.youtube.com/watch?v=67ovutBfXPQ",
         "airtable_createdTime": "2022-10-09T22:02:46.000Z",
         "airtable_id": "recm4jFcHXCYvjXOz",
+        "conference_name": "Agile tour",
         "core_topic": "Lean-Product Engineering",
-        "registered_at": "2022-10-09T22:02:46.000Z"
+        "registered_at": "2022-10-09T22:02:46.000Z",
+        "year": 2018
     },
     {
         "Blog Url": "https://www.eferro.net/2024/11/good-talkspodcasts-nov-2024-ii.html",
@@ -25834,7 +25856,7 @@
         "Description": "Jez Humble examines the common pitfalls of scaling Agile methodologies and presents alternative strategies for achieving organizational agility. He argues that simply implementing Agile practices without addressing underlying systemic issues, such as lengthy feedback loops and inefficient decision-making processes, will not lead to significant improvements. Instead, he proposes that organizations focus on creating rapid feedback loops, reducing batch sizes, and adopting an experimental approach to product development and process improvement, emphasizing value over cost and estimation.\n",
         "Duration": 3060,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-06T08:40:47.000Z",
         "Less 15": 0,
         "Name": "Why Scaling Agile Doesn't Work - GOTO 2015",
         "Published": true,
@@ -25863,8 +25885,10 @@
         "Url": "https://www.youtube.com/watch?app=desktop&v=2zYxWEZ0gYg",
         "airtable_createdTime": "2024-11-24T19:22:59.000Z",
         "airtable_id": "recm5NyzuUShg6KDI",
+        "conference_name": "GOTO",
         "core_topic": "Continuous Delivery",
-        "registered_at": "2024-11-24T19:22:59.000Z"
+        "registered_at": "2024-11-24T19:22:59.000Z",
+        "year": 2015
     },
     {
         "Blog Url": "https://www.eferro.net/2017/06/some-pending-interesting-talks.html",
@@ -26494,7 +26518,7 @@
         "Created": "2024-03-30T16:56:29.000Z",
         "Description": "Very interesting conversation with James Shores. It covers many topics, including fast-agile, mobbing, testing without mocks, technical practices, etc. Highly recommended.\n",
         "Duration": 2880,
-        "Last Modified": "2024-03-30T21:11:52.000Z",
+        "Last Modified": "2025-04-06T08:30:37.000Z",
         "Less 15": 0,
         "Name": "Scaling Organizations and Design with James Shore",
         "Published": true,
@@ -26535,7 +26559,8 @@
         "Url": "https://www.youtube.com/watch?v=duF4e3CwW9k",
         "airtable_createdTime": "2024-03-30T16:56:29.000Z",
         "airtable_id": "recmvoo351PsP313Q",
-        "registered_at": "2024-03-30T16:56:29.000Z"
+        "registered_at": "2024-03-30T16:56:29.000Z",
+        "year": 2022
     },
     {
         "Blog Url": "https://www.eferro.net/2023/01/good-talkspodcasts-jan-2023-i.html",
@@ -27543,7 +27568,7 @@
         "Description": "Very good ideas on how to approach product slicing, option generation and agile product development.\n",
         "Duration": 2220,
         "Language": "English",
-        "Last Modified": "2025-03-31T14:59:14.000Z",
+        "Last Modified": "2025-04-06T08:10:13.000Z",
         "Less 15": 0,
         "Name": "FYAC: The 3 Levels of User Story Slicing",
         "Notes": "Drawing on the information in the YouTube video transcript \"FYAC: The 3 Levels of User Story Slicing with Neil Killick\", here are the most important points of Neil Killick's explanation of user story slicing:\n\n\\*\u00a0\u00a0\\*\\*Story slicing is about creating independently valuable options that are more precise versions of the thing you want to slice\\*\\*. Each slice should deliver the essence of the product, similar to how a slice of an apple still gives you the essence of an apple.\n\\*\u00a0\u00a0Killick uses the analogy of an \\*\\*apple versus a Rubik's cube\\*\\* to illustrate the importance of slicing for value. A slice of an apple is useful on its own, while a broken-down or partially completed Rubik's cube is useless. Similarly, product slices should provide value even if other parts are not yet complete.\n\\*\u00a0\u00a0\\*\\*There are three levels of story slicing:\\*\\*\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*Capability Slicing (Level One):\\*\\* This level focuses on the customer's perspective and aims to narrow down broad capabilities into more specific, valuable options by being more precise about the \\*\\*customer\\*\\* (types, personas), the \\*\\*job\\*\\* the customer wants to do, and the \\*\\*platform\\*\\* or \\*\\*channel\\*\\* they use. An example is breaking down \"enable customers to bank online\" into \"enable business customers to pay their bills on their iPhone\". This level often involves using \\*\\*mind mapping\\*\\* to explore the various options.\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*Functional Slicing (Level Two):\\*\\* Once a capability slice is chosen, functional slicing breaks down the steps a customer needs to go through to achieve that capability. This involves mapping out the \\*\\*customer journey\\*\\* and identifying the simplest, quickest ways to enable each step. \\*\\*Story mapping\\*\\* is a recommended technique for this level. The goal is to define the minimum needed to get a working, shippable product that delivers value and allows for early feedback.\n\u00a0\u00a0\\*\u00a0\u00a0\\*\\*Technical Slicing (Level Three):\\*\\* This level focuses on how the development team will technically implement the functional slices. It involves making conscious choices about the \\*\\*level of sophistication\\*\\* for technical aspects like scalability, security, and performance, often starting with the simplest, quickest solution. The \\*\\*hamburger method\\*\\* by Gojko Adzic is highlighted as a useful technique for mapping out high-level technical tasks and their various implementation options to find the simplest slice.\n\\*\u00a0\u00a0\\*\\*Slicing is a collaborative effort\\*\\* involving the cross-functional team and stakeholders to ensure a shared understanding and to consider various options and trade-offs.\n\\*\u00a0\u00a0\\*\\*The bigger picture is not forgotten during slicing.\\*\\* Capability maps provide context for the more detailed functional and technical slicing, ensuring traceability and a shared vision.\n\\*\u00a0\u00a0Story slicing supports \\*\\*agile principles\\*\\* by enabling teams to deliver value incrementally, get early feedback, manage complexity, and adapt to change.\n\\*\u00a0\u00a0The artifacts created through slicing (capability maps, story maps) can be valuable for \\*\\*sprint reviews\\*\\*, providing transparency on the options considered and the decisions made.\n\\*\u00a0\u00a0Functional slices can help define \\*\\*sprint goals\\*\\* by focusing on delivering a meaningful increment of product. The overall capability can even align with the \\*\\*product goal\\*\\* in Scrum.\n\\*\u00a0\u00a0Killick recommends further resources such as his article \"The Essence of Story Slicing And Agile Development\", Jeff Patton's story mapping book, and Gojko Adzic's work on the hamburger method.\n",
@@ -27576,7 +27601,8 @@
         "airtable_createdTime": "2022-09-18T21:47:48.000Z",
         "airtable_id": "recoRY63Ih9eboaTI",
         "core_topic": "Agile",
-        "registered_at": "2022-09-18T21:47:48.000Z"
+        "registered_at": "2022-09-18T21:47:48.000Z",
+        "year": 2021
     },
     {
         "Blog Url": "https://www.eferro.net/2015/10/index.html",
@@ -28624,7 +28650,7 @@
         "Description": "In this episode Dave Farley explores how we could do a better job of dealing with data. Ideas like data pipelines and data mesh are becoming more common and more applicable as the scale of the data that we are dealing with grows. Managing the complexity in these activities, as in any other aspect of software engineering, is critical to success with data.\n",
         "Duration": 840,
         "Language": "English",
-        "Last Modified": "2025-03-31T14:55:07.000Z",
+        "Last Modified": "2025-04-06T07:42:20.000Z",
         "Less 15": 1,
         "Name": "Common Mistakes Data Scientists Make With BIG DATA",
         "Notes": "Drawing on the information in the YouTube video transcript, here are the most important points of Dave Farley's presentation:\n- **The core argument is that fundamental principles of software engineering are often overlooked in data management and machine learning, leading to mistakes.** Farley emphasizes that despite the differences in scale and specific tools, the underlying challenges of working with information remain consistent.\n- **He stresses that the material we manipulate in information technology is information, defined as data plus meaning.** He argues that thinking in these terms can help us apply well-established software engineering ideas to data storage, manipulation, and machine learning.\n- **A fundamental process in dealing with information is moving it from one place to another (A to B).** This involves identifying, retrieving, translating, moving, and then translating again for the destination to use it. This process is the same regardless of the volume of data.\n- **One critical mistake is the lack of basic safety measures like backups.** Farley notes anecdotally that data scientists sometimes work in environments (like Jupyter notebooks) without proper backup mechanisms, risking data loss if the source is corrupted.\n- **Another key concern is the reliability of data transfer.** Just like with code, data can be lost or corrupted during transmission. Therefore, it's crucial to have mechanisms to detect problems and strategies to fix them, which becomes increasingly challenging with larger datasets.\n- **Many organizations with big data needs fail to store the original data, hindering recovery options.** Farley advocates for preferring additive changes to data to avoid losing information and making changes in small, controlled steps to allow for stepping back if mistakes occur. This aligns with the concept of **Small Safe Steps (3s)** mentioned in.\n- **The lack of version control for data and the code that manipulates it is a significant oversight.** While version control is standard practice in software development, it is often absent in data management. Even the code for data manipulation is frequently treated as disposable, leading to poor structure and design. This highlights a gap in applying **Technical Practices** to data management.\n- **Data management tools often lack basic development features like offline testing and version control.** Farley recounts an experience with a market-leading tool that expected live production changes without any mechanism for testing or reverting, which he considers ludicrous and unprofessional by software development standards.\n- **The \"one model to rule them all\" approach, such as building massive data warehouses or data lakes with a single canonical model, is a failed approach analogous to outdated software design.** Modern software design favors more distributed, locally focused, and targeted models. This relates to **Architecture patterns** and **Microservices**.\n- **The concept of bounded contexts from Domain-Driven Design (DDD) is relevant to data management.** Just as different parts of a software system have different interpretations of the same concept, data should also be compartmentalized into areas of interest. This supports the idea of subdividing the information space, as seen in concepts like **Data Science** and **Data Engineering**.\n- **The idea of a data mesh, where data is actively designed for analytical purposes, is presented as a more effective alternative to a global data pool.** This emphasizes treating data as information with associated meaning, allowing for validation and better control. This connects to **Product** and understanding user needs in data.\n- **Fundamental principles of managing complexity apply to data and information just as much as to traditional software.** These include compartmentalization and making progress in small, testable steps. This aligns with **Lean Software Development** and **Agile** principles.\n- **The recommendation to establish a \"steel thread\" when integrating data sources or services is crucial.** This involves starting with the simplest possible implementation and iteratively refining it until it's solid, providing a foundation for further development. This mirrors the idea of incremental development and **Continuous Delivery**.\n- **Ultimately, the presentation argues that the fundamentals of working in small, version-controlled steps, making incremental progress, and actively managing complexity are essential for doing a good job with any kind of information, regardless of scale.** While different tools might be needed for large datasets, ignoring these core software engineering lessons is a significant mistake.\nThe topics mentioned in the sources, such as **Agile**, **Continuous Delivery**, **Devops**, **Software Design**, **Lean**, **Testing**, **Microservices**, **DDD**, and **Architecture**, are all highly relevant to Farley's discussion. He explicitly draws parallels between successful practices in these areas of software engineering and the necessary improvements in how big data is managed.\n",
@@ -28657,7 +28683,8 @@
         "airtable_createdTime": "2022-01-22T19:26:16.000Z",
         "airtable_id": "recqf4P0lQVFsvjcV",
         "core_topic": "Software Design",
-        "registered_at": "2022-01-22T19:26:16.000Z"
+        "registered_at": "2022-01-22T19:26:16.000Z",
+        "year": 2022
     },
     {
         "Blog Url": "https://www.eferro.net/2015/01/index.html",
@@ -28866,7 +28893,7 @@
         "Description": "This talk describe the social and technical strategies that great teams all of the world are using to be happier, more productive and make their users happy too.\n",
         "Duration": 2460,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:30:08.000Z",
+        "Last Modified": "2025-04-06T08:11:04.000Z",
         "Less 15": 0,
         "Name": "The Sociotechnical Path to High-Performing Teams",
         "Published": true,
@@ -28899,8 +28926,10 @@
         "Url": "https://vimeo.com/723450508",
         "airtable_createdTime": "2022-09-18T21:52:23.000Z",
         "airtable_id": "recr9psXCCS4XmZA6",
+        "conference_name": "DevOpsDays Z\u00fcrich",
         "core_topic": "Engineering Culture",
-        "registered_at": "2022-09-18T21:52:23.000Z"
+        "registered_at": "2022-09-18T21:52:23.000Z",
+        "year": 2022
     },
     {
         "Blog Url": "https://www.eferro.net/2019/05/index.html",
@@ -29429,7 +29458,7 @@
         "Description": "Buena reflexi\u00f3n sobre el papel del desarrollador en la sociedad y la necesidad de una etica profesional fuerte.\n",
         "Duration": 2040,
         "Language": "Spanish",
-        "Last Modified": "2024-08-18T21:54:01.000Z",
+        "Last Modified": "2025-04-06T07:37:50.000Z",
         "Less 15": 0,
         "Name": "\u00bfQue es un programador y cual es su papel en la sociedad?",
         "Published": true,
@@ -29458,7 +29487,9 @@
         "Url": "https://www.youtube.com/watch?v=n-l4vSVJkNY",
         "airtable_createdTime": "2021-08-12T13:40:55.000Z",
         "airtable_id": "recrzWPwTzGCycMFs",
-        "registered_at": "2021-08-12T13:40:55.000Z"
+        "conference_name": "CAS",
+        "registered_at": "2021-08-12T13:40:55.000Z",
+        "year": 2013
     },
     {
         "Blog Url": "https://www.eferro.net/2017/10/index.html",
@@ -30720,7 +30751,7 @@
         "Description": "Great explanation about Continous Integration, Continuous Delivery and some strategies that allow to work in small safe steps (Feature Flags, Branch by Abstraction and Dark Launching).\n",
         "Duration": 1080,
         "Language": "English",
-        "Last Modified": "2023-06-18T06:28:48.000Z",
+        "Last Modified": "2025-04-06T08:19:59.000Z",
         "Less 15": 0,
         "Name": "You Don\u2019t Need CODE OWNERSHIP",
         "Published": true,
@@ -30745,7 +30776,8 @@
         "Url": "https://youtu.be/UwC7nIuiqEw",
         "airtable_createdTime": "2023-01-28T14:25:12.000Z",
         "airtable_id": "recuCBrk3kcf3ZRh1",
-        "registered_at": "2023-01-28T14:25:12.000Z"
+        "registered_at": "2023-01-28T14:25:12.000Z",
+        "year": 2023
     },
     {
         "Blog Url": "https://www.eferro.net/2018/02/interesting-talkspodcasts-2018-feb-i.html",
@@ -31493,7 +31525,7 @@
         "Description": "This YouTube video outlines the 10 essential rules for continuous integration (CI), emphasizing its role as the foundation of a modern deployment pipeline and continuous delivery\n",
         "Duration": 540,
         "Language": "English",
-        "Last Modified": "2025-04-05T19:44:24.000Z",
+        "Last Modified": "2025-04-06T08:42:43.000Z",
         "Less 15": 1,
         "Name": "The 10 COMMANDMENTS Of Continuous Integration (CI)",
         "Notes": "The most important points of the presentation \"The 10 COMMANDMENTS Of Continuous Integration (CI)\" are:\n- **Continuous integration is the first stage of a modern deployment pipeline and is central to continuous delivery**.\n- Continuous integration is a discipline focused on making changes visible and integrating frequently to avoid \"integration hell\".\n- **When done right, continuous integration leads to faster, safer, and more collaborative software development**.\n- The foundational idea of continuous integration is that **there is only one version of the truth**, which is the current version of the software.\n\nThe 10 commandments of continuous integration are:\n1. **Always run commit tests locally before committing**. This aligns with test-driven development.\n2. **Wait for the results of the commit build**. If something breaks, the committer should be the first to know and fix it. Aim to keep continuous integration build times under five minutes.\n3. **Fix or revert failures within 10 minutes**. If a fix isn't possible in that time, revert the change to avoid blocking the pipeline.\n4. **Revert changes when necessary**. If a teammate breaks the build and is unavailable, revert their change.\n5. **Monitor your changes through the pipeline**. Ensure changes pass acceptance, performance, and security tests.\n6. **Treat a broken build as a build scene**. The person who caused the break is responsible for fixing it.\n7. **Commit small, commit often**. Ideally, commit multiple times a day. Small changes are easier to test, debug, and integrate.\n8. **Maintain a fast commit feedback loop**. Aim for feedback on commits within 5 minutes and full pipeline transit within an hour to catch problems early.\n9. **Automate everything**. Automate testing, configuration management, deployment, and build creation to remove manual errors and ensure consistency.\n10. **Take ownership of failures**. The person who introduces a failure is responsible for fixing it, even if it breaks something unexpected.\n\n**Continuous integration requires discipline and accountability**.\n\n",
@@ -31524,7 +31556,8 @@
         "airtable_createdTime": "2025-03-09T09:59:37.000Z",
         "airtable_id": "recvZcH5MM0KPtCKZ",
         "core_topic": "Continuous Delivery",
-        "registered_at": "2025-03-09T09:59:37.000Z"
+        "registered_at": "2025-03-09T09:59:37.000Z",
+        "year": 2025
     },
     {
         "Blog Url": "https://www.eferro.net/2021/09/good-talkspodcasts-september-2021-ii.html",
@@ -31963,7 +31996,7 @@
         "Description": "This talk strips away the well-known design principles and exposes the hidden, underlying goals of design. It reveals programming techniques that allow you to write less code while creating beautiful, flexible applications.\n",
         "Duration": 3000,
         "Language": "English",
-        "Last Modified": "2025-02-10T12:15:16.000Z",
+        "Last Modified": "2025-04-06T08:07:43.000Z",
         "Less 15": 0,
         "Name": "Less - The Path to Better Design",
         "Notes": "The presentation emphasizes the importance of **designing code that is easy to change** and reduces the cost of change. The core idea is that code should work today but be adaptable to future requirements. The presenter introduces key concepts and techniques related to object-oriented design, focusing on managing dependencies and reducing coupling between objects. Here's a breakdown of the most important points:\n- **Definition of Design:** Design is not about following rigid rules or what someone else dictates, but is the art of arranging code with the goal of reducing the cost of change. The fundamental tension in design is between present needs and future changes.\n- **Diagnostics for Good Code:** Instead of focusing on bad code traits (rigid, fragile, immobile, viscous), the presentation offers four diagnostics for good code:\n    - **Transparent:** It should be clear what will happen if the code changes.\n    - **Reasonable:** The cost of adding a new feature should be proportional to its value.\n    - **Usable:** Code should be reusable in new contexts without duplication.\n    - **Exemplary:** The code should encourage future changes that are beneficial for the app.\n    - **Knowledge and Dependencies:**Objects should know what they do, but not necessarily how they do it.\n    - **Knowledge creates dependencies, which create risk**.\n    - Managing dependencies is at the center of design.\n    - **Depend on things that are more stable than you**.\n    - **Decoupling:**When uncertain about the stability of objects, **decouple them by making them know as little about each other as possible**.\n    - **Loosening coupling makes code more flexible** in the face of change.\n    - Decoupling can be achieved by having objects tell each other what they want rather than directing how to behave.\n- **Abstractions and Duck Typing:**\n- Focus on **abstractions** rather than concrete classes to reduce coupling.\n- Use **duck typing** (where the type of an object is less important than the methods it implements) to create more flexible code.\n- Design objects as if they exist in isolation, where they cannot and do not know what other classes exist, instead focusing on the message and less on the class.\n- **The Role of Uncertainty:** Uncertainty is not a reason to guess, but a directive to decouple. Design should help preserve the right to make decisions later.\n- **Feeling for Design:** Good designers have a feeling for what's right that guides them. This feeling comes from the space between objects, with more space leading to more flexibility.\n- **Loose Coupling:** Loose coupling is a key technique, but it can become another concretion. It's essential to find the abstraction, but it is important not to abstract too soon.\nThe presentation uses a refactoring example of a bicycle touring company to illustrate these concepts. The examples show how to reduce dependencies between the `Trip` and `Mechanic` classes by driving details into the objects that should know them and depending on their public interfaces. The core message is that focusing on stable abstractions and minimizing dependencies is essential for writing code that is both functional and adaptable.\n",
@@ -31991,8 +32024,10 @@
         "Url": "https://vimeo.com/53154357",
         "airtable_createdTime": "2022-06-12T08:47:28.000Z",
         "airtable_id": "recwUMFbKAjcAFrfH",
+        "conference_name": "\u00d8redev",
         "core_topic": "Software Design",
-        "registered_at": "2022-06-12T08:47:28.000Z"
+        "registered_at": "2022-06-12T08:47:28.000Z",
+        "year": 2012
     },
     {
         "Blog Url": "https://www.eferro.net/2017/08/good-talkspodcasts-purging-queue-ii.html",
@@ -32254,7 +32289,7 @@
         "Description": "In this talk Jez will describe how to implement devops principles and practices, how to overcome typical obstacles, and the outcomes DevOps enables. A must-see talk.\n",
         "Duration": 2880,
         "Language": "English",
-        "Last Modified": "2025-01-20T11:31:57.000Z",
+        "Last Modified": "2025-04-06T07:41:11.000Z",
         "Less 15": 0,
         "Name": "Industry Keynote: The DevOps Transformation",
         "Published": true,
@@ -32288,7 +32323,8 @@
         "airtable_createdTime": "2021-11-07T18:57:25.000Z",
         "airtable_id": "recwznqIb6ycqXb6u",
         "core_topic": "Devops",
-        "registered_at": "2021-11-07T18:57:25.000Z"
+        "registered_at": "2021-11-07T18:57:25.000Z",
+        "year": 2017
     },
     {
         "Blog Url": "https://www.eferro.net/2017/05/interesting-technical-talkspodcasts-may.html",
@@ -33876,7 +33912,7 @@
         "Description": "Since the Continuous Delivery book came out in 2010, it\u2019s gone from being a controversial idea to a commonplace\u2026 until you consider that many people who say they are doing it aren\u2019t really, and there are still plenty of places that consider it crazy talk. In this session Jez will present some of the highlights and lowlights of the past six years listening to people explain why continuous delivery won\u2019t work, and what he learned in the process.\n",
         "Duration": 2940,
         "Language": "English",
-        "Last Modified": "2025-04-05T17:43:00.000Z",
+        "Last Modified": "2025-04-06T08:08:25.000Z",
         "Less 15": 0,
         "Name": "Continuous Delivery - Sounds Great But It Won't Work Here",
         "Published": true,
@@ -33903,9 +33939,10 @@
         "Url": "https://www.youtube.com/watch?v=IvWr29afDF8",
         "airtable_createdTime": "2022-07-25T18:02:56.000Z",
         "airtable_id": "reczwtffHNw0fqzfl",
+        "conference_name": "Agile Testing Days",
         "core_topic": "Continuous Delivery",
         "registered_at": "2022-07-25T18:02:56.000Z",
-        "year": 2010
+        "year": 2017
     },
     {
         "Created": "2021-10-23T06:48:40.000Z",
