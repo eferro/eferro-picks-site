@@ -10,6 +10,8 @@ interface TalkCardProps {
   selectedAuthor: string | null;
   onTopicClick: (topic: string) => void;
   selectedTopics: string[];
+  onConferenceClick: (conference: string) => void;
+  selectedConference: string | null;
 }
 
 export function TalkCard({ 
@@ -17,7 +19,9 @@ export function TalkCard({
   onAuthorClick, 
   selectedAuthor,
   onTopicClick,
-  selectedTopics 
+  selectedTopics,
+  onConferenceClick,
+  selectedConference
 }: TalkCardProps) {
   const navigate = useNavigate();
 
@@ -96,10 +100,24 @@ export function TalkCard({
             </span>
           </div>
           {(talk.conference_name || talk.year) && (
-            <div className="text-xs text-gray-600 -mt-1 mb-3">
-              {talk.conference_name && <span>{talk.conference_name}</span>}
+            <div className="text-xs text-gray-600 -mt-1 mb-3 flex items-center gap-2">
+              {talk.conference_name && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent card click
+                    onConferenceClick(talk.conference_name!);
+                  }}
+                  className={`px-2 py-1 rounded-full text-xs transition-colors ${
+                    selectedConference === talk.conference_name
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
+                  }`}
+                >
+                  {talk.conference_name}
+                </button>
+              )}
               {talk.conference_name && talk.year && <span className="mx-1">·</span>}
-              {talk.year && <span>{talk.year}</span>}
+              {talk.year && <span className="px-2 py-1 text-gray-500">{talk.year}</span>}
             </div>
           )}
           <p className="text-gray-700 mb-4 line-clamp-5">{talk.description}</p>
