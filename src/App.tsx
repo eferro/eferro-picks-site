@@ -24,10 +24,25 @@ function Header() {
           <p>
             This collection reflects my experience-driven perspective on software delivery and product development. Each talk aligns with my core beliefs in Agile, XP, and Lean thinking—where quality code, tight feedback loops, and continuous learning drive sustainable speed.
           </p>
-          <p className="text-center">
-            📚 Learn more: <a href="https://www.eferro.net/p/my-premises-about-software-development.html" className="text-blue-600 hover:text-blue-800 hover:underline">My Software Development Premises</a> | 
-            <a href="https://www.eferro.net" className="text-blue-600 hover:text-blue-800 hover:underline ml-1">Blog (eferro's random stuff)</a>
-          </p>
+          <div className="text-center space-y-3">
+            <p>
+              📚 Learn more: <a href="https://www.eferro.net/p/my-premises-about-software-development.html" className="text-blue-600 hover:text-blue-800 hover:underline">My Software Development Premises</a> | 
+              <a href="https://www.eferro.net" className="text-blue-600 hover:text-blue-800 hover:underline ml-1">Blog (eferro's random stuff)</a>
+            </p>
+            <a
+              href="https://ko-fi.com/R5R1KWPLC"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-4 py-2 rounded-md bg-[#72a4f2] text-white hover:bg-[#5a83c2] transition-colors"
+            >
+              <img
+                src="https://storage.ko-fi.com/cdn/cup-border.png"
+                alt="Ko-fi"
+                className="h-4 w-4 mr-2 invert"
+              />
+              Support me on Ko-fi
+            </a>
+          </div>
         </div>
       </div>
     </header>
