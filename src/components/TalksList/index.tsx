@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { Talk } from '../../types/talks';
 import { TalkSection } from './TalkSection';
 import { useTalks } from '../../hooks/useTalks';
+import { YearFilter, type YearFilterData } from './YearFilter';
 
 function LoadingSpinner() {
   return (
@@ -23,6 +24,8 @@ function ErrorMessage({ message }: { message: string }) {
 export function TalksList() {
   const [selectedAuthor, setSelectedAuthor] = useState<string | null>(null);
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
+  const [selectedConference, setSelectedConference] = useState<string | null>(null);
+  const [selectedYearFilter, setSelectedYearFilter] = useState<YearFilterData | null>(null);
   const { talks, loading, error } = useTalks();
 
   // Handle topic selection
@@ -36,7 +39,12 @@ export function TalksList() {
     });
   };
 
-  // Filter talks by selected author and topics
+  // Handle conference selection
+  const handleConferenceClick = (conference: string) => {
+    setSelectedConference(prev => prev === conference ? null : conference);
+  };
+
+  // Filter talks by selected author, topics, conference, and year
   const filteredTalks = useMemo(() => {
     let filtered = talks;
 
@@ -50,8 +58,34 @@ export function TalksList() {
       );
     }
 
+    if (selectedConference) {
+      filtered = filtered.filter(talk => talk.conference_name === selectedConference);
+    }
+
+    if (selectedYearFilter) {
+      const currentYear = new Date().getFullYear();
+      filtered = filtered.filter(talk => {
+        if (!talk.year) return false;
+        
+        switch (selectedYearFilter.type) {
+          case 'specific':
+            return talk.year === selectedYearFilter.year;
+          case 'before':
+            return talk.year < (selectedYearFilter.year || currentYear);
+          case 'after':
+            return talk.year > (selectedYearFilter.year || currentYear);
+          case 'last2':
+            return talk.year >= currentYear - 2;
+          case 'last5':
+            return talk.year >= currentYear - 5;
+          default:
+            return true;
+        }
+      });
+    }
+
     return filtered;
-  }, [talks, selectedAuthor, selectedTopics]);
+  }, [talks, selectedAuthor, selectedTopics, selectedConference, selectedYearFilter]);
 
   // Memoize the grouped and sorted talks
   const sortedTopics = useMemo(() => {
@@ -81,8 +115,17 @@ export function TalksList() {
 
   return (
     <div className="max-w-7xl 2xl:max-w-[96rem] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {/* Filters */}
+      <div className="mb-6 flex items-center gap-4">
+        <YearFilter
+          talks={talks}
+          selectedFilter={selectedYearFilter}
+          onFilterChange={setSelectedYearFilter}
+        />
+      </div>
+
       {/* Active filters */}
-      {(selectedAuthor || selectedTopics.length > 0) && (
+      {(selectedAuthor || selectedTopics.length > 0 || selectedConference || selectedYearFilter) && (
         <div className="mb-6 space-y-3">
           {selectedAuthor && (
             <div className="flex items-center gap-2">
@@ -92,6 +135,19 @@ export function TalksList() {
                 onClick={() => setSelectedAuthor(null)}
               >
                 {selectedAuthor}
+                <span className="ml-2 text-blue-600">×</span>
+              </button>
+            </div>
+          )}
+          
+          {selectedConference && (
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-500">Conference:</span>
+              <button
+                className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
+                onClick={() => setSelectedConference(null)}
+              >
+                {selectedConference}
                 <span className="ml-2 text-blue-600">×</span>
               </button>
             </div>
@@ -118,6 +174,29 @@ export function TalksList() {
               </button>
             </div>
           )}
+          
+          {selectedYearFilter && (
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-500">Year:</span>
+              <button
+                className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
+                onClick={() => setSelectedYearFilter(null)}
+              >
+                {selectedYearFilter.type === 'specific' && selectedYearFilter.year ? (
+                  selectedYearFilter.year
+                ) : selectedYearFilter.type === 'before' ? (
+                  `Before ${selectedYearFilter.year}`
+                ) : selectedYearFilter.type === 'after' ? (
+                  `After ${selectedYearFilter.year}`
+                ) : selectedYearFilter.type === 'last2' ? (
+                  'Last 2 Years'
+                ) : (
+                  'Last 5 Years'
+                )}
+                <span className="ml-2 text-blue-600">×</span>
+              </button>
+            </div>
+          )}
         </div>
       )}
 
@@ -136,6 +215,8 @@ export function TalksList() {
             selectedAuthor={selectedAuthor}
             onTopicClick={handleTopicClick}
             selectedTopics={selectedTopics}
+            onConferenceClick={handleConferenceClick}
+            selectedConference={selectedConference}
           />
         ))
       ) : (
