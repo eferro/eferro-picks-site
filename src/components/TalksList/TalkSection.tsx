@@ -8,6 +8,8 @@ interface TalkSectionProps {
   selectedAuthor: string | null;
   onTopicClick: (topic: string) => void;
   selectedTopics: string[];
+  onConferenceClick: (conference: string) => void;
+  selectedConference: string | null;
 }
 
 export function TalkSection({ 
@@ -16,7 +18,9 @@ export function TalkSection({
   onAuthorClick, 
   selectedAuthor,
   onTopicClick,
-  selectedTopics
+  selectedTopics,
+  onConferenceClick,
+  selectedConference
 }: TalkSectionProps) {
   return (
     <section className="mb-12">
@@ -32,6 +36,8 @@ export function TalkSection({
             selectedAuthor={selectedAuthor}
             onTopicClick={onTopicClick}
             selectedTopics={selectedTopics}
+            onConferenceClick={onConferenceClick}
+            selectedConference={selectedConference}
           />
         ))}
       </div>
