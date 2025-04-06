@@ -14,6 +14,7 @@ interface AirtableItem {
   Language?: string;
   Rating?: number;
   "Resource type"?: string;
+  year?: number;
 }
 
 const VALID_RESOURCE_TYPES = ['podcast', 'talk', 'videopodcast'];
@@ -58,7 +59,8 @@ export function useTalks() {
             speakers: item.Speakers_Names || [],
             description: item.Description || '',
             core_topic: item.core_topic || '',
-            notes: item.Notes
+            notes: item.Notes,
+            year: item.year
           };
         });
 

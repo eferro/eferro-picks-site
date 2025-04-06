@@ -94,6 +94,12 @@ export function TalkDetail() {
             <span className="font-medium">{talk.speakers.join(', ')}</span>
             <span className="ml-4">{formatDuration(talk.duration)}</span>
           </div>
+          
+          {talk.year && (
+            <div className="text-sm text-gray-600 -mt-4 mb-6">
+              {talk.year}
+            </div>
+          )}
 
           <div className="prose max-w-none">
             <p className="text-gray-700 mb-6">
