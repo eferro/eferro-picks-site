@@ -9,4 +9,5 @@ export interface Talk {
   core_topic: string;
   notes?: string;  // Optional field for rich text notes
   year?: number;  // Optional field for the talk's year
+  conference_name?: string;  // Optional field for conference name
 } 

@@ -95,9 +95,11 @@ export function TalkCard({
               {formatDuration(talk.duration)}
             </span>
           </div>
-          {talk.year && (
+          {(talk.conference_name || talk.year) && (
             <div className="text-xs text-gray-600 -mt-1 mb-3">
-              {talk.year}
+              {talk.conference_name && <span>{talk.conference_name}</span>}
+              {talk.conference_name && talk.year && <span className="mx-1">·</span>}
+              {talk.year && <span>{talk.year}</span>}
             </div>
           )}
           <p className="text-gray-700 mb-4 line-clamp-5">{talk.description}</p>

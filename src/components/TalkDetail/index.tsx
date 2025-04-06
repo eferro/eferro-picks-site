@@ -95,9 +95,11 @@ export function TalkDetail() {
             <span className="ml-4">{formatDuration(talk.duration)}</span>
           </div>
           
-          {talk.year && (
+          {(talk.conference_name || talk.year) && (
             <div className="text-sm text-gray-600 -mt-4 mb-6">
-              {talk.year}
+              {talk.conference_name && <span>{talk.conference_name}</span>}
+              {talk.conference_name && talk.year && <span className="mx-1">·</span>}
+              {talk.year && <span>{talk.year}</span>}
             </div>
           )}
 
