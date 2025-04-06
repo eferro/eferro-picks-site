@@ -95,6 +95,11 @@ export function TalkCard({
               {formatDuration(talk.duration)}
             </span>
           </div>
+          {talk.year && (
+            <div className="text-xs text-gray-600 -mt-1 mb-3">
+              {talk.year}
+            </div>
+          )}
           <p className="text-gray-700 mb-4 line-clamp-5">{talk.description}</p>
           <div className="flex flex-wrap gap-2">
             {topicElements}
