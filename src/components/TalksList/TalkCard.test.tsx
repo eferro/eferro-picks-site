@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { TalkCard } from './TalkCard';
 import { mockTalk, mockHandlers } from '../../test/utils';
 import { BrowserRouter } from 'react-router-dom';
@@ -148,5 +148,26 @@ describe('TalkCard', () => {
     );
 
     expect(screen.getByRole('img', { name: /notes/i })).toBeInTheDocument();
+  });
+
+  it('calls onTopicClick when topic is clicked', () => {
+    render(
+      <BrowserRouter>
+        <TalkCard
+          talk={mockTalk}
+          onAuthorClick={mockHandlers.onAuthorClick}
+          selectedAuthor={null}
+          onTopicClick={mockHandlers.onTopicClick}
+          selectedTopics={[]}
+          onConferenceClick={mockHandlers.onConferenceClick}
+          selectedConference={null}
+        />
+      </BrowserRouter>
+    );
+
+    const topicButton = screen.getByRole('button', { name: 'test' });
+    fireEvent.click(topicButton);
+
+    expect(mockHandlers.onTopicClick).toHaveBeenCalledWith('test');
   });
 }); 
