@@ -40,4 +40,22 @@ describe('TalkCard', () => {
 
     expect(screen.getByText('Test Speaker')).toBeInTheDocument();
   });
+
+  it('renders the duration in hours and minutes', () => {
+    render(
+      <BrowserRouter>
+        <TalkCard
+          talk={mockTalk}
+          onAuthorClick={mockHandlers.onAuthorClick}
+          selectedAuthor={null}
+          onTopicClick={mockHandlers.onTopicClick}
+          selectedTopics={[]}
+          onConferenceClick={mockHandlers.onConferenceClick}
+          selectedConference={null}
+        />
+      </BrowserRouter>
+    );
+
+    expect(screen.getByText('1h 0m')).toBeInTheDocument();
+  });
 }); 
