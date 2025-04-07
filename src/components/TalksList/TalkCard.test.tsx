@@ -3,247 +3,156 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { TalkCard } from './TalkCard';
 import { mockTalk, mockHandlers } from '../../test/utils';
 import { BrowserRouter } from 'react-router-dom';
+import { renderTalkCard, createTalk } from '../../test/test-utils';
 
-const navigate = vi.fn();
+const mockNavigate = vi.fn();
 
 vi.mock('react-router-dom', () => ({
   ...vi.importActual('react-router-dom'),
-  useNavigate: () => navigate,
+  useNavigate: () => mockNavigate,
   BrowserRouter: ({ children }: { children: React.ReactNode }) => <>{children}</>
 }));
 
 describe('TalkCard', () => {
   beforeEach(() => {
-    vi.clearAllMocks();
+    mockNavigate.mockClear();
   });
 
   it('renders the talk title', () => {
-    render(
-      <BrowserRouter>
-        <TalkCard
-          talk={mockTalk}
-          onAuthorClick={mockHandlers.onAuthorClick}
-          selectedAuthor={null}
-          onTopicClick={mockHandlers.onTopicClick}
-          selectedTopics={[]}
-          onConferenceClick={mockHandlers.onConferenceClick}
-          selectedConference={null}
-        />
-      </BrowserRouter>
-    );
-
-    expect(screen.getByText('Test Talk')).toBeInTheDocument();
+    const talk = createTalk({ title: 'Test Title' });
+    renderTalkCard({ talk });
+    expect(screen.getByText('Test Title')).toBeInTheDocument();
   });
 
   it('renders the speaker name', () => {
-    render(
-      <BrowserRouter>
-        <TalkCard
-          talk={mockTalk}
-          onAuthorClick={mockHandlers.onAuthorClick}
-          selectedAuthor={null}
-          onTopicClick={mockHandlers.onTopicClick}
-          selectedTopics={[]}
-          onConferenceClick={mockHandlers.onConferenceClick}
-          selectedConference={null}
-        />
-      </BrowserRouter>
-    );
-
-    expect(screen.getByText('Test Speaker')).toBeInTheDocument();
+    const talk = createTalk({ 
+      speaker: { 
+        id: '1', 
+        name: 'Test Speaker', 
+        slug: 'test-speaker' 
+      },
+      speakers: ['Test Speaker']
+    });
+    renderTalkCard({ talk });
+    expect(screen.getByRole('button', { name: /Filter by speaker: Test Speaker/i })).toBeInTheDocument();
   });
 
   it('renders the duration in hours and minutes', () => {
-    render(
-      <BrowserRouter>
-        <TalkCard
-          talk={mockTalk}
-          onAuthorClick={mockHandlers.onAuthorClick}
-          selectedAuthor={null}
-          onTopicClick={mockHandlers.onTopicClick}
-          selectedTopics={[]}
-          onConferenceClick={mockHandlers.onConferenceClick}
-          selectedConference={null}
-        />
-      </BrowserRouter>
-    );
-
+    const talk = createTalk({ duration: 3600 }); // 1 hour
+    renderTalkCard({ talk });
     expect(screen.getByText('1h 0m')).toBeInTheDocument();
   });
 
   it('renders the topic', () => {
-    render(
-      <BrowserRouter>
-        <TalkCard
-          talk={mockTalk}
-          onAuthorClick={mockHandlers.onAuthorClick}
-          selectedAuthor={null}
-          onTopicClick={mockHandlers.onTopicClick}
-          selectedTopics={[]}
-          onConferenceClick={mockHandlers.onConferenceClick}
-          selectedConference={null}
-        />
-      </BrowserRouter>
-    );
-
-    expect(screen.getByText('test')).toBeInTheDocument();
+    const talk = createTalk({ 
+      topic: { 
+        id: '1', 
+        name: 'test', 
+        slug: 'test' 
+      },
+      topics: ['test']
+    });
+    renderTalkCard({ talk });
+    expect(screen.getByRole('button', { name: 'test' })).toBeInTheDocument();
   });
 
   it('renders the conference name', () => {
-    render(
-      <BrowserRouter>
-        <TalkCard
-          talk={mockTalk}
-          onAuthorClick={mockHandlers.onAuthorClick}
-          selectedAuthor={null}
-          onTopicClick={mockHandlers.onTopicClick}
-          selectedTopics={[]}
-          onConferenceClick={mockHandlers.onConferenceClick}
-          selectedConference={null}
-        />
-      </BrowserRouter>
-    );
-
-    expect(screen.getByText('Test Conference')).toBeInTheDocument();
+    const talk = createTalk({ 
+      conference_name: 'Test Conference'
+    });
+    renderTalkCard({ talk });
+    expect(screen.getByRole('button', { name: 'Test Conference' })).toBeInTheDocument();
   });
 
   it('renders the description', () => {
-    render(
-      <BrowserRouter>
-        <TalkCard
-          talk={mockTalk}
-          onAuthorClick={mockHandlers.onAuthorClick}
-          selectedAuthor={null}
-          onTopicClick={mockHandlers.onTopicClick}
-          selectedTopics={[]}
-          onConferenceClick={mockHandlers.onConferenceClick}
-          selectedConference={null}
-        />
-      </BrowserRouter>
-    );
-
-    expect(screen.getByText('Test description')).toBeInTheDocument();
+    const talk = createTalk({ description: 'Custom test description' });
+    renderTalkCard({ talk });
+    const description = screen.getByText('Custom test description');
+    expect(description).toBeInTheDocument();
+    expect(description).toHaveClass('line-clamp-5');
   });
 
   it('does not render notes icon when notes are not present', () => {
-    render(
-      <BrowserRouter>
-        <TalkCard
-          talk={mockTalk}
-          onAuthorClick={mockHandlers.onAuthorClick}
-          selectedAuthor={null}
-          onTopicClick={mockHandlers.onTopicClick}
-          selectedTopics={[]}
-          onConferenceClick={mockHandlers.onConferenceClick}
-          selectedConference={null}
-        />
-      </BrowserRouter>
-    );
-
+    const talk = createTalk({ notes: undefined });
+    renderTalkCard({ talk });
     expect(screen.queryByRole('img', { name: /notes/i })).not.toBeInTheDocument();
   });
 
   it('renders notes icon when notes are present', () => {
-    const talkWithNotes = { ...mockTalk, notes: 'Some notes' };
-    render(
-      <BrowserRouter>
-        <TalkCard
-          talk={talkWithNotes}
-          onAuthorClick={mockHandlers.onAuthorClick}
-          selectedAuthor={null}
-          onTopicClick={mockHandlers.onTopicClick}
-          selectedTopics={[]}
-          onConferenceClick={mockHandlers.onConferenceClick}
-          selectedConference={null}
-        />
-      </BrowserRouter>
-    );
-
+    const talk = createTalk({ notes: 'Some notes' });
+    renderTalkCard({ talk });
     expect(screen.getByRole('img', { name: /notes/i })).toBeInTheDocument();
   });
 
-  it('calls onTopicClick when topic is clicked', () => {
-    render(
-      <BrowserRouter>
-        <TalkCard
-          talk={mockTalk}
-          onAuthorClick={mockHandlers.onAuthorClick}
-          selectedAuthor={null}
-          onTopicClick={mockHandlers.onTopicClick}
-          selectedTopics={[]}
-          onConferenceClick={mockHandlers.onConferenceClick}
-          selectedConference={null}
-        />
-      </BrowserRouter>
-    );
-
+  it('calls onTopicClick when topic is clicked and stops event propagation', () => {
+    const onTopicClick = vi.fn();
+    const talk = createTalk({ 
+      topic: { 
+        id: '1', 
+        name: 'test', 
+        slug: 'test' 
+      },
+      topics: ['test']
+    });
+    const { onTopicClick: handler } = renderTalkCard({ talk, onTopicClick });
+    
     const topicButton = screen.getByRole('button', { name: 'test' });
-    fireEvent.click(topicButton);
-
-    expect(mockHandlers.onTopicClick).toHaveBeenCalledWith('test');
+    const clickEvent = new MouseEvent('click', { bubbles: true });
+    Object.defineProperty(clickEvent, 'stopPropagation', { value: vi.fn() });
+    
+    fireEvent(topicButton, clickEvent);
+    
+    expect(handler).toHaveBeenCalledWith('test');
+    expect(clickEvent.stopPropagation).toHaveBeenCalled();
   });
 
-  it('calls onAuthorClick when speaker is clicked', () => {
-    render(
-      <BrowserRouter>
-        <TalkCard
-          talk={mockTalk}
-          onAuthorClick={mockHandlers.onAuthorClick}
-          selectedAuthor={null}
-          onTopicClick={mockHandlers.onTopicClick}
-          selectedTopics={[]}
-          onConferenceClick={mockHandlers.onConferenceClick}
-          selectedConference={null}
-        />
-      </BrowserRouter>
-    );
-
-    const speakerButton = screen.getByRole('button', { name: 'Filter by speaker: Test Speaker' });
-    fireEvent.click(speakerButton);
-
-    expect(mockHandlers.onAuthorClick).toHaveBeenCalledWith('Test Speaker');
+  it('calls onAuthorClick when author is clicked and stops event propagation', () => {
+    const onAuthorClick = vi.fn();
+    const talk = createTalk({ 
+      speaker: { 
+        id: '1', 
+        name: 'Test Speaker', 
+        slug: 'test-speaker' 
+      },
+      speakers: ['Test Speaker']
+    });
+    const { onAuthorClick: handler } = renderTalkCard({ talk, onAuthorClick });
+    
+    const authorButton = screen.getByRole('button', { name: /Filter by speaker: Test Speaker/i });
+    const clickEvent = new MouseEvent('click', { bubbles: true });
+    Object.defineProperty(clickEvent, 'stopPropagation', { value: vi.fn() });
+    
+    fireEvent(authorButton, clickEvent);
+    
+    expect(handler).toHaveBeenCalledWith('Test Speaker');
+    expect(clickEvent.stopPropagation).toHaveBeenCalled();
   });
 
-  it('calls onConferenceClick when conference is clicked', () => {
-    render(
-      <BrowserRouter>
-        <TalkCard
-          talk={mockTalk}
-          onAuthorClick={mockHandlers.onAuthorClick}
-          selectedAuthor={null}
-          onTopicClick={mockHandlers.onTopicClick}
-          selectedTopics={[]}
-          onConferenceClick={mockHandlers.onConferenceClick}
-          selectedConference={null}
-        />
-      </BrowserRouter>
-    );
-
+  it('calls onConferenceClick when conference is clicked and stops event propagation', () => {
+    const onConferenceClick = vi.fn();
+    const talk = createTalk({ 
+      conference_name: 'Test Conference'
+    });
+    const { onConferenceClick: handler } = renderTalkCard({ talk, onConferenceClick });
+    
     const conferenceButton = screen.getByRole('button', { name: 'Test Conference' });
-    fireEvent.click(conferenceButton);
-
-    expect(mockHandlers.onConferenceClick).toHaveBeenCalledWith('Test Conference');
+    const clickEvent = new MouseEvent('click', { bubbles: true });
+    Object.defineProperty(clickEvent, 'stopPropagation', { value: vi.fn() });
+    
+    fireEvent(conferenceButton, clickEvent);
+    
+    expect(handler).toHaveBeenCalledWith('Test Conference');
+    expect(clickEvent.stopPropagation).toHaveBeenCalled();
   });
 
-  it('navigates to talk details when card is clicked', () => {
-    render(
-      <BrowserRouter>
-        <TalkCard
-          talk={mockTalk}
-          onAuthorClick={mockHandlers.onAuthorClick}
-          selectedAuthor={null}
-          onTopicClick={mockHandlers.onTopicClick}
-          selectedTopics={[]}
-          onConferenceClick={mockHandlers.onConferenceClick}
-          selectedConference={null}
-        />
-      </BrowserRouter>
-    );
-
-    const card = screen.getByRole('article', { name: 'Talk: Test Talk' });
+  it('navigates to talk page when card is clicked', () => {
+    const talk = createTalk({ id: 'test-id' });
+    renderTalkCard({ talk });
+    
+    const card = screen.getByRole('article', { name: /Talk: Test Talk/i });
     fireEvent.click(card);
-
-    expect(navigate).toHaveBeenCalledWith('/talk/1');
+    
+    expect(mockNavigate).toHaveBeenCalledWith('/talk/test-id');
   });
 
   it('has correct watch talk link', () => {
@@ -267,121 +176,66 @@ describe('TalkCard', () => {
     expect(watchLink).toHaveAttribute('rel', 'noopener noreferrer');
   });
 
-  it('applies selected styling to selected topic', () => {
-    render(
-      <BrowserRouter>
-        <TalkCard
-          talk={mockTalk}
-          onAuthorClick={mockHandlers.onAuthorClick}
-          selectedAuthor={null}
-          onTopicClick={mockHandlers.onTopicClick}
-          selectedTopics={['test']}
-          onConferenceClick={mockHandlers.onConferenceClick}
-          selectedConference={null}
-        />
-      </BrowserRouter>
-    );
-
+  it('applies selected styling to topic when it is selected', () => {
+    const talk = createTalk({ 
+      topic: { 
+        id: '1', 
+        name: 'test', 
+        slug: 'test' 
+      },
+      topics: ['test']
+    });
+    renderTalkCard({ talk, selectedTopics: ['test'] });
+    
     const topicButton = screen.getByRole('button', { name: 'test' });
     expect(topicButton).toHaveClass('bg-gray-700', 'text-white');
   });
 
-  it('applies selected styling to selected speaker', () => {
-    render(
-      <BrowserRouter>
-        <TalkCard
-          talk={mockTalk}
-          onAuthorClick={mockHandlers.onAuthorClick}
-          selectedAuthor="Test Speaker"
-          onTopicClick={mockHandlers.onTopicClick}
-          selectedTopics={[]}
-          onConferenceClick={mockHandlers.onConferenceClick}
-          selectedConference={null}
-        />
-      </BrowserRouter>
-    );
-
-    const speakerButton = screen.getByRole('button', { name: 'Filter by speaker: Test Speaker' });
+  it('applies selected styling to speaker when they are selected', () => {
+    const talk = createTalk({ 
+      speaker: { 
+        id: '1', 
+        name: 'Test Speaker', 
+        slug: 'test-speaker' 
+      },
+      speakers: ['Test Speaker']
+    });
+    renderTalkCard({ talk, selectedAuthor: 'Test Speaker' });
+    
+    const speakerButton = screen.getByRole('button', { name: /Filter by speaker: Test Speaker/i });
     expect(speakerButton).toHaveClass('bg-blue-500', 'text-white');
   });
 
-  it('applies selected styling to selected conference', () => {
-    render(
-      <BrowserRouter>
-        <TalkCard
-          talk={mockTalk}
-          onAuthorClick={mockHandlers.onAuthorClick}
-          selectedAuthor={null}
-          onTopicClick={mockHandlers.onTopicClick}
-          selectedTopics={[]}
-          onConferenceClick={mockHandlers.onConferenceClick}
-          selectedConference="Test Conference"
-        />
-      </BrowserRouter>
-    );
-
+  it('applies selected styling to conference when it is selected', () => {
+    const talk = createTalk({ 
+      conference_name: 'Test Conference'
+    });
+    renderTalkCard({ talk, selectedConference: 'Test Conference' });
+    
     const conferenceButton = screen.getByRole('button', { name: 'Test Conference' });
     expect(conferenceButton).toHaveClass('bg-blue-500', 'text-white');
   });
 
-  it('navigates to talk details when Enter key is pressed', () => {
-    render(
-      <BrowserRouter>
-        <TalkCard
-          talk={mockTalk}
-          onAuthorClick={mockHandlers.onAuthorClick}
-          selectedAuthor={null}
-          onTopicClick={mockHandlers.onTopicClick}
-          selectedTopics={[]}
-          onConferenceClick={mockHandlers.onConferenceClick}
-          selectedConference={null}
-        />
-      </BrowserRouter>
-    );
-
-    const card = screen.getByRole('article', { name: 'Talk: Test Talk' });
+  it('navigates to talk page when Enter key is pressed', () => {
+    const talk = createTalk({ id: 'test-id' });
+    renderTalkCard({ talk });
+    
+    const card = screen.getByRole('article', { name: /Talk: Test Talk/i });
     fireEvent.keyDown(card, { key: 'Enter' });
-
-    expect(navigate).toHaveBeenCalledWith('/talk/1');
+    
+    expect(mockNavigate).toHaveBeenCalledWith('/talk/test-id');
   });
 
   it('renders the year when available', () => {
-    const talkWithYear = { ...mockTalk, year: 2023 };
-    render(
-      <BrowserRouter>
-        <TalkCard
-          talk={talkWithYear}
-          onAuthorClick={mockHandlers.onAuthorClick}
-          selectedAuthor={null}
-          onTopicClick={mockHandlers.onTopicClick}
-          selectedTopics={[]}
-          onConferenceClick={mockHandlers.onConferenceClick}
-          selectedConference={null}
-        />
-      </BrowserRouter>
-    );
-
+    const talk = createTalk({ year: 2023 });
+    renderTalkCard({ talk });
     expect(screen.getByText('2023')).toBeInTheDocument();
   });
 
-  it('does not render year when not available', () => {
-    const talkWithoutYear = { ...mockTalk, year: undefined };
-    render(
-      <BrowserRouter>
-        <TalkCard
-          talk={talkWithoutYear}
-          onAuthorClick={mockHandlers.onAuthorClick}
-          selectedAuthor={null}
-          onTopicClick={mockHandlers.onTopicClick}
-          selectedTopics={[]}
-          onConferenceClick={mockHandlers.onConferenceClick}
-          selectedConference={null}
-        />
-      </BrowserRouter>
-    );
-
-    const yearElements = screen.queryAllByText(/\d{4}/);
-    expect(yearElements).toHaveLength(0);
+  it('does not render the year when not available', () => {
+    const talk = createTalk({ year: undefined });
+    renderTalkCard({ talk });
+    expect(screen.queryByText(/\d{4}/)).not.toBeInTheDocument();
   });
 
   it('applies line clamp to description', () => {
@@ -401,5 +255,18 @@ describe('TalkCard', () => {
 
     const description = screen.getByText('Test description');
     expect(description).toHaveClass('line-clamp-5');
+  });
+
+  it('stops event propagation when watch talk link is clicked', () => {
+    const talk = createTalk({ url: 'https://example.com/test' });
+    renderTalkCard({ talk });
+    
+    const link = screen.getByRole('link', { name: /Watch Test Talk/i });
+    const clickEvent = new MouseEvent('click', { bubbles: true });
+    Object.defineProperty(clickEvent, 'stopPropagation', { value: vi.fn() });
+    
+    fireEvent(link, clickEvent);
+    
+    expect(clickEvent.stopPropagation).toHaveBeenCalled();
   });
 }); 
