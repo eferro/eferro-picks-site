@@ -344,4 +344,23 @@ describe('TalkCard', () => {
 
     expect(navigate).toHaveBeenCalledWith('/talk/1');
   });
+
+  it('renders the year when available', () => {
+    const talkWithYear = { ...mockTalk, year: 2023 };
+    render(
+      <BrowserRouter>
+        <TalkCard
+          talk={talkWithYear}
+          onAuthorClick={mockHandlers.onAuthorClick}
+          selectedAuthor={null}
+          onTopicClick={mockHandlers.onTopicClick}
+          selectedTopics={[]}
+          onConferenceClick={mockHandlers.onConferenceClick}
+          selectedConference={null}
+        />
+      </BrowserRouter>
+    );
+
+    expect(screen.getByText('2023')).toBeInTheDocument();
+  });
 }); 
