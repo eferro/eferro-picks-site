@@ -43,28 +43,7 @@ export function TalkDetail() {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const { talks, loading, error } = useTalks();
-  
-  // Debug information
-  /* if (process.env.NODE_ENV === 'test') {
-    console.log('Current URL Parameters:', {
-      raw: window.location.search,
-      searchParams: Object.fromEntries(searchParams.entries()),
-      yearType: searchParams.get('yearType'),
-      year: searchParams.get('year')
-    });
-  } */
 
-  // Debug component (only shown in development)
-  const DebugInfo = () => (
-    <div className="bg-gray-100 p-4 mb-4 rounded text-sm font-mono">
-      <div>🔍 Debug Info:</div>
-      <div>Current Parameters: {searchParams.toString()}</div>
-      <div>YearType: {searchParams.get('yearType') || 'none'}</div>
-      <div>Year: {searchParams.get('year') || 'none'}</div>
-      <div>Author: {searchParams.get('author') || 'none'}</div>
-      <div>Conference: {searchParams.get('conference') || 'none'}</div>
-    </div>
-  );
 
   const handleAuthorClick = (author: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -144,7 +123,6 @@ export function TalkDetail() {
 
   return (
     <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-      {process.env.NODE_ENV === 'development' && <DebugInfo />}
       <Link 
         to={{ 
           pathname: "..",
