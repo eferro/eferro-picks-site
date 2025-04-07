@@ -245,13 +245,13 @@ describe('TalkCard', () => {
       const talk = createTalk({
         title: 'Test Talk',
         speakers: ['Test Speaker'],
-        conference: { id: '1', name: 'Test Conference', slug: 'test-conference' },
-        topic: { id: '1', name: 'test', slug: 'test-topic' },
+        conference_name: 'Test Conference',
+        topics: ['test'],
+        core_topic: 'test',
         description: 'Test Description',
         year: 2023,
         duration: 1800,
-        notes: 'Test notes',
-        topics: ['test'],
+        notes: 'Test notes'
       });
 
       renderTalkCard({ talk });
@@ -275,6 +275,19 @@ describe('TalkCard', () => {
       // Watch link accessibility
       const watchLink = screen.getByRole('link', { name: /watch test talk/i });
       expect(watchLink).toHaveAttribute('aria-label', 'Watch Test Talk');
+    });
+  });
+
+  describe('Selected Styling', () => {
+    it('applies selected styling to topic when it is selected', () => {
+      const talk = createTalk({ 
+        topics: ['test'],
+        core_topic: 'test'
+      });
+      renderTalkCard({ talk, selectedTopics: ['test'] });
+      
+      const topicButton = screen.getByRole('button', { name: /Filter by topic test/i });
+      expect(topicButton).toHaveClass('bg-gray-700', 'text-white');
     });
   });
 }); 
