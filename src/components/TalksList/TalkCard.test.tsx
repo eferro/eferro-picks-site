@@ -1,10 +1,22 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { TalkCard } from './TalkCard';
 import { mockTalk, mockHandlers } from '../../test/utils';
 import { BrowserRouter } from 'react-router-dom';
 
+const navigate = vi.fn();
+
+vi.mock('react-router-dom', () => ({
+  ...vi.importActual('react-router-dom'),
+  useNavigate: () => navigate,
+  BrowserRouter: ({ children }: { children: React.ReactNode }) => <>{children}</>
+}));
+
 describe('TalkCard', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
   it('renders the talk title', () => {
     render(
       <BrowserRouter>
@@ -211,5 +223,26 @@ describe('TalkCard', () => {
     fireEvent.click(conferenceButton);
 
     expect(mockHandlers.onConferenceClick).toHaveBeenCalledWith('Test Conference');
+  });
+
+  it('navigates to talk details when card is clicked', () => {
+    render(
+      <BrowserRouter>
+        <TalkCard
+          talk={mockTalk}
+          onAuthorClick={mockHandlers.onAuthorClick}
+          selectedAuthor={null}
+          onTopicClick={mockHandlers.onTopicClick}
+          selectedTopics={[]}
+          onConferenceClick={mockHandlers.onConferenceClick}
+          selectedConference={null}
+        />
+      </BrowserRouter>
+    );
+
+    const card = screen.getByRole('article', { name: 'Talk: Test Talk' });
+    fireEvent.click(card);
+
+    expect(navigate).toHaveBeenCalledWith('/talk/1');
   });
 }); 
