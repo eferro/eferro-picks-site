@@ -266,4 +266,23 @@ describe('TalkCard', () => {
     expect(watchLink).toHaveAttribute('target', '_blank');
     expect(watchLink).toHaveAttribute('rel', 'noopener noreferrer');
   });
+
+  it('applies selected styling to selected topic', () => {
+    render(
+      <BrowserRouter>
+        <TalkCard
+          talk={mockTalk}
+          onAuthorClick={mockHandlers.onAuthorClick}
+          selectedAuthor={null}
+          onTopicClick={mockHandlers.onTopicClick}
+          selectedTopics={['test']}
+          onConferenceClick={mockHandlers.onConferenceClick}
+          selectedConference={null}
+        />
+      </BrowserRouter>
+    );
+
+    const topicButton = screen.getByRole('button', { name: 'test' });
+    expect(topicButton).toHaveClass('bg-gray-700', 'text-white');
+  });
 }); 
