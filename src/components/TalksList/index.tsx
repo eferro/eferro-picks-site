@@ -31,6 +31,19 @@ export function TalksList() {
   const { talks, loading, error } = useTalks();
   const [isInitialized, setIsInitialized] = useState(false);
 
+  // Debug component (only shown in development)
+  const DebugInfo = () => (
+    <div className="bg-gray-100 p-4 mb-4 rounded text-sm font-mono">
+      <div>🔍 TalksList Debug Info:</div>
+      <div>Current Parameters: {searchParams.toString()}</div>
+      <div>YearType: {searchParams.get('yearType') || 'none'}</div>
+      <div>Year: {searchParams.get('year') || 'none'}</div>
+      <div>Author: {searchParams.get('author') || 'none'}</div>
+      <div>Conference: {searchParams.get('conference') || 'none'}</div>
+      <div>Is Initialized: {isInitialized ? 'yes' : 'no'}</div>
+    </div>
+  );
+
   // Initialize state from URL parameters (only on mount)
   useEffect(() => {
     const author = searchParams.get('author');
@@ -42,14 +55,16 @@ export function TalksList() {
     if (author) setSelectedAuthor(author);
     if (topics.length > 0) setSelectedTopics(topics);
     if (conference) setSelectedConference(conference);
-    if (year && yearType) {
+    if (yearType) {
       setSelectedYearFilter({
         type: yearType as YearFilterData['type'],
-        year: parseInt(year)
+        year: year ? parseInt(year) : undefined
       });
+    } else {
+      setSelectedYearFilter(null);
     }
     setIsInitialized(true);
-  }, []); // Run only on mount
+  }, [searchParams]); // Update when searchParams change
 
   // Update URL when filters change (only after initialization)
   useEffect(() => {
@@ -60,7 +75,9 @@ export function TalksList() {
     if (selectedTopics.length > 0) params.set('topics', selectedTopics.join(','));
     if (selectedConference) params.set('conference', selectedConference);
     if (selectedYearFilter) {
-      params.set('year', selectedYearFilter.year?.toString() || '');
+      if (selectedYearFilter.year) {
+        params.set('year', selectedYearFilter.year.toString());
+      }
       params.set('yearType', selectedYearFilter.type);
     }
     setSearchParams(params);
@@ -153,6 +170,7 @@ export function TalksList() {
 
   return (
     <div className="max-w-7xl 2xl:max-w-[96rem] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {process.env.NODE_ENV === 'development' && <DebugInfo />}
       {/* Filters */}
       <div className="mb-6 flex items-center gap-4">
         <YearFilter

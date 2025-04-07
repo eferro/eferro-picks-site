@@ -60,16 +60,17 @@ describe('TalksList', () => {
           duration: 1800,
           url: 'https://test.com',
           topics: ['react'],
-          core_topic: 'Engineering Culture'
+          core_topic: 'Engineering Culture',
+          year: 2023
         }
       ],
       loading: false,
       error: null
     }));
 
-    // Set up URL params before each test
-    mockSearchParams.get.mockImplementation(param => param === 'topics' ? 'react' : null);
-    mockSearchParams.toString.mockImplementation(() => 'topics=react');
+    // Reset mocks and internal state
+    vi.clearAllMocks();
+    mockSearchParams._params.clear();
   });
 
   const renderComponent = () => renderWithRouter(<TalksList />);
@@ -78,5 +79,29 @@ describe('TalksList', () => {
     renderComponent();
     expect(screen.getByText('Engineering Culture (1)')).toBeInTheDocument();
     expect(screen.getByText('Test Talk')).toBeInTheDocument();
+  });
+
+  it('initializes with yearType from URL', () => {
+    // Set initial state
+    mockSearchParams._params.set('yearType', 'last2');
+    
+    renderComponent();
+    expect(screen.getByText('Year Filter')).toBeInTheDocument();
+  });
+
+  it('preserves yearType when navigating', () => {
+    // Set initial state
+    mockSearchParams._params.set('yearType', 'last2');
+    
+    renderComponent();
+
+    // Verify that the year filter is preserved in navigation
+    const talkLink = screen.getByText('Test Talk');
+    fireEvent.click(talkLink);
+
+    expect(mockNavigate).toHaveBeenCalledWith({
+      pathname: '/talk/1',
+      search: 'yearType=last2'
+    });
   });
 }); 

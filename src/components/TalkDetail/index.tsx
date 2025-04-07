@@ -44,6 +44,28 @@ export function TalkDetail() {
   const navigate = useNavigate();
   const { talks, loading, error } = useTalks();
   
+  // Debug information
+  /* if (process.env.NODE_ENV === 'test') {
+    console.log('Current URL Parameters:', {
+      raw: window.location.search,
+      searchParams: Object.fromEntries(searchParams.entries()),
+      yearType: searchParams.get('yearType'),
+      year: searchParams.get('year')
+    });
+  } */
+
+  // Debug component (only shown in development)
+  const DebugInfo = () => (
+    <div className="bg-gray-100 p-4 mb-4 rounded text-sm font-mono">
+      <div>🔍 Debug Info:</div>
+      <div>Current Parameters: {searchParams.toString()}</div>
+      <div>YearType: {searchParams.get('yearType') || 'none'}</div>
+      <div>Year: {searchParams.get('year') || 'none'}</div>
+      <div>Author: {searchParams.get('author') || 'none'}</div>
+      <div>Conference: {searchParams.get('conference') || 'none'}</div>
+    </div>
+  );
+
   const handleAuthorClick = (author: string) => {
     const params = new URLSearchParams(searchParams.toString());
     if (params.get('author') === author) {
@@ -60,6 +82,27 @@ export function TalkDetail() {
       params.delete('conference');
     } else {
       params.set('conference', conference);
+    }
+    setSearchParams(params);
+  };
+
+  const handleYearClick = (year: number) => {
+    const params = new URLSearchParams(searchParams.toString());
+    const currentYearType = params.get('yearType');
+    
+    if (params.get('year') === year.toString()) {
+      // If clicking the same year, just remove the year filter
+      params.delete('year');
+      // Also remove yearType if it's not a relative filter (last2, last5)
+      if (currentYearType && !['last2', 'last5'].includes(currentYearType)) {
+        params.delete('yearType');
+      }
+    } else {
+      // If setting a new year, only clear yearType if it's not a relative filter
+      params.set('year', year.toString());
+      if (currentYearType && !['last2', 'last5'].includes(currentYearType)) {
+        params.delete('yearType');
+      }
     }
     setSearchParams(params);
   };
@@ -101,12 +144,20 @@ export function TalkDetail() {
 
   return (
     <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      {process.env.NODE_ENV === 'development' && <DebugInfo />}
       <Link 
         to={{ 
-          pathname: "/",
+          pathname: "..",
           search: searchParams.toString()
         }}
         className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-8"
+        onClick={() => {
+          console.log('Back link clicked. Parameters:', {
+            search: searchParams.toString(),
+            yearType: searchParams.get('yearType'),
+            year: searchParams.get('year')
+          });
+        }}
       >
         <ArrowLeftIcon className="h-5 w-5 mr-2" />
         Back to Talks
