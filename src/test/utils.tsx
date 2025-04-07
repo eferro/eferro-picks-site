@@ -1,13 +1,40 @@
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { vi } from 'vitest';
+import { vi, beforeEach } from 'vitest';
 import { Talk } from '../types/talks';
 import { TalkCard } from '../components/TalksList/TalkCard';
 
-// Wrapper component to provide router context
-export const renderWithRouter = (ui: React.ReactElement) => {
-  return render(ui, { wrapper: BrowserRouter });
+// Mock navigation
+export const mockNavigate = vi.fn();
+
+// Mock search params
+export const mockSearchParams = {
+  get: vi.fn(),
+  toString: vi.fn(),
+  set: vi.fn()
 };
+
+export const mockSetSearchParams = vi.fn();
+
+// Setup router mock
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual('react-router-dom');
+  return {
+    ...actual,
+    useSearchParams: () => [mockSearchParams, mockSetSearchParams],
+    useNavigate: () => mockNavigate,
+    useLocation: () => ({ pathname: '/', search: mockSearchParams.toString() }),
+    useParams: () => ({}),
+    Link: ({ children, to }: { children: React.ReactNode, to: string }) => <a href={to}>{children}</a>
+  };
+});
+
+// Reset all mocks before each test
+beforeEach(() => {
+  vi.clearAllMocks();
+  mockSearchParams.get.mockImplementation(() => null);
+  mockSearchParams.toString.mockImplementation(() => '');
+});
 
 // Mock data for testing
 export const mockTalk: Talk = {
@@ -57,4 +84,9 @@ export const renderTalkCard = (props: Partial<React.ComponentProps<typeof TalkCa
     onAuthorClick: finalProps.onAuthorClick,
     onConferenceClick: finalProps.onConferenceClick
   };
+};
+
+// Wrapper component to provide router context
+export const renderWithRouter = (ui: React.ReactElement) => {
+  return render(ui, { wrapper: BrowserRouter });
 }; 

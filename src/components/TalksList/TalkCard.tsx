@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Talk } from '../../types/talks';
 import { formatDuration } from '../../utils/format';
 import { DocumentTextIcon, PlayIcon } from '@heroicons/react/24/outline';
@@ -24,6 +24,7 @@ export function TalkCard({
   selectedConference
 }: TalkCardProps) {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   // Memoize topics to avoid unnecessary re-renders
   const topicElements = useMemo(() => (
@@ -47,7 +48,10 @@ export function TalkCard({
   ), [talk.topics, onTopicClick, selectedTopics]);
 
   const handleCardClick = () => {
-    navigate(`/talk/${talk.id}`);
+    navigate({
+      pathname: `/talk/${talk.id}`,
+      search: searchParams.toString()
+    });
   };
 
   return (

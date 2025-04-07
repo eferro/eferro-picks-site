@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useSearchParams } from 'react-router-dom';
 import { useTalks } from '../../hooks/useTalks';
 import { PlayIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { Talk } from '../../types/talks';
@@ -40,6 +40,7 @@ const NotFoundState = () => (
 
 export function TalkDetail() {
   const { id } = useParams<{ id: string }>();
+  const [searchParams] = useSearchParams();
   const { talks, loading, error } = useTalks();
   
   if (loading) {
@@ -77,7 +78,10 @@ export function TalkDetail() {
   return (
     <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <Link 
-        to="/" 
+        to={{ 
+          pathname: "/",
+          search: searchParams.toString()
+        }}
         className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-8"
       >
         <ArrowLeftIcon className="h-5 w-5 mr-2" />

@@ -1,8 +1,9 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Talk } from '../../types/talks';
 import { TalkSection } from './TalkSection';
 import { useTalks } from '../../hooks/useTalks';
 import { YearFilter, type YearFilterData } from './YearFilter';
+import { useSearchParams } from 'react-router-dom';
 
 function LoadingSpinner() {
   return (
@@ -22,11 +23,48 @@ function ErrorMessage({ message }: { message: string }) {
 }
 
 export function TalksList() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [selectedAuthor, setSelectedAuthor] = useState<string | null>(null);
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
   const [selectedConference, setSelectedConference] = useState<string | null>(null);
   const [selectedYearFilter, setSelectedYearFilter] = useState<YearFilterData | null>(null);
   const { talks, loading, error } = useTalks();
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  // Initialize state from URL parameters (only on mount)
+  useEffect(() => {
+    const author = searchParams.get('author');
+    const topics = searchParams.get('topics')?.split(',').filter(Boolean) || [];
+    const conference = searchParams.get('conference');
+    const year = searchParams.get('year');
+    const yearType = searchParams.get('yearType');
+    
+    if (author) setSelectedAuthor(author);
+    if (topics.length > 0) setSelectedTopics(topics);
+    if (conference) setSelectedConference(conference);
+    if (year && yearType) {
+      setSelectedYearFilter({
+        type: yearType as YearFilterData['type'],
+        year: parseInt(year)
+      });
+    }
+    setIsInitialized(true);
+  }, []); // Run only on mount
+
+  // Update URL when filters change (only after initialization)
+  useEffect(() => {
+    if (!isInitialized) return;
+
+    const params = new URLSearchParams();
+    if (selectedAuthor) params.set('author', selectedAuthor);
+    if (selectedTopics.length > 0) params.set('topics', selectedTopics.join(','));
+    if (selectedConference) params.set('conference', selectedConference);
+    if (selectedYearFilter) {
+      params.set('year', selectedYearFilter.year?.toString() || '');
+      params.set('yearType', selectedYearFilter.type);
+    }
+    setSearchParams(params);
+  }, [isInitialized, selectedAuthor, selectedTopics, selectedConference, selectedYearFilter, setSearchParams]);
 
   // Handle topic selection
   const handleTopicClick = (topic: string) => {

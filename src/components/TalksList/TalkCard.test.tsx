@@ -1,20 +1,13 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { TalkCard } from './TalkCard';
-import { mockTalk, mockHandlers, renderTalkCard, createTalk } from '../../test/utils';
-import { BrowserRouter } from 'react-router-dom';
-
-const mockNavigate = vi.fn();
-
-vi.mock('react-router-dom', () => ({
-  ...vi.importActual('react-router-dom'),
-  useNavigate: () => mockNavigate,
-  BrowserRouter: ({ children }: { children: React.ReactNode }) => <>{children}</>
-}));
+import { mockTalk, mockHandlers, renderTalkCard, createTalk, mockSearchParams, mockNavigate } from '../../test/utils';
 
 describe('TalkCard', () => {
   beforeEach(() => {
-    mockNavigate.mockClear();
+    vi.clearAllMocks();
+    mockSearchParams.get.mockImplementation(() => null);
+    mockSearchParams.toString.mockImplementation(() => '');
   });
 
   describe('Rendering', () => {
@@ -172,22 +165,30 @@ describe('TalkCard', () => {
 
     it('navigates to talk page when card is clicked', () => {
       const talk = createTalk({ id: 'test-id' });
+      mockSearchParams.toString.mockImplementation(() => 'topics=test');
       renderTalkCard({ talk });
       
       const card = screen.getByRole('article', { name: /Talk: Test Talk/i });
       fireEvent.click(card);
       
-      expect(mockNavigate).toHaveBeenCalledWith('/talk/test-id');
+      expect(mockNavigate).toHaveBeenCalledWith({
+        pathname: `/talk/test-id`,
+        search: 'topics=test'
+      });
     });
 
     it('navigates to talk page when Enter key is pressed', () => {
       const talk = createTalk({ id: 'test-id' });
+      mockSearchParams.toString.mockImplementation(() => 'topics=test');
       renderTalkCard({ talk });
       
       const card = screen.getByRole('article', { name: /Talk: Test Talk/i });
       fireEvent.keyDown(card, { key: 'Enter' });
       
-      expect(mockNavigate).toHaveBeenCalledWith('/talk/test-id');
+      expect(mockNavigate).toHaveBeenCalledWith({
+        pathname: `/talk/test-id`,
+        search: 'topics=test'
+      });
     });
 
     it('stops event propagation when watch talk link is clicked', () => {
