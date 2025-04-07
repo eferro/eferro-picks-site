@@ -323,4 +323,25 @@ describe('TalkCard', () => {
     const conferenceButton = screen.getByRole('button', { name: 'Test Conference' });
     expect(conferenceButton).toHaveClass('bg-blue-500', 'text-white');
   });
+
+  it('navigates to talk details when Enter key is pressed', () => {
+    render(
+      <BrowserRouter>
+        <TalkCard
+          talk={mockTalk}
+          onAuthorClick={mockHandlers.onAuthorClick}
+          selectedAuthor={null}
+          onTopicClick={mockHandlers.onTopicClick}
+          selectedTopics={[]}
+          onConferenceClick={mockHandlers.onConferenceClick}
+          selectedConference={null}
+        />
+      </BrowserRouter>
+    );
+
+    const card = screen.getByRole('article', { name: 'Talk: Test Talk' });
+    fireEvent.keyDown(card, { key: 'Enter' });
+
+    expect(navigate).toHaveBeenCalledWith('/talk/1');
+  });
 }); 
