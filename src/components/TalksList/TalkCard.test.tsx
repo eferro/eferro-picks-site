@@ -363,4 +363,24 @@ describe('TalkCard', () => {
 
     expect(screen.getByText('2023')).toBeInTheDocument();
   });
+
+  it('does not render year when not available', () => {
+    const talkWithoutYear = { ...mockTalk, year: undefined };
+    render(
+      <BrowserRouter>
+        <TalkCard
+          talk={talkWithoutYear}
+          onAuthorClick={mockHandlers.onAuthorClick}
+          selectedAuthor={null}
+          onTopicClick={mockHandlers.onTopicClick}
+          selectedTopics={[]}
+          onConferenceClick={mockHandlers.onConferenceClick}
+          selectedConference={null}
+        />
+      </BrowserRouter>
+    );
+
+    const yearElements = screen.queryAllByText(/\d{4}/);
+    expect(yearElements).toHaveLength(0);
+  });
 }); 
