@@ -22,4 +22,22 @@ describe('TalkCard', () => {
 
     expect(screen.getByText('Test Talk')).toBeInTheDocument();
   });
+
+  it('renders the speaker name', () => {
+    render(
+      <BrowserRouter>
+        <TalkCard
+          talk={mockTalk}
+          onAuthorClick={mockHandlers.onAuthorClick}
+          selectedAuthor={null}
+          onTopicClick={mockHandlers.onTopicClick}
+          selectedTopics={[]}
+          onConferenceClick={mockHandlers.onConferenceClick}
+          selectedConference={null}
+        />
+      </BrowserRouter>
+    );
+
+    expect(screen.getByText('Test Speaker')).toBeInTheDocument();
+  });
 }); 
