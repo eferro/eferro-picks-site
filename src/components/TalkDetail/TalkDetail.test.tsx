@@ -109,6 +109,48 @@ describe('TalkDetail', () => {
     });
   });
 
+  describe('Conference Filter', () => {
+    it('sets conference filter when clicking on a conference', () => {
+      renderComponent();
+      
+      const conferenceButton = screen.getByText('Test Conference');
+      fireEvent.click(conferenceButton);
+      
+      expect(mockSetSearchParams).toHaveBeenCalled();
+      const [[params]] = mockSetSearchParams.mock.calls;
+      const newParams = new URLSearchParams(params);
+      expect(newParams.get('conference')).toBe('Test Conference');
+    });
+
+    it('removes conference filter when clicking on the same conference', () => {
+      // Create a URLSearchParams object with initial state
+      const initialParams = new URLSearchParams();
+      initialParams.set('conference', 'Test Conference');
+      
+      // Mock the initial state
+      mockSearchParams.get.mockImplementation(param => initialParams.get(param));
+      mockSearchParams.toString.mockImplementation(() => initialParams.toString());
+      
+      renderComponent();
+      
+      const conferenceButton = screen.getByText('Test Conference');
+      fireEvent.click(conferenceButton);
+      
+      expect(mockSetSearchParams).toHaveBeenCalled();
+      const [[params]] = mockSetSearchParams.mock.calls;
+      const newParams = new URLSearchParams(params);
+      expect(newParams.get('conference')).toBeNull();
+    });
+
+    it('applies selected styling to the active conference', () => {
+      mockSearchParams.get.mockImplementation(param => param === 'conference' ? 'Test Conference' : null);
+      renderComponent();
+      
+      const conferenceButton = screen.getByText('Test Conference');
+      expect(conferenceButton).toHaveClass('bg-blue-500', 'text-white');
+    });
+  });
+
   describe('Navigation', () => {
     it('preserves search params when navigating back', () => {
       mockSearchParams.toString.mockImplementation(() => 'author=Test%20Speaker%201');

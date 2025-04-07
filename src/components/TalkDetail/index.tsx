@@ -54,6 +54,16 @@ export function TalkDetail() {
     setSearchParams(params);
   };
 
+  const handleConferenceClick = (conference: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (params.get('conference') === conference) {
+      params.delete('conference');
+    } else {
+      params.set('conference', conference);
+    }
+    setSearchParams(params);
+  };
+
   if (loading) {
     return (
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
@@ -129,7 +139,18 @@ export function TalkDetail() {
           
           {(talk.conference_name || talk.year) && (
             <div className="text-sm text-gray-600 -mt-4 mb-6">
-              {talk.conference_name && <span>{talk.conference_name}</span>}
+              {talk.conference_name && (
+                <button
+                  onClick={() => handleConferenceClick(talk.conference_name!)}
+                  className={`font-medium px-3 py-1 rounded-full text-sm transition-colors ${
+                    searchParams.get('conference') === talk.conference_name
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
+                  }`}
+                >
+                  {talk.conference_name}
+                </button>
+              )}
               {talk.conference_name && talk.year && <span className="mx-1">·</span>}
               {talk.year && <span>{talk.year}</span>}
             </div>
