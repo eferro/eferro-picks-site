@@ -285,4 +285,23 @@ describe('TalkCard', () => {
     const topicButton = screen.getByRole('button', { name: 'test' });
     expect(topicButton).toHaveClass('bg-gray-700', 'text-white');
   });
+
+  it('applies selected styling to selected speaker', () => {
+    render(
+      <BrowserRouter>
+        <TalkCard
+          talk={mockTalk}
+          onAuthorClick={mockHandlers.onAuthorClick}
+          selectedAuthor="Test Speaker"
+          onTopicClick={mockHandlers.onTopicClick}
+          selectedTopics={[]}
+          onConferenceClick={mockHandlers.onConferenceClick}
+          selectedConference={null}
+        />
+      </BrowserRouter>
+    );
+
+    const speakerButton = screen.getByRole('button', { name: 'Filter by speaker: Test Speaker' });
+    expect(speakerButton).toHaveClass('bg-blue-500', 'text-white');
+  });
 }); 
