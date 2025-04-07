@@ -94,4 +94,22 @@ describe('TalkCard', () => {
 
     expect(screen.getByText('Test Conference')).toBeInTheDocument();
   });
+
+  it('renders the description', () => {
+    render(
+      <BrowserRouter>
+        <TalkCard
+          talk={mockTalk}
+          onAuthorClick={mockHandlers.onAuthorClick}
+          selectedAuthor={null}
+          onTopicClick={mockHandlers.onTopicClick}
+          selectedTopics={[]}
+          onConferenceClick={mockHandlers.onConferenceClick}
+          selectedConference={null}
+        />
+      </BrowserRouter>
+    );
+
+    expect(screen.getByText('Test description')).toBeInTheDocument();
+  });
 }); 
