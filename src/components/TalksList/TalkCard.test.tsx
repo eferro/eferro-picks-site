@@ -112,4 +112,22 @@ describe('TalkCard', () => {
 
     expect(screen.getByText('Test description')).toBeInTheDocument();
   });
+
+  it('does not render notes icon when notes are not present', () => {
+    render(
+      <BrowserRouter>
+        <TalkCard
+          talk={mockTalk}
+          onAuthorClick={mockHandlers.onAuthorClick}
+          selectedAuthor={null}
+          onTopicClick={mockHandlers.onTopicClick}
+          selectedTopics={[]}
+          onConferenceClick={mockHandlers.onConferenceClick}
+          selectedConference={null}
+        />
+      </BrowserRouter>
+    );
+
+    expect(screen.queryByRole('img', { name: /notes/i })).not.toBeInTheDocument();
+  });
 }); 
