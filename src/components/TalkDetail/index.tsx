@@ -1,4 +1,4 @@
-import { useParams, Link, useSearchParams } from 'react-router-dom';
+import { useParams, Link, useSearchParams, useNavigate } from 'react-router-dom';
 import { useTalks } from '../../hooks/useTalks';
 import { PlayIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { Talk } from '../../types/talks';
@@ -40,14 +40,28 @@ const NotFoundState = () => (
 
 export function TalkDetail() {
   const { id } = useParams<{ id: string }>();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
   const { talks, loading, error } = useTalks();
   
+  const handleAuthorClick = (author: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (params.get('author') === author) {
+      params.delete('author');
+    } else {
+      params.set('author', author);
+    }
+    setSearchParams(params);
+  };
+
   if (loading) {
     return (
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="flex justify-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
+          <div 
+            role="status"
+            className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"
+          ></div>
         </div>
       </div>
     );
@@ -95,7 +109,21 @@ export function TalkDetail() {
           </h1>
           
           <div className="flex items-center text-gray-600 mb-6">
-            <span className="font-medium">{talk.speakers.join(', ')}</span>
+            <div className="flex flex-wrap gap-2">
+              {talk.speakers.map(speaker => (
+                <button
+                  key={speaker}
+                  onClick={() => handleAuthorClick(speaker)}
+                  className={`font-medium px-3 py-1 rounded-full text-sm transition-colors ${
+                    searchParams.get('author') === speaker
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
+                  }`}
+                >
+                  {speaker}
+                </button>
+              ))}
+            </div>
             <span className="ml-4">{formatDuration(talk.duration)}</span>
           </div>
           
