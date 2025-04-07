@@ -383,4 +383,23 @@ describe('TalkCard', () => {
     const yearElements = screen.queryAllByText(/\d{4}/);
     expect(yearElements).toHaveLength(0);
   });
+
+  it('applies line clamp to description', () => {
+    render(
+      <BrowserRouter>
+        <TalkCard
+          talk={mockTalk}
+          onAuthorClick={mockHandlers.onAuthorClick}
+          selectedAuthor={null}
+          onTopicClick={mockHandlers.onTopicClick}
+          selectedTopics={[]}
+          onConferenceClick={mockHandlers.onConferenceClick}
+          selectedConference={null}
+        />
+      </BrowserRouter>
+    );
+
+    const description = screen.getByText('Test description');
+    expect(description).toHaveClass('line-clamp-5');
+  });
 }); 
