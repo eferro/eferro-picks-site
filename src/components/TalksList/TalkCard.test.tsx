@@ -170,4 +170,25 @@ describe('TalkCard', () => {
 
     expect(mockHandlers.onTopicClick).toHaveBeenCalledWith('test');
   });
+
+  it('calls onAuthorClick when speaker is clicked', () => {
+    render(
+      <BrowserRouter>
+        <TalkCard
+          talk={mockTalk}
+          onAuthorClick={mockHandlers.onAuthorClick}
+          selectedAuthor={null}
+          onTopicClick={mockHandlers.onTopicClick}
+          selectedTopics={[]}
+          onConferenceClick={mockHandlers.onConferenceClick}
+          selectedConference={null}
+        />
+      </BrowserRouter>
+    );
+
+    const speakerButton = screen.getByRole('button', { name: 'Filter by speaker: Test Speaker' });
+    fireEvent.click(speakerButton);
+
+    expect(mockHandlers.onAuthorClick).toHaveBeenCalledWith('Test Speaker');
+  });
 }); 
