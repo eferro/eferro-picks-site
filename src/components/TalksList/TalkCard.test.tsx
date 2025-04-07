@@ -1,9 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { TalkCard } from './TalkCard';
-import { mockTalk, mockHandlers } from '../../test/utils';
+import { mockTalk, mockHandlers, renderTalkCard, createTalk } from '../../test/utils';
 import { BrowserRouter } from 'react-router-dom';
-import { renderTalkCard, createTalk } from '../../test/test-utils';
 
 const mockNavigate = vi.fn();
 
@@ -27,11 +26,6 @@ describe('TalkCard', () => {
 
     it('renders the speaker name', () => {
       const talk = createTalk({ 
-        speaker: { 
-          id: '1', 
-          name: 'Test Speaker', 
-          slug: 'test-speaker' 
-        },
         speakers: ['Test Speaker']
       });
       renderTalkCard({ talk });
@@ -46,12 +40,8 @@ describe('TalkCard', () => {
 
     it('renders the topic', () => {
       const talk = createTalk({ 
-        topic: { 
-          id: '1', 
-          name: 'test', 
-          slug: 'test' 
-        },
-        topics: ['test']
+        topics: ['test'],
+        core_topic: 'test'
       });
       renderTalkCard({ talk });
       expect(screen.getByRole('button', { name: /Filter by topic test/i })).toBeInTheDocument();
@@ -131,12 +121,8 @@ describe('TalkCard', () => {
     it('calls onTopicClick when topic is clicked and stops event propagation', () => {
       const onTopicClick = vi.fn();
       const talk = createTalk({ 
-        topic: { 
-          id: '1', 
-          name: 'test', 
-          slug: 'test' 
-        },
-        topics: ['test']
+        topics: ['test'],
+        core_topic: 'test'
       });
       const { onTopicClick: handler } = renderTalkCard({ talk, onTopicClick });
       
@@ -153,11 +139,6 @@ describe('TalkCard', () => {
     it('calls onAuthorClick when author is clicked and stops event propagation', () => {
       const onAuthorClick = vi.fn();
       const talk = createTalk({ 
-        speaker: { 
-          id: '1', 
-          name: 'Test Speaker', 
-          slug: 'test-speaker' 
-        },
         speakers: ['Test Speaker']
       });
       const { onAuthorClick: handler } = renderTalkCard({ talk, onAuthorClick });
@@ -229,12 +210,8 @@ describe('TalkCard', () => {
   describe('Styling', () => {
     it('applies selected styling to topic when it is selected', () => {
       const talk = createTalk({ 
-        topic: { 
-          id: '1', 
-          name: 'test', 
-          slug: 'test' 
-        },
-        topics: ['test']
+        topics: ['test'],
+        core_topic: 'test'
       });
       renderTalkCard({ talk, selectedTopics: ['test'] });
       
@@ -244,11 +221,6 @@ describe('TalkCard', () => {
 
     it('applies selected styling to speaker when they are selected', () => {
       const talk = createTalk({ 
-        speaker: { 
-          id: '1', 
-          name: 'Test Speaker', 
-          slug: 'test-speaker' 
-        },
         speakers: ['Test Speaker']
       });
       renderTalkCard({ talk, selectedAuthor: 'Test Speaker' });

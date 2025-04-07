@@ -34,6 +34,7 @@ export function TalkCard({
           e.stopPropagation(); // Prevent card click
           onTopicClick(topic);
         }}
+        aria-label={`Filter by topic ${topic}`}
         className={`px-2 py-1 rounded-full text-xs transition-colors ${
           selectedTopics.includes(topic)
             ? 'bg-gray-700 text-white'
@@ -107,6 +108,7 @@ export function TalkCard({
                     e.stopPropagation(); // Prevent card click
                     onConferenceClick(talk.conference_name!);
                   }}
+                  aria-label={`Filter by conference ${talk.conference_name}`}
                   className={`px-2 py-1 rounded-full text-xs transition-colors ${
                     selectedConference === talk.conference_name
                       ? 'bg-blue-500 text-white'

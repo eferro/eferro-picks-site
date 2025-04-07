@@ -2,6 +2,7 @@ import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { vi } from 'vitest';
 import { Talk } from '../types/talks';
+import { TalkCard } from '../components/TalksList/TalkCard';
 
 // Wrapper component to provide router context
 export const renderWithRouter = (ui: React.ReactElement) => {
@@ -27,4 +28,33 @@ export const mockHandlers = {
   onAuthorClick: vi.fn(),
   onTopicClick: vi.fn(),
   onConferenceClick: vi.fn()
+};
+
+// Helper to create a talk with overrides
+export const createTalk = (overrides: Partial<Talk> = {}): Talk => ({
+  ...mockTalk,
+  ...overrides
+});
+
+// Helper to render a TalkCard with default props
+export const renderTalkCard = (props: Partial<React.ComponentProps<typeof TalkCard>> = {}) => {
+  const defaultProps = {
+    talk: mockTalk,
+    ...mockHandlers,
+    selectedAuthor: null,
+    selectedTopics: [],
+    selectedConference: null
+  };
+
+  const finalProps = { ...defaultProps, ...props };
+  const result = renderWithRouter(
+    <TalkCard {...finalProps} />
+  );
+
+  return {
+    ...result,
+    onTopicClick: finalProps.onTopicClick,
+    onAuthorClick: finalProps.onAuthorClick,
+    onConferenceClick: finalProps.onConferenceClick
+  };
 }; 
