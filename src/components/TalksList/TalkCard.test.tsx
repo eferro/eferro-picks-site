@@ -53,7 +53,7 @@ describe('TalkCard', () => {
       topics: ['test']
     });
     renderTalkCard({ talk });
-    expect(screen.getByRole('button', { name: 'test' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Filter by topic test/i })).toBeInTheDocument();
   });
 
   it('renders the conference name', () => {
@@ -61,7 +61,7 @@ describe('TalkCard', () => {
       conference_name: 'Test Conference'
     });
     renderTalkCard({ talk });
-    expect(screen.getByRole('button', { name: 'Test Conference' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Filter by conference Test Conference/i })).toBeInTheDocument();
   });
 
   it('renders the description', () => {
@@ -96,7 +96,7 @@ describe('TalkCard', () => {
     });
     const { onTopicClick: handler } = renderTalkCard({ talk, onTopicClick });
     
-    const topicButton = screen.getByRole('button', { name: 'test' });
+    const topicButton = screen.getByRole('button', { name: /Filter by topic test/i });
     const clickEvent = new MouseEvent('click', { bubbles: true });
     Object.defineProperty(clickEvent, 'stopPropagation', { value: vi.fn() });
     
@@ -135,7 +135,7 @@ describe('TalkCard', () => {
     });
     const { onConferenceClick: handler } = renderTalkCard({ talk, onConferenceClick });
     
-    const conferenceButton = screen.getByRole('button', { name: 'Test Conference' });
+    const conferenceButton = screen.getByRole('button', { name: /Filter by conference Test Conference/i });
     const clickEvent = new MouseEvent('click', { bubbles: true });
     Object.defineProperty(clickEvent, 'stopPropagation', { value: vi.fn() });
     
@@ -187,7 +187,7 @@ describe('TalkCard', () => {
     });
     renderTalkCard({ talk, selectedTopics: ['test'] });
     
-    const topicButton = screen.getByRole('button', { name: 'test' });
+    const topicButton = screen.getByRole('button', { name: /Filter by topic test/i });
     expect(topicButton).toHaveClass('bg-gray-700', 'text-white');
   });
 
@@ -212,7 +212,7 @@ describe('TalkCard', () => {
     });
     renderTalkCard({ talk, selectedConference: 'Test Conference' });
     
-    const conferenceButton = screen.getByRole('button', { name: 'Test Conference' });
+    const conferenceButton = screen.getByRole('button', { name: /Filter by conference Test Conference/i });
     expect(conferenceButton).toHaveClass('bg-blue-500', 'text-white');
   });
 
@@ -268,5 +268,43 @@ describe('TalkCard', () => {
     fireEvent(link, clickEvent);
     
     expect(clickEvent.stopPropagation).toHaveBeenCalled();
+  });
+
+  describe('Accessibility', () => {
+    it('has proper accessibility attributes', () => {
+      const talk = createTalk({
+        title: 'Test Talk',
+        speakers: ['test-speaker'],
+        conference: { id: '1', name: 'Test Conference', slug: 'test-conference' },
+        topic: { id: '1', name: 'test', slug: 'test-topic' },
+        description: 'Test Description',
+        year: 2023,
+        duration: 1800,
+        notes: 'Test notes',
+        topics: ['test'],
+      });
+
+      renderTalkCard({ talk });
+
+      // Main card accessibility
+      const card = screen.getByRole('article');
+      expect(card).toHaveAttribute('aria-label', 'Talk: Test Talk');
+
+      // Topic button accessibility
+      const topicButton = screen.getByRole('button', { name: /filter by topic test/i });
+      expect(topicButton).toHaveAttribute('aria-label', 'Filter by topic test');
+
+      // Author button accessibility
+      const authorButton = screen.getByRole('button', { name: /filter by speaker: test-speaker/i });
+      expect(authorButton).toHaveAttribute('aria-label', 'Filter by speaker: test-speaker');
+
+      // Conference button accessibility
+      const conferenceButton = screen.getByRole('button', { name: /filter by conference test conference/i });
+      expect(conferenceButton).toHaveAttribute('aria-label', 'Filter by conference Test Conference');
+
+      // Watch link accessibility
+      const watchLink = screen.getByRole('link', { name: /watch test talk/i });
+      expect(watchLink).toHaveAttribute('aria-label', 'Watch Test Talk');
+    });
   });
 }); 
