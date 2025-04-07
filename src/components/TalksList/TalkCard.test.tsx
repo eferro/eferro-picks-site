@@ -245,4 +245,25 @@ describe('TalkCard', () => {
 
     expect(navigate).toHaveBeenCalledWith('/talk/1');
   });
+
+  it('has correct watch talk link', () => {
+    render(
+      <BrowserRouter>
+        <TalkCard
+          talk={mockTalk}
+          onAuthorClick={mockHandlers.onAuthorClick}
+          selectedAuthor={null}
+          onTopicClick={mockHandlers.onTopicClick}
+          selectedTopics={[]}
+          onConferenceClick={mockHandlers.onConferenceClick}
+          selectedConference={null}
+        />
+      </BrowserRouter>
+    );
+
+    const watchLink = screen.getByRole('link', { name: /watch test talk/i });
+    expect(watchLink).toHaveAttribute('href', 'https://example.com');
+    expect(watchLink).toHaveAttribute('target', '_blank');
+    expect(watchLink).toHaveAttribute('rel', 'noopener noreferrer');
+  });
 }); 
