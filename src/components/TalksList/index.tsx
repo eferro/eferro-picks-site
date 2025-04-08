@@ -16,9 +16,8 @@ function LoadingSpinner() {
 
 function ErrorMessage({ message }: { message: string }) {
   return (
-    <div className="text-center py-8">
-      <p className="text-red-600 text-lg">{message}</p>
-      <p className="text-gray-600 mt-2">Check the console for more details.</p>
+    <div className="text-center py-12">
+      <p className="text-red-600">{message}</p>
     </div>
   );
 }
@@ -89,6 +88,11 @@ export function TalksList() {
   // Handle conference selection
   const handleConferenceClick = (conference: string) => {
     setSelectedConference(prev => prev === conference ? null : conference);
+  };
+
+  // Handle author selection
+  const handleAuthorClick = (author: string) => {
+    setSelectedAuthor(prev => prev === author ? null : author);
   };
 
   // Filter talks by selected author, topics, conference, and year
@@ -179,7 +183,7 @@ export function TalksList() {
               <span className="text-sm text-gray-500">Speaker:</span>
               <button
                 className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
-                onClick={() => setSelectedAuthor(null)}
+                onClick={() => handleAuthorClick(selectedAuthor)}
               >
                 {selectedAuthor}
                 <span className="ml-2 text-blue-600">×</span>
@@ -192,7 +196,7 @@ export function TalksList() {
               <span className="text-sm text-gray-500">Conference:</span>
               <button
                 className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
-                onClick={() => setSelectedConference(null)}
+                onClick={() => handleConferenceClick(selectedConference)}
               >
                 {selectedConference}
                 <span className="ml-2 text-blue-600">×</span>
@@ -258,7 +262,7 @@ export function TalksList() {
             key={topic} 
             coreTopic={topic} 
             talks={topicTalks}
-            onAuthorClick={setSelectedAuthor}
+            onAuthorClick={handleAuthorClick}
             selectedAuthor={selectedAuthor}
             onTopicClick={handleTopicClick}
             selectedTopics={selectedTopics}
