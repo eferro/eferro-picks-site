@@ -43,7 +43,14 @@ describe('useScrollPosition', () => {
       });
       
       // Mock required methods
-      window.scrollTo = vi.fn();
+      window.scrollTo = vi.fn().mockImplementation((x, y) => {
+        // Update scrollY when scrollTo is called
+        Object.defineProperty(window, 'scrollY', {
+          writable: true,
+          value: y,
+          configurable: true
+        });
+      });
       
       // Mock sessionStorage
       Object.defineProperty(window, 'sessionStorage', {
@@ -90,16 +97,47 @@ describe('useScrollPosition', () => {
 
     it('restores scroll position when returning to index page', () => {
       // Setup: Save a scroll position
-      mockStorage.setItem(SCROLL_INDEX_KEY, '150');
+      mockStorage.store[SCROLL_INDEX_KEY] = '150';
       
       // Render hook (simulating return to index page)
       renderHook(() => useScrollPosition());
       
-      // Run initial delay timer (100ms in implementation)
+      // Run initial delay timer (100ms)
       vi.advanceTimersByTime(100);
       
       // Verify window was scrolled to saved position
       expect(window.scrollTo).toHaveBeenCalledWith(0, 150);
+      
+      // Since our mock updates scrollY, no retry should be needed
+      expect(window.scrollTo).toHaveBeenCalledTimes(1);
+    });
+
+    it('scrolls to top when navigating to non-index page', () => {
+      // Setup: Mock a non-index page location
+      (useLocation as Mock).mockReturnValue({ pathname: '/talks/123' });
+      
+      // Setup: Save a previous scroll position
+      mockStorage.store[SCROLL_INDEX_KEY] = '200';
+      
+      // Set current scroll position
+      Object.defineProperty(window, 'scrollY', {
+        value: 300,
+        configurable: true,
+        writable: true
+      });
+      
+      // Render hook (simulating navigation to detail page)
+      renderHook(() => useScrollPosition());
+      
+      // Verify immediate scroll to top
+      expect(window.scrollTo).toHaveBeenCalledWith(0, 0);
+      expect(window.scrollTo).toHaveBeenCalledTimes(1);
+      expect(window.scrollY).toBe(0);
+      
+      // Verify no scroll events are handled
+      window.dispatchEvent(new Event('scroll'));
+      vi.advanceTimersByTime(100);
+      expect(mockStorage.setItem).not.toHaveBeenCalled();
     });
   });
 }); 
