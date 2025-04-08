@@ -1,89 +1,123 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const SCROLL_INDEX_KEY = 'scroll_index';
+const DEBOUNCE_DELAY = 100;
+const INITIAL_DELAY = 100;
+const MAX_ATTEMPTS = 10;
+const MAX_DELAY = 2000;
 
 /**
  * Hook to save and restore scroll position for routes
  */
-export function useScrollPosition() {
+export const useScrollPosition = () => {
   const location = useLocation();
-  const isIndex = location.pathname.endsWith('/');
-  
-  useEffect(() => {
-    console.log('useScrollPosition mounted for path:', location.pathname);
+  const timeoutRef = useRef<NodeJS.Timeout>();
+  const retryTimeoutRef = useRef<NodeJS.Timeout>();
+  const attemptRef = useRef(0);
+  const isIndexPage = location.pathname === '/' || location.pathname === '';
+
+  const saveScrollPosition = () => {
+    if (!isIndexPage) return;
     
-    const saveScrollPosition = () => {
-      const scrollY = window.scrollY;
-      sessionStorage.setItem(SCROLL_INDEX_KEY, scrollY.toString());
-      console.log('Saved index scroll position:', { 
-        scrollY,
-        timestamp: new Date().toISOString()
-      });
-    };
+    const scrollPosition = window.scrollY;
+    sessionStorage.setItem(SCROLL_INDEX_KEY, scrollPosition.toString());
+  };
 
-    const restoreScrollPosition = () => {
-      const savedPosition = sessionStorage.getItem(SCROLL_INDEX_KEY);
-      
-      if (savedPosition !== null) {
-        const targetScroll = parseInt(savedPosition, 10);
-        console.log('Attempting to restore index scroll position:', {
-          position: targetScroll,
-          timestamp: new Date().toISOString()
-        });
+  const isValidScrollPosition = (value: string | null): boolean => {
+    if (!value) return false;
+    
+    // Trim whitespace
+    const trimmed = value.trim();
+    if (!trimmed) return false;
+    
+    // Parse as number
+    const parsed = Number(trimmed);
+    
+    // Check if it's a valid number
+    if (isNaN(parsed)) return false;
+    
+    // Check if it's finite
+    if (!isFinite(parsed)) return false;
+    
+    // Check if it's a non-negative integer
+    if (!Number.isInteger(parsed) || parsed < 0) return false;
+    
+    return true;
+  };
 
-        // Try multiple times with increasing delays
-        let attempts = 0;
-        const maxAttempts = 10;
-        
-        const attemptScroll = () => {
-          if (attempts >= maxAttempts) return;
-          
-          window.scrollTo(0, targetScroll);
-          
-          // Check if we reached the target
-          if (Math.abs(window.scrollY - targetScroll) > 10) {
-            attempts++;
-            // Exponential backoff for retry delays
-            setTimeout(attemptScroll, Math.min(100 * Math.pow(2, attempts), 2000));
-          }
-        };
+  const restoreScrollPosition = () => {
+    if (!isIndexPage) return;
+    
+    const savedScrollPosition = sessionStorage.getItem(SCROLL_INDEX_KEY);
+    if (!savedScrollPosition) return;
 
-        // Initial delay to let React render
-        setTimeout(attemptScroll, 100);
-      }
-    };
-
-    // Save scroll position on scroll (debounced)
-    let scrollTimeout: number | null = null;
-    const handleScroll = () => {
-      if (scrollTimeout) {
-        window.clearTimeout(scrollTimeout);
-      }
-      scrollTimeout = window.setTimeout(saveScrollPosition, 100);
-    };
-
-    // Add scroll listener only on index page
-    if (isIndex) {
-      window.addEventListener('scroll', handleScroll, { passive: true });
+    if (!isValidScrollPosition(savedScrollPosition)) {
+      sessionStorage.removeItem(SCROLL_INDEX_KEY);
+      return;
     }
 
-    // If we're on index page, restore position, otherwise scroll to top
-    if (isIndex) {
-      restoreScrollPosition();
+    const parsedScrollPosition = parseInt(savedScrollPosition, 10);
+    
+    // Initial scroll attempt
+    window.scrollTo(0, parsedScrollPosition);
+    
+    // Start retry mechanism if needed
+    attemptRef.current = 0;
+    const checkScrollPosition = () => {
+      if (window.scrollY === parsedScrollPosition) return;
+      
+      attemptRef.current++;
+      if (attemptRef.current >= MAX_ATTEMPTS) return;
+      
+      window.scrollTo(0, parsedScrollPosition);
+      
+      const backoffDelay = Math.min(100 * Math.pow(2, attemptRef.current), MAX_DELAY);
+      retryTimeoutRef.current = setTimeout(checkScrollPosition, backoffDelay);
+    };
+    
+    retryTimeoutRef.current = setTimeout(checkScrollPosition, 100);
+  };
+
+  // Handle scroll events with debounce
+  useEffect(() => {
+    if (!isIndexPage) return;
+
+    const handleScroll = () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      
+      timeoutRef.current = setTimeout(saveScrollPosition, DEBOUNCE_DELAY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [isIndexPage]);
+
+  // Handle scroll restoration and reset
+  useEffect(() => {
+    if (isIndexPage) {
+      // Initial delay before restoring scroll position
+      timeoutRef.current = setTimeout(restoreScrollPosition, INITIAL_DELAY);
     } else {
+      // Immediate scroll to top for non-index pages
       window.scrollTo(0, 0);
     }
 
-    // Cleanup
     return () => {
-      if (scrollTimeout) {
-        window.clearTimeout(scrollTimeout);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
       }
-      
-      if (isIndex) {
-        window.removeEventListener('scroll', handleScroll);
+      if (retryTimeoutRef.current) {
+        clearTimeout(retryTimeoutRef.current);
       }
     };
-  }, [isIndex, location.pathname]);
-} 
+  }, [location.pathname, isIndexPage]);
+}; 
