@@ -150,10 +150,15 @@ describe('TalksList', () => {
   });
 
   it('filters talks using AND condition when multiple topics are selected', () => {
-    // Set initial state with two topics selected
-    mockSearchParams._params.set('topics', 'react,typescript');
-    
     renderComponent();
+
+    // Click on the first topic (react)
+    const reactButtons = screen.getAllByRole('button', { name: /Filter by topic react/i });
+    fireEvent.click(reactButtons[0]); // Click the first one
+
+    // Click on the second topic (typescript)
+    const typescriptButtons = screen.getAllByRole('button', { name: /Filter by topic typescript/i });
+    fireEvent.click(typescriptButtons[0]); // Click the first one
 
     // Should show talks with both topics
     expect(screen.getByText('Talk with both topics')).toBeInTheDocument();
