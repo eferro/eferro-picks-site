@@ -4,6 +4,7 @@ import { TalkSection } from './TalkSection';
 import { useTalks } from '../../hooks/useTalks';
 import { YearFilter, type YearFilterData } from './YearFilter';
 import { useSearchParams, useLocation } from 'react-router-dom';
+import { useScrollPosition } from '../../hooks/useScrollPosition';
 
 function LoadingSpinner() {
   return (
@@ -31,6 +32,9 @@ export function TalksList() {
   const [selectedYearFilter, setSelectedYearFilter] = useState<YearFilterData | null>(null);
   const { talks, loading, error } = useTalks();
   const [isInitialized, setIsInitialized] = useState(false);
+
+  // Add scroll position saving
+  useScrollPosition();
 
   // Initialize state from URL parameters
   useEffect(() => {

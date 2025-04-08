@@ -48,6 +48,7 @@ export function TalkCard({
   ), [talk.topics, onTopicClick, selectedTopics]);
 
   const handleCardClick = () => {
+    // Navigate to talk detail
     navigate({
       pathname: `/talk/${talk.id}`,
       search: searchParams.toString()
