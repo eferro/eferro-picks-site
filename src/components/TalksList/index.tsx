@@ -157,30 +157,11 @@ export function TalksList() {
       });
   }, [filteredTalks]);
 
-  // Debug info display
-  const debugInfo = (
-    <div className="fixed top-0 right-0 bg-gray-800 text-white p-4 text-xs z-50">
-      <div>Location: {location.pathname}</div>
-      <div>State: {JSON.stringify(location.state)}</div>
-      <div>Search: {searchParams.toString()}</div>
-      <div>Loading: {loading.toString()}</div>
-      <div>Initialized: {isInitialized.toString()}</div>
-      <div>Talks Count: {filteredTalks.length}</div>
-      <div>Filters: {JSON.stringify({
-        author: selectedAuthor,
-        topics: selectedTopics.length,
-        conference: selectedConference,
-        yearFilter: selectedYearFilter?.type
-      })}</div>
-    </div>
-  );
-
   if (loading) return <LoadingSpinner />;
   if (error) return <ErrorMessage message={error.message} />;
 
   return (
     <div className="max-w-7xl 2xl:max-w-[96rem] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      {debugInfo}
       {/* Filters */}
       <div className="mb-6 flex items-center gap-4">
         <YearFilter
