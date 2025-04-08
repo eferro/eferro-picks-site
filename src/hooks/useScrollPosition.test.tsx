@@ -169,5 +169,31 @@ describe('useScrollPosition', () => {
       vi.advanceTimersByTime(100);
       expect(mockStorage.setItem).not.toHaveBeenCalled();
     });
+
+    it('debounces multiple scroll events and only saves the last position', () => {
+      // Render the hook
+      renderHook(() => useScrollPosition());
+      
+      // Simulate rapid scrolling
+      for (let i = 0; i < 5; i++) {
+        Object.defineProperty(window, 'scrollY', {
+          value: i * 100,
+          configurable: true,
+          writable: true
+        });
+        window.dispatchEvent(new Event('scroll'));
+        vi.advanceTimersByTime(50); // Less than debounce time
+      }
+      
+      // At this point, no storage updates should have happened yet
+      expect(mockStorage.setItem).not.toHaveBeenCalled();
+      
+      // Advance timer to complete the last debounce
+      vi.advanceTimersByTime(100);
+      
+      // Verify only the last position was saved
+      expect(mockStorage.setItem).toHaveBeenCalledTimes(1);
+      expect(mockStorage.setItem).toHaveBeenCalledWith(SCROLL_INDEX_KEY, '400');
+    });
   });
 }); 
