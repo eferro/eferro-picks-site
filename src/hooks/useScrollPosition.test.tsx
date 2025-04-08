@@ -195,5 +195,57 @@ describe('useScrollPosition', () => {
       expect(mockStorage.setItem).toHaveBeenCalledTimes(1);
       expect(mockStorage.setItem).toHaveBeenCalledWith(SCROLL_INDEX_KEY, '400');
     });
+
+    it('retries scroll restoration with exponential backoff when target not reached', () => {
+      // Setup: Save a scroll position
+      mockStorage.store[SCROLL_INDEX_KEY] = '500';
+      
+      // Mock scrollTo to simulate failed scroll attempts
+      window.scrollTo = vi.fn().mockImplementation((x, y) => {
+        // Simulate scroll not reaching target (off by 20px)
+        Object.defineProperty(window, 'scrollY', {
+          writable: true,
+          value: Math.max(0, y - 20),
+          configurable: true
+        });
+      });
+      
+      // Render hook
+      renderHook(() => useScrollPosition());
+      
+      // Initial delay
+      vi.advanceTimersByTime(100);
+      
+      // First attempt
+      expect(window.scrollTo).toHaveBeenCalledWith(0, 500);
+      expect(window.scrollY).toBe(480); // 20px off target
+      
+      // Verify exponential backoff timing
+      for (let attempt = 1; attempt < 5; attempt++) {
+        const backoffDelay = Math.min(100 * Math.pow(2, attempt), 2000);
+        vi.advanceTimersByTime(backoffDelay);
+        expect(window.scrollTo).toHaveBeenCalledWith(0, 500);
+      }
+      
+      // After 5 attempts, fix the scroll behavior
+      window.scrollTo = vi.fn().mockImplementation((x, y) => {
+        Object.defineProperty(window, 'scrollY', {
+          writable: true,
+          value: y,
+          configurable: true
+        });
+      });
+      
+      // Advance timer for next attempt
+      vi.advanceTimersByTime(2000); // Max delay
+      
+      // Verify scroll succeeded and stopped retrying
+      expect(window.scrollY).toBe(500);
+      const totalCalls = (window.scrollTo as Mock).mock.calls.length;
+      
+      // No more calls should happen
+      vi.advanceTimersByTime(2000);
+      expect(window.scrollTo).toHaveBeenCalledTimes(totalCalls);
+    });
   });
 }); 
