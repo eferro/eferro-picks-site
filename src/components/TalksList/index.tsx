@@ -3,7 +3,7 @@ import { Talk } from '../../types/talks';
 import { TalkSection } from './TalkSection';
 import { useTalks } from '../../hooks/useTalks';
 import { YearFilter, type YearFilterData } from './YearFilter';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useLocation } from 'react-router-dom';
 
 function LoadingSpinner() {
   return (
@@ -23,6 +23,7 @@ function ErrorMessage({ message }: { message: string }) {
 }
 
 export function TalksList() {
+  const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedAuthor, setSelectedAuthor] = useState<string | null>(null);
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
@@ -31,7 +32,7 @@ export function TalksList() {
   const { talks, loading, error } = useTalks();
   const [isInitialized, setIsInitialized] = useState(false);
 
-  // Initialize state from URL parameters (only on mount)
+  // Initialize state from URL parameters
   useEffect(() => {
     const author = searchParams.get('author');
     const topics = searchParams.get('topics')?.split(',').filter(Boolean) || [];
@@ -51,9 +52,9 @@ export function TalksList() {
       setSelectedYearFilter(null);
     }
     setIsInitialized(true);
-  }, [searchParams]); // Update when searchParams change
+  }, [searchParams]);
 
-  // Update URL when filters change (only after initialization)
+  // Update URL when filters change
   useEffect(() => {
     if (!isInitialized) return;
 
@@ -88,48 +89,48 @@ export function TalksList() {
 
   // Filter talks by selected author, topics, conference, and year
   const filteredTalks = useMemo(() => {
-    let filtered = talks;
+    if (!talks) return [];
+    
+    return talks.filter(talk => {
+      // Filter by author
+      if (selectedAuthor && !talk.speakers.includes(selectedAuthor)) {
+        return false;
+      }
 
-    if (selectedAuthor) {
-      filtered = filtered.filter(talk => talk.speakers.includes(selectedAuthor));
-    }
+      // Filter by topics
+      if (selectedTopics.length > 0) {
+        const hasSelectedTopic = selectedTopics.some(topic => 
+          talk.topics.includes(topic) || talk.core_topic === topic
+        );
+        if (!hasSelectedTopic) return false;
+      }
 
-    if (selectedTopics.length > 0) {
-      filtered = filtered.filter(talk =>
-        selectedTopics.every(topic => talk.topics.includes(topic))
-      );
-    }
+      // Filter by conference
+      if (selectedConference && talk.conference_name !== selectedConference) {
+        return false;
+      }
 
-    if (selectedConference) {
-      filtered = filtered.filter(talk => talk.conference_name === selectedConference);
-    }
+      // Filter by year
+      if (selectedYearFilter) {
+        const currentYear = new Date().getFullYear();
 
-    if (selectedYearFilter) {
-      const currentYear = new Date().getFullYear();
-      filtered = filtered.filter(talk => {
-        if (!talk.year) return false;
-        
         switch (selectedYearFilter.type) {
-          case 'specific':
-            return talk.year === selectedYearFilter.year;
-          case 'before':
-            return talk.year < (selectedYearFilter.year || currentYear);
-          case 'after':
-            return talk.year > (selectedYearFilter.year || currentYear);
           case 'last2':
-            return talk.year >= currentYear - 2;
+            return talk.year ? talk.year >= currentYear - 2 : false;
           case 'last5':
-            return talk.year >= currentYear - 5;
+            return talk.year ? talk.year >= currentYear - 5 : false;
+          case 'specific':
+            return selectedYearFilter.year ? talk.year === selectedYearFilter.year : true;
           default:
             return true;
         }
-      });
-    }
+      }
 
-    return filtered;
+      return true;
+    });
   }, [talks, selectedAuthor, selectedTopics, selectedConference, selectedYearFilter]);
 
-  // Memoize the grouped and sorted talks
+  // Group talks by core topic
   const sortedTopics = useMemo(() => {
     // Group talks by core topic
     const talksByTopic = filteredTalks.reduce((acc, talk) => {
@@ -152,11 +153,30 @@ export function TalksList() {
       });
   }, [filteredTalks]);
 
+  // Debug info display
+  const debugInfo = (
+    <div className="fixed top-0 right-0 bg-gray-800 text-white p-4 text-xs z-50">
+      <div>Location: {location.pathname}</div>
+      <div>State: {JSON.stringify(location.state)}</div>
+      <div>Search: {searchParams.toString()}</div>
+      <div>Loading: {loading.toString()}</div>
+      <div>Initialized: {isInitialized.toString()}</div>
+      <div>Talks Count: {filteredTalks.length}</div>
+      <div>Filters: {JSON.stringify({
+        author: selectedAuthor,
+        topics: selectedTopics.length,
+        conference: selectedConference,
+        yearFilter: selectedYearFilter?.type
+      })}</div>
+    </div>
+  );
+
   if (loading) return <LoadingSpinner />;
   if (error) return <ErrorMessage message={error.message} />;
 
   return (
     <div className="max-w-7xl 2xl:max-w-[96rem] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {debugInfo}
       {/* Filters */}
       <div className="mb-6 flex items-center gap-4">
         <YearFilter
