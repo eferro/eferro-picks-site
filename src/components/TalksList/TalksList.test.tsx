@@ -54,12 +54,56 @@ describe('TalksList', () => {
       talks: [
         {
           id: '1',
-          title: 'Test Talk',
+          title: 'Talk with both topics',
+          description: 'Test Description',
+          speakers: ['Test Speaker'],
+          duration: 1800,
+          url: 'https://test.com',
+          topics: ['react', 'typescript'],
+          core_topic: 'Engineering Culture',
+          year: 2023
+        },
+        {
+          id: '2',
+          title: 'Talk with only first topic',
           description: 'Test Description',
           speakers: ['Test Speaker'],
           duration: 1800,
           url: 'https://test.com',
           topics: ['react'],
+          core_topic: 'Engineering Culture',
+          year: 2023
+        },
+        {
+          id: '3',
+          title: 'Talk with only second topic',
+          description: 'Test Description',
+          speakers: ['Test Speaker'],
+          duration: 1800,
+          url: 'https://test.com',
+          topics: ['typescript'],
+          core_topic: 'Engineering Culture',
+          year: 2023
+        },
+        {
+          id: '4',
+          title: 'Talk with both topics plus extra',
+          description: 'Test Description',
+          speakers: ['Test Speaker'],
+          duration: 1800,
+          url: 'https://test.com',
+          topics: ['react', 'typescript', 'testing'],
+          core_topic: 'Engineering Culture',
+          year: 2023
+        },
+        {
+          id: '5',
+          title: 'Talk with no matching topics',
+          description: 'Test Description',
+          speakers: ['Test Speaker'],
+          duration: 1800,
+          url: 'https://test.com',
+          topics: ['testing'],
           core_topic: 'Engineering Culture',
           year: 2023
         }
@@ -77,8 +121,8 @@ describe('TalksList', () => {
 
   it('renders without crashing', () => {
     renderComponent();
-    expect(screen.getByText('Engineering Culture (1)')).toBeInTheDocument();
-    expect(screen.getByText('Test Talk')).toBeInTheDocument();
+    expect(screen.getByText('Engineering Culture (5)')).toBeInTheDocument();
+    expect(screen.getByText('Talk with both topics')).toBeInTheDocument();
   });
 
   it('initializes with yearType from URL', () => {
@@ -96,12 +140,30 @@ describe('TalksList', () => {
     renderComponent();
 
     // Verify that the year filter is preserved in navigation
-    const talkLink = screen.getByText('Test Talk');
+    const talkLink = screen.getByText('Talk with both topics');
     fireEvent.click(talkLink);
 
     expect(mockNavigate).toHaveBeenCalledWith({
       pathname: '/talk/1',
       search: 'yearType=last2'
     });
+  });
+
+  it('filters talks using AND condition when multiple topics are selected', () => {
+    // Set initial state with two topics selected
+    mockSearchParams._params.set('topics', 'react,typescript');
+    
+    renderComponent();
+
+    // Should show talks with both topics
+    expect(screen.getByText('Talk with both topics')).toBeInTheDocument();
+    expect(screen.getByText('Talk with both topics plus extra')).toBeInTheDocument();
+    
+    // Should not show talks with only one topic
+    expect(screen.queryByText('Talk with only first topic')).not.toBeInTheDocument();
+    expect(screen.queryByText('Talk with only second topic')).not.toBeInTheDocument();
+    
+    // Should not show talks with no matching topics
+    expect(screen.queryByText('Talk with no matching topics')).not.toBeInTheDocument();
   });
 }); 
