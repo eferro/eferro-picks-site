@@ -107,10 +107,10 @@ export function TalksList() {
 
       // Filter by topics
       if (selectedTopics.length > 0) {
-        const hasSelectedTopic = selectedTopics.some(topic => 
-          talk.topics.includes(topic) || talk.core_topic === topic
+        const hasAllSelectedTopics = selectedTopics.every(topic => 
+          talk.topics.includes(topic)
         );
-        if (!hasSelectedTopic) return false;
+        if (!hasAllSelectedTopics) return false;
       }
 
       // Filter by conference
