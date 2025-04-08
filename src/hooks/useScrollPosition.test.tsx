@@ -62,6 +62,10 @@ describe('useScrollPosition', () => {
       vi.spyOn(mockStorage, 'setItem');
       vi.spyOn(mockStorage, 'getItem');
       
+      // Spy on window event listeners
+      vi.spyOn(window, 'addEventListener');
+      vi.spyOn(window, 'removeEventListener');
+      
       mockStorage.clear();
       
       // Mock location
@@ -136,6 +140,32 @@ describe('useScrollPosition', () => {
       
       // Verify no scroll events are handled
       window.dispatchEvent(new Event('scroll'));
+      vi.advanceTimersByTime(100);
+      expect(mockStorage.setItem).not.toHaveBeenCalled();
+    });
+
+    it('cleans up event listeners and timeouts when unmounting', () => {
+      // Setup: Render hook on index page
+      const { unmount } = renderHook(() => useScrollPosition());
+      
+      // Verify event listener was added
+      expect(window.addEventListener).toHaveBeenCalledWith('scroll', expect.any(Function), { passive: true });
+      
+      // Get the actual event handler that was registered
+      const scrollHandler = (window.addEventListener as Mock).mock.calls.find(
+        call => call[0] === 'scroll'
+      )?.[1];
+      
+      // Trigger a scroll event but don't let the timer complete
+      window.dispatchEvent(new Event('scroll'));
+      
+      // Unmount the hook
+      unmount();
+      
+      // Verify event listener was removed with the same handler
+      expect(window.removeEventListener).toHaveBeenCalledWith('scroll', scrollHandler);
+      
+      // Advance timer and verify no storage updates happened after unmount
       vi.advanceTimersByTime(100);
       expect(mockStorage.setItem).not.toHaveBeenCalled();
     });
