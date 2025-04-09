@@ -1,9 +1,9 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
-import { TalkDetail } from './index';
+import { TalkDetail } from '.';
 import { useTalks } from '../../hooks/useTalks';
 import { useSearchParams, useParams } from 'react-router-dom';
-import { renderWithRouter, mockSearchParams, mockSetSearchParams } from '../../test/utils';
+import { renderWithRouter, mockSearchParams, mockSetSearchParams, createTalk } from '../../test/utils';
 
 // Mock the hooks
 vi.mock('../../hooks/useTalks');
@@ -154,6 +154,39 @@ describe('TalkDetail', () => {
       
       renderComponent();
       expect(screen.getByText(/Error loading talk/)).toBeInTheDocument();
+    });
+  });
+
+  describe('Notes Section', () => {
+    it('does not render notes section when notes are not present', () => {
+      (useTalks as any).mockImplementation(() => ({
+        talks: [createTalk({ notes: undefined })],
+        loading: false,
+        error: null
+      }));
+      renderComponent();
+      expect(screen.queryByText('Key Notes')).not.toBeInTheDocument();
+    });
+
+    it('does not render notes section when notes are just whitespace', () => {
+      (useTalks as any).mockImplementation(() => ({
+        talks: [createTalk({ notes: '   \n  \r\n  ' })],
+        loading: false,
+        error: null
+      }));
+      renderComponent();
+      expect(screen.queryByText('Key Notes')).not.toBeInTheDocument();
+    });
+
+    it('renders notes section when notes have meaningful content', () => {
+      (useTalks as any).mockImplementation(() => ({
+        talks: [createTalk({ notes: 'Some actual notes' })],
+        loading: false,
+        error: null
+      }));
+      renderComponent();
+      expect(screen.getByText('Key Notes')).toBeInTheDocument();
+      expect(screen.getByText('Some actual notes')).toBeInTheDocument();
     });
   });
 }); 

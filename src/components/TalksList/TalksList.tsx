@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { TalkSection } from './TalkSection';
 import { useTalks } from '../../hooks/useTalks';
+import { hasMeaningfulNotes } from '../../utils/talks';
 
 const TalksList: React.FC = () => {
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
@@ -41,14 +42,38 @@ const TalksList: React.FC = () => {
     setSelectedConference(prev => prev === conference ? null : conference);
   };
 
+  const handleHasNotesClick = () => {
+    const params = new URLSearchParams(searchParams);
+    if (params.get('hasNotes') === 'true') {
+      params.delete('hasNotes');
+    } else {
+      params.set('hasNotes', 'true');
+    }
+    setSearchParams(params);
+  };
+
+  const hasNotesFilter = searchParams.get('hasNotes') === 'true';
+  const filteredTalks = hasNotesFilter 
+    ? talks.filter(talk => hasMeaningfulNotes(talk.notes))
+    : talks;
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div>
+      <div className="mb-4">
+        <button
+          onClick={handleHasNotesClick}
+          aria-label="Has Notes"
+          className={`px-4 py-2 rounded-md text-white ${hasNotesFilter ? 'bg-blue-500' : 'bg-gray-500'}`}
+        >
+          Has Notes
+        </button>
+      </div>
       <TalkSection
         coreTopic="Engineering Culture"
-        talks={talks}
+        talks={filteredTalks}
         selectedTopics={selectedTopics}
         onTopicClick={handleTopicClick}
         selectedAuthor={selectedAuthor}

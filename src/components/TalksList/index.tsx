@@ -5,6 +5,8 @@ import { useTalks } from '../../hooks/useTalks';
 import { YearFilter, type YearFilterData } from './YearFilter';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
+import { hasMeaningfulNotes } from '../../utils/talks';
+import { DocumentTextIcon } from '@heroicons/react/24/outline';
 
 function LoadingSpinner() {
   return (
@@ -29,20 +31,23 @@ export function TalksList() {
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
   const [selectedConference, setSelectedConference] = useState<string | null>(null);
   const [selectedYearFilter, setSelectedYearFilter] = useState<YearFilterData | null>(null);
+  const [showOnlyWithNotes, setShowOnlyWithNotes] = useState(() => searchParams.get('hasNotes') === 'true');
   const { talks, loading, error } = useTalks();
-  const [isInitialized, setIsInitialized] = useState(false);
 
   // Add scroll position saving
   useScrollPosition();
 
-  // Initialize state from URL parameters
+  // Handle URL parameters and updates
   useEffect(() => {
-    const author = searchParams.get('author');
-    const topics = searchParams.get('topics')?.split(',').filter(Boolean) || [];
-    const conference = searchParams.get('conference');
-    const year = searchParams.get('year');
-    const yearType = searchParams.get('yearType');
+    const params = new URLSearchParams(searchParams);
+    const author = params.get('author');
+    const topics = params.get('topics')?.split(',').filter(Boolean) || [];
+    const conference = params.get('conference');
+    const year = params.get('year');
+    const yearType = params.get('yearType');
+    const hasNotes = params.get('hasNotes') === 'true';
     
+    // Update state from URL
     if (author) setSelectedAuthor(author);
     if (topics.length > 0) setSelectedTopics(topics);
     if (conference) setSelectedConference(conference);
@@ -54,25 +59,30 @@ export function TalksList() {
     } else {
       setSelectedYearFilter(null);
     }
-    setIsInitialized(true);
+    setShowOnlyWithNotes(hasNotes);
   }, [searchParams]);
 
   // Update URL when filters change
-  useEffect(() => {
-    if (!isInitialized) return;
-
+  const handleHasNotesClick = () => {
+    const newValue = !showOnlyWithNotes;
+    setShowOnlyWithNotes(newValue);
+    
     const params = new URLSearchParams();
-    if (selectedAuthor) params.set('author', selectedAuthor);
-    if (selectedTopics.length > 0) params.set('topics', selectedTopics.join(','));
-    if (selectedConference) params.set('conference', selectedConference);
-    if (selectedYearFilter) {
-      if (selectedYearFilter.year) {
-        params.set('year', selectedYearFilter.year.toString());
+    
+    // Preserve existing parameters
+    for (const [key, value] of searchParams.entries()) {
+      if (key !== 'hasNotes') {
+        params.set(key, value);
       }
-      params.set('yearType', selectedYearFilter.type);
     }
+    
+    // Update hasNotes parameter
+    if (newValue) {
+      params.set('hasNotes', 'true');
+    }
+    
     setSearchParams(params);
-  }, [isInitialized, selectedAuthor, selectedTopics, selectedConference, selectedYearFilter, setSearchParams]);
+  };
 
   // Handle topic selection
   const handleTopicClick = (topic: string) => {
@@ -95,7 +105,7 @@ export function TalksList() {
     setSelectedAuthor(prev => prev === author ? null : author);
   };
 
-  // Filter talks by selected author, topics, conference, and year
+  // Filter talks by selected author, topics, conference, year, and notes
   const filteredTalks = useMemo(() => {
     if (!talks) return [];
     
@@ -134,9 +144,14 @@ export function TalksList() {
         }
       }
 
+      // Filter by notes
+      if (showOnlyWithNotes && !hasMeaningfulNotes(talk.notes)) {
+        return false;
+      }
+
       return true;
     });
-  }, [talks, selectedAuthor, selectedTopics, selectedConference, selectedYearFilter]);
+  }, [talks, selectedAuthor, selectedTopics, selectedConference, selectedYearFilter, showOnlyWithNotes]);
 
   // Group talks by core topic
   const sortedTopics = useMemo(() => {
@@ -173,10 +188,22 @@ export function TalksList() {
           selectedFilter={selectedYearFilter}
           onFilterChange={setSelectedYearFilter}
         />
+        <button
+          onClick={handleHasNotesClick}
+          aria-label="Toggle Has Notes filter"
+          className={`inline-flex items-center px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+            showOnlyWithNotes
+              ? 'bg-blue-500 text-white'
+              : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
+          }`}
+        >
+          <DocumentTextIcon className={`h-5 w-5 ${showOnlyWithNotes ? 'text-white' : 'text-blue-500'} mr-2`} />
+          Has Notes
+        </button>
       </div>
 
       {/* Active filters */}
-      {(selectedAuthor || selectedTopics.length > 0 || selectedConference || selectedYearFilter) && (
+      {(selectedAuthor || selectedTopics.length > 0 || selectedConference || selectedYearFilter || showOnlyWithNotes) && (
         <div className="mb-6 space-y-3">
           {selectedAuthor && (
             <div className="flex items-center gap-2">
@@ -245,6 +272,20 @@ export function TalksList() {
                   'Last 5 Years'
                 )}
                 <span className="ml-2 text-blue-600">×</span>
+              </button>
+            </div>
+          )}
+          
+          {showOnlyWithNotes && (
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-500">Filter:</span>
+              <button
+                className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
+                onClick={handleHasNotesClick}
+                aria-label="Remove Has Notes filter"
+              >
+                Has Notes
+                <span className="ml-2 text-blue-600" aria-hidden="true">×</span>
               </button>
             </div>
           )}
