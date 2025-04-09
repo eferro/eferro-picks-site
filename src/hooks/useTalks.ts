@@ -1,21 +1,22 @@
 import { useState, useEffect } from 'react';
 import { Talk } from '../types/talks';
+import { processTalks } from '../utils/talks';
 
 export interface AirtableItem {
   airtable_id: string;
   Name: string;
   Url: string;
-  Duration?: number;
-  Topics_Names?: string[];
-  Speakers_Names?: string[];
-  Description?: string;
-  core_topic?: string;
+  Duration: number;
+  Topics_Names: string[];
+  Speakers_Names: string[];
+  Description: string;
+  core_topic: string;
   Notes?: string;
-  Language?: string;
-  Rating?: number;
-  "Resource type"?: string;
-  year?: number;
-  conference_name?: string;
+  Language: string;
+  Rating: number;
+  "Resource type": string;
+  year: number;
+  conference_name: string;
 }
 
 const VALID_RESOURCE_TYPES = ['podcast', 'talk', 'videopodcast'];
@@ -30,46 +31,13 @@ export function useTalks() {
       try {
         const response = await fetch(`${import.meta.env.BASE_URL}data/talks.json`);
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error('Failed to load talks');
         }
-        
-        const data = await response.json() as AirtableItem[];
-        
-        if (!Array.isArray(data)) {
-          throw new Error('Invalid data format: expected an array');
-        }
-
-        // Filter talks: only English, rating 5, and valid resource types
-        const filteredData = data.filter(item => 
-          item.Language === 'English' && 
-          item.Rating === 5 &&
-          item["Resource type"] && 
-          VALID_RESOURCE_TYPES.includes(item["Resource type"].toLowerCase())
-        );
-
-        const processedTalks = filteredData.map(item => {
-          if (!item.airtable_id) {
-            throw new Error(`Talk missing airtable_id: ${item.Name || 'unknown'}`);
-          }
-          return {
-            id: item.airtable_id,
-            title: item.Name,
-            url: item.Url,
-            duration: item.Duration || 0,
-            topics: item.Topics_Names || [],
-            speakers: item.Speakers_Names || [],
-            description: item.Description || '',
-            core_topic: item.core_topic || '',
-            notes: item.Notes,
-            year: item.year,
-            conference_name: item.conference_name
-          };
-        });
-
+        const data: AirtableItem[] = await response.json();
+        const processedTalks = processTalks(data);
         setTalks(processedTalks);
       } catch (err) {
-        console.error('Error loading talks:', err);
-        setError(err instanceof Error ? err : new Error('Failed to load talks'));
+        setError(err instanceof Error ? err : new Error('Unknown error'));
       } finally {
         setLoading(false);
       }
