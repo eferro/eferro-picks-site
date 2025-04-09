@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Talk } from '../../types/talks';
 import { formatDuration } from '../../utils/format';
+import { hasMeaningfulNotes } from '../../utils/talks';
 import { DocumentTextIcon, PlayIcon } from '@heroicons/react/24/outline';
 
 interface TalkCardProps {
@@ -70,7 +71,7 @@ export function TalkCard({
             <h3 className="text-lg font-semibold text-gray-900">
               {talk.title}
             </h3>
-            {talk.notes && (
+            {hasMeaningfulNotes(talk.notes) && (
               <span
                 role="img"
                 aria-label="This talk has detailed notes"

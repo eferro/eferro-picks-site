@@ -60,13 +60,19 @@ describe('TalkCard', () => {
       it('does not render notes icon when notes are not present', () => {
         const talk = createTalk({ notes: undefined });
         renderTalkCard({ talk });
-        expect(screen.queryByRole('img', { name: /notes/i })).not.toBeInTheDocument();
+        expect(screen.queryByRole('img', { name: /This talk has detailed notes/i })).not.toBeInTheDocument();
       });
 
-      it('renders notes icon when notes are present', () => {
-        const talk = createTalk({ notes: 'Some notes' });
+      it('does not render notes icon when notes are just whitespace', () => {
+        const talk = createTalk({ notes: '   \n  \r\n  ' });
         renderTalkCard({ talk });
-        expect(screen.getByRole('img', { name: /notes/i })).toBeInTheDocument();
+        expect(screen.queryByRole('img', { name: /This talk has detailed notes/i })).not.toBeInTheDocument();
+      });
+
+      it('renders notes icon when notes have meaningful content', () => {
+        const talk = createTalk({ notes: 'Some actual notes' });
+        renderTalkCard({ talk });
+        expect(screen.getByRole('img', { name: /This talk has detailed notes/i })).toBeInTheDocument();
       });
     });
 
