@@ -9,26 +9,21 @@ export const mockNavigate = vi.fn();
 
 // Mock search params
 export const mockSearchParams = {
-  _params: new Map<string, string>(),
-  get: vi.fn((key: string) => mockSearchParams._params.get(key) || null),
-  toString: vi.fn(() => {
-    const params = Array.from(mockSearchParams._params.entries())
-      .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
-      .join('&');
-    return params ? `${params}` : '';
-  }),
+  _params: {} as Record<string, string>,
+  get: vi.fn((key: string) => mockSearchParams._params[key] || null),
   set: vi.fn((key: string, value: string) => {
-    mockSearchParams._params.set(key, value);
+    mockSearchParams._params[key] = value;
   }),
-  delete: vi.fn((key: string) => {
-    mockSearchParams._params.delete(key);
+  toString: vi.fn(() => {
+    return Object.entries(mockSearchParams._params)
+      .map(([key, value]) => `${key}=${value}`)
+      .join('&');
   }),
-  entries: vi.fn(() => mockSearchParams._params.entries()),
-  has: vi.fn((key: string) => mockSearchParams._params.has(key)),
-  getAll: vi.fn((key: string) => {
-    const value = mockSearchParams._params.get(key);
-    return value ? [value] : [];
-  })
+  has: vi.fn((key: string) => key in mockSearchParams._params),
+  clear: vi.fn(() => {
+    mockSearchParams._params = {};
+  }),
+  entries: vi.fn(() => Object.entries(mockSearchParams._params))
 };
 
 export const mockSetSearchParams = vi.fn();
@@ -54,7 +49,7 @@ vi.mock('react-router-dom', async () => {
 // Reset all mocks before each test
 beforeEach(() => {
   vi.clearAllMocks();
-  mockSearchParams._params.clear();
+  mockSearchParams.clear();
 
   // Mock window.location
   Object.defineProperty(window, 'location', {

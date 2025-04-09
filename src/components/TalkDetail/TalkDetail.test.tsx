@@ -42,7 +42,7 @@ describe('TalkDetail', () => {
     
     // Reset mocks and internal state
     vi.clearAllMocks();
-    mockSearchParams._params.clear();
+    mockSearchParams.clear();
     
     (useSearchParams as any).mockImplementation(() => [mockSearchParams, mockSetSearchParams]);
   });
@@ -77,7 +77,7 @@ describe('TalkDetail', () => {
 
     it('removes author filter when clicking on the same speaker', () => {
       // Set initial state
-      mockSearchParams._params.set('author', 'Test Speaker 1');
+      mockSearchParams.set('author', 'Test Speaker 1');
       
       renderComponent();
       
@@ -90,7 +90,7 @@ describe('TalkDetail', () => {
     });
 
     it('applies selected styling to the active speaker', () => {
-      mockSearchParams._params.set('author', 'Test Speaker 1');
+      mockSearchParams.set('author', 'Test Speaker 1');
       renderComponent();
       
       const speakerButton = screen.getByText('Test Speaker 1');
@@ -112,7 +112,7 @@ describe('TalkDetail', () => {
 
     it('removes conference filter when clicking on the same conference', () => {
       // Set initial state
-      mockSearchParams._params.set('conference', 'Test Conference');
+      mockSearchParams.set('conference', 'Test Conference');
       
       renderComponent();
       
@@ -125,7 +125,7 @@ describe('TalkDetail', () => {
     });
 
     it('applies selected styling to the active conference', () => {
-      mockSearchParams._params.set('conference', 'Test Conference');
+      mockSearchParams.set('conference', 'Test Conference');
       renderComponent();
       
       const conferenceButton = screen.getByText('Test Conference');

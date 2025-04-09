@@ -47,6 +47,13 @@ vi.mock('./YearFilter', () => ({
 
 // Mock the hooks
 vi.mock('../../hooks/useTalks');
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual('react-router-dom');
+  return {
+    ...actual,
+    useSearchParams: () => [mockSearchParams, mockSetSearchParams]
+  };
+});
 
 // Mock the hasMeaningfulNotes function
 vi.mock('../../utils/talks', () => ({
@@ -58,6 +65,9 @@ vi.mock('../../utils/talks', () => ({
 
 describe('TalksList', () => {
   beforeEach(() => {
+    vi.clearAllMocks();
+    mockSearchParams.clear();
+
     (useTalks as any).mockImplementation(() => ({
       talks: [
         {
@@ -119,10 +129,6 @@ describe('TalksList', () => {
       loading: false,
       error: null
     }));
-
-    // Reset mocks and internal state
-    vi.clearAllMocks();
-    mockSearchParams._params.clear();
   });
 
   const renderComponent = () => renderWithRouter(<TalksList />);
@@ -135,7 +141,7 @@ describe('TalksList', () => {
 
   it('initializes with yearType from URL', () => {
     // Set initial state
-    mockSearchParams._params.set('yearType', 'last2');
+    mockSearchParams.set('yearType', 'last2');
     
     renderComponent();
     expect(screen.getByText('Year Filter')).toBeInTheDocument();
@@ -143,7 +149,7 @@ describe('TalksList', () => {
 
   it('preserves yearType when navigating', () => {
     // Set initial state
-    mockSearchParams._params.set('yearType', 'last2');
+    mockSearchParams.set('yearType', 'last2');
     
     renderComponent();
 
