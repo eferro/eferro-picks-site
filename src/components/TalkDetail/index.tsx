@@ -39,12 +39,11 @@ const NotFoundState = () => (
   </div>
 );
 
-export function TalkDetail() {
+function TalkDetail() {
   const { id } = useParams<{ id: string }>();
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const { talks, loading, error } = useTalks();
-
 
   const handleAuthorClick = (author: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -242,4 +241,6 @@ export function TalkDetail() {
       </article>
     </div>
   );
-} 
+}
+
+export { TalkDetail }; 
