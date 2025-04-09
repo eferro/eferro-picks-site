@@ -80,12 +80,26 @@ export const mockTalk: Talk = {
   notes: undefined
 };
 
-// Mock handlers
-export const mockHandlers = {
-  onAuthorClick: vi.fn(),
-  onTopicClick: vi.fn(),
-  onConferenceClick: vi.fn()
+// Types for mock handlers
+type MockHandlers = {
+  onAuthorClick: Mock;
+  onTopicClick: Mock;
+  onConferenceClick: Mock;
 };
+
+// Mock handlers
+export const createMockHandlers = (overrides: Partial<MockHandlers> = {}): MockHandlers => {
+  const handlers = {
+    onAuthorClick: vi.fn(),
+    onTopicClick: vi.fn(),
+    onConferenceClick: vi.fn(),
+    ...overrides
+  };
+  return handlers;
+};
+
+// For backward compatibility
+export const mockHandlers = createMockHandlers();
 
 // Helper to create a talk with overrides
 export const createTalk = (overrides: Partial<Talk> = {}): Talk => ({
