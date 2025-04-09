@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Talk } from '../types/talks';
 
-interface AirtableItem {
+export interface AirtableItem {
   airtable_id: string;
   Name: string;
   Url: string;
