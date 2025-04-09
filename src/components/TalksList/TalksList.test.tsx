@@ -3,7 +3,8 @@ import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { TalksList } from '.';
 import { useTalks } from '../../hooks/useTalks';
 import { useSearchParams } from 'react-router-dom';
-import { renderWithRouter, mockSearchParams, mockSetSearchParams, mockNavigate } from '../../test/utils';
+import { renderWithRouter, mockSearchParams, mockSetSearchParams, mockNavigate, createTalk } from '../../test/utils';
+import { hasMeaningfulNotes } from '../../utils/talks';
 
 // Mock the child components
 vi.mock('./TalkSection', () => ({
@@ -13,9 +14,8 @@ vi.mock('./TalkSection', () => ({
       <section>
         <h2>{props.coreTopic} ({props.talks.length})</h2>
         {props.talks.map((talk: any) => (
-          <div key={talk.id}>
+          <div key={talk.id} role="article">
             <div 
-              role="article" 
               onClick={() => mockNavigate({
                 pathname: `/talk/${talk.id}`,
                 search: mockSearchParams.toString()
@@ -25,7 +25,7 @@ vi.mock('./TalkSection', () => ({
             </div>
             {talk.topics.map((topic: string) => (
               <button
-                key={topic}
+                key={`${talk.id}-${topic}`}
                 onClick={() => props.onTopicClick(topic)}
                 aria-label={`Filter by topic ${topic}`}
                 data-testid={`topic-${topic}`}
@@ -47,6 +47,14 @@ vi.mock('./YearFilter', () => ({
 
 // Mock the hooks
 vi.mock('../../hooks/useTalks');
+
+// Mock the hasMeaningfulNotes function
+vi.mock('../../utils/talks', () => ({
+  hasMeaningfulNotes: (notes: string | undefined) => {
+    if (!notes) return false;
+    return notes.trim().length > 0;
+  }
+}));
 
 describe('TalksList', () => {
   beforeEach(() => {
@@ -171,4 +179,72 @@ describe('TalksList', () => {
     // Should not show talks with no matching topics
     expect(screen.queryByText('Talk with no matching topics')).not.toBeInTheDocument();
   });
+});
+
+describe('Has Notes Filter', () => {
+  it('shows the Has Notes filter button', () => {
+    (useTalks as any).mockImplementation(() => ({
+      talks: [],
+      loading: false,
+      error: null
+    }));
+
+    renderWithRouter(<TalksList />);
+    const button = screen.getByRole('button', { name: /has notes/i });
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveClass('bg-white');
+    expect(button).toHaveClass('text-gray-700');
+    expect(button).not.toHaveClass('bg-blue-500');
+  });
+
+  it('filters talks to show only those with notes', () => {
+    const talkWithNotes = createTalk({ 
+      id: '1',
+      title: 'Talk with notes',
+      notes: 'Some meaningful notes' 
+    });
+    const talkWithoutNotes = createTalk({ 
+      id: '2',
+      title: 'Talk without notes',
+      notes: undefined 
+    });
+    const talkWithEmptyNotes = createTalk({ 
+      id: '3',
+      title: 'Talk with empty notes',
+      notes: '\n  \n' 
+    });
+
+    (useTalks as any).mockImplementation(() => ({
+      talks: [talkWithNotes, talkWithoutNotes, talkWithEmptyNotes],
+      loading: false,
+      error: null
+    }));
+
+    renderWithRouter(<TalksList />);
+    
+    // Initially all talks should be visible
+    const initialArticles = screen.getAllByRole('article');
+    expect(initialArticles).toHaveLength(3);
+    expect(screen.getByText('Talk with notes')).toBeInTheDocument();
+    expect(screen.getByText('Talk without notes')).toBeInTheDocument();
+    expect(screen.getByText('Talk with empty notes')).toBeInTheDocument();
+
+    // Click the Has Notes filter
+    const button = screen.getByRole('button', { name: /has notes/i });
+    fireEvent.click(button);
+
+    // Now only the talk with meaningful notes should be visible
+    const filteredArticles = screen.getAllByRole('article');
+    expect(filteredArticles).toHaveLength(1);
+    expect(screen.getByText('Talk with notes')).toBeInTheDocument();
+    expect(screen.queryByText('Talk without notes')).not.toBeInTheDocument();
+    expect(screen.queryByText('Talk with empty notes')).not.toBeInTheDocument();
+
+    // Verify the button state changed
+    expect(button).toHaveClass('bg-blue-500');
+    expect(button).toHaveClass('text-white');
+    expect(button).not.toHaveClass('bg-white');
+    expect(button).not.toHaveClass('text-gray-700');
+  });
+
 }); 
