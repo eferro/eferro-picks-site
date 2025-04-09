@@ -24,15 +24,10 @@ export const mockSearchParams = {
     mockSearchParams._params.delete(key);
   }),
   entries: vi.fn(() => mockSearchParams._params.entries()),
+  has: vi.fn((key: string) => mockSearchParams._params.has(key)),
   getAll: vi.fn((key: string) => {
     const value = mockSearchParams._params.get(key);
     return value ? [value] : [];
-  }),
-  has: vi.fn((key: string) => mockSearchParams._params.has(key)),
-  keys: vi.fn(() => mockSearchParams._params.keys()),
-  values: vi.fn(() => mockSearchParams._params.values()),
-  forEach: vi.fn((callback: (value: string, key: string) => void) => {
-    mockSearchParams._params.forEach((value, key) => callback(value, key));
   })
 };
 
@@ -69,22 +64,6 @@ beforeEach(() => {
     },
     writable: true
   });
-
-  mockSearchParams.get.mockImplementation((key: string) => mockSearchParams._params.get(key) || null);
-  mockSearchParams.toString.mockImplementation(() => {
-    const params = Array.from(mockSearchParams._params.entries())
-      .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
-      .join('&');
-    return params ? `${params}` : '';
-  });
-  mockSearchParams.entries.mockImplementation(() => mockSearchParams._params.entries());
-  mockSearchParams.has.mockImplementation((key: string) => mockSearchParams._params.has(key));
-  mockSearchParams.getAll.mockImplementation((key: string) => {
-    const value = mockSearchParams._params.get(key);
-    return value ? [value] : [];
-  });
-  mockSearchParams.keys.mockImplementation(() => mockSearchParams._params.keys());
-  mockSearchParams.values.mockImplementation(() => mockSearchParams._params.values());
 });
 
 // Mock data for testing
