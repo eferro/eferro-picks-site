@@ -16,14 +16,14 @@ export function hasMeaningfulNotes(notes: string | undefined | null): boolean {
 export function transformAirtableItemToTalk(item: AirtableItem): Talk {
   return {
     id: item.airtable_id,
-    title: item.Name,
-    url: item.Url,
-    duration: item.Duration || 0,
-    topics: item.Topics_Names || [],
-    speakers: item.Speakers_Names || [],
-    description: item.Description || '',
+    title: item.name,
+    url: item.url,
+    duration: item.duration || 0,
+    topics: item.topics_names || [],
+    speakers: item.speakers_names || [],
+    description: item.description || '',
     core_topic: item.core_topic || '',
-    notes: hasMeaningfulNotes(item.Notes) ? item.Notes : undefined,
+    notes: hasMeaningfulNotes(item.Notes) ? item.notes : undefined,
     year: item.year,
     conference_name: item.conference_name
   };
@@ -32,13 +32,13 @@ export function transformAirtableItemToTalk(item: AirtableItem): Talk {
 export function filterTalks(items: AirtableItem[]): AirtableItem[] {
   return items.filter(item => {
     // Filter by language (only English for now)
-    if (item.Language !== 'English') return false;
+    if (item.language !== 'English') return false;
 
     // Filter by rating (only high for now)
-    if (item.Rating !== 5) return false;
+    if (item.rating !== 5) return false;
 
     // Filter by resource type
-    if (!item["Resource type"] || !VALID_RESOURCE_TYPES.includes(item["Resource type"].toLowerCase())) {
+    if (!item.resource_type || !VALID_RESOURCE_TYPES.includes(item.resource_type.toLowerCase())) {
       return false;
     }
 
