@@ -877,6 +877,49 @@
         "url": "https://theagilerevolution.com/2020/02/20/episode-180-extreme-programming-3x-explained-with-kent-beck/"
     },
     {
+        "airtable_createdTime": "2025-04-30T07:08:45.000Z",
+        "airtable_id": "rec1o7TeD1U9AdzKU",
+        "blog_url": "https://www.eferro.net/2025/04/good-talkspodcasts-april.html",
+        "conference_name": "AWS re:Invent",
+        "core_topic": "Architecture",
+        "created": "2025-04-30T07:08:45.000Z",
+        "description": "This talk reframes modern cloud application lock-in as switching costs, explaining how to manage them through architecture trade-offs, increasing developer velocity, and focusing on design intent rather than just service selection\n",
+        "duration": 3300,
+        "language": "English",
+        "last_modified": "2025-04-30T08:06:30.000Z",
+        "less_15": 0,
+        "name": "AWS re:Invent 2023 - Do modern cloud applications lock you in?",
+        "notes": "The most important lesson conveyed is that perceived cloud \"lock-in\" should be reframed as manageable **switching costs**, which are most effectively reduced by focusing on core engineering disciplines like increasing organizational **velocity** and maintaining clear **software design intent** and meaningful **architecture decisions**, rather than solely relying on simple service mapping or abstraction layers. The ultimate takeaway is that having development discipline, expressing design intent, high velocity, and good automation mean switching costs won't be your biggest problem; capturing market opportunity will be.\n\nHere are the most important points of the presentation:\n- Modern cloud applications are defined by their effective utilization of cloud capabilities, being fine-grained, loosely coupled, often event-driven, and offering benefits like resilience, scalability, transparency, agility, and observability.\n- The perceived \"lock-in\" of modern cloud applications should be reframed not as being literally locked up, but as **manageable switching costs** \u2013 a financial consideration involving effort, time, and money to move from one solution to another.\n- Lock-in/switching costs are **multidimensional**, including vendor lock-in, but also switching costs related to product versions, skillsets, and even **mental lock-in**. Architecture is about seeing these multiple dimensions and making **trade-offs**, not a simple good vs. evil scenario.\n- A powerful architectural maneuver is to break down problems into more dimensions (like using a two-dimensional matrix comparing **utility vs. switching cost**) and broadening the solution space.\n- **Solving problems where they originate** is crucial; trying to solve application development problems like portability solely at the infrastructure level after the fact is ineffective.\n- Simple approaches to managing switching costs often **don't work well**:\n    - **Service mapping** across clouds fails because clouds are not carbon copies and their services have fundamental, non-matching details and integrations.\n    - Basic **abstraction layers** (the \"grim wrapper\") are also ineffective for fine-grained distributed systems because logical layers cannot abstract **physical properties** such as pricing models, quotas, scalability limits, error handling, and service availability across different platforms.\n- The **option to move** your workload is mathematically valuable but comes at a **cost**, including effort, complexity (which is very hard to undo), and crucially, **opportunity cost** (what else your developers could have been building).\n- Wanting all options all the time (\"Gregor's law\") leads to drowning in complexity. The goal is not to eliminate switching costs entirely (like an option with a zero strike price or zero-deductible insurance) but to **minimize the _total_ cost** (investment now + future liability).\n- Organizations aiming for agility should make decisions assuming today's dollars (investment now) are more expensive than future dollars (potential switching cost liability), prioritizing current investment in productivity and market opportunity.\n- **Productivity comes before portability**. If you're not productive, the question of portability likely becomes irrelevant because your business may not succeed. Open source is great but often undersells itself by leading with portability rather than community, openness, and productivity benefits.\n- There are effective approaches to manage switching costs:\n    - Using **managed open source services**, which offer utility while keeping switching costs in check.\n    - Significantly increasing **your own organizational velocity**. High velocity through automation, reduced friction, and smaller iterations dramatically reduces switching costs, potentially by orders of magnitude, regardless of the technology used. Velocity is a powerful dial within your control.\n    - Maintaining clear **software design intent** and focusing on architecture as the sequence of meaningful decisions, rather than just service selection. Expressing intent using patterns and decisions (like in the Scatter-Gather example) prevents **mental lock-in** to one platform's way of thinking and provides a better starting point if you need to switch.\n- Ultimately, if you have **development discipline**, express design intent with patterns, have high velocity, and good automation, the switching cost isn't going to be your biggest problem; **capturing market opportunity and maintaining velocity** will be the critical focus.\n\n",
+        "published": true,
+        "rating": 5,
+        "registered_at": "2025-04-30T07:08:45.000Z",
+        "resource": "AWS re:Invent 2023 - Do modern cloud applications lock you in? - https://www.youtube.com/watch?v=jykSBmnAM2I",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recOoWd7VBKTxyNNg"
+        ],
+        "speakers_names": [
+            "Gregor Hohpe"
+        ],
+        "topics": [
+            "recQ4hio93eTgzFTS",
+            "recm3GCPgEVSDmeVI",
+            "rec945yNhVIzyZIuX",
+            "rec94mSWZ4bx2wFpf"
+        ],
+        "topics_names": [
+            "Architecture",
+            "Software Design",
+            "Cloud",
+            "Technology Strategy"
+        ],
+        "url": "https://www.youtube.com/watch?v=jykSBmnAM2I",
+        "year": 2023
+    },
+    {
         "airtable_createdTime": "2022-02-12T21:44:06.000Z",
         "airtable_id": "rec1sxXfGMcC2JXvw",
         "blog_url": "https://www.eferro.net/2022/02/good-talkspodcasts-february-2022-ii.html",
@@ -12022,6 +12065,45 @@
         "url": "https://www.ted.com/talks/jim_fan_the_next_grand_challenge_for_ai"
     },
     {
+        "airtable_createdTime": "2025-04-30T07:15:25.000Z",
+        "airtable_id": "recNPh73b3XV8pEKP",
+        "blog_url": "https://www.eferro.net/2025/04/good-talkspodcasts-april.html",
+        "created": "2025-04-30T07:15:25.000Z",
+        "description": "In this episode Dave Farley describes how to use TDD to build your system in a series of small steps, using a project of his own to demonstrate the approach. \n",
+        "duration": 1440,
+        "language": "English",
+        "last_modified": "2025-04-30T08:06:35.000Z",
+        "less_15": 0,
+        "name": "Test Driven DESIGN - Step by Step",
+        "published": true,
+        "rating": 4,
+        "registered_at": "2025-04-30T07:15:25.000Z",
+        "resource": "Test Driven DESIGN - Step by Step - https://www.youtube.com/watch?v=-f_HgWbomCI",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recTA39Jo1ozZG61R"
+        ],
+        "speakers_names": [
+            "Dave Farley"
+        ],
+        "topics": [
+            "recPcLVyg0S4ORUkX",
+            "recFbzSbd07ttDIYJ",
+            "reck5fBLLF9Drj8rk",
+            "recm3GCPgEVSDmeVI"
+        ],
+        "topics_names": [
+            "testing",
+            "Technical Practices",
+            "Small Safe Steps (3s)",
+            "Software Design"
+        ],
+        "url": "https://www.youtube.com/watch?v=-f_HgWbomCI"
+    },
+    {
         "airtable_createdTime": "2020-01-19T20:33:26.000Z",
         "airtable_id": "recNTlpS9USi3zTOs",
         "blog_url": "https://www.eferro.net/2018/10/good-talkspodcasts-oct-2018-ii.html",
@@ -13706,6 +13788,45 @@
         "year": 2017
     },
     {
+        "airtable_createdTime": "2025-04-30T07:01:32.000Z",
+        "airtable_id": "recQXhTz2JNupuQUs",
+        "blog_url": "https://www.eferro.net/2025/04/good-talkspodcasts-april.html",
+        "core_topic": "AI",
+        "created": "2025-04-30T07:01:32.000Z",
+        "description": "The talk discusses reactions and scenarios related to the Anthropic CEO's prediction that AI will soon write essentially all code, proposing challenges to this claim and exploring different potential futures for software engineering roles and processes\n",
+        "duration": 1320,
+        "language": "English",
+        "last_modified": "2025-04-30T08:06:27.000Z",
+        "less_15": 0,
+        "name": "Anthropic CEO Declares Programming Over, We Respond",
+        "notes": "Here are the most important points discussed in the presentation regarding the Anthropic CEO's prediction about AI writing code:\n- The talk is a direct **response to the prediction by Anthropic CEO Dario Amodei** that AI will be writing 90% of code in 3-6 months and **essentially all code in 12 months**.\n- The speaker, Ry Myers, states they **don't personally believe this extreme prediction** but emphasizes that it's a **situation worth taking seriously** due to the significant investment and attention such narratives receive.\n- While the CEO was speaking to a general audience and potentially using terms like \"coding\" and \"programming\" interchangeably, the speaker argues that **\"coding,\" \"programming,\" and \"software engineering\" are not interchangeable concepts** in practice. Software engineering involves challenges of **scale, managing real-world needs and risks, and is a social process**, with coding being only a part of it. Improving coding speed doesn't automatically speed up the entire engineering process proportionally.\n- The speaker proposes **specific, challenging tasks for current AI systems** that they argue are orders of magnitude _easier_ than replacing all code, using them as challenges to the CEO's prediction:\n    - Successfully **replacing the software running on a single Mainframe**. This is highly relevant as 50% of the US GDP is tied to companies still dependent on mainframes.\n    - **Rewriting the highly stable and well-documented TeX command** (a complex 1982 codebase under 40,000 lines) into a modern language like Rust. TeX is still core to academic papers and textbooks, is exceedingly well-documented (even using \"literate programming\" to generate both program and book).\n- The presentation outlines **six potential scenarios for the future of software engineering** in the context of AI, noting that these are part of the current conversation:\n    - **Extreme Completion:** AI acts as advanced autocomplete, streamlining work without fundamentally changing roles.\n    - **Dev-ocalypse / Innovator's Paradise:** Traditional programmer roles are essentially eliminated.\n    - **Abstraction Leap:** A significant shift to much higher levels of abstraction in building software.\n    - **Uncharted Waters:** New, currently unknown programming paradigms emerge.\n    - **Review Economy:** Humans primarily spend their time reviewing and debugging AI-generated code, becoming a bottleneck.\n    - **Infinite Pile of Garbage:** Premature adoption of low-quality AI systems creates an unsustainable, intractable software infrastructure (an \"ecological disaster scenario\").\n- These scenarios can interact; for instance, attempting the Dev-ocalypse might lead to the Infinite Pile of Garbage if not done carefully.\n- The speaker's personal preferred future scenario leans towards a **combination of Extreme Completion and Abstraction Leap**, suggesting developing better building blocks like Domain Specific Languages (DSLs) in concert with advanced completion tools.\n- The speaker notes that debates around AI replacing software roles can sometimes feel like a **\"thinly disguised labor dispute,\"** raising questions about how society treats people whose skills may become less in demand.\n- A crucial takeaway is that **software engineers have the expertise and a say in shaping the future**. The future is not an inevitable \"meteor\" but something that society, including software engineers, will **actively build**.\n- The ultimate goal should be to deliberate on **what society wants out of software** (e.g., quality, tractability, value) and work together towards that desired future, rather than passively accepting a predicted one.\n\n",
+        "published": true,
+        "rating": 5,
+        "registered_at": "2025-04-30T07:01:32.000Z",
+        "resource": "Anthropic CEO Declares Programming Over, We Respond - https://www.youtube.com/watch?v=-aGyDDoaHww",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "rec3RzBn137ukIGfC"
+        ],
+        "speakers_names": [
+            "Ray Myers"
+        ],
+        "topics": [
+            "recuAyT5MLB8sDqqQ",
+            "recWFKWrPEdeEYbzx",
+            "recbJb6M6X8AZPTRc"
+        ],
+        "topics_names": [
+            "AI",
+            "Engineering Culture",
+            "Generative AI"
+        ],
+        "url": "https://www.youtube.com/watch?v=-aGyDDoaHww"
+    },
+    {
         "airtable_createdTime": "2021-03-21T09:27:52.000Z",
         "airtable_id": "recQgeVzH01tWQEUD",
         "blog_url": "https://www.eferro.net/2021/03/good-talkspodcasts-march-2021-ii.html",
@@ -14756,6 +14877,48 @@
         ],
         "url": "https://www.youtube.com/watch?v=-nWhH-4wWBU",
         "year": 2019
+    },
+    {
+        "airtable_createdTime": "2025-04-30T07:18:45.000Z",
+        "airtable_id": "recSgs7pW9bondsBC",
+        "blog_url": "https://www.eferro.net/2025/04/good-talkspodcasts-april.html",
+        "conference_name": "NDC",
+        "core_topic": "AI",
+        "created": "2025-04-30T07:18:45.000Z",
+        "description": "Scott Hanselman's \"AI without the BS\" talk cuts through the hype, explaining AI models as statistical predictors based on context and biased data, highlighting ethical concerns, and demonstrating the practicality of running smaller models locally\n",
+        "duration": 3480,
+        "language": "English",
+        "last_modified": "2025-04-30T08:06:38.000Z",
+        "less_15": 0,
+        "name": "Keynote: AI without the BS, for humans",
+        "notes": "**AI models are fundamentally statistical prediction engines based on biased data**, not intelligent or fact-generating entities. What someone should remember is to approach AI with **curiosity, question its outputs, and use it as a tool or brainstorming partner** while being mindful of its inherent biases and ethical implications, rather than accepting the narrative that it is smarter than humans or will solve everything magically.\n",
+        "published": true,
+        "registered_at": "2025-04-30T07:18:45.000Z",
+        "resource": "Keynote: AI without the BS, for humans - https://www.youtube.com/watch?v=kYUicaho5k8",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recIaQ7cyLEQHDxUX"
+        ],
+        "speakers_names": [
+            "Scott_Hanselman"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "recbdJsHN6cy0NxS6",
+            "recDnzAEazkBJFFZh",
+            "recbJb6M6X8AZPTRc"
+        ],
+        "topics_names": [
+            "AI",
+            "ethics",
+            "Mental models",
+            "Generative AI"
+        ],
+        "url": "https://www.youtube.com/watch?v=kYUicaho5k8",
+        "year": 2025
     },
     {
         "airtable_createdTime": "2020-01-19T20:33:02.000Z",
@@ -18026,6 +18189,47 @@
         "year": 2018
     },
     {
+        "airtable_createdTime": "2025-04-30T07:24:43.000Z",
+        "airtable_id": "recZIHuULbcee2Tde",
+        "blog_url": "https://www.eferro.net/2025/04/good-talkspodcasts-april.html",
+        "core_topic": "System Thinking",
+        "created": "2025-04-30T07:24:43.000Z",
+        "description": "Interesting interview about observability, and the tools and models needed to develop a systems thinking approach that allows us to understand and manage our software systems, which are often complex and distributed.\n",
+        "duration": 1800,
+        "language": "English",
+        "last_modified": "2025-04-30T08:06:39.000Z",
+        "less_15": 0,
+        "name": "Observability 2.0: Transforming Logging & Metrics \u2022 Charity Majors & James Lewis",
+        "notes": "**Understanding complex, distributed software systems** necessitates a fundamental shift in how we approach troubleshooting and analysis; **Observability 2.0**, leveraging a single source of truth for wide structured data, provides the essential tooling and mental model needed to make these systems **tractable, understandable**, and to truly grasp how code behaves in production.\n",
+        "published": true,
+        "registered_at": "2025-04-30T07:24:43.000Z",
+        "resource": "Observability 2.0: Transforming Logging & Metrics \u2022 Charity Majors & James Lewis - https://www.youtube.com/watch?v=p5W_VCJ_2d0",
+        "resource_type": "podcast",
+        "speaker_women_in_tech": [
+            true,
+            null
+        ],
+        "speakers": [
+            "rec0j5idwhBV3RQry",
+            "recTcX5TNO8Zp0gCu"
+        ],
+        "speakers_names": [
+            "Charity Majors",
+            "James Lewis"
+        ],
+        "topics": [
+            "recDqEOIt9vzNQfTZ",
+            "recuR2w480ko3dSKR",
+            "recWFKWrPEdeEYbzx"
+        ],
+        "topics_names": [
+            "Observability",
+            "Platform engineering",
+            "Engineering Culture"
+        ],
+        "url": "https://www.youtube.com/watch?v=p5W_VCJ_2d0"
+    },
+    {
         "airtable_createdTime": "2020-01-19T20:39:05.000Z",
         "airtable_id": "recZJhbP20TRkvptw",
         "blog_url": "https://www.eferro.net/2019/09/good-talkspodcasts-september-2019-i.html",
@@ -18350,6 +18554,47 @@
         ],
         "url": "https://www.youtube.com/watch?v=aJuoADKh0GY",
         "year": 2017
+    },
+    {
+        "airtable_createdTime": "2025-04-30T07:32:41.000Z",
+        "airtable_id": "recZvXIoVAfkqW9mo",
+        "blog_url": "https://www.eferro.net/2025/04/good-talkspodcasts-april.html",
+        "core_topic": "Continuous Delivery",
+        "created": "2025-04-30T07:32:41.000Z",
+        "description": "Charity Majors, CTO at Honeycomb and observability expert, discusses observability, testing in production, continuous delivery, and developer experience\n",
+        "duration": 3180,
+        "language": "English",
+        "last_modified": "2025-04-30T08:06:42.000Z",
+        "less_15": 0,
+        "name": "Observability & Testing in Production",
+        "notes": "Effectively **understanding and testing your code directly in production** is critical for navigating the complexity of modern systems and achieving high performance. This is best achieved by leveraging **modern observability tooling** that provides a single source of truth through rich, structured data, combined with **fast, predictable continuous delivery** that allows developers to observe their changes with context. Focusing on swift identification and resolution of issues in the real environment is more effective than solely relying on complex, fear-driven prevention methods that add process and slow things down.\n\nThe most important lessons conveyed by the talk center around **how to effectively build and operate complex modern software systems** by shifting focus from fear-based prevention to curiosity-driven observation and rapid recovery.\nHere are the key points:\n- **Observability is crucial for understanding complex systems.** It's a property of these systems, just like scalability or performance. Observability 2.0 tools, unlike older monitoring/APM tools (Observability 1.0) built on multiple sources like metrics, logs, and traces, are based on **one source of truth: arbitrarily wide, structured data blobs** (canonical logs or traces). This unified, highly-dimensional data allows for powerful exploration and debugging of unknown unknowns, much like business intelligence enables insights from correlating disparate data.\n- **Observability helps break down silos** between technical data and business data, and between engineering teams, by providing a shared source of truth. This enables teams to ask questions and correlate information previously impossible, leading to better technical and business decisions. While useful for monoliths, it becomes a **forcing function** and particularly necessary with the high cardinality introduced by microservices.\n- **Testing in production is unavoidable and essential**, not optional. No staging environment can perfectly replicate production's complexity, concurrency, chaos, and variability. Instead of just \"YOLOing,\" effective testing in production involves **doing it safely and non-destructively** using techniques like feature flags, progressive deployments, and synthetics.\n- Good observability enables effective testing in production. Engineers should **instrument their code and look at it in production** as they write it and before moving on to retain the context. This feedback loop, like the \"second coming of TDD\" for production, ensures ownership and allows swift identification of whether code is working as expected.\n- **Fast, predictable continuous delivery is key to high performance**. The goal is to get code into real environments quickly (e.g., within 15 minutes to an hour) after merging, ideally automatically. This short feedback loop allows engineers to leverage their fresh context when observing the code in production. A slow, unpredictable process leads to large batches, more dependencies, and a \"software engineering death spiral\" that makes everything slower.\n- **Fear of failure leads to counterproductive processes**. When systems feel flaky or out of control, the natural human reaction is to add more process, tests, and layers, which slows things down and kills productivity. Instead of focusing solely on _preventing_ every possible problem, teams should **invest in their ability to find and fix issues swiftly and easily** in production. This requires observability tools and a culture of curiosity and humility.\n- Observability 2.0 tooling, while an investment, **pays off by reducing engineering overhead and enabling faster action**. It should eventually replace most current logging, metrics (except for niche cases), and tracing tools, offering a more efficient way to understand the intersection of software and users. Good teams might spend around 15-20% of their infrastructure costs on observability, but the cost of _not_ doing it effectively is often higher, paid in engineering time spent firefighting or managing complex legacy tools.\n- **Current generative AI tools primarily help with writing code, which is not the hardest part** of software engineering. The real challenge is understanding, maintaining, and extending complex systems. Observability tools help manage complexity, while generative AI focused only on code generation can increase it.\n- The engineering role is evolving; **good engineers care about the business, product, and users**. This requires tools and practices that connect technical actions to user impact. Hiring and mentoring junior engineers is also crucial for team health, growth, loyalty, and asking fundamental questions that prevent complacency.\n\n",
+        "published": true,
+        "registered_at": "2025-04-30T07:32:41.000Z",
+        "resource": "Observability & Testing in Production - https://www.youtube.com/watch?v=97YRxrKNLP0",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            true,
+            null
+        ],
+        "speakers": [
+            "rec0j5idwhBV3RQry",
+            "recj8LRVgcSNxbNeN"
+        ],
+        "speakers_names": [
+            "Charity Majors",
+            "Luca Rossi"
+        ],
+        "topics": [
+            "recDqEOIt9vzNQfTZ",
+            "rechwDm7Pn0ivpq7C",
+            "recin3Ync8iZldW0q"
+        ],
+        "topics_names": [
+            "Observability",
+            "Testing in production",
+            "Continuous Delivery"
+        ],
+        "url": "https://www.youtube.com/watch?v=97YRxrKNLP0"
     },
     {
         "airtable_createdTime": "2020-01-19T20:37:25.000Z",
@@ -21145,16 +21390,18 @@
     {
         "airtable_createdTime": "2025-04-12T08:38:05.000Z",
         "airtable_id": "rece0mXG2XOZ5Yy6j",
+        "blog_url": "https://www.eferro.net/2025/04/good-talkspodcasts-april.html",
         "conference_name": "Agile Meets Architecture",
         "core_topic": "AI",
         "created": "2025-04-12T08:38:05.000Z",
         "description": "Jurgen Appelo discusses how AI is fundamentally changing the nature of work, teams, and processes within an agile context, highlighting new uncertainties and the enduring importance of the human experience.\n",
         "duration": 3180,
         "language": "English",
-        "last_modified": "2025-04-12T08:46:33.000Z",
+        "last_modified": "2025-04-30T08:06:24.000Z",
         "less_15": 0,
         "name": "Human Robot Agent: Scouting AI Beyond Hype and Doom",
         "notes": "The most important lesson from Jurgen Appelo's talk is that **while AI is fundamentally reshaping work, teams, and processes by taking over routine tasks and introducing new uncertainties, the human element remains crucial; individuals and organizations must adapt by focusing on uniquely human capabilities like insight generation, continuous learning across multiple specializations, and maintaining a critical \"human in the loop\" approach to leverage AI effectively**. Ultimately, embracing AI as a \"human robot agent\" requires navigating increased volatility, inscrutability, reflexivity, ambiguity, and the disintegration of traditional models while prioritizing human experience and connection.\n\nHere are the most important points:\n- **AI is fundamentally changing the nature of work by acting as a \"human robot agent\" or \"digital teammate\" that can handle tasks humans are not good at, such as memory, calculation, repetition, and execution**. Appelo shares his experience of using AI for beta reading his book, which he found more efficient and provided more continuous feedback than human beta readers. He configured his AI assistant, \"Zed,\" with a specific personality to make their interactions more engaging.\n- **The bottleneck of the human brain is being addressed by AI, allowing humans to focus on insights, learning broadly, and dealing with more complex aspects of work**. By outsourcing routine tasks to AI, individuals can have more time for creativity and deeper understanding.\n- **AI is driving increased volatility and unpredictability in the environment due to rapid experimentation (\"vibe coding\") and the fast pace of AI development itself**. While this allows for quick prototyping, it can also lead to challenges in maintainability and security.\n- **The need for specialization is evolving towards \"m-skilled\" individuals with multiple areas of expertise, as AI takes over specific specializations**. Humans need to become adept at connecting insights across different domains, requiring continuous learning and adaptation as AI capabilities advance.\n- **Technology is becoming increasingly inscrutable due to its complexity, making it difficult for any single person to fully understand systems like GPUs and large language models**. This necessitates new ways of working and understanding complex technologies.\n- **Traditional notions of stable teams are being challenged by more fluid and adaptive models like \"reeaming\" and \"swarming,\" enabled by AI which can help manage the associated cognitive load**. This is seen in industries like healthcare and airlines, where teams form rapidly based on immediate needs. Appelo suggests this might be \"even more agile than traditional agile\".\n- **Linear value streams are disintegrating into more dynamic and adaptable value networks, where nodes can be reconfigured in the moment depending on context**. This reflects the non-linear flow of ideas and work in the age of AI, making traditional process mapping difficult.\n- **AI is contributing to increased scalability, allowing startups to achieve significant growth much faster than in the past**. The ability to reconnect nodes in value networks in a superlinear fashion enables greater output and reach.\n- **The focus is shifting from products to the overall customer experience, and AI holds the promise of delivering higher quality personalized experiences**. However, organizations need to be mindful of ethical considerations and ensure that technological capabilities enhance the experience rather than detract from it. Appelo's bank experience highlights the importance of seamless integration across different customer touchpoints.\n- **Human attention and touch are becoming increasingly scarce and valuable in a world saturated with AI-generated content and readily available information**. Authenticity and genuine human connection will be highly prized.\n- **The relationship between humans and AI is increasingly reflexive, with each influencing the other in a continuous feedback cycle**. This makes the future increasingly difficult to predict.\n- **It is crucial for humans to remain \"in the loop\" with AI, actively working with it to maintain their skills and provide effective oversight**. Over-reliance on AI without conscious effort to retain skills can lead to complacency and an inability to identify errors or intervene when necessary.\n- **Many of the challenges and uncertainties introduced by AI are \"wicked problems\" \u2013 complex issues that are inherently unsolvable and require ongoing adaptation and discussion**. These contrast with the \"tame problems\" that AI is often benchmarked against.\n- **Appelo believes that the concept of agile will become so pervasive that the term itself might fade away, as agility becomes a fundamental aspect of how we work**.\nThese points highlight the significant and multifaceted impact of AI on the world of work, emphasizing both the opportunities and the challenges that lie ahead.\n",
+        "published": true,
         "rating": 5,
         "registered_at": "2025-04-12T08:38:05.000Z",
         "resource": "Human Robot Agent: Scouting AI Beyond Hype and Doom - https://www.youtube.com/watch?v=Is7DUrO-hpo",
