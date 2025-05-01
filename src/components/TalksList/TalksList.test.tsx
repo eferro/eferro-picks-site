@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { TalksList } from '.';
 import { useTalks } from '../../hooks/useTalks';
@@ -53,6 +53,49 @@ vi.mock('react-router-dom', async () => {
     ...actual,
     useSearchParams: () => [mockSearchParams, mockSetSearchParams]
   };
+});
+
+describe('Rating Filter', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockSearchParams.clear();
+    (useTalks as any).mockImplementation(() => ({
+      talks: [ createTalk({ id: '1', title: 'Star talk' }) ],
+      loading: false,
+      error: null
+    }));
+  });
+
+  it('shows the rating filter button with correct initial state', () => {
+    // Default (no rating param) filters by 5 stars
+    renderWithRouter(<TalksList />);
+    const button = screen.getByRole('button', { name: /toggle rating filter/i });
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveTextContent('5 Stars');
+    expect(button).toHaveClass('bg-blue-500', 'text-white');
+  });
+
+  it('toggles the rating filter and updates URL params', () => {
+    // Initial state is filtering by 5 stars
+    renderWithRouter(<TalksList />);
+    const [toggle] = screen.getAllByRole('button', { name: /toggle rating filter/i });
+    // Click to remove rating filter (to show all)
+    fireEvent.click(toggle);
+    expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
+    let params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+    expect(params.get('rating')).toBe('all');
+
+    // Simulate URL with rating=all and re-render
+    mockSearchParams.set('rating', 'all');
+    renderWithRouter(<TalksList />);
+    const [updated] = screen.getAllByRole('button', { name: /toggle rating filter/i });
+    expect(updated).toHaveTextContent('All');
+    // Click to enable 5-star filter again
+    fireEvent.click(updated);
+    expect(mockSetSearchParams).toHaveBeenCalledTimes(2);
+    params = mockSetSearchParams.mock.calls[1][0] as URLSearchParams;
+    expect(params.get('rating')).toBe('5');
+  });
 });
 
 // Mock the hasMeaningfulNotes function

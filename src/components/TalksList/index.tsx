@@ -6,7 +6,7 @@ import { YearFilter, type YearFilterData } from './YearFilter';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { hasMeaningfulNotes } from '../../utils/talks';
-import { DocumentTextIcon } from '@heroicons/react/24/outline';
+import { DocumentTextIcon, StarIcon } from '@heroicons/react/24/outline';
 
 function LoadingSpinner() {
   return (
@@ -32,7 +32,8 @@ export function TalksList() {
   const [selectedConference, setSelectedConference] = useState<string | null>(null);
   const [selectedYearFilter, setSelectedYearFilter] = useState<YearFilterData | null>(null);
   const [showOnlyWithNotes, setShowOnlyWithNotes] = useState(() => searchParams.get('hasNotes') === 'true');
-  const { talks, loading, error } = useTalks();
+  const [filterByRating, setFilterByRating] = useState(() => searchParams.get('rating') !== 'all');
+  const { talks, loading, error } = useTalks(filterByRating);
 
   // Add scroll position saving
   useScrollPosition();
@@ -46,6 +47,7 @@ export function TalksList() {
     const year = params.get('year');
     const yearType = params.get('yearType');
     const hasNotes = params.get('hasNotes') === 'true';
+    const rating = params.get('rating');
     
     // Update state from URL
     if (author) setSelectedAuthor(author);
@@ -60,6 +62,7 @@ export function TalksList() {
       setSelectedYearFilter(null);
     }
     setShowOnlyWithNotes(hasNotes);
+    setFilterByRating(rating !== 'all');
   }, [searchParams]);
 
   // Update URL when filters change
@@ -79,6 +82,29 @@ export function TalksList() {
     // Update hasNotes parameter
     if (newValue) {
       params.set('hasNotes', 'true');
+    }
+    
+    setSearchParams(params);
+  };
+
+  const handleRatingClick = () => {
+    const newValue = !filterByRating;
+    setFilterByRating(newValue);
+    
+    const params = new URLSearchParams();
+    
+    // Preserve existing parameters
+    for (const [key, value] of searchParams.entries()) {
+      if (key !== 'rating') {
+        params.set(key, value);
+      }
+    }
+    
+    // Update rating parameter
+    if (newValue) {
+      params.set('rating', '5');
+    } else {
+      params.set('rating', 'all');
     }
     
     setSearchParams(params);
@@ -200,10 +226,22 @@ export function TalksList() {
           <DocumentTextIcon className={`h-5 w-5 ${showOnlyWithNotes ? 'text-white' : 'text-blue-500'} mr-2`} />
           Has Notes
         </button>
+        <button
+          onClick={handleRatingClick}
+          aria-label="Toggle Rating filter"
+          className={`inline-flex items-center px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+            filterByRating
+              ? 'bg-blue-500 text-white'
+              : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
+          }`}
+        >
+          <StarIcon className={`h-5 w-5 ${filterByRating ? 'text-white' : 'text-blue-500'} mr-2`} />
+          {filterByRating ? '5 Stars' : 'All'}
+        </button>
       </div>
 
       {/* Active filters */}
-      {(selectedAuthor || selectedTopics.length > 0 || selectedConference || selectedYearFilter || showOnlyWithNotes) && (
+      {(selectedAuthor || selectedTopics.length > 0 || selectedConference || selectedYearFilter || showOnlyWithNotes || filterByRating) && (
         <div className="mb-6 space-y-3">
           {selectedAuthor && (
             <div className="flex items-center gap-2">
@@ -285,6 +323,20 @@ export function TalksList() {
                 aria-label="Remove Has Notes filter"
               >
                 Has Notes
+                <span className="ml-2 text-blue-600" aria-hidden="true">×</span>
+              </button>
+            </div>
+          )}
+          
+          {filterByRating && (
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-500">Filter:</span>
+              <button
+                className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
+                onClick={handleRatingClick}
+                aria-label="Remove Rating filter"
+              >
+                5 Stars
                 <span className="ml-2 text-blue-600" aria-hidden="true">×</span>
               </button>
             </div>

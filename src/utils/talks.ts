@@ -29,13 +29,13 @@ export function transformAirtableItemToTalk(item: AirtableItem): Talk {
   };
 }
 
-export function filterTalks(items: AirtableItem[]): AirtableItem[] {
+export function filterTalks(items: AirtableItem[], filterByRating: boolean = false): AirtableItem[] {
   return items.filter(item => {
     // Filter by language (only English for now)
     if (item.language !== 'English') return false;
 
-    // Filter by rating (only high for now)
-    if (item.rating !== 5) return false;
+    // Filter by rating if enabled
+    if (filterByRating && item.rating !== 5) return false;
 
     // Filter by resource type
     if (!item.resource_type || !VALID_RESOURCE_TYPES.includes(item.resource_type.toLowerCase())) {
@@ -46,7 +46,7 @@ export function filterTalks(items: AirtableItem[]): AirtableItem[] {
   });
 }
 
-export function processTalks(items: AirtableItem[]): Talk[] {
-  const filteredItems = filterTalks(items);
+export function processTalks(items: AirtableItem[], filterByRating: boolean = false): Talk[] {
+  const filteredItems = filterTalks(items, filterByRating);
   return filteredItems.map(transformAirtableItemToTalk);
 } 

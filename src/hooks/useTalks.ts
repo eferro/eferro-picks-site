@@ -21,7 +21,7 @@ export interface AirtableItem {
 
 const VALID_RESOURCE_TYPES = ['podcast', 'talk', 'videopodcast'];
 
-export function useTalks() {
+export function useTalks(filterByRating: boolean = false) {
   const [talks, setTalks] = useState<Talk[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
@@ -34,7 +34,7 @@ export function useTalks() {
           throw new Error('Failed to load talks');
         }
         const data: AirtableItem[] = await response.json();
-        const processedTalks = processTalks(data);
+        const processedTalks = processTalks(data, filterByRating);
         setTalks(processedTalks);
       } catch (err) {
         setError(err instanceof Error ? err : new Error('Unknown error'));
@@ -44,7 +44,7 @@ export function useTalks() {
     };
 
     loadTalks();
-  }, []);
+  }, [filterByRating]);
 
   return { talks, loading, error };
 } 
