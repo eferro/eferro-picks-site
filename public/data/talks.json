@@ -1888,31 +1888,6 @@
         "year": 2016
     },
     {
-        "airtable_createdTime": "2020-01-19T20:41:14.000Z",
-        "airtable_id": "rec3zyBT8lggt0Ld4",
-        "blog_url": "https://www.eferro.net/2017/08/good-talkspodcasts-episodes-purging.html",
-        "created": "2020-01-19T20:41:14.000Z",
-        "description": "\n",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "Boss Level Podcast John Seddon and freedom from command and control",
-        "published": true,
-        "registered_at": "2020-01-19T20:41:14.000Z",
-        "resource": "Boss Level Podcast John Seddon and freedom from command and control - http://www.bosslevelpodcast.com/john-seddon-and-freedom-from-command-and-control/",
-        "resource_type": "podcast",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recisEKQggtu2VKaC"
-        ],
-        "speakers_names": [
-            "John Seddon"
-        ],
-        "url": "http://www.bosslevelpodcast.com/john-seddon-and-freedom-from-command-and-control/"
-    },
-    {
         "airtable_createdTime": "2025-02-09T09:53:04.000Z",
         "airtable_id": "rec42snEPpunYVroW",
         "blog_url": "https://www.eferro.net/2025/02/good-talkspodcasts-feb-i.html",
@@ -2329,28 +2304,6 @@
             "Teams"
         ],
         "url": "https://www.youtube.com/watch?v=FORmnESyWIM"
-    },
-    {
-        "airtable_createdTime": "2021-06-19T11:36:16.000Z",
-        "airtable_id": "rec4xy5d0lYw6Q5TX",
-        "created": "2021-06-19T11:36:16.000Z",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "Lean Market Validation: 10 Ways to Rapidly Test Your Startup Idea",
-        "registered_at": "2021-06-19T11:36:16.000Z",
-        "resource": "Lean Market Validation: 10 Ways to Rapidly Test Your Startup Idea - https://www.productplan.com/lean-market-validation-10-ways-rapidly-test-startup-idea/",
-        "resource_type": "article/paper",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recuZSNzD4YfhC610"
-        ],
-        "speakers_names": [
-            "Jim Semick"
-        ],
-        "url": "https://www.productplan.com/lean-market-validation-10-ways-rapidly-test-startup-idea/"
     },
     {
         "airtable_createdTime": "2024-01-22T16:05:02.000Z",
@@ -3761,6 +3714,44 @@
         "url": "https://www.usenix.org/conference/lisa16/workshop-program/presentation/reilly"
     },
     {
+        "airtable_createdTime": "2025-05-01T17:52:09.000Z",
+        "airtable_id": "rec7gcn6dUC6wv7L6",
+        "core_topic": "Platform Engineering",
+        "created": "2025-05-01T17:52:09.000Z",
+        "description": "This talk explores the pitfalls of technology anarchy and autocracy in platform engineering and advocates for escaping them by building opinionated platform capabilities with contextual technical alignment to accelerate delivery teams\n",
+        "duration": 660,
+        "language": "English",
+        "last_modified": "2025-05-01T17:58:12.000Z",
+        "less_15": 1,
+        "name": "Escaping A MAJOR Platform Engineering PITFALL",
+        "notes": "The most important lesson is that organizations don't need to trade off between technology **anarchy** (low alignment, high autonomy) and **autocracy** (high alignment, low autonomy), but should instead strive for **high alignment and high autonomy**. This is achieved by building **opinionated platform capabilities** with **contextual technical alignment** to dramatically accelerate delivery teams by providing paved roads and reducing unplanned work.\n\n- Technology **anarchy** (low alignment, high autonomy) leads to significant unplanned work, high cognitive load, lack of economies of scale, difficulty sharing engineers, and painful organizational-wide changes for delivery teams.\n- Technology **autocracy** (high alignment, low autonomy) enforced by strict rules and gatekeepers results in slow delivery and stifled innovation.\n- Anarchy often arises as a counter-reaction to negative experiences with autocracy.\n- The perception that alignment and autonomy must be traded off is false; organizations can achieve **high alignment and high autonomy**.\n- The solution is to build **opinionated platform capabilities** that provide **contextual technical alignment** as \"paved roads\".\n- Alignment should be provided through guidance and context from engineering leaders (tech stack, architecture, expectations, business consequences), not strict command and control rules.\n- Opinionated platforms accelerate delivery teams by significantly reducing unplanned work and cognitive load by providing out-of-the-box solutions that embody this alignment.\n- This approach facilitates consistency, easier knowledge sharing, and centralized handling of broad changes.\n- Achieving this requires **higher investment in the platform team** (increased platform costs), which is a beneficial trade-off compared to the cost spread across many delivery teams.\n\n",
+        "registered_at": "2025-05-01T17:52:09.000Z",
+        "resource": "Escaping A MAJOR Platform Engineering PITFALL - https://www.youtube.com/watch?v=tu8qaKa0pKQ",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recbd8yKU3ZUQmcFl"
+        ],
+        "speakers_names": [
+            "Steve Smith"
+        ],
+        "topics": [
+            "recbWs6dTsdPwfWnm",
+            "recuR2w480ko3dSKR",
+            "recWFKWrPEdeEYbzx",
+            "rec94mSWZ4bx2wFpf"
+        ],
+        "topics_names": [
+            "Platform",
+            "Platform engineering",
+            "Engineering Culture",
+            "Technology Strategy"
+        ],
+        "url": "https://www.youtube.com/watch?v=tu8qaKa0pKQ"
+    },
+    {
         "airtable_createdTime": "2020-01-19T20:34:32.000Z",
         "airtable_id": "rec7osYrPjDppy0TG",
         "blog_url": "https://www.eferro.net/2016/04/index.html",
@@ -3786,49 +3777,6 @@
         ],
         "url": "https://www.youtube.com/watch?v=cGuTmOUdFbo",
         "year": 2015
-    },
-    {
-        "airtable_createdTime": "2020-08-09T19:42:34.000Z",
-        "airtable_id": "rec7u9IK2N1H8Rjgs",
-        "blog_url": "https://www.eferro.net/2020/08/good-talkspodcasts-aug-2020-i.html",
-        "created": "2020-08-09T19:42:34.000Z",
-        "description": "The show covered the original DevOps Topologies patterns and how these have been used in industry, and then talked about what\u2019s in the book Team Topologies: well-defined team types, what we mean by a modern platform, team interaction modes, clear responsibility boundaries, DevEx, and using difficulties in team interactions as \u2018signals\u2019 to the organization that something is missing or misplaced. We also talked about moving beyond the Spotify model - success in software delivery is not just about team structures but about how teams interact and what kind of relationships they create, sustain, and evolve.\n",
-        "duration": 1260,
-        "language": "English",
-        "last_modified": "2025-03-06T08:42:29.000Z",
-        "less_15": 0,
-        "name": "Podcast with Deloitte - Building Great Software Takes Great Teams and Communication",
-        "notes": "\n",
-        "published": true,
-        "registered_at": "2020-08-09T19:42:34.000Z",
-        "resource": "Podcast with Deloitte - Building Great Software Takes Great Teams and Communication - https://teamtopologies.com/news/2019/07/10/podcast-with-deloitte-building-great-software-takes-great-teams-and-communication",
-        "resource_type": "podcast",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "rec6aVBhg3luilruc"
-        ],
-        "speakers_names": [
-            "Matthew Skelton"
-        ],
-        "topics": [
-            "recWFKWrPEdeEYbzx",
-            "recPoM7t8neA7gkZ5",
-            "rechj5WeSQRH211np",
-            "recQ4hio93eTgzFTS",
-            "recvlsvAt2LHjlKU2",
-            "rec94mSWZ4bx2wFpf"
-        ],
-        "topics_names": [
-            "Engineering Culture",
-            "Devops",
-            "Agile",
-            "Architecture",
-            "Management",
-            "Technology Strategy"
-        ],
-        "url": "https://teamtopologies.com/news/2019/07/10/podcast-with-deloitte-building-great-software-takes-great-teams-and-communication"
     },
     {
         "airtable_createdTime": "2020-01-19T20:39:03.000Z",
@@ -5137,76 +5085,6 @@
         "url": "https://www.youtube.com/watch?v=8tNbZWYKOFc"
     },
     {
-        "airtable_createdTime": "2021-06-19T11:36:30.000Z",
-        "airtable_id": "recAdTSdlxLotkrhB",
-        "created": "2021-06-19T11:36:30.000Z",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "Make two lists",
-        "registered_at": "2021-06-19T11:36:30.000Z",
-        "resource": "Make two lists - http://sethgodin.typepad.com/seths_blog/2017/06/make-two-lists.html#.WUPgUo66UR8.twitter",
-        "resource_type": "article/paper",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "rec3wQsSVgvnVDfeP"
-        ],
-        "speakers_names": [
-            "Seth Godin"
-        ],
-        "topics": [
-            "rec6JMQpL2LSjoP2E"
-        ],
-        "topics_names": [
-            "Inspirational"
-        ],
-        "url": "http://sethgodin.typepad.com/seths_blog/2017/06/make-two-lists.html#.WUPgUo66UR8.twitter"
-    },
-    {
-        "airtable_createdTime": "2020-05-17T19:54:20.000Z",
-        "airtable_id": "recAgTJFXQFe3DRC1",
-        "blog_url": "https://www.eferro.net/2020/05/good-talkspodcasts-may-2020-ii.html",
-        "created": "2020-05-17T19:54:20.000Z",
-        "description": "Fascinating ideas of how agile development has evolved (DevOps, testing, mob programming) and how technology leadership must go through working with teams daily. \n",
-        "duration": 2700,
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 0,
-        "name": "Technical Leadership for Empowered Teams",
-        "published": true,
-        "registered_at": "2020-05-17T19:54:20.000Z",
-        "resource": "Technical Leadership for Empowered Teams - https://vimeo.com/339930423",
-        "resource_type": "talk",
-        "speaker_women_in_tech": [
-            true
-        ],
-        "speakers": [
-            "reczijcDpu4sMjnlA"
-        ],
-        "speakers_names": [
-            "Emily Bache"
-        ],
-        "topics": [
-            "recFbzSbd07ttDIYJ",
-            "recWFKWrPEdeEYbzx",
-            "rechj5WeSQRH211np",
-            "recF9sEGaOJ0hiQgV",
-            "recQ4hio93eTgzFTS",
-            "recPoM7t8neA7gkZ5"
-        ],
-        "topics_names": [
-            "Technical Practices",
-            "Engineering Culture",
-            "Agile",
-            "Technical leadership",
-            "Architecture",
-            "Devops"
-        ],
-        "url": "https://vimeo.com/339930423"
-    },
-    {
         "airtable_createdTime": "2020-01-19T20:33:26.000Z",
         "airtable_id": "recAn5QHDQiGE4iNC",
         "blog_url": "https://www.eferro.net/2018/10/good-talkspodcasts-oct-2018-ii.html",
@@ -5584,37 +5462,6 @@
         ],
         "url": "https://www.youtube.com/watch?v=cabzxfM_vWE",
         "year": 2017
-    },
-    {
-        "airtable_createdTime": "2020-01-19T20:34:10.000Z",
-        "airtable_id": "recBRwFK88LziUWfQ",
-        "blog_url": "https://www.eferro.net/2016/02/index.html",
-        "created": "2020-01-19T20:34:10.000Z",
-        "description": "\n",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "Henrik Kniberg and how to help your kids win robot battles",
-        "published": true,
-        "registered_at": "2020-01-19T20:34:10.000Z",
-        "resource": "Henrik Kniberg and how to help your kids win robot battles - https://www.bosslevelpodcast.com/henrik-kniberg-and-how-to-help-your-kids-win-robot-battles/",
-        "resource_type": "podcast",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recZna9MiT6dErU4E"
-        ],
-        "speakers_names": [
-            "Henrik Kniberg"
-        ],
-        "topics": [
-            "rechj5WeSQRH211np"
-        ],
-        "topics_names": [
-            "Agile"
-        ],
-        "url": "https://www.bosslevelpodcast.com/henrik-kniberg-and-how-to-help-your-kids-win-robot-battles/"
     },
     {
         "airtable_createdTime": "2021-01-30T23:51:10.000Z",
@@ -6499,31 +6346,6 @@
         "url": "https://www.youtube.com/watch?v=7vHk1yItq4k"
     },
     {
-        "airtable_createdTime": "2020-01-19T20:42:23.000Z",
-        "airtable_id": "recCh2PSsoZ9DBTKF",
-        "blog_url": "https://www.eferro.net/2017/01/interesting-talks-and-podcast-episodes.html",
-        "created": "2020-01-19T20:42:23.000Z",
-        "duration": 2820,
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 0,
-        "name": "No estimates: how you can predict the release date of your project without estimating",
-        "published": true,
-        "registered_at": "2020-01-19T20:42:23.000Z",
-        "resource": "No estimates: how you can predict the release date of your project without estimating - https://vimeo.com/167699026",
-        "resource_type": "talk",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "rec14HDKvHBLV21DE"
-        ],
-        "speakers_names": [
-            "Vasco Duarte"
-        ],
-        "url": "https://vimeo.com/167699026"
-    },
-    {
         "airtable_createdTime": "2020-05-17T14:09:22.000Z",
         "airtable_id": "recChBYalg4Q2xv3Y",
         "blog_url": "https://www.eferro.net/2020/05/good-talkspodcasts-may-2020-i.html",
@@ -6901,32 +6723,6 @@
         "url": "https://changelog.com/shipit/62"
     },
     {
-        "airtable_createdTime": "2020-01-19T20:36:30.000Z",
-        "airtable_id": "recDP3dDh2oUv6Hlo",
-        "blog_url": "https://www.eferro.net/2015/09/podcaststalks-emptying-queue-ii.html",
-        "created": "2020-01-19T20:36:30.000Z",
-        "description": "Interesting info about how the language we use shape our thinking process and the importance of learning very diferent programming languages.\n",
-        "duration": 3540,
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 0,
-        "name": "Stroop, Whorf, And Elixir",
-        "published": true,
-        "registered_at": "2020-01-19T20:36:30.000Z",
-        "resource": "Stroop, Whorf, And Elixir - https://vimeo.com/106985460",
-        "resource_type": "talk",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "receknFyNscOpEyGa"
-        ],
-        "speakers_names": [
-            "Dave Thomas"
-        ],
-        "url": "https://vimeo.com/106985460"
-    },
-    {
         "airtable_createdTime": "2020-01-19T20:37:08.000Z",
         "airtable_id": "recDPS7fNMOi7VkSD",
         "blog_url": "https://www.eferro.net/2015/06/more-interesting-podcaststalks.html",
@@ -6971,28 +6767,6 @@
         ],
         "url": "http://www.infoq.com/presentations/Simple-Made-Easy",
         "year": 2011
-    },
-    {
-        "airtable_createdTime": "2021-06-19T11:36:16.000Z",
-        "airtable_id": "recDTNPlYO9GtFbn7",
-        "created": "2021-06-19T11:36:16.000Z",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "Why Do Product Discovery?",
-        "registered_at": "2021-06-19T11:36:16.000Z",
-        "resource": "Why Do Product Discovery? - https://productcoalition.com/why-do-product-discovery-9f5690373dcc",
-        "resource_type": "article/paper",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recTdRg4zpw8GMJbJ"
-        ],
-        "speakers_names": [
-            "Scott Middleton"
-        ],
-        "url": "https://productcoalition.com/why-do-product-discovery-9f5690373dcc"
     },
     {
         "airtable_createdTime": "2020-01-19T20:39:40.000Z",
@@ -7239,18 +7013,6 @@
         ],
         "url": "https://www.youtube.com/watch?v=xEqRtIeD51k",
         "year": 2017
-    },
-    {
-        "airtable_createdTime": "2021-06-19T11:36:23.000Z",
-        "airtable_id": "recEC4rdqiUXWogS9",
-        "created": "2021-06-19T11:36:23.000Z",
-        "language": "English",
-        "last_modified": "2021-08-14T19:38:26.000Z",
-        "less_15": 1,
-        "registered_at": "2021-06-19T11:36:23.000Z",
-        "resource": " - http://externalidades.net/2017/02/a-nivel-de-product-management/",
-        "resource_type": "article/paper",
-        "url": "http://externalidades.net/2017/02/a-nivel-de-product-management/"
     },
     {
         "airtable_createdTime": "2020-01-29T17:55:29.000Z",
@@ -7767,36 +7529,6 @@
         "year": 2016
     },
     {
-        "airtable_createdTime": "2021-06-19T11:36:30.000Z",
-        "airtable_id": "recFE0wNXDUX94yfZ",
-        "created": "2021-06-19T11:36:30.000Z",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "Great Product Managers are \u201cOutcome Thinkers\u201d",
-        "registered_at": "2021-06-19T11:36:30.000Z",
-        "resource": "Great Product Managers are \u201cOutcome Thinkers\u201d - https://productcoalition.com/great-product-managers-are-outcome-thinkers-66fa5d69cfac",
-        "resource_type": "article/paper",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "rec1Y1CIBGl2rYlzD"
-        ],
-        "speakers_names": [
-            "Max Bennett"
-        ],
-        "topics": [
-            "rec51AOvJVPEWfUVK",
-            "recg6F5ajOhEkbrdW"
-        ],
-        "topics_names": [
-            "Product Strategy",
-            "Product"
-        ],
-        "url": "https://productcoalition.com/great-product-managers-are-outcome-thinkers-66fa5d69cfac"
-    },
-    {
         "airtable_createdTime": "2020-01-19T20:37:35.000Z",
         "airtable_id": "recFHDy4GmQfa2s8y",
         "blog_url": "https://www.eferro.net/2014/09/index.html",
@@ -7977,31 +7709,6 @@
             "Damon Edwards"
         ],
         "url": "https://www.youtube.com/watch?v=DGLpUoh-waM"
-    },
-    {
-        "airtable_createdTime": "2020-01-19T20:42:55.000Z",
-        "airtable_id": "recFikco91P1vL5XY",
-        "blog_url": "https://www.eferro.net/2017/06/some-pending-interesting-talks.html",
-        "created": "2020-01-19T20:42:55.000Z",
-        "description": "\n",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "BossLevel Podcast Stan McChrystal",
-        "published": true,
-        "registered_at": "2020-01-19T20:42:55.000Z",
-        "resource": "BossLevel Podcast Stan McChrystal - http://www.bosslevelpodcast.com/general-stan-mcchrystal-and-a-team-of-teams/",
-        "resource_type": "podcast",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recNGgTpVjZitWNXr"
-        ],
-        "speakers_names": [
-            "Stan McChrystal"
-        ],
-        "url": "http://www.bosslevelpodcast.com/general-stan-mcchrystal-and-a-team-of-teams/"
     },
     {
         "airtable_createdTime": "2022-01-22T18:32:27.000Z",
@@ -8617,31 +8324,6 @@
             "Bruce Feiler"
         ],
         "url": "http://www.ted.com/talks/bruce_feiler_agile_programming_for_your_family"
-    },
-    {
-        "airtable_createdTime": "2020-01-19T20:34:27.000Z",
-        "airtable_id": "recH1RL7DgFtQSrqY",
-        "blog_url": "https://www.eferro.net/2016/09/interesting-technical-talks.html",
-        "created": "2020-01-19T20:34:27.000Z",
-        "description": "Andy\u00a0describes\u00a0Grows method a very interesting agile approach to software development.\n",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "https://devchat.tv/ruby-rogues/277-rr-grows-method-with-andy-hunt",
-        "published": true,
-        "registered_at": "2020-01-19T20:34:27.000Z",
-        "resource": "https://devchat.tv/ruby-rogues/277-rr-grows-method-with-andy-hunt - https://devchat.tv/ruby-rogues/277-rr-grows-method-with-andy-hunt",
-        "resource_type": "podcast",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "reclyzEov5nAUGrBL"
-        ],
-        "speakers_names": [
-            "Andy Hunt"
-        ],
-        "url": "https://devchat.tv/ruby-rogues/277-rr-grows-method-with-andy-hunt"
     },
     {
         "airtable_createdTime": "2020-01-19T20:41:33.000Z",
@@ -9761,32 +9443,6 @@
             "Developer Productivity"
         ],
         "url": "https://www.youtube.com/watch?v=qGal6Mqia_U"
-    },
-    {
-        "airtable_createdTime": "2020-01-19T20:33:33.000Z",
-        "airtable_id": "recIZlaXEJCf9oxQY",
-        "blog_url": "https://www.eferro.net/2018/10/good-talkspodcasts-oct-2018-i.html",
-        "created": "2020-01-19T20:33:33.000Z",
-        "description": "\n",
-        "duration": 2580,
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 0,
-        "name": "http://architechtshow.com/ep-69-ibm-makes-the-case-for-doing-deep-learning-on-kubernetes",
-        "published": true,
-        "registered_at": "2020-01-19T20:33:33.000Z",
-        "resource": "http://architechtshow.com/ep-69-ibm-makes-the-case-for-doing-deep-learning-on-kubernetes - http://architechtshow.com/ep-69-ibm-makes-the-case-for-doing-deep-learning-on-kubernetes",
-        "resource_type": "podcast",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "rec3QY5Ylf947Z4ND"
-        ],
-        "speakers_names": [
-            "Jason McGee"
-        ],
-        "url": "http://architechtshow.com/ep-69-ibm-makes-the-case-for-doing-deep-learning-on-kubernetes"
     },
     {
         "airtable_createdTime": "2020-01-19T20:32:42.000Z",
@@ -11298,37 +10954,6 @@
         "url": "https://multithreaded.stitchfix.com/blog/2016/03/16/engineers-shouldnt-write-etl/"
     },
     {
-        "airtable_createdTime": "2020-01-19T20:42:01.000Z",
-        "airtable_id": "recMAXS80wmvMBHRc",
-        "blog_url": "https://www.eferro.net/2017/04/interesting-talkspodcasts-april-2017.html",
-        "created": "2020-01-19T20:42:01.000Z",
-        "description": "Podcast describing \u00a0Grows Method\u00a0for agile adoption with one of his authors, Andy Hunt (@PragmaticAndy).\n",
-        "language": "English",
-        "last_modified": "2023-11-19T19:42:06.000Z",
-        "less_15": 1,
-        "name": "http://ryanripley.com/afh-042-the-grows-method-for-adopting-agile-software-development-podcast/",
-        "published": true,
-        "registered_at": "2020-01-19T20:42:01.000Z",
-        "resource": "http://ryanripley.com/afh-042-the-grows-method-for-adopting-agile-software-development-podcast/ - http://ryanripley.com/afh-042-the-grows-method-for-adopting-agile-software-development-podcast/",
-        "resource_type": "podcast",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "reclyzEov5nAUGrBL"
-        ],
-        "speakers_names": [
-            "Andy Hunt"
-        ],
-        "topics": [
-            "rechj5WeSQRH211np"
-        ],
-        "topics_names": [
-            "Agile"
-        ],
-        "url": "http://ryanripley.com/afh-042-the-grows-method-for-adopting-agile-software-development-podcast/"
-    },
-    {
         "airtable_createdTime": "2020-05-17T14:07:06.000Z",
         "airtable_id": "recMCjk51zSF8I6Jm",
         "blog_url": "https://www.eferro.net/2020/05/good-talkspodcasts-may-2020-i.html",
@@ -12287,40 +11912,6 @@
         "url": "https://cloudplatform.googleblog.com/2018/05/SRE-vs-DevOps-competing-standards-or-close-friends.html?m=1"
     },
     {
-        "airtable_createdTime": "2020-01-19T20:29:01.000Z",
-        "airtable_id": "recNlVd0tH5YnKGwN",
-        "blog_url": "https://www.eferro.net/2019/11/good-talkspodcasts-october-november.html",
-        "created": "2020-01-19T20:29:01.000Z",
-        "description": "Interview with\u00a0Nicole Forsgren\n",
-        "duration": 3060,
-        "language": "English",
-        "last_modified": "2023-11-18T15:39:11.000Z",
-        "less_15": 0,
-        "name": "Webminar 2019 Accelerate State of DevOps",
-        "published": true,
-        "registered_at": "2020-01-19T20:29:01.000Z",
-        "resource": "Webminar 2019 Accelerate State of DevOps - https://newrelic.com/resources/webinar/2019-acceleratestateofdevops",
-        "resource_type": "talk",
-        "speaker_women_in_tech": [
-            true
-        ],
-        "speakers": [
-            "rec7Jfy52V3qCw4tZ"
-        ],
-        "speakers_names": [
-            "Nicole Forsgren"
-        ],
-        "topics": [
-            "recPoM7t8neA7gkZ5",
-            "recWFKWrPEdeEYbzx"
-        ],
-        "topics_names": [
-            "Devops",
-            "Engineering Culture"
-        ],
-        "url": "https://newrelic.com/resources/webinar/2019-acceleratestateofdevops"
-    },
-    {
         "airtable_createdTime": "2025-03-23T09:31:40.000Z",
         "airtable_id": "recNmOkWAzhRiHGaY",
         "blog_url": "https://www.eferro.net/2025/03/good-talkspodcasts-march-ii.html",
@@ -12700,31 +12291,6 @@
         "url": "https://www.youtube.com/watch?v=Bv2Jx8z9xv8"
     },
     {
-        "airtable_createdTime": "2020-01-19T20:37:45.000Z",
-        "airtable_id": "recON1c49zo5WFF10",
-        "blog_url": "https://www.eferro.net/2014/09/podcaststalks-2014-15-21sept.html",
-        "created": "2020-01-19T20:37:45.000Z",
-        "description": "Interesting podcast about \u00a0ad-hoc proyect structure, \u00a0teams/individuals self-organization at NGenWorks. Good sample of culture based on trust and\u00a0collaboration (an Agile Culture).\n",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "A Model Jellyfish (Carl Smith)",
-        "published": true,
-        "registered_at": "2020-01-19T20:37:45.000Z",
-        "resource": "A Model Jellyfish (Carl Smith) - http://podcasts.thoughtbot.com/giantrobots/116",
-        "resource_type": "podcast",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recBzshmjLCIm996N"
-        ],
-        "speakers_names": [
-            "Carl Smith"
-        ],
-        "url": "http://podcasts.thoughtbot.com/giantrobots/116"
-    },
-    {
         "airtable_createdTime": "2020-01-19T20:39:18.000Z",
         "airtable_id": "recOOYCLmVAYncVNn",
         "blog_url": "https://www.eferro.net/2019/04/index.html",
@@ -12950,37 +12516,6 @@
         ],
         "url": "https://www.youtube.com/watch?v=KaixY9Rah7o",
         "year": 2014
-    },
-    {
-        "airtable_createdTime": "2021-08-12T07:26:24.000Z",
-        "airtable_id": "recOpuAXURlLNaCE1",
-        "created": "2021-08-12T07:26:24.000Z",
-        "description": "\n",
-        "language": "Spanish",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "Resumen Lean Software Development",
-        "registered_at": "2021-08-12T07:26:24.000Z",
-        "resource": "Resumen Lean Software Development - http://samuelcasanova.com/2017/04/resumen-lean-software-development/?utm_content=bufferc4ce2&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer",
-        "resource_type": "article/paper",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recsxGXi9AlTnJiUC"
-        ],
-        "speakers_names": [
-            "Samuel Casanova"
-        ],
-        "topics": [
-            "rechj5WeSQRH211np",
-            "rech2MAtQRy0Lvc2Y"
-        ],
-        "topics_names": [
-            "Agile",
-            "Lean Software Development"
-        ],
-        "url": "http://samuelcasanova.com/2017/04/resumen-lean-software-development/?utm_content=bufferc4ce2&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer"
     },
     {
         "airtable_createdTime": "2022-12-06T20:52:52.000Z",
@@ -13758,6 +13293,51 @@
         "year": 2019
     },
     {
+        "airtable_createdTime": "2025-05-01T16:53:17.000Z",
+        "airtable_id": "recQPKfoO61ONaxxC",
+        "core_topic": "AI",
+        "created": "2025-05-01T16:53:17.000Z",
+        "description": "Explore augmented coding with Kent Beck, discussing how AI agents transform software development, the essential role of observability and testing for control and understanding, and the future impact on engineering careers.\n",
+        "duration": 2340,
+        "language": "English",
+        "last_modified": "2025-05-01T18:04:21.000Z",
+        "less_15": 0,
+        "name": "o11ycast - Ep. #80, Augmented Coding with Kent Beck",
+        "notes": "The most important lesson conveyed is that **augmented coding, powered by AI agents, represents a fundamental shift in software development that requires developers to adopt new practices focused on influence, feedback loops, and process refinement rather than traditional control**.\nSomeone should remember that working with these powerful, non-deterministic systems means **relying heavily on constraints, testing, and observability** to guide, understand, and ensure the desired outcomes of the code generated by agents, acknowledging that deep line-by-line understanding of all code may become less feasible. It's a time for experimentation and continuously refining the \"making\" process alongside building the product itself.\n\n\n- **Augmented Coding is a Fundamental Shift:** The core concept is that AI agents are transforming software development, moving beyond traditional coding to \"augmented coding\" where developers create the tools and workflows alongside the product itself. This process involves working with **non-deterministic systems sensitive to initial conditions**, which means results can vary even with similar prompts. It allows developers to **explore more ideas more easily** by automating minutiae like programming language syntax and dependencies.\n- **Control Shifts to Influence and Feedback Loops:** With AI agents, direct line-by-line control of code becomes less feasible and perhaps less important. Instead, developers must rely on **constraints, testing, and observability** to guide and understand the agents' behavior. **Testing acts as a crucial \"super ego\"** providing validation and preventing undesirable actions like commenting out failed tests. **Observability** provides essential feedback on emergent properties like performance or error rates in production, necessary because we let go of deep understanding of all the generated code.\n- **The Process (\"Making Making\") is as Important as the Product:** Working with agents requires **continuously refining the process** itself, such as iterating on prompts, defining rules, and establishing workflows like automatically running tests and committing code. **Experimentation is key**, and it's important to have the discipline to iterate in smaller steps, back up, and restart when necessary, rather than getting stuck in a \"go-to loop\" or falling prey to the sunk cost fallacy.\n- **Significant Impact on the Engineering Career:** Augmented coding raises questions about the future of engineering roles, particularly for **junior developers**, potentially limiting opportunities for \"legitimate peripheral participation\" where foundational experience is gained through assisting senior engineers. However, it may also lead to the rise of a new generation of **\"native augmented coders\"** who are uniquely skilled at leveraging these tools in ways current developers might not fully grasp.\n\n",
+        "rating": 5,
+        "registered_at": "2025-05-01T16:53:17.000Z",
+        "resource": "o11ycast - Ep. #80, Augmented Coding with Kent Beck - https://www.youtube.com/watch?v=kisZtCK0Bg0",
+        "resource_type": "podcast",
+        "speaker_women_in_tech": [
+            null,
+            null,
+            true
+        ],
+        "speakers": [
+            "rectmYcbcdoDRlCYH",
+            "rechBhL1vENLzvUi6",
+            "rec3jntKOHmKJ3Is5"
+        ],
+        "speakers_names": [
+            "Ken Rimple",
+            "Kent Beck",
+            "Jessica Kerr"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "recPcLVyg0S4ORUkX",
+            "rec6JMQpL2LSjoP2E",
+            "recWFKWrPEdeEYbzx"
+        ],
+        "topics_names": [
+            "AI",
+            "testing",
+            "Inspirational",
+            "Engineering Culture"
+        ],
+        "url": "https://www.youtube.com/watch?v=kisZtCK0Bg0"
+    },
+    {
         "airtable_createdTime": "2020-01-19T20:37:54.000Z",
         "airtable_id": "recQQbDcXuUhH7qiq",
         "blog_url": "https://www.eferro.net/2014/10/podcaststalks-2014-24-30-oct.html",
@@ -14270,31 +13850,6 @@
         ],
         "url": "https://www.youtube.com/watch?v=IqUo9kCWQrw",
         "year": 2016
-    },
-    {
-        "airtable_createdTime": "2020-01-19T20:33:13.000Z",
-        "airtable_id": "recRG2Y1ex7cEspyU",
-        "blog_url": "https://www.eferro.net/2018/01/interesting-talkspodcasts-2018-jan-ii.html",
-        "created": "2020-01-19T20:33:13.000Z",
-        "description": "Great explanation to understand concurrency, parallelism and scalability using a real-world example.\u00a0It worth the time.\n",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "Simulating a real-world system in go",
-        "published": true,
-        "registered_at": "2020-01-19T20:33:13.000Z",
-        "resource": "Simulating a real-world system in go - https://www.dotconferences.com/2017/11/sameer-ajmani-simulating-a-real-world-system-in-go",
-        "resource_type": "talk",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recdFuqQ4PBJztM1V"
-        ],
-        "speakers_names": [
-            "Sameer Ajmani"
-        ],
-        "url": "https://www.dotconferences.com/2017/11/sameer-ajmani-simulating-a-real-world-system-in-go"
     },
     {
         "airtable_createdTime": "2022-06-26T15:51:10.000Z",
@@ -16247,28 +15802,6 @@
         "url": "https://medium.com/@chadfowler/the-best-job-description-for-an-engineer-ever-written-57b42919cc2f"
     },
     {
-        "airtable_createdTime": "2021-06-19T11:36:24.000Z",
-        "airtable_id": "recV8nQoAtEg5osDg",
-        "created": "2021-06-19T11:36:24.000Z",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "Introduction to BDD Example Mapping",
-        "registered_at": "2021-06-19T11:36:24.000Z",
-        "resource": "Introduction to BDD Example Mapping - https://cucumber.io/blog/2015/12/08/example-mapping-introduction",
-        "resource_type": "article/paper",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "receuNs6f5GQZYA2l"
-        ],
-        "speakers_names": [
-            "Matt Wynne"
-        ],
-        "url": "https://cucumber.io/blog/2015/12/08/example-mapping-introduction"
-    },
-    {
         "airtable_createdTime": "2024-08-17T21:10:31.000Z",
         "airtable_id": "recVFSquUdCuGrS16",
         "blog_url": "https://www.eferro.net/2024/08/good-talkspodcasts-aug-2024-i.html",
@@ -16421,36 +15954,6 @@
             "Inspirational"
         ],
         "url": "https://medium.com/@johnpcutler/crack-the-wip-work-in-progress-7b0c646a7cf8"
-    },
-    {
-        "airtable_createdTime": "2021-06-19T11:36:28.000Z",
-        "airtable_id": "recVQNqzwXVCeMu0p",
-        "created": "2021-06-19T11:36:28.000Z",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "Eficiencia de recursos y eficiencia de flujo en el software",
-        "registered_at": "2021-06-19T11:36:28.000Z",
-        "resource": "Eficiencia de recursos y eficiencia de flujo en el software - http://samuelcasanova.com/2015/11/eficiencia-de-recursos-y-eficiencia-de-flujo/",
-        "resource_type": "article/paper",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recsxGXi9AlTnJiUC"
-        ],
-        "speakers_names": [
-            "Samuel Casanova"
-        ],
-        "topics": [
-            "recO11XlolI72a1fV",
-            "rech2MAtQRy0Lvc2Y"
-        ],
-        "topics_names": [
-            "Lean",
-            "Lean Software Development"
-        ],
-        "url": "http://samuelcasanova.com/2015/11/eficiencia-de-recursos-y-eficiencia-de-flujo/"
     },
     {
         "airtable_createdTime": "2020-01-19T20:33:12.000Z",
@@ -16794,36 +16297,6 @@
             "Teams"
         ],
         "url": "https://www.infoq.com/presentations/high-performance-passion-grace-fire/"
-    },
-    {
-        "airtable_createdTime": "2021-06-19T11:36:32.000Z",
-        "airtable_id": "recWNkDna2tRK9JNv",
-        "created": "2021-06-19T11:36:32.000Z",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "Kent Beck\u2019s Product Development Triathlon",
-        "registered_at": "2021-06-19T11:36:32.000Z",
-        "resource": "Kent Beck\u2019s Product Development Triathlon - https://andela.com/blog/kent-becks-product-development-triathlon/",
-        "resource_type": "article/paper",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "rechBhL1vENLzvUi6"
-        ],
-        "speakers_names": [
-            "Kent Beck"
-        ],
-        "topics": [
-            "recWFKWrPEdeEYbzx",
-            "rec51AOvJVPEWfUVK"
-        ],
-        "topics_names": [
-            "Engineering Culture",
-            "Product Strategy"
-        ],
-        "url": "https://andela.com/blog/kent-becks-product-development-triathlon/"
     },
     {
         "airtable_createdTime": "2021-09-05T16:10:38.000Z",
@@ -17325,26 +16798,6 @@
         "url": "https://medium.com/nick-tune-tech-strategy-blog/the-importance-of-a-great-developer-experience-40567abc0e9a"
     },
     {
-        "airtable_createdTime": "2022-03-27T09:55:38.000Z",
-        "airtable_id": "recXaEycmGLHzVNdk",
-        "created": "2022-03-27T09:55:38.000Z",
-        "language": "English",
-        "last_modified": "2022-04-09T18:59:50.000Z",
-        "less_15": 1,
-        "name": "Minimum Viable CD",
-        "published": true,
-        "registered_at": "2022-03-27T09:55:38.000Z",
-        "resource": "Minimum Viable CD - https://minimumcd.org/minimumcd/",
-        "resource_type": "website",
-        "topics": [
-            "recin3Ync8iZldW0q"
-        ],
-        "topics_names": [
-            "Continuous Delivery"
-        ],
-        "url": "https://minimumcd.org/minimumcd/"
-    },
-    {
         "airtable_createdTime": "2024-11-24T19:08:55.000Z",
         "airtable_id": "recXdlYlg3hNMt3MA",
         "blog_url": "https://www.eferro.net/2024/11/good-talkspodcasts-nov-2024-ii.html",
@@ -17686,44 +17139,6 @@
         ],
         "url": "https://www.youtube.com/watch?v=pp8j1ggCaoM",
         "year": 2016
-    },
-    {
-        "airtable_createdTime": "2020-01-19T20:32:42.000Z",
-        "airtable_id": "recYRRdQNqoJfTD4f",
-        "blog_url": "https://www.eferro.net/2018/09/index.html",
-        "created": "2020-01-19T20:32:42.000Z",
-        "description": "100% agree. Great explanation about how to optimize team speed using trunk based development.\n",
-        "duration": 2880,
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 0,
-        "name": "Feature branching considered evil",
-        "published": true,
-        "registered_at": "2020-01-19T20:32:42.000Z",
-        "resource": "Feature branching considered evil - http://videos.ncrafts.io/video/275529985",
-        "resource_type": "talk",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recZr6kOHXzmS25Va"
-        ],
-        "speakers_names": [
-            "Thierry de Pauw"
-        ],
-        "topics": [
-            "recFbzSbd07ttDIYJ",
-            "recQ4hio93eTgzFTS",
-            "recin3Ync8iZldW0q",
-            "recYkFYw6BSRfA0Ce"
-        ],
-        "topics_names": [
-            "Technical Practices",
-            "Architecture",
-            "Continuous Delivery",
-            "XP"
-        ],
-        "url": "http://videos.ncrafts.io/video/275529985"
     },
     {
         "airtable_createdTime": "2021-03-14T07:13:20.000Z",
@@ -19206,31 +18621,6 @@
         "url": "https://www.youtube.com/watch?v=0TwoubGSXpc"
     },
     {
-        "airtable_createdTime": "2020-01-19T20:41:51.000Z",
-        "airtable_id": "recazS4LZggYQZoF7",
-        "blog_url": "https://www.eferro.net/2017/09/good-talkspodcasts-august-2017.html",
-        "created": "2020-01-19T20:41:51.000Z",
-        "description": "\n",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "Functional architecture - The pits of success",
-        "published": true,
-        "registered_at": "2020-01-19T20:41:51.000Z",
-        "resource": "Functional architecture - The pits of success - https://vimeo.com/180287057",
-        "resource_type": "talk",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recrwqUiyrS3B9Ib5"
-        ],
-        "speakers_names": [
-            "Mark Seemann"
-        ],
-        "url": "https://vimeo.com/180287057"
-    },
-    {
         "airtable_createdTime": "2020-08-09T19:42:16.000Z",
         "airtable_id": "recazeVUxHdijBZU2",
         "blog_url": "https://www.eferro.net/2020/08/good-talkspodcasts-aug-2020-i.html",
@@ -20669,35 +20059,6 @@
         "url": "https://soundcloud.com/heavybit/20190423-o11ycast-011-rename"
     },
     {
-        "airtable_createdTime": "2020-01-19T20:36:19.000Z",
-        "airtable_id": "recd6AsLiRMyj3qTP",
-        "blog_url": "https://www.eferro.net/2015/08/index.html",
-        "created": "2020-01-19T20:36:19.000Z",
-        "description": "Interesting talk with the same subject/ideas described in the Ron's book (with the same tittle). Current state of Agile and Agile's good ideas in a real context of common Agile\u00a0misunderstandings.\n",
-        "duration": 3300,
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 0,
-        "name": "The Nature of Software Development",
-        "published": true,
-        "registered_at": "2020-01-19T20:36:19.000Z",
-        "resource": "The Nature of Software Development - https://vimeo.com/128295653",
-        "resource_type": "talk",
-        "speaker_women_in_tech": [
-            null,
-            null
-        ],
-        "speakers": [
-            "recsC077sqmUrcBC6",
-            "recKk1MUoYp2tjLW0"
-        ],
-        "speakers_names": [
-            "Chet Hendrickson",
-            "Ron Jeffries"
-        ],
-        "url": "https://vimeo.com/128295653"
-    },
-    {
         "airtable_createdTime": "2020-01-19T20:37:36.000Z",
         "airtable_id": "recd7XT5IcESxvItO",
         "blog_url": "https://www.eferro.net/2014/09/index.html",
@@ -21063,31 +20424,6 @@
         ],
         "url": "https://www.youtube.com/watch?v=WVTxTo06Mwk",
         "year": 2018
-    },
-    {
-        "airtable_createdTime": "2020-01-19T20:35:04.000Z",
-        "airtable_id": "recdcFSDg9G57ruQl",
-        "blog_url": "https://www.eferro.net/2016/07/index.html",
-        "created": "2020-01-19T20:35:04.000Z",
-        "description": "Boss Level Podcast\n",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "Nilan Peiris and the culture of growth at TransferWise",
-        "published": true,
-        "registered_at": "2020-01-19T20:35:04.000Z",
-        "resource": "Nilan Peiris and the culture of growth at TransferWise - https://www.bosslevelpodcast.com/nilan-peiris-and-the-culture-of-growth-at-transferwise/",
-        "resource_type": "podcast",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recXXoeKtaitkPRU6"
-        ],
-        "speakers_names": [
-            "Nilan Peiris"
-        ],
-        "url": "https://www.bosslevelpodcast.com/nilan-peiris-and-the-culture-of-growth-at-transferwise/"
     },
     {
         "airtable_createdTime": "2020-01-19T20:42:55.000Z",
@@ -22579,31 +21915,6 @@
         "url": "https://www.youtube.com/watch?v=UGD8pMMJlbk"
     },
     {
-        "airtable_createdTime": "2020-01-19T20:42:24.000Z",
-        "airtable_id": "recgEfBpQDruUARDa",
-        "blog_url": "https://www.eferro.net/2017/01/interesting-talks-and-podcast-episodes.html",
-        "created": "2020-01-19T20:42:24.000Z",
-        "duration": 2940,
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 0,
-        "name": "Introducing Eventstorming",
-        "published": true,
-        "registered_at": "2020-01-19T20:42:24.000Z",
-        "resource": "Introducing Eventstorming - https://vimeo.com/130202708",
-        "resource_type": "talk",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recn00woQ2dKWgfnK"
-        ],
-        "speakers_names": [
-            "Alberto Brandolini"
-        ],
-        "url": "https://vimeo.com/130202708"
-    },
-    {
         "airtable_createdTime": "2024-08-18T08:21:22.000Z",
         "airtable_id": "recgKG33Jjit6WvBS",
         "blog_url": "https://www.eferro.net/2024/08/good-talkspodcasts-aug-2024-i.html",
@@ -23765,28 +23076,6 @@
         "url": "https://www.youtube.com/watch?v=3QEoJRjxnxQ"
     },
     {
-        "airtable_createdTime": "2021-06-19T11:36:28.000Z",
-        "airtable_id": "reciND0HS1zNofbkg",
-        "created": "2021-06-19T11:36:28.000Z",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "Resumen Lean Software Development",
-        "registered_at": "2021-06-19T11:36:28.000Z",
-        "resource": "Resumen Lean Software Development - http://samuelcasanova.com/2017/04/resumen-lean-software-development/",
-        "resource_type": "article/paper",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recsxGXi9AlTnJiUC"
-        ],
-        "speakers_names": [
-            "Samuel Casanova"
-        ],
-        "url": "http://samuelcasanova.com/2017/04/resumen-lean-software-development/"
-    },
-    {
         "airtable_createdTime": "2021-12-25T08:09:52.000Z",
         "airtable_id": "reciO4dUwR51qT9qp",
         "blog_url": "https://www.eferro.net/2021/12/good-talkspodcasts-december-2021-i.html",
@@ -23849,38 +23138,6 @@
             "Chris Richardson"
         ],
         "url": "https://www.youtube.com/watch?v=YPbGW3Fnmbc"
-    },
-    {
-        "airtable_createdTime": "2020-01-19T20:42:19.000Z",
-        "airtable_id": "reciQUByvgPPQfZKh",
-        "blog_url": "https://www.eferro.net/2017/01/interesting-talks-and-podcast-episodes.html",
-        "created": "2020-01-19T20:42:19.000Z",
-        "description": "Julien Lepine\n",
-        "duration": 2820,
-        "language": "English",
-        "last_modified": "2023-11-19T19:38:36.000Z",
-        "less_15": 0,
-        "name": "Cloud for startup sucess",
-        "published": true,
-        "registered_at": "2020-01-19T20:42:19.000Z",
-        "resource": "Cloud for startup sucess - https://vimeo.com/131660205",
-        "resource_type": "talk",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recmQaCA8vd1aW7Ft"
-        ],
-        "speakers_names": [
-            "Julien Lepine"
-        ],
-        "topics": [
-            "rec945yNhVIzyZIuX"
-        ],
-        "topics_names": [
-            "Cloud"
-        ],
-        "url": "https://vimeo.com/131660205"
     },
     {
         "airtable_createdTime": "2020-01-19T20:36:16.000Z",
@@ -25063,31 +24320,6 @@
         "url": "https://www.youtube.com/watch?v=ulRCs7xQA74"
     },
     {
-        "airtable_createdTime": "2020-01-19T20:37:55.000Z",
-        "airtable_id": "reckLawWsxbuzINB2",
-        "blog_url": "https://www.eferro.net/2014/10/podcaststalks-2014-24-30-oct.html",
-        "created": "2020-01-19T20:37:55.000Z",
-        "description": "Quite entertaining episode with some interesting explanations/points about refactoring/reestructuring and the perverted use of the \"refactoring\" term.\n",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "RubyRogues 178 Refactoring Ruby with Martin Fowler",
-        "published": true,
-        "registered_at": "2020-01-19T20:37:55.000Z",
-        "resource": "RubyRogues 178 Refactoring Ruby with Martin Fowler - http://rubyrogues.com/178-rr-book-club-refactoring-ruby-with-martin-fowler/",
-        "resource_type": "podcast",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recvCaZV6Vp5ilvYv"
-        ],
-        "speakers_names": [
-            "Martin Fowler"
-        ],
-        "url": "http://rubyrogues.com/178-rr-book-club-refactoring-ruby-with-martin-fowler/"
-    },
-    {
         "airtable_createdTime": "2025-02-09T09:20:54.000Z",
         "airtable_id": "reckOvXE3NZFY8kj3",
         "blog_url": "https://www.eferro.net/2025/02/good-talkspodcasts-feb-i.html",
@@ -25210,30 +24442,6 @@
             "Technical Practices"
         ],
         "url": "https://www.youtube.com/watch?v=W3yIuw_-t84"
-    },
-    {
-        "airtable_createdTime": "2020-01-19T20:42:56.000Z",
-        "airtable_id": "reckeAsKZznx1XfmA",
-        "blog_url": "https://www.eferro.net/2017/06/some-pending-interesting-talks.html",
-        "created": "2020-01-19T20:42:56.000Z",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "Scaling Lean: Principles over Process",
-        "published": true,
-        "registered_at": "2020-01-19T20:42:56.000Z",
-        "resource": "Scaling Lean: Principles over Process - http://www.ustream.tv/recorded/102893070",
-        "resource_type": "talk",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recYTIjINdxXgPGxF"
-        ],
-        "speakers_names": [
-            "Jeff Gothelf"
-        ],
-        "url": "http://www.ustream.tv/recorded/102893070"
     },
     {
         "airtable_createdTime": "2020-01-19T20:37:55.000Z",
@@ -25535,32 +24743,6 @@
         "year": 2014
     },
     {
-        "airtable_createdTime": "2020-01-19T20:41:14.000Z",
-        "airtable_id": "recl9Jy0XsS9QZUQd",
-        "blog_url": "https://www.eferro.net/2017/08/good-talkspodcasts-episodes-purging.html",
-        "created": "2020-01-19T20:41:14.000Z",
-        "description": "\n",
-        "duration": 1080,
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 0,
-        "name": "The ServerlessCast #6 - Event-Driven Design Thinking",
-        "published": true,
-        "registered_at": "2020-01-19T20:41:14.000Z",
-        "resource": "The ServerlessCast #6 - Event-Driven Design Thinking - https://www.spreaker.com/user/8713098/the-serverlesscast-6-event-driven-design",
-        "resource_type": "podcast",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "rec8YLEPdvUpJJ644"
-        ],
-        "speakers_names": [
-            "Paul Johnston"
-        ],
-        "url": "https://www.spreaker.com/user/8713098/the-serverlesscast-6-event-driven-design"
-    },
-    {
         "airtable_createdTime": "2025-03-23T09:42:38.000Z",
         "airtable_id": "recl9OfyDqV7Tr6DL",
         "blog_url": "https://www.eferro.net/2025/03/good-talkspodcasts-march-ii.html",
@@ -25691,32 +24873,6 @@
             "John Hughes"
         ],
         "url": "https://www.youtube.com/watch?v=zi0rHwfiX1Q"
-    },
-    {
-        "airtable_createdTime": "2020-01-19T20:39:41.000Z",
-        "airtable_id": "reclSHrWdh1MDq1QR",
-        "blog_url": "https://www.eferro.net/2019/05/good-talkspodcasts-may-2019-i.html",
-        "created": "2020-01-19T20:39:41.000Z",
-        "description": "Good ideas about how to create agile systems.\n",
-        "duration": 3300,
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 0,
-        "name": "keynote: architecting for continuous delivery",
-        "published": true,
-        "registered_at": "2020-01-19T20:39:41.000Z",
-        "resource": "keynote: architecting for continuous delivery - https://codeandtalk.com/v/agile-india-2016/keynote-architecting-for-continuous-delivery-by-jez-humble-at-agile-india-2016",
-        "resource_type": "talk",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recf1C8fNSMXaLZ0q"
-        ],
-        "speakers_names": [
-            "Jez Humble"
-        ],
-        "url": "https://codeandtalk.com/v/agile-india-2016/keynote-architecting-for-continuous-delivery-by-jez-humble-at-agile-india-2016"
     },
     {
         "airtable_createdTime": "2023-07-21T16:08:05.000Z",
@@ -27586,32 +26742,6 @@
         "url": "http://www.infoq.com/presentations/finca"
     },
     {
-        "airtable_createdTime": "2020-01-19T20:35:11.000Z",
-        "airtable_id": "recntgWxUHkNjBAnf",
-        "blog_url": "https://www.eferro.net/2016/07/interesting-talks-about-devops-and.html",
-        "created": "2020-01-19T20:35:11.000Z",
-        "description": "Interesting talk about high performance cultures, Lean, continious improvement, Innovation, etc.\n",
-        "duration": 1920,
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 0,
-        "name": "How to Fuck Up \u201cRespect for People\u201d & Really Piss Off your Employees",
-        "published": true,
-        "registered_at": "2020-01-19T20:35:11.000Z",
-        "resource": "How to Fuck Up \u201cRespect for People\u201d & Really Piss Off your Employees - https://vimeo.com/127084504",
-        "resource_type": "talk",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recf1C8fNSMXaLZ0q"
-        ],
-        "speakers_names": [
-            "Jez Humble"
-        ],
-        "url": "https://vimeo.com/127084504"
-    },
-    {
         "airtable_createdTime": "2021-06-19T11:36:26.000Z",
         "airtable_id": "recnw0ZNLWevyiiD1",
         "created": "2021-06-19T11:36:26.000Z",
@@ -28078,42 +27208,6 @@
         "url": "https://www.infoq.com/presentations/organization-benefit-agile"
     },
     {
-        "airtable_createdTime": "2020-12-19T21:22:05.000Z",
-        "airtable_id": "recogADXjwLS68k51",
-        "blog_url": "https://www.eferro.net/2020/12/good-talkspodcasts-dec-2020-i.html",
-        "created": "2020-12-19T21:22:05.000Z",
-        "description": "In this latest episode of the \u201cArt of Modern Ops\u201d Camille Fournier (@skamille), Managing Director at Two Sigma and Cornelia Davis (@cdavisafc), CTO at Weaveworks discuss what it takes to build an internal platform within your organization. \n",
-        "duration": 2580,
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 0,
-        "name": "The Art of Modern Ops \u00b7 Camille Fournier on Building Internal Kubernetes Platforms",
-        "published": true,
-        "registered_at": "2020-12-19T21:22:05.000Z",
-        "resource": "The Art of Modern Ops \u00b7 Camille Fournier on Building Internal Kubernetes Platforms - https://www.weave.works/blog/podcast-camille-fournier-on-building-internal-k8s-platforms",
-        "resource_type": "podcast",
-        "speaker_women_in_tech": [
-            true
-        ],
-        "speakers": [
-            "recU3BVkJTe92O61m"
-        ],
-        "speakers_names": [
-            "Camille Fournier"
-        ],
-        "topics": [
-            "rec1Q788ERcApi2h5",
-            "recbWs6dTsdPwfWnm",
-            "recWFKWrPEdeEYbzx"
-        ],
-        "topics_names": [
-            "Platform as a product",
-            "Platform",
-            "Engineering Culture"
-        ],
-        "url": "https://www.weave.works/blog/podcast-camille-fournier-on-building-internal-k8s-platforms"
-    },
-    {
         "airtable_createdTime": "2020-01-19T20:42:12.000Z",
         "airtable_id": "recohp2EMx3gJ4R14",
         "blog_url": "https://www.eferro.net/2017/05/interesting-technical-talkspodcasts-may.html",
@@ -28540,31 +27634,6 @@
         ],
         "url": "https://www.youtube.com/watch?v=cH6bnQzJojo",
         "year": 2016
-    },
-    {
-        "airtable_createdTime": "2020-01-19T20:37:10.000Z",
-        "airtable_id": "recpYt0RoXOVGLYGt",
-        "blog_url": "https://www.eferro.net/2015/06/more-interesting-podcaststalks.html",
-        "created": "2020-01-19T20:37:10.000Z",
-        "description": "Insparing key note\n",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "Agile - You keep using that word",
-        "published": true,
-        "registered_at": "2020-01-19T20:37:10.000Z",
-        "resource": "Agile - You keep using that word - https://skillsmatter.com/skillscasts/6144-agile-you-keep-using-that-word",
-        "resource_type": "talk",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recFwCH6SfELfIX3t"
-        ],
-        "speakers_names": [
-            "Dan North"
-        ],
-        "url": "https://skillsmatter.com/skillscasts/6144-agile-you-keep-using-that-word"
     },
     {
         "airtable_createdTime": "2021-01-30T19:52:14.000Z",
@@ -29506,31 +28575,6 @@
         "year": 2011
     },
     {
-        "airtable_createdTime": "2020-01-19T20:34:49.000Z",
-        "airtable_id": "recrlr6BaNPowlf2t",
-        "blog_url": "https://www.eferro.net/2016/05/index.html",
-        "created": "2020-01-19T20:34:49.000Z",
-        "description": "Interesting interview about the product manager role, the high effective product teams, etc.\n",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "BossLevel Podcast 16 Melissa Perri",
-        "published": true,
-        "registered_at": "2020-01-19T20:34:49.000Z",
-        "resource": "BossLevel Podcast 16 Melissa Perri - https://www.bosslevelpodcast.com/melissa-perri-and-applying-common-sense-to-product-management/",
-        "resource_type": "podcast",
-        "speaker_women_in_tech": [
-            true
-        ],
-        "speakers": [
-            "recgfEPJpVJT0k1bC"
-        ],
-        "speakers_names": [
-            "Melissa Perri"
-        ],
-        "url": "https://www.bosslevelpodcast.com/melissa-perri-and-applying-common-sense-to-product-management/"
-    },
-    {
         "airtable_createdTime": "2020-01-19T20:31:54.000Z",
         "airtable_id": "recrqYZesvsKRzx1p",
         "blog_url": "https://www.eferro.net/2018/03/interesting-talkspodcasts-2018-march-i.html",
@@ -30282,71 +29326,6 @@
         "url": "https://www.youtube.com/watch?v=spPNrzWYpPQ"
     },
     {
-        "airtable_createdTime": "2020-03-14T09:05:53.000Z",
-        "airtable_id": "recswwXzWgQ5PMKZr",
-        "blog_url": "http://www.eferro.net/2020/03/good-talkspodcasts-march-2020-i.html",
-        "created": "2020-03-14T09:05:53.000Z",
-        "description": "They talk about: the Unicorn Project, the first two ideals (Locality and Simplicity and Focus, Flow and Joy).\n",
-        "duration": 2100,
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 0,
-        "name": "Mik + One podcast: Episode 2: Gene Kim (Part 1)",
-        "published": true,
-        "registered_at": "2020-03-14T09:05:53.000Z",
-        "resource": "Mik + One podcast: Episode 2: Gene Kim (Part 1) - https://projecttoproduct.org/podcast/gene-kim/",
-        "resource_type": "podcast",
-        "speaker_women_in_tech": [
-            null,
-            null
-        ],
-        "speakers": [
-            "recSVEmi24zSiMmxa",
-            "recQ4zwnn56x6JsOj"
-        ],
-        "speakers_names": [
-            "Mik Kersten",
-            "Gene Kim"
-        ],
-        "topics": [
-            "rechj5WeSQRH211np",
-            "recWFKWrPEdeEYbzx",
-            "recin3Ync8iZldW0q",
-            "rec6JMQpL2LSjoP2E",
-            "recg6F5ajOhEkbrdW"
-        ],
-        "topics_names": [
-            "Agile",
-            "Engineering Culture",
-            "Continuous Delivery",
-            "Inspirational",
-            "Product"
-        ],
-        "url": "https://projecttoproduct.org/podcast/gene-kim/"
-    },
-    {
-        "airtable_createdTime": "2021-06-19T11:36:19.000Z",
-        "airtable_id": "recsxgU1xPqwC6b5y",
-        "created": "2021-06-19T11:36:19.000Z",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "Open Space \u2013 Gu\u00eda de facilitaci\u00f3n",
-        "registered_at": "2021-06-19T11:36:19.000Z",
-        "resource": "Open Space \u2013 Gu\u00eda de facilitaci\u00f3n - https://www.ynspira.com/open-space-guia-de-facilitacion/",
-        "resource_type": "article/paper",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recVivqLFitzRKGJc"
-        ],
-        "speakers_names": [
-            "Joserra D\u00edaz"
-        ],
-        "url": "https://www.ynspira.com/open-space-guia-de-facilitacion/"
-    },
-    {
         "airtable_createdTime": "2022-09-18T22:04:24.000Z",
         "airtable_id": "rect19QTtanUH9RYE",
         "blog_url": "https://www.eferro.net/2022/09/good-talkspodcasts-sept-2022-i.html",
@@ -30821,28 +29800,6 @@
         "year": 2016
     },
     {
-        "airtable_createdTime": "2021-06-19T11:36:18.000Z",
-        "airtable_id": "rectkTLkzQl0sNZ5N",
-        "created": "2021-06-19T11:36:18.000Z",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "Applying the Universal Scalability Law to organisations",
-        "registered_at": "2021-06-19T11:36:18.000Z",
-        "resource": "Applying the Universal Scalability Law to organisations - https://blog.acolyer.org/2015/04/29/applying-the-universal-scalability-law-to-organisations/",
-        "resource_type": "article/paper",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recE1SqrGIGMgD1Sc"
-        ],
-        "speakers_names": [
-            "Adrian Colyer"
-        ],
-        "url": "https://blog.acolyer.org/2015/04/29/applying-the-universal-scalability-law-to-organisations/"
-    },
-    {
         "airtable_createdTime": "2020-01-29T19:31:52.000Z",
         "airtable_id": "rectkuJrZiRLu4mDH",
         "blog_url": "http://www.eferro.net/2020/02/good-talkspodcasts-february-2020.html",
@@ -31165,28 +30122,6 @@
             "Data Science"
         ],
         "url": "http://www.se-radio.net/2018/01/se-radio-episode-315-jeroen-janssens-on-tools-for-data-science/"
-    },
-    {
-        "airtable_createdTime": "2021-06-19T11:36:21.000Z",
-        "airtable_id": "recuIRbW1nugrwXbl",
-        "created": "2021-06-19T11:36:21.000Z",
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 1,
-        "name": "Product Thinking vs. Project Thinking",
-        "registered_at": "2021-06-19T11:36:21.000Z",
-        "resource": "Product Thinking vs. Project Thinking - https://productcoalition.com/product-thinking-vs-project-thinking-380692a2d4e",
-        "resource_type": "article/paper",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recgDVGGnHFnbFvyr"
-        ],
-        "speakers_names": [
-            "Kyle Evans"
-        ],
-        "url": "https://productcoalition.com/product-thinking-vs-project-thinking-380692a2d4e"
     },
     {
         "airtable_createdTime": "2020-01-19T20:40:55.000Z",
@@ -31578,39 +30513,6 @@
         ],
         "url": "https://www.youtube.com/watch?v=t4IOnciAzbE",
         "year": 2022
-    },
-    {
-        "airtable_createdTime": "2020-01-19T20:42:21.000Z",
-        "airtable_id": "recutPSPpzqazJtHC",
-        "blog_url": "https://www.eferro.net/2017/01/interesting-talks-and-podcast-episodes.html",
-        "created": "2020-01-19T20:42:21.000Z",
-        "duration": 2400,
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 0,
-        "name": "The Long Road",
-        "published": true,
-        "registered_at": "2020-01-19T20:42:21.000Z",
-        "resource": "The Long Road - https://vimeo.com/167722761",
-        "resource_type": "talk",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recnlmX07KBMcRN7A"
-        ],
-        "speakers_names": [
-            "Sandro Mancuso"
-        ],
-        "topics": [
-            "rec6JMQpL2LSjoP2E",
-            "recD5hNaJCwpTdERc"
-        ],
-        "topics_names": [
-            "Inspirational",
-            "Engineering Career"
-        ],
-        "url": "https://vimeo.com/167722761"
     },
     {
         "airtable_createdTime": "2020-01-19T20:32:19.000Z",
@@ -32023,32 +30925,6 @@
         ],
         "url": "https://www.youtube.com/watch?v=_dNXhRTHe2M",
         "year": 2024
-    },
-    {
-        "airtable_createdTime": "2020-01-19T20:37:36.000Z",
-        "airtable_id": "recw0wvMTpYNoKGXs",
-        "blog_url": "https://www.eferro.net/2014/09/index.html",
-        "created": "2020-01-19T20:37:36.000Z",
-        "description": "Interesting games and dynamics to facilitate domain analysis\n",
-        "duration": 2760,
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 0,
-        "name": "Greg Young, DDD mistery talk",
-        "published": true,
-        "registered_at": "2020-01-19T20:37:36.000Z",
-        "resource": "Greg Young, DDD mistery talk - https://skillsmatter.com/skillscasts/3048-mystery-ddd",
-        "resource_type": "talk",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recIyHsIVkIEKn9TJ"
-        ],
-        "speakers_names": [
-            "Greg Young"
-        ],
-        "url": "https://skillsmatter.com/skillscasts/3048-mystery-ddd"
     },
     {
         "airtable_createdTime": "2020-01-19T20:42:28.000Z",
@@ -32549,44 +31425,6 @@
             "Engineering Culture"
         ],
         "url": "https://www.youtube.com/watch?v=97YRxrKNLP0"
-    },
-    {
-        "airtable_createdTime": "2021-03-21T11:55:46.000Z",
-        "airtable_id": "recwm49J2jLpnm2bE",
-        "blog_url": "https://www.eferro.net/2021/03/good-talkspodcasts-march-2021-ii.html",
-        "created": "2021-03-21T11:55:46.000Z",
-        "description": "Interesting talk on development flow with interesting examples from large companies.\n",
-        "duration": 1380,
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 0,
-        "name": "The CIO Who Mistook a Value Stream for a Hat",
-        "published": true,
-        "registered_at": "2021-03-21T11:55:46.000Z",
-        "resource": "The CIO Who Mistook a Value Stream for a Hat - https://vimeo.com/497668960",
-        "resource_type": "talk",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recSVEmi24zSiMmxa"
-        ],
-        "speakers_names": [
-            "Mik Kersten"
-        ],
-        "topics": [
-            "recWFKWrPEdeEYbzx",
-            "recPoM7t8neA7gkZ5",
-            "recvlsvAt2LHjlKU2",
-            "recF9sEGaOJ0hiQgV"
-        ],
-        "topics_names": [
-            "Engineering Culture",
-            "Devops",
-            "Management",
-            "Technical leadership"
-        ],
-        "url": "https://vimeo.com/497668960"
     },
     {
         "airtable_createdTime": "2020-01-19T20:41:17.000Z",
@@ -33137,44 +31975,6 @@
         "url": "https://www.youtube.com/watch?v=8AXec4l0UL4"
     },
     {
-        "airtable_createdTime": "2020-01-19T20:39:25.000Z",
-        "airtable_id": "recxvqSvNMqPNeCk1",
-        "blog_url": "https://www.eferro.net/2019/04/good-talkspodcasts-april-2019-i.html",
-        "created": "2020-01-19T20:39:25.000Z",
-        "description": "A good summary\u00a0of the problems introduced by using feature branching strategy and how this block continuous integration.\n",
-        "duration": 2880,
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 0,
-        "name": "Feature Branching considered Evil",
-        "published": true,
-        "registered_at": "2020-01-19T20:39:25.000Z",
-        "resource": "Feature Branching considered Evil - https://vimeo.com/275529985",
-        "resource_type": "talk",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recZr6kOHXzmS25Va"
-        ],
-        "speakers_names": [
-            "Thierry de Pauw"
-        ],
-        "topics": [
-            "recFbzSbd07ttDIYJ",
-            "recQ4hio93eTgzFTS",
-            "recin3Ync8iZldW0q",
-            "recYkFYw6BSRfA0Ce"
-        ],
-        "topics_names": [
-            "Technical Practices",
-            "Architecture",
-            "Continuous Delivery",
-            "XP"
-        ],
-        "url": "https://vimeo.com/275529985"
-    },
-    {
         "airtable_createdTime": "2020-01-19T20:35:24.000Z",
         "airtable_id": "recy0wDFR0zZlqOlN",
         "blog_url": "https://www.eferro.net/2016/10/great-technical-talks-ive-seen-this.html",
@@ -33691,35 +32491,6 @@
             "Des Traynor"
         ],
         "url": "https://www.intercom.com/blog/criticism-and-two-way-streets/"
-    },
-    {
-        "airtable_createdTime": "2020-01-19T20:40:01.000Z",
-        "airtable_id": "recymZq2cqHCkc4cB",
-        "blog_url": "https://www.eferro.net/2019/07/good-talkspodcasts-july-2019-i.html",
-        "created": "2020-01-19T20:40:01.000Z",
-        "description": "\n",
-        "duration": 3120,
-        "language": "English",
-        "last_modified": "2023-06-18T06:28:48.000Z",
-        "less_15": 0,
-        "name": "Ron Jeffries and Chet Hendrickson - Cucumber Podcast",
-        "published": true,
-        "registered_at": "2020-01-19T20:40:01.000Z",
-        "resource": "Ron Jeffries and Chet Hendrickson - Cucumber Podcast - https://cucumber.io/blog/ron-and-chet-podcast/",
-        "resource_type": "podcast",
-        "speaker_women_in_tech": [
-            null,
-            null
-        ],
-        "speakers": [
-            "recKk1MUoYp2tjLW0",
-            "recsC077sqmUrcBC6"
-        ],
-        "speakers_names": [
-            "Ron Jeffries",
-            "Chet Hendrickson"
-        ],
-        "url": "https://cucumber.io/blog/ron-and-chet-podcast/"
     },
     {
         "airtable_createdTime": "2021-04-24T19:04:21.000Z",
