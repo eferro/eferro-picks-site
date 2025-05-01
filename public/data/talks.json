@@ -11391,6 +11391,44 @@
         "url": "https://www.honeycomb.io/blog/lies-my-parents-told-me-about-logs/"
     },
     {
+        "airtable_createdTime": "2025-04-30T22:15:54.000Z",
+        "airtable_id": "recMEyOpX0gZyQYQl",
+        "core_topic": "AI",
+        "created": "2025-04-30T22:15:54.000Z",
+        "description": "Practical best practices for effective vibe coding and using AI tools/LLMs in software development workflows, from planning and testing to debugging and leveraging multiple models.\n",
+        "duration": 960,
+        "language": "English",
+        "last_modified": "2025-04-30T22:22:56.000Z",
+        "less_15": 0,
+        "name": "How To Get The Most Out Of Vibe Coding | Startup School",
+        "notes": "Based on the sources, the most important lesson conveyed by the talk is that **effectively using AI for software development**, often called \"vibe coding,\" is achieved by **integrating AI tools into established professional software engineering practices**. The overarching theme is to **make the LLM follow the processes that a good professional software developer would use**.\nWhat someone should remember after watching/listening to it is that getting great results with AI coding involves **treating the AI as a different kind of programming language** that requires detailed context and careful guidance, **planning comprehensively** before diving into code, **using version control (Git) religiously** to manage changes and mistakes, **writing high-level tests** to catch regressions, being **willing to `git reset`** when the AI produces incorrect or layered code, and **iteratively refining** the process by providing clear instructions, local documentation, and switching models as needed. Essentially, it's about applying discipline, testing, and iteration to the AI-assisted workflow.\n\nHere are the most important points conveyed by the talk about effectively using AI (LLMs) for software development, often referred to as \"vibe coding\":\n- **Treat AI Coding as a New Programming Language:** Think of vibe coding as a different kind of programming language where you program with language rather than code. You need to provide a lot of necessary context and detailed information to get good results. The overarching theme is to **make the LLM follow the processes that a good professional software developer would use**.\n- **Start with a Comprehensive Plan:** Before diving into writing code, work with the LLM to **create a detailed plan** for your project in a markdown file within your project folder. Refine this plan by deleting disliked items, explicitly marking features as \"won't do,\" and keeping a section for later ideas. Keep referring back to this plan during implementation.\n- **Implement Piece by Piece:** Don't expect the models to \"oneshot\" entire complicated products. Instead, **implement the plan section by section**, checking that each step works, running tests, and committing it to Git before moving to the next.\n- **Use Version Control Religiously:** **Git is your friend**; use it religiously. Commit frequently after successful steps. Be prepared to **`git reset --head hard`** if things aren't working, as prompting multiple times can accumulate layers of bad code. Don't trust the AI tools' internal revert functions yet.\n- **Write High-Level Tests:** **Write high-level integration tests** that simulate user interaction (like clicking through the site) rather than just low-level unit tests. These tests are crucial for catching regressions when LLMs make unnecessary changes to unrelated logic.\n- **Leverage Error Messages for Debugging:** When encountering a bug, **copy and paste the error message directly into the LLM**. Often, the error message alone is enough for the AI to identify and fix the problem.\n- **Reset After Failed Debugging Attempts:** Similar to implementation, after each failed attempt at fixing a bug, **`git reset` and start again** to avoid accumulating layers of \"crust\" or \"crap\" code. Add logging (`logging is your friend`) if in doubt.\n- **Switch Models When Stuck:** If an LLM is struggling with a problem, **try switching to a different model** (e.g., Claude, OpenAI models like GPT, Gemini), as different models may succeed where others fail. Different models might also perform better at specific tasks like planning vs. implementation.\n- **Provide Explicit Instructions and Context:** Write **detailed instructions** for your AI coding agent, potentially hundreds of lines, to make them significantly more effective. Provide necessary context in a detailed way.\n- **Use Local Documentation:** If possible, **download documentation for APIs and put it in a local subdirectory** so the LLM can access it locally, as pointing to online documentation can be patchy. Instruct the LLM to read these local docs.\n- **Refactor Frequently with Tests:** Once the code works and tests are implemented, **refactor frequently**, knowing that your tests will catch any regressions. LLMs can even help identify parts of your codebase that are candidates for refactoring. Keep files small and modular for both human and LLM readability.\n- **Use AI Beyond Coding:** LLMs aren't just for coding; they can act as a **DevOps engineer** (e.g., configuring DNS, setting up hosting) and even a **designer** (e.g., creating images, resizing favicons), accelerating non-coding tasks.\n- **Use the LLM as a Teacher:** Ask the AI to walk through code implementations line by line and explain them; it's a great way to **learn new technologies**.\n- **Keep Experimenting:** The state-of-the-art in AI coding changes rapidly, so **keep experimenting** with new model releases to see which performs best for different tasks.\n\n",
+        "registered_at": "2025-04-30T22:15:54.000Z",
+        "resource": "How To Get The Most Out Of Vibe Coding | Startup School - https://www.youtube.com/watch?v=BJjsfNO5JTo",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recS4NRlJSM8gq1Bb"
+        ],
+        "speakers_names": [
+            "Tom Blomfield"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "recbJb6M6X8AZPTRc",
+            "recxJkIWVynhDpBOI",
+            "rec436FbBa6hFiWcj"
+        ],
+        "topics_names": [
+            "AI",
+            "Generative AI",
+            "Devex",
+            "Developer Productivity"
+        ],
+        "url": "https://www.youtube.com/watch?v=BJjsfNO5JTo"
+    },
+    {
         "airtable_createdTime": "2020-01-19T20:34:06.000Z",
         "airtable_id": "recMFXymMhnZXJngs",
         "blog_url": "https://www.eferro.net/2016/12/interesting-talks-ive-seen-during.html",
