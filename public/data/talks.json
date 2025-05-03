@@ -10487,11 +10487,12 @@
         "airtable_id": "recKjMTEyiJMegMdY",
         "blog_url": "https://www.eferro.net/2019/07/good-talkspodcasts-july-2019-i.html",
         "conference_name": "XP",
+        "core_topic": "Agile-XP",
         "created": "2020-01-19T20:40:00.000Z",
         "description": "\n",
         "duration": 5280,
         "language": "English",
-        "last_modified": "2025-04-05T19:28:59.000Z",
+        "last_modified": "2025-05-03T08:10:31.000Z",
         "less_15": 0,
         "name": "Kent Beck - XP 2018",
         "published": true,
@@ -10506,6 +10507,16 @@
         ],
         "speakers_names": [
             "Kent Beck"
+        ],
+        "topics": [
+            "recYkFYw6BSRfA0Ce",
+            "rechj5WeSQRH211np",
+            "recFbzSbd07ttDIYJ"
+        ],
+        "topics_names": [
+            "XP",
+            "Agile",
+            "Technical Practices"
         ],
         "url": "https://vimeo.com/298440446",
         "year": 2018
@@ -12421,10 +12432,11 @@
         "airtable_id": "recOOYCLmVAYncVNn",
         "blog_url": "https://www.eferro.net/2019/04/index.html",
         "conference_name": "InfoQ",
+        "core_topic": "Continuous Delivery",
         "created": "2020-01-19T20:39:18.000Z",
         "description": "Good ideas to complement and amplify the continuous delivery using canary releasing, segmentation, toggles and so on.\n",
         "language": "English",
-        "last_modified": "2025-04-05T19:28:13.000Z",
+        "last_modified": "2025-05-03T08:13:07.000Z",
         "less_15": 1,
         "name": "Progressive Delivery",
         "published": true,
@@ -12439,6 +12451,16 @@
         ],
         "speakers_names": [
             "James Governor"
+        ],
+        "topics": [
+            "recin3Ync8iZldW0q",
+            "recPoM7t8neA7gkZ5",
+            "recQ4hio93eTgzFTS"
+        ],
+        "topics_names": [
+            "Continuous Delivery",
+            "Devops",
+            "Architecture"
         ],
         "url": "https://www.infoq.com/presentations/progressive-delivery"
     },
@@ -29794,10 +29816,11 @@
         "airtable_id": "recscHyLdiqVlvrn0",
         "blog_url": "https://www.eferro.net/2017/05/interesting-technical-talkspodcasts-may.html",
         "conference_name": "O'Reilly Software Architecture Conference",
+        "core_topic": "Engineering Culture",
         "created": "2020-01-19T20:42:14.000Z",
         "duration": 2460,
         "language": "English",
-        "last_modified": "2025-04-05T19:27:52.000Z",
+        "last_modified": "2025-05-03T08:11:33.000Z",
         "less_15": 0,
         "name": "why software development is an engineering discipline",
         "published": true,
@@ -29812,6 +29835,16 @@
         ],
         "speakers_names": [
             "Glenn Vanderburg"
+        ],
+        "topics": [
+            "rec6JMQpL2LSjoP2E",
+            "recWFKWrPEdeEYbzx",
+            "recF9sEGaOJ0hiQgV"
+        ],
+        "topics_names": [
+            "Inspirational",
+            "Engineering Culture",
+            "Technical leadership"
         ],
         "url": "https://www.youtube.com/watch?v=zDEpeWQHtFU"
     },
