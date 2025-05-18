@@ -16213,6 +16213,48 @@
         "url": "https://medium.com/@johnpcutler/crack-the-wip-work-in-progress-7b0c646a7cf8"
     },
     {
+        "airtable_createdTime": "2025-05-18T15:04:18.000Z",
+        "airtable_id": "recVT49NiBViOVkln",
+        "conference_name": "Devoxx",
+        "core_topic": "Software Design",
+        "created": "2025-05-18T15:04:18.000Z",
+        "description": "Learn why thoughtful, consistent data modeling and decoupling external data views from internal implementations are critical responsibilities for software engineers in modern agile environments, given that data persists forever and outlives the code that uses it.\n",
+        "duration": 2400,
+        "language": "English",
+        "last_modified": "2025-05-18T15:24:08.000Z",
+        "less_15": 0,
+        "name": "Devoxx Greece 2025 - Data Modeling for Software Engineers by Scott Sosna",
+        "notes": "Software engineers, who are now often responsible for data modeling in reactive development environments, must understand that data is forever and outlives the code that uses it. Therefore, making thoughtful, consistent data design decisions, adhering to standards, always validating data, and especially decoupling the internal data implementation from external representations is crucial for ensuring the long-term viability and maintainability of software solutions.\n\n- **Data is forever**; unlike code which evolves, data captured often persists for decades and across application changes.\n- Software engineers are now often responsible for data modeling in reactive, agile environments, whereas previously, dedicated data architects handled this proactively.\n- The shift to reactive modeling by engineers can lead to challenges like a lack of understanding of the bigger picture, duplicative work across teams, difficulty ensuring end-to-end usability of data, and guessing requirements.\n- **Thoughtful data design decisions** are critical as they impact the overall viability and maintainability of solutions.\n- **Consistency** in data naming, typing, and structure is paramount to reduce cognitive complexity and prevent bugs.\n- **Always validate data** to ensure its correctness and integrity.\n- **Adhere to established standards** (international, industry, corporate, de facto) rather than creating new ones unnecessarily.\n- **Anticipate future changes and needs**, as things you think will \"never happen\" often do (e.g., a user having more than one phone number).\n- Avoid common pitfalls like ignoring compliance/security, abusing optionality or flags, using business keys instead of system-generated IDs, codifying \"all\" or \"none\" options in enums, storing localized data, and repeating data unnecessarily.\n- **Decouple your internal data implementation details from their external representation** (e.g., in APIs or reports) to maintain flexibility and allow internal restructuring without breaking external consumers.\n- When in doubt about data design, **talk it out** to ensure understanding and alignment.\n\n",
+        "registered_at": "2025-05-18T15:04:18.000Z",
+        "resource": "Devoxx Greece 2025 - Data Modeling for Software Engineers by Scott Sosna - https://www.youtube.com/watch?v=nlMJkNiuPSc",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recMj11eszdR5J3g3"
+        ],
+        "speakers_names": [
+            "Scott Sosna"
+        ],
+        "topics": [
+            "recUnYzKrJyW20xWO",
+            "rechj5WeSQRH211np",
+            "recm3GCPgEVSDmeVI",
+            "recQ4hio93eTgzFTS",
+            "reck50u1RzhJj6MIy"
+        ],
+        "topics_names": [
+            "Data Engineering",
+            "Agile",
+            "Software Design",
+            "Architecture",
+            "Flow"
+        ],
+        "url": "https://www.youtube.com/watch?v=nlMJkNiuPSc",
+        "year": 2025
+    },
+    {
         "airtable_createdTime": "2020-01-19T20:33:12.000Z",
         "airtable_id": "recVTbzrAhUvzmVba",
         "blog_url": "https://www.eferro.net/2018/01/interesting-talkspodcasts-2018-jan-ii.html",
@@ -27583,6 +27625,48 @@
         ],
         "url": "https://www.youtube.com/watch?v=BFFY9Zor6zw",
         "year": 2020
+    },
+    {
+        "airtable_createdTime": "2025-05-18T15:21:13.000Z",
+        "airtable_id": "recoG83FEeHDan6dF",
+        "conference_name": "Devoxx",
+        "core_topic": "Lean-Agile",
+        "created": "2025-05-18T15:21:13.000Z",
+        "description": "\"How Flow Works and other curiosities\" by James Lewis explains how work flows as information through organizational value streams, detailing blockages like queues and offering principles like batch size reduction to improve delivery and throughput.\n",
+        "duration": 2400,
+        "language": "English",
+        "last_modified": "2025-05-18T15:27:44.000Z",
+        "less_15": 0,
+        "name": "Devoxx Greece 2025 - How Flow Works and other curiosities by James Lewis",
+        "notes": "Based on the sources, the most important lesson conveyed by the talk is to understand **how work flows as information through value streams** and the significant impact that **blockages, particularly queues and wait times**, have on delivery and throughput. The key takeaway is that **reducing batch size** is explicitly presented as the simplest, easiest, and cheapest way to dramatically **improve flow**, shorten cycle time, and increase throughput.\n\nImportant points:\n1. Work flows as **information through value streams** in organizations, especially for knowledge workers.\n2. This work flow is often **invisible**, unlike physical inventory in a factory.\n3. **Blockages** in the flow, particularly **wait times and queues**, are like inventory and **cost money** by delaying value realization.\n4. Common types of wait times include **coordination, scheduling (like review boards), and queues**.\n5. **Shared test environments** are a classic example of a blockage causing significant wait times and cost.\n6. **Value stream mapping** is a tool to visualize the flow and identify these wait times.\n7. Controlling **queue size** is a **leading indicator** and more effective for managing flow than tracking cycle time (a trailing metric).\n8. The **simplest, easiest, and cheapest way to dramatically improve flow** and throughput is by **reducing batch size**.\n9. Continuous Delivery improves flow by enabling smaller, more frequent deployments (reducing batch size).\n10. Self-service infrastructure (like IaaS) improves flow by reducing provisioning wait times, removing people as the bottleneck.\n11. Systems like teams and roads are prone to **congestion collapse** when overloaded; limiting work in progress (**controlling occupancy**) can prevent this.\n12. Simulations using agent-based models can demonstrate the impact of different approaches (like batch vs. single piece flow) on lead time and value delivery.\n\n",
+        "registered_at": "2025-05-18T15:21:13.000Z",
+        "resource": "Devoxx Greece 2025 - How Flow Works and other curiosities by James Lewis - https://www.youtube.com/watch?v=PpigE_gJ_mU",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recTcX5TNO8Zp0gCu"
+        ],
+        "speakers_names": [
+            "James Lewis"
+        ],
+        "topics": [
+            "reck50u1RzhJj6MIy",
+            "rech2MAtQRy0Lvc2Y",
+            "rec0PB37LN1Kz0Blh",
+            "recO11XlolI72a1fV",
+            "recin3Ync8iZldW0q"
+        ],
+        "topics_names": [
+            "Flow",
+            "Lean Software Development",
+            "Lean Product Management",
+            "Lean",
+            "Continuous Delivery"
+        ],
+        "url": "https://www.youtube.com/watch?v=PpigE_gJ_mU",
+        "year": 2025
     },
     {
         "airtable_createdTime": "2023-01-08T16:50:10.000Z",
