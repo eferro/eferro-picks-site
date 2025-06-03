@@ -22580,7 +22580,7 @@
         "description": "Very deep ideas about how to make any kind of huge technical change using small and incremental changes. This part of the core of agile... Vertical slicing to make changes in small (low risk) steps.\n",
         "duration": 3540,
         "language": "English",
-        "last_modified": "2025-04-05T17:42:57.000Z",
+        "last_modified": "2025-06-03T12:01:32.000Z",
         "less_15": 0,
         "name": "Big Transitions in Small Steps",
         "published": true,
@@ -22600,12 +22600,14 @@
         "topics": [
             "rechj5WeSQRH211np",
             "recFbzSbd07ttDIYJ",
-            "recm3GCPgEVSDmeVI"
+            "recm3GCPgEVSDmeVI",
+            "recnvzS3XS3MGHk3e"
         ],
         "topics_names": [
             "Agile",
             "Technical Practices",
-            "Software Design"
+            "Software Design",
+            "Evolutionary Design"
         ],
         "url": "https://www.youtube.com/watch?v=44sJLFgzhn4",
         "year": 2012
