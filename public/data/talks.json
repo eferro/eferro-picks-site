@@ -2073,6 +2073,40 @@
         "url": "https://www.youtube.com/watch?v=b1JlYZQG3lI"
     },
     {
+        "airtable_createdTime": "2025-06-07T19:28:41.000Z",
+        "airtable_id": "rec4NJDiTh0K3zpLX",
+        "core_topic": "Product",
+        "created": "2025-06-07T19:28:41.000Z",
+        "description": "Jeff Bezos explains his mental model of **two-way door (reversible) and one-way door (irreversible) decisions**, highlighting how to apply different decision-making processes for each in organizations.\n",
+        "duration": 180,
+        "language": "English",
+        "last_modified": "2025-06-07T19:36:07.000Z",
+        "less_15": 1,
+        "name": "Jeff Bezos explains one-way door decisions and two-way door decisions",
+        "rating": 5,
+        "registered_at": "2025-06-07T19:28:41.000Z",
+        "resource": "Jeff Bezos explains one-way door decisions and two-way door decisions - https://www.youtube.com/watch?v=rxsdOQa_QkM",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recIevW6CSnLgb5Ss"
+        ],
+        "speakers_names": [
+            "Jeff Bezos"
+        ],
+        "topics": [
+            "recDnzAEazkBJFFZh",
+            "recvlsvAt2LHjlKU2"
+        ],
+        "topics_names": [
+            "Mental models",
+            "Management"
+        ],
+        "url": "https://www.youtube.com/watch?v=rxsdOQa_QkM"
+    },
+    {
         "airtable_createdTime": "2022-08-15T16:01:32.000Z",
         "airtable_id": "rec4SJpVcSeIFUOfq",
         "blog_url": "https://www.eferro.net/2022/08/good-talkspodcasts-aug-2022-i.html",
