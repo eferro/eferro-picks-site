@@ -1688,6 +1688,47 @@
         "url": "https://channel9.msdn.com/series/Fundamentals-of-Lean-Software-Delivery/"
     },
     {
+        "airtable_createdTime": "2025-06-11T12:49:35.000Z",
+        "airtable_id": "rec3V69f2pRaJwHMZ",
+        "conference_name": "Yow!",
+        "core_topic": "Data",
+        "created": "2025-06-11T12:49:35.000Z",
+        "description": "This talk offers a critical look at why the **analytical data world is \"the land DevOps forgot,\"** and presents **Data Mesh** as a **paradigm shift to enable decentralized, autonomous data operations**, emphasizing that successful adoption requires **significant organizational and cultural change**.\n",
+        "duration": 2820,
+        "language": "English",
+        "last_modified": "2025-06-11T12:54:19.000Z",
+        "less_15": 0,
+        "name": "Data - The Land DevOps Forgot",
+        "notes": "The most important lesson conveyed by this presentation is that the **data world operates under fundamentally different dynamics than operational systems, plagued by slow processes, fear of change, and escalating costs**, akin to \"the land DevOps forgot\". The paradigm shift offered by **Data Mesh**, which applies microservices principles to data, is the proposed solution; however, its successful implementation hinges crucially on **profound organizational and cultural change management, decentralized ownership, effective incentives, and overcoming a lack of interoperability between vendor platforms**, rather than just technical solutions.\n\nKey points of the presentation:\n- The data world, particularly **analytical data and ETL**, operates very differently from the operational world, often being \"the land DevOps forgot.\"\n- In the data world, **units of work take hours to days**, deployments are slow, and the lag from commit to seeing results can be several days, leading to **fear of change**, accumulated **technical debt**, and **increasing costs**.\n- There's a significant **chasm in tech stacks and languages** between operational (e.g., Flutter, Closure) and analytical (e.g., Python, Scala, Spark) systems, leading to fragmentation and inconsistent results.\n- Traditional Big Data approaches often result in inflexible, high-cost environments that **hold back business growth**.\n- The solution is **Data Mesh**, a new paradigm akin to **microservices for data**, aiming to enable teams to move at their own pace with autonomous, independent deployments.\n- **Key principles of Data Mesh** are: **domain ownership** of data, treating **data as a product**, providing a **self-service data platform**, and implementing **federated governance**.\n- **Decentralizing data ownership** is challenging but crucial; it involves mapping organizational domains to data sets and making data owners accountable for their data product's operations, leading to reduced breakage.\n- Establishing **clear boundaries** between internal and public data by introducing \"private\" and \"public\" flags, with eventual enforcement, is necessary to manage dependencies.\n- Treating **data as a product** means ensuring it is discoverable, understandable (via schema, documentation), and trustworthy (via **lineage**, SLOs, and **quality rules**).\n- A **self-service data platform** provides tools, visibility, and automated guardrails, empowering data product owners while managing cognitive load, and must be **user-centric** (supporting various languages like SQL and Python).\n- **Incentives** are critical; while data owners take on support and production costs, mechanisms like **internal transfer pricing** (a marketplace where consumers pay for data products) can encourage high-quality data production.\n- Major barriers to Data Mesh adoption include a **lack of interoperability** between vendor-specific data platforms and the **absence of an open, standardized definition for a data product** (like Swagger for APIs).\n- Implementing Data Mesh requires an **incremental approach**, combining architectural changes with significant **organizational and cultural change management**.\n- **Relentless communication** of \"why\" the change is needed, integrating into **planning cycles (e.g., OKRs)**, and building **support from all organizational levels** (top-down, bottom-up, middle-out) are essential.\n- It's important to **ensure inclusion for all team members** during transitions, avoiding \"Legacy land\" vs. \"Promised Land\" divisions, and to **leave slack** in schedules to allow for innovation and change.\n- Be **wary of vendor capture**; many vendors marketing \"data mesh\" may not offer true decentralized, independently operating solutions.\n\n\n",
+        "rating": 5,
+        "registered_at": "2025-06-11T12:49:35.000Z",
+        "resource": "Data - The Land DevOps Forgot - https://www.youtube.com/watch?v=459-H33is6o",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recGU5VYzZ0w1AvWC"
+        ],
+        "speakers_names": [
+            "Michael T. Nygard"
+        ],
+        "topics": [
+            "recUnYzKrJyW20xWO",
+            "recPoM7t8neA7gkZ5",
+            "recQ4hio93eTgzFTS",
+            "recbWs6dTsdPwfWnm"
+        ],
+        "topics_names": [
+            "Data Engineering",
+            "Devops",
+            "Architecture",
+            "Platform"
+        ],
+        "url": "https://www.youtube.com/watch?v=459-H33is6o",
+        "year": 2023
+    },
+    {
         "airtable_createdTime": "2021-10-23T06:48:39.000Z",
         "airtable_id": "rec3hBcGU3iVdPWx7",
         "created": "2021-10-23T06:48:39.000Z",
