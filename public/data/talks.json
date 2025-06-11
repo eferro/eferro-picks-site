@@ -28771,6 +28771,45 @@
         "year": 2017
     },
     {
+        "airtable_createdTime": "2025-06-11T21:48:34.000Z",
+        "airtable_id": "recqJVxTKzM21vGFk",
+        "core_topic": "AI",
+        "created": "2025-06-11T21:48:34.000Z",
+        "description": "Industry legend Kent Beck, creator of XP and TDD, shares insights on the evolution of Agile, Extreme Programming, and Test-Driven Development, alongside his current experience of \"most fun ever\" coding with AI agents.\n",
+        "duration": 4500,
+        "language": "English",
+        "last_modified": "2025-06-11T21:52:18.000Z",
+        "less_15": 0,
+        "name": "TDD, AI agents and coding with Kent Beck",
+        "notes": "The most important lesson conveyed is that **AI coding tools are fundamentally transforming the landscape of software development**, making programming the \"most fun I've ever had\" for industry legend Kent Beck by providing immense leverage for \"insanely ambitious ideas\" and shifting what's cheap and expensive. This profound shift necessitates **continuous experimentation with new processes** and underscores the ongoing relevance of foundational practices like **Test-Driven Development (TDD)** for communicating with and managing the \"unpredictable genie\" of AI.\n- **AI coding tools are profoundly transforming software development**, making programming the \"most fun I've ever had\" by offering immense leverage for \"insanely ambitious ideas\" and shifting the landscape of what's cheap and expensive.\n- These **AI tools are like an \"unpredictable genie,\"** requiring continuous experimentation with new processes, as they often don't do exactly what's intended and lack inherent design sense.\n- **Test-Driven Development (TDD) significantly reduces programming anxiety** by providing constant verification and certainty that code works.\n- TDD is not just about testing; it **inherently involves design decisions** about the interface before implementation, offering clarity and a \"moment of breath\" for broader design thoughts.\n- **TDD is highly relevant when working with AI agents** for communicating expected values and catching the AI \"accidentally breaking things\" or changing tests.\n- **Agile, particularly Extreme Programming (XP), emerged from a need to move away from rigid waterfall methodologies** towards continuous feedback, rapid iterations, and constant adjustment.\n- Kent Beck initially **disliked the term \"Agile\" because it was \"too attractive,\"** leading to widespread adoption without adherence to its core principles; he preferred \"conversational.\"\n- **XP emphasizes \"crank[ing] the knobs up to 11\" on effective practices**, like three-week deployable iterations and programmers writing tests, and **strongly recommends pairing** due to observed zero defects from paired code.\n- At massive scale (e.g., Facebook), **traditional TDD became less critical due to alternative, faster feedback loops**, high individual ownership, sophisticated observability, and the extensive use of feature flags.\n- Organizations will need to **get used to \"throwing away a lot more code\"** as AI makes experimenting with ideas drastically cheaper, leading to a higher quantity of explored solutions.\n\n",
+        "registered_at": "2025-06-11T21:48:34.000Z",
+        "resource": "TDD, AI agents and coding with Kent Beck - https://www.youtube.com/watch?v=aSXaxOdVtAQ",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            null,
+            null
+        ],
+        "speakers": [
+            "rechBhL1vENLzvUi6",
+            "recrARrQXlgrH2dAK"
+        ],
+        "speakers_names": [
+            "Kent Beck",
+            "Gergely Orosz"
+        ],
+        "topics": [
+            "recYkFYw6BSRfA0Ce",
+            "recmPbBNpUB7Q5XyX",
+            "recmuONwokRtPS6Tp"
+        ],
+        "topics_names": [
+            "XP",
+            "tdd",
+            "AI"
+        ],
+        "url": "https://www.youtube.com/watch?v=aSXaxOdVtAQ"
+    },
+    {
         "airtable_createdTime": "2020-01-19T20:42:41.000Z",
         "airtable_id": "recqMk6eYUBNpq8GC",
         "blog_url": "https://www.eferro.net/2017/10/good-talkspodcasts-september-2017.html",
