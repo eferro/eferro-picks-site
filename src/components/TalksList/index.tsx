@@ -128,7 +128,24 @@ export function TalksList() {
 
   // Handle author selection
   const handleAuthorClick = (author: string) => {
-    setSelectedAuthor(prev => prev === author ? null : author);
+    const newAuthor = selectedAuthor === author ? null : author;
+    setSelectedAuthor(newAuthor);
+
+    const params = new URLSearchParams();
+
+    // Preserve existing parameters
+    for (const [key, value] of searchParams.entries()) {
+      if (key !== 'author') {
+        params.set(key, value);
+      }
+    }
+
+    // Update author parameter
+    if (newAuthor) {
+      params.set('author', newAuthor);
+    }
+
+    setSearchParams(params);
   };
 
   // Filter talks by selected author, topics, conference, year, and notes
