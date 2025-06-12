@@ -8,7 +8,10 @@ const MAX_ATTEMPTS = 10;
 const MAX_DELAY = 2000;
 
 /**
- * Hook to save and restore scroll position for routes
+ * Hook to save and restore scroll position.
+ *
+ * The position is persisted only on the index page and it is reset when
+ * navigating to any other route.
  */
 export const useScrollPosition = () => {
   const location = useLocation();
