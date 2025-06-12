@@ -69,11 +69,11 @@ describe('Author Filter', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     mockSearchParams.clear();
-    // Setup talks with different authors
+    // Setup talks with different authors and titles
     (useTalks as any).mockImplementation(() => ({
       talks: [
-        createTalk({ id: '1', speakers: ['Author A'] }),
-        createTalk({ id: '2', speakers: ['Author B'] }),
+        createTalk({ id: '1', title: 'Talk A', speakers: ['Author A'] }),
+        createTalk({ id: '2', title: 'Talk B', speakers: ['Author B'] }),
       ],
       loading: false,
       error: null
@@ -98,6 +98,21 @@ describe('Author Filter', () => {
     expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
     const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
     expect(params.get('author')).toBeNull();
+  });
+  
+  it('filters talks to only selected author', () => {
+    renderWithRouter(<TalksList />);
+    const btn = screen.getByRole('button', { name: /filter by speaker: Author A/i });
+    fireEvent.click(btn);
+    // Only Talk A should be shown
+    const articles = screen.getAllByRole('article');
+    expect(articles).toHaveLength(1);
+    expect(screen.getByText('Talk A')).toBeInTheDocument();
+    expect(screen.queryByText('Talk B')).not.toBeInTheDocument();
+    // Summary count should reflect filtered talks
+    expect(screen.getByText(/Showing 1 of 2 talks/i)).toBeInTheDocument();
+    // Active button should be marked selected
+    expect(btn).toHaveAttribute('data-selected', 'true');
   });
 });
 
