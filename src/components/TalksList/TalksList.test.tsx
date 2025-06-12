@@ -296,4 +296,41 @@ describe('Has Notes Filter', () => {
     expect(button).not.toHaveClass('text-gray-700');
   });
 
-}); 
+});
+
+describe('Author Filter', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockSearchParams.clear();
+
+    (useTalks as any).mockImplementation(() => ({
+      talks: [createTalk()],
+      loading: false,
+      error: null
+    }));
+  });
+
+  it('sets author filter and updates URL params', () => {
+    renderWithRouter(<TalksList />);
+
+    const button = screen.getByRole('button', { name: /filter by speaker: Test Speaker/i });
+    fireEvent.click(button);
+
+    expect(mockSetSearchParams).toHaveBeenCalled();
+    const [[params]] = mockSetSearchParams.mock.calls;
+    expect((params as URLSearchParams).get('author')).toBe('Test Speaker');
+  });
+
+  it('removes author filter when clicking the same speaker again', () => {
+    mockSearchParams.set('author', 'Test Speaker');
+
+    renderWithRouter(<TalksList />);
+
+    const button = screen.getByRole('button', { name: /filter by speaker: Test Speaker/i });
+    fireEvent.click(button);
+
+    expect(mockSetSearchParams).toHaveBeenCalled();
+    const [[params]] = mockSetSearchParams.mock.calls;
+    expect((params as URLSearchParams).get('author')).toBeNull();
+  });
+});
