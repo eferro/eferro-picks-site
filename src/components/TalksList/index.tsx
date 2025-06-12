@@ -126,25 +126,24 @@ export function TalksList() {
     setSelectedConference(prev => prev === conference ? null : conference);
   };
 
-  // Handle author selection
+  // Handle author selection by toggling based on current URL param
   const handleAuthorClick = (author: string) => {
-    const newAuthor = selectedAuthor === author ? null : author;
+    // Determine current author from URL, not local state
+    const currentAuthor = searchParams.get('author');
+    const newAuthor = currentAuthor === author ? null : author;
     setSelectedAuthor(newAuthor);
 
     const params = new URLSearchParams();
-
-    // Preserve existing parameters
+    // Preserve existing parameters except author
     for (const [key, value] of searchParams.entries()) {
       if (key !== 'author') {
         params.set(key, value);
       }
     }
-
-    // Update author parameter
+    // Set or remove author parameter
     if (newAuthor) {
       params.set('author', newAuthor);
     }
-
     setSearchParams(params);
   };
 

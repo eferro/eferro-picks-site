@@ -15,23 +15,32 @@ vi.mock('./TalkSection', () => ({
         <h2>{props.coreTopic} ({props.talks.length})</h2>
         {props.talks.map((talk: any) => (
           <div key={talk.id} role="article">
-            <div 
-              onClick={() => mockNavigate({
-                pathname: `/talk/${talk.id}`,
-                search: mockSearchParams.toString()
-              })}
+            <div
+              onClick={() => mockNavigate({ pathname: `/talk/${talk.id}`, search: mockSearchParams.toString() })}
             >
               {talk.title}
             </div>
+            {/* Topic buttons */}
             {talk.topics.map((topic: string) => (
               <button
-                key={`${talk.id}-${topic}`}
+                key={`topic-${talk.id}-${topic}`}
                 onClick={() => props.onTopicClick(topic)}
                 aria-label={`Filter by topic ${topic}`}
                 data-testid={`topic-${topic}`}
                 data-selected={selectedTopics.includes(topic)}
               >
                 {topic}
+              </button>
+            ))}
+            {/* Author buttons */}
+            {(talk.speakers || []).map((speaker: string) => (
+              <button
+                key={`author-${talk.id}-${speaker}`}
+                onClick={() => props.onAuthorClick(speaker)}
+                aria-label={`Filter by speaker: ${speaker}`}
+                data-selected={props.selectedAuthor === speaker}
+              >
+                {speaker}
               </button>
             ))}
           </div>
@@ -53,6 +62,43 @@ vi.mock('react-router-dom', async () => {
     ...actual,
     useSearchParams: () => [mockSearchParams, mockSetSearchParams]
   };
+});
+
+// Author Filter tests for TalksList
+describe('Author Filter', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockSearchParams.clear();
+    // Setup talks with different authors
+    (useTalks as any).mockImplementation(() => ({
+      talks: [
+        createTalk({ id: '1', speakers: ['Author A'] }),
+        createTalk({ id: '2', speakers: ['Author B'] }),
+      ],
+      loading: false,
+      error: null
+    }));
+  });
+
+  it('sets author filter and updates URL params', () => {
+    renderWithRouter(<TalksList />);
+    const btn = screen.getByRole('button', { name: /filter by speaker: Author A/i });
+    fireEvent.click(btn);
+    expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
+    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+    expect(params.get('author')).toBe('Author A');
+  });
+
+  it('removes author filter when clicking the same speaker again', () => {
+    // Initialize with author filter
+    mockSearchParams.set('author', 'Author B');
+    renderWithRouter(<TalksList />);
+    const btn = screen.getByRole('button', { name: /filter by speaker: Author B/i });
+    fireEvent.click(btn);
+    expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
+    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+    expect(params.get('author')).toBeNull();
+  });
 });
 
 describe('Rating Filter', () => {
