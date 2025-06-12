@@ -17,6 +17,7 @@ This site showcases a handpicked selection of talks about software development, 
 - **Data Source**: Airtable
 - **Hosting**: GitHub Pages
 - **Automation**: GitHub Actions
+- **Testing**: Vitest + Testing Library (robust coverage for all filters, including Author Filter)
 
 ## Architecture
 
@@ -54,6 +55,22 @@ The site follows a simple and efficient architecture:
    ```bash
    npm run dev
    ```
+
+## Testing
+
+The project uses **Vitest** and **Testing Library** for unit and integration tests. The test suite provides robust coverage for all major features, including:
+
+- UI rendering and interaction for all filters (topics, rating, notes, author, etc.)
+- URL parameter updates and state management
+- Filtering logic and edge cases
+
+To run the tests locally:
+
+```bash
+npm test
+```
+
+Tests are run automatically in CI to ensure code quality and prevent regressions. Contributions should include relevant tests for new features or bug fixes.
 
 ## Data Updates
 
