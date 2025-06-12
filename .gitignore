@@ -1,3 +1,5 @@
+.cursorindexingignore
+.specstory/
 # Logs
 logs
 *.log
