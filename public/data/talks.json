@@ -11017,6 +11017,41 @@
         "url": "https://www.youtube.com/watch?v=S8Aiqws3N5o"
     },
     {
+        "airtable_createdTime": "2025-06-24T13:54:43.000Z",
+        "airtable_id": "recLgl03FEqKWTpYg",
+        "core_topic": "Lean",
+        "created": "2025-06-24T13:54:43.000Z",
+        "description": "The Red Bead Experiment vividly demonstrates that quality and performance are products of the system, not merely individual effort or willingness to do one's best.\n",
+        "duration": 540,
+        "language": "English",
+        "last_modified": "2025-06-24T14:11:37.000Z",
+        "less_15": 1,
+        "name": "Red Bead Experiment with Dr. W. Edwards Deming",
+        "notes": "The most important lesson conveyed by the Red Bead Experiment is that **individual effort, no matter how willing or hard-working, is often insufficient to produce quality when the system itself is inherently flawed**. What someone should remember is that **performance and quality are primarily functions of the system, not merely the diligence or merit of the individual worker**.\n",
+        "rating": 5,
+        "registered_at": "2025-06-24T13:54:43.000Z",
+        "resource": "Red Bead Experiment with Dr. W. Edwards Deming - https://www.youtube.com/watch?v=ckBfbvOXDvU",
+        "resource_type": "video",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recAUrzYQw28UOIyU"
+        ],
+        "speakers_names": [
+            "W. Edwards Deming"
+        ],
+        "topics": [
+            "recO11XlolI72a1fV",
+            "rec5qcZLhWV3LGjsu"
+        ],
+        "topics_names": [
+            "Lean",
+            "Quality"
+        ],
+        "url": "https://www.youtube.com/watch?v=ckBfbvOXDvU"
+    },
+    {
         "airtable_createdTime": "2022-05-15T06:37:32.000Z",
         "airtable_id": "recLnRF2aJnuRO2hg",
         "blog_url": "https://www.eferro.net/2022/05/good-talkspodcasts-may-2022-i.html",
