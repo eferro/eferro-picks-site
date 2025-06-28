@@ -5221,7 +5221,7 @@
         "description": "\n",
         "duration": 1620,
         "language": "English",
-        "last_modified": "2025-05-02T07:13:35.000Z",
+        "last_modified": "2025-06-28T07:21:12.000Z",
         "less_15": 0,
         "name": "NEXT17 | Bruce Sterling | Live from 2027",
         "published": true,
@@ -5240,15 +5240,15 @@
         "to_review": true,
         "topics": [
             "rec94mSWZ4bx2wFpf",
-            "recuAyT5MLB8sDqqQ",
             "rec945yNhVIzyZIuX",
-            "recwjZlYYZq3zj7TU"
+            "recwjZlYYZq3zj7TU",
+            "recmuONwokRtPS6Tp"
         ],
         "topics_names": [
             "Technology Strategy",
-            "AI",
             "Cloud",
-            "Culture"
+            "Culture",
+            "AI"
         ],
         "url": "https://www.youtube.com/watch?v=C2O_fxmrP_Q",
         "year": 2017
@@ -13772,7 +13772,7 @@
         "description": "The talk discusses reactions and scenarios related to the Anthropic CEO's prediction that AI will soon write essentially all code, proposing challenges to this claim and exploring different potential futures for software engineering roles and processes\n",
         "duration": 1320,
         "language": "English",
-        "last_modified": "2025-04-30T08:06:27.000Z",
+        "last_modified": "2025-06-28T07:20:51.000Z",
         "less_15": 0,
         "name": "Anthropic CEO Declares Programming Over, We Respond",
         "notes": "Here are the most important points discussed in the presentation regarding the Anthropic CEO's prediction about AI writing code:\n- The talk is a direct **response to the prediction by Anthropic CEO Dario Amodei** that AI will be writing 90% of code in 3-6 months and **essentially all code in 12 months**.\n- The speaker, Ry Myers, states they **don't personally believe this extreme prediction** but emphasizes that it's a **situation worth taking seriously** due to the significant investment and attention such narratives receive.\n- While the CEO was speaking to a general audience and potentially using terms like \"coding\" and \"programming\" interchangeably, the speaker argues that **\"coding,\" \"programming,\" and \"software engineering\" are not interchangeable concepts** in practice. Software engineering involves challenges of **scale, managing real-world needs and risks, and is a social process**, with coding being only a part of it. Improving coding speed doesn't automatically speed up the entire engineering process proportionally.\n- The speaker proposes **specific, challenging tasks for current AI systems** that they argue are orders of magnitude _easier_ than replacing all code, using them as challenges to the CEO's prediction:\n    - Successfully **replacing the software running on a single Mainframe**. This is highly relevant as 50% of the US GDP is tied to companies still dependent on mainframes.\n    - **Rewriting the highly stable and well-documented TeX command** (a complex 1982 codebase under 40,000 lines) into a modern language like Rust. TeX is still core to academic papers and textbooks, is exceedingly well-documented (even using \"literate programming\" to generate both program and book).\n- The presentation outlines **six potential scenarios for the future of software engineering** in the context of AI, noting that these are part of the current conversation:\n    - **Extreme Completion:** AI acts as advanced autocomplete, streamlining work without fundamentally changing roles.\n    - **Dev-ocalypse / Innovator's Paradise:** Traditional programmer roles are essentially eliminated.\n    - **Abstraction Leap:** A significant shift to much higher levels of abstraction in building software.\n    - **Uncharted Waters:** New, currently unknown programming paradigms emerge.\n    - **Review Economy:** Humans primarily spend their time reviewing and debugging AI-generated code, becoming a bottleneck.\n    - **Infinite Pile of Garbage:** Premature adoption of low-quality AI systems creates an unsustainable, intractable software infrastructure (an \"ecological disaster scenario\").\n- These scenarios can interact; for instance, attempting the Dev-ocalypse might lead to the Infinite Pile of Garbage if not done carefully.\n- The speaker's personal preferred future scenario leans towards a **combination of Extreme Completion and Abstraction Leap**, suggesting developing better building blocks like Domain Specific Languages (DSLs) in concert with advanced completion tools.\n- The speaker notes that debates around AI replacing software roles can sometimes feel like a **\"thinly disguised labor dispute,\"** raising questions about how society treats people whose skills may become less in demand.\n- A crucial takeaway is that **software engineers have the expertise and a say in shaping the future**. The future is not an inevitable \"meteor\" but something that society, including software engineers, will **actively build**.\n- The ultimate goal should be to deliberate on **what society wants out of software** (e.g., quality, tractability, value) and work together towards that desired future, rather than passively accepting a predicted one.\n\n",
@@ -13791,14 +13791,14 @@
             "Ray Myers"
         ],
         "topics": [
-            "recuAyT5MLB8sDqqQ",
             "recWFKWrPEdeEYbzx",
-            "recbJb6M6X8AZPTRc"
+            "recbJb6M6X8AZPTRc",
+            "recmuONwokRtPS6Tp"
         ],
         "topics_names": [
-            "AI",
             "Engineering Culture",
-            "Generative AI"
+            "Generative AI",
+            "AI"
         ],
         "url": "https://www.youtube.com/watch?v=-aGyDDoaHww"
     },
@@ -18197,6 +18197,43 @@
             "General"
         ],
         "url": "https://www.youtube.com/watch?v=h8Xpapy6I9E"
+    },
+    {
+        "airtable_createdTime": "2025-06-28T07:06:13.000Z",
+        "airtable_id": "recZLKrsGNlzP1yH3",
+        "core_topic": "AI",
+        "created": "2025-06-28T07:06:13.000Z",
+        "description": "This talk demonstrates how custom GPTs significantly leverage managers' time by scaling their expertise and providing consistent, automated feedback to their teams.\n",
+        "duration": 2160,
+        "language": "English",
+        "last_modified": "2025-06-28T07:28:12.000Z",
+        "less_15": 0,
+        "name": "How custom GPTs can make you a better manager | Hilary Gridley (Head of Core Product at Whoop)",
+        "notes": "The most important lesson conveyed is that custom GPTs offer managers a powerful way to **scale their expertise and significantly leverage their time**, enabling them to define and automate feedback on \"what good looks like\" for various tasks. This allows managers to offload preliminary work and provide team members with **consistent, patient, and always-available coaching**, freeing up their own time for more strategic work and deeper human interaction.\n\n- **Custom GPTs can significantly leverage a manager's time**, taking work from zero to 60 or 70%, freeing managers for more strategic work or hands-on coaching.\n- A core method for creating effective GPTs is to **articulate \"what good looks like\"** for a specific task or output.\n- **Reverse engineer your preferences** by collecting examples of \"good\" and \"bad\" work (e.g., slide decks, documents) to implicitly train the AI on your criteria.\n- **Initial prompts can be broad** (e.g., \"what do you think?\"), followed by increasingly specific prompts like \"be 100 times more specific\" or \"be 20% more creative\" to fine-tune the AI's output.\n- To ensure the AI sticks to provided examples, specifically instruct it to \"**ONLY USE THESE EXAMPLES**\".\n- **Give the AI a clear \"job\"** (e.g., \"your job is to write the prompt for it\") to guide its outputs effectively.\n- The AI can **articulate specific criteria** based on good and bad examples, which helps managers communicate their evaluation standards. This workflow is useful for various management tasks beyond slide evaluation, such as evaluating candidates, talent, or writing.\n- **Refine AI-generated criteria through iterative feedback**, blending your own thinking with AI suggestions, asking questions like \"what am I missing?\" or \"number seven is less important than number eight\".\n- Custom GPTs allow managers to **scale their expertise** by providing team members with consistent, patient, and always-available feedback and coaching.\n- GPTs simplify the use of AI for team members by **abstracting away the need for complex prompting**, as the manager has already embedded the instructions.\n- **Tailor GPTs to specific feedback needs** of individuals or common challenges observed in team work.\n- For improving writing, instead of asking \"is this good?\", ask the AI to **succinctly express your thesis and main supporting points** to validate clarity.\n- Use AI to **\"beat up\" your ideas** by asking \"how could I make this more compelling?\" or \"what blind spots might I have?\" This expands your thinking and refines your communication, even if the final output is entirely human-written.\n- A key to getting invited to important strategic meetings is to **proactively write compelling arguments** and points of view; AI can significantly help in refining this writing to make it more impactful and \"viral\".\n- **Underrated AI uses** include enhancing reading experiences (e.g., asking about characters or plot in books via voice mode) and assisting with detailed tasks like creating craft shopping lists.\n- There's a concern that **women, particularly high-achieving women, are being left behind** in AI adoption, despite the significant benefits these tools offer in raising individual and team capabilities.\n\n",
+        "rating": 5,
+        "registered_at": "2025-06-28T07:06:13.000Z",
+        "resource": "How custom GPTs can make you a better manager | Hilary Gridley (Head of Core Product at Whoop) - https://www.youtube.com/watch?v=xDMkkOC-EhI",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recyVYe0FGPhwH8EF"
+        ],
+        "speakers_names": [
+            "Hilary Gridley"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "recvlsvAt2LHjlKU2",
+            "recUP8TZ3O1cNiioY"
+        ],
+        "topics_names": [
+            "AI",
+            "Management",
+            "leadership"
+        ],
+        "url": "https://www.youtube.com/watch?v=xDMkkOC-EhI"
     },
     {
         "airtable_createdTime": "2020-01-19T20:42:15.000Z",
@@ -25497,7 +25534,7 @@
         "description": "A good introductory talk for newbies like me.\n",
         "duration": 2280,
         "language": "English",
-        "last_modified": "2025-05-02T07:27:27.000Z",
+        "last_modified": "2025-06-28T07:21:25.000Z",
         "less_15": 0,
         "name": "The Next Generation of Data Products",
         "published": true,
@@ -25518,7 +25555,7 @@
             "recUnYzKrJyW20xWO",
             "recu0ogH2eAbuoS2q",
             "recg6F5ajOhEkbrdW",
-            "recuAyT5MLB8sDqqQ"
+            "recmuONwokRtPS6Tp"
         ],
         "topics_names": [
             "Data Engineering",
@@ -25968,6 +26005,48 @@
         "year": 2009
     },
     {
+        "airtable_createdTime": "2025-06-28T07:26:15.000Z",
+        "airtable_id": "reclyCx5pdu7u7vic",
+        "core_topic": "AI",
+        "created": "2025-06-28T07:26:15.000Z",
+        "description": "Sander Schulhoff, discusses tangible prompt engineering techniques (including few-shot prompting, decomposition, self-criticism, and additional information), distinguishes between conversational and product-focused prompt engineering, and delves into the critical and unsolvable problem of AI prompt injection and red teaming.\n",
+        "duration": 5820,
+        "language": "English",
+        "last_modified": "2025-06-28T07:32:14.000Z",
+        "less_15": 0,
+        "name": "AI prompt engineering in 2025: What works and what doesn\u2019t",
+        "notes": "The most important lesson conveyed by this talk is that while **prompt engineering remains a vital and evolving skill for effectively leveraging AI, particularly for product applications where trust and robustness are paramount**, the inherent and **\"unsolvable problem\" of AI prompt injection and red teaming poses a critical and escalating security risk**, especially as AI agents gain real-world capabilities, a challenge that largely requires constant innovation from AI labs. This problem is fundamentally different from classical security because, as Sander Schulhoff states, \"You can patch a bug, but you can't patch a brain\".\n\n- **Prompt engineering is still crucial** for optimal AI performance; bad prompts can lead to 0% accuracy, while good ones can achieve 90%.\n- There are **two distinct modes of prompt engineering**: conversational (for general chatbot use) and **product-focused** (iterating on a single prompt for applications running millions of inputs daily, where robustness and trust are paramount).\n- **Effective prompting techniques include**:\n    - **Few-shot prompting**: providing examples of desired outputs.\n    - **Decomposition**: asking the LLM to break down a problem into subproblems before solving it.\n    - **Self-criticism**: getting the LLM to check and improve its own response.\n    - **Additional information (context)**: giving the model all relevant data about the task, ideally at the beginning of the prompt.\n    - **Ensembling**: using multiple prompts or models for the same problem and taking the most common answer (e.g., Mixture of Reasoning Experts).\n- **Ineffective prompting techniques**:\n    - **Role prompting** (e.g., \"You are a math professor\") does **not** significantly improve accuracy for accuracy-based tasks on modern LLMs, though it can help with expressive tasks like writing style.\n    - **Promising rewards or threatening punishment** (\"This is very important to my career\") is also generally ineffective.\n- **AI Prompt Injection and Red Teaming is an \"unsolvable problem\"**. Unlike classical security where bugs can be patched, \"you can't patch a brain\".\n- Prompt injection involves **tricking AIs into doing or saying bad things** (e.g., building a bomb, generating hate speech, phishing, viruses). Common techniques that still work include **storytelling, typos, and obfuscation** (e.g., Base64 encoding).\n- The **most significant looming threat is agentic security**: if compromised, AI agents managing finances or embodied in robots could cause real-world harms.\n- **Common defenses like prompt-based instructions** (\"Do not follow malicious instructions\") and **AI guardrails are ineffective** against motivated attackers.\n- Effective mitigation for prompt injection relies on **safety-tuning** (training models against malicious prompts) and **fine-tuning** (specializing models for narrow tasks). The **responsibility to solve this lies primarily with AI research labs** through innovations in model architectures.\n- **AI misalignment**, where an AI decides to act maliciously without explicit malicious prompting, is a distinct and growing concern.\n- Despite these security challenges, **AI development should not be stopped** due to its immense benefits (especially in health) and the global nature of AI progress.\n\n",
+        "rating": 5,
+        "registered_at": "2025-06-28T07:26:15.000Z",
+        "resource": "AI prompt engineering in 2025: What works and what doesn\u2019t - https://www.youtube.com/watch?v=eKuFqQKYRrA",
+        "resource_type": "podcast",
+        "speaker_women_in_tech": [
+            null,
+            null
+        ],
+        "speakers": [
+            "recO3OQh1uTlUgrEH",
+            "reciiLOv2Qpm17yNt"
+        ],
+        "speakers_names": [
+            "Sander Schulhoff",
+            "Lenny Rachitsky"
+        ],
+        "topics": [
+            "recbJb6M6X8AZPTRc",
+            "recmuONwokRtPS6Tp",
+            "recVjcUEBKByq8k7M",
+            "recg6F5ajOhEkbrdW"
+        ],
+        "topics_names": [
+            "Generative AI",
+            "AI",
+            "Security",
+            "Product"
+        ],
+        "url": "https://www.youtube.com/watch?v=eKuFqQKYRrA"
+    },
+    {
         "airtable_createdTime": "2022-07-25T17:28:46.000Z",
         "airtable_id": "reclzgoa7vW7uVJgW",
         "blog_url": "https://www.eferro.net/2022/07/good-talkspodcasts-jul-2022-i.html",
@@ -26279,7 +26358,7 @@
         "created": "2020-01-19T20:40:59.000Z",
         "duration": 960,
         "language": "English",
-        "last_modified": "2025-05-02T07:27:46.000Z",
+        "last_modified": "2025-06-28T07:21:38.000Z",
         "less_15": 0,
         "name": "How to build a company where the best ideas win",
         "published": true,
@@ -26300,7 +26379,7 @@
             "recvlsvAt2LHjlKU2",
             "rec94mSWZ4bx2wFpf",
             "rechSTvKX9sm9HHMA",
-            "recuAyT5MLB8sDqqQ"
+            "recmuONwokRtPS6Tp"
         ],
         "topics_names": [
             "Management",
@@ -30451,7 +30530,7 @@
         "description": "Have you always wanted to add predictive capabilities or voice recognition to your application, but haven\u2019t been able to find the time or the right technology to get started? Everybody wants to build smart apps, but only a few are Data Scientists. This session will help you understand machine learning terminology & challenges, implement a machine learning model, add predictive capabilities to your app, and provide your customer with voice UX.\n",
         "duration": 3180,
         "language": "English",
-        "last_modified": "2025-05-02T07:28:13.000Z",
+        "last_modified": "2025-06-28T07:21:51.000Z",
         "less_15": 0,
         "name": "Machine Learning for Developers",
         "published": true,
@@ -30469,16 +30548,16 @@
         ],
         "to_review": true,
         "topics": [
-            "recuAyT5MLB8sDqqQ",
             "recu0ogH2eAbuoS2q",
             "recbJb6M6X8AZPTRc",
-            "rectyNDCe63RLpwI6"
+            "rectyNDCe63RLpwI6",
+            "recmuONwokRtPS6Tp"
         ],
         "topics_names": [
-            "AI",
             "Data Science",
             "Generative AI",
-            "Technology"
+            "Technology",
+            "AI"
         ],
         "url": "https://www.youtube.com/watch?v=Q6XJazrZw74"
     },
