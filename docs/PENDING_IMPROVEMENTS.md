@@ -5,7 +5,7 @@ Feel free to add or remove entries as the project evolves.
 # Pending Improvements and Ideas
 
 ## 1. Author Filter Enhancements
-- [ ] Initial load with `?author=` param should pre-select the author and filter talks.
+- [x] Initial load with `?author=` param should pre-select the author and filter talks.
 - [ ] Test interaction of author filter with other filters (topics, rating, hasNotes).
 - [ ] UI: add an “All authors” or “Clear author” control to reset author filter.
 - [ ] Accessibility: use `aria-pressed` on author buttons for better screen-reader support.
@@ -32,8 +32,8 @@ Feel free to add or remove entries as the project evolves.
 
 ## 6. Testing
 - [ ] Add integration tests (Cypress or Playwright) to cover full filter flows.
+- [x] Test edge-cases: empty state, error state, loading state.
 - [ ] Include snapshot tests for filter UI components.
-- [ ] Test edge-cases: empty state, error state, loading state.
 - [ ] Add code coverage measurement for untested branches.
 
 ## 7. Documentation
@@ -41,7 +41,7 @@ Feel free to add or remove entries as the project evolves.
 - [ ] Provide a developer guide for adding new filters.
 
 ## 8. Miscellaneous
-- [ ] Add support for conference filtering in the URL (if not covered).
+- [x] Add support for conference filtering in the URL (if not covered).
 - [ ] Internationalization (i18n) of UI labels.
 - [ ] Optimize SEO by updating meta tags based on active filters.
 
