@@ -18206,11 +18206,11 @@
         "description": "This talk demonstrates how custom GPTs significantly leverage managers' time by scaling their expertise and providing consistent, automated feedback to their teams.\n",
         "duration": 2160,
         "language": "English",
-        "last_modified": "2025-06-28T07:28:12.000Z",
+        "last_modified": "2025-07-08T11:10:03.000Z",
         "less_15": 0,
         "name": "How custom GPTs can make you a better manager | Hilary Gridley (Head of Core Product at Whoop)",
         "notes": "The most important lesson conveyed is that custom GPTs offer managers a powerful way to **scale their expertise and significantly leverage their time**, enabling them to define and automate feedback on \"what good looks like\" for various tasks. This allows managers to offload preliminary work and provide team members with **consistent, patient, and always-available coaching**, freeing up their own time for more strategic work and deeper human interaction.\n\n- **Custom GPTs can significantly leverage a manager's time**, taking work from zero to 60 or 70%, freeing managers for more strategic work or hands-on coaching.\n- A core method for creating effective GPTs is to **articulate \"what good looks like\"** for a specific task or output.\n- **Reverse engineer your preferences** by collecting examples of \"good\" and \"bad\" work (e.g., slide decks, documents) to implicitly train the AI on your criteria.\n- **Initial prompts can be broad** (e.g., \"what do you think?\"), followed by increasingly specific prompts like \"be 100 times more specific\" or \"be 20% more creative\" to fine-tune the AI's output.\n- To ensure the AI sticks to provided examples, specifically instruct it to \"**ONLY USE THESE EXAMPLES**\".\n- **Give the AI a clear \"job\"** (e.g., \"your job is to write the prompt for it\") to guide its outputs effectively.\n- The AI can **articulate specific criteria** based on good and bad examples, which helps managers communicate their evaluation standards. This workflow is useful for various management tasks beyond slide evaluation, such as evaluating candidates, talent, or writing.\n- **Refine AI-generated criteria through iterative feedback**, blending your own thinking with AI suggestions, asking questions like \"what am I missing?\" or \"number seven is less important than number eight\".\n- Custom GPTs allow managers to **scale their expertise** by providing team members with consistent, patient, and always-available feedback and coaching.\n- GPTs simplify the use of AI for team members by **abstracting away the need for complex prompting**, as the manager has already embedded the instructions.\n- **Tailor GPTs to specific feedback needs** of individuals or common challenges observed in team work.\n- For improving writing, instead of asking \"is this good?\", ask the AI to **succinctly express your thesis and main supporting points** to validate clarity.\n- Use AI to **\"beat up\" your ideas** by asking \"how could I make this more compelling?\" or \"what blind spots might I have?\" This expands your thinking and refines your communication, even if the final output is entirely human-written.\n- A key to getting invited to important strategic meetings is to **proactively write compelling arguments** and points of view; AI can significantly help in refining this writing to make it more impactful and \"viral\".\n- **Underrated AI uses** include enhancing reading experiences (e.g., asking about characters or plot in books via voice mode) and assisting with detailed tasks like creating craft shopping lists.\n- There's a concern that **women, particularly high-achieving women, are being left behind** in AI adoption, despite the significant benefits these tools offer in raising individual and team capabilities.\n\n",
-        "rating": 5,
+        "rating": 4,
         "registered_at": "2025-06-28T07:06:13.000Z",
         "resource": "How custom GPTs can make you a better manager | Hilary Gridley (Head of Core Product at Whoop) - https://www.youtube.com/watch?v=xDMkkOC-EhI",
         "resource_type": "videopodcast",
@@ -26012,11 +26012,11 @@
         "description": "Sander Schulhoff, discusses tangible prompt engineering techniques (including few-shot prompting, decomposition, self-criticism, and additional information), distinguishes between conversational and product-focused prompt engineering, and delves into the critical and unsolvable problem of AI prompt injection and red teaming.\n",
         "duration": 5820,
         "language": "English",
-        "last_modified": "2025-06-28T07:32:14.000Z",
+        "last_modified": "2025-07-08T11:10:14.000Z",
         "less_15": 0,
         "name": "AI prompt engineering in 2025: What works and what doesn\u2019t",
         "notes": "The most important lesson conveyed by this talk is that while **prompt engineering remains a vital and evolving skill for effectively leveraging AI, particularly for product applications where trust and robustness are paramount**, the inherent and **\"unsolvable problem\" of AI prompt injection and red teaming poses a critical and escalating security risk**, especially as AI agents gain real-world capabilities, a challenge that largely requires constant innovation from AI labs. This problem is fundamentally different from classical security because, as Sander Schulhoff states, \"You can patch a bug, but you can't patch a brain\".\n\n- **Prompt engineering is still crucial** for optimal AI performance; bad prompts can lead to 0% accuracy, while good ones can achieve 90%.\n- There are **two distinct modes of prompt engineering**: conversational (for general chatbot use) and **product-focused** (iterating on a single prompt for applications running millions of inputs daily, where robustness and trust are paramount).\n- **Effective prompting techniques include**:\n    - **Few-shot prompting**: providing examples of desired outputs.\n    - **Decomposition**: asking the LLM to break down a problem into subproblems before solving it.\n    - **Self-criticism**: getting the LLM to check and improve its own response.\n    - **Additional information (context)**: giving the model all relevant data about the task, ideally at the beginning of the prompt.\n    - **Ensembling**: using multiple prompts or models for the same problem and taking the most common answer (e.g., Mixture of Reasoning Experts).\n- **Ineffective prompting techniques**:\n    - **Role prompting** (e.g., \"You are a math professor\") does **not** significantly improve accuracy for accuracy-based tasks on modern LLMs, though it can help with expressive tasks like writing style.\n    - **Promising rewards or threatening punishment** (\"This is very important to my career\") is also generally ineffective.\n- **AI Prompt Injection and Red Teaming is an \"unsolvable problem\"**. Unlike classical security where bugs can be patched, \"you can't patch a brain\".\n- Prompt injection involves **tricking AIs into doing or saying bad things** (e.g., building a bomb, generating hate speech, phishing, viruses). Common techniques that still work include **storytelling, typos, and obfuscation** (e.g., Base64 encoding).\n- The **most significant looming threat is agentic security**: if compromised, AI agents managing finances or embodied in robots could cause real-world harms.\n- **Common defenses like prompt-based instructions** (\"Do not follow malicious instructions\") and **AI guardrails are ineffective** against motivated attackers.\n- Effective mitigation for prompt injection relies on **safety-tuning** (training models against malicious prompts) and **fine-tuning** (specializing models for narrow tasks). The **responsibility to solve this lies primarily with AI research labs** through innovations in model architectures.\n- **AI misalignment**, where an AI decides to act maliciously without explicit malicious prompting, is a distinct and growing concern.\n- Despite these security challenges, **AI development should not be stopped** due to its immense benefits (especially in health) and the global nature of AI progress.\n\n",
-        "rating": 5,
+        "rating": 4,
         "registered_at": "2025-06-28T07:26:15.000Z",
         "resource": "AI prompt engineering in 2025: What works and what doesn\u2019t - https://www.youtube.com/watch?v=eKuFqQKYRrA",
         "resource_type": "podcast",
@@ -28767,6 +28767,48 @@
         ],
         "url": "https://www.youtube.com/watch?v=EirOknZJvYc",
         "year": 2018
+    },
+    {
+        "airtable_createdTime": "2025-07-08T11:04:52.000Z",
+        "airtable_id": "recq6vsWrY9S2wG79",
+        "core_topic": "AI",
+        "created": "2025-07-08T11:04:52.000Z",
+        "description": "A deep dive into Shopify's AI-first transformation, emphasizing pervasive AI tool adoption, internal AI infrastructure, and cultural shifts empowering all employees to leverage AI.\n",
+        "duration": 2820,
+        "language": "English",
+        "last_modified": "2025-07-08T11:09:44.000Z",
+        "less_15": 0,
+        "name": "How AI is changing software engineering at Shopify with Farhan Thawar",
+        "notes": "The most important lesson conveyed is that for a company to become AI-first, it must make a **deep and widespread investment in AI tools and infrastructure**, actively fostering a culture of **experimentation and adoption across all roles**, even empowering non-technical individuals to create software solutions, with leadership role-modeling usage and prioritizing learning and productivity gains over immediate cost concerns. Shopify, for example, demonstrates this by having no cost limit on AI tokens for engineers, deploying tools like GitHub Copilot and Cursor broadly, building internal AI infrastructure like an LLM proxy and MCP servers, and intentionally hiring AI-reflexive interns to drive cultural change.\n\n- **Early and Deep Adoption of AI Tools**: Shopify was an early adopter of AI coding tools like GitHub Copilot (as early as 2021) and Cursor, deploying them widely across engineering and even beyond.\n- **No Cost Limit on AI Tokens**: Shopify encourages engineers to spend on AI tokens, viewing it as a productivity investment rather than an expense to penny-pinch, even celebrating high usage. They believe the potential productivity gains far outweigh the costs, which they currently cannot precisely measure but believe are significant.\n- **Building Internal AI Infrastructure**: To facilitate secure and widespread AI adoption, Shopify built an internal LLM proxy (based on Libra Chat) to prevent leakage of sensitive data to external models and to track internal usage, and actively implements MCP (Microservice Compute Protocol) servers to make internal data accessible to AI agents.\n- **Cultural Expectation of AI Usage**: Leadership, including the CEO, actively role-models AI usage and expects all employees, not just engineers, to use AI tools, treating it as essential as other productivity software like spreadsheets. They evaluate impact as if employees had these tools available.\n- **Empowering Non-Technical Users to Build Software**: The widespread adoption of tools like Cursor has led to non-technical teams (finance, sales, support) building their own software solutions and homepages to access services like Salesforce, Google Calendar, and Gmail, often without engineering intervention. This is seen as a welcome expansion of software creation, satisfying unmet demand.\n- **Hiring \"AI-Reflexive\" Talent**: Shopify is strategically hiring a large number of interns (e.g., 1,000 in a year) with the hypothesis that these younger individuals are naturally \"AI-reflexive\" and can help change the internal culture around AI usage. They prioritize learning from interns.\n- **Embracing Experimentation and Learning**: Shopify actively tries new AI tools (e.g., Cloud Code, Devin, Gum Loop) and is open to experimenting, even with the risk of tools producing \"garbage\" code, and reverting if they find AI reduces essential context or understanding.\n- **AI Integration in Core Workflows**: AI is used to automate tedious tasks like generating weekly project updates in their internal project management tool (GSD), though human review and accountability remain crucial.\n- **AI in Interview Processes**: Shopify embraces AI coding tools (like Copilot) during technical interviews for all roles, including engineering directors and above, to assess candidates' ability to work with and evaluate AI-generated code rather than just writing it from scratch.\n- **Focus on AI for Tech Debt and Refactoring**: The best engineers are leveraging AI tools to tackle long-standing infrastructure improvements, tech debt reduction, and refactoring, projects they previously felt they lacked the time or resources for.\n- **Role-Modeling and Sharing Best Practices**: The most effective way to drive AI adoption is through leadership role-modeling, sharing successful AI use cases, and creating internal prompt libraries for others to learn from and adapt.\n\n",
+        "rating": 5,
+        "registered_at": "2025-07-08T11:04:52.000Z",
+        "resource": "How AI is changing software engineering at Shopify with Farhan Thawar - https://www.youtube.com/watch?v=u-3IILWQPRM",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            null,
+            null
+        ],
+        "speakers": [
+            "recYRyAgTWnbSB8wh",
+            "recrARrQXlgrH2dAK"
+        ],
+        "speakers_names": [
+            "Farhan Thawar",
+            "Gergely Orosz"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "recWFKWrPEdeEYbzx",
+            "rec436FbBa6hFiWcj",
+            "rec94mSWZ4bx2wFpf"
+        ],
+        "topics_names": [
+            "AI",
+            "Engineering Culture",
+            "Developer Productivity",
+            "Technology Strategy"
+        ],
+        "url": "https://www.youtube.com/watch?v=u-3IILWQPRM"
     },
     {
         "airtable_createdTime": "2020-01-19T20:38:08.000Z",
