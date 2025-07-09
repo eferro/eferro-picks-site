@@ -185,6 +185,18 @@ function TalkDetail() {
             </div>
           )}
 
+          <div className="mb-6">
+            <a
+              href={talk.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700"
+            >
+              <PlayIcon className="h-4 w-4 mr-2" aria-hidden="true" />
+              Watch Talk
+            </a>
+          </div>
+
           <div className="prose max-w-none">
             <p className="text-gray-700 mb-6">
               {talk.description}
@@ -227,20 +239,9 @@ function TalkDetail() {
             </div>
           </div>
 
-          <div className="mt-8">
-            <a
-              href={talk.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700"
-            >
-              Watch Talk
-            </a>
-          </div>
         </div>
       </article>
     </div>
   );
 }
-
 export { TalkDetail }; 
