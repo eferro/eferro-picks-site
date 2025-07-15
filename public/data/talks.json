@@ -1142,6 +1142,43 @@
         "url": "https://www.rubick.com/how-to-build-silos-and-decrease-collaboration/"
     },
     {
+        "airtable_createdTime": "2025-07-15T07:56:23.000Z",
+        "airtable_id": "rec2LgBbrieuGsCbM",
+        "core_topic": "AI",
+        "created": "2025-07-15T07:56:23.000Z",
+        "description": "This talk by Steve Yegge exploring the inevitable transformation of software engineering due to AI and LLMs, detailing changing developer roles and the increasing importance of testing and validation\n",
+        "duration": 1740,
+        "language": "English",
+        "last_modified": "2025-07-15T08:00:52.000Z",
+        "less_15": 0,
+        "name": "Stop Writing Code \u2013 That\u2019s what LLMs are for",
+        "notes": "**AI and LLMs are fundamentally transforming the role of software engineers**, shifting it from direct code writing to managing AI tools and necessitating a **five to ten times greater rigor in testing and validation** due to the non-deterministic nature and \"hallucinations\" of AI-generated code. This inevitable change means developers must adapt by focusing on higher-level architectural tasks and ensuring the quality and correctness of AI-produced output, with practices like Test-Driven Development becoming crucial.\n\n- **AI and LLMs are fundamentally transforming software engineering**, making direct code writing less common.\n- The developer role is shifting from a \"cook\" to a **\"head chef\" managing fleets of AI agents**, focusing on higher-level architectural tasks and orchestration.\n- There's an **inevitable and urgent need for 5 to 10 times more rigorous testing and validation** due to AI hallucinations and the non-deterministic nature of AI-generated code.\n- **Test-Driven Development (TDD) becomes crucial**, with LLMs even helping to write tests.\n- The **path for junior developers is changing**, moving them towards more architectural roles and learning to manage agents, rather than focusing on low-level coding.\n- Companies that **drag their feet on AI adoption are in serious trouble** and are \"doomed.\"\n- Engineers must **learn to deal with ambiguity and \"noisy data\"** from LLMs and develop an \"instinct\" for quality.\n- Human \"taste\" and **creativity remain essential**, as AI currently lacks these qualities, allowing engineers to focus on innovative solutions.\n- The change is **inevitable within the next 18 months to two years**, and it will not revert to previous methods.\n\n",
+        "rating": 5,
+        "registered_at": "2025-07-15T07:56:23.000Z",
+        "resource": "Stop Writing Code \u2013 That\u2019s what LLMs are for - https://www.youtube.com/watch?v=yUv1xK9KOtE",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "rec01V1OxHbQUo4NH"
+        ],
+        "speakers_names": [
+            "Steve Yegge"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "recPcLVyg0S4ORUkX",
+            "recD5hNaJCwpTdERc"
+        ],
+        "topics_names": [
+            "AI",
+            "testing",
+            "Engineering Career"
+        ],
+        "url": "https://www.youtube.com/watch?v=yUv1xK9KOtE"
+    },
+    {
         "airtable_createdTime": "2020-03-14T23:30:54.000Z",
         "airtable_id": "rec2OjotXEUQMg9Nc",
         "blog_url": "https://www.eferro.net/2020/03/good-talkspodcasts-march-2020-ii.html",
@@ -6910,6 +6947,43 @@
         ],
         "url": "http://www.infoq.com/presentations/Simple-Made-Easy",
         "year": 2011
+    },
+    {
+        "airtable_createdTime": "2025-07-15T07:43:13.000Z",
+        "airtable_id": "recDUqXlgYHwvfn78",
+        "core_topic": "AI",
+        "created": "2025-07-15T07:43:13.000Z",
+        "description": "Andrew Ng's talk provides best practices for startups to achieve unprecedented execution speed by leveraging new AI technology for rapid engineering, product iteration, and strategic decision-making\n",
+        "duration": 2580,
+        "language": "English",
+        "last_modified": "2025-07-15T07:47:58.000Z",
+        "less_15": 0,
+        "name": "Andrew Ng: Building Faster with AI",
+        "notes": "A core takeaway from Andrew Ng's talk is that **unprecedented execution speed is paramount for startup success**, a velocity now uniquely enabled by **new AI technology that drastically accelerates engineering and prototyping**. This rapid development, in turn, makes **swift user feedback and precise product iteration** the critical new bottleneck, underscoring the necessity of understanding AI to quickly build products users genuinely love.\n\n- **Execution speed is paramount for startup success**, a velocity now uniquely enabled by **new AI technology that drastically accelerates engineering and prototyping**.\n- The **greatest opportunities for startups lie at the application layer** of the AI stack, particularly leveraging the rise of **agentic AI** and its orchestration layer.\n- To achieve speed, **focus on concrete, actionable product ideas** that engineers can quickly build and test, avoiding vague concepts.\n- **AI coding assistance enables rapid engineering, making prototype development 10x or more faster** and significantly reducing engineering costs, thereby transforming decision-making from \"one-way doors\" to \"two-way doors.\"\n- With engineering accelerating, **product management\u2014specifically getting user feedback and deciding what features to build\u2014becomes the critical new bottleneck**.\n- Employ a **portfolio of tactics for obtaining rapid product feedback**, prioritizing quick, iterative cycles (from expert intuition to user testing with strangers) over slower methods like AB testing, and use this data to hone instincts.\n- **Deeply understanding AI and its various building blocks** (e.g., prompting, fine-tuning, RAG, evals, guardrails) provides a substantial advantage, enabling teams to combine elements to create novel software.\n- **Empower everyone in all job roles to learn to code or effectively steer AI**, as this drastically enhances productivity and commands greater influence over computer outputs.\n- The **singular, most important focus for any business is building a product that users genuinely love**, as this foundation outweighs concerns about moats or other factors in early stages.\n- Be aware of **AI hype and dangerous narratives**, recognizing that AI's \"safety\" is a function of its responsible application rather than the technology itself, and resist efforts to centralize control or shut down open-source AI.\n\n",
+        "rating": 5,
+        "registered_at": "2025-07-15T07:43:13.000Z",
+        "resource": "Andrew Ng: Building Faster with AI - https://www.youtube.com/watch?v=RNJCfif1dPY",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recdR8LH1CxsXuk4p"
+        ],
+        "speakers_names": [
+            "Andrew Ng"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "recLS0zTJxflAcqBu",
+            "recg6F5ajOhEkbrdW"
+        ],
+        "topics_names": [
+            "AI",
+            "startup",
+            "Product"
+        ],
+        "url": "https://www.youtube.com/watch?v=RNJCfif1dPY"
     },
     {
         "airtable_createdTime": "2020-01-19T20:39:40.000Z",
@@ -28811,6 +28885,45 @@
         "url": "https://www.youtube.com/watch?v=u-3IILWQPRM"
     },
     {
+        "airtable_createdTime": "2025-07-15T07:49:07.000Z",
+        "airtable_id": "recq9J6CSbdnEyYwZ",
+        "core_topic": "AI",
+        "created": "2025-07-15T07:49:07.000Z",
+        "description": "Gene Kim explores how Developer Experience, Generative AI, and Platform Engineering serve as the next chapter in organizational transformation, fundamentally improving developer productivity and value creation.\n",
+        "duration": 2640,
+        "language": "English",
+        "last_modified": "2025-07-15T07:53:45.000Z",
+        "less_15": 0,
+        "name": "Gene Kim on developer experience and AI engineering",
+        "notes": "The central insight conveyed is that **organizational transformation is evolving beyond traditional DevOps**, with **Developer Experience, Generative AI, and Platform Engineering** emerging as critical drivers for fundamentally improving **developer productivity, accelerating innovation, and enabling value creation** by systematically removing friction and enabling independence of action in the technology value stream.\n\n- **Developer Experience (DevEx)** is the **next chapter in organizational transformation**, crucial for **value creation** by enabling hundreds or thousands of people to do their work easily and well. Poor DevEx is a **\"painkiller,\" not a \"vitamin,\"** as it costs significant time, innovation, and leads to top talent attrition due to friction like hours spent on trivial issues (e.g., CI/CD configuration, environment setup).\n- **Generative AI (GenAI)** is a radical breakthrough that can **massively improve individual and group productivity**, allowing developers to work faster, be more ambitious, accomplish tasks alone that previously required a team, and have more \"swings at the bat\" (experiments). It shifts roles, potentially leading to the **\"death of the junior developer\" or \"death of the stubborn developer\"** by augmenting skills and accelerating learning, making \"novices optional\" in some scenarios.\n- **Platform Engineering** is essential for this transformation, designed to **enable independence of action** for developers through self-service and faster feedback loops, preventing them from being \"locked up\" by complex ticketing systems. Platforms deliver critical prerequisites (logging, CI/CD, environment creation) via world-class experts, allowing developers to focus on value creation.\n- These concepts (DevEx, GenAI, Platform Engineering) are **incomplete expressions of a \"far greater whole\"** aimed at optimizing the system for performance by reducing friction and enabling more experiments.\n- The underlying principles for successful transformation involve understanding **coupling** (when to directly connect and when to decouple for independence) and applying **three mechanisms of performance**: **slowification** (solving consequential problems in planning/practice), **simplification** (dividing problems into smaller, safer parts), and **amplification** (ensuring weak signals of failure are detected and corrected).\n- **Layer 3 (the management system)** is the primary difference-maker in organizational performance, and radical breakthroughs in Layer 2 (tools and technology like CI/CD, cloud, and certainly GenAI) can **\"blow up\" Layer 3**, forcing a reconfiguration of how work structures and organizations operate.\n\n\n",
+        "rating": 5,
+        "registered_at": "2025-07-15T07:49:07.000Z",
+        "resource": "Gene Kim on developer experience and AI engineering - https://www.youtube.com/watch?v=4Vp_Wnpvg_E",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recQ4zwnn56x6JsOj"
+        ],
+        "speakers_names": [
+            "Gene Kim"
+        ],
+        "topics": [
+            "recxJkIWVynhDpBOI",
+            "rec436FbBa6hFiWcj",
+            "recbJb6M6X8AZPTRc",
+            "recmuONwokRtPS6Tp"
+        ],
+        "topics_names": [
+            "Devex",
+            "Developer Productivity",
+            "Generative AI",
+            "AI"
+        ],
+        "url": "https://www.youtube.com/watch?v=4Vp_Wnpvg_E"
+    },
+    {
         "airtable_createdTime": "2020-01-19T20:38:08.000Z",
         "airtable_id": "recqBPwWhGCxXDOK1",
         "blog_url": "https://www.eferro.net/2014/11/podcaststalks-2014-30-oct-19-nov.html",
@@ -31533,6 +31646,42 @@
         ],
         "url": "https://www.youtube.com/watch?v=vDIyU4k9hWg",
         "year": 2021
+    },
+    {
+        "airtable_createdTime": "2025-07-15T08:04:11.000Z",
+        "airtable_id": "recujnFATzTnFJaDx",
+        "core_topic": "AI",
+        "created": "2025-07-15T08:04:11.000Z",
+        "duration": 2280,
+        "language": "English",
+        "last_modified": "2025-07-15T08:07:13.000Z",
+        "less_15": 0,
+        "name": "Gene Kim on developer experience and AI engineering",
+        "notes": "A central lesson conveyed is that optimizing organizational performance and unleashing developer potential, especially in the face of radical technological shifts like **AI**, hinges on deeply understanding core sociotechnical principles such as **coupling** and effectively applying the mechanisms of **slowification, simplification, and amplification** to improve how work is structured and value is created.\n\n- **AI radically transforms software development**, boosting individual and team productivity and enabling more ambitious projects.\n- AI makes coding more enjoyable by allowing individuals to accomplish tasks that previously required a team, acting as an **\"infinitely patient teacher and coach\"**.\n- The rise of AI introduces a **\"novice's optional problem,\"** potentially altering the career path for junior developers and reshaping team structures.\n- **Developer Experience (DevX)** is a \"painkiller\" that addresses costly friction points, such as time wasted on environment configuration or CI/CD issues, and is crucial for value creation and talent retention.\n- **Platform engineering** provides essential self-service capabilities, allowing developers to focus on core tasks and reducing wait times caused by centralized shared services.\n- Organizational performance hinges on understanding **sociotechnical systems (Layer 3)** and principles like **coupling**, where certain elements need direct interaction while others benefit from independence of action.\n- Key mechanisms for performance include **slowification** (solving problems in planning), **simplification** (breaking down problems), and **amplification** (detecting and correcting failures).\n- **Option value theory** highlights the importance of running numerous, rapid, parallel experiments to gain information and make better-informed decisions in uncertain environments.\n- Minimizing **combinatorial complexity and excessive queuing** by reducing dependencies and avoiding operations at near-100% capacity is vital for efficient workflow.\n\n",
+        "rating": 5,
+        "registered_at": "2025-07-15T08:04:11.000Z",
+        "resource": "Gene Kim on developer experience and AI engineering - https://www.youtube.com/watch?v=pb7yNopqmIY",
+        "resource_type": "podcast",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recQ4zwnn56x6JsOj"
+        ],
+        "speakers_names": [
+            "Gene Kim"
+        ],
+        "topics": [
+            "recxJkIWVynhDpBOI",
+            "recmuONwokRtPS6Tp",
+            "recuR2w480ko3dSKR"
+        ],
+        "topics_names": [
+            "Devex",
+            "AI",
+            "Platform engineering"
+        ],
+        "url": "https://www.youtube.com/watch?v=pb7yNopqmIY"
     },
     {
         "airtable_createdTime": "2022-07-25T17:06:19.000Z",
