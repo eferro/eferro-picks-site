@@ -778,6 +778,38 @@
         "url": "https://www.youtube.com/watch?v=ldh8E6LCLhM"
     },
     {
+        "airtable_createdTime": "2025-07-16T06:34:32.000Z",
+        "airtable_id": "rec1XPYVhv9XPUV0U",
+        "created": "2025-07-16T06:34:32.000Z",
+        "duration": 960,
+        "language": "English",
+        "last_modified": "2025-07-16T06:36:47.000Z",
+        "less_15": 0,
+        "registered_at": "2025-07-16T06:34:32.000Z",
+        "resource": " - https://www.youtube.com/watch?v=BJjsfNO5JTo",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recS4NRlJSM8gq1Bb"
+        ],
+        "speakers_names": [
+            "Tom Blomfield"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "recPcLVyg0S4ORUkX",
+            "recm3GCPgEVSDmeVI"
+        ],
+        "topics_names": [
+            "AI",
+            "testing",
+            "Software Design"
+        ],
+        "url": "https://www.youtube.com/watch?v=BJjsfNO5JTo"
+    },
+    {
         "airtable_createdTime": "2020-08-17T16:21:47.000Z",
         "airtable_id": "rec1cxoYHoJTcxodo",
         "created": "2020-08-17T16:21:47.000Z",
@@ -11552,6 +11584,42 @@
             "Technical Practices"
         ],
         "url": "https://www.greaterthancode.com/driven-by-need-guided-by-example"
+    },
+    {
+        "airtable_createdTime": "2025-07-16T06:30:15.000Z",
+        "airtable_id": "recMLt6qAzvtKDVJE",
+        "core_topic": "AI",
+        "created": "2025-07-16T06:30:15.000Z",
+        "description": "Gene Kim discusses the transformative power and inherent dangers of AI-assisted \"Vibe Coding\", emphasizing the critical role of architecture and sound practices in achieving high performance and avoiding \"vibe coding disasters\"\n",
+        "duration": 2220,
+        "language": "English",
+        "last_modified": "2025-07-16T06:33:22.000Z",
+        "less_15": 0,
+        "name": "Vibe Coding For Grownups with Gene Kim",
+        "notes": "While AI-assisted \"Vibe Coding\" offers unprecedented productivity and an expanded option space, its profound dangers\u2014like generating non-modular, tightly coupled \"Eldrich horrors\"\u2014necessitate **sound architecture** that promotes independence of action, alongside **fast feedback loops** and disciplined practices such as **test-driven development** to ensure code quality and prevent \"vibe coding disasters\". The ability to structure systems with **loosely coupled architectures** and maintain vigilance against AI-generated \"big balls of mud\" is paramount for leveraging this new technology effectively.\n\n- **AI-assisted \"Vibe Coding\" significantly boosts productivity** by enabling faster, more ambitious work that can be done solo, leading to more fun and the ability to explore a much larger option space.\n- However, **AI-generated code poses significant dangers**, including the rapid creation of non-modular, tightly coupled systems, \"Eldrich horrors,\" and \"big balls of mud\" that are hard to understand or change.\n- **Architecture is a top predictor of performance** and is crucial for mitigating these risks, specifically by promoting **independence of action** and **loosely coupled systems**. Good architecture prevents \"vibe coding disasters.\"\n- **Fast feedback loops** and **test-driven development (TDD)** become even more critical with AI-generated code to ensure quality, provide specifications, and prevent AI from creating undesired code that merely passes tests.\n- The developer's role shifts from writing code by hand to **reviewing, selecting, and exercising judgment and taste** over large volumes of AI-generated options.\n- It is essential to **work on small, manageable tasks** (e.g., around 100 lines of code) and to **explicitly signal to AI tools to work only on specified files or modules**, preventing \"backdoor\" changes and cascading design problems.\n- The initial \"DORA anomaly\" suggesting AI worsens performance likely points to the need for specific practices like sound architecture and fast feedback loops to realize AI's benefits.\n- **Modular architectures increase \"option value\"** by enabling more independent experiments and deferring decisions until more data is available, which is highly valuable in uncertain times.\n\n",
+        "registered_at": "2025-07-16T06:30:15.000Z",
+        "resource": "Vibe Coding For Grownups with Gene Kim - https://www.youtube.com/watch?v=0aJRtCn_WqM",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recQ4zwnn56x6JsOj"
+        ],
+        "speakers_names": [
+            "Gene Kim"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "recPoM7t8neA7gkZ5",
+            "recQ4hio93eTgzFTS"
+        ],
+        "topics_names": [
+            "AI",
+            "Devops",
+            "Architecture"
+        ],
+        "url": "https://www.youtube.com/watch?v=0aJRtCn_WqM"
     },
     {
         "airtable_createdTime": "2023-05-06T19:52:08.000Z",
@@ -29425,6 +29493,44 @@
         "url": "https://www.youtube.com/watch?v=9N4ZgNaWvI0"
     },
     {
+        "airtable_createdTime": "2025-07-16T06:21:49.000Z",
+        "airtable_id": "recr6wVKAkSHbsJhL",
+        "core_topic": "AI",
+        "created": "2025-07-16T06:21:49.000Z",
+        "description": "This talk introduces the concept of agent native companies, where AI is fundamental to their operations, fundamentally reshaping culture, workflows, and team structures\n",
+        "duration": 1200,
+        "language": "English",
+        "last_modified": "2025-07-16T06:27:48.000Z",
+        "less_15": 0,
+        "name": "The Agent Native Company \u2014 Rick Blalock, Agentuity",
+        "notes": "This talk highlights that the most crucial lesson for companies is to move beyond AI-enhancement and **fundamentally rearchitect themselves as \"agent-native\" entities**, where AI agents are the **core primitive of their operations, product, and culture**. This necessitates a complete **rethinking of team structures, workflows, and hiring profiles**, transforming humans into orchestrators of AI to achieve exponential impact and redefine competitive advantage.\n\n- **AI is the fundamental core** of product, operations, and culture, not just an add-on.\n- **Humans transition from doers to orchestrators** of AI agents.\n- Workflows and team structures are **re-architected to be flatter and leaner**, with AI handling coordination and routine tasks.\n- Hiring prioritizes **AI fluency, curiosity, and adaptability** as essential skills.\n- Companies become **critically dependent on AI agents** for speed, productivity, and competitive advantage.\n- This represents a **profound, foundational shift** in how businesses operate, requiring a complete reimagining of roles and culture.\n\n\n",
+        "registered_at": "2025-07-16T06:21:49.000Z",
+        "resource": "The Agent Native Company \u2014 Rick Blalock, Agentuity - https://www.youtube.com/watch?v=0ZPAvzhpGjw",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recy0fSMj5d4ytywn"
+        ],
+        "speakers_names": [
+            "Rick Blalock"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "rechSTvKX9sm9HHMA",
+            "recvlsvAt2LHjlKU2",
+            "recs3XV2rYhyC6qe8"
+        ],
+        "topics_names": [
+            "AI",
+            "Company Culture",
+            "Management",
+            "Teams"
+        ],
+        "url": "https://www.youtube.com/watch?v=0ZPAvzhpGjw"
+    },
+    {
         "airtable_createdTime": "2020-01-19T20:32:43.000Z",
         "airtable_id": "recr8YgSEnZaZTYLJ",
         "blog_url": "https://www.eferro.net/2018/09/index.html",
@@ -31652,9 +31758,10 @@
         "airtable_id": "recujnFATzTnFJaDx",
         "core_topic": "AI",
         "created": "2025-07-15T08:04:11.000Z",
+        "description": "Gene Kim discusses how developer experience is the next chapter in organizational transformation, exploring how AI engineering is fundamentally reshaping developer productivity and the composition of software teams.\n",
         "duration": 2280,
         "language": "English",
-        "last_modified": "2025-07-15T08:07:13.000Z",
+        "last_modified": "2025-07-16T06:28:40.000Z",
         "less_15": 0,
         "name": "Gene Kim on developer experience and AI engineering",
         "notes": "A central lesson conveyed is that optimizing organizational performance and unleashing developer potential, especially in the face of radical technological shifts like **AI**, hinges on deeply understanding core sociotechnical principles such as **coupling** and effectively applying the mechanisms of **slowification, simplification, and amplification** to improve how work is structured and value is created.\n\n- **AI radically transforms software development**, boosting individual and team productivity and enabling more ambitious projects.\n- AI makes coding more enjoyable by allowing individuals to accomplish tasks that previously required a team, acting as an **\"infinitely patient teacher and coach\"**.\n- The rise of AI introduces a **\"novice's optional problem,\"** potentially altering the career path for junior developers and reshaping team structures.\n- **Developer Experience (DevX)** is a \"painkiller\" that addresses costly friction points, such as time wasted on environment configuration or CI/CD issues, and is crucial for value creation and talent retention.\n- **Platform engineering** provides essential self-service capabilities, allowing developers to focus on core tasks and reducing wait times caused by centralized shared services.\n- Organizational performance hinges on understanding **sociotechnical systems (Layer 3)** and principles like **coupling**, where certain elements need direct interaction while others benefit from independence of action.\n- Key mechanisms for performance include **slowification** (solving problems in planning), **simplification** (breaking down problems), and **amplification** (detecting and correcting failures).\n- **Option value theory** highlights the importance of running numerous, rapid, parallel experiments to gain information and make better-informed decisions in uncertain environments.\n- Minimizing **combinatorial complexity and excessive queuing** by reducing dependencies and avoiding operations at near-100% capacity is vital for efficient workflow.\n\n",
