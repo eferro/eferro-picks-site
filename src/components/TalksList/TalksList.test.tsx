@@ -84,8 +84,8 @@ describe('Author Filter', () => {
     renderWithRouter(<TalksList />);
     const btn = screen.getByRole('button', { name: /filter by speaker: Author A/i });
     fireEvent.click(btn);
-    expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
-    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+    expect(mockSetSearchParams).toHaveBeenCalledTimes(2);
+    const params = mockSetSearchParams.mock.calls[1][0] as URLSearchParams;
     expect(params.get('author')).toBe('Author A');
   });
 
@@ -95,8 +95,8 @@ describe('Author Filter', () => {
     renderWithRouter(<TalksList />);
     const btn = screen.getByRole('button', { name: /filter by speaker: Author B/i });
     fireEvent.click(btn);
-    expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
-    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+    expect(mockSetSearchParams).toHaveBeenCalledTimes(2);
+    const params = mockSetSearchParams.mock.calls[1][0] as URLSearchParams;
     expect(params.get('author')).toBeNull();
   });
   
@@ -134,6 +134,9 @@ describe('Rating Filter', () => {
     expect(button).toBeInTheDocument();
     expect(button).toHaveTextContent('5 Stars');
     expect(button).toHaveClass('bg-blue-500', 'text-white');
+    expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
+    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+    expect(params.get('rating')).toBe('5');
   });
 
   it('toggles the rating filter and updates URL params', () => {
@@ -142,8 +145,8 @@ describe('Rating Filter', () => {
     const [toggle] = screen.getAllByRole('button', { name: /toggle rating filter/i });
     // Click to remove rating filter (to show all)
     fireEvent.click(toggle);
-    expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
-    let params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+    expect(mockSetSearchParams).toHaveBeenCalledTimes(3);
+    let params = mockSetSearchParams.mock.calls[2][0] as URLSearchParams;
     expect(params.get('rating')).toBe('all');
 
     // Simulate URL with rating=all and re-render
@@ -153,8 +156,8 @@ describe('Rating Filter', () => {
     expect(updated).toHaveTextContent('All');
     // Click to enable 5-star filter again
     fireEvent.click(updated);
-    expect(mockSetSearchParams).toHaveBeenCalledTimes(2);
-    params = mockSetSearchParams.mock.calls[1][0] as URLSearchParams;
+    expect(mockSetSearchParams).toHaveBeenCalledTimes(4);
+    params = mockSetSearchParams.mock.calls[3][0] as URLSearchParams;
     expect(params.get('rating')).toBe('5');
   });
 });
