@@ -780,13 +780,17 @@
     {
         "airtable_createdTime": "2025-07-16T06:34:32.000Z",
         "airtable_id": "rec1XPYVhv9XPUV0U",
+        "core_topic": "AI",
         "created": "2025-07-16T06:34:32.000Z",
+        "description": "A talk exploring best practices and practical tips for leveraging AI tools and Large Language Models (LLMs) to achieve great results in software development through the \"vibe coding\" approach.\n",
         "duration": 960,
         "language": "English",
-        "last_modified": "2025-07-16T06:36:47.000Z",
+        "last_modified": "2025-07-16T06:41:09.000Z",
         "less_15": 0,
+        "name": "How To Get The Most Out Of Vibe Coding | Startup School",
+        "notes": "Achieving great results with **AI tools and Large Language Models (LLMs)** in \"vibe coding\" demands a strategic approach where developers **treat AI as a new programming paradigm**, meticulously **provide context and detailed instructions**, and **integrate professional software engineering best practices** like planning, testing, and version control to guide and refine AI-generated code.\n\n- **Treat AI as a new programming language**, providing detailed context and information for good results.\n- **Prioritize planning** with pure LLMs to define scope and architecture before coding, creating a comprehensive markdown plan.\n- Implement projects **section by section**, checking progress, running tests, and **committing frequently** to version control.\n- **Use Git religiously**, resetting to a clean state after failed attempts to prevent accumulation of bad code.\n- **Write high-level integration tests** to catch regressions and unnecessary changes by LLMs.\n- Leverage LLMs for **non-coding tasks** like DevOps and design work.\n- For debugging, **copy-paste error messages** directly to the LLM, and for complex bugs, ask the AI to brainstorm solutions before writing code, always resetting after failed attempts.\n- **Experiment with different AI models** as their strengths vary (e.g., planning, implementing, debugging).\n- **Provide extensive, detailed instructions** to your AI coding agents.\n- **Download and provide local documentation** to LLMs for better accuracy.\n- Use LLMs as a **teacher** to explain code line-by-line for learning.\n- Favor **modular architecture and small files** to improve AI comprehension and maintainability.\n- Consider that **AI performance varies by tech stack** due to training data availability (e.g., Ruby on Rails performs well).\n- Utilize **screenshots for design and bug demonstration** and **voice input** for faster interaction.\n- **Refactor frequently** once code is working and tested, using LLMs to identify areas for improvement.\n\n",
         "registered_at": "2025-07-16T06:34:32.000Z",
-        "resource": " - https://www.youtube.com/watch?v=BJjsfNO5JTo",
+        "resource": "How To Get The Most Out Of Vibe Coding | Startup School - https://www.youtube.com/watch?v=BJjsfNO5JTo",
         "resource_type": "talk",
         "speaker_women_in_tech": [
             null
@@ -1516,6 +1520,14 @@
             "XP"
         ],
         "url": "https://www.youtube.com/watch?v=JPfbjKl9jbw"
+    },
+    {
+        "airtable_createdTime": "2025-07-16T06:42:32.000Z",
+        "airtable_id": "rec36j2I8EmxPvsKT",
+        "created": "2025-07-16T06:42:32.000Z",
+        "less_15": 1,
+        "registered_at": "2025-07-16T06:42:32.000Z",
+        "resource": " - "
     },
     {
         "airtable_createdTime": "2020-01-19T20:41:18.000Z",
@@ -32901,6 +32913,42 @@
         ],
         "url": "https://www.youtube.com/watch?v=Y4H8dW7Ium8",
         "year": 2017
+    },
+    {
+        "airtable_createdTime": "2025-07-16T06:41:16.000Z",
+        "airtable_id": "recx5w3431xu9BsCX",
+        "core_topic": "AI",
+        "created": "2025-07-16T06:41:16.000Z",
+        "description": "A talk with Honeycomb's CTO exploring AI's impact on engineering velocity and culture, the emergence of disposable software, and the future of product interfaces focused on production.\n",
+        "duration": 660,
+        "language": "English",
+        "last_modified": "2025-07-16T08:19:07.000Z",
+        "less_15": 1,
+        "name": "AI at Honeycomb: What\u2019s Actually Working",
+        "notes": "The talk emphasizes that **true software value is measured by what happens in production**, not just development speed, as AI facilitates a future where **disposable software** coexists with critical, enduring systems requiring deep human understanding. This paradigm shift will see engineers interacting with products primarily within their **IDEs or shells**, reducing context switching from current SaaS interfaces.\n\n- **True software value is measured by what happens in production**, not development speed.\n- AI's impact on engineering velocity is moderate overall (rated a 2), but it significantly **accelerates ideation and prototyping**, allowing teams to try more things faster.\n- AI hasn't changed hiring priorities; **strong communication skills** remain crucial for engineers, who increasingly act as reviewers of AI-generated code.\n- Software is **bifurcating** into:\n    - **Disposable software** (fast fashion for code) that can be generated and discarded.\n    - **Enduring, critical systems** that run the world and require deep human understanding and continuous improvement.\n- The future of product interfaces will see engineers interacting primarily within their **IDEs or shells**, reducing context switching and potentially leading to a decline in traditional SaaS interfaces.\n\n\n",
+        "registered_at": "2025-07-16T06:41:16.000Z",
+        "resource": "AI at Honeycomb: What\u2019s Actually Working - https://www.youtube.com/watch?v=3vEDECfa4tw",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            true
+        ],
+        "speakers": [
+            "rec0j5idwhBV3RQry"
+        ],
+        "speakers_names": [
+            "Charity Majors"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "recWFKWrPEdeEYbzx",
+            "recg6F5ajOhEkbrdW"
+        ],
+        "topics_names": [
+            "AI",
+            "Engineering Culture",
+            "Product"
+        ],
+        "url": "https://www.youtube.com/watch?v=3vEDECfa4tw"
     },
     {
         "airtable_createdTime": "2020-01-19T20:42:10.000Z",
