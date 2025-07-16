@@ -38,6 +38,15 @@ export function TalksList() {
   // Add scroll position saving
   useScrollPosition();
 
+  // Ensure the URL always includes the rating parameter on first load
+  useEffect(() => {
+    if (!searchParams.get('rating')) {
+      const params = new URLSearchParams(searchParams);
+      params.set('rating', filterByRating ? '5' : 'all');
+      setSearchParams(params);
+    }
+  }, [searchParams, filterByRating]);
+
   // Handle URL parameters and updates
   useEffect(() => {
     const params = new URLSearchParams(searchParams);
