@@ -247,5 +247,17 @@ describe('useScrollPosition', () => {
       vi.advanceTimersByTime(2000);
       expect(window.scrollTo).toHaveBeenCalledTimes(totalCalls);
     });
+
+    it('ignores invalid saved scroll position', () => {
+      mockStorage.store[SCROLL_INDEX_KEY] = 'not-a-number';
+      const removeSpy = vi.spyOn(mockStorage, 'removeItem');
+
+      renderHook(() => useScrollPosition());
+
+      vi.advanceTimersByTime(100);
+
+      expect(removeSpy).toHaveBeenCalledWith(SCROLL_INDEX_KEY);
+      expect(window.scrollTo).not.toHaveBeenCalled();
+    });
   });
-}); 
+});
