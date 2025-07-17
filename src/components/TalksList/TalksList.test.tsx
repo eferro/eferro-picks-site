@@ -51,7 +51,9 @@ vi.mock('./TalkSection', () => ({
 }));
 
 vi.mock('./YearFilter', () => ({
-  YearFilter: () => <div>Year Filter</div>
+  YearFilter: ({ onFilterChange }: { onFilterChange: any }) => (
+    <button onClick={() => onFilterChange({ type: 'last2' })}>Year Filter</button>
+  )
 }));
 
 // Mock the hooks
@@ -360,5 +362,40 @@ describe('Has Notes Filter', () => {
     expect(button).not.toHaveClass('text-gray-700');
   });
 
+});
+
+describe('URL parameters for other filters', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockSearchParams.clear();
+
+    (useTalks as any).mockImplementation(() => ({
+      talks: [
+        createTalk({ id: '1', topics: ['react', 'typescript'] })
+      ],
+      loading: false,
+      error: null
+    }));
+  });
+
+  it('updates topics parameter when selecting topics', () => {
+    renderWithRouter(<TalksList />);
+    const reactBtn = screen.getAllByRole('button', { name: /filter by topic react/i })[0];
+    fireEvent.click(reactBtn);
+    const tsBtn = screen.getAllByRole('button', { name: /filter by topic typescript/i })[0];
+    fireEvent.click(tsBtn);
+
+    const params = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0] as URLSearchParams;
+    expect(params.get('topics')).toBe('react,typescript');
+  });
+
+  it('updates yearType parameter when selecting year filter', () => {
+    renderWithRouter(<TalksList />);
+    const yearButton = screen.getByRole('button', { name: /year filter/i });
+    fireEvent.click(yearButton);
+
+    const params = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0] as URLSearchParams;
+    expect(params.get('yearType')).toBe('last2');
+  });
 });
 

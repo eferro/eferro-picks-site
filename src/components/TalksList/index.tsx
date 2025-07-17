@@ -119,20 +119,81 @@ export function TalksList() {
     setSearchParams(params);
   };
 
-  // Handle topic selection
+  // Handle topic selection and sync with URL
   const handleTopicClick = (topic: string) => {
     setSelectedTopics(prev => {
       const isSelected = prev.includes(topic);
-      if (isSelected) {
-        return prev.filter(t => t !== topic);
+      const newTopics = isSelected ? prev.filter(t => t !== topic) : [...prev, topic];
+
+      const params = new URLSearchParams();
+      for (const [key, value] of searchParams.entries()) {
+        if (key !== 'topics') {
+          params.set(key, value);
+        }
       }
-      return [...prev, topic];
+
+      if (newTopics.length > 0) {
+        params.set('topics', newTopics.join(','));
+      }
+
+      setSearchParams(params);
+      return newTopics;
     });
   };
 
-  // Handle conference selection
+  const handleClearTopics = () => {
+    setSelectedTopics([]);
+
+    const params = new URLSearchParams();
+    for (const [key, value] of searchParams.entries()) {
+      if (key !== 'topics') {
+        params.set(key, value);
+      }
+    }
+
+    setSearchParams(params);
+  };
+
+  // Handle conference selection and sync with URL
   const handleConferenceClick = (conference: string) => {
-    setSelectedConference(prev => prev === conference ? null : conference);
+    const newConference = selectedConference === conference ? null : conference;
+    setSelectedConference(newConference);
+
+    const params = new URLSearchParams();
+    for (const [key, value] of searchParams.entries()) {
+      if (key !== 'conference') {
+        params.set(key, value);
+      }
+    }
+
+    if (newConference) {
+      params.set('conference', newConference);
+    }
+
+    setSearchParams(params);
+  };
+
+  // Handle year filter change and sync with URL
+  const handleYearFilterChange = (filter: YearFilterData | null) => {
+    setSelectedYearFilter(filter);
+
+    const params = new URLSearchParams();
+    for (const [key, value] of searchParams.entries()) {
+      if (key !== 'yearType' && key !== 'year') {
+        params.set(key, value);
+      }
+    }
+
+    if (filter) {
+      params.set('yearType', filter.type);
+      if (filter.year !== undefined) {
+        params.set('year', filter.year.toString());
+      } else {
+        params.delete('year');
+      }
+    }
+
+    setSearchParams(params);
   };
 
   // Handle author selection by toggling based on current URL param
@@ -237,7 +298,7 @@ export function TalksList() {
         <YearFilter
           talks={talks}
           selectedFilter={selectedYearFilter}
-          onFilterChange={setSelectedYearFilter}
+          onFilterChange={handleYearFilterChange}
         />
         <button
           onClick={handleHasNotesClick}
@@ -309,7 +370,7 @@ export function TalksList() {
               ))}
               <button
                 className="text-sm text-gray-500 hover:text-gray-700"
-                onClick={() => setSelectedTopics([])}
+                onClick={handleClearTopics}
               >
                 Clear all topics
               </button>
@@ -321,7 +382,7 @@ export function TalksList() {
               <span className="text-sm text-gray-500">Year:</span>
               <button
                 className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
-                onClick={() => setSelectedYearFilter(null)}
+                onClick={() => handleYearFilterChange(null)}
               >
                 {selectedYearFilter.type === 'specific' && selectedYearFilter.year ? (
                   selectedYearFilter.year
