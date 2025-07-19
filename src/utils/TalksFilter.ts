@@ -40,6 +40,9 @@ export class TalksFilter {
     if (this.year) {
       params.set('year', this.year.toString());
     }
+    if (this.author) {
+      params.set('author', this.author);
+    }
     if (this.query) {
       params.set('query', this.query);
     }

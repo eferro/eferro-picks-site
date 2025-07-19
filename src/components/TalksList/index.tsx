@@ -7,6 +7,7 @@ import { useSearchParams, useLocation } from 'react-router-dom';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { hasMeaningfulNotes } from '../../utils/talks';
 import { DocumentTextIcon, StarIcon } from '@heroicons/react/24/outline';
+import { TalksFilter } from '../../utils/TalksFilter';
 
 function LoadingSpinner() {
   return (
@@ -27,7 +28,13 @@ function ErrorMessage({ message }: { message: string }) {
 export function TalksList() {
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
-  const [selectedAuthor, setSelectedAuthor] = useState<string | null>(null);
+  const filter = useMemo(() => {
+    const f = TalksFilter.fromUrlParams(searchParams);
+    if (searchParams.get('rating') == null) {
+      return new TalksFilter({ ...f, rating: 5 });
+    }
+    return f;
+  }, [searchParams]);
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
   const [selectedConference, setSelectedConference] = useState<string | null>(null);
   const [selectedYearFilter, setSelectedYearFilter] = useState<YearFilterData | null>(null);
@@ -59,7 +66,7 @@ export function TalksList() {
     const rating = params.get('rating');
     
     // Update state from URL
-    if (author) setSelectedAuthor(author);
+    // setSelectedAuthor(author); // This line was removed as per the edit hint
     if (topics.length > 0) setSelectedTopics(topics);
     if (conference) setSelectedConference(conference);
     if (yearType) {
@@ -121,9 +128,9 @@ export function TalksList() {
 
   // Handle topic selection and sync with URL
   const handleTopicClick = (topic: string) => {
-    setSelectedTopics(prev => {
+    setSelectedTopics((prev: string[]) => {
       const isSelected = prev.includes(topic);
-      const newTopics = isSelected ? prev.filter(t => t !== topic) : [...prev, topic];
+      const newTopics = isSelected ? prev.filter((t: string) => t !== topic) : [...prev, topic];
 
       const params = new URLSearchParams();
       for (const [key, value] of searchParams.entries()) {
@@ -198,23 +205,26 @@ export function TalksList() {
 
   // Handle author selection by toggling based on current URL param
   const handleAuthorClick = (author: string) => {
-    // Determine current author from URL, not local state
-    const currentAuthor = searchParams.get('author');
-    const newAuthor = currentAuthor === author ? null : author;
-    setSelectedAuthor(newAuthor);
-
-    const params = new URLSearchParams();
-    // Preserve existing parameters except author
-    for (const [key, value] of searchParams.entries()) {
-      if (key !== 'author') {
-        params.set(key, value);
+    // Toggle author filter using TalksFilter
+    const newAuthor = filter.author === author ? null : author;
+    const nextFilter = new TalksFilter({
+      year: filter.year,
+      author: newAuthor,
+      topics: filter.topics,
+      conference: filter.conference,
+      hasNotes: filter.hasNotes,
+      rating: filter.rating,
+      query: filter.query,
+    });
+    // Preserve extra params
+    const current = new URLSearchParams(searchParams);
+    const next = new URLSearchParams(nextFilter.toParams());
+    for (const [key, value] of current.entries()) {
+      if (!next.has(key) && !['year','author','topics','conference','hasNotes','rating','query'].includes(key)) {
+        next.set(key, value);
       }
     }
-    // Set or remove author parameter
-    if (newAuthor) {
-      params.set('author', newAuthor);
-    }
-    setSearchParams(params);
+    setSearchParams(next);
   };
 
   // Filter talks by selected author, topics, conference, year, and notes
@@ -222,8 +232,8 @@ export function TalksList() {
     if (!talks) return [];
     
     return talks.filter(talk => {
-      // Filter by author
-      if (selectedAuthor && !talk.speakers.includes(selectedAuthor)) {
+      // Filter by author using TalksFilter
+      if (filter.author && !talk.speakers.includes(filter.author)) {
         return false;
       }
 
@@ -263,7 +273,7 @@ export function TalksList() {
 
       return true;
     });
-  }, [talks, selectedAuthor, selectedTopics, selectedConference, selectedYearFilter, showOnlyWithNotes]);
+  }, [talks, filter.author, selectedTopics, selectedConference, selectedYearFilter, showOnlyWithNotes]);
 
   // Group talks by core topic
   const sortedTopics = useMemo(() => {
@@ -327,16 +337,16 @@ export function TalksList() {
       </div>
 
       {/* Active filters */}
-      {(selectedAuthor || selectedTopics.length > 0 || selectedConference || selectedYearFilter || showOnlyWithNotes || filterByRating) && (
+      {(filter.author || selectedTopics.length > 0 || selectedConference || selectedYearFilter || showOnlyWithNotes || filterByRating) && (
         <div className="mb-6 space-y-3">
-          {selectedAuthor && (
+          {filter.author && (
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500">Speaker:</span>
               <button
                 className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
-                onClick={() => handleAuthorClick(selectedAuthor)}
+                onClick={() => handleAuthorClick(filter.author!)}
               >
-                {selectedAuthor}
+                {filter.author}
                 <span className="ml-2 text-blue-600">×</span>
               </button>
             </div>
@@ -442,7 +452,7 @@ export function TalksList() {
             coreTopic={topic} 
             talks={topicTalks}
             onAuthorClick={handleAuthorClick}
-            selectedAuthor={selectedAuthor}
+            selectedAuthor={filter.author}
             onTopicClick={handleTopicClick}
             selectedTopics={selectedTopics}
             onConferenceClick={handleConferenceClick}

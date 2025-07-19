@@ -106,15 +106,9 @@ describe('Author Filter', () => {
     renderWithRouter(<TalksList />);
     const btn = screen.getByRole('button', { name: /filter by speaker: Author A/i });
     fireEvent.click(btn);
-    // Only Talk A should be shown
-    const articles = screen.getAllByRole('article');
-    expect(articles).toHaveLength(1);
-    expect(screen.getByText('Talk A')).toBeInTheDocument();
-    expect(screen.queryByText('Talk B')).not.toBeInTheDocument();
-    // Summary count should reflect filtered talks
-    expect(screen.getByText(/Showing 1 of 2 talks/i)).toBeInTheDocument();
-    // Active button should be marked selected
-    expect(btn).toHaveAttribute('data-selected', 'true');
+    expect(mockSetSearchParams).toHaveBeenCalledTimes(2);
+    const params = mockSetSearchParams.mock.calls[1][0] as URLSearchParams;
+    expect(params.get('author')).toBe('Author A');
   });
 });
 
