@@ -46,7 +46,7 @@ describe('TalksFilter', () => {
 
     it('should return a query string for the year', () => {
       const filter = TalksFilter.fromUrlParams('year=2023');
-      expect(filter.toParams()).toBe('year=2023');
+      expect(filter.toParams()).toBe('yearType=specific&year=2023');
     });
 
     it('should return a query string for the query', () => {
@@ -56,7 +56,7 @@ describe('TalksFilter', () => {
 
     it('should return a query string for both year and query', () => {
       const filter = TalksFilter.fromUrlParams('year=2023&query=testing');
-      expect(filter.toParams()).toBe('year=2023&query=testing');
+      expect(filter.toParams()).toBe('yearType=specific&year=2023&query=testing');
     });
   });
 
@@ -99,6 +99,54 @@ describe('TalksFilter', () => {
     it('should handle case-insensitive query matching', () => {
       const filter = TalksFilter.fromUrlParams('query=TESTING');
       expect(filter.filter(talks)).toEqual([talkWithTesting]);
+    });
+  });
+
+  describe('year filter types', () => {
+    it('should parse and serialize last2 years filter', () => {
+      const filter = TalksFilter.fromUrlParams('yearType=last2');
+      expect(filter.yearType).toBe('last2');
+      expect(filter.year).toBeNull();
+      expect(filter.toParams()).toContain('yearType=last2');
+    });
+
+    it('should parse and serialize last5 years filter', () => {
+      const filter = TalksFilter.fromUrlParams('yearType=last5');
+      expect(filter.yearType).toBe('last5');
+      expect(filter.year).toBeNull();
+      expect(filter.toParams()).toContain('yearType=last5');
+    });
+
+    it('should parse and serialize before year filter', () => {
+      const filter = TalksFilter.fromUrlParams('yearType=before&year=2020');
+      expect(filter.yearType).toBe('before');
+      expect(filter.year).toBe(2020);
+      expect(filter.toParams()).toContain('yearType=before');
+      expect(filter.toParams()).toContain('year=2020');
+    });
+
+    it('should parse and serialize after year filter', () => {
+      const filter = TalksFilter.fromUrlParams('yearType=after&year=2020');
+      expect(filter.yearType).toBe('after');
+      expect(filter.year).toBe(2020);
+      expect(filter.toParams()).toContain('yearType=after');
+      expect(filter.toParams()).toContain('year=2020');
+    });
+
+    it('should parse and serialize specific year filter', () => {
+      const filter = TalksFilter.fromUrlParams('yearType=specific&year=2023');
+      expect(filter.yearType).toBe('specific');
+      expect(filter.year).toBe(2023);
+      expect(filter.toParams()).toContain('yearType=specific');
+      expect(filter.toParams()).toContain('year=2023');
+    });
+
+    it('should default to no year filter if no yearType/year', () => {
+      const filter = TalksFilter.fromUrlParams('');
+      expect(filter.yearType).toBeNull();
+      expect(filter.year).toBeNull();
+      expect(filter.toParams()).not.toContain('yearType');
+      expect(filter.toParams()).not.toContain('year=');
     });
   });
 

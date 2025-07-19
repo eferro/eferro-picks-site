@@ -3,7 +3,7 @@ import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Talk } from '../../types/talks'
 
-export type YearFilterType = 'none' | 'specific' | 'before' | 'after' | 'last2' | 'last5';
+export type YearFilterType = 'specific' | 'before' | 'after' | 'last2' | 'last5';
 
 export interface YearFilterData {
   type: YearFilterType;

@@ -51,7 +51,8 @@ This document tracks the TDD-driven refactor to centralize all filter logic in a
     - Document best practices for maintaining and testing filter logic.
     - Ensure onboarding for new contributors is easy and the filter system is discoverable.
 
-21. [ ] **Centralize all year filter logic in TalksFilter.**
+21. [x] **Centralize all year filter logic in TalksFilter.**
+    - _Completed: All year filtering logic, including ranges and relative logic, is now fully centralized in TalksFilter and all tests pass._
     - Move year range and relative year logic from components into TalksFilter.
     - Ensure all year filtering is handled via the class and URL params.
     - Update components to use only TalksFilter for year filtering.
@@ -66,8 +67,8 @@ This document tracks the TDD-driven refactor to centralize all filter logic in a
 ---
 
 **Status:**
-- The main goal is achieved: all filtering logic is centralized, robust, and fully tested (except for year and TalkDetail, which are pending).
-- Only documentation, year filter centralization, and TalkDetail refactor remain before closing out the refactor. 
+- The main goal is achieved: all filtering logic is centralized, robust, and fully tested (except for TalkDetail, which is pending).
+- Only the TalkDetail refactor remains before closing out the refactor. 
 
 ---
 
@@ -128,7 +129,6 @@ const visibleTalks = filter.filter(allTalks);
 - Ensure all tests pass after any change.
 
 ### 7. Migration Notes
-- **Year filter:** Year range/relative logic is still in the component. Pending migration to `TalksFilter`.
 - **TalkDetail:** Still uses direct param manipulation. Pending refactor to use `TalksFilter` for all filter logic and param handling.
 
 ---

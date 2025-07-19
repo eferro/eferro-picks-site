@@ -190,16 +190,23 @@ export function TalksList() {
     setSearchParams(next);
   };
 
-  // Handle year filter change and sync with URL (only 'year' param is used)
+  // Handle year filter change and sync with URL (set yearType and year)
   const handleYearFilterChange = (yearFilter: YearFilterData | null) => {
-    const params = new URLSearchParams(searchParams);
-    // Remove any previous year param
-    params.delete('year');
-    // Only set year param for 'specific' type
-    if (yearFilter && yearFilter.type === 'specific' && yearFilter.year !== undefined) {
-      params.set('year', yearFilter.year.toString());
+    let nextFilter: TalksFilter;
+    if (!yearFilter) {
+      nextFilter = new TalksFilter({
+        ...filter,
+        yearType: null,
+        year: null,
+      });
+    } else {
+      nextFilter = new TalksFilter({
+        ...filter,
+        yearType: yearFilter.type,
+        year: yearFilter.year ?? null,
+      });
     }
-    setSearchParams(params);
+    setSearchParams(nextFilter.toParams());
   };
 
   // Handle author selection by toggling based on current URL param
@@ -226,23 +233,22 @@ export function TalksList() {
     setSearchParams(next);
   };
 
-  // Helper: derive yearFilter from URL params
-  const yearParam = searchParams.get('year');
+  // Derive yearType and year from TalksFilter
+  const yearType = filter.yearType;
+  const year = filter.year;
   let yearFilter: YearFilterData | null = null;
-  if (yearParam) {
-    yearFilter = { type: 'specific', year: parseInt(yearParam, 10) };
+  if (yearType) {
+    yearFilter = { type: yearType, year: year ?? undefined };
   }
 
   // Filter talks by selected author, topics, conference, year, and notes
   const filteredTalks = useMemo(() => {
     if (!talks) return [];
-    
-    return talks.filter(talk => {
+    return filter.filter(talks).filter(talk => {
       // Filter by author using TalksFilter
       if (filter.author && !talk.speakers.includes(filter.author)) {
         return false;
       }
-
       // Filter by topics using TalksFilter
       if (filter.topics.length > 0) {
         const hasAllSelectedTopics = filter.topics.every(topic => 
@@ -250,39 +256,17 @@ export function TalksList() {
         );
         if (!hasAllSelectedTopics) return false;
       }
-
       // Filter by conference
       if (filter.conference && talk.conference_name !== filter.conference) {
         return false;
       }
-
-      // Handle year filter logic for ranges and specific year
-      if (yearFilter) {
-        const currentYear = new Date().getFullYear();
-        switch (yearFilter.type) {
-          case 'last2':
-            return talk.year != null ? talk.year >= currentYear - 2 : false;
-          case 'last5':
-            return talk.year != null ? talk.year >= currentYear - 5 : false;
-          case 'before':
-            return yearFilter.year !== undefined ? (talk.year != null && talk.year < yearFilter.year) : true;
-          case 'after':
-            return yearFilter.year !== undefined ? (talk.year != null && talk.year > yearFilter.year) : true;
-          case 'specific':
-            return yearFilter.year !== undefined ? (talk.year != null && talk.year === yearFilter.year) : true;
-          default:
-            return true;
-        }
-      }
-
       // Filter by notes
       if (filter.hasNotes && !hasMeaningfulNotes(talk.notes)) {
         return false;
       }
-
       return true;
     });
-  }, [talks, filter.author, filter.topics, filter.conference, filter.year, filter.hasNotes, yearFilter]);
+  }, [talks, filter]);
 
   // Group talks by core topic
   const sortedTopics = useMemo(() => {
