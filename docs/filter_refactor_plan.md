@@ -2,7 +2,15 @@
 
 This document tracks the TDD-driven refactor to centralize all filter logic in a single `TalksFilter` class.
 
-## Tasks
+## Main Goal
+
+**Centralize all filtering logic, state, and URL parameter handling in the `TalksFilter` class, ensuring all filter-related code is robust, maintainable, and fully covered by tests.**
+
+- All filter state (author, topics, conference, year, notes, rating, query) is now represented in `TalksFilter`.
+- All filter handlers and UI state updates in components use `TalksFilter` and URL params exclusively.
+- All tests are green and rely on `TalksFilter` for assertions and setup.
+
+## Completed Tasks
 
 1. [x] **Define requirements and API for `TalksFilter` class**
 2. [x] **Write initial failing tests for parsing filter state from URL parameters**
@@ -15,16 +23,6 @@ This document tracks the TDD-driven refactor to centralize all filter logic in a
 9. [x] **Refactor all usages to use `TalksFilter` for parsing, serialization, and filtering**
 10. [x] **Ensure all tests pass after refactor**
 11. [x] **Revert to clean, passing state after integration test issues**
-
----
-
-**Next steps:**
-- Proceed in smaller, test-driven increments, applying learnings from previous iterations.
-- After each change, if the tests pass, commit the changes.
-- Continue with the remaining refactor and cleanup tasks as planned.
-
-## Upcoming Tasks
-
 12. [x] Remove duplicated author filter state and logic from TalksList, use TalksFilter exclusively for author filtering.  
     _Completed: Verified by passing tests and code review._
 13. [x] Remove duplicated topic filter state and logic from TalksList, use TalksFilter exclusively for topic filtering.  
@@ -39,6 +37,21 @@ This document tracks the TDD-driven refactor to centralize all filter logic in a
     _Completed: All handlers now update state via TalksFilter and URL params only._
 18. [x] Refactor tests to rely on TalksFilter for all filter assertions and state setup.  
     _Completed: All tests now use TalksFilter and URL params for setup and assertions; all tests pass._
-19. [ ] Clean up and document the new filter system in developer docs.
 20. [x] Final code cleanup and ensure all tests pass.  
     _Completed: All tests are green; codebase is ready for documentation and final cleanup._ 
+
+---
+
+## Pending Task
+
+19. [ ] **Clean up and document the new filter system in developer docs.**
+    - Write clear developer documentation for the new filter system.
+    - Provide usage examples for adding or extending filters.
+    - Document best practices for maintaining and testing filter logic.
+    - Ensure onboarding for new contributors is easy and the filter system is discoverable.
+
+---
+
+**Status:**
+- The main goal is achieved: all filtering logic is centralized, robust, and fully tested.
+- Only documentation and developer guidance remain before closing out the refactor. 
