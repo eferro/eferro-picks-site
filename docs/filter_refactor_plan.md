@@ -33,8 +33,12 @@ This document tracks the TDD-driven refactor to centralize all filter logic in a
     _Completed: Verified by passing tests and code review._
 15. [x] Remove duplicated year filter state and logic from TalksList, use TalksFilter exclusively for year filtering.  
     _Completed: Verified by passing tests and code review._
-16. [ ] Remove duplicated notes and rating filter state and logic from TalksList, use TalksFilter exclusively for these filters.
-17. [ ] Ensure all filter handler functions update only via TalksFilter and URL params.
-18. [ ] Refactor tests to rely on TalksFilter for all filter assertions and state setup.
+16. [x] Remove duplicated notes and rating filter state and logic from TalksList, use TalksFilter exclusively for these filters.  
+    _Completed: All filter logic is now centralized in TalksFilter and URL params._
+17. [x] Ensure all filter handler functions update only via TalksFilter and URL params.  
+    _Completed: All handlers now update state via TalksFilter and URL params only._
+18. [x] Refactor tests to rely on TalksFilter for all filter assertions and state setup.  
+    _Completed: All tests now use TalksFilter and URL params for setup and assertions; all tests pass._
 19. [ ] Clean up and document the new filter system in developer docs.
-20. [ ] Final code cleanup and ensure all tests pass. 
+20. [x] Final code cleanup and ensure all tests pass.  
+    _Completed: All tests are green; codebase is ready for documentation and final cleanup._ 
