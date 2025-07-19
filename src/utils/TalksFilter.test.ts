@@ -85,5 +85,20 @@ describe('TalksFilter', () => {
       const filter = new TalksFilter('');
       expect(filter.filter(talks)).toEqual(talks);
     });
+
+    it('should return an empty array if no talks match the filter', () => {
+      const filter = new TalksFilter('year=2025');
+      expect(filter.filter(talks)).toEqual([]);
+    });
+
+    it('should return an empty array if the talks array is empty', () => {
+      const filter = new TalksFilter('year=2023');
+      expect(filter.filter([])).toEqual([]);
+    });
+
+    it('should handle case-insensitive query matching', () => {
+      const filter = new TalksFilter('query=TESTING');
+      expect(filter.filter(talks)).toEqual([talkWithTesting]);
+    });
   });
 });
