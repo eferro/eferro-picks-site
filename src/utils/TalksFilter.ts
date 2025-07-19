@@ -1,4 +1,6 @@
 
+import { Talk } from '../types/talks';
+
 export class TalksFilter {
   public year: number | null = null;
   public query: string = '';
@@ -26,5 +28,17 @@ export class TalksFilter {
       params.set('query', this.query);
     }
     return params.toString();
+  }
+
+  filter(talks: Talk[]): Talk[] {
+    return talks.filter(talk => {
+      if (this.year && talk.year !== this.year) {
+        return false;
+      }
+      if (this.query && !talk.title.toLowerCase().includes(this.query.toLowerCase())) {
+        return false;
+      }
+      return true;
+    });
   }
 }

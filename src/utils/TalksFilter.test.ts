@@ -59,4 +59,31 @@ describe('TalksFilter', () => {
       expect(filter.toParams()).toBe('year=2023&query=testing');
     });
   });
+
+  describe('filter', () => {
+    const talk2023 = { id: '1', title: 'Talk 2023', year: 2023, url: '', duration: 0, topics: [], speakers: [], description: '', core_topic: '' };
+    const talk2024 = { id: '2', title: 'Talk 2024', year: 2024, url: '', duration: 0, topics: [], speakers: [], description: '', core_topic: '' };
+    const talkWithTesting = { id: '3', title: 'Talk about testing', year: 2024, url: '', duration: 0, topics: [], speakers: [], description: '', core_topic: '' };
+    const talks = [talk2023, talk2024, talkWithTesting];
+
+    it('should filter by year', () => {
+      const filter = new TalksFilter('year=2023');
+      expect(filter.filter(talks)).toEqual([talk2023]);
+    });
+
+    it('should filter by query', () => {
+      const filter = new TalksFilter('query=testing');
+      expect(filter.filter(talks)).toEqual([talkWithTesting]);
+    });
+
+    it('should filter by year and query', () => {
+      const filter = new TalksFilter('year=2024&query=testing');
+      expect(filter.filter(talks)).toEqual([talkWithTesting]);
+    });
+
+    it('should return all talks if no filter is set', () => {
+      const filter = new TalksFilter('');
+      expect(filter.filter(talks)).toEqual(talks);
+    });
+  });
 });
