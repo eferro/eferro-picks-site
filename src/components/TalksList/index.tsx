@@ -35,8 +35,6 @@ export function TalksList() {
     }
     return f;
   }, [searchParams]);
-  const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
-  const [selectedConference, setSelectedConference] = useState<string | null>(null);
   const [selectedYearFilter, setSelectedYearFilter] = useState<YearFilterData | null>(null);
   const [showOnlyWithNotes, setShowOnlyWithNotes] = useState(() => searchParams.get('hasNotes') === 'true');
   const [filterByRating, setFilterByRating] = useState(() => searchParams.get('rating') !== 'all');
@@ -67,8 +65,26 @@ export function TalksList() {
     
     // Update state from URL
     // setSelectedAuthor(author); // This line was removed as per the edit hint
-    if (topics.length > 0) setSelectedTopics(topics);
-    if (conference) setSelectedConference(conference);
+    if (topics.length > 0) {
+      // The selectedTopics state is removed, so we directly update the filter
+      const nextFilter = new TalksFilter({
+        year: filter.year,
+        author: filter.author,
+        topics: topics,
+        conference: filter.conference,
+        hasNotes: filter.hasNotes,
+        rating: filter.rating,
+        query: filter.query,
+      });
+      setSearchParams(nextFilter.toParams());
+    }
+    if (conference) {
+      const nextFilter = new TalksFilter({
+        ...filter,
+        conference: conference,
+      });
+      setSearchParams(nextFilter.toParams());
+    }
     if (yearType) {
       setSelectedYearFilter({
         type: yearType as YearFilterData['type'],
@@ -79,7 +95,7 @@ export function TalksList() {
     }
     setShowOnlyWithNotes(hasNotes);
     setFilterByRating(rating !== 'all');
-  }, [searchParams]);
+  }, [searchParams, filter]);
 
   // Update URL when filters change
   const handleHasNotesClick = () => {
@@ -128,56 +144,71 @@ export function TalksList() {
 
   // Handle topic selection and sync with URL
   const handleTopicClick = (topic: string) => {
-    setSelectedTopics((prev: string[]) => {
-      const isSelected = prev.includes(topic);
-      const newTopics = isSelected ? prev.filter((t: string) => t !== topic) : [...prev, topic];
-
-      const params = new URLSearchParams();
-      for (const [key, value] of searchParams.entries()) {
-        if (key !== 'topics') {
-          params.set(key, value);
-        }
-      }
-
-      if (newTopics.length > 0) {
-        params.set('topics', newTopics.join(','));
-      }
-
-      setSearchParams(params);
-      return newTopics;
+    const urlTopics = (searchParams.get('topics')?.split(',').filter(Boolean)) || [];
+    const isSelected = urlTopics.includes(topic);
+    let newTopics;
+    if (isSelected) {
+      newTopics = urlTopics.filter(t => t !== topic);
+    } else {
+      newTopics = [...urlTopics, topic];
+    }
+    const nextFilter = new TalksFilter({
+      year: filter.year,
+      author: filter.author,
+      topics: newTopics,
+      conference: filter.conference,
+      hasNotes: filter.hasNotes,
+      rating: filter.rating,
+      query: filter.query,
     });
+    // Preserve extra params
+    const current = new URLSearchParams(searchParams);
+    const next = new URLSearchParams(nextFilter.toParams());
+    for (const [key, value] of current.entries()) {
+      if (!next.has(key) && !['year','author','topics','conference','hasNotes','rating','query'].includes(key)) {
+        next.set(key, value);
+      }
+    }
+    setSearchParams(next);
   };
 
   const handleClearTopics = () => {
-    setSelectedTopics([]);
-
-    const params = new URLSearchParams();
-    for (const [key, value] of searchParams.entries()) {
-      if (key !== 'topics') {
-        params.set(key, value);
+    const nextFilter = new TalksFilter({
+      year: filter.year,
+      author: filter.author,
+      topics: [],
+      conference: filter.conference,
+      hasNotes: filter.hasNotes,
+      rating: filter.rating,
+      query: filter.query,
+    });
+    // Preserve extra params
+    const current = new URLSearchParams(searchParams);
+    const next = new URLSearchParams(nextFilter.toParams());
+    for (const [key, value] of current.entries()) {
+      if (!next.has(key) && !['year','author','topics','conference','hasNotes','rating','query'].includes(key)) {
+        next.set(key, value);
       }
     }
-
-    setSearchParams(params);
+    setSearchParams(next);
   };
 
-  // Handle conference selection and sync with URL
+  // Handle conference selection and sync with URL using TalksFilter
   const handleConferenceClick = (conference: string) => {
-    const newConference = selectedConference === conference ? null : conference;
-    setSelectedConference(newConference);
-
-    const params = new URLSearchParams();
-    for (const [key, value] of searchParams.entries()) {
-      if (key !== 'conference') {
-        params.set(key, value);
+    const newConference = filter.conference === conference ? null : conference;
+    const nextFilter = new TalksFilter({
+      ...filter,
+      conference: newConference,
+    });
+    // Preserve extra params
+    const current = new URLSearchParams(searchParams);
+    const next = new URLSearchParams(nextFilter.toParams());
+    for (const [key, value] of current.entries()) {
+      if (!next.has(key) && !['year','author','topics','conference','hasNotes','rating','query'].includes(key)) {
+        next.set(key, value);
       }
     }
-
-    if (newConference) {
-      params.set('conference', newConference);
-    }
-
-    setSearchParams(params);
+    setSearchParams(next);
   };
 
   // Handle year filter change and sync with URL
@@ -237,16 +268,16 @@ export function TalksList() {
         return false;
       }
 
-      // Filter by topics
-      if (selectedTopics.length > 0) {
-        const hasAllSelectedTopics = selectedTopics.every(topic => 
+      // Filter by topics using TalksFilter
+      if (filter.topics.length > 0) {
+        const hasAllSelectedTopics = filter.topics.every(topic => 
           talk.topics.includes(topic)
         );
         if (!hasAllSelectedTopics) return false;
       }
 
       // Filter by conference
-      if (selectedConference && talk.conference_name !== selectedConference) {
+      if (filter.conference && talk.conference_name !== filter.conference) {
         return false;
       }
 
@@ -273,7 +304,7 @@ export function TalksList() {
 
       return true;
     });
-  }, [talks, filter.author, selectedTopics, selectedConference, selectedYearFilter, showOnlyWithNotes]);
+  }, [talks, filter.author, filter.topics, filter.conference, selectedYearFilter, showOnlyWithNotes]);
 
   // Group talks by core topic
   const sortedTopics = useMemo(() => {
@@ -337,7 +368,7 @@ export function TalksList() {
       </div>
 
       {/* Active filters */}
-      {(filter.author || selectedTopics.length > 0 || selectedConference || selectedYearFilter || showOnlyWithNotes || filterByRating) && (
+      {(filter.author || filter.topics.length > 0 || filter.conference || selectedYearFilter || showOnlyWithNotes || filterByRating) && (
         <div className="mb-6 space-y-3">
           {filter.author && (
             <div className="flex items-center gap-2">
@@ -352,23 +383,23 @@ export function TalksList() {
             </div>
           )}
           
-          {selectedConference && (
+          {filter.conference && (
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500">Conference:</span>
               <button
                 className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
-                onClick={() => handleConferenceClick(selectedConference)}
+                onClick={() => handleConferenceClick(filter.conference!)}
               >
-                {selectedConference}
+                {filter.conference}
                 <span className="ml-2 text-blue-600">×</span>
               </button>
             </div>
           )}
           
-          {selectedTopics.length > 0 && (
+          {filter.topics.length > 0 && (
             <div className="flex flex-wrap items-center gap-2">
               <span className="text-sm text-gray-500">Topics:</span>
-              {selectedTopics.map(topic => (
+              {filter.topics.map(topic => (
                 <button
                   key={topic}
                   className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-800"
@@ -454,9 +485,9 @@ export function TalksList() {
             onAuthorClick={handleAuthorClick}
             selectedAuthor={filter.author}
             onTopicClick={handleTopicClick}
-            selectedTopics={selectedTopics}
+            selectedTopics={filter.topics}
             onConferenceClick={handleConferenceClick}
-            selectedConference={selectedConference}
+            selectedConference={filter.conference}
           />
         ))
       ) : (
