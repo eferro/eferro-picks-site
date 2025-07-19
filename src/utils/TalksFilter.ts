@@ -43,6 +43,12 @@ export class TalksFilter {
     if (this.author) {
       params.set('author', this.author);
     }
+    if (this.topics && this.topics.length > 0) {
+      params.set('topics', this.topics.join(','));
+    }
+    if (this.hasNotes) {
+      params.set('hasNotes', 'true');
+    }
     if (this.query) {
       params.set('query', this.query);
     }

@@ -34,11 +34,9 @@ export function TalksList() {
       return new TalksFilter({ ...f, rating: 5 });
     }
     return f;
-  }, [searchParams]);
+  }, [searchParams.toString()]);
   // No local state for year filter; handled by TalksFilter
-  const [showOnlyWithNotes, setShowOnlyWithNotes] = useState(() => searchParams.get('hasNotes') === 'true');
-  const [filterByRating, setFilterByRating] = useState(() => searchParams.get('rating') !== 'all');
-  const { talks, loading, error } = useTalks(filterByRating);
+  const { talks, loading, error } = useTalks(filter.rating === 5);
 
   // Add scroll position saving
   useScrollPosition();
@@ -47,10 +45,10 @@ export function TalksList() {
   useEffect(() => {
     if (!searchParams.get('rating')) {
       const params = new URLSearchParams(searchParams);
-      params.set('rating', filterByRating ? '5' : 'all');
+      params.set('rating', filter.rating === 5 ? '5' : 'all');
       setSearchParams(params);
     }
-  }, [searchParams, filterByRating]);
+  }, [searchParams, filter.rating]);
 
   // Handle URL parameters and updates
   useEffect(() => {
@@ -86,53 +84,41 @@ export function TalksList() {
       setSearchParams(nextFilter.toParams());
     }
     // No local state for year filter; handled by TalksFilter
-    setShowOnlyWithNotes(hasNotes);
-    setFilterByRating(rating !== 'all');
   }, [searchParams, filter]);
 
   // Update URL when filters change
   const handleHasNotesClick = () => {
-    const newValue = !showOnlyWithNotes;
-    setShowOnlyWithNotes(newValue);
-    
-    const params = new URLSearchParams();
-    
-    // Preserve existing parameters
-    for (const [key, value] of searchParams.entries()) {
-      if (key !== 'hasNotes') {
-        params.set(key, value);
+    const newValue = !filter.hasNotes;
+    const nextFilter = new TalksFilter({
+      ...filter,
+      hasNotes: newValue,
+    });
+    // Preserve extra params
+    const current = new URLSearchParams(searchParams);
+    const next = new URLSearchParams(nextFilter.toParams());
+    for (const [key, value] of current.entries()) {
+      if (!next.has(key) && !['year','author','topics','conference','hasNotes','rating','query'].includes(key)) {
+        next.set(key, value);
       }
     }
-    
-    // Update hasNotes parameter
-    if (newValue) {
-      params.set('hasNotes', 'true');
-    }
-    
-    setSearchParams(params);
+    setSearchParams(next);
   };
 
   const handleRatingClick = () => {
-    const newValue = !filterByRating;
-    setFilterByRating(newValue);
-    
-    const params = new URLSearchParams();
-    
-    // Preserve existing parameters
-    for (const [key, value] of searchParams.entries()) {
-      if (key !== 'rating') {
-        params.set(key, value);
+    const newValue = filter.rating === 5 ? null : 5;
+    const nextFilter = new TalksFilter({
+      ...filter,
+      rating: newValue,
+    });
+    // Preserve extra params
+    const current = new URLSearchParams(searchParams);
+    const next = new URLSearchParams(nextFilter.toParams());
+    for (const [key, value] of current.entries()) {
+      if (!next.has(key) && !['year','author','topics','conference','hasNotes','rating','query'].includes(key)) {
+        next.set(key, value);
       }
     }
-    
-    // Update rating parameter
-    if (newValue) {
-      params.set('rating', '5');
-    } else {
-      params.set('rating', 'all');
-    }
-    
-    setSearchParams(params);
+    setSearchParams(next);
   };
 
   // Handle topic selection and sync with URL
@@ -290,13 +276,13 @@ export function TalksList() {
       }
 
       // Filter by notes
-      if (showOnlyWithNotes && !hasMeaningfulNotes(talk.notes)) {
+      if (filter.hasNotes && !hasMeaningfulNotes(talk.notes)) {
         return false;
       }
 
       return true;
     });
-  }, [talks, filter.author, filter.topics, filter.conference, filter.year, showOnlyWithNotes, yearFilter]);
+  }, [talks, filter.author, filter.topics, filter.conference, filter.year, filter.hasNotes, yearFilter]);
 
   // Group talks by core topic
   const sortedTopics = useMemo(() => {
@@ -321,6 +307,10 @@ export function TalksList() {
       });
   }, [filteredTalks]);
 
+  // TEMP DEBUG: Log searchParams and filter on each render
+  // eslint-disable-next-line no-console
+  console.log('TalksList render: searchParams =', searchParams.toString(), 'filter =', filter);
+
   if (loading) return <LoadingSpinner />;
   if (error) return <ErrorMessage message={error.message} />;
 
@@ -337,30 +327,30 @@ export function TalksList() {
           onClick={handleHasNotesClick}
           aria-label="Toggle Has Notes filter"
           className={`inline-flex items-center px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-            showOnlyWithNotes
+            filter.hasNotes
               ? 'bg-blue-500 text-white'
               : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
           }`}
         >
-          <DocumentTextIcon className={`h-5 w-5 ${showOnlyWithNotes ? 'text-white' : 'text-blue-500'} mr-2`} />
+          <DocumentTextIcon className={`h-5 w-5 ${filter.hasNotes ? 'text-white' : 'text-blue-500'} mr-2`} />
           Has Notes
         </button>
         <button
           onClick={handleRatingClick}
           aria-label="Toggle Rating filter"
           className={`inline-flex items-center px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-            filterByRating
+            filter.rating === 5
               ? 'bg-blue-500 text-white'
               : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
           }`}
         >
-          <StarIcon className={`h-5 w-5 ${filterByRating ? 'text-white' : 'text-blue-500'} mr-2`} />
-          {filterByRating ? '5 Stars' : 'All'}
+          <StarIcon className={`h-5 w-5 ${filter.rating === 5 ? 'text-white' : 'text-blue-500'} mr-2`} />
+          {filter.rating === 5 ? '5 Stars' : 'All'}
         </button>
       </div>
 
       {/* Active filters */}
-      {(filter.author || filter.topics.length > 0 || filter.conference || yearFilter || showOnlyWithNotes || filterByRating) && (
+      {(filter.author || filter.topics.length > 0 || filter.conference || yearFilter || filter.hasNotes || filter.rating === 5) && (
         <div className="mb-6 space-y-3">
           {filter.author && (
             <div className="flex items-center gap-2">
@@ -433,7 +423,7 @@ export function TalksList() {
             </div>
           )}
           
-          {showOnlyWithNotes && (
+          {filter.hasNotes && (
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500">Filter:</span>
               <button
@@ -447,7 +437,7 @@ export function TalksList() {
             </div>
           )}
           
-          {filterByRating && (
+          {filter.rating === 5 && (
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500">Filter:</span>
               <button

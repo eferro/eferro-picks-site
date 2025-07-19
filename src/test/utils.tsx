@@ -8,23 +8,14 @@ import { TalkCard } from '../components/TalksList/TalkCard';
 export const mockNavigate = vi.fn();
 
 // Mock search params
-export const mockSearchParams = {
-  _params: {} as Record<string, string>,
-  get: vi.fn((key: string) => mockSearchParams._params[key] || null),
-  set: vi.fn((key: string, value: string) => {
-    mockSearchParams._params[key] = value;
-  }),
-  toString: vi.fn(() => {
-    return Object.entries(mockSearchParams._params)
-      .map(([key, value]) => `${key}=${value}`)
-      .join('&');
-  }),
-  has: vi.fn((key: string) => key in mockSearchParams._params),
-  clear: vi.fn(() => {
-    mockSearchParams._params = {};
-  }),
-  entries: vi.fn(() => Object.entries(mockSearchParams._params))
+let _mockSearchParams = new URLSearchParams();
+export function getMockSearchParams() {
+  return _mockSearchParams;
+}
+export const setMockSearchParams = (params: URLSearchParams) => {
+  _mockSearchParams = new URLSearchParams(params.toString());
 };
+// No need to export _mockSearchParams directly; use getMockSearchParams()
 
 export const mockSetSearchParams = vi.fn();
 
@@ -33,9 +24,9 @@ vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual('react-router-dom');
   return {
     ...actual,
-    useSearchParams: () => [mockSearchParams, mockSetSearchParams],
+    useSearchParams: () => [getMockSearchParams(), mockSetSearchParams],
     useNavigate: () => mockNavigate,
-    useLocation: () => ({ pathname: '/', search: mockSearchParams.toString() }),
+    useLocation: () => ({ pathname: '/', search: getMockSearchParams().toString() }),
     useParams: () => ({}),
     Link: ({ children, to }: { children: React.ReactNode, to: any }) => {
       const search = typeof to === 'string' ? '' : to.search;
@@ -49,13 +40,13 @@ vi.mock('react-router-dom', async () => {
 // Reset all mocks before each test
 beforeEach(() => {
   vi.clearAllMocks();
-  mockSearchParams.clear();
+  // mockSearchParams = new URLSearchParams(); // This line is removed as per the edit hint
 
   // Mock window.location
   Object.defineProperty(window, 'location', {
     value: {
       ...window.location,
-      search: mockSearchParams.toString()
+      search: getMockSearchParams().toString()
     },
     writable: true
   });

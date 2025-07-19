@@ -3,7 +3,7 @@ import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { TalkDetail } from '.';
 import { useTalks } from '../../hooks/useTalks';
 import { useSearchParams, useParams } from 'react-router-dom';
-import { renderWithRouter, mockSearchParams, mockSetSearchParams, createTalk } from '../../test/utils';
+import { renderWithRouter, setMockSearchParams, getMockSearchParams, mockSetSearchParams, createTalk } from '../../test/utils';
 
 // Mock the hooks
 vi.mock('../../hooks/useTalks');
@@ -42,9 +42,9 @@ describe('TalkDetail', () => {
     
     // Reset mocks and internal state
     vi.clearAllMocks();
-    mockSearchParams.clear();
+    setMockSearchParams(new URLSearchParams());
     
-    (useSearchParams as any).mockImplementation(() => [mockSearchParams, mockSetSearchParams]);
+    (useSearchParams as any).mockImplementation(() => [getMockSearchParams(), mockSetSearchParams]);
   });
 
   const renderComponent = () => renderWithRouter(<TalkDetail />);
@@ -77,7 +77,7 @@ describe('TalkDetail', () => {
 
     it('removes author filter when clicking on the same speaker', () => {
       // Set initial state
-      mockSearchParams.set('author', 'Test Speaker 1');
+      setMockSearchParams(new URLSearchParams('author=Test Speaker 1'));
       
       renderComponent();
       
@@ -85,14 +85,16 @@ describe('TalkDetail', () => {
       fireEvent.click(speakerButton);
       
       expect(mockSetSearchParams).toHaveBeenCalled();
-      const [[params]] = mockSetSearchParams.mock.calls;
+      const lastCall = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1];
+      const params = lastCall[0];
       expect(params.get('author')).toBeNull();
     });
 
     it('applies selected styling to the active speaker', () => {
-      mockSearchParams.set('author', 'Test Speaker 1');
+      setMockSearchParams(new URLSearchParams('author=Test Speaker 1'));
       renderComponent();
       
+      // Re-query the button after render
       const speakerButton = screen.getByText('Test Speaker 1');
       expect(speakerButton).toHaveClass('bg-blue-500', 'text-white');
     });
@@ -112,7 +114,7 @@ describe('TalkDetail', () => {
 
     it('removes conference filter when clicking on the same conference', () => {
       // Set initial state
-      mockSearchParams.set('conference', 'Test Conference');
+      setMockSearchParams(new URLSearchParams('conference=Test Conference'));
       
       renderComponent();
       
@@ -120,14 +122,16 @@ describe('TalkDetail', () => {
       fireEvent.click(conferenceButton);
       
       expect(mockSetSearchParams).toHaveBeenCalled();
-      const [[params]] = mockSetSearchParams.mock.calls;
+      const lastCall = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1];
+      const params = lastCall[0];
       expect(params.get('conference')).toBeNull();
     });
 
     it('applies selected styling to the active conference', () => {
-      mockSearchParams.set('conference', 'Test Conference');
+      setMockSearchParams(new URLSearchParams('conference=Test Conference'));
       renderComponent();
       
+      // Re-query the button after render
       const conferenceButton = screen.getByText('Test Conference');
       expect(conferenceButton).toHaveClass('bg-blue-500', 'text-white');
     });

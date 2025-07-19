@@ -1,13 +1,12 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { TalkCard } from './TalkCard';
-import { mockTalk, mockHandlers, renderTalkCard, createTalk, mockSearchParams, mockNavigate } from '../../test/utils';
+import { mockTalk, mockHandlers, renderTalkCard, createTalk, setMockSearchParams, mockNavigate } from '../../test/utils';
 
 describe('TalkCard', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    mockSearchParams.get.mockImplementation(() => null);
-    mockSearchParams.toString.mockImplementation(() => '');
+    setMockSearchParams(new URLSearchParams());
   });
 
   describe('Rendering', () => {
@@ -171,7 +170,7 @@ describe('TalkCard', () => {
 
     it('navigates to talk page when card is clicked', () => {
       const talk = createTalk({ id: 'test-id' });
-      mockSearchParams.toString.mockImplementation(() => 'topics=test');
+      setMockSearchParams(new URLSearchParams('topics=test'));
       renderTalkCard({ talk });
       
       const card = screen.getByRole('article', { name: /Talk: Test Talk/i });
@@ -185,7 +184,7 @@ describe('TalkCard', () => {
 
     it('navigates to talk page when Enter key is pressed', () => {
       const talk = createTalk({ id: 'test-id' });
-      mockSearchParams.toString.mockImplementation(() => 'topics=test');
+      setMockSearchParams(new URLSearchParams('topics=test'));
       renderTalkCard({ talk });
       
       const card = screen.getByRole('article', { name: /Talk: Test Talk/i });
