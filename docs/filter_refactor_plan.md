@@ -31,7 +31,8 @@ This document tracks the TDD-driven refactor to centralize all filter logic in a
     _Completed: Verified by passing tests and code review._
 14. [x] Remove duplicated conference filter state and logic from TalksList, use TalksFilter exclusively for conference filtering.  
     _Completed: Verified by passing tests and code review._
-15. [ ] Remove duplicated year filter state and logic from TalksList, use TalksFilter exclusively for year filtering.
+15. [x] Remove duplicated year filter state and logic from TalksList, use TalksFilter exclusively for year filtering.  
+    _Completed: Verified by passing tests and code review._
 16. [ ] Remove duplicated notes and rating filter state and logic from TalksList, use TalksFilter exclusively for these filters.
 17. [ ] Ensure all filter handler functions update only via TalksFilter and URL params.
 18. [ ] Refactor tests to rely on TalksFilter for all filter assertions and state setup.

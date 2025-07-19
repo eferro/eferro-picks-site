@@ -35,7 +35,7 @@ export function TalksList() {
     }
     return f;
   }, [searchParams]);
-  const [selectedYearFilter, setSelectedYearFilter] = useState<YearFilterData | null>(null);
+  // No local state for year filter; handled by TalksFilter
   const [showOnlyWithNotes, setShowOnlyWithNotes] = useState(() => searchParams.get('hasNotes') === 'true');
   const [filterByRating, setFilterByRating] = useState(() => searchParams.get('rating') !== 'all');
   const { talks, loading, error } = useTalks(filterByRating);
@@ -85,14 +85,7 @@ export function TalksList() {
       });
       setSearchParams(nextFilter.toParams());
     }
-    if (yearType) {
-      setSelectedYearFilter({
-        type: yearType as YearFilterData['type'],
-        year: year ? parseInt(year) : undefined
-      });
-    } else {
-      setSelectedYearFilter(null);
-    }
+    // No local state for year filter; handled by TalksFilter
     setShowOnlyWithNotes(hasNotes);
     setFilterByRating(rating !== 'all');
   }, [searchParams, filter]);
@@ -211,26 +204,15 @@ export function TalksList() {
     setSearchParams(next);
   };
 
-  // Handle year filter change and sync with URL
-  const handleYearFilterChange = (filter: YearFilterData | null) => {
-    setSelectedYearFilter(filter);
-
-    const params = new URLSearchParams();
-    for (const [key, value] of searchParams.entries()) {
-      if (key !== 'yearType' && key !== 'year') {
-        params.set(key, value);
-      }
+  // Handle year filter change and sync with URL (only 'year' param is used)
+  const handleYearFilterChange = (yearFilter: YearFilterData | null) => {
+    const params = new URLSearchParams(searchParams);
+    // Remove any previous year param
+    params.delete('year');
+    // Only set year param for 'specific' type
+    if (yearFilter && yearFilter.type === 'specific' && yearFilter.year !== undefined) {
+      params.set('year', yearFilter.year.toString());
     }
-
-    if (filter) {
-      params.set('yearType', filter.type);
-      if (filter.year !== undefined) {
-        params.set('year', filter.year.toString());
-      } else {
-        params.delete('year');
-      }
-    }
-
     setSearchParams(params);
   };
 
@@ -258,6 +240,13 @@ export function TalksList() {
     setSearchParams(next);
   };
 
+  // Helper: derive yearFilter from URL params
+  const yearParam = searchParams.get('year');
+  let yearFilter: YearFilterData | null = null;
+  if (yearParam) {
+    yearFilter = { type: 'specific', year: parseInt(yearParam, 10) };
+  }
+
   // Filter talks by selected author, topics, conference, year, and notes
   const filteredTalks = useMemo(() => {
     if (!talks) return [];
@@ -281,17 +270,20 @@ export function TalksList() {
         return false;
       }
 
-      // Filter by year
-      if (selectedYearFilter) {
+      // Handle year filter logic for ranges and specific year
+      if (yearFilter) {
         const currentYear = new Date().getFullYear();
-
-        switch (selectedYearFilter.type) {
+        switch (yearFilter.type) {
           case 'last2':
-            return talk.year ? talk.year >= currentYear - 2 : false;
+            return talk.year != null ? talk.year >= currentYear - 2 : false;
           case 'last5':
-            return talk.year ? talk.year >= currentYear - 5 : false;
+            return talk.year != null ? talk.year >= currentYear - 5 : false;
+          case 'before':
+            return yearFilter.year !== undefined ? (talk.year != null && talk.year < yearFilter.year) : true;
+          case 'after':
+            return yearFilter.year !== undefined ? (talk.year != null && talk.year > yearFilter.year) : true;
           case 'specific':
-            return selectedYearFilter.year ? talk.year === selectedYearFilter.year : true;
+            return yearFilter.year !== undefined ? (talk.year != null && talk.year === yearFilter.year) : true;
           default:
             return true;
         }
@@ -304,7 +296,7 @@ export function TalksList() {
 
       return true;
     });
-  }, [talks, filter.author, filter.topics, filter.conference, selectedYearFilter, showOnlyWithNotes]);
+  }, [talks, filter.author, filter.topics, filter.conference, filter.year, showOnlyWithNotes, yearFilter]);
 
   // Group talks by core topic
   const sortedTopics = useMemo(() => {
@@ -338,7 +330,7 @@ export function TalksList() {
       <div className="mb-6 flex items-center gap-4">
         <YearFilter
           talks={talks}
-          selectedFilter={selectedYearFilter}
+          selectedFilter={yearFilter}
           onFilterChange={handleYearFilterChange}
         />
         <button
@@ -368,7 +360,7 @@ export function TalksList() {
       </div>
 
       {/* Active filters */}
-      {(filter.author || filter.topics.length > 0 || filter.conference || selectedYearFilter || showOnlyWithNotes || filterByRating) && (
+      {(filter.author || filter.topics.length > 0 || filter.conference || yearFilter || showOnlyWithNotes || filterByRating) && (
         <div className="mb-6 space-y-3">
           {filter.author && (
             <div className="flex items-center gap-2">
@@ -418,20 +410,20 @@ export function TalksList() {
             </div>
           )}
           
-          {selectedYearFilter && (
+          {yearFilter && (
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500">Year:</span>
               <button
                 className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
                 onClick={() => handleYearFilterChange(null)}
               >
-                {selectedYearFilter.type === 'specific' && selectedYearFilter.year ? (
-                  selectedYearFilter.year
-                ) : selectedYearFilter.type === 'before' ? (
-                  `Before ${selectedYearFilter.year}`
-                ) : selectedYearFilter.type === 'after' ? (
-                  `After ${selectedYearFilter.year}`
-                ) : selectedYearFilter.type === 'last2' ? (
+                {yearFilter.type === 'specific' && yearFilter.year ? (
+                  yearFilter.year
+                ) : yearFilter.type === 'before' ? (
+                  `Before ${yearFilter.year}`
+                ) : yearFilter.type === 'after' ? (
+                  `After ${yearFilter.year}`
+                ) : yearFilter.type === 'last2' ? (
                   'Last 2 Years'
                 ) : (
                   'Last 5 Years'

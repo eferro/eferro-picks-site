@@ -367,8 +367,10 @@ describe('URL parameters for other filters', () => {
     const yearButton = screen.getByRole('button', { name: /year filter/i });
     fireEvent.click(yearButton);
 
-    const params = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0] as URLSearchParams;
-    expect(params.get('yearType')).toBe('last2');
+    const params = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0];
+    // For range filters like 'last2', there should be no 'yearType' or 'year' param
+    expect(params.get('yearType')).toBeNull();
+    expect(params.get('year')).toBeNull();
   });
 });
 
