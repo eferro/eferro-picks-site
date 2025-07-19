@@ -67,3 +67,69 @@ This document tracks the TDD-driven refactor to centralize all filter logic in a
 **Status:**
 - The main goal is achieved: all filtering logic is centralized, robust, and fully tested (except for year and TalkDetail, which are pending).
 - Only documentation, year filter centralization, and TalkDetail refactor remain before closing out the refactor. 
+
+---
+
+## Developer Documentation: Centralized Filter System
+
+### 1. Overview
+
+The `TalksFilter` class centralizes all filtering logic, state, and URL parameter handling for the talks application. This ensures that all filter-related code is robust, maintainable, and fully covered by tests. All filter state (author, topics, conference, year, notes, rating, query) should be represented in `TalksFilter`.
+
+### 2. API Documentation
+
+**Main Methods:**
+- `constructor(fields)`: Initializes filter state.
+- `static fromUrlParams(params: URLSearchParams)`: Parses filter state from URL params.
+- `toParams(): URLSearchParams`: Serializes filter state to URL params.
+- `filter(talks: Talk[]): Talk[]`: Returns a filtered list of talks.
+
+**Example:**
+```ts
+const filter = TalksFilter.fromUrlParams(searchParams);
+const filteredTalks = filter.filter(allTalks);
+const newParams = filter.toParams();
+```
+
+### 3. Usage Examples
+
+**Parsing filters from the URL:**
+```ts
+const filter = TalksFilter.fromUrlParams(searchParams);
+```
+
+**Updating filters and syncing with URL params:**
+```ts
+const nextFilter = filter.withUpdatedField('author', 'New Author');
+setSearchParams(nextFilter.toParams());
+```
+
+**Filtering a list of talks:**
+```ts
+const visibleTalks = filter.filter(allTalks);
+```
+
+### 4. Extending the Filter System
+- Add new fields to the `TalksFilter` class and its constructor.
+- Update `fromUrlParams` and `toParams` to parse/serialize the new field.
+- Update the `filter` method to apply the new filter logic.
+- Add/extend tests in `TalksFilter.test.ts` for parsing, serialization, and filtering.
+
+### 5. Best Practices
+- Always use `TalksFilter` for any filter logic or state.
+- Do not keep duplicated filter state in components.
+- Use TDD for any changes or extensions.
+- Keep filter logic simple and focused in the class.
+
+### 6. Testing
+- Use the test utilities to set up filter state in tests.
+- Write tests for new filter fields covering parsing, serialization, and filtering.
+- Ensure all tests pass after any change.
+
+### 7. Migration Notes
+- **Year filter:** Year range/relative logic is still in the component. Pending migration to `TalksFilter`.
+- **TalkDetail:** Still uses direct param manipulation. Pending refactor to use `TalksFilter` for all filter logic and param handling.
+
+---
+
+For any new filter or change, follow the above guidelines to keep the system robust and maintainable. 
