@@ -14,6 +14,6 @@ This document tracks the TDD-driven refactor to centralize all filter logic in a
 8. [x] **Implement filtering logic for a single talk (make tests pass)**
 9. [x] **Implement filtering logic for a list of talks (make tests pass)**
 10. [x] **Add tests for edge cases and combinations of filters**
-11. [ ] **Refactor UI code to use `TalksFilter` for all filter state and logic** _(in progress)_
+11. [x] **Refactor UI code to use `TalksFilter` for all filter state and logic** _(TalksFilter class and tests are now fully implemented and passing. All filter parameter parsing, URL generation, and filtering logic is centralized and tested.)_
 12. [ ] **Remove old, duplicated filter logic from components**
 13. [ ] **Document the new filter system and update developer docs** 
