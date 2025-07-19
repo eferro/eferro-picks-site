@@ -21,4 +21,16 @@ This document tracks the TDD-driven refactor to centralize all filter logic in a
 **Next steps:**
 - Proceed in smaller, test-driven increments, applying learnings from previous iterations.
 - After each change, if the tests pass, commit the changes.
-- Continue with the remaining refactor and cleanup tasks as planned. 
+- Continue with the remaining refactor and cleanup tasks as planned.
+
+## Upcoming Tasks
+
+12. [ ] Remove duplicated author filter state and logic from TalksList, use TalksFilter exclusively for author filtering.
+13. [ ] Remove duplicated topic filter state and logic from TalksList, use TalksFilter exclusively for topic filtering.
+14. [ ] Remove duplicated conference filter state and logic from TalksList, use TalksFilter exclusively for conference filtering.
+15. [ ] Remove duplicated year filter state and logic from TalksList, use TalksFilter exclusively for year filtering.
+16. [ ] Remove duplicated notes and rating filter state and logic from TalksList, use TalksFilter exclusively for these filters.
+17. [ ] Ensure all filter handler functions update only via TalksFilter and URL params.
+18. [ ] Refactor tests to rely on TalksFilter for all filter assertions and state setup.
+19. [ ] Clean up and document the new filter system in developer docs.
+20. [ ] Final code cleanup and ensure all tests pass. 
