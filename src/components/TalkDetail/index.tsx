@@ -5,6 +5,7 @@ import { Talk } from '../../types/talks';
 import { formatDuration } from '../../utils/format';
 import ReactMarkdown from 'react-markdown';
 import { hasMeaningfulNotes } from '../../utils/talks';
+import { TalksFilter } from '../../utils/TalksFilter';
 
 const LoadingState = () => (
   <div className="animate-pulse">
@@ -45,45 +46,44 @@ function TalkDetail() {
   const navigate = useNavigate();
   const { talks, loading, error } = useTalks();
 
+  // Centralized filter state
+  const filter = TalksFilter.fromUrlParams(searchParams);
+
   const handleAuthorClick = (author: string) => {
-    const params = new URLSearchParams(searchParams.toString());
-    if (params.get('author') === author) {
-      params.delete('author');
-    } else {
-      params.set('author', author);
-    }
-    setSearchParams(params);
+    const newAuthor = filter.author === author ? null : author;
+    const nextFilter = new TalksFilter({
+      ...filter,
+      author: newAuthor,
+    });
+    setSearchParams(nextFilter.toParams());
   };
 
   const handleConferenceClick = (conference: string) => {
-    const params = new URLSearchParams(searchParams.toString());
-    if (params.get('conference') === conference) {
-      params.delete('conference');
-    } else {
-      params.set('conference', conference);
-    }
-    setSearchParams(params);
+    const newConference = filter.conference === conference ? null : conference;
+    const nextFilter = new TalksFilter({
+      ...filter,
+      conference: newConference,
+    });
+    setSearchParams(nextFilter.toParams());
   };
 
   const handleYearClick = (year: number) => {
-    const params = new URLSearchParams(searchParams.toString());
-    const currentYearType = params.get('yearType');
-    
-    if (params.get('year') === year.toString()) {
-      // If clicking the same year, just remove the year filter
-      params.delete('year');
-      // Also remove yearType if it's not a relative filter (last2, last5)
-      if (currentYearType && !['last2', 'last5'].includes(currentYearType)) {
-        params.delete('yearType');
-      }
+    let nextFilter: TalksFilter;
+    if (filter.year === year) {
+      // Remove year filter
+      nextFilter = new TalksFilter({
+        ...filter,
+        year: null,
+        yearType: null,
+      });
     } else {
-      // If setting a new year, only clear yearType if it's not a relative filter
-      params.set('year', year.toString());
-      if (currentYearType && !['last2', 'last5'].includes(currentYearType)) {
-        params.delete('yearType');
-      }
+      nextFilter = new TalksFilter({
+        ...filter,
+        year: year,
+        yearType: 'specific',
+      });
     }
-    setSearchParams(params);
+    setSearchParams(nextFilter.toParams());
   };
 
   if (loading) {
@@ -154,7 +154,7 @@ function TalkDetail() {
                   key={speaker}
                   onClick={() => handleAuthorClick(speaker)}
                   className={`font-medium px-3 py-1 rounded-full text-sm transition-colors ${
-                    searchParams.get('author') === speaker
+                    filter.author === speaker
                       ? 'bg-blue-500 text-white'
                       : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
                   }`}
@@ -172,7 +172,7 @@ function TalkDetail() {
                 <button
                   onClick={() => handleConferenceClick(talk.conference_name!)}
                   className={`font-medium px-3 py-1 rounded-full text-sm transition-colors ${
-                    searchParams.get('conference') === talk.conference_name
+                    filter.conference === talk.conference_name
                       ? 'bg-blue-500 text-white'
                       : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
                   }`}

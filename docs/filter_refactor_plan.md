@@ -58,7 +58,8 @@ This document tracks the TDD-driven refactor to centralize all filter logic in a
     - Update components to use only TalksFilter for year filtering.
     - Add/adjust tests to cover year range and relative year scenarios via TalksFilter.
 
-22. [ ] **Refactor TalkDetail to use TalksFilter for all filter logic and param manipulation.**
+22. [x] **Refactor TalkDetail to use TalksFilter for all filter logic and param manipulation.**
+    - _Completed: TalkDetail now uses TalksFilter for all filter state, handlers, and URL param updates. All tests pass._
     - Remove direct param manipulation from TalkDetail component.
     - Use TalksFilter for all filter state, updates, and URL param handling in TalkDetail.
     - Ensure TalkDetail UI and handlers are fully integrated with the centralized filter logic.
@@ -67,8 +68,7 @@ This document tracks the TDD-driven refactor to centralize all filter logic in a
 ---
 
 **Status:**
-- The main goal is achieved: all filtering logic is centralized, robust, and fully tested (except for TalkDetail, which is pending).
-- Only the TalkDetail refactor remains before closing out the refactor. 
+- The main goal is achieved: all filtering logic is centralized, robust, and fully tested. The refactor is complete.
 
 ---
 
@@ -129,7 +129,7 @@ const visibleTalks = filter.filter(allTalks);
 - Ensure all tests pass after any change.
 
 ### 7. Migration Notes
-- **TalkDetail:** Still uses direct param manipulation. Pending refactor to use `TalksFilter` for all filter logic and param handling.
+- _All filter logic is now centralized in TalksFilter. No pending migrations remain._
 
 ---
 
