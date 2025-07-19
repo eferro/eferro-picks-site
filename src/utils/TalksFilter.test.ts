@@ -37,4 +37,26 @@ describe('TalksFilter', () => {
       expect(filter.query).toBe('');
     });
   });
+
+  describe('toParams', () => {
+    it('should return an empty string if no filters are set', () => {
+      const filter = new TalksFilter('');
+      expect(filter.toParams()).toBe('');
+    });
+
+    it('should return a query string for the year', () => {
+      const filter = new TalksFilter('year=2023');
+      expect(filter.toParams()).toBe('year=2023');
+    });
+
+    it('should return a query string for the query', () => {
+      const filter = new TalksFilter('query=testing');
+      expect(filter.toParams()).toBe('query=testing');
+    });
+
+    it('should return a query string for both year and query', () => {
+      const filter = new TalksFilter('year=2023&query=testing');
+      expect(filter.toParams()).toBe('year=2023&query=testing');
+    });
+  });
 });

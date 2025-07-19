@@ -16,4 +16,15 @@ export class TalksFilter {
       }
     }
   }
+
+  toParams(): string {
+    const params = new URLSearchParams();
+    if (this.year) {
+      params.set('year', this.year.toString());
+    }
+    if (this.query) {
+      params.set('query', this.query);
+    }
+    return params.toString();
+  }
 }
