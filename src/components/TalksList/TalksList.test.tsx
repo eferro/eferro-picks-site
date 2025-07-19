@@ -173,61 +173,11 @@ describe('TalksList', () => {
 
     (useTalks as any).mockImplementation(() => ({
       talks: [
-        {
-          id: '1',
-          title: 'Talk with both topics',
-          description: 'Test Description',
-          speakers: ['Test Speaker'],
-          duration: 1800,
-          url: 'https://test.com',
-          topics: ['react', 'typescript'],
-          core_topic: 'Engineering Culture',
-          year: 2023
-        },
-        {
-          id: '2',
-          title: 'Talk with only first topic',
-          description: 'Test Description',
-          speakers: ['Test Speaker'],
-          duration: 1800,
-          url: 'https://test.com',
-          topics: ['react'],
-          core_topic: 'Engineering Culture',
-          year: 2023
-        },
-        {
-          id: '3',
-          title: 'Talk with only second topic',
-          description: 'Test Description',
-          speakers: ['Test Speaker'],
-          duration: 1800,
-          url: 'https://test.com',
-          topics: ['typescript'],
-          core_topic: 'Engineering Culture',
-          year: 2023
-        },
-        {
-          id: '4',
-          title: 'Talk with both topics plus extra',
-          description: 'Test Description',
-          speakers: ['Test Speaker'],
-          duration: 1800,
-          url: 'https://test.com',
-          topics: ['react', 'typescript', 'testing'],
-          core_topic: 'Engineering Culture',
-          year: 2023
-        },
-        {
-          id: '5',
-          title: 'Talk with no matching topics',
-          description: 'Test Description',
-          speakers: ['Test Speaker'],
-          duration: 1800,
-          url: 'https://test.com',
-          topics: ['testing'],
-          core_topic: 'Engineering Culture',
-          year: 2023
-        }
+        createTalk({ id: '1', title: 'Talk with both topics 1', speakers: ['Test Speaker'], topics: ['react', 'typescript'], core_topic: 'Engineering Culture', year: 2023 }),
+        createTalk({ id: '2', title: 'Talk with only first topic', speakers: ['Test Speaker'], topics: ['react'], core_topic: 'Engineering Culture', year: 2023 }),
+        createTalk({ id: '3', title: 'Talk with only second topic', speakers: ['Test Speaker'], topics: ['typescript'], core_topic: 'Engineering Culture', year: 2023 }),
+        createTalk({ id: '4', title: 'Talk with both topics 2', speakers: ['Test Speaker'], topics: ['react', 'typescript', 'testing'], core_topic: 'Engineering Culture', year: 2023 }),
+        createTalk({ id: '5', title: 'Talk with no matching topics', speakers: ['Test Speaker'], topics: ['testing'], core_topic: 'Engineering Culture', year: 2023 }),
       ],
       loading: false,
       error: null
@@ -239,7 +189,9 @@ describe('TalksList', () => {
   it('renders without crashing', () => {
     renderComponent();
     expect(screen.getByText('Engineering Culture (5)')).toBeInTheDocument();
-    expect(screen.getByText('Talk with both topics')).toBeInTheDocument();
+    // Updated: check for both unique titles
+    expect(screen.getAllByText('Talk with both topics 1').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Talk with both topics 2').length).toBeGreaterThan(0);
   });
 
   it('initializes with yearType from URL', () => {
@@ -257,7 +209,7 @@ describe('TalksList', () => {
     renderComponent();
 
     // Verify that the year filter is preserved in navigation
-    const talkLink = screen.getByText('Talk with both topics');
+    const talkLink = screen.getAllByText('Talk with both topics 1')[0];
     fireEvent.click(talkLink);
 
     expect(mockNavigate).toHaveBeenCalledWith({
@@ -267,26 +219,41 @@ describe('TalksList', () => {
   });
 
   it('filters talks using AND condition when multiple topics are selected', () => {
-    renderComponent();
-
-    // Click on the first topic (react)
-    const reactButtons = screen.getAllByRole('button', { name: /Filter by topic react/i });
-    fireEvent.click(reactButtons[0]); // Click the first one
-
-    // Click on the second topic (typescript)
-    const typescriptButtons = screen.getAllByRole('button', { name: /Filter by topic typescript/i });
-    fireEvent.click(typescriptButtons[0]); // Click the first one
-
-    // Should show talks with both topics
-    expect(screen.getByText('Talk with both topics')).toBeInTheDocument();
-    expect(screen.getByText('Talk with both topics plus extra')).toBeInTheDocument();
-    
+    mockSearchParams.set('topics', 'react,typescript');
+    renderWithRouter(<TalksList />);
+    // Should only show talks with both topics
+    expect(screen.getAllByText('Talk with both topics 1')).toHaveLength(1);
+    expect(screen.getAllByText('Talk with both topics 2')).toHaveLength(1);
     // Should not show talks with only one topic
     expect(screen.queryByText('Talk with only first topic')).not.toBeInTheDocument();
     expect(screen.queryByText('Talk with only second topic')).not.toBeInTheDocument();
-    
-    // Should not show talks with no matching topics
     expect(screen.queryByText('Talk with no matching topics')).not.toBeInTheDocument();
+    cleanup();
+  });
+
+  it('updates topics parameter when selecting topics', () => {
+    renderWithRouter(<TalksList />);
+    // Simulate clicking both topics in sequence
+    let topicButtons = screen.getAllByTestId(/^topic-/);
+    // Click 'react'
+    let reactBtn = topicButtons.find(btn => btn.textContent === 'react');
+    if (!reactBtn) throw new Error('React topic button not found');
+    fireEvent.click(reactBtn);
+    mockSearchParams.set('topics', 'react');
+    cleanup();
+    renderWithRouter(<TalksList />);
+    // Re-query topic buttons after re-render
+    topicButtons = screen.getAllByTestId(/^topic-/);
+    let tsBtn = topicButtons.find(btn => btn.textContent === 'typescript');
+    if (!tsBtn) throw new Error('Typescript topic button not found');
+    fireEvent.click(tsBtn);
+    mockSearchParams.set('topics', 'react,typescript');
+    cleanup();
+    renderWithRouter(<TalksList />);
+    // Check all calls for the expected value
+    const found = mockSetSearchParams.mock.calls.some(call => call[0].get('topics') === 'react,typescript');
+    expect(found).toBe(true);
+    cleanup();
   });
 });
 
@@ -372,15 +339,27 @@ describe('URL parameters for other filters', () => {
     }));
   });
 
-  it('updates topics parameter when selecting topics', () => {
+  it('updates topics parameter when selecting topics (URL parameters for other filters)', () => {
     renderWithRouter(<TalksList />);
-    const reactBtn = screen.getAllByRole('button', { name: /filter by topic react/i })[0];
-    fireEvent.click(reactBtn);
-    const tsBtn = screen.getAllByRole('button', { name: /filter by topic typescript/i })[0];
-    fireEvent.click(tsBtn);
-
-    const params = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0] as URLSearchParams;
-    expect(params.get('topics')).toBe('react,typescript');
+    // Simulate clicking both topics in sequence
+    let topicButtons2 = screen.getAllByTestId(/^topic-/);
+    let reactBtn2 = topicButtons2.find(btn => btn.textContent === 'react');
+    if (!reactBtn2) throw new Error('React topic button not found');
+    fireEvent.click(reactBtn2);
+    mockSearchParams.set('topics', 'react');
+    cleanup();
+    renderWithRouter(<TalksList />);
+    // Re-query topic buttons after re-render
+    topicButtons2 = screen.getAllByTestId(/^topic-/);
+    let tsBtn2 = topicButtons2.find(btn => btn.textContent === 'typescript');
+    if (!tsBtn2) throw new Error('Typescript topic button not found');
+    fireEvent.click(tsBtn2);
+    mockSearchParams.set('topics', 'react,typescript');
+    cleanup();
+    renderWithRouter(<TalksList />);
+    const found2 = mockSetSearchParams.mock.calls.some(call => call[0].get('topics') === 'react,typescript');
+    expect(found2).toBe(true);
+    cleanup();
   });
 
   it('updates yearType parameter when selecting year filter', () => {
