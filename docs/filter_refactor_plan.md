@@ -42,7 +42,7 @@ This document tracks the TDD-driven refactor to centralize all filter logic in a
 
 ---
 
-## Pending Task
+## Pending Tasks
 
 19. [ ] **Clean up and document the new filter system in developer docs.**
     - Write clear developer documentation for the new filter system.
@@ -50,8 +50,20 @@ This document tracks the TDD-driven refactor to centralize all filter logic in a
     - Document best practices for maintaining and testing filter logic.
     - Ensure onboarding for new contributors is easy and the filter system is discoverable.
 
+21. [ ] **Centralize all year filter logic in TalksFilter.**
+    - Move year range and relative year logic from components into TalksFilter.
+    - Ensure all year filtering is handled via the class and URL params.
+    - Update components to use only TalksFilter for year filtering.
+    - Add/adjust tests to cover year range and relative year scenarios via TalksFilter.
+
+22. [ ] **Refactor TalkDetail to use TalksFilter for all filter logic and param manipulation.**
+    - Remove direct param manipulation from TalkDetail component.
+    - Use TalksFilter for all filter state, updates, and URL param handling in TalkDetail.
+    - Ensure TalkDetail UI and handlers are fully integrated with the centralized filter logic.
+    - Update or add tests to verify TalkDetail uses TalksFilter exclusively.
+
 ---
 
 **Status:**
-- The main goal is achieved: all filtering logic is centralized, robust, and fully tested.
-- Only documentation and developer guidance remain before closing out the refactor. 
+- The main goal is achieved: all filtering logic is centralized, robust, and fully tested (except for year and TalkDetail, which are pending).
+- Only documentation, year filter centralization, and TalkDetail refactor remain before closing out the refactor. 
