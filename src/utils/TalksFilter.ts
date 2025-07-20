@@ -59,8 +59,14 @@ export class TalksFilter {
     if (this.topics && this.topics.length > 0) {
       params.set('topics', this.topics.join(','));
     }
+    if (this.conference) {
+      params.set('conference', this.conference);
+    }
     if (this.hasNotes) {
       params.set('hasNotes', 'true');
+    }
+    if (this.rating !== null) {
+      params.set('rating', this.rating.toString());
     }
     if (this.query) {
       params.set('query', this.query);

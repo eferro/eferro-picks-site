@@ -58,6 +58,11 @@ describe('TalksFilter', () => {
       const filter = TalksFilter.fromUrlParams('year=2023&query=testing');
       expect(filter.toParams()).toBe('yearType=specific&year=2023&query=testing');
     });
+
+    it('should include conference and rating when present', () => {
+      const filter = TalksFilter.fromUrlParams('conference=ReactConf&rating=4');
+      expect(filter.toParams()).toBe('conference=ReactConf&rating=4');
+    });
   });
 
   describe('filter', () => {
@@ -161,6 +166,9 @@ describe('TalksFilter', () => {
       expect(filter.hasNotes).toBe(true);
       expect(filter.rating).toBe(5);
       expect(filter.query).toBe('testing');
+      const serialized = filter.toParams();
+      expect(serialized).toContain('conference=ReactConf');
+      expect(serialized).toContain('rating=5');
     });
   });
 });
