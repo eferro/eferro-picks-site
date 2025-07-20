@@ -1,7 +1,3 @@
----
-alwaysApply: true
----
-
 # AI Cursor Rules for eferro-picks-site
 
 ## Project Overview
