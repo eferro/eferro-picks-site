@@ -86,8 +86,8 @@ describe('Author Filter', () => {
     renderWithRouter(<TalksList />);
     const btn = screen.getByRole('button', { name: /filter by speaker: Author A/i });
     fireEvent.click(btn);
-    expect(mockSetSearchParams).toHaveBeenCalledTimes(2);
-    const params = mockSetSearchParams.mock.calls[1][0] as URLSearchParams;
+    expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
+    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
     expect(params.get('author')).toBe('Author A');
   });
 
@@ -97,8 +97,8 @@ describe('Author Filter', () => {
     renderWithRouter(<TalksList />);
     const btn = screen.getByRole('button', { name: /filter by speaker: Author B/i });
     fireEvent.click(btn);
-    expect(mockSetSearchParams).toHaveBeenCalledTimes(2);
-    const params = mockSetSearchParams.mock.calls[1][0] as URLSearchParams;
+    expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
+    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
     expect(params.get('author')).toBeNull();
   });
   
@@ -106,8 +106,8 @@ describe('Author Filter', () => {
     renderWithRouter(<TalksList />);
     const btn = screen.getByRole('button', { name: /filter by speaker: Author A/i });
     fireEvent.click(btn);
-    expect(mockSetSearchParams).toHaveBeenCalledTimes(2);
-    const params = mockSetSearchParams.mock.calls[1][0] as URLSearchParams;
+    expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
+    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
     expect(params.get('author')).toBe('Author A');
   });
 });
@@ -124,26 +124,24 @@ describe('Rating Filter', () => {
   });
 
   it('shows the rating filter button with correct initial state', () => {
-    // Default (no rating param) filters by 5 stars
+    // Default (no rating param) shows all talks
     renderWithRouter(<TalksList />);
     const button = screen.getByRole('button', { name: /toggle rating filter/i });
     expect(button).toBeInTheDocument();
-    expect(button).toHaveTextContent('5 Stars');
-    expect(button).toHaveClass('bg-blue-500', 'text-white');
-    expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
-    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
-    expect(params.get('rating')).toBe('5');
+    expect(button).toHaveTextContent('All');
+    expect(button).toHaveClass('bg-white', 'text-gray-700', 'border', 'border-gray-300');
+    expect(mockSetSearchParams).not.toHaveBeenCalled();
   });
 
   it('toggles the rating filter and updates URL params', () => {
-    // Initial state is filtering by 5 stars
+    // Initial state shows all talks (no rating filter)
     renderWithRouter(<TalksList />);
     const [toggle] = screen.getAllByRole('button', { name: /toggle rating filter/i });
-    // Click to remove rating filter (to show all)
+    // Click to enable rating filter (to show 5 stars only)
     fireEvent.click(toggle);
-    expect(mockSetSearchParams).toHaveBeenCalledTimes(2);
-    let params = mockSetSearchParams.mock.calls[1][0] as URLSearchParams;
-    expect(params.get('rating')).toBeNull();
+    expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
+    let params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+    expect(params.get('rating')).toBe('5');
 
     // Update mockSearchParams to match new params
     setMockSearchParams(params);
@@ -151,17 +149,24 @@ describe('Rating Filter', () => {
     cleanup();
     renderWithRouter(<TalksList />);
     const [updated] = screen.getAllByRole('button', { name: /toggle rating filter/i });
-    // Debug output
-    // eslint-disable-next-line no-console
-    console.log('Rating filter button text after toggle:', updated.textContent);
-    // Accept either 'All' or '5 Stars' depending on actual UI behavior
-    expect(['All', '5 Stars']).toContain(updated.textContent?.trim());
-    // Click to enable 5-star filter again
+    // After first click, button should now show "5 Stars"
+    expect(updated.textContent?.trim()).toBe('5 Stars');
+    // Click to disable rating filter (back to showing all)
     fireEvent.click(updated);
-    // The effect may trigger an extra call due to synchronization logic
-    expect(mockSetSearchParams).toHaveBeenCalledTimes(4);
-    params = mockSetSearchParams.mock.calls[2][0] as URLSearchParams;
-    expect(params.get('rating')).toBe('5');
+    expect(mockSetSearchParams).toHaveBeenCalledTimes(2);
+    params = mockSetSearchParams.mock.calls[1][0] as URLSearchParams;
+    expect(params.get('rating')).toBeNull();
+  });
+
+  it('should not force rating=5 when user explicitly turns off rating filter', () => {
+    // Start with rating filter off (no rating param)
+    setMockSearchParams(new URLSearchParams(''));
+    renderWithRouter(<TalksList />);
+    
+    // The component should not force rating=5 just because there's no rating param
+    // This test will fail because of the bug in the initialization logic
+    const button = screen.getByRole('button', { name: /toggle rating filter/i });
+    expect(button.textContent).toBe('All'); // Should show 'All' when rating filter is off
   });
 });
 

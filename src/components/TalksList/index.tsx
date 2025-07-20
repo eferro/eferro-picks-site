@@ -29,26 +29,13 @@ export function TalksList() {
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const filter = useMemo(() => {
-    const f = TalksFilter.fromUrlParams(searchParams);
-    if (searchParams.get('rating') == null) {
-      return new TalksFilter({ ...f, rating: 5 });
-    }
-    return f;
+    return TalksFilter.fromUrlParams(searchParams);
   }, [searchParams.toString()]);
   // No local state for year filter; handled by TalksFilter
   const { talks, loading, error } = useTalks(filter.rating === 5);
 
   // Add scroll position saving
   useScrollPosition();
-
-  // Ensure the URL always includes the rating parameter on first load
-  useEffect(() => {
-    if (!searchParams.get('rating')) {
-      const params = new URLSearchParams(searchParams);
-      params.set('rating', filter.rating === 5 ? '5' : 'all');
-      setSearchParams(params);
-    }
-  }, [searchParams, filter.rating]);
 
   // Handle URL parameters and updates
   useEffect(() => {
