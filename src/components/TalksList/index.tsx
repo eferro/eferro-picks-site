@@ -291,9 +291,6 @@ export function TalksList() {
       });
   }, [filteredTalks]);
 
-  // TEMP DEBUG: Log searchParams and filter on each render
-  // eslint-disable-next-line no-console
-  console.log('TalksList render: searchParams =', searchParams.toString(), 'filter =', filter);
 
   if (loading) return <LoadingSpinner />;
   if (error) return <ErrorMessage message={error.message} />;

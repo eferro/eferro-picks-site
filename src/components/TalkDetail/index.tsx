@@ -129,13 +129,6 @@ function TalkDetail() {
           search: searchParams.toString()
         }}
         className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-8"
-        onClick={() => {
-          console.log('Back link clicked. Parameters:', {
-            search: searchParams.toString(),
-            yearType: searchParams.get('yearType'),
-            year: searchParams.get('year')
-          });
-        }}
       >
         <ArrowLeftIcon className="h-5 w-5 mr-2" />
         Back to Talks
