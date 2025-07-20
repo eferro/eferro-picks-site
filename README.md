@@ -56,6 +56,15 @@ The site follows a simple and efficient architecture:
    npm run dev
    ```
 
+## Build
+
+To generate the production bundle manually, install dependencies and then run the build script:
+
+```bash
+npm ci    # or npm install
+npm run build
+```
+
 ## Testing
 
 The project uses **Vitest** and **Testing Library** for unit and integration tests. The test suite provides robust coverage for all major features, including:
