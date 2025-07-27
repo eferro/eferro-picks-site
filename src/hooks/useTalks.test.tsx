@@ -59,17 +59,17 @@ const renderUseTalksHook = async () => {
 describe('useTalks', () => {
   const mockAirtableItem = {
     airtable_id: '1',
-    Name: 'Test Talk',
-    Url: 'https://example.com',
-    Duration: 30,
-    Topics_Names: ['topic1', 'topic2'],
-    Speakers_Names: ['speaker1', 'speaker2'],
-    Description: 'Test description',
+    name: 'Test Talk',
+    url: 'https://example.com',
+    duration: 30,
+    topics_names: ['topic1', 'topic2'],
+    speakers_names: ['speaker1', 'speaker2'],
+    description: 'Test description',
     core_topic: 'test',
-    Notes: 'Test notes',
-    Language: 'English',
-    Rating: 5,
-    "Resource type": 'talk',
+    notes: 'Test notes',
+    language: 'English',
+    rating: 5,
+    resource_type: 'talk',
     year: 2024,
     conference_name: 'Test Conference'
   };
@@ -124,7 +124,7 @@ describe('useTalks', () => {
   });
 
   it('filters out invalid resource types', async () => {
-    const invalidItem = { ...mockAirtableItem, "Resource type": 'invalid' };
+    const invalidItem = { ...mockAirtableItem, resource_type: 'invalid' };
     mockFetchResponse([invalidItem]);
     mockProcessedResponse([]);
 
@@ -178,8 +178,8 @@ describe('useTalks', () => {
   });
 
   it('filters talks by language', async () => {
-    const nonEnglishTalk = { ...mockAirtableItem, Language: 'Spanish' };
-    const englishTalk = { ...mockAirtableItem, Language: 'English' };
+    const nonEnglishTalk = { ...mockAirtableItem, language: 'Spanish' };
+    const englishTalk = { ...mockAirtableItem, language: 'English' };
     const processedEnglishTalk = { ...mockProcessedTalk };
 
     mockFetchResponse([nonEnglishTalk, englishTalk]);
@@ -193,8 +193,8 @@ describe('useTalks', () => {
   });
 
   it('filters talks by rating', async () => {
-    const lowRatingTalk = { ...mockAirtableItem, Rating: 2 };
-    const highRatingTalk = { ...mockAirtableItem, Rating: 5 };
+    const lowRatingTalk = { ...mockAirtableItem, rating: 2 };
+    const highRatingTalk = { ...mockAirtableItem, rating: 5 };
     const processedHighRatingTalk = { ...mockProcessedTalk };
 
     mockFetchResponse([lowRatingTalk, highRatingTalk]);
@@ -210,11 +210,11 @@ describe('useTalks', () => {
   it('handles missing optional fields', async () => {
     const rawTalkWithMissingFields = {
       airtable_id: 'test-1',
-      Name: 'Test Talk',
-      Url: 'https://example.com',
-      Language: 'English',
-      Rating: 5,
-      "Resource type": 'talk'
+      name: 'Test Talk',
+      url: 'https://example.com',
+      language: 'English',
+      rating: 5,
+      resource_type: 'talk'
     };
 
     const transformedTalkWithDefaults = {
