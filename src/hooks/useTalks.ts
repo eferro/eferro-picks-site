@@ -4,22 +4,20 @@ import { processTalks } from '../utils/talks';
 
 export interface AirtableItem {
   airtable_id: string;
-  Name: string;
-  Url: string;
-  Duration: number;
-  Topics_Names: string[];
-  Speakers_Names: string[];
-  Description: string;
+  name: string;
+  url: string;
+  duration: number;
+  topics_names: string[];
+  speakers_names: string[];
+  description: string;
   core_topic: string;
-  Notes?: string;
-  Language: string;
-  Rating: number;
-  "Resource type": string;
+  notes?: string;
+  language: string;
+  rating: number;
+  resource_type: string;
   year: number;
   conference_name: string;
 }
-
-const VALID_RESOURCE_TYPES = ['podcast', 'talk', 'videopodcast'];
 
 export function useTalks(filterByRating: boolean = false) {
   const [talks, setTalks] = useState<Talk[]>([]);
