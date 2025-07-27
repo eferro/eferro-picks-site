@@ -42,4 +42,18 @@ describe('parseSearch', () => {
     expect(result.topics).toEqual(['unit testing']);
     expect(result.query).toBe('');
   });
+
+  it('gracefully handles empty author token', () => {
+    const result = parseSearch('author:   ');
+    expect(result.author).toBeNull();
+    expect(result.topics).toEqual([]);
+    expect(result.query).toBe('');
+  });
+
+  it('gracefully handles empty topic token', () => {
+    const result = parseSearch('topic:  ');
+    expect(result.author).toBeNull();
+    expect(result.topics).toEqual([]);
+    expect(result.query).toBe('');
+  });
 });
