@@ -10,6 +10,7 @@ import { DocumentTextIcon, StarIcon } from '@heroicons/react/24/outline';
 import { TalksFilter } from '../../utils/TalksFilter';
 import { SearchBox } from '../SearchBox';
 import { TopicsFilter } from './TopicsFilter';
+import { FormatFilter } from './FormatFilter';
 
 function LoadingSpinner() {
   return (
@@ -84,6 +85,21 @@ export function TalksList() {
     const next = new URLSearchParams(nextFilter.toParams());
     for (const [key, value] of current.entries()) {
       if (!next.has(key) && !['year','author','topics','conference','hasNotes','rating','query'].includes(key)) {
+        next.set(key, value);
+      }
+    }
+    setSearchParams(next);
+  };
+
+  const handleFormatChange = (formats: string[]) => {
+    const nextFilter = new TalksFilter({
+      ...filter,
+      formats,
+    });
+    const current = new URLSearchParams(searchParams);
+    const next = new URLSearchParams(nextFilter.toParams());
+    for (const [key, value] of current.entries()) {
+      if (!next.has(key) && !['year','author','topics','conference','hasNotes','rating','query','format'].includes(key)) {
         next.set(key, value);
       }
     }
@@ -246,6 +262,7 @@ export function TalksList() {
           selectedTopics={filter.topics}
           onChange={handleTopicsChange}
         />
+        <FormatFilter selectedFormats={filter.formats} onChange={handleFormatChange} />
         <button
           onClick={handleHasNotesClick}
           aria-label="Toggle Has Notes filter"
@@ -273,7 +290,7 @@ export function TalksList() {
       </div>
 
       {/* Active filters */}
-      {(filter.author || filter.topics.length > 0 || filter.conference || yearFilter || filter.hasNotes || filter.rating === 5) && (
+      {(filter.author || filter.topics.length > 0 || filter.conference || yearFilter || filter.hasNotes || filter.rating === 5 || filter.formats.length > 0) && (
         <div className="mb-6 space-y-3">
           {filter.author && (
             <div className="flex items-center gap-2">
@@ -371,6 +388,22 @@ export function TalksList() {
                 5 Stars
                 <span className="ml-2 text-blue-600" aria-hidden="true">×</span>
               </button>
+            </div>
+          )}
+
+          {filter.formats.length > 0 && (
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-500">Format:</span>
+              {filter.formats.map(fmt => (
+                <button
+                  key={fmt}
+                  className="break-words inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
+                  onClick={() => handleFormatChange(filter.formats.filter(f => f !== fmt))}
+                >
+                  {fmt.charAt(0).toUpperCase() + fmt.slice(1)}
+                  <span className="ml-2 text-blue-600">×</span>
+                </button>
+              ))}
             </div>
           )}
         </div>

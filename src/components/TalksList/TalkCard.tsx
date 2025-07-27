@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Talk } from '../../types/talks';
 import { formatDuration } from '../../utils/format';
 import { hasMeaningfulNotes } from '../../utils/talks';
-import { DocumentTextIcon, PlayIcon } from '@heroicons/react/24/outline';
+import { DocumentTextIcon, PlayIcon, VideoCameraIcon, MicrophoneIcon } from '@heroicons/react/24/outline';
 
 interface TalkCardProps {
   talk: Talk;
@@ -73,18 +73,25 @@ export function TalkCard({
             <h3 className="text-lg font-semibold text-gray-900">
               {talk.title}
             </h3>
-            {hasMeaningfulNotes(talk.notes) && (
-              <span
-                role="img"
-                aria-label="This talk has detailed notes"
-                title="This talk has detailed notes"
-              >
-                <DocumentTextIcon 
-                  className="h-5 w-5 text-blue-500 flex-shrink-0 ml-2" 
-                  aria-hidden="true"
-                />
-              </span>
-            )}
+            <div className="flex items-center gap-1">
+              {hasMeaningfulNotes(talk.notes) && (
+                <span
+                  role="img"
+                  aria-label="This talk has detailed notes"
+                  title="This talk has detailed notes"
+                >
+                  <DocumentTextIcon
+                    className="h-5 w-5 text-blue-500 flex-shrink-0 ml-2"
+                    aria-hidden="true"
+                  />
+                </span>
+              )}
+              {talk.format === 'podcast' ? (
+                <MicrophoneIcon className="h-5 w-5 text-gray-500" aria-label="Format: Podcast" />
+              ) : (
+                <VideoCameraIcon className="h-5 w-5 text-gray-500" aria-label="Format: Talk" />
+              )}
+            </div>
           </div>
           <div className="flex flex-wrap gap-2 mb-3">
             {talk.speakers.map((speaker) => (
