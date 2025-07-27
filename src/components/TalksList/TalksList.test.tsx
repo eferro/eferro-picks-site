@@ -7,9 +7,12 @@ import { renderWithRouter, getMockSearchParams, mockSetSearchParams, mockNavigat
 import { hasMeaningfulNotes } from '../../utils/talks';
 
 // Mock the child components
+let capturedOpenFlags: boolean[] = [];
+
 vi.mock('./TalkSection', () => ({
   TalkSection: (props: any) => {
     const selectedTopics = props.selectedTopics || [];
+    capturedOpenFlags.push(!!props.openByDefault);
     return (
       <section>
         <h2>{props.coreTopic} ({props.talks.length})</h2>
@@ -182,6 +185,7 @@ describe('TalksList', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     setMockSearchParams(new URLSearchParams());
+    capturedOpenFlags = [];
 
     (useTalks as any).mockImplementation(() => ({
       talks: [
@@ -269,6 +273,12 @@ describe('TalksList', () => {
     });
     expect(found).toBe(true);
     cleanup();
+  });
+
+  it('expands only first three sections by default', () => {
+    renderComponent();
+    expect(capturedOpenFlags.slice(0, 3).every(Boolean)).toBe(true);
+    expect(capturedOpenFlags.slice(3).every(flag => !flag)).toBe(true);
   });
 });
 

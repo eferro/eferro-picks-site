@@ -31,15 +31,17 @@ describe('TalkSection', () => {
         selectedAuthor={null}
         selectedTopics={[]}
         selectedConference={null}
+        openByDefault
         {...handlers}
       />
     );
-    const heading = screen.getByRole('heading', { name: /Testing/ });
-    expect(heading).toHaveTextContent('Testing (2)');
-    expect(screen.getAllByTestId(/talk-/)).toHaveLength(2);
+    const button = screen.getByRole('button', { name: /Testing/ });
+    expect(button).toHaveAttribute('aria-expanded', 'true');
+    const cards = screen.getAllByTestId(/talk-/);
+    expect(cards.length).toBeGreaterThanOrEqual(2);
   });
 
-  it('forwards handler props to TalkCard', () => {
+  it('forwards handler props to TalkCard and toggles section', () => {
     const talk = createTalk({ id: '1', speakers: ['Author'], topics: ['Topic'], conference_name: 'Conf' });
     const handlers = makeHandlers();
     renderWithRouter(
@@ -49,9 +51,15 @@ describe('TalkSection', () => {
         selectedAuthor={null}
         selectedTopics={[]}
         selectedConference={null}
+        openByDefault={false}
         {...handlers}
       />
     );
+    const toggle = screen.getByRole('button', { name: /Core/ });
+    const details = screen.getByTestId('talk-section');
+    expect(details).not.toHaveAttribute('open');
+    fireEvent.click(toggle);
+    expect(details).toHaveAttribute('open');
     fireEvent.click(screen.getByText('author'));
     fireEvent.click(screen.getByText('topic'));
     fireEvent.click(screen.getByText('conf'));

@@ -4,6 +4,7 @@ import logoHorizontal from './assets/logo-horizontal.png'
 import { TalksList } from './components/TalksList'
 import { TalkDetail } from './components/TalkDetail'
 import { Footer } from './components/Footer'
+import { BackToTopButton } from './components/BackToTopButton'
 
 function Header() {
   return (
@@ -76,6 +77,7 @@ function App() {
             <Route path="/talk/:id" element={<TalkDetail />} />
           </Routes>
         </PageTransition>
+        <BackToTopButton />
         <Footer />
       </div>
     </Router>
