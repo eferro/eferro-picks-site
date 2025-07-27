@@ -398,10 +398,10 @@ export function TalksList() {
       </div>
       
       {sortedTopics.length > 0 ? (
-        sortedTopics.map(([topic, topicTalks]) => (
-          <TalkSection 
-            key={topic} 
-            coreTopic={topic} 
+        sortedTopics.map(([topic, topicTalks], index) => (
+          <TalkSection
+            key={topic}
+            coreTopic={topic}
             talks={topicTalks}
             onAuthorClick={handleAuthorClick}
             selectedAuthor={filter.author}
@@ -409,6 +409,7 @@ export function TalksList() {
             selectedTopics={filter.topics}
             onConferenceClick={handleConferenceClick}
             selectedConference={filter.conference}
+            openByDefault={index < 3}
           />
         ))
       ) : (
