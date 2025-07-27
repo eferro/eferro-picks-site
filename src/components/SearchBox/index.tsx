@@ -81,7 +81,7 @@ export function SearchBox({ talks }: SearchBoxProps) {
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         className="w-full border rounded px-3 py-2"
-        placeholder="Search (author:Alice topic:react)"
+        placeholder="Search (author:Kent Beck topic:XP topic:Software Design)"
       />
       {suggestions.length > 0 && (
         <ul className="absolute z-10 bg-white border w-full mt-1 max-h-40 overflow-auto">
