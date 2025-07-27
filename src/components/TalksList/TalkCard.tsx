@@ -28,25 +28,27 @@ export function TalkCard({
   const [searchParams] = useSearchParams();
 
   // Memoize topics to avoid unnecessary re-renders
-  const topicElements = useMemo(() => (
-    talk.topics.map((topic) => (
-      <button
-        key={topic}
-        onClick={(e) => {
-          e.stopPropagation(); // Prevent card click
-          onTopicClick(topic);
-        }}
-        aria-label={`Filter by topic ${topic}`}
-        className={`px-2 py-1 rounded-full text-xs transition-colors ${
-          selectedTopics.includes(topic)
-            ? 'bg-gray-700 text-white'
-            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-        }`}
-      >
-        {topic}
-      </button>
-    ))
-  ), [talk.topics, onTopicClick, selectedTopics]);
+  const topicElements = useMemo(
+    () =>
+      talk.topics.map((topic) => (
+        <button
+          key={topic}
+          onClick={(e) => {
+            e.stopPropagation(); // Prevent card click
+            onTopicClick(topic);
+          }}
+          aria-label={`Filter by topic ${topic}`}
+          className={`break-words px-2 py-1 rounded-full text-xs transition-colors ${
+            selectedTopics.includes(topic)
+              ? 'bg-gray-700 text-white'
+              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+          }`}
+        >
+          {topic}
+        </button>
+      )),
+    [talk.topics, onTopicClick, selectedTopics]
+  );
 
   const handleCardClick = () => {
     // Navigate to talk detail
@@ -57,13 +59,13 @@ export function TalkCard({
   };
 
   return (
-    <div 
+    <div
       onClick={handleCardClick}
       onKeyDown={(e) => e.key === 'Enter' && handleCardClick()}
       role="article"
       tabIndex={0}
       aria-label={`Talk: ${talk.title}`}
-      className="block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
+      className="block w-full bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
     >
       <div className="p-6 flex flex-col h-full">
         <div className="flex-1">
@@ -93,7 +95,7 @@ export function TalkCard({
                   onAuthorClick(speaker);
                 }}
                 aria-label={`Filter by speaker: ${speaker}`}
-                className={`px-2 py-1 rounded-full text-xs transition-colors ${
+                className={`break-words px-2 py-1 rounded-full text-xs transition-colors ${
                   selectedAuthor === speaker
                     ? 'bg-blue-500 text-white'
                     : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
@@ -115,7 +117,7 @@ export function TalkCard({
                     onConferenceClick(talk.conference_name!);
                   }}
                   aria-label={`Filter by conference ${talk.conference_name}`}
-                  className={`px-2 py-1 rounded-full text-xs transition-colors ${
+                  className={`break-words px-2 py-1 rounded-full text-xs transition-colors ${
                     selectedConference === talk.conference_name
                       ? 'bg-blue-500 text-white'
                       : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
