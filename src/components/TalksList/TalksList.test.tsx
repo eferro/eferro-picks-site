@@ -173,6 +173,29 @@ describe('Rating Filter', () => {
   });
 });
 
+describe('Format Filter', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    setMockSearchParams(new URLSearchParams());
+    (useTalks as any).mockImplementation(() => ({
+      talks: [
+        createTalk({ id: '1', format: 'talk' }),
+        createTalk({ id: '2', format: 'podcast' })
+      ],
+      loading: false,
+      error: null
+    }));
+  });
+
+  it('updates format parameter when toggling checkboxes', () => {
+    renderWithRouter(<TalksList />);
+    const podcastBox = screen.getByLabelText(/podcasts/i);
+    fireEvent.click(podcastBox);
+    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+    expect(params.get('format')).toBe('podcast');
+  });
+});
+
 // Mock the hasMeaningfulNotes function
 vi.mock('../../utils/talks', () => ({
   hasMeaningfulNotes: (notes: string | undefined) => {

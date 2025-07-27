@@ -75,6 +75,12 @@ describe('TalkCard', () => {
       });
     });
 
+    it('shows format icon based on talk format', () => {
+      const talk = createTalk({ format: 'podcast' });
+      renderTalkCard({ talk });
+      expect(screen.getByLabelText(/format: podcast/i)).toBeInTheDocument();
+    });
+
     it('has correct watch talk link', () => {
       const talk = createTalk({
         title: 'Test Talk',

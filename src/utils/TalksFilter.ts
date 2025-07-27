@@ -10,6 +10,7 @@ export class TalksFilter {
   readonly hasNotes: boolean;
   readonly rating: number | null;
   readonly query: string;
+  readonly formats: string[];
 
   constructor({
     year = null,
@@ -20,6 +21,7 @@ export class TalksFilter {
     hasNotes = false,
     rating = null,
     query = '',
+    formats = [],
   }: {
     year?: number | null;
     yearType?: 'specific' | 'before' | 'after' | 'last2' | 'last5' | null;
@@ -29,6 +31,7 @@ export class TalksFilter {
     hasNotes?: boolean;
     rating?: number | null;
     query?: string;
+    formats?: string[];
   }) {
     this.year = year;
     this.yearType = yearType;
@@ -38,6 +41,7 @@ export class TalksFilter {
     this.hasNotes = hasNotes;
     this.rating = rating;
     this.query = query || '';
+    this.formats = formats;
   }
 
   toParams(): string {
@@ -71,6 +75,9 @@ export class TalksFilter {
     }
     if (this.query) {
       params.set('query', this.query);
+    }
+    if (this.formats.length > 0) {
+      params.set('format', this.formats.join(','));
     }
     return params.toString();
   }
@@ -106,7 +113,8 @@ export class TalksFilter {
       const topicsMatch = this.topics.length === 0 || this.topics.every(t => talk.topics.includes(t));
       const conferenceMatch = !this.conference || talk.conference_name === this.conference;
       const notesMatch = !this.hasNotes || hasMeaningfulNotes(talk.notes);
-      return yearMatch && queryMatch && authorMatch && topicsMatch && conferenceMatch && notesMatch;
+      const formatMatch = this.formats.length === 0 || this.formats.includes((talk.format ?? 'talk'));
+      return yearMatch && queryMatch && authorMatch && topicsMatch && conferenceMatch && notesMatch && formatMatch;
     });
   }
 
@@ -120,6 +128,7 @@ export class TalksFilter {
     const conference = searchParams.get('conference');
     const hasNotesParam = searchParams.get('hasNotes');
     const ratingParam = searchParams.get('rating');
+    const formatParam = searchParams.get('format');
     const query = searchParams.get('query') || '';
     return new TalksFilter({
       yearType,
@@ -130,6 +139,7 @@ export class TalksFilter {
       hasNotes: hasNotesParam === 'true',
       rating: ratingParam ? parseInt(ratingParam, 10) : null,
       query,
+      formats: formatParam ? formatParam.split(',').filter(Boolean) : [],
     });
   }
 }

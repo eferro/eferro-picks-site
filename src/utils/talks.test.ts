@@ -150,4 +150,14 @@ describe('processTalks', () => {
     expect(result).toHaveLength(1);
     expect(result[0].id).toBe('1');
   });
+
+  it('maps resource_type to format field', () => {
+    const customItems = [
+      { ...items[0], resource_type: 'talk' },
+      { ...items[1], airtable_id: '10', resource_type: 'podcast' }
+    ];
+    const result = processTalks(customItems as any, false);
+    expect(result[0]).toHaveProperty('format', 'talk');
+    expect(result[1]).toHaveProperty('format', 'podcast');
+  });
 });

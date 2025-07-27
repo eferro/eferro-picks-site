@@ -14,6 +14,10 @@ export function hasMeaningfulNotes(notes: string | undefined | null): boolean {
 }
 
 export function transformAirtableItemToTalk(item: AirtableItem): Talk {
+  const type = item.resource_type?.toLowerCase();
+  let format: 'talk' | 'podcast' | 'article' = 'talk';
+  if (type === 'podcast' || type === 'videopodcast') format = 'podcast';
+  else if (type === 'article/paper') format = 'article';
   return {
     id: item.airtable_id,
     title: item.name,
@@ -25,7 +29,8 @@ export function transformAirtableItemToTalk(item: AirtableItem): Talk {
     core_topic: item.core_topic || '',
     notes: hasMeaningfulNotes(item.notes) ? item.notes : undefined,
     year: item.year,
-    conference_name: item.conference_name
+    conference_name: item.conference_name,
+    format
   };
 }
 

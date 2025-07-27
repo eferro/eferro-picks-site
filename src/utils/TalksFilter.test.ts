@@ -133,6 +133,14 @@ describe('TalksFilter', () => {
       const filter = TalksFilter.fromUrlParams('hasNotes=true');
       expect(filter.filter([withNotes, withoutNotes])).toEqual([withNotes]);
     });
+
+    it('should filter by format', () => {
+      const talk = { id: '12', title: 't', year: 2024, url: '', duration: 0, topics: [], speakers: [], description: '', core_topic: '', format: 'talk' };
+      const podcast = { id: '13', title: 'p', year: 2024, url: '', duration: 0, topics: [], speakers: [], description: '', core_topic: '', format: 'podcast' };
+      const filter = TalksFilter.fromUrlParams('format=podcast');
+      expect(filter.filter([talk, podcast])).toEqual([podcast]);
+      expect(filter.toParams()).toContain('format=podcast');
+    });
   });
 
   describe('year filter types', () => {
@@ -185,7 +193,7 @@ describe('TalksFilter', () => {
 
   describe('fromUrlParams (full filter set)', () => {
     it('should parse all filter parameters from URL', () => {
-      const params = 'year=2023&author=Alice&topics=react,typescript&conference=ReactConf&hasNotes=true&rating=5&query=testing';
+      const params = 'year=2023&author=Alice&topics=react,typescript&conference=ReactConf&hasNotes=true&rating=5&query=testing&format=podcast';
       const filter = TalksFilter.fromUrlParams(params);
       expect(filter.year).toBe(2023);
       expect(filter.author).toBe('Alice');
@@ -194,9 +202,11 @@ describe('TalksFilter', () => {
       expect(filter.hasNotes).toBe(true);
       expect(filter.rating).toBe(5);
       expect(filter.query).toBe('testing');
+      expect(filter.formats).toEqual(['podcast']);
       const serialized = filter.toParams();
       expect(serialized).toContain('conference=ReactConf');
       expect(serialized).toContain('rating=5');
+      expect(serialized).toContain('format=podcast');
     });
   });
 });

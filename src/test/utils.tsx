@@ -63,7 +63,8 @@ export const mockTalk: Talk = {
   core_topic: 'test',
   url: 'https://example.com',
   description: 'Test description',
-  notes: undefined
+  notes: undefined,
+  format: 'talk'
 };
 
 // Types for mock handlers
