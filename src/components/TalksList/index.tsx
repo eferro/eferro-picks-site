@@ -9,6 +9,7 @@ import { hasMeaningfulNotes } from '../../utils/talks';
 import { DocumentTextIcon, StarIcon } from '@heroicons/react/24/outline';
 import { TalksFilter } from '../../utils/TalksFilter';
 import { SearchBox } from '../SearchBox';
+import { TopicsFilter } from './TopicsFilter';
 
 function LoadingSpinner() {
   return (
@@ -74,26 +75,11 @@ export function TalksList() {
     setSearchParams(next);
   };
 
-  // Handle topic selection and sync with URL
-  const handleTopicClick = (topic: string) => {
-    const urlTopics = (searchParams.get('topics')?.split(',').filter(Boolean)) || [];
-    const isSelected = urlTopics.includes(topic);
-    let newTopics;
-    if (isSelected) {
-      newTopics = urlTopics.filter(t => t !== topic);
-    } else {
-      newTopics = [...urlTopics, topic];
-    }
+  const updateTopics = (topics: string[]) => {
     const nextFilter = new TalksFilter({
-      year: filter.year,
-      author: filter.author,
-      topics: newTopics,
-      conference: filter.conference,
-      hasNotes: filter.hasNotes,
-      rating: filter.rating,
-      query: filter.query,
+      ...filter,
+      topics
     });
-    // Preserve extra params
     const current = new URLSearchParams(searchParams);
     const next = new URLSearchParams(nextFilter.toParams());
     for (const [key, value] of current.entries()) {
@@ -104,25 +90,18 @@ export function TalksList() {
     setSearchParams(next);
   };
 
+  const handleTopicClick = (topic: string) => {
+    const isSelected = filter.topics.includes(topic);
+    const newTopics = isSelected ? filter.topics.filter(t => t !== topic) : [...filter.topics, topic];
+    updateTopics(newTopics);
+  };
+
   const handleClearTopics = () => {
-    const nextFilter = new TalksFilter({
-      year: filter.year,
-      author: filter.author,
-      topics: [],
-      conference: filter.conference,
-      hasNotes: filter.hasNotes,
-      rating: filter.rating,
-      query: filter.query,
-    });
-    // Preserve extra params
-    const current = new URLSearchParams(searchParams);
-    const next = new URLSearchParams(nextFilter.toParams());
-    for (const [key, value] of current.entries()) {
-      if (!next.has(key) && !['year','author','topics','conference','hasNotes','rating','query'].includes(key)) {
-        next.set(key, value);
-      }
-    }
-    setSearchParams(next);
+    updateTopics([]);
+  };
+
+  const handleTopicsChange = (topics: string[]) => {
+    updateTopics(topics);
   };
 
   // Handle conference selection and sync with URL using TalksFilter
@@ -261,6 +240,11 @@ export function TalksList() {
           talks={talks}
           selectedFilter={yearFilter}
           onFilterChange={handleYearFilterChange}
+        />
+        <TopicsFilter
+          talks={talks || []}
+          selectedTopics={filter.topics}
+          onChange={handleTopicsChange}
         />
         <button
           onClick={handleHasNotesClick}
