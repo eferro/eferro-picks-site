@@ -295,7 +295,7 @@ export function TalksList() {
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500">Speaker:</span>
               <button
-                className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
+                className="break-words inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
                 onClick={() => handleAuthorClick(filter.author!)}
               >
                 {filter.author}
@@ -308,7 +308,7 @@ export function TalksList() {
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500">Conference:</span>
               <button
-                className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
+                className="break-words inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
                 onClick={() => handleConferenceClick(filter.conference!)}
               >
                 {filter.conference}
@@ -323,7 +323,7 @@ export function TalksList() {
               {filter.topics.map(topic => (
                 <button
                   key={topic}
-                  className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-800"
+                  className="break-words inline-flex items-center px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-800"
                   onClick={() => handleTopicClick(topic)}
                 >
                   {topic}
@@ -343,7 +343,7 @@ export function TalksList() {
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500">Year:</span>
               <button
-                className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
+                className="break-words inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
                 onClick={() => handleYearFilterChange(null)}
               >
                 {yearFilter.type === 'specific' && yearFilter.year ? (
@@ -366,7 +366,7 @@ export function TalksList() {
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500">Filter:</span>
               <button
-                className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
+                className="break-words inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
                 onClick={handleHasNotesClick}
                 aria-label="Remove Has Notes filter"
               >
@@ -380,7 +380,7 @@ export function TalksList() {
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500">Filter:</span>
               <button
-                className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
+                className="break-words inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
                 onClick={handleRatingClick}
                 aria-label="Remove Rating filter"
               >
