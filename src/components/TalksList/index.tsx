@@ -8,6 +8,7 @@ import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { hasMeaningfulNotes } from '../../utils/talks';
 import { DocumentTextIcon, StarIcon } from '@heroicons/react/24/outline';
 import { TalksFilter } from '../../utils/TalksFilter';
+import { SearchBox } from '../SearchBox';
 
 function LoadingSpinner() {
   return (
@@ -284,6 +285,11 @@ export function TalksList() {
 
   return (
     <div className="max-w-7xl 2xl:max-w-[96rem] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {/* Search Box */}
+      <div className="mb-6">
+        <SearchBox talks={talks || []} />
+      </div>
+
       {/* Filters */}
       <div className="mb-6 flex items-center gap-4">
         <YearFilter

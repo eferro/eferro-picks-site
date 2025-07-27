@@ -405,18 +405,56 @@ describe('URL parameters for other filters', () => {
     cleanup();
   });
 
-  it('updates yearType parameter when selecting year filter', () => {
-    renderWithRouter(<TalksList />);
-    const yearButton = screen.getByRole('button', { name: /year filter/i });
-    fireEvent.click(yearButton);
+it('updates yearType parameter when selecting year filter', () => {
+  renderWithRouter(<TalksList />);
+  const yearButton = screen.getByRole('button', { name: /year filter/i });
+  fireEvent.click(yearButton);
 
-    let params = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0];
-    if (!(params instanceof URLSearchParams)) {
-      params = new URLSearchParams(String(params));
-    }
-    // For range filters like 'last2', yearType should be 'last2' and year should be null
-    expect(params.get('yearType')).toBe('last2');
-    expect(params.get('year')).toBeNull();
-  });
+  let params = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0];
+  if (!(params instanceof URLSearchParams)) {
+    params = new URLSearchParams(String(params));
+  }
+  // For range filters like 'last2', yearType should be 'last2' and year should be null
+  expect(params.get('yearType')).toBe('last2');
+  expect(params.get('year')).toBeNull();
+});
+
+it('displays search box for user input', () => {
+  renderWithRouter(<TalksList />);
+  
+  const searchInput = screen.getByPlaceholderText(/search.*author.*topic/i);
+  expect(searchInput).toBeInTheDocument();
+  
+  const searchForm = screen.getByTestId('search-form');
+  expect(searchForm).toBeInTheDocument();
+});
+
+it('integrates search box with filter system', () => {
+  const talks = [
+    createTalk({ id: '1', title: 'React Testing', speakers: ['Alice'], topics: ['react', 'testing'] }),
+    createTalk({ id: '2', title: 'Vue Basics', speakers: ['Bob'], topics: ['vue'] })
+  ];
+
+  (useTalks as any).mockImplementation(() => ({
+    talks,
+    loading: false,
+    error: null
+  }));
+
+  renderWithRouter(<TalksList />);
+  
+  const searchInput = screen.getByPlaceholderText(/search.*author.*topic/i);
+  
+  // Type a search query
+  fireEvent.change(searchInput, { target: { value: 'author:Alice topic:react' } });
+  fireEvent.submit(screen.getByTestId('search-form'));
+  
+  // Verify URL parameters were updated with expected values
+  const lastCall = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1];
+  const params = lastCall[0] as URLSearchParams;
+  
+  expect(params.get('author')).toBe('Alice');
+  expect(params.get('topics')).toBe('react');
+});
 });
 

@@ -21,4 +21,25 @@ describe('parseSearch', () => {
     expect(result.topics).toEqual(['javascript']);
     expect(result.query).toBe('cool talk');
   });
+
+  it('handles multi-word author names with quotes', () => {
+    const result = parseSearch('author:"Kent Beck" topic:tdd');
+    expect(result.author).toBe('Kent Beck');
+    expect(result.topics).toEqual(['tdd']);
+    expect(result.query).toBe('');
+  });
+
+  it('handles multi-word author names without quotes', () => {
+    const result = parseSearch('author:Kent Beck topic:refactoring');
+    expect(result.author).toBe('Kent Beck');
+    expect(result.topics).toEqual(['refactoring']);
+    expect(result.query).toBe('');
+  });
+
+  it('handles multi-word topic names with quotes', () => {
+    const result = parseSearch('author:Alice topic:"unit testing"');
+    expect(result.author).toBe('Alice');
+    expect(result.topics).toEqual(['unit testing']);
+    expect(result.query).toBe('');
+  });
 });
