@@ -1,9 +1,9 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useMemo } from 'react';
 import { Talk } from '../../types/talks';
 import { TalkSection } from './TalkSection';
 import { useTalks } from '../../hooks/useTalks';
 import { YearFilter, type YearFilterData } from './YearFilter';
-import { useSearchParams, useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { hasMeaningfulNotes } from '../../utils/talks';
 import { DocumentTextIcon, StarIcon } from '@heroicons/react/24/outline';
@@ -27,7 +27,6 @@ function ErrorMessage({ message }: { message: string }) {
 }
 
 export function TalksList() {
-  const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const filter = useMemo(() => {
     return TalksFilter.fromUrlParams(searchParams);
@@ -38,41 +37,7 @@ export function TalksList() {
   // Add scroll position saving
   useScrollPosition();
 
-  // Handle URL parameters and updates
-  useEffect(() => {
-    const params = new URLSearchParams(searchParams);
-    const author = params.get('author');
-    const topics = params.get('topics')?.split(',').filter(Boolean) || [];
-    const conference = params.get('conference');
-    const year = params.get('year');
-    const yearType = params.get('yearType');
-    const hasNotes = params.get('hasNotes') === 'true';
-    const rating = params.get('rating');
-    
-    // Update state from URL
-    // setSelectedAuthor(author); // This line was removed as per the edit hint
-    if (topics.length > 0) {
-      // The selectedTopics state is removed, so we directly update the filter
-      const nextFilter = new TalksFilter({
-        year: filter.year,
-        author: filter.author,
-        topics: topics,
-        conference: filter.conference,
-        hasNotes: filter.hasNotes,
-        rating: filter.rating,
-        query: filter.query,
-      });
-      setSearchParams(nextFilter.toParams());
-    }
-    if (conference) {
-      const nextFilter = new TalksFilter({
-        ...filter,
-        conference: conference,
-      });
-      setSearchParams(nextFilter.toParams());
-    }
-    // No local state for year filter; handled by TalksFilter
-  }, [searchParams, filter]);
+
 
   // Update URL when filters change
   const handleHasNotesClick = () => {

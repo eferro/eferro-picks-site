@@ -1,4 +1,5 @@
 import { Talk } from "../types/talks";
+import { hasMeaningfulNotes } from "./talks";
 
 export class TalksFilter {
   readonly year: number | null;
@@ -101,7 +102,11 @@ export class TalksFilter {
         }
       }
       const queryMatch = !this.query || talk.title.toLowerCase().includes(this.query.toLowerCase());
-      return yearMatch && queryMatch;
+      const authorMatch = !this.author || talk.speakers.includes(this.author);
+      const topicsMatch = this.topics.length === 0 || this.topics.every(t => talk.topics.includes(t));
+      const conferenceMatch = !this.conference || talk.conference_name === this.conference;
+      const notesMatch = !this.hasNotes || hasMeaningfulNotes(talk.notes);
+      return yearMatch && queryMatch && authorMatch && topicsMatch && conferenceMatch && notesMatch;
     });
   }
 

@@ -105,6 +105,34 @@ describe('TalksFilter', () => {
       const filter = TalksFilter.fromUrlParams('query=TESTING');
       expect(filter.filter(talks)).toEqual([talkWithTesting]);
     });
+
+    it('should filter by author', () => {
+      const talkAlice = { id: '4', title: 'By Alice', year: 2024, url: '', duration: 0, topics: [], speakers: ['Alice'], description: '', core_topic: '', conference_name: 'ConfA', notes: 'n' };
+      const talkBob = { id: '5', title: 'By Bob', year: 2024, url: '', duration: 0, topics: [], speakers: ['Bob'], description: '', core_topic: '', conference_name: 'ConfB' };
+      const filter = TalksFilter.fromUrlParams('author=Alice');
+      expect(filter.filter([talkAlice, talkBob])).toEqual([talkAlice]);
+    });
+
+    it('should filter by topics (AND condition)', () => {
+      const talkReactTs = { id: '6', title: 'React TS', year: 2024, url: '', duration: 0, topics: ['react','typescript'], speakers: [], description: '', core_topic: '' };
+      const talkReact = { id: '7', title: 'React', year: 2024, url: '', duration: 0, topics: ['react'], speakers: [], description: '', core_topic: '' };
+      const filter = TalksFilter.fromUrlParams('topics=react,typescript');
+      expect(filter.filter([talkReactTs, talkReact])).toEqual([talkReactTs]);
+    });
+
+    it('should filter by conference', () => {
+      const t1 = { id: '8', title: 'A', year: 2024, url: '', duration: 0, topics: [], speakers: [], description: '', core_topic: '', conference_name: 'ConfA' };
+      const t2 = { id: '9', title: 'B', year: 2024, url: '', duration: 0, topics: [], speakers: [], description: '', core_topic: '', conference_name: 'ConfB' };
+      const filter = TalksFilter.fromUrlParams('conference=ConfA');
+      expect(filter.filter([t1, t2])).toEqual([t1]);
+    });
+
+    it('should filter by hasNotes', () => {
+      const withNotes = { id: '10', title: 'Notes', year: 2024, url: '', duration: 0, topics: [], speakers: [], description: '', core_topic: '', notes: 'some' };
+      const withoutNotes = { id: '11', title: 'No', year: 2024, url: '', duration: 0, topics: [], speakers: [], description: '', core_topic: '', notes: '' };
+      const filter = TalksFilter.fromUrlParams('hasNotes=true');
+      expect(filter.filter([withNotes, withoutNotes])).toEqual([withNotes]);
+    });
   });
 
   describe('year filter types', () => {
