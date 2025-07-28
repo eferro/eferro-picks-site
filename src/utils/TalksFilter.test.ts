@@ -141,6 +141,11 @@ describe('TalksFilter', () => {
       expect(filter.filter([talk, podcast])).toEqual([podcast]);
       expect(filter.toParams()).toContain('format=podcast');
     });
+
+    it('should treat format=all as no format filter', () => {
+      const filter = TalksFilter.fromUrlParams('format=all');
+      expect(filter.formats).toEqual([]);
+    });
   });
 
   describe('year filter types', () => {
