@@ -1528,10 +1528,41 @@
     {
         "airtable_createdTime": "2025-07-16T06:42:32.000Z",
         "airtable_id": "rec36j2I8EmxPvsKT",
+        "conference_name": "SCPNA",
+        "core_topic": "Engineering Culture",
         "created": "2025-07-16T06:42:32.000Z",
-        "less_15": 1,
+        "description": "Para GitHub, una base de datos de recursos ser\u00eda un sistema fundamental para el seguimiento, monitoreo y optimizaci\u00f3n meticulosa de todos los activos de infraestructura, c\u00f3mputo y operativos, con el fin de garantizar la escalabilidad continua, disponibilidad y eficiencia de costes de su plataforma global.\n",
+        "duration": 2760,
+        "language": "Spanish",
+        "last_modified": "2025-07-28T14:50:45.000Z",
+        "less_15": 0,
+        "name": "Invertir en el futuro sin romper el presente: el arte de priorizar en un mundo competitivo",
+        "notes": "Lo m\u00e1s importante de esta charla es c\u00f3mo dominar la **priorizaci\u00f3n estrat\u00e9gica, la planificaci\u00f3n y la construcci\u00f3n sostenible** para una plataforma a escala global como GitHub. Esto implica equilibrar eficazmente la necesidad constante de **innovaci\u00f3n y velocidad** con los compromisos cr\u00edticos de **disponibilidad de la plataforma, seguridad y una excelente experiencia para el desarrollador**, mientras se gestiona la deuda t\u00e9cnica y se prepara para el crecimiento futuro.\n\nLo m\u00e1s importante que alguien deber\u00eda recordar de esta charla es el arte de la **priorizaci\u00f3n estrat\u00e9gica y la construcci\u00f3n sostenible** de una plataforma a escala global como GitHub, equilibrando constantemente la **innovaci\u00f3n y la velocidad** con la **disponibilidad, la seguridad y la experiencia del desarrollador**. La autora comparte las pr\u00e1cticas que les funcionan en GitHub para mantener este equilibrio, especialmente en un entorno donde todo es \"para ayer\" y se construye sobre una plataforma con muchos a\u00f1os de historia.\nLos puntos y pr\u00e1cticas m\u00e1s importantes que la autora intenta transmitir son:\n- **Principios Fundamentales:**\n    - La **disponibilidad y la seguridad son el trabajo n\u00famero uno** (\"job number one\"). Es crucial construir una plataforma en la que la gente pueda confiar, ya que un producto innovador no sirve si no est\u00e1 disponible o no es seguro.\n    - **La experiencia de los desarrolladores y la deuda t\u00e9cnica importan**. Ignorar estas \u00e1reas puede llevar a la frustraci\u00f3n y la fuga de talento de los ingenieros.\n    - **Competir para ganar:** GitHub busca la innovaci\u00f3n, la disrupci\u00f3n del mercado, atraer usuarios, generar ingresos e influenciar la forma en que se construye el c\u00f3digo, a pesar de ser el hogar del c\u00f3digo abierto.\n- **Gesti\u00f3n Proactiva y Reactiva (El \"arte de priorizar\"):**\n    - **Gesti\u00f3n de Incidentes (Reactiva):** Tener ingenieros de guardia 24/7 y un rol \"shield\" para incidencias menos urgentes. Realizar **\"post-mortems\"** obligatorios con **objetivos de tiempo estrictos para remediar los problemas**, lo que a la larga acelera el proceso y evita la repetici\u00f3n del mismo incidente.\n    - **Vulnerabilidades de Seguridad (Reactiva/Proactiva):** Las vulnerabilidades explotables tienen **prioridad cero**. Existe un equipo separado para **revisiones de seguridad** que analiza el c\u00f3digo y la arquitectura de forma proactiva para prevenir problemas futuros y ahorrar trabajo de remediaci\u00f3n.\n    - **Presupuestos de Error (Error Budgets) y SLOs (Proactiva):** En lugar de solo medir la disponibilidad mensual, se mide la rapidez con la que se \"quema\" el presupuesto de error permitido. Cuando se alcanza un umbral, se frena el desarrollo de nuevas caracter\u00edsticas para priorizar la estabilidad, lo que permite un manejo proactivo del riesgo y un balance de prioridades.\n    - **\"Good to Grow\" (Proactiva):** Planificar y **prepararse para un crecimiento repentino e inesperado** de usuarios o carga. Se asume una capacidad para soportar **10x de crecimiento probado y 100x de crecimiento estimado**. Esto implica monitorear m\u00e9tricas directas (p.ej., n\u00famero de solicitudes API) e indirectas (p.ej., tama\u00f1o de la base de datos) y hacer un uso responsable de los recursos de infraestructura (\"Resource economy\").\n    - **Iniciativas de Ingenier\u00eda (Engineering Initiatives) (Proactiva):** Dedicar un porcentaje fijo de capacidad (20-30% no negociable) cada trimestre para que los ingenieros aborden directamente la **deuda t\u00e9cnica, prueben nuevas herramientas o simplifiquen funcionalidades** que afectan su velocidad o frustraci\u00f3n en el d\u00eda a d\u00eda. Este es un rol rotatorio y voluntario donde los ingenieros proponen y votan ideas.\n    - **Gesti\u00f3n de la Deuda T\u00e9cnica (Proactiva):** Ver la deuda t\u00e9cnica como una **decisi\u00f3n consciente y controlada para aprovechar una oportunidad** (similar a una hipoteca). La clave es pagarla cuando comienza a interponerse en el camino y ralentizar el progreso. Se recomienda **incluir el coste de la refactorizaci\u00f3n** o de trabajar con un componente sano dentro de las estimaciones de desarrollo de nuevas funcionalidades para que el coste sea compartido con el equipo de producto.\n    - **\"Ship to Learn\" y \"Fail Fast\" (Proactiva):** Desarrollar prototipos interactivos (mocks) y **obtener feedback de los clientes antes de construir funcionalidades**, reduciendo costos y evitando desarrollar algo que el cliente no necesita. Sin embargo, se reconoce que en algunos casos (p.ej., productos de IA con resultados no deterministas) puede ser necesario construir primero y mejorar despu\u00e9s.\n    - **Balance entre Innovaci\u00f3n y Ganancia de Dinero (Proactiva):** Es fundamental balancear la construcci\u00f3n de funcionalidades innovadoras con las **funcionalidades solicitadas por los clientes que aseguran la retenci\u00f3n y expansi\u00f3n del negocio**. Hay que destinar una capacidad reservada para estas \u00faltimas para generar ingresos y mantener a los clientes existentes.\n- **Proceso de Planificaci\u00f3n y Priorizaci\u00f3n:**\n    - **Preparaci\u00f3n con Datos:** Acudir a las reuniones de planificaci\u00f3n con datos claros sobre el \"c\u00f3mo, qu\u00e9 y por qu\u00e9\" de cada iniciativa, incluyendo el n\u00famero de clientes que la solicitaron, la oportunidad de mercado o los ingresos recurrentes anuales que generar\u00eda.\n    - **Entender la Capacidad:** Calcular la capacidad real del equipo considerando vacaciones, guardias y un \"buffer\" para imprevistos.\n    - **\"Hunger Games\" (La Reuni\u00f3n de Priorizaci\u00f3n):** En esta reuni\u00f3n entre l\u00edderes de producto e ingenier\u00eda, se decide qu\u00e9 priorizar en el trimestre, con la regla de que entre el **20% y el 30% de la capacidad se dedica a tareas que no son desarrollo de nuevas caracter\u00edsticas** (disponibilidad, iniciativas de ingenier\u00eda).\n    - **Transparencia:** El resultado es una lista clara de lo que se har\u00e1 y lo que no, con explicaciones y riesgos documentados, que se comunica a todo el mundo. Esto fomenta la energ\u00eda y motivaci\u00f3n de los ingenieros, ya que saben que el plan es el mejor posible y sostenible.\n    - **Flexibilidad ante el \"Martillo\":** En ocasiones, ante problemas cr\u00edticos de infraestructura o apuestas estrat\u00e9gicas de la empresa (como en la IA), se puede \"sacar el martillo\" y detener todo lo dem\u00e1s para atacar un problema central, incluso si no agrada a los ingenieros, porque la necesidad y el valor son claros.\n\n\n",
+        "rating": 5,
         "registered_at": "2025-07-16T06:42:32.000Z",
-        "resource": " - "
+        "resource": "Invertir en el futuro sin romper el presente: el arte de priorizar en un mundo competitivo - https://www.youtube.com/watch?v=ac292tZc7F4",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            true
+        ],
+        "speakers": [
+            "recY6MXG8LD46KUNT"
+        ],
+        "speakers_names": [
+            "Isa Vilacides"
+        ],
+        "topics": [
+            "recWFKWrPEdeEYbzx",
+            "recgcJy2O48j2V5SW",
+            "recVjcUEBKByq8k7M"
+        ],
+        "topics_names": [
+            "Engineering Culture",
+            "Scalability",
+            "Security"
+        ],
+        "url": "https://www.youtube.com/watch?v=ac292tZc7F4",
+        "year": 2025
     },
     {
         "airtable_createdTime": "2020-01-19T20:41:18.000Z",
@@ -12646,6 +12677,44 @@
         "url": "https://www.digitalocean.com/community/tutorials/architecting-applications-for-kubernetes"
     },
     {
+        "airtable_createdTime": "2025-07-28T14:56:19.000Z",
+        "airtable_id": "recOCzU44GkFS3IGv",
+        "conference_name": "SCPNA",
+        "core_topic": "DDD",
+        "created": "2025-07-28T14:56:19.000Z",
+        "description": "Descubre c\u00f3mo la refactorizaci\u00f3n continua del modelo de dominio permite acelerar la entrega de valor y gestionar proyectos complejos de software.\n",
+        "duration": 3420,
+        "language": "Spanish",
+        "last_modified": "2025-07-28T15:00:11.000Z",
+        "less_15": 0,
+        "name": "Modelo de dominio vivo: refactorizaci\u00f3n continua para acelerar la entrega",
+        "notes": "La lecci\u00f3n clave es que la **refactorizaci\u00f3n continua del modelo de dominio** es una pr\u00e1ctica esencial que, lejos de ser un impedimento, permite **acelerar la entrega de valor** y gestionar eficazmente la complejidad inherente al desarrollo de software. Esto se logra optimizando el c\u00f3digo para el cambio constante y asegurando la coherencia entre el lenguaje del dominio y la implementaci\u00f3n.\n\nPuntos clave de la presentaci\u00f3n:\n- La **refactorizaci\u00f3n continua** es una t\u00e9cnica controlada para mejorar el dise\u00f1o del c\u00f3digo sin cambiar su comportamiento, realizada en peque\u00f1os pasos y con el apoyo de tests robustos. Su objetivo principal es **acelerar la capacidad de cambiar** el software y entregar valor.\n- El **cambio es inevitable** en el desarrollo de software; por lo tanto, el c\u00f3digo debe optimizarse para el cambio.\n- Un **modelo de dominio vivo y bien ajustado** es crucial; es una representaci\u00f3n conceptual que combina datos y comportamiento, enfocado en resolver problemas y expresado en un lenguaje compartido por todo el equipo.\n- La refactorizaci\u00f3n debe ser una **actividad continua** en el d\u00eda a d\u00eda, no una sesi\u00f3n de semanas planificada con antelaci\u00f3n.\n- T\u00e9cnicas como el **m\u00e9todo Mikado** permiten eliminar c\u00f3digo muerto o dependencias en peque\u00f1os pasos, permitiendo desplegar en cada etapa.\n- Es beneficioso **consolidar la l\u00f3gica de negocio dispersa** en un **agregado cohesivo** del dominio, incluso si inicialmente lo hace m\u00e1s grande, para despu\u00e9s refactorizar y definir l\u00edmites m\u00e1s claros.\n- La elecci\u00f3n de **d\u00f3nde posicionar los tests unitarios** (nivel de caso de uso vs. nivel de agregado) influye en c\u00f3mo emerge el dominio y la velocidad de iteraci\u00f3n.\n- A veces, para mejorar el dise\u00f1o, es necesario **\"empeorarlo antes de mejorarlo\"** o **\"hacerlo funcionar y despu\u00e9s mejorarlo\"**.\n- Aplicar el principio **\"haz que el cambio sea f\u00e1cil, y despu\u00e9s haz el cambio f\u00e1cil\"** para guiar las estrategias de refactorizaci\u00f3n.\n- Es fundamental **entender por qu\u00e9 existe una \"valla\" (c\u00f3digo)** antes de quitarla, para evitar introducir problemas inesperados.\n- El **patr\u00f3n de cambio paralelo (Expand and Contract)** facilita la migraci\u00f3n de dependencias de forma incremental, permitiendo despliegues en cada etapa sin interrupciones mayores.\n- Existe un **bucle virtuoso** donde m\u00e1s refactoring lleva a un modelo de dominio m\u00e1s ajustado, lo que resulta en un ritmo de entrega m\u00e1s alto y, por ende, en la entrega de m\u00e1s valor.\n- La **observabilidad, las feature flags y una bater\u00eda de tests fiable** son herramientas esenciales para realizar cambios y despliegues con confianza y reducir riesgos.\n\n",
+        "registered_at": "2025-07-28T14:56:19.000Z",
+        "resource": "Modelo de dominio vivo: refactorizaci\u00f3n continua para acelerar la entrega - https://www.youtube.com/watch?v=Pk_tbw2ONMs",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "reci9vOHEF6d12Aby"
+        ],
+        "speakers_names": [
+            "Youne\u0300s Zeriahi"
+        ],
+        "topics": [
+            "reca0FiaHsqUjIHYb",
+            "recqVF0vISal0hi8E",
+            "recin3Ync8iZldW0q"
+        ],
+        "topics_names": [
+            "Refactoring",
+            "DDD",
+            "Continuous Delivery"
+        ],
+        "url": "https://www.youtube.com/watch?v=Pk_tbw2ONMs",
+        "year": 2025
+    },
+    {
         "airtable_createdTime": "2020-01-19T20:42:37.000Z",
         "airtable_id": "recOFHPWQvGihMDDS",
         "blog_url": "https://www.eferro.net/2017/10/index.html",
@@ -14451,6 +14520,47 @@
             "Company Culture"
         ],
         "url": "https://www.runroom.com/realworld/e038-hoshin-okrs-y-estrategia-con-angel-medinilla"
+    },
+    {
+        "airtable_createdTime": "2025-07-28T14:50:52.000Z",
+        "airtable_id": "recRNFQSJBn3GtJ27",
+        "conference_name": "SCPNA",
+        "core_topic": "Lean-Agile",
+        "created": "2025-07-28T14:50:52.000Z",
+        "description": "Un viaje honesto desde XP hasta la implementaci\u00f3n de principios **Lean** para maximizar el valor y la eficiencia en los equipos, con la **honestidad** como secreto fundamental.\n",
+        "duration": 3120,
+        "language": "Spanish",
+        "last_modified": "2025-07-28T14:55:29.000Z",
+        "less_15": 0,
+        "name": "De XP a Lean: un viaje honesto de ida y vuelta",
+        "notes": "El camino de XP a Lean demuestra que la clave para **maximizar el valor y la eficiencia** en un equipo reside en la **honestidad** y la **confianza** mutua, que son la base indispensable para que cualquier pr\u00e1ctica o metodolog\u00eda funcione y genere impacto real.\n\nPuntos clave de la presentaci\u00f3n:\n- El viaje de XP a Lean revel\u00f3 que la **velocidad por s\u00ed sola no garantiza valor**; la obsesi\u00f3n por iterar r\u00e1pido a menudo lleva a solucionar los problemas equivocados.\n- Los **valores de Extreme Programming (XP) son la base fundamental** para aplicar exitosamente los principios Lean de maximizar el valor y reducir el desperdicio.\n- El objetivo principal de un equipo debe ser **resolver el problema con mayor impacto** en el objetivo general, de la forma m\u00e1s **eficiente** posible.\n- La **honestidad y la confianza mutua** son el **secreto fundamental** para que cualquier pr\u00e1ctica o metodolog\u00eda funcione y para construir un equipo ideal.\n- **Maximizar el trabajo no hecho** es crucial, enfoc\u00e1ndose en identificar y descartar problemas de bajo impacto lo antes posible a trav\u00e9s de un proceso de **framing, discovery, delivery y review** basado en la predicci\u00f3n de impacto real.\n- Todo debe ser **p\u00fablico y colaborativo por defecto** para fomentar la confianza, evitar silos de conocimiento y asegurar la accesibilidad de la informaci\u00f3n.\n- Las decisiones deben compartirse como **propuestas** para generar compromiso y permitir que cualquier idea sea cuestionada por cualquier miembro del equipo.\n- Las **retrospectivas y postmortems** sirven como indicadores de la confianza y honestidad del equipo; si son superficiales, hay un problema subyacente de confianza.\n- El concepto de \"**la mierda siempre gana**\" resalta que la confianza es fr\u00e1gil y una sola mentira puede destruirla, enfatizando la necesidad de cuidarla constantemente.\n- Los **incentivos compartidos** (no solo monetarios) son clave para alinear los objetivos individuales con los del equipo y la empresa.\n\n",
+        "rating": 5,
+        "registered_at": "2025-07-28T14:50:52.000Z",
+        "resource": "De XP a Lean: un viaje honesto de ida y vuelta - https://www.youtube.com/watch?v=ne2fKoPKpHY",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "reckDCokr3JWGyXUs"
+        ],
+        "speakers_names": [
+            "Alex Fern\u00e1ndez"
+        ],
+        "topics": [
+            "recs3XV2rYhyC6qe8",
+            "recO11XlolI72a1fV",
+            "rech2MAtQRy0Lvc2Y",
+            "rechSTvKX9sm9HHMA"
+        ],
+        "topics_names": [
+            "Teams",
+            "Lean",
+            "Lean Software Development",
+            "Company Culture"
+        ],
+        "url": "https://www.youtube.com/watch?v=ne2fKoPKpHY",
+        "year": 2025
     },
     {
         "airtable_createdTime": "2020-01-19T20:33:18.000Z",
@@ -32038,6 +32148,45 @@
         ],
         "url": "https://www.infoq.com/presentations/improve-engineer-designer-leader",
         "year": 2017
+    },
+    {
+        "airtable_createdTime": "2025-07-28T14:42:41.000Z",
+        "airtable_id": "recvGCRlTeNtEgc7M",
+        "conference_name": "SCPNA",
+        "core_topic": "System Thinking",
+        "created": "2025-07-28T14:42:41.000Z",
+        "description": "Fran Mosteiro explica en esta charla c\u00f3mo el 'sistema' (factores externos como la financiaci\u00f3n, la cultura y el contexto), y no solo el equipo, impacta la frustraci\u00f3n y el rendimiento en los equipos de desarrollo de software, ofreciendo ideas pr\u00e1cticas para que cada individuo act\u00fae sobre lo que puede cambiar.\n",
+        "duration": 3540,
+        "language": "Spanish",
+        "last_modified": "2025-07-28T14:48:11.000Z",
+        "less_15": 0,
+        "name": "No es el equipo. Es el sistema",
+        "notes": "Fran Mosteiro explica que la frustraci\u00f3n y el rendimiento en los equipos de software son causados por el **\"sistema\"** (factores externos como financiaci\u00f3n, cultura y contexto), no solo por el equipo. La clave es entender estos cambios y que cada persona, sin importar su rol, **act\u00fae sobre lo que s\u00ed puede cambiar** para mejorar el entorno y reducir el sufrimiento.\n\nPuntos m\u00e1s importantes:\n- **Mensaje Central: No es el equipo, es el sistema** Fran Mosteiro argumenta que la frustraci\u00f3n y los problemas de rendimiento en los equipos de desarrollo de software a menudo son causados por el **\"sistema\"** en el que operan, y no solo por los miembros del equipo. Compara un equipo con un microecosistema dentro de un bioma m\u00e1s grande, cuya salud depende de variables externas como el suelo, el clima y la luz solar, no solo de las especies que lo habitan.\n- **\u00bfQu\u00e9 es \"El Sistema\"?** Un sistema se define como un conjunto de elementos interconectados que interact\u00faan entre s\u00ed y con su entorno para lograr un prop\u00f3sito com\u00fan. En un equipo de desarrollo de producto, esto incluye:\n    - **Factores Externos:** El **financiamiento de la compa\u00f1\u00eda**, el modelo de negocio, la **cultura de la empresa**, los cambios personales individuales, o incluso el contexto hist\u00f3rico global. Por ejemplo, una empresa \"bootstrapeada\" (autofinanciada) prioriza la rentabilidad y la sostenibilidad, lo que afecta salarios e inversiones. Una empresa con \"venture capital\" (financiaci\u00f3n externa) prioriza el crecimiento r\u00e1pido y ocupar el mercado.\n    - **Complejidad:** Estos factores no solo cambian de forma aislada, sino que su **combinaci\u00f3n en diferentes dimensiones** (p. ej., mucha autonom\u00eda sin direcci\u00f3n clara) es lo realmente complicado y puede llevar a la desorganizaci\u00f3n o el burnout.\n- **Impacto de los Cambios Sist\u00e9micos** Cuando el sistema cambia (debido al crecimiento del negocio, cambios de liderazgo o nuevas condiciones de mercado), lo que antes funcionaba puede dejar de ser efectivo. A menudo, la gente tiende a se\u00f1alar al \"qui\u00e9n\" (la persona) cuando deber\u00eda centrarse en **\"qu\u00e9, c\u00f3mo, por qu\u00e9 y d\u00f3nde\"** ha cambiado el sistema. La frustraci\u00f3n surge de sentir que algo no funciona o ha cambiado, sin saber exactamente qu\u00e9 o de qui\u00e9n es la culpa.\n- **Agencia Individual y Salud Mental** A pesar de la influencia del sistema, Fran enfatiza que **cada individuo tiene algo que decir y aportar** para entenderlo y hacerlo un poco m\u00e1s amable. Aunque los humanos son la fuente del 99% de los problemas en tecnolog\u00eda, tambi\u00e9n son el **99% de las soluciones**. La clave es **actuar sobre lo que s\u00ed se puede cambiar**, lo cual es fundamental para la salud mental.\n- **Acciones Clave para Individuos:** Para navegar los desaf\u00edos sist\u00e9micos y reducir la frustraci\u00f3n personal, se recomienda a los individuos:\n    - **Cultivar la cultura del feedback:** Dar y recibir retroalimentaci\u00f3n ayuda al crecimiento.\n    - **Sobrecomunicar:** Repetir informaci\u00f3n varias veces y por diferentes canales para asegurar que el mensaje llegue.\n    - **Buscar informaci\u00f3n proactivamente y con curiosidad:** Preguntar el \"porqu\u00e9\" de los cambios, en lugar de asumir.\n    - **Asumir buena intenci\u00f3n:** Entender que la gente tiene sus propias agendas y objetivos, pero generalmente no act\u00faan con malicia.\n    - **Reflexionar sobre las propias acciones:** Es m\u00e1s f\u00e1cil quejarse, pero el foco debe estar en lo que uno puede hacer activamente para cambiar la situaci\u00f3n.\n    - **Compartir contexto:** Si se tiene acceso a informaci\u00f3n m\u00e1s amplia, compartirla con quienes no la tienen.\n    - **Distinguir lo que se puede y no se puede cambiar:** Concentrar la energ\u00eda en \u00e1reas donde se tiene influencia.\n    - **Reconocer el contexto cambiante:** Entender que uno puede no encajar de la misma manera que antes, y que eso est\u00e1 bien.\n    - **Desarrollar un \"kit de preguntas\" personal:** Un conjunto de preguntas de autorreflexi\u00f3n para entender situaciones y actuar con m\u00e1s compasi\u00f3n y claridad.\n    - **Mantener una actitud proactiva y positiva:** Intentar disfrutar del trabajo y ayudar a los dem\u00e1s a disfrutarlo tambi\u00e9n.\n- **El Rol del Liderazgo** Los managers y directores tienen una gran responsabilidad en **proteger y adaptar a sus equipos** a los cambios externos. Fran prefiere la **transparencia y honestidad**, explicando la realidad a los miembros del equipo y siendo claro sobre las expectativas. En contextos de cambio de \"startup a scale-up\", las habilidades necesarias cambian, y es importante explicar que no todos encajar\u00e1n o podr\u00e1n adaptarse a tiempo, aunque se intente ayudarles.\n- **La Vida no es Justa, es L\u00f3gica** Finalmente, Fran concluye que **\"nada es justo\"**. A lo m\u00e1ximo que se puede aspirar es a que las cosas sean **l\u00f3gicas**. Al entender el sistema y actuar sobre lo que se puede cambiar, los individuos pueden hacer que su realidad sea m\u00e1s l\u00f3gica, lo que les permite decidir si aceptarla o buscar otro camino, reduciendo as\u00ed el sufrimiento.\n\n",
+        "rating": 5,
+        "registered_at": "2025-07-28T14:42:41.000Z",
+        "resource": "No es el equipo. Es el sistema - https://www.youtube.com/watch?v=44Eccp1ZsS0",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recMT3coD9UphhEap"
+        ],
+        "speakers_names": [
+            "Fran Mosteiro"
+        ],
+        "topics": [
+            "rec1S54WAgSRzsQQB",
+            "rechSTvKX9sm9HHMA",
+            "recs3XV2rYhyC6qe8"
+        ],
+        "topics_names": [
+            "Systems Thinking",
+            "Company Culture",
+            "Teams"
+        ],
+        "url": "https://www.youtube.com/watch?v=44Eccp1ZsS0",
+        "year": 2025
     },
     {
         "airtable_createdTime": "2020-01-19T20:38:05.000Z",
