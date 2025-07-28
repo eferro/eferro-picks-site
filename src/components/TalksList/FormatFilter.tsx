@@ -13,8 +13,19 @@ export function FormatFilter({ selectedFormats, onChange }: FormatFilterProps) {
     onChange(newFormats);
   };
 
+  const clear = () => onChange([]);
+
   return (
     <div className="flex items-center gap-4">
+      <label className="inline-flex items-center gap-1 text-sm">
+        <input
+          type="checkbox"
+          checked={selectedFormats.length === 0}
+          onChange={clear}
+          aria-label="Any format"
+        />
+        Any
+      </label>
       <label className="inline-flex items-center gap-1 text-sm">
         <input
           type="checkbox"

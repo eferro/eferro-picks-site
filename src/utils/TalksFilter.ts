@@ -139,7 +139,10 @@ export class TalksFilter {
       hasNotes: hasNotesParam === 'true',
       rating: ratingParam ? parseInt(ratingParam, 10) : null,
       query,
-      formats: formatParam ? formatParam.split(',').filter(Boolean) : [],
+      formats:
+        formatParam && formatParam !== 'all'
+          ? formatParam.split(',').filter(Boolean)
+          : [],
     });
   }
 }
