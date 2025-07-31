@@ -37,6 +37,7 @@ describe('TalkSection', () => {
     );
     const button = screen.getByRole('button', { name: /Testing/ });
     expect(button).toHaveAttribute('aria-expanded', 'true');
+    expect(button).toHaveTextContent(/\[expanded\]/i);
     const cards = screen.getAllByTestId(/talk-/);
     expect(cards.length).toBeGreaterThanOrEqual(2);
   });
@@ -58,8 +59,10 @@ describe('TalkSection', () => {
     const toggle = screen.getByRole('button', { name: /Core/ });
     const details = screen.getByTestId('talk-section');
     expect(details).not.toHaveAttribute('open');
+    expect(toggle).toHaveTextContent(/\[collapsed\]/i);
     fireEvent.click(toggle);
     expect(details).toHaveAttribute('open');
+    expect(toggle).toHaveTextContent(/\[expanded\]/i);
     fireEvent.click(screen.getByText('author'));
     fireEvent.click(screen.getByText('topic'));
     fireEvent.click(screen.getByText('conf'));
