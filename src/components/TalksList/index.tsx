@@ -7,7 +7,7 @@ import { useUrlFilter } from '../../hooks/useUrlFilter';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { useFilterHandlers } from '../../hooks/useFilterHandlers';
 import { DocumentTextIcon, StarIcon } from '@heroicons/react/24/outline';
-import { LoadingSpinner, ErrorMessage } from '../ui';
+import { LoadingSpinner, ErrorMessage, PageContainer } from '../ui';
 
 import { SearchBox } from '../SearchBox';
 import { TopicsFilter } from './TopicsFilter';
@@ -79,7 +79,7 @@ export function TalksList() {
   if (error) return <ErrorMessage message={error.message} />;
 
   return (
-    <div className="max-w-7xl 2xl:max-w-[96rem] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <PageContainer padding="compact" width="extended">
       {/* Search Box */}
       <div className="mb-6">
         <SearchBox talks={talks || []} />
@@ -162,6 +162,6 @@ export function TalksList() {
           <p className="text-gray-600 text-lg">No talks found matching your criteria.</p>
         </div>
       )}
-    </div>
+    </PageContainer>
   );
 } 

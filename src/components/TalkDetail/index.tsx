@@ -3,7 +3,7 @@ import { useTalks } from '../../hooks/useTalks';
 import { useUrlFilter } from '../../hooks/useUrlFilter';
 import { useFilterHandlers } from '../../hooks/useFilterHandlers';
 import { PlayIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
-import { LoadingSpinner, ErrorMessage } from '../ui';
+import { LoadingSpinner, ErrorMessage, PageContainer } from '../ui';
 import { Talk } from '../../types/talks';
 import { formatDuration } from '../../utils/format';
 import ReactMarkdown from 'react-markdown';
@@ -22,17 +22,17 @@ function TalkDetail() {
 
   if (loading) {
     return (
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      <PageContainer>
         <LoadingSpinner noContainer role="status" />
-      </div>
+      </PageContainer>
     );
   }
 
   if (error) {
     return (
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      <PageContainer>
         <ErrorMessage message="Error loading talk details" noContainer />
-      </div>
+      </PageContainer>
     );
   }
 
@@ -40,14 +40,14 @@ function TalkDetail() {
 
   if (!talk) {
     return (
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      <PageContainer>
         <ErrorMessage message="Talk not found" noContainer className="text-gray-600" />
-      </div>
+      </PageContainer>
     );
   }
 
   return (
-    <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <PageContainer>
       <Link 
         to={{ 
           pathname: "..",
@@ -159,7 +159,7 @@ function TalkDetail() {
 
         </div>
       </article>
-    </div>
+    </PageContainer>
   );
 }
 export { TalkDetail }; 
