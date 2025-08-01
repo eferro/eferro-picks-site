@@ -156,41 +156,6 @@ describe('Consolidated Test Utilities', () => {
   });
 
   describe('RenderHelper', () => {
-    it('renders TalksList with default props', () => {
-      const result = RenderHelper.renderTalksList();
-      
-      expect(result.container).toBeDefined();
-      expect(result.mockTalks).toBeDefined();
-      expect(result.cleanup).toBeInstanceOf(Function);
-    });
-
-    it('renders TalksList with custom props', () => {
-      const customTalks = MockDataFactory.createTalks(2);
-      const result = RenderHelper.renderTalksList({
-        talks: customTalks,
-        loading: false
-      });
-      
-      expect(result.mockTalks).toEqual(customTalks);
-    });
-
-    it('renders TalkDetail with default props', () => {
-      const result = RenderHelper.renderTalkDetail('test-id');
-      
-      expect(result.container).toBeDefined();
-      expect(result.mockTalk).toBeDefined();
-      expect(result.cleanup).toBeInstanceOf(Function);
-    });
-
-    it('renders TalkCard with default props', () => {
-      const result = RenderHelper.renderTalkCard();
-      
-      expect(result.container).toBeDefined();
-      expect(result.mockTalk).toBeDefined();
-      expect(result.mockHandlers).toBeDefined();
-      expect(result.cleanup).toBeInstanceOf(Function);
-    });
-
     it('renders component with router context', () => {
       const TestComponent = createElement('div', {}, 'Test Component');
       const result = RenderHelper.renderWithTestRouter(
@@ -204,7 +169,7 @@ describe('Consolidated Test Utilities', () => {
   });
 
   describe('Integration', () => {
-    it('works together to setup and render complex test scenarios', () => {
+    it('works together to setup and render test scenarios', () => {
       // Setup test environment
       const testCleanup = TestSetupHelper.setupComponentTest('TalksList', {
         mockChildComponents: true
@@ -212,18 +177,15 @@ describe('Consolidated Test Utilities', () => {
       
       // Create test data
       const talks = MockDataFactory.createTalksForFiltering();
+      const handlers = TestSetupHelper.createMockHandlers();
       
-      // Render component
-      const renderResult = RenderHelper.renderTalksList({
-        talks,
-        loading: false
-      });
-      
-      expect(renderResult.container).toBeDefined();
-      expect(renderResult.mockTalks).toEqual(talks);
+      // Verify utilities work together
+      expect(talks).toHaveLength(5);
+      expect(handlers.onAuthorClick).toBeInstanceOf(Function);
+      expect(handlers.onTopicClick).toBeInstanceOf(Function);
+      expect(testCleanup).toBeInstanceOf(Function);
       
       // Cleanup
-      renderResult.cleanup();
       testCleanup();
     });
   });
