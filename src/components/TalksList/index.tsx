@@ -5,7 +5,6 @@ import { useTalks } from '../../hooks/useTalks';
 import { YearFilter, type YearFilterData } from './YearFilter';
 import { useSearchParams } from 'react-router-dom';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
-import { hasMeaningfulNotes } from '../../utils/talks';
 import { DocumentTextIcon, StarIcon } from '@heroicons/react/24/outline';
 import { TalksFilter } from '../../utils/TalksFilter';
 import { SearchBox } from '../SearchBox';
@@ -189,31 +188,10 @@ export function TalksList() {
     yearFilter = { type: yearType, year: year ?? undefined };
   }
 
-  // Filter talks by selected author, topics, conference, year, and notes
+  // Filter talks using TalksFilter
   const filteredTalks = useMemo(() => {
     if (!talks) return [];
-    return filter.filter(talks).filter(talk => {
-      // Filter by author using TalksFilter
-      if (filter.author && !talk.speakers.includes(filter.author)) {
-        return false;
-      }
-      // Filter by topics using TalksFilter
-      if (filter.topics.length > 0) {
-        const hasAllSelectedTopics = filter.topics.every(topic => 
-          talk.topics.includes(topic)
-        );
-        if (!hasAllSelectedTopics) return false;
-      }
-      // Filter by conference
-      if (filter.conference && talk.conference_name !== filter.conference) {
-        return false;
-      }
-      // Filter by notes
-      if (filter.hasNotes && !hasMeaningfulNotes(talk.notes)) {
-        return false;
-      }
-      return true;
-    });
+    return filter.filter(talks);
   }, [talks, filter]);
 
   // Group talks by core topic
