@@ -10,6 +10,7 @@ import { DocumentTextIcon, StarIcon } from '@heroicons/react/24/outline';
 import { SearchBox } from '../SearchBox';
 import { TopicsFilter } from './TopicsFilter';
 import { FormatFilter } from './FormatFilter';
+import { ActiveFilters } from './ActiveFilters';
 
 function LoadingSpinner() {
   return (
@@ -177,124 +178,18 @@ export function TalksList() {
       </div>
 
       {/* Active filters */}
-      {(filter.author || filter.topics.length > 0 || filter.conference || yearFilter || filter.hasNotes || filter.rating === 5 || filter.formats.length > 0) && (
-        <div className="mb-6 space-y-3">
-          {filter.author && (
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-500">Speaker:</span>
-              <button
-                className="break-words inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
-                onClick={() => handleAuthorClick(filter.author!)}
-              >
-                {filter.author}
-                <span className="ml-2 text-blue-600">×</span>
-              </button>
-            </div>
-          )}
-          
-          {filter.conference && (
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-500">Conference:</span>
-              <button
-                className="break-words inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
-                onClick={() => handleConferenceClick(filter.conference!)}
-              >
-                {filter.conference}
-                <span className="ml-2 text-blue-600">×</span>
-              </button>
-            </div>
-          )}
-          
-          {filter.topics.length > 0 && (
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-sm text-gray-500">Topics:</span>
-              {filter.topics.map(topic => (
-                <button
-                  key={topic}
-                  className="break-words inline-flex items-center px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-800"
-                  onClick={() => handleTopicClick(topic)}
-                >
-                  {topic}
-                  <span className="ml-2 text-gray-600">×</span>
-                </button>
-              ))}
-              <button
-                className="text-sm text-gray-500 hover:text-gray-700"
-                onClick={handleClearTopics}
-              >
-                Clear all topics
-              </button>
-            </div>
-          )}
-          
-          {yearFilter && (
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-500">Year:</span>
-              <button
-                className="break-words inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
-                onClick={() => handleYearFilterChange(null)}
-              >
-                {yearFilter.type === 'specific' && yearFilter.year ? (
-                  yearFilter.year
-                ) : yearFilter.type === 'before' ? (
-                  `Before ${yearFilter.year}`
-                ) : yearFilter.type === 'after' ? (
-                  `After ${yearFilter.year}`
-                ) : yearFilter.type === 'last2' ? (
-                  'Last 2 Years'
-                ) : (
-                  'Last 5 Years'
-                )}
-                <span className="ml-2 text-blue-600">×</span>
-              </button>
-            </div>
-          )}
-          
-          {filter.hasNotes && (
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-500">Filter:</span>
-              <button
-                className="break-words inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
-                onClick={handleHasNotesClick}
-                aria-label="Remove Has Notes filter"
-              >
-                Has Notes
-                <span className="ml-2 text-blue-600" aria-hidden="true">×</span>
-              </button>
-            </div>
-          )}
-          
-          {filter.rating === 5 && (
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-500">Filter:</span>
-              <button
-                className="break-words inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
-                onClick={handleRatingClick}
-                aria-label="Remove Rating filter"
-              >
-                5 Stars
-                <span className="ml-2 text-blue-600" aria-hidden="true">×</span>
-              </button>
-            </div>
-          )}
-
-          {filter.formats.length > 0 && (
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-500">Format:</span>
-              {filter.formats.map(fmt => (
-                <button
-                  key={fmt}
-                  className="break-words inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
-                  onClick={() => handleFormatChange(filter.formats.filter(f => f !== fmt))}
-                >
-                  {fmt.charAt(0).toUpperCase() + fmt.slice(1)}
-                  <span className="ml-2 text-blue-600">×</span>
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
+      <ActiveFilters
+        filter={filter}
+        yearFilter={yearFilter}
+        onRemoveAuthor={() => handleAuthorClick(filter.author!)}
+        onRemoveConference={() => handleConferenceClick(filter.conference!)}
+        onRemoveTopic={handleTopicClick}
+        onClearTopics={handleClearTopics}
+        onRemoveYearFilter={() => handleYearFilterChange(null)}
+        onRemoveHasNotes={handleHasNotesClick}
+        onRemoveRating={handleRatingClick}
+        onRemoveFormat={(format) => handleFormatChange(filter.formats.filter(f => f !== format))}
+      />
 
       {/* Results count */}
       <div className="text-sm text-gray-500 mb-6">
