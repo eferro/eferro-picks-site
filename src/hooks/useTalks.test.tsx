@@ -15,7 +15,7 @@ vi.mock('../utils/talks', () => ({
 }));
 
 // Helper functions for mocking
-const mockFetchResponse = (data: any) => {
+const mockFetchResponse = (data: unknown) => {
   global.fetch = vi.fn().mockImplementation(() =>
     Promise.resolve({
       ok: true,
@@ -38,7 +38,7 @@ const mockFetchFailure = () => {
   );
 };
 
-const mockProcessedResponse = (data: any) => {
+const mockProcessedResponse = (data: unknown) => {
   (processTalks as ReturnType<typeof vi.fn>).mockReturnValue(data);
 };
 

@@ -32,19 +32,19 @@ describe('TalkDetail', () => {
   };
 
   beforeEach(() => {
-    (useTalks as any).mockImplementation(() => ({
+    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
       talks: [mockTalk],
       loading: false,
       error: null
     }));
 
-    (useParams as any).mockImplementation(() => ({ id: '1' }));
+    (useParams as ReturnType<typeof vi.fn>).mockImplementation(() => ({ id: '1' }));
     
     // Reset mocks and internal state
     vi.clearAllMocks();
     setMockSearchParams(new URLSearchParams());
     
-    (useSearchParams as any).mockImplementation(() => [getMockSearchParams(), mockSetSearchParams]);
+    (useSearchParams as ReturnType<typeof vi.fn>).mockImplementation(() => [getMockSearchParams(), mockSetSearchParams]);
   });
 
   const renderComponent = () => renderWithRouter(<TalkDetail />);
@@ -149,7 +149,7 @@ describe('TalkDetail', () => {
 
   describe('Loading and Error States', () => {
     it('shows loading state', () => {
-      (useTalks as any).mockImplementation(() => ({
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
         talks: [],
         loading: true,
         error: null
@@ -160,7 +160,7 @@ describe('TalkDetail', () => {
     });
 
     it('shows error state', () => {
-      (useTalks as any).mockImplementation(() => ({
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
         talks: [],
         loading: false,
         error: new Error('Test error')
@@ -173,7 +173,7 @@ describe('TalkDetail', () => {
 
   describe('Notes Section', () => {
     it('does not render notes section when notes are not present', () => {
-      (useTalks as any).mockImplementation(() => ({
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
         talks: [createTalk({ notes: undefined })],
         loading: false,
         error: null
@@ -183,7 +183,7 @@ describe('TalkDetail', () => {
     });
 
     it('does not render notes section when notes are just whitespace', () => {
-      (useTalks as any).mockImplementation(() => ({
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
         talks: [createTalk({ notes: '   \n  \r\n  ' })],
         loading: false,
         error: null
@@ -193,7 +193,7 @@ describe('TalkDetail', () => {
     });
 
     it('renders notes section when notes have meaningful content', () => {
-      (useTalks as any).mockImplementation(() => ({
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
         talks: [createTalk({ notes: 'Some actual notes' })],
         loading: false,
         error: null
@@ -208,14 +208,14 @@ describe('TalkDetail', () => {
     it('preserves filters when going back to talks', () => {
       setMockSearchParams(new URLSearchParams('author=Test%20Speaker&year=2023'));
 
-      (useTalks as any).mockImplementation(() => ({
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
         talks: [mockTalk],
         loading: false,
         error: null
       }));
 
-      (useParams as any).mockImplementation(() => ({ id: '1' }));
-      (useSearchParams as any).mockImplementation(() => [getMockSearchParams(), mockSetSearchParams]);
+      (useParams as ReturnType<typeof vi.fn>).mockImplementation(() => ({ id: '1' }));
+      (useSearchParams as ReturnType<typeof vi.fn>).mockImplementation(() => [getMockSearchParams(), mockSetSearchParams]);
 
       renderComponent();
 

@@ -26,13 +26,13 @@ describe('TalksFilter', () => {
     });
 
     it('should handle null parameters', () => {
-      const filter = TalksFilter.fromUrlParams(null as any);
+      const filter = TalksFilter.fromUrlParams(null as never);
       expect(filter.year).toBeNull();
       expect(filter.query).toBe('');
     });
 
     it('should handle undefined parameters', () => {
-      const filter = TalksFilter.fromUrlParams(undefined as any);
+      const filter = TalksFilter.fromUrlParams(undefined as never);
       expect(filter.year).toBeNull();
       expect(filter.query).toBe('');
     });

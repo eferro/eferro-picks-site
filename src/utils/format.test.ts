@@ -14,8 +14,8 @@ describe('formatDuration', () => {
     });
 
     it('returns "0m" for null/undefined values', () => {
-      expect(formatDuration(null as any)).toBe('0m');
-      expect(formatDuration(undefined as any)).toBe('0m');
+      expect(formatDuration(null as never)).toBe('0m');
+      expect(formatDuration(undefined as never)).toBe('0m');
     });
 
     it('handles decimal values correctly', () => {

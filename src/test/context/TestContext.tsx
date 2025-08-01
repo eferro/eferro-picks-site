@@ -57,6 +57,7 @@ export function TestProvider({
 }
 
 // Custom hook for using the context
+// eslint-disable-next-line react-refresh/only-export-components
 export function useTestContext() {
   const context = useContext(TestContext);
   if (!context) {

@@ -4,8 +4,20 @@ import { TalkSection } from './TalkSection';
 import { createTalk, renderWithRouter } from '../../test/utils';
 
 // Mock TalkCard to simplify testing and expose handler props
+interface MockTalkCardProps {
+  talk: {
+    id: string;
+    speakers: string[];
+    topics: string[];
+    conference_name: string;
+  };
+  onAuthorClick: (author: string) => void;
+  onTopicClick: (topic: string) => void;
+  onConferenceClick: (conference: string) => void;
+}
+
 vi.mock('./TalkCard', () => ({
-  TalkCard: ({ talk, onAuthorClick, onTopicClick, onConferenceClick }: any) => (
+  TalkCard: ({ talk, onAuthorClick, onTopicClick, onConferenceClick }: MockTalkCardProps) => (
     <div data-testid={`talk-${talk.id}`}>
       <button onClick={() => onAuthorClick(talk.speakers[0])}>author</button>
       <button onClick={() => onTopicClick(talk.topics[0])}>topic</button>

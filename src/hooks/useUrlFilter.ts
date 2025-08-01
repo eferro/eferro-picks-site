@@ -8,7 +8,7 @@ export function useUrlFilter() {
 
   const filter = useMemo(
     () => TalksFilter.fromUrlParams(searchParams),
-    [searchParams.toString()]
+    [searchParams]
   );
 
   const updateFilter = (updates: TalksFilterData) => {

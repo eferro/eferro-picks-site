@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const SCROLL_INDEX_KEY = 'scroll_index';
@@ -20,12 +20,12 @@ export const useScrollPosition = () => {
   const attemptRef = useRef(0);
   const isIndexPage = location.pathname === '/' || location.pathname === '';
 
-  const saveScrollPosition = () => {
+  const saveScrollPosition = useCallback(() => {
     if (!isIndexPage) return;
     
     const scrollPosition = window.scrollY;
     sessionStorage.setItem(SCROLL_INDEX_KEY, scrollPosition.toString());
-  };
+  }, [isIndexPage]);
 
   const isValidScrollPosition = (value: string | null): boolean => {
     if (!value) return false;
@@ -49,7 +49,7 @@ export const useScrollPosition = () => {
     return true;
   };
 
-  const restoreScrollPosition = () => {
+  const restoreScrollPosition = useCallback(() => {
     if (!isIndexPage) return;
     
     const savedScrollPosition = sessionStorage.getItem(SCROLL_INDEX_KEY);
@@ -80,7 +80,7 @@ export const useScrollPosition = () => {
     };
     
     retryTimeoutRef.current = setTimeout(checkScrollPosition, 100);
-  };
+  }, [isIndexPage]);
 
   // Handle scroll events with debounce
   useEffect(() => {
@@ -102,7 +102,7 @@ export const useScrollPosition = () => {
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [isIndexPage]);
+  }, [isIndexPage, saveScrollPosition]);
 
   // Handle scroll restoration and reset
   useEffect(() => {
@@ -122,5 +122,5 @@ export const useScrollPosition = () => {
         clearTimeout(retryTimeoutRef.current);
       }
     };
-  }, [location.pathname, isIndexPage]);
+  }, [location.pathname, isIndexPage, restoreScrollPosition]);
 }; 

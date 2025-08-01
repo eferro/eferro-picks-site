@@ -8,7 +8,7 @@ describe('talks utils', () => {
     });
 
     it('returns false for null notes', () => {
-      expect(hasMeaningfulNotes(null as any)).toBe(false);
+      expect(hasMeaningfulNotes(null as never)).toBe(false);
     });
 
     it('returns false for empty string', () => {
@@ -60,24 +60,24 @@ describe('filterTalks', () => {
   } as unknown as AirtableItem;
 
   const make = (overrides: Partial<AirtableItem>): AirtableItem => ({
-    ...(base as any),
+    ...base,
     ...overrides
   }) as AirtableItem;
 
   const sample = [
     make({ airtable_id: '1' }),
-    make({ airtable_id: '2', language: 'Spanish' as any }),
+    make({ airtable_id: '2', language: 'Spanish' as never }),
     make({ airtable_id: '3', rating: 4 }),
-    make({ airtable_id: '4', resource_type: 'invalid' as any })
+    make({ airtable_id: '4', resource_type: 'invalid' as never })
   ];
 
   it('filters by language and resource type', () => {
-    const result = filterTalks(sample as any, false);
+    const result = filterTalks(sample, false);
     expect(result.map(i => i.airtable_id)).toEqual(['1', '3']);
   });
 
   it('also filters by rating when enabled', () => {
-    const result = filterTalks(sample as any, true);
+    const result = filterTalks(sample, true);
     expect(result.map(i => i.airtable_id)).toEqual(['1']);
   });
 });
@@ -135,7 +135,7 @@ describe('processTalks', () => {
   ];
 
   it('transforms and filters items', () => {
-    const result = processTalks(items as any, false);
+    const result = processTalks(items, false);
     expect(result).toHaveLength(2);
     expect(result[0]).toMatchObject({
       id: '1',
@@ -146,7 +146,7 @@ describe('processTalks', () => {
   });
 
   it('applies rating filter when requested', () => {
-    const result = processTalks(items as any, true);
+    const result = processTalks(items, true);
     expect(result).toHaveLength(1);
     expect(result[0].id).toBe('1');
   });
@@ -156,7 +156,7 @@ describe('processTalks', () => {
       { ...items[0], resource_type: 'talk' },
       { ...items[1], airtable_id: '10', resource_type: 'podcast' }
     ];
-    const result = processTalks(customItems as any, false);
+    const result = processTalks(customItems, false);
     expect(result[0]).toHaveProperty('format', 'talk');
     expect(result[1]).toHaveProperty('format', 'podcast');
   });

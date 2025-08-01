@@ -28,7 +28,7 @@ vi.mock('react-router-dom', async () => {
     useNavigate: () => mockNavigate,
     useLocation: () => ({ pathname: '/', search: getMockSearchParams().toString() }),
     useParams: () => ({}),
-    Link: ({ children, to }: { children: React.ReactNode, to: any }) => {
+    Link: ({ children, to }: { children: React.ReactNode, to: string | { pathname?: string; search?: string } }) => {
       const search = typeof to === 'string' ? '' : to.search;
       const pathname = typeof to === 'string' ? to : to.pathname;
       const href = search ? `${pathname}?${search}` : pathname;

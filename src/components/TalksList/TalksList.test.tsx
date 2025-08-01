@@ -5,13 +5,19 @@ import { useTalks } from '../../hooks/useTalks';
 import { renderWithRouter, getMockSearchParams, mockSetSearchParams, mockNavigate, createTalk, setMockSearchParams } from '../../test/utils';
 
 // Mock the child components
+interface MockTalkSectionProps {
+  coreTopic: string;
+  talks: Array<{ id: string; title: string; }>;
+  selectedTopics?: string[];
+}
+
 vi.mock('./TalkSection', () => ({
-  TalkSection: (props: any) => {
+  TalkSection: (props: MockTalkSectionProps) => {
     const selectedTopics = props.selectedTopics || [];
     return (
       <section>
         <h2>{props.coreTopic} ({props.talks.length})</h2>
-        {props.talks.map((talk: any) => (
+        {props.talks.map((talk) => (
           <div key={talk.id} role="article">
             <div
               onClick={() => mockNavigate({ pathname: `/talk/${talk.id}`, search: getMockSearchParams().toString() })}
@@ -49,7 +55,7 @@ vi.mock('./TalkSection', () => ({
 }));
 
 vi.mock('./YearFilter', () => ({
-  YearFilter: ({ onFilterChange }: { onFilterChange: any }) => (
+  YearFilter: ({ onFilterChange }: { onFilterChange: (filter: { type: string }) => void }) => (
     <button onClick={() => onFilterChange({ type: 'last2' })}>Year Filter</button>
   )
 }));
@@ -70,7 +76,7 @@ describe('Author Filter', () => {
     vi.clearAllMocks();
     setMockSearchParams(new URLSearchParams());
     // Setup talks with different authors and titles
-    (useTalks as any).mockImplementation(() => ({
+    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
       talks: [
         createTalk({ id: '1', title: 'Talk A', speakers: ['Author A'] }),
         createTalk({ id: '2', title: 'Talk B', speakers: ['Author B'] }),
@@ -114,7 +120,7 @@ describe('Rating Filter', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     setMockSearchParams(new URLSearchParams());
-    (useTalks as any).mockImplementation(() => ({
+    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
       talks: [ createTalk({ id: '1', title: 'Star talk' }) ],
       loading: false,
       error: null
@@ -172,7 +178,7 @@ describe('Format Filter', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     setMockSearchParams(new URLSearchParams());
-    (useTalks as any).mockImplementation(() => ({
+    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
       talks: [
         createTalk({ id: '1', format: 'talk' }),
         createTalk({ id: '2', format: 'podcast' })
@@ -204,7 +210,7 @@ describe('TalksList', () => {
     vi.clearAllMocks();
     setMockSearchParams(new URLSearchParams());
 
-    (useTalks as any).mockImplementation(() => ({
+    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
       talks: [
         createTalk({ id: '1', title: 'Talk with both topics 1', speakers: ['Test Speaker'], topics: ['react', 'typescript'], core_topic: 'Engineering Culture', year: 2023 }),
         createTalk({ id: '2', title: 'Talk with only first topic', speakers: ['Test Speaker'], topics: ['react'], core_topic: 'Engineering Culture', year: 2023 }),
@@ -297,7 +303,7 @@ describe('TalksList', () => {
 
 describe('Has Notes Filter', () => {
   it('shows the Has Notes filter button', () => {
-    (useTalks as any).mockImplementation(() => ({
+    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
       talks: [],
       loading: false,
       error: null
@@ -330,7 +336,7 @@ describe('Has Notes Filter', () => {
       notes: '\n  \n' 
     });
 
-    (useTalks as any).mockImplementation(() => ({
+    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
       talks: [talkWithNotes, talkWithoutNotes, talkWithEmptyNotes],
       loading: false,
       error: null
@@ -340,7 +346,7 @@ describe('Has Notes Filter', () => {
     
     // Debug output for talks and filter state
      
-    console.log('Talks at start:', (useTalks as any).mock.results?.[0]?.value?.talks);
+    console.log('Talks at start:', (useTalks as ReturnType<typeof vi.fn>).mock.results?.[0]?.value?.talks);
     // Initially all talks should be visible
     const initialArticles = screen.queryAllByRole('article');
     if (initialArticles.length === 0) {
@@ -393,7 +399,7 @@ describe('URL parameters for other filters', () => {
     vi.clearAllMocks();
     setMockSearchParams(new URLSearchParams());
 
-    (useTalks as any).mockImplementation(() => ({
+    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
       talks: [
         createTalk({ id: '1', topics: ['react', 'typescript'] })
       ],
@@ -458,7 +464,7 @@ it('integrates search box with filter system', () => {
     createTalk({ id: '2', title: 'Vue Basics', speakers: ['Bob'], topics: ['vue'] })
   ];
 
-  (useTalks as any).mockImplementation(() => ({
+  (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
     talks,
     loading: false,
     error: null
