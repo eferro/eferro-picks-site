@@ -3,6 +3,7 @@ import { useUrlFilter } from '../../hooks/useUrlFilter';
 import type { Talk } from '../../types/talks';
 import { Autocomplete } from '../../utils/Autocomplete';
 import { parseSearch } from '../../utils/SearchParser';
+import { SearchPrefixParser } from '../../utils/SearchPrefixParser';
 
 interface SearchBoxProps {
   talks: Talk[];
@@ -15,14 +16,22 @@ export function SearchBox({ talks }: SearchBoxProps) {
   const ac = useMemo(() => new Autocomplete(talks), [talks]);
 
   const updateSuggestions = (text: string) => {
-    const parts = text.split(/\s+/);
-    const last = parts[parts.length - 1];
-    if (last.toLowerCase().startsWith('author:')) {
-      setSuggestions(ac.autocompleteSpeakers(last.slice('author:'.length)));
-    } else if (last.toLowerCase().startsWith('topic:')) {
-      setSuggestions(ac.autocompleteTopics(last.slice('topic:'.length)));
-    } else {
+    const prefixResult = SearchPrefixParser.parseLastPrefix(text);
+    
+    if (!prefixResult.hasPrefix) {
       setSuggestions([]);
+      return;
+    }
+    
+    switch (prefixResult.type) {
+      case 'author':
+        setSuggestions(ac.autocompleteSpeakers(prefixResult.value));
+        break;
+      case 'topic':
+        setSuggestions(ac.autocompleteTopics(prefixResult.value));
+        break;
+      default:
+        setSuggestions([]);
     }
   };
 
@@ -33,14 +42,7 @@ export function SearchBox({ talks }: SearchBoxProps) {
   };
 
   const handleSuggestionClick = (s: string) => {
-    const parts = value.split(/\s+/);
-    const last = parts[parts.length - 1];
-    if (last.toLowerCase().startsWith('author:')) {
-      parts[parts.length - 1] = 'author:' + s;
-    } else if (last.toLowerCase().startsWith('topic:')) {
-      parts[parts.length - 1] = 'topic:' + s;
-    }
-    const newValue = parts.join(' ');
+    const newValue = SearchPrefixParser.replaceSuggestionInText(value, s);
     setValue(newValue);
     setSuggestions([]);
   };
