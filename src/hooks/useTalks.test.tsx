@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from '@testing-library/react';
 import { useTalks } from './useTalks';
 import { TestProvider } from '../test/context/TestContext';
-import { processTalks, hasMeaningfulNotes } from '../utils/talks';
+import { processTalks } from '../utils/talks';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 // Store original fetch

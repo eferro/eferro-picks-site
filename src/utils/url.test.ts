@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { mergeParams, TALKS_FILTER_KEYS } from './url';
+import { mergeParams } from './url';
 
 describe('mergeParams', () => {
   it('copies non-filter params', () => {

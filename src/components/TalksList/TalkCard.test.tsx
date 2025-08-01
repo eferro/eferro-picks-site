@@ -1,7 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { TalkCard } from './TalkCard';
-import { mockTalk, mockHandlers, renderTalkCard, createTalk, setMockSearchParams, mockNavigate } from '../../test/utils';
+import { screen, fireEvent } from '@testing-library/react';
+import { renderTalkCard, createTalk, setMockSearchParams, mockNavigate } from '../../test/utils';
 
 describe('TalkCard', () => {
   beforeEach(() => {

@@ -269,7 +269,7 @@ describe('TalksList', () => {
     // Simulate clicking both topics in sequence
     let topicButtons = screen.getAllByTestId(/^topic-/);
     // Click 'react'
-    let reactBtn = topicButtons.find(btn => btn.textContent === 'react');
+    const reactBtn = topicButtons.find(btn => btn.textContent === 'react');
     if (!reactBtn) throw new Error('React topic button not found');
     fireEvent.click(reactBtn);
     getMockSearchParams().set('topics', 'react');
@@ -277,7 +277,7 @@ describe('TalksList', () => {
     renderWithRouter(<TalksList />);
     // Re-query topic buttons after re-render
     topicButtons = screen.getAllByTestId(/^topic-/);
-    let tsBtn = topicButtons.find(btn => btn.textContent === 'typescript');
+    const tsBtn = topicButtons.find(btn => btn.textContent === 'typescript');
     if (!tsBtn) throw new Error('Typescript topic button not found');
     fireEvent.click(tsBtn);
     getMockSearchParams().set('topics', 'react,typescript');
@@ -339,7 +339,7 @@ describe('Has Notes Filter', () => {
     renderWithRouter(<TalksList />);
     
     // Debug output for talks and filter state
-    // eslint-disable-next-line no-console
+     
     console.log('Talks at start:', (useTalks as any).mock.results?.[0]?.value?.talks);
     // Initially all talks should be visible
     const initialArticles = screen.queryAllByRole('article');
@@ -353,10 +353,10 @@ describe('Has Notes Filter', () => {
 
     // Click the Has Notes filter
     const button = screen.getByRole('button', { name: /toggle has notes filter/i });
-    // eslint-disable-next-line no-console
+     
     console.log('Before click: button class:', button.className, 'search params:', getMockSearchParams().toString());
     fireEvent.click(button);
-    // eslint-disable-next-line no-console
+     
     console.log('After click: button class:', button.className, 'search params:', getMockSearchParams().toString());
 
     // Update mockSearchParams to match new params and re-render
@@ -376,9 +376,9 @@ describe('Has Notes Filter', () => {
     // Re-query the Has Notes filter button after re-render
     const updatedButton = screen.getByRole('button', { name: /toggle has notes filter/i });
     // Debug output for button class and search params
-    // eslint-disable-next-line no-console
+     
     console.log('Has Notes button class:', updatedButton.className);
-    // eslint-disable-next-line no-console
+     
     console.log('Search params after toggle:', getMockSearchParams().toString());
     // Verify the button state changed
     expect(updatedButton).toHaveClass('bg-blue-500');
@@ -406,7 +406,7 @@ describe('URL parameters for other filters', () => {
     renderWithRouter(<TalksList />);
     // Simulate clicking both topics in sequence
     let topicButtons2 = screen.getAllByTestId(/^topic-/);
-    let reactBtn2 = topicButtons2.find(btn => btn.textContent === 'react');
+    const reactBtn2 = topicButtons2.find(btn => btn.textContent === 'react');
     if (!reactBtn2) throw new Error('React topic button not found');
     fireEvent.click(reactBtn2);
     getMockSearchParams().set('topics', 'react');
@@ -414,7 +414,7 @@ describe('URL parameters for other filters', () => {
     renderWithRouter(<TalksList />);
     // Re-query topic buttons after re-render
     topicButtons2 = screen.getAllByTestId(/^topic-/);
-    let tsBtn2 = topicButtons2.find(btn => btn.textContent === 'typescript');
+    const tsBtn2 = topicButtons2.find(btn => btn.textContent === 'typescript');
     if (!tsBtn2) throw new Error('Typescript topic button not found');
     fireEvent.click(tsBtn2);
     getMockSearchParams().set('topics', 'react,typescript');

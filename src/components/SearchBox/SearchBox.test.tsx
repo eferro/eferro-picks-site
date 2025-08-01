@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import { renderWithRouter, mockSetSearchParams, createTalk } from '../../test/utils';
 import { SearchBox } from './index';

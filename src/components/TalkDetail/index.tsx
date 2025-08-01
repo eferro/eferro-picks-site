@@ -1,4 +1,4 @@
-import { useParams, Link, useSearchParams, useNavigate } from 'react-router-dom';
+import { useParams, Link, useSearchParams } from 'react-router-dom';
 import { useTalks } from '../../hooks/useTalks';
 import { PlayIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { Talk } from '../../types/talks';
@@ -7,43 +7,12 @@ import ReactMarkdown from 'react-markdown';
 import { hasMeaningfulNotes } from '../../utils/talks';
 import { TalksFilter } from '../../utils/TalksFilter';
 
-const LoadingState = () => (
-  <div className="animate-pulse">
-    <div className="h-8 bg-gray-200 rounded w-3/4 mb-4"></div>
-    <div className="space-y-3">
-      <div className="h-4 bg-gray-200 rounded w-full"></div>
-      <div className="h-4 bg-gray-200 rounded w-5/6"></div>
-      <div className="h-4 bg-gray-200 rounded w-4/6"></div>
-    </div>
-  </div>
-);
 
-const ErrorState = ({ error }: { error: Error }) => (
-  <div className="text-red-600">
-    <p>Error loading talk: {error.message}</p>
-  </div>
-);
-
-const NotFoundState = () => (
-  <div className="max-w-4xl mx-auto px-4 py-8">
-    <Link 
-      to="/" 
-      className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-8"
-    >
-      <ArrowLeftIcon className="h-5 w-5 mr-2" />
-      Back to Talks
-    </Link>
-    <div className="bg-white rounded-lg shadow-lg p-6">
-      <h1 className="text-2xl font-bold text-gray-900 mb-4">Talk Not Found</h1>
-      <p className="text-gray-700">The talk you're looking for could not be found.</p>
-    </div>
-  </div>
-);
 
 function TalkDetail() {
   const { id } = useParams<{ id: string }>();
   const [searchParams, setSearchParams] = useSearchParams();
-  const navigate = useNavigate();
+
   const { talks, loading, error } = useTalks();
 
   // Centralized filter state
@@ -67,24 +36,7 @@ function TalkDetail() {
     setSearchParams(nextFilter.toParams());
   };
 
-  const handleYearClick = (year: number) => {
-    let nextFilter: TalksFilter;
-    if (filter.year === year) {
-      // Remove year filter
-      nextFilter = new TalksFilter({
-        ...filter,
-        year: null,
-        yearType: null,
-      });
-    } else {
-      nextFilter = new TalksFilter({
-        ...filter,
-        year: year,
-        yearType: 'specific',
-      });
-    }
-    setSearchParams(nextFilter.toParams());
-  };
+
 
   if (loading) {
     return (

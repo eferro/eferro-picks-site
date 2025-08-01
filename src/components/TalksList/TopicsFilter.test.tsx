@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { TopicsFilter } from './TopicsFilter';
 import { createTalk, renderWithRouter } from '../../test/utils';

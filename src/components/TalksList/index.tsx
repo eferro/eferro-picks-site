@@ -6,7 +6,7 @@ import { YearFilter, type YearFilterData } from './YearFilter';
 import { useUrlFilter } from '../../hooks/useUrlFilter';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { DocumentTextIcon, StarIcon } from '@heroicons/react/24/outline';
-import { TalksFilter } from '../../utils/TalksFilter';
+
 import { SearchBox } from '../SearchBox';
 import { TopicsFilter } from './TopicsFilter';
 import { FormatFilter } from './FormatFilter';

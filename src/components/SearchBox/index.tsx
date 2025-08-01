@@ -11,7 +11,7 @@ interface SearchBoxProps {
 export function SearchBox({ talks }: SearchBoxProps) {
   const [value, setValue] = useState('');
   const [suggestions, setSuggestions] = useState<string[]>([]);
-  const { filter, updateFilter } = useUrlFilter();
+  const { updateFilter } = useUrlFilter();
   const ac = useMemo(() => new Autocomplete(talks), [talks]);
 
   const updateSuggestions = (text: string) => {
