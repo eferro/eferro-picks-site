@@ -3,6 +3,7 @@ import { useTalks } from '../../hooks/useTalks';
 import { useUrlFilter } from '../../hooks/useUrlFilter';
 import { useFilterHandlers } from '../../hooks/useFilterHandlers';
 import { PlayIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
+import { LoadingSpinner, ErrorMessage } from '../ui';
 import { Talk } from '../../types/talks';
 import { formatDuration } from '../../utils/format';
 import ReactMarkdown from 'react-markdown';
@@ -22,12 +23,7 @@ function TalkDetail() {
   if (loading) {
     return (
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-center">
-          <div 
-            role="status"
-            className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"
-          ></div>
-        </div>
+        <LoadingSpinner noContainer role="status" />
       </div>
     );
   }
@@ -35,9 +31,7 @@ function TalkDetail() {
   if (error) {
     return (
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="text-center text-red-600">
-          Error loading talk details
-        </div>
+        <ErrorMessage message="Error loading talk details" noContainer />
       </div>
     );
   }
@@ -47,9 +41,7 @@ function TalkDetail() {
   if (!talk) {
     return (
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="text-center text-gray-600">
-          Talk not found
-        </div>
+        <ErrorMessage message="Talk not found" noContainer className="text-gray-600" />
       </div>
     );
   }

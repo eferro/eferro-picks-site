@@ -5,6 +5,7 @@ import { TalksList } from './components/TalksList'
 import { TalkDetail } from './components/TalkDetail'
 import { Footer } from './components/Footer'
 import { BackToTopButton } from './components/BackToTopButton'
+import { LoadingSpinner } from './components/ui'
 
 function Header() {
   return (
@@ -55,11 +56,7 @@ function PageTransition({ children }: { children: React.ReactNode }) {
   
   return (
     <div key={location.pathname} className="flex-1 bg-gray-100">
-      <Suspense fallback={
-        <div className="flex justify-center items-center py-12">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
-        </div>
-      }>
+      <Suspense fallback={<LoadingSpinner />}>
         {children}
       </Suspense>
     </div>

@@ -7,27 +7,12 @@ import { useUrlFilter } from '../../hooks/useUrlFilter';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { useFilterHandlers } from '../../hooks/useFilterHandlers';
 import { DocumentTextIcon, StarIcon } from '@heroicons/react/24/outline';
+import { LoadingSpinner, ErrorMessage } from '../ui';
 
 import { SearchBox } from '../SearchBox';
 import { TopicsFilter } from './TopicsFilter';
 import { FormatFilter } from './FormatFilter';
 import { ActiveFilters } from './ActiveFilters';
-
-function LoadingSpinner() {
-  return (
-    <div className="flex justify-center items-center py-12">
-      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
-    </div>
-  );
-}
-
-function ErrorMessage({ message }: { message: string }) {
-  return (
-    <div className="text-center py-12">
-      <p className="text-red-600">{message}</p>
-    </div>
-  );
-}
 
 export function TalksList() {
   const { filter, updateFilter } = useUrlFilter();
