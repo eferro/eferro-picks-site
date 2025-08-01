@@ -5,6 +5,7 @@ import { useTalks } from '../../hooks/useTalks';
 import { YearFilter, type YearFilterData } from './YearFilter';
 import { useUrlFilter } from '../../hooks/useUrlFilter';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
+import { useFilterHandlers } from '../../hooks/useFilterHandlers';
 import { DocumentTextIcon, StarIcon } from '@heroicons/react/24/outline';
 
 import { SearchBox } from '../SearchBox';
@@ -38,57 +39,18 @@ export function TalksList() {
 
 
 
-  // Update URL when filters change
-  const handleHasNotesClick = () => {
-    updateFilter({ hasNotes: !filter.hasNotes });
-  };
-
-  const handleRatingClick = () => {
-    updateFilter({ rating: filter.rating === 5 ? null : 5 });
-  };
-
-  const updateTopics = (topics: string[]) => {
-    updateFilter({ topics });
-  };
-
-  const handleFormatChange = (formats: string[]) => {
-    updateFilter({ formats });
-  };
-
-  const handleTopicClick = (topic: string) => {
-    const isSelected = filter.topics.includes(topic);
-    const newTopics = isSelected ? filter.topics.filter(t => t !== topic) : [...filter.topics, topic];
-    updateTopics(newTopics);
-  };
-
-  const handleClearTopics = () => {
-    updateTopics([]);
-  };
-
-  const handleTopicsChange = (topics: string[]) => {
-    updateTopics(topics);
-  };
-
-  // Handle conference selection and sync with URL using TalksFilter
-  const handleConferenceClick = (conference: string) => {
-    const newConference = filter.conference === conference ? null : conference;
-    updateFilter({ conference: newConference });
-  };
-
-  // Handle year filter change and sync with URL (set yearType and year)
-  const handleYearFilterChange = (yearFilter: YearFilterData | null) => {
-    if (!yearFilter) {
-      updateFilter({ yearType: null, year: null });
-    } else {
-      updateFilter({ yearType: yearFilter.type, year: yearFilter.year ?? null });
-    }
-  };
-
-  // Handle author selection by toggling based on current URL param
-  const handleAuthorClick = (author: string) => {
-    const newAuthor = filter.author === author ? null : author;
-    updateFilter({ author: newAuthor });
-  };
+  // Get all filter handlers from custom hook
+  const {
+    handleHasNotesClick,
+    handleRatingClick,
+    handleFormatChange,
+    handleTopicClick,
+    handleClearTopics,
+    handleTopicsChange,
+    handleConferenceClick,
+    handleYearFilterChange,
+    handleAuthorClick,
+  } = useFilterHandlers(filter, updateFilter);
 
   // Derive yearType and year from TalksFilter
   const yearType = filter.yearType;
