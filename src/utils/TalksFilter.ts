@@ -1,6 +1,18 @@
 import { Talk } from "../types/talks";
 import { hasMeaningfulNotes } from "./talks";
 
+export interface TalksFilterData {
+  year?: number | null;
+  yearType?: 'specific' | 'before' | 'after' | 'last2' | 'last5' | null;
+  author?: string | null;
+  topics?: string[];
+  conference?: string | null;
+  hasNotes?: boolean;
+  rating?: number | null;
+  query?: string;
+  formats?: string[];
+}
+
 export class TalksFilter {
   readonly year: number | null;
   readonly yearType: 'specific' | 'before' | 'after' | 'last2' | 'last5' | null;
@@ -22,17 +34,7 @@ export class TalksFilter {
     rating = null,
     query = '',
     formats = [],
-  }: {
-    year?: number | null;
-    yearType?: 'specific' | 'before' | 'after' | 'last2' | 'last5' | null;
-    author?: string | null;
-    topics?: string[];
-    conference?: string | null;
-    hasNotes?: boolean;
-    rating?: number | null;
-    query?: string;
-    formats?: string[];
-  }) {
+  }: TalksFilterData = {}) {
     this.year = year;
     this.yearType = yearType;
     this.author = author;

@@ -1,10 +1,8 @@
 import { useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useUrlFilter } from '../../hooks/useUrlFilter';
 import type { Talk } from '../../types/talks';
 import { Autocomplete } from '../../utils/Autocomplete';
 import { parseSearch } from '../../utils/SearchParser';
-import { TalksFilter } from '../../utils/TalksFilter';
-import { mergeParams } from '../../utils/url';
 
 interface SearchBoxProps {
   talks: Talk[];
@@ -13,8 +11,7 @@ interface SearchBoxProps {
 export function SearchBox({ talks }: SearchBoxProps) {
   const [value, setValue] = useState('');
   const [suggestions, setSuggestions] = useState<string[]>([]);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const filter = useMemo(() => TalksFilter.fromUrlParams(searchParams), [searchParams.toString()]);
+  const { filter, updateFilter } = useUrlFilter();
   const ac = useMemo(() => new Autocomplete(talks), [talks]);
 
   const updateSuggestions = (text: string) => {
@@ -57,15 +54,11 @@ export function SearchBox({ talks }: SearchBoxProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const parsed = parseSearch(value);
-    const nextFilter = new TalksFilter({
-      ...filter,
+    updateFilter({
       author: parsed.author,
       topics: parsed.topics,
       query: parsed.query,
     });
-
-    const next = mergeParams(searchParams, new URLSearchParams(nextFilter.toParams()));
-    setSearchParams(next);
     setSuggestions([]);
   };
 
