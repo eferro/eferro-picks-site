@@ -7,6 +7,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { DocumentTextIcon, StarIcon } from '@heroicons/react/24/outline';
 import { TalksFilter } from '../../utils/TalksFilter';
+import { mergeParams } from '../../utils/url';
 import { SearchBox } from '../SearchBox';
 import { TopicsFilter } from './TopicsFilter';
 import { FormatFilter } from './FormatFilter';
@@ -47,14 +48,7 @@ export function TalksList() {
       ...filter,
       hasNotes: newValue,
     });
-    // Preserve extra params
-    const current = new URLSearchParams(searchParams);
-    const next = new URLSearchParams(nextFilter.toParams());
-    for (const [key, value] of current.entries()) {
-      if (!next.has(key) && !['year','author','topics','conference','hasNotes','rating','query'].includes(key)) {
-        next.set(key, value);
-      }
-    }
+    const next = mergeParams(searchParams, new URLSearchParams(nextFilter.toParams()));
     setSearchParams(next);
   };
 
@@ -64,14 +58,7 @@ export function TalksList() {
       ...filter,
       rating: newValue,
     });
-    // Preserve extra params
-    const current = new URLSearchParams(searchParams);
-    const next = new URLSearchParams(nextFilter.toParams());
-    for (const [key, value] of current.entries()) {
-      if (!next.has(key) && !['year','author','topics','conference','hasNotes','rating','query'].includes(key)) {
-        next.set(key, value);
-      }
-    }
+    const next = mergeParams(searchParams, new URLSearchParams(nextFilter.toParams()));
     setSearchParams(next);
   };
 
@@ -80,13 +67,7 @@ export function TalksList() {
       ...filter,
       topics
     });
-    const current = new URLSearchParams(searchParams);
-    const next = new URLSearchParams(nextFilter.toParams());
-    for (const [key, value] of current.entries()) {
-      if (!next.has(key) && !['year','author','topics','conference','hasNotes','rating','query'].includes(key)) {
-        next.set(key, value);
-      }
-    }
+    const next = mergeParams(searchParams, new URLSearchParams(nextFilter.toParams()));
     setSearchParams(next);
   };
 
@@ -95,13 +76,7 @@ export function TalksList() {
       ...filter,
       formats,
     });
-    const current = new URLSearchParams(searchParams);
-    const next = new URLSearchParams(nextFilter.toParams());
-    for (const [key, value] of current.entries()) {
-      if (!next.has(key) && !['year','author','topics','conference','hasNotes','rating','query','format'].includes(key)) {
-        next.set(key, value);
-      }
-    }
+    const next = mergeParams(searchParams, new URLSearchParams(nextFilter.toParams()));
     setSearchParams(next);
   };
 
@@ -126,14 +101,7 @@ export function TalksList() {
       ...filter,
       conference: newConference,
     });
-    // Preserve extra params
-    const current = new URLSearchParams(searchParams);
-    const next = new URLSearchParams(nextFilter.toParams());
-    for (const [key, value] of current.entries()) {
-      if (!next.has(key) && !['year','author','topics','conference','hasNotes','rating','query'].includes(key)) {
-        next.set(key, value);
-      }
-    }
+    const next = mergeParams(searchParams, new URLSearchParams(nextFilter.toParams()));
     setSearchParams(next);
   };
 
@@ -169,14 +137,7 @@ export function TalksList() {
       rating: filter.rating,
       query: filter.query,
     });
-    // Preserve extra params
-    const current = new URLSearchParams(searchParams);
-    const next = new URLSearchParams(nextFilter.toParams());
-    for (const [key, value] of current.entries()) {
-      if (!next.has(key) && !['year','author','topics','conference','hasNotes','rating','query'].includes(key)) {
-        next.set(key, value);
-      }
-    }
+    const next = mergeParams(searchParams, new URLSearchParams(nextFilter.toParams()));
     setSearchParams(next);
   };
 
