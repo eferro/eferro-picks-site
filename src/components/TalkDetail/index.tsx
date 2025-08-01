@@ -1,40 +1,21 @@
-import { useParams, Link, useSearchParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useTalks } from '../../hooks/useTalks';
+import { useUrlFilter } from '../../hooks/useUrlFilter';
+import { useFilterHandlers } from '../../hooks/useFilterHandlers';
 import { PlayIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { Talk } from '../../types/talks';
 import { formatDuration } from '../../utils/format';
 import ReactMarkdown from 'react-markdown';
 import { hasMeaningfulNotes } from '../../utils/talks';
-import { TalksFilter } from '../../utils/TalksFilter';
 
 
 
 function TalkDetail() {
   const { id } = useParams<{ id: string }>();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const { filter, updateFilter } = useUrlFilter();
+  const { handleAuthorClick, handleConferenceClick } = useFilterHandlers(filter, updateFilter);
 
   const { talks, loading, error } = useTalks();
-
-  // Centralized filter state
-  const filter = TalksFilter.fromUrlParams(searchParams);
-
-  const handleAuthorClick = (author: string) => {
-    const newAuthor = filter.author === author ? null : author;
-    const nextFilter = new TalksFilter({
-      ...filter,
-      author: newAuthor,
-    });
-    setSearchParams(nextFilter.toParams());
-  };
-
-  const handleConferenceClick = (conference: string) => {
-    const newConference = filter.conference === conference ? null : conference;
-    const nextFilter = new TalksFilter({
-      ...filter,
-      conference: newConference,
-    });
-    setSearchParams(nextFilter.toParams());
-  };
 
 
 
@@ -78,7 +59,7 @@ function TalkDetail() {
       <Link 
         to={{ 
           pathname: "..",
-          search: searchParams.toString()
+          search: filter.toParams().toString()
         }}
         className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-8"
       >

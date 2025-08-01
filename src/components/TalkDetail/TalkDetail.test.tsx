@@ -206,7 +206,9 @@ describe('TalkDetail', () => {
 
   describe('Navigation', () => {
     it('preserves filters when going back to talks', () => {
-      setMockSearchParams(new URLSearchParams('author=Test%20Speaker&year=2023'));
+      // Set complete params with yearType for proper filter state
+      const mockParams = new URLSearchParams('yearType=specific&year=2023&author=Test%20Speaker');
+      setMockSearchParams(mockParams);
 
       (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
         talks: [mockTalk],
@@ -215,12 +217,13 @@ describe('TalkDetail', () => {
       }));
 
       (useParams as ReturnType<typeof vi.fn>).mockImplementation(() => ({ id: '1' }));
-      (useSearchParams as ReturnType<typeof vi.fn>).mockImplementation(() => [getMockSearchParams(), mockSetSearchParams]);
+      (useSearchParams as ReturnType<typeof vi.fn>).mockImplementation(() => [mockParams, mockSetSearchParams]);
 
       renderComponent();
 
       const backLink = screen.getByRole('link', { name: /back to talks/i });
-      expect(backLink).toHaveAttribute('href', `/?${getMockSearchParams().toString()}`);
+      // Expect the complete URL params with yearType (+ encoding for spaces)
+      expect(backLink).toHaveAttribute('href', '/?yearType=specific&year=2023&author=Test+Speaker');
     });
   });
 });
