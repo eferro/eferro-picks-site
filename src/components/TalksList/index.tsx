@@ -3,11 +3,10 @@ import { Talk } from '../../types/talks';
 import { TalkSection } from './TalkSection';
 import { useTalks } from '../../hooks/useTalks';
 import { YearFilter, type YearFilterData } from './YearFilter';
-import { useSearchParams } from 'react-router-dom';
+import { useUrlFilter } from '../../hooks/useUrlFilter';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { DocumentTextIcon, StarIcon } from '@heroicons/react/24/outline';
 import { TalksFilter } from '../../utils/TalksFilter';
-import { mergeParams } from '../../utils/url';
 import { SearchBox } from '../SearchBox';
 import { TopicsFilter } from './TopicsFilter';
 import { FormatFilter } from './FormatFilter';
@@ -29,10 +28,7 @@ function ErrorMessage({ message }: { message: string }) {
 }
 
 export function TalksList() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const filter = useMemo(() => {
-    return TalksFilter.fromUrlParams(searchParams);
-  }, [searchParams.toString()]);
+  const { filter, updateFilter } = useUrlFilter();
   // No local state for year filter; handled by TalksFilter
   const { talks, loading, error } = useTalks(filter.rating === 5);
 
@@ -43,41 +39,19 @@ export function TalksList() {
 
   // Update URL when filters change
   const handleHasNotesClick = () => {
-    const newValue = !filter.hasNotes;
-    const nextFilter = new TalksFilter({
-      ...filter,
-      hasNotes: newValue,
-    });
-    const next = mergeParams(searchParams, new URLSearchParams(nextFilter.toParams()));
-    setSearchParams(next);
+    updateFilter({ hasNotes: !filter.hasNotes });
   };
 
   const handleRatingClick = () => {
-    const newValue = filter.rating === 5 ? null : 5;
-    const nextFilter = new TalksFilter({
-      ...filter,
-      rating: newValue,
-    });
-    const next = mergeParams(searchParams, new URLSearchParams(nextFilter.toParams()));
-    setSearchParams(next);
+    updateFilter({ rating: filter.rating === 5 ? null : 5 });
   };
 
   const updateTopics = (topics: string[]) => {
-    const nextFilter = new TalksFilter({
-      ...filter,
-      topics
-    });
-    const next = mergeParams(searchParams, new URLSearchParams(nextFilter.toParams()));
-    setSearchParams(next);
+    updateFilter({ topics });
   };
 
   const handleFormatChange = (formats: string[]) => {
-    const nextFilter = new TalksFilter({
-      ...filter,
-      formats,
-    });
-    const next = mergeParams(searchParams, new URLSearchParams(nextFilter.toParams()));
-    setSearchParams(next);
+    updateFilter({ formats });
   };
 
   const handleTopicClick = (topic: string) => {
@@ -97,48 +71,22 @@ export function TalksList() {
   // Handle conference selection and sync with URL using TalksFilter
   const handleConferenceClick = (conference: string) => {
     const newConference = filter.conference === conference ? null : conference;
-    const nextFilter = new TalksFilter({
-      ...filter,
-      conference: newConference,
-    });
-    const next = mergeParams(searchParams, new URLSearchParams(nextFilter.toParams()));
-    setSearchParams(next);
+    updateFilter({ conference: newConference });
   };
 
   // Handle year filter change and sync with URL (set yearType and year)
   const handleYearFilterChange = (yearFilter: YearFilterData | null) => {
-    let nextFilter: TalksFilter;
     if (!yearFilter) {
-      nextFilter = new TalksFilter({
-        ...filter,
-        yearType: null,
-        year: null,
-      });
+      updateFilter({ yearType: null, year: null });
     } else {
-      nextFilter = new TalksFilter({
-        ...filter,
-        yearType: yearFilter.type,
-        year: yearFilter.year ?? null,
-      });
+      updateFilter({ yearType: yearFilter.type, year: yearFilter.year ?? null });
     }
-    setSearchParams(nextFilter.toParams());
   };
 
   // Handle author selection by toggling based on current URL param
   const handleAuthorClick = (author: string) => {
-    // Toggle author filter using TalksFilter
     const newAuthor = filter.author === author ? null : author;
-    const nextFilter = new TalksFilter({
-      year: filter.year,
-      author: newAuthor,
-      topics: filter.topics,
-      conference: filter.conference,
-      hasNotes: filter.hasNotes,
-      rating: filter.rating,
-      query: filter.query,
-    });
-    const next = mergeParams(searchParams, new URLSearchParams(nextFilter.toParams()));
-    setSearchParams(next);
+    updateFilter({ author: newAuthor });
   };
 
   // Derive yearType and year from TalksFilter
