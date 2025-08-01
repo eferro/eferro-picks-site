@@ -415,7 +415,7 @@ export function TalksList() {
       </div>
       
       {sortedTopics.length > 0 ? (
-        sortedTopics.map(([topic, topicTalks], index) => (
+        sortedTopics.map(([topic, topicTalks]) => (
           <TalkSection
             key={topic}
             coreTopic={topic}
@@ -426,7 +426,6 @@ export function TalksList() {
             selectedTopics={filter.topics}
             onConferenceClick={handleConferenceClick}
             selectedConference={filter.conference}
-            openByDefault={index < 3}
           />
         ))
       ) : (

@@ -1,18 +1,13 @@
-import { render, screen, fireEvent, cleanup } from '@testing-library/react';
+import { screen, fireEvent, cleanup } from '@testing-library/react';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { TalksList } from '.';
 import { useTalks } from '../../hooks/useTalks';
-import { useSearchParams } from 'react-router-dom';
 import { renderWithRouter, getMockSearchParams, mockSetSearchParams, mockNavigate, createTalk, setMockSearchParams } from '../../test/utils';
-import { hasMeaningfulNotes } from '../../utils/talks';
 
 // Mock the child components
-let capturedOpenFlags: boolean[] = [];
-
 vi.mock('./TalkSection', () => ({
   TalkSection: (props: any) => {
     const selectedTopics = props.selectedTopics || [];
-    capturedOpenFlags.push(!!props.openByDefault);
     return (
       <section>
         <h2>{props.coreTopic} ({props.talks.length})</h2>
@@ -208,7 +203,6 @@ describe('TalksList', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     setMockSearchParams(new URLSearchParams());
-    capturedOpenFlags = [];
 
     (useTalks as any).mockImplementation(() => ({
       talks: [
@@ -298,11 +292,7 @@ describe('TalksList', () => {
     cleanup();
   });
 
-  it('expands only first three sections by default', () => {
-    renderComponent();
-    expect(capturedOpenFlags.slice(0, 3).every(Boolean)).toBe(true);
-    expect(capturedOpenFlags.slice(3).every(flag => !flag)).toBe(true);
-  });
+
 });
 
 describe('Has Notes Filter', () => {

@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { ChevronDownIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import { Talk } from '../../types/talks';
 import { TalkCard } from './TalkCard';
 
@@ -12,8 +10,6 @@ interface TalkSectionProps {
   selectedTopics: string[];
   onConferenceClick: (conference: string) => void;
   selectedConference: string | null;
-  /** Whether the section starts expanded */
-  openByDefault?: boolean;
 }
 
 export function TalkSection({
@@ -25,34 +21,12 @@ export function TalkSection({
   selectedTopics,
   onConferenceClick,
   selectedConference,
-  openByDefault = false,
 }: TalkSectionProps) {
-  const [isOpen, setIsOpen] = useState(openByDefault);
-
-  const handleToggle = () => {
-    setIsOpen(prev => !prev);
-  };
-
   return (
-    <details data-testid="talk-section" className="mb-12" open={isOpen}>
-      <summary
-        role="button"
-        onClick={handleToggle}
-        aria-expanded={isOpen}
-        className="list-none cursor-pointer text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2"
-      >
-        {isOpen ? (
-          <ChevronDownIcon className="h-5 w-5" aria-hidden="true" />
-        ) : (
-          <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
-        )}
-        <span>
-          {coreTopic} <span className="text-gray-500">({talks.length})</span>
-          <span className="ml-2 text-sm text-gray-600">[
-            {isOpen ? 'expanded' : 'collapsed'}
-          ]</span>
-        </span>
-      </summary>
+    <section data-testid="talk-section" className="mb-12">
+      <h2 className="text-2xl font-bold text-gray-900 mb-6">
+        {coreTopic} <span className="text-gray-500">({talks.length})</span>
+      </h2>
       <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {talks.map((talk) => (
           <TalkCard
@@ -67,6 +41,6 @@ export function TalkSection({
           />
         ))}
       </div>
-    </details>
+    </section>
   );
 }
