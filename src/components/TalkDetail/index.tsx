@@ -3,7 +3,7 @@ import { useTalks } from '../../hooks/useTalks';
 import { useUrlFilter } from '../../hooks/useUrlFilter';
 import { useFilterHandlers } from '../../hooks/useFilterHandlers';
 import { PlayIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
-import { LoadingSpinner, ErrorMessage, PageContainer } from '../ui';
+import { LoadingSpinner, ErrorMessage, PageContainer, Button } from '../ui';
 import { Talk } from '../../types/talks';
 import { formatDuration } from '../../utils/format';
 import ReactMarkdown from 'react-markdown';
@@ -87,16 +87,15 @@ function TalkDetail() {
           {(talk.conference_name || talk.year) && (
             <div className="text-sm text-gray-600 -mt-4 mb-6">
               {talk.conference_name && (
-                <button
+                <Button
+                  variant="tag"
+                  size="sm"
+                  shape="pill"
+                  active={filter.conference === talk.conference_name}
                   onClick={() => handleConferenceClick(talk.conference_name!)}
-                  className={`font-medium px-3 py-1 rounded-full text-sm transition-colors ${
-                    filter.conference === talk.conference_name
-                      ? 'bg-blue-500 text-white'
-                      : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
-                  }`}
                 >
                   {talk.conference_name}
-                </button>
+                </Button>
               )}
               {talk.conference_name && talk.year && <span className="mx-1">·</span>}
               {talk.year && <span>{talk.year}</span>}

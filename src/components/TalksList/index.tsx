@@ -7,7 +7,7 @@ import { useUrlFilter } from '../../hooks/useUrlFilter';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { useFilterHandlers } from '../../hooks/useFilterHandlers';
 import { DocumentTextIcon, StarIcon } from '@heroicons/react/24/outline';
-import { LoadingSpinner, ErrorMessage, PageContainer } from '../ui';
+import { LoadingSpinner, ErrorMessage, PageContainer, Button } from '../ui';
 
 import { SearchBox } from '../SearchBox';
 import { TopicsFilter } from './TopicsFilter';
@@ -98,30 +98,24 @@ export function TalksList() {
           onChange={handleTopicsChange}
         />
         <FormatFilter selectedFormats={filter.formats} onChange={handleFormatChange} />
-        <button
+        <Button
+          variant="toggle"
+          active={filter.hasNotes}
           onClick={handleHasNotesClick}
           aria-label="Toggle Has Notes filter"
-          className={`inline-flex items-center px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-            filter.hasNotes
-              ? 'bg-blue-500 text-white'
-              : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
-          }`}
+          icon={<DocumentTextIcon />}
         >
-          <DocumentTextIcon className={`h-5 w-5 ${filter.hasNotes ? 'text-white' : 'text-blue-500'} mr-2`} />
           Has Notes
-        </button>
-        <button
+        </Button>
+        <Button
+          variant="toggle"
+          active={filter.rating === 5}
           onClick={handleRatingClick}
           aria-label="Toggle Rating filter"
-          className={`inline-flex items-center px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-            filter.rating === 5
-              ? 'bg-blue-500 text-white'
-              : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
-          }`}
+          icon={<StarIcon />}
         >
-          <StarIcon className={`h-5 w-5 ${filter.rating === 5 ? 'text-white' : 'text-blue-500'} mr-2`} />
           {filter.rating === 5 ? '5 Stars' : 'All'}
-        </button>
+        </Button>
       </div>
 
       {/* Active filters */}

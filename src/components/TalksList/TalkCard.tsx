@@ -4,6 +4,7 @@ import { Talk } from '../../types/talks';
 import { formatDuration } from '../../utils/format';
 import { hasMeaningfulNotes } from '../../utils/talks';
 import { DocumentTextIcon, PlayIcon, VideoCameraIcon, MicrophoneIcon } from '@heroicons/react/24/outline';
+import { Button } from '../ui';
 
 interface TalkCardProps {
   talk: Talk;
