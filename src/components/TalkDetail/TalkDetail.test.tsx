@@ -203,4 +203,24 @@ describe('TalkDetail', () => {
       expect(screen.getByText('Some actual notes')).toBeInTheDocument();
     });
   });
-}); 
+
+  describe('Navigation', () => {
+    it('preserves filters when going back to talks', () => {
+      setMockSearchParams(new URLSearchParams('author=Test%20Speaker&year=2023'));
+
+      (useTalks as any).mockImplementation(() => ({
+        talks: [mockTalk],
+        loading: false,
+        error: null
+      }));
+
+      (useParams as any).mockImplementation(() => ({ id: '1' }));
+      (useSearchParams as any).mockImplementation(() => [getMockSearchParams(), mockSetSearchParams]);
+
+      renderComponent();
+
+      const backLink = screen.getByRole('link', { name: /back to talks/i });
+      expect(backLink).toHaveAttribute('href', `/?${getMockSearchParams().toString()}`);
+    });
+  });
+});
