@@ -34,6 +34,19 @@ This is **eferro's picks** - a curated collection of software development talks 
 
 ## Development Guidelines
 
+### Code Quality & Type Safety
+
+**Complete Type Safety Requirements:**
+- **NEVER use `any` types** - always use proper TypeScript interfaces
+- Use `unknown` for truly unknown data, `never` for impossible cases
+- Replace `any` with specific interfaces: `MockTalkCardProps`, `ReturnType<typeof vi.fn>`, etc.
+- Test mocks should use proper typing: `(mockFn as ReturnType<typeof vi.fn>).mockImplementation`
+
+**Dependencies Management:**
+- Keep all linting dependencies up to date (`typescript-eslint`, `globals`, `@eslint/js`)
+- Run `npm audit` regularly and fix security vulnerabilities
+- Ensure ESLint configuration is compatible with installed packages
+
 ### Code Style & Patterns
 
 ```typescript
@@ -96,6 +109,33 @@ src/
 3. **Refactor only after tests are green**
 4. **Run all tests** after each change: `npm test -- --run`
 5. **Commit frequently** with descriptive messages
+
+### Pre-Commit Validation Protocol
+
+**MANDATORY: Before any `git commit`, AI assistants MUST:**
+
+1. **🧪 Test Validation**
+   ```bash
+   npm test -- --run
+   ```
+   - Ensure ALL tests pass (0 failures)
+   - Verify no test regressions
+
+2. **🔍 Linting Validation**
+   ```bash
+   npm run lint
+   ```
+   - Ensure 0 errors, 0 warnings
+   - Maintain 100% clean code quality
+
+3. **📝 Type Check** (when relevant)
+   ```bash
+   npx tsc --noEmit
+   ```
+   - Verify TypeScript compilation
+   - Catch type errors early
+
+**Only commit after ALL validations pass.** This maintains our high-quality, deployable codebase.
 
 ### When Refactoring
 
@@ -233,6 +273,28 @@ setSearchParams(nextFilter.toParams());
 4. **Refactor if needed** while keeping tests green
 5. **Run full test suite** to ensure no regressions
 6. **Commit changes** with descriptive messages
+
+## Systematic Code Quality Improvement
+
+### When Addressing Linting Issues
+
+**Follow this methodical approach:**
+
+1. **📊 Categorize Issues**
+   - React Hooks dependency warnings (highest priority - can cause bugs)
+   - TypeScript `any` types (medium priority - affects maintainability)  
+   - Style/formatting issues (lowest priority)
+
+2. **🔧 Fix Systematically**
+   - Address highest priority issues first
+   - Use `useCallback` for React Hooks dependency fixes
+   - Replace `any` with proper interfaces progressively
+   - Test after each category of fixes
+
+3. **✅ Validate Continuously**
+   - Run tests after each major change
+   - Maintain 100% passing tests throughout cleanup
+   - Never compromise test coverage for code quality fixes
 
 ## Quick Reference Commands
 
