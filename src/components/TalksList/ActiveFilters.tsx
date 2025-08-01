@@ -1,5 +1,6 @@
 import type { TalksFilter } from '../../utils/TalksFilter';
 import type { YearFilterData } from './YearFilter';
+import { FilterChip } from '../ui';
 
 interface ActiveFiltersProps {
   filter: TalksFilter;
@@ -45,26 +46,18 @@ export function ActiveFilters({
       {filter.author && (
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-500">Speaker:</span>
-          <button
-            className="break-words inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
-            onClick={onRemoveAuthor}
-          >
+          <FilterChip onRemove={onRemoveAuthor}>
             {filter.author}
-            <span className="ml-2 text-blue-600">×</span>
-          </button>
+          </FilterChip>
         </div>
       )}
       
       {filter.conference && (
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-500">Conference:</span>
-          <button
-            className="break-words inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
-            onClick={onRemoveConference}
-          >
+          <FilterChip onRemove={onRemoveConference}>
             {filter.conference}
-            <span className="ml-2 text-blue-600">×</span>
-          </button>
+          </FilterChip>
         </div>
       )}
       
@@ -72,14 +65,13 @@ export function ActiveFilters({
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-sm text-gray-500">Topics:</span>
           {filter.topics.map(topic => (
-            <button
+            <FilterChip
               key={topic}
-              className="break-words inline-flex items-center px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-800"
-              onClick={() => onRemoveTopic(topic)}
+              variant="gray"
+              onRemove={() => onRemoveTopic(topic)}
             >
               {topic}
-              <span className="ml-2 text-gray-600">×</span>
-            </button>
+            </FilterChip>
           ))}
           <button
             className="text-sm text-gray-500 hover:text-gray-700"
@@ -93,10 +85,7 @@ export function ActiveFilters({
       {yearFilter && (
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-500">Year:</span>
-          <button
-            className="break-words inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
-            onClick={onRemoveYearFilter}
-          >
+          <FilterChip onRemove={onRemoveYearFilter}>
             {yearFilter.type === 'specific' && yearFilter.year ? (
               yearFilter.year
             ) : yearFilter.type === 'before' ? (
@@ -108,36 +97,31 @@ export function ActiveFilters({
             ) : (
               'Last 5 Years'
             )}
-            <span className="ml-2 text-blue-600">×</span>
-          </button>
+          </FilterChip>
         </div>
       )}
       
       {filter.hasNotes && (
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-500">Filter:</span>
-          <button
-            className="break-words inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
-            onClick={onRemoveHasNotes}
-            aria-label="Remove Has Notes filter"
+          <FilterChip 
+            onRemove={onRemoveHasNotes}
+            ariaLabel="Remove Has Notes filter"
           >
             Has Notes
-            <span className="ml-2 text-blue-600" aria-hidden="true">×</span>
-          </button>
+          </FilterChip>
         </div>
       )}
       
       {filter.rating === 5 && (
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-500">Filter:</span>
-          <button
-            className="break-words inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
-            onClick={onRemoveRating}
-            aria-label="Remove Rating filter"
+          <FilterChip 
+            onRemove={onRemoveRating}
+            ariaLabel="Remove Rating filter"
           >
             5 Stars
-            <span className="ml-2 text-blue-600" aria-hidden="true">×</span>
-          </button>
+          </FilterChip>
         </div>
       )}
 
@@ -145,14 +129,12 @@ export function ActiveFilters({
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-500">Format:</span>
           {filter.formats.map(fmt => (
-            <button
+            <FilterChip
               key={fmt}
-              className="break-words inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
-              onClick={() => onRemoveFormat(fmt)}
+              onRemove={() => onRemoveFormat(fmt)}
             >
               {fmt.charAt(0).toUpperCase() + fmt.slice(1)}
-              <span className="ml-2 text-blue-600">×</span>
-            </button>
+            </FilterChip>
           ))}
         </div>
       )}
