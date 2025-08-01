@@ -4,6 +4,7 @@ import type { Talk } from '../../types/talks';
 import { Autocomplete } from '../../utils/Autocomplete';
 import { parseSearch } from '../../utils/SearchParser';
 import { TalksFilter } from '../../utils/TalksFilter';
+import { mergeParams } from '../../utils/url';
 
 interface SearchBoxProps {
   talks: Talk[];
@@ -63,12 +64,7 @@ export function SearchBox({ talks }: SearchBoxProps) {
       query: parsed.query,
     });
 
-    const next = new URLSearchParams(nextFilter.toParams());
-    for (const [key, val] of searchParams.entries()) {
-      if (!next.has(key) && !['year','author','topics','conference','hasNotes','rating','query'].includes(key)) {
-        next.set(key, val);
-      }
-    }
+    const next = mergeParams(searchParams, new URLSearchParams(nextFilter.toParams()));
     setSearchParams(next);
     setSuggestions([]);
   };
