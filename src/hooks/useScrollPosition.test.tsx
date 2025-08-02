@@ -1,14 +1,20 @@
+import React from 'react';
 import { renderHook } from '@testing-library/react';
 import { useScrollPosition } from './useScrollPosition';
 import { vi, describe, it, expect, beforeEach, afterEach, Mock } from 'vitest';
-import { useLocation } from 'react-router-dom';
+import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { setMockSearchParams } from '../test/utils';
 
 const SCROLL_INDEX_KEY = 'scroll_index';
 
-// Mock react-router-dom
-vi.mock('react-router-dom', () => ({
-  useLocation: vi.fn()
-}));
+// Helper to create router wrapper with specific initial location
+const createRouterWrapper = (initialPath: string = '/') => {
+  return ({ children }: { children: React.ReactNode }) => (
+    <MemoryRouter initialEntries={[initialPath]}>
+      {children}
+    </MemoryRouter>
+  );
+};
 
 describe('useScrollPosition', () => {
   describe('saving scroll position', () => {
@@ -68,8 +74,8 @@ describe('useScrollPosition', () => {
       
       mockStorage.clear();
       
-      // Mock location
-      (useLocation as Mock).mockReturnValue({ pathname: '/' });
+      // Reset search params to simulate index page
+      setMockSearchParams(new URLSearchParams());
     });
 
     afterEach(() => {
@@ -79,8 +85,10 @@ describe('useScrollPosition', () => {
     });
 
     it('saves scroll position when scrolling', () => {
-      // Render the hook
-      renderHook(() => useScrollPosition());
+      // Render the hook with router context
+      renderHook(() => useScrollPosition(), {
+        wrapper: createRouterWrapper('/')
+      });
       
       // Set scroll position and trigger scroll event
       Object.defineProperty(window, 'scrollY', {
@@ -104,7 +112,9 @@ describe('useScrollPosition', () => {
       mockStorage.store[SCROLL_INDEX_KEY] = '150';
       
       // Render hook (simulating return to index page)
-      renderHook(() => useScrollPosition());
+      renderHook(() => useScrollPosition(), {
+        wrapper: createRouterWrapper('/')
+      });
       
       // Run initial delay timer (100ms)
       vi.advanceTimersByTime(100);
@@ -117,9 +127,6 @@ describe('useScrollPosition', () => {
     });
 
     it('scrolls to top when navigating to non-index page', () => {
-      // Setup: Mock a non-index page location
-      (useLocation as Mock).mockReturnValue({ pathname: '/talks/123' });
-      
       // Setup: Save a previous scroll position
       mockStorage.store[SCROLL_INDEX_KEY] = '200';
       
@@ -130,8 +137,10 @@ describe('useScrollPosition', () => {
         writable: true
       });
       
-      // Render hook (simulating navigation to detail page)
-      renderHook(() => useScrollPosition());
+      // Render hook simulating navigation to detail page
+      renderHook(() => useScrollPosition(), {
+        wrapper: createRouterWrapper('/talks/123')
+      });
       
       // Verify immediate scroll to top
       expect(window.scrollTo).toHaveBeenCalledWith(0, 0);
@@ -146,7 +155,9 @@ describe('useScrollPosition', () => {
 
     it('cleans up event listeners and timeouts when unmounting', () => {
       // Setup: Render hook on index page
-      const { unmount } = renderHook(() => useScrollPosition());
+      const { unmount } = renderHook(() => useScrollPosition(), {
+        wrapper: createRouterWrapper('/')
+      });
       
       // Verify event listener was added
       expect(window.addEventListener).toHaveBeenCalledWith('scroll', expect.any(Function), { passive: true });
@@ -172,7 +183,9 @@ describe('useScrollPosition', () => {
 
     it('debounces multiple scroll events and only saves the last position', () => {
       // Render the hook
-      renderHook(() => useScrollPosition());
+      renderHook(() => useScrollPosition(), {
+        wrapper: createRouterWrapper('/')
+      });
       
       // Simulate rapid scrolling
       for (let i = 0; i < 5; i++) {
@@ -211,7 +224,9 @@ describe('useScrollPosition', () => {
       });
       
       // Render hook
-      renderHook(() => useScrollPosition());
+      renderHook(() => useScrollPosition(), {
+        wrapper: createRouterWrapper('/')
+      });
       
       // Initial delay
       vi.advanceTimersByTime(100);
@@ -252,7 +267,9 @@ describe('useScrollPosition', () => {
       mockStorage.store[SCROLL_INDEX_KEY] = 'not-a-number';
       const removeSpy = vi.spyOn(mockStorage, 'removeItem');
 
-      renderHook(() => useScrollPosition());
+      renderHook(() => useScrollPosition(), {
+        wrapper: createRouterWrapper('/')
+      });
 
       vi.advanceTimersByTime(100);
 

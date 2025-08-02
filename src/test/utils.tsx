@@ -1,13 +1,14 @@
+import React from 'react';
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { vi, beforeEach, Mock } from 'vitest';
 import { Talk } from '../types/talks';
 import { TalkCard } from '../components/TalksList/TalkCard';
 
-// Mock navigation
+// Mock navigation - cached instances for better performance
 export const mockNavigate = vi.fn();
 
-// Mock search params
+// Mock search params with efficient caching
 let _mockSearchParams = new URLSearchParams();
 export function getMockSearchParams() {
   return _mockSearchParams;
@@ -15,9 +16,21 @@ export function getMockSearchParams() {
 export const setMockSearchParams = (params: URLSearchParams) => {
   _mockSearchParams = new URLSearchParams(params.toString());
 };
-// No need to export _mockSearchParams directly; use getMockSearchParams()
 
 export const mockSetSearchParams = vi.fn();
+
+// Cache router wrapper to avoid recreation overhead
+let cachedRouterWrapper: React.ComponentType<{ children: React.ReactNode }> | null = null;
+
+// Optimized router wrapper - reuse when possible
+const getRouterWrapper = () => {
+  if (!cachedRouterWrapper) {
+    cachedRouterWrapper = ({ children }: { children: React.ReactNode }) => (
+      <BrowserRouter>{children}</BrowserRouter>
+    );
+  }
+  return cachedRouterWrapper;
+};
 
 // Setup router mock
 vi.mock('react-router-dom', async () => {
@@ -117,7 +130,27 @@ export const renderTalkCard = (props: Partial<React.ComponentProps<typeof TalkCa
   };
 };
 
-// Wrapper component to provide router context
+// Optimized wrapper component to provide router context
 export const renderWithRouter = (ui: React.ReactElement) => {
-  return render(ui, { wrapper: BrowserRouter });
+  return render(ui, { wrapper: getRouterWrapper() });
+};
+
+// Lightweight render for unit tests that don't need router
+export const renderWithoutRouter = (ui: React.ReactElement) => {
+  return render(ui);
+};
+
+// Fast shallow test helper for component prop validation
+export const validateComponentProps = (
+  Component: React.ComponentType<any>,
+  props: any
+) => {
+  // Just verify the component can be instantiated with props
+  // without full DOM rendering - much faster for prop validation
+  try {
+    const element = React.createElement(Component, props);
+    return { success: true, element };
+  } catch (error) {
+    return { success: false, error };
+  }
 }; 

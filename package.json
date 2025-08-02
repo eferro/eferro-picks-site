@@ -11,7 +11,13 @@
     "test": "vitest",
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "test:fast": "vitest run --reporter=default",
+    "test:unit": "vitest run src/utils src/hooks --exclude='**/useScrollPosition.test.tsx'",
+    "test:components": "vitest run src/components",
+    "test:changed": "vitest run --changed",
+    "test:single": "vitest run --singleThread",
+    "test:profile": "vitest run --reporter=verbose --slowTestThreshold=1000"
   },
   "dependencies": {
     "@headlessui/react": "1.7.17",
@@ -39,6 +45,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "globals": "^16.3.0",
+    "happy-dom": "^18.0.1",
     "jsdom": "^26.0.0",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
