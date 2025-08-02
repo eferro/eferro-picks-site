@@ -188,10 +188,17 @@ describe('Format Filter', () => {
     }));
   });
 
-  it('updates format parameter when toggling checkboxes', () => {
+  it('updates format parameter when selecting from dropdown', () => {
     renderWithRouter(<TalksList />);
-    const podcastBox = screen.getByLabelText(/podcasts/i);
-    fireEvent.click(podcastBox);
+    
+    // Click the Format dropdown button to open it
+    const formatButton = screen.getByRole('button', { name: /format/i });
+    fireEvent.click(formatButton);
+    
+    // Click the Podcasts option in the dropdown
+    const podcastOption = screen.getByRole('menuitem', { name: /podcasts/i });
+    fireEvent.click(podcastOption);
+    
     const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
     expect(params.get('format')).toBe('podcast');
   });
