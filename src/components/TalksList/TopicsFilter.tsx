@@ -2,15 +2,12 @@ import { Fragment, useMemo } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { Talk } from '../../types/talks';
+import { classNames } from '../../utils/classNames';
 
 interface TopicsFilterProps {
   talks: Talk[];
   selectedTopics: string[];
   onChange: (topics: string[]) => void;
-}
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
 }
 
 export function TopicsFilter({ talks, selectedTopics, onChange }: TopicsFilterProps) {
