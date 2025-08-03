@@ -2,10 +2,11 @@ import { renderHook, act } from '@testing-library/react';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { useFilterHandlers } from './useFilterHandlers';
 import { TalksFilter } from '../utils/TalksFilter';
+import type { TalksFilterData } from '../utils/TalksFilter';
 import type { YearFilterData } from '../components/TalksList/YearFilter';
 
 // Mock updateFilter function
-const mockUpdateFilter = vi.fn();
+const mockUpdateFilter = vi.fn<[TalksFilterData], void>();
 
 describe('useFilterHandlers', () => {
   beforeEach(() => {

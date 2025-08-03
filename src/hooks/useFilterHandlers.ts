@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
-import type { TalksFilter } from '../utils/TalksFilter';
+import type { TalksFilter, TalksFilterData } from '../utils/TalksFilter';
 import type { YearFilterData } from '../components/TalksList/YearFilter';
 
-type UpdateFilterFunction = (updates: Partial<TalksFilter>) => void;
+type UpdateFilterFunction = (updates: TalksFilterData) => void;
 
 /**
  * Custom hook that provides all filter handler functions for TalksList

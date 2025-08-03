@@ -2,14 +2,11 @@ import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { VideoCameraIcon, MicrophoneIcon } from '@heroicons/react/24/outline';
+import { classNames } from '../../utils/classNames';
 
 interface FormatFilterProps {
   selectedFormats: string[];
   onChange: (formats: string[]) => void;
-}
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
 }
 
 export function FormatFilter({ selectedFormats, onChange }: FormatFilterProps) {
