@@ -1,5 +1,5 @@
-export function formatDuration(seconds: number): string {
-  if (!seconds || seconds < 0) return '0m';
+export function formatDuration(seconds: number | null | undefined): string {
+  if (seconds == null || Number.isNaN(seconds) || seconds <= 0) return '0m';
   
   const hours = Math.floor(seconds / 3600);
   const minutes = Math.floor((seconds % 3600) / 60);
