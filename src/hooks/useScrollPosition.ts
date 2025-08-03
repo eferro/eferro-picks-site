@@ -7,6 +7,20 @@ const INITIAL_DELAY = 100;
 const MAX_ATTEMPTS = 10;
 const MAX_DELAY = 2000;
 
+function isValidScrollPosition(value: string | null): boolean {
+  if (!value) return false;
+
+  const trimmed = value.trim();
+  if (!trimmed) return false;
+
+  const parsed = Number(trimmed);
+  if (isNaN(parsed)) return false;
+  if (!isFinite(parsed)) return false;
+  if (!Number.isInteger(parsed) || parsed < 0) return false;
+
+  return true;
+}
+
 /**
  * Hook to save and restore scroll position.
  *
@@ -15,8 +29,8 @@ const MAX_DELAY = 2000;
  */
 export const useScrollPosition = () => {
   const location = useLocation();
-  const timeoutRef = useRef<NodeJS.Timeout>();
-  const retryTimeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
+  const retryTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
   const attemptRef = useRef(0);
   const isIndexPage = location.pathname === '/' || location.pathname === '';
 
@@ -26,28 +40,6 @@ export const useScrollPosition = () => {
     const scrollPosition = window.scrollY;
     sessionStorage.setItem(SCROLL_INDEX_KEY, scrollPosition.toString());
   }, [isIndexPage]);
-
-  const isValidScrollPosition = (value: string | null): boolean => {
-    if (!value) return false;
-    
-    // Trim whitespace
-    const trimmed = value.trim();
-    if (!trimmed) return false;
-    
-    // Parse as number
-    const parsed = Number(trimmed);
-    
-    // Check if it's a valid number
-    if (isNaN(parsed)) return false;
-    
-    // Check if it's finite
-    if (!isFinite(parsed)) return false;
-    
-    // Check if it's a non-negative integer
-    if (!Number.isInteger(parsed) || parsed < 0) return false;
-    
-    return true;
-  };
 
   const restoreScrollPosition = useCallback(() => {
     if (!isIndexPage) return;

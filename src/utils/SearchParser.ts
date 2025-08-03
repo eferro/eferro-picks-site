@@ -12,13 +12,11 @@ export function parseSearch(input: string): ParsedSearch {
   // Process the input character by character to handle quoted strings
   let i = 0;
   const text = input.trim();
-  
+
   while (i < text.length) {
     // Skip whitespace
-    while (i < text.length && /\s/.test(text[i])) {
-      i++;
-    }
-    
+    i = skipWhitespace(text, i);
+
     if (i >= text.length) break;
     
     // Check for author: or topic: prefix
@@ -44,13 +42,8 @@ export function parseSearch(input: string): ParsedSearch {
 }
 
 function extractValue(text: string, startIndex: number): { text: string; nextIndex: number } {
-  let i = startIndex;
-  
-  // Skip whitespace
-  while (i < text.length && /\s/.test(text[i])) {
-    i++;
-  }
-  
+  let i = skipWhitespace(text, startIndex);
+
   if (i >= text.length) {
     return { text: '', nextIndex: i };
   }
@@ -78,12 +71,10 @@ function extractValue(text: string, startIndex: number): { text: string; nextInd
   // Only continue if we have a common name pattern (no keywords in between)
   let potentialMultiWord = value;
   let tempIndex = i;
-  
+
   while (tempIndex < text.length) {
     // Skip whitespace
-    while (tempIndex < text.length && /\s/.test(text[tempIndex])) {
-      tempIndex++;
-    }
+    tempIndex = skipWhitespace(text, tempIndex);
     
     if (tempIndex >= text.length || isAtKeyword(text, tempIndex)) {
       break;
@@ -134,4 +125,11 @@ function extractQueryWord(text: string, startIndex: number): { text: string; nex
 function isAtKeyword(text: string, index: number): boolean {
   const remaining = text.slice(index).toLowerCase();
   return remaining.startsWith('author:') || remaining.startsWith('topic:');
+}
+
+function skipWhitespace(text: string, index: number): number {
+  while (index < text.length && /\s/.test(text[index])) {
+    index++;
+  }
+  return index;
 }
