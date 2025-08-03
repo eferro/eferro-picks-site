@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Talk } from '../../types/talks'
+import { classNames } from '../../utils/classNames'
 
 export type YearFilterType = 'specific' | 'before' | 'after' | 'last2' | 'last5';
 
@@ -14,10 +15,6 @@ interface YearFilterProps {
   talks: Talk[];
   selectedFilter: YearFilterData | null;
   onFilterChange: (filter: YearFilterData | null) => void;
-}
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
 }
 
 export function YearFilter({ talks, selectedFilter, onFilterChange }: YearFilterProps) {
