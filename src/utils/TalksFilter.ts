@@ -46,6 +46,25 @@ export class TalksFilter {
     this.formats = formats;
   }
 
+  private matchesYear(talk: Talk): boolean {
+    const currentYear = new Date().getFullYear();
+    const effectiveYearType = this.yearType || (this.year != null ? 'specific' : null);
+    switch (effectiveYearType) {
+      case 'last2':
+        return talk.year != null && talk.year >= currentYear - 2;
+      case 'last5':
+        return talk.year != null && talk.year >= currentYear - 5;
+      case 'before':
+        return this.year != null ? (talk.year != null && talk.year < this.year) : true;
+      case 'after':
+        return this.year != null ? (talk.year != null && talk.year > this.year) : true;
+      case 'specific':
+        return this.year != null ? (talk.year != null && talk.year === this.year) : true;
+      default:
+        return true;
+    }
+  }
+
   toParams(): string {
     const params = new URLSearchParams();
     if (this.yearType) {
@@ -85,38 +104,26 @@ export class TalksFilter {
   }
 
   filter(talks: Talk[]): Talk[] {
+    const queryLower = this.query.toLowerCase();
     return talks.filter(talk => {
-      let yearMatch = true;
-      const currentYear = new Date().getFullYear();
-      const effectiveYearType = this.yearType || (this.year != null ? 'specific' : null);
-      if (effectiveYearType) {
-        switch (effectiveYearType) {
-          case 'last2':
-            yearMatch = talk.year != null && talk.year >= currentYear - 2;
-            break;
-          case 'last5':
-            yearMatch = talk.year != null && talk.year >= currentYear - 5;
-            break;
-          case 'before':
-            yearMatch = this.year != null ? (talk.year != null && talk.year < this.year) : true;
-            break;
-          case 'after':
-            yearMatch = this.year != null ? (talk.year != null && talk.year > this.year) : true;
-            break;
-          case 'specific':
-            yearMatch = this.year != null ? (talk.year != null && talk.year === this.year) : true;
-            break;
-          default:
-            yearMatch = true;
-        }
-      }
-      const queryMatch = !this.query || talk.title.toLowerCase().includes(this.query.toLowerCase());
+      const yearMatch = this.matchesYear(talk);
+      const queryMatch = !queryLower || talk.title.toLowerCase().includes(queryLower);
       const authorMatch = !this.author || talk.speakers.includes(this.author);
-      const topicsMatch = this.topics.length === 0 || this.topics.every(t => talk.topics.includes(t));
+      const topicsMatch =
+        this.topics.length === 0 || this.topics.every(t => talk.topics.includes(t));
       const conferenceMatch = !this.conference || talk.conference_name === this.conference;
       const notesMatch = !this.hasNotes || hasMeaningfulNotes(talk.notes);
-      const formatMatch = this.formats.length === 0 || this.formats.includes((talk.format ?? 'talk'));
-      return yearMatch && queryMatch && authorMatch && topicsMatch && conferenceMatch && notesMatch && formatMatch;
+      const formatMatch =
+        this.formats.length === 0 || this.formats.includes(talk.format ?? 'talk');
+      return (
+        yearMatch &&
+        queryMatch &&
+        authorMatch &&
+        topicsMatch &&
+        conferenceMatch &&
+        notesMatch &&
+        formatMatch
+      );
     });
   }
 

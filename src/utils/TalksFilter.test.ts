@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { TalksFilter } from './TalksFilter';
+import { createTalk } from '../test/utils';
 
 describe('TalksFilter', () => {
   describe('constructor', () => {
@@ -145,6 +146,48 @@ describe('TalksFilter', () => {
     it('should treat format=all as no format filter', () => {
       const filter = TalksFilter.fromUrlParams('format=all');
       expect(filter.formats).toEqual([]);
+    });
+
+    it('should respect before yearType', () => {
+      const talks = [
+        createTalk({ id: 'b1', title: '2019', year: 2019 }),
+        createTalk({ id: 'b2', title: '2021', year: 2021 })
+      ];
+      const filter = TalksFilter.fromUrlParams('yearType=before&year=2020');
+      expect(filter.filter(talks)).toEqual([talks[0]]);
+    });
+
+    it('should respect after yearType', () => {
+      const talks = [
+        createTalk({ id: 'a1', title: '2019', year: 2019 }),
+        createTalk({ id: 'a2', title: '2021', year: 2021 })
+      ];
+      const filter = TalksFilter.fromUrlParams('yearType=after&year=2020');
+      expect(filter.filter(talks)).toEqual([talks[1]]);
+    });
+
+    it('should respect last2 yearType', () => {
+      const current = new Date().getFullYear();
+      const talks = [
+        createTalk({ id: 'l1', title: 'current', year: current }),
+        createTalk({ id: 'l2', title: 'minus1', year: current - 1 }),
+        createTalk({ id: 'l3', title: 'minus2', year: current - 2 }),
+        createTalk({ id: 'l4', title: 'minus3', year: current - 3 })
+      ];
+      const filter = TalksFilter.fromUrlParams('yearType=last2');
+      expect(filter.filter(talks)).toEqual([talks[0], talks[1], talks[2]]);
+    });
+
+    it('should respect last5 yearType', () => {
+      const current = new Date().getFullYear();
+      const talks = [
+        createTalk({ id: 'p1', title: 'current', year: current }),
+        createTalk({ id: 'p2', title: 'minus4', year: current - 4 }),
+        createTalk({ id: 'p3', title: 'minus5', year: current - 5 }),
+        createTalk({ id: 'p4', title: 'minus6', year: current - 6 })
+      ];
+      const filter = TalksFilter.fromUrlParams('yearType=last5');
+      expect(filter.filter(talks)).toEqual([talks[0], talks[1], talks[2]]);
     });
   });
 
