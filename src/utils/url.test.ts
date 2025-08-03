@@ -24,4 +24,13 @@ describe('mergeParams', () => {
     const result = mergeParams(current, next);
     expect(result.get('foo')).toBe('baz');
   });
+
+  it('does not mutate next params', () => {
+    const current = new URLSearchParams('foo=bar');
+    const next = new URLSearchParams();
+    const result = mergeParams(current, next);
+    expect(result.get('foo')).toBe('bar');
+    expect(next.get('foo')).toBeNull();
+    expect(result).not.toBe(next);
+  });
 });

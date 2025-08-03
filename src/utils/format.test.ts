@@ -18,6 +18,10 @@ describe('formatDuration', () => {
       expect(formatDuration(undefined as never)).toBe('0m');
     });
 
+    it('returns "0m" for NaN values', () => {
+      expect(formatDuration(Number.NaN)).toBe('0m');
+    });
+
     it('handles decimal values correctly', () => {
       expect(formatDuration(3600.5)).toBe('1h 0m');
       expect(formatDuration(90.7)).toBe('1m');

@@ -7,16 +7,20 @@ export const TALKS_FILTER_KEYS = [
   'rating',
   'query',
   'format'
-];
+] as const;
 
 export function mergeParams(
   current: URLSearchParams,
   next: URLSearchParams
 ): URLSearchParams {
+  const merged = new URLSearchParams(next);
   for (const [key, value] of current.entries()) {
-    if (!next.has(key) && !TALKS_FILTER_KEYS.includes(key)) {
-      next.set(key, value);
+    if (
+      !merged.has(key) &&
+      !TALKS_FILTER_KEYS.includes(key as (typeof TALKS_FILTER_KEYS)[number])
+    ) {
+      merged.set(key, value);
     }
   }
-  return next;
+  return merged;
 }
