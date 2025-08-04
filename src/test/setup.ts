@@ -3,9 +3,10 @@ import { cleanup } from '@testing-library/react';
 import { afterEach, vi } from 'vitest';
 import { readFileSync } from 'fs';
 import { join } from 'path';
+import type { Talk } from '../types/talks';
 
 // Cache parsed JSON to avoid repeated I/O
-let cachedTalksData: any = null;
+let cachedTalksData: Talk[] | null = null;
 
 // Automatically cleanup after each test
 afterEach(() => {
@@ -21,11 +22,11 @@ global.fetch = vi.fn(async (url: string | URL | Request) => {
     if (!cachedTalksData) {
       const filePath = join(process.cwd(), 'public', 'data', 'talks.json');
       const data = readFileSync(filePath, 'utf-8');
-      cachedTalksData = JSON.parse(data);
+      cachedTalksData = JSON.parse(data) as Talk[];
     }
     return {
       ok: true,
-      json: async () => cachedTalksData
+      json: async () => cachedTalksData as Talk[]
     } as Response;
   }
   throw new Error(`Unhandled fetch request: ${urlStr}`);

@@ -141,8 +141,7 @@ describe('Button', () => {
       );
       
       const icon = screen.getByTestId('icon');
-      const button = screen.getByRole('button');
-      
+
       expect(icon).toBeInTheDocument();
       expect(icon).toHaveClass('h-5', 'w-5', 'mr-2');
     });
