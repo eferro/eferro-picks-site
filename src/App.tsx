@@ -5,7 +5,7 @@ import { TalksList } from './components/TalksList'
 import { TalkDetail } from './components/TalkDetail'
 import { Footer } from './components/Footer'
 import { BackToTopButton } from './components/BackToTopButton'
-import { LoadingSpinner, Button } from './components/ui'
+import { LoadingSpinner } from './components/ui'
 
 function Header() {
   return (

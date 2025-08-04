@@ -1,12 +1,11 @@
-import { describe, it, expect, vi, beforeEach, type Mock } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { createElement } from 'react';
-import { 
+import {
   MockDataFactory,
   TestSetupHelper,
   MockComponentGenerator,
   RenderHelper
 } from './testUtilities';
-import type { Talk } from '../../types/talks';
 
 // Mock the useTalks hook before importing utilities
 vi.mock('../../hooks/useTalks', () => ({
@@ -111,7 +110,6 @@ describe('Consolidated Test Utilities', () => {
 
     it('sets up component-specific test environment', () => {
       const cleanup = TestSetupHelper.setupComponentTest('TalksList', {
-        mockChildComponents: true,
         setupHandlers: true
       });
       
@@ -171,9 +169,7 @@ describe('Consolidated Test Utilities', () => {
   describe('Integration', () => {
     it('works together to setup and render test scenarios', () => {
       // Setup test environment
-      const testCleanup = TestSetupHelper.setupComponentTest('TalksList', {
-        mockChildComponents: true
-      });
+      const testCleanup = TestSetupHelper.setupComponentTest('TalksList');
       
       // Create test data
       const talks = MockDataFactory.createTalksForFiltering();

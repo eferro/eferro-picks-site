@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { render, RenderResult } from '@testing-library/react';
-import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { vi, type Mock } from 'vitest';
 import type { Talk } from '../../types/talks';
 import { useTalks } from '../../hooks/useTalks';
@@ -141,7 +141,6 @@ export type RouterTestOptions = {
 };
 
 export type ComponentTestOptions = {
-  mockChildComponents?: boolean;
   setupHandlers?: boolean;
   customMocks?: Record<string, Mock>;
 };
@@ -208,10 +207,10 @@ export class TestSetupHelper {
   }
 
   static setupComponentTest(
-    componentName: string, 
+    componentName: string,
     options: ComponentTestOptions = {}
   ): () => void {
-    const { mockChildComponents = false, setupHandlers = false, customMocks = {} } = options;
+    const { setupHandlers = false, customMocks = {} } = options;
     
     const cleanupFunctions: (() => void)[] = [];
 
@@ -260,9 +259,20 @@ export type MockComponentOptions = {
 export class MockComponentGenerator {
   static createMockTalkCard(options: MockComponentOptions = {}) {
     const { includeHandlers = true, includeTestIds = true } = options;
-    
-    function MockTalkCard(props: any) {
-      const { talk, onAuthorClick, onTopicClick, onConferenceClick } = props;
+
+    interface MockTalkCardProps {
+      talk: Talk;
+      onAuthorClick?: (author: string) => void;
+      onTopicClick?: (topic: string) => void;
+      onConferenceClick?: (conference?: string) => void;
+    }
+
+    function MockTalkCard({
+      talk,
+      onAuthorClick,
+      onTopicClick,
+      onConferenceClick
+    }: MockTalkCardProps) {
       
       return (
         <div data-testid={includeTestIds ? `talk-${talk.id}` : undefined}>
@@ -289,9 +299,13 @@ export class MockComponentGenerator {
 
   static createMockTalkSection(options: MockComponentOptions = {}) {
     const { includeTestIds = true } = options;
-    
-    function MockTalkSection(props: any) {
-      const { coreTopic, talks } = props;
+
+    interface MockTalkSectionProps {
+      coreTopic: string;
+      talks: Talk[];
+    }
+
+    function MockTalkSection({ coreTopic, talks }: MockTalkSectionProps) {
       
       return (
         <section data-testid={includeTestIds ? 'talk-section' : undefined}>
@@ -310,9 +324,12 @@ export class MockComponentGenerator {
 
   static createMockTalksList(options: MockComponentOptions = {}) {
     const { includeTestIds = true } = options;
-    
-    function MockTalksList(props: any) {
-      const { talks = [] } = props;
+
+    interface MockTalksListProps {
+      talks?: Talk[];
+    }
+
+    function MockTalksList({ talks = [] }: MockTalksListProps) {
       
       return (
         <div data-testid={includeTestIds ? 'talks-list' : undefined}>

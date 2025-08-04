@@ -2,7 +2,7 @@ import React from 'react';
 import { renderHook } from '@testing-library/react';
 import { useScrollPosition } from './useScrollPosition';
 import { vi, describe, it, expect, beforeEach, afterEach, Mock } from 'vitest';
-import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { setMockSearchParams } from '../test/utils';
 
 const SCROLL_INDEX_KEY = 'scroll_index';
