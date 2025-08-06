@@ -257,4 +257,36 @@ describe('TalksFilter', () => {
       expect(serialized).toContain('format=podcast');
     });
   });
+
+  describe('URL parameter validation', () => {
+    it('should handle invalid year parameters gracefully', () => {
+      const invalidYears = ['abc', 'NaN', '', '  ', 'Infinity', '-Infinity'];
+      
+      invalidYears.forEach(invalidYear => {
+        const filter = TalksFilter.fromUrlParams(`year=${invalidYear}`);
+        expect(filter.year).toBeNull();
+      });
+    });
+
+    it('should handle invalid rating parameters gracefully', () => {
+      const invalidRatings = ['abc', 'NaN', '', '  ', 'Infinity', '-Infinity'];
+      
+      invalidRatings.forEach(invalidRating => {
+        const filter = TalksFilter.fromUrlParams(`rating=${invalidRating}`);
+        expect(filter.rating).toBeNull();
+      });
+    });
+
+    it('should parse valid numeric parameters correctly', () => {
+      const filter = TalksFilter.fromUrlParams('year=2023&rating=5');
+      expect(filter.year).toBe(2023);
+      expect(filter.rating).toBe(5);
+    });
+
+    it('should handle edge case numeric values', () => {
+      const filter = TalksFilter.fromUrlParams('year=0&rating=0');
+      expect(filter.year).toBe(0);
+      expect(filter.rating).toBe(0);
+    });
+  });
 });

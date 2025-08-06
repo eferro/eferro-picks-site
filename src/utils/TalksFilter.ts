@@ -139,14 +139,20 @@ export class TalksFilter {
     const ratingParam = searchParams.get('rating');
     const formatParam = searchParams.get('format');
     const query = searchParams.get('query') || '';
+    const parseValidInt = (value: string | null): number | null => {
+      if (!value || value.trim() === '') return null;
+      const parsed = parseInt(value, 10);
+      return isNaN(parsed) ? null : parsed;
+    };
+
     return new TalksFilter({
       yearType,
-      year: yearParam ? parseInt(yearParam, 10) : null,
+      year: parseValidInt(yearParam),
       author: author || null,
       topics: topicsParam ? topicsParam.split(',').filter(Boolean) : [],
       conference: conference || null,
       hasNotes: hasNotesParam === 'true',
-      rating: ratingParam ? parseInt(ratingParam, 10) : null,
+      rating: parseValidInt(ratingParam),
       query,
       formats:
         formatParam && formatParam !== 'all'

@@ -41,6 +41,9 @@ function Header() {
                 src="https://storage.ko-fi.com/cdn/cup-border.png"
                 alt="Ko-fi"
                 className="h-4 w-4 mr-2 invert"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
               />
               Support me on Ko-fi
             </a>
