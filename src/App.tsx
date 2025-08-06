@@ -5,7 +5,7 @@ import { TalksList } from './components/TalksList'
 import { TalkDetail } from './components/TalkDetail'
 import { Footer } from './components/Footer'
 import { BackToTopButton } from './components/BackToTopButton'
-import { LoadingSpinner } from './components/ui'
+import { LoadingSpinner, ErrorBoundary } from './components/ui'
 
 function Header() {
   return (
@@ -65,19 +65,21 @@ function PageTransition({ children }: { children: React.ReactNode }) {
 
 function App() {
   return (
-    <Router basename={import.meta.env.BASE_URL}>
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <PageTransition>
-          <Routes>
-            <Route path="/" element={<TalksList />} />
-            <Route path="/talk/:id" element={<TalkDetail />} />
-          </Routes>
-        </PageTransition>
-        <BackToTopButton />
-        <Footer />
-      </div>
-    </Router>
+    <ErrorBoundary>
+      <Router basename={import.meta.env.BASE_URL}>
+        <div className="flex flex-col min-h-screen">
+          <Header />
+          <PageTransition>
+            <Routes>
+              <Route path="/" element={<TalksList />} />
+              <Route path="/talk/:id" element={<TalkDetail />} />
+            </Routes>
+          </PageTransition>
+          <BackToTopButton />
+          <Footer />
+        </div>
+      </Router>
+    </ErrorBoundary>
   )
 }
 

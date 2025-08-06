@@ -43,7 +43,7 @@ const mockProcessedResponse = (data: unknown) => {
 };
 
 // Helper function for rendering hook and waiting for load
-const renderUseTalksHook = async () => {
+const renderUseTalksHook = async (timeout: number = 1000) => {
   const hook = renderHook(() => useTalks(), {
     wrapper: TestProvider
   });
@@ -51,7 +51,7 @@ const renderUseTalksHook = async () => {
   // Wait for loading to complete
   await waitFor(() => {
     expect(hook.result.current.loading).toBe(false);
-  });
+  }, { timeout });
 
   return hook;
 };
@@ -116,7 +116,7 @@ describe('useTalks', () => {
   it('handles fetch error correctly', async () => {
     mockFetchFailure();
 
-    const { result } = await renderUseTalksHook();
+    const { result } = await renderUseTalksHook(5000);
 
     // Check error state
     expect(result.current.error).toBeInstanceOf(Error);
@@ -150,15 +150,19 @@ describe('useTalks', () => {
     expect(result.current.talks[0].notes).toBe('');
   });
 
-  it('handles network errors correctly', async () => {
+  it('handles network errors correctly with retry logic', async () => {
     mockFetchError(new Error('Network error'));
 
-    const { result } = await renderUseTalksHook();
+    const { result } = await renderUseTalksHook(8000);
 
-    // Verify error state
+    // Verify error state includes retry message
     expect(result.current.error).toBeDefined();
-    expect(result.current.error?.message).toBe('Network error');
+    expect(result.current.error?.message).toContain('Unable to load talks');
+    expect(result.current.error?.message).toContain('Network error');
     expect(result.current.talks).toHaveLength(0);
+    
+    // Verify retry attempts were made
+    expect(global.fetch).toHaveBeenCalledTimes(3);
   });
 
   it('handles invalid JSON response', async () => {
@@ -169,11 +173,44 @@ describe('useTalks', () => {
       })
     );
 
+    const { result } = await renderUseTalksHook(8000);
+
+    // Verify error state includes error message
+    expect(result.current.error).toBeDefined();
+    expect(result.current.error?.message).toContain('Unable to load talks');
+    expect(result.current.error?.message).toContain('Invalid JSON');
+    expect(result.current.talks).toHaveLength(0);
+    
+    // JSON parsing errors don't trigger retry since fetch succeeded
+    expect(global.fetch).toHaveBeenCalledTimes(1);
+  });
+
+  it('handles HTTP error responses with retry logic', async () => {
+    global.fetch = vi.fn().mockImplementation(() =>
+      Promise.resolve({
+        ok: false,
+        status: 404,
+        statusText: 'Not Found'
+      })
+    );
+
+    const { result } = await renderUseTalksHook(8000);
+
+    // Verify error state
+    expect(result.current.error).toBeDefined();
+    expect(result.current.error?.message).toContain('HTTP 404: Not Found');
+    expect(result.current.talks).toHaveLength(0);
+    expect(global.fetch).toHaveBeenCalledTimes(3);
+  });
+
+  it('handles invalid data format', async () => {
+    mockFetchResponse({ invalid: 'data', not: 'array' });
+
     const { result } = await renderUseTalksHook();
 
     // Verify error state
     expect(result.current.error).toBeDefined();
-    expect(result.current.error?.message).toBe('Invalid JSON');
+    expect(result.current.error?.message).toContain('Invalid data format');
     expect(result.current.talks).toHaveLength(0);
   });
 
