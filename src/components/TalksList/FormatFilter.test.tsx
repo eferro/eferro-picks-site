@@ -25,11 +25,11 @@ describe('FormatFilter', () => {
     expect(screen.getByRole('button', { name: /format: podcasts/i })).toBeInTheDocument();
   });
 
-  it('shows Formats (2) when both formats are selected', () => {
+  it('shows Format (2) when both formats are selected', () => {
     renderWithRouter(
       <FormatFilter selectedFormats={['talk', 'podcast']} onChange={() => {}} />
     );
-    expect(screen.getByRole('button', { name: /formats \(2\)/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /format \(2\)/i })).toBeInTheDocument();
   });
 
   it('opens dropdown menu on button click', () => {
