@@ -21604,6 +21604,46 @@
         "url": "https://www.youtube.com/watch?v=g-WGDoItqiA"
     },
     {
+        "airtable_createdTime": "2025-08-21T17:41:07.000Z",
+        "airtable_id": "recdzmhPzOMdgVoEO",
+        "core_topic": "Continuous Delivery",
+        "created": "2025-08-21T17:41:07.000Z",
+        "description": "This talk details how a tech company achieved 5-minute code-to-production and high quality in banking software through practices like pair programming, TDD, continuous deployment, and fostering a lean, people-centric culture.\n",
+        "duration": 3240,
+        "language": "English",
+        "last_modified": "2025-08-21T17:49:05.000Z",
+        "less_15": 0,
+        "name": "Continuous Deployment and Pair Programming for Lean Software Delivery Even without Jira",
+        "notes": "The core takeaway is that a **lean, people-centric culture** emphasizing practices like **pair programming, TDD, and continuous deployment** enabled a tech company to achieve both **5-minute code-to-production** and **high quality** in banking software. This transformation was driven by a focus on **fast feedback, waste reduction, continuous improvement**, and fostering **high team autonomy**.\n\n- A tech company serving 13 banks transformed from two annual releases to **5-minute code-to-production** with **high quality** in banking software.\n- This was driven by a foundational **lean philosophy** centered on **respect for people** and **continuous improvement**, with leadership fully on board as tech people.\n- Key practices include **pair programming** (almost 100% of the time, often in mob programming with 3-4 people), **Test-Driven Development (TDD)**, and **continuous deployment** to main without branches.\n- They eliminated pull requests for internal team code changes, instead relying on **pair programming for shared understanding and quality**.\n- **Fast feedback** is a core focus, from TDD to quick CI builds and real-time production metrics.\n- They foster **high team autonomy**, reducing handoffs and inter-team dependencies by having teams responsible for their entire codebase and architecture.\n- Waste reduction is a constant focus, exemplified by the \"waste clock\" concept and eliminating unnecessary processes like extensive Jira tracking and many meetings.\n- **Developer joy** and continuous professional development (one day a week dedicated to it) are key cultural aspects.\n- Onboarding is highly efficient through \"job shadowing,\" where new team members or those from other teams immediately pair program and get code to production on their first day.\n- Success is measured by high quality (very few bugs), reduced rework, and improved team well-being and psychological safety, supported by research.\n- Future focus areas include leveraging automation for compliance (DORA) and exploring AI (currently finding co-pilots disruptive for pair programming, but useful for quick info lookup).\n- Their definition of \"good code\" is code that is **easy to change**.\n\n",
+        "rating": 5,
+        "registered_at": "2025-08-21T17:41:07.000Z",
+        "resource": "Continuous Deployment and Pair Programming for Lean Software Delivery Even without Jira - https://www.infoq.com/podcasts/lean-software-delivery-without-jira/",
+        "resource_type": "podcast",
+        "speaker_women_in_tech": [
+            null,
+            null
+        ],
+        "speakers": [
+            "recU5NxegpXvvgyZA",
+            "receII0g57yjKzgWH"
+        ],
+        "speakers_names": [
+            "Asgaut Mj\u00f8lne S\u00f6derbom",
+            "Ola Hast"
+        ],
+        "topics": [
+            "recin3Ync8iZldW0q",
+            "rech2MAtQRy0Lvc2Y",
+            "recFbzSbd07ttDIYJ"
+        ],
+        "topics_names": [
+            "Continuous Delivery",
+            "Lean Software Development",
+            "Technical Practices"
+        ],
+        "url": "https://www.infoq.com/podcasts/lean-software-delivery-without-jira/"
+    },
+    {
         "airtable_createdTime": "2025-04-12T08:38:05.000Z",
         "airtable_id": "rece0mXG2XOZ5Yy6j",
         "blog_url": "https://www.eferro.net/2025/04/good-talkspodcasts-april.html",
