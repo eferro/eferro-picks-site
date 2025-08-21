@@ -15001,6 +15001,42 @@
         "url": "https://www.youtube.com/watch?v=cpVLzcjCB-s"
     },
     {
+        "airtable_createdTime": "2025-08-21T17:19:09.000Z",
+        "airtable_id": "recSDDAP9tDLIw1gC",
+        "core_topic": "AI",
+        "created": "2025-08-21T17:19:09.000Z",
+        "description": "This talk critically examines \"vibe coding,\" arguing that effective software engineering requires precise problem definition, structured thinking, and robust automated testing to manage complexity and enable evolvability, rather than relying on vague AI-assisted code generation.\n",
+        "duration": 1020,
+        "language": "English",
+        "last_modified": "2025-08-21T17:22:24.000Z",
+        "less_15": 0,
+        "name": "Vibe Coding Is The WORST IDEA Of 2025",
+        "notes": "Effective software engineering demands **precise problem definition, structured thinking, and robust automated testing** to build evolvable and verifiable systems, as reliance on vague AI-assisted \"vibe coding\" overlooks these fundamental challenges inherent in complex software development.\n\n- \"Vibe coding,\" or vague AI-assisted programming, is insufficient for complex software, which requires **precision, structured thinking, and deterministic instructions**.\n- The real challenge in software engineering is **understanding and defining problems in detail**, not merely writing code.\n- Effective programming languages are tools that help **structure thinking, decompose problems, communicate understanding to other humans, and precisely instruct computers**.\n- A crucial measure of software quality is its **evolvability and ease of change**.\n- AI-generated code exacerbates challenges in **specifying precise intent, verifying outcomes, and making incremental changes**, highlighting the critical need for **robust automated testing, continuous integration, and continuous delivery**.\n- The optimal approach for AI programming involves providing **executable specifications** that define desired system behavior precisely and allow for verification.\n- Relying on AI to regenerate code from scratch without deterministic, incremental changes risks repeating past mistakes where the inability to update or correct code was a major stumbling block.\n\n",
+        "registered_at": "2025-08-21T17:19:09.000Z",
+        "resource": "Vibe Coding Is The WORST IDEA Of 2025 - https://www.youtube.com/watch?v=1A6uPztchXk",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recTA39Jo1ozZG61R"
+        ],
+        "speakers_names": [
+            "Dave Farley"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "recPcLVyg0S4ORUkX",
+            "recm3GCPgEVSDmeVI"
+        ],
+        "topics_names": [
+            "AI",
+            "testing",
+            "Software Design"
+        ],
+        "url": "https://www.youtube.com/watch?v=1A6uPztchXk"
+    },
+    {
         "airtable_createdTime": "2021-06-19T11:36:13.000Z",
         "airtable_id": "recSEiSFXUdxFIonR",
         "created": "2021-06-19T11:36:13.000Z",
@@ -25483,6 +25519,45 @@
         "url": "https://www.youtube.com/watch?v=W3yIuw_-t84"
     },
     {
+        "airtable_createdTime": "2025-08-21T17:23:30.000Z",
+        "airtable_id": "recki3bxkqEB9nbIE",
+        "core_topic": "AI",
+        "created": "2025-08-21T17:23:30.000Z",
+        "description": "Product discovery expert Teresa Torres recounts her journey from a self-described \"noob\" in AI to implementing automated evaluations for an AI-powered interview coach within a week, detailing her iterative process of building and refining the tool with significant LLM assistance.\n",
+        "duration": 4200,
+        "language": "English",
+        "last_modified": "2025-08-21T17:26:46.000Z",
+        "less_15": 0,
+        "name": "From Noob to Automated Evals In A Week (as a PM) w/Teresa Torres",
+        "notes": "The most important lesson conveyed by this talk is the **empowering role of Large Language Models (LLMs)** as collaborative partners, enabling individuals with limited prior AI or coding experience to rapidly build and refine complex AI products through an **iterative process grounded in systematic evaluation and fast feedback loops**. This approach emphasizes that **domain expertise is crucial for designing effective evaluations**, sometimes leading to simple, code-based solutions outperforming more complex LLM-as-judge methods, ultimately ensuring the continuous improvement and reliability of the AI product.\n\n- An AI-powered interview coach was developed to provide **detailed, automated feedback** on interview transcripts, addressing the challenge of non-expert student feedback.\n- The development process started with **minimal AI/coding experience** and evolved rapidly through **iterative building and refinement**.\n- **Large Language Models (LLMs)** like ChatGPT and Claude Code served as **collaborative partners** for learning, problem-solving, co-programming, and debugging.\n- A shift from \"vibe-checking\" to **systematic, automated evaluations (evals)** was crucial for measuring quality and guiding improvements.\n- Evals were designed iteratively, including **LLM-as-judge** evaluations (e.g., detecting leading questions) and **simple code assertions** (e.g., detecting general questions via keywords).\n- **Domain expertise is vital for effective eval design**, sometimes leading to simple, code-based solutions outperforming complex LLM-as-judge methods.\n- **Fast feedback loops** enabled rapid iteration on prompt changes, model changes, and workflow adjustments, dramatically reducing errors.\n- The process involved **data investigation** (e.g., using Jupyter Notebooks as a data analysis tool) to understand failures, find bugs, and even clarify human labeling rubrics.\n- **Helper functions** were used to constrain context for evals, saving money and improving efficiency (a form of \"context engineering\").\n- Custom annotation tools, built with LLM assistance, were essential for **efficient and targeted human labeling**.\n- The project scaled from a teaching tool to a **production-ready AI application**, requiring a deep dive into \"real\" software engineering practices like robust error handling.\n- This journey highlights the **empowering potential of LLMs** for individuals with high agency to become \"AI engineers\" and build complex products, even without extensive prior engineering background.\n- The experience reinforced the importance of **critical thinking, problem-solving, and continuous learning** in the rapidly evolving AI landscape.\n\n",
+        "rating": 5,
+        "registered_at": "2025-08-21T17:23:30.000Z",
+        "resource": "From Noob to Automated Evals In A Week (as a PM) w/Teresa Torres - https://www.youtube.com/watch?v=N-qAOv_PNPc",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            true
+        ],
+        "speakers": [
+            "rec3uHTqvV7V4VChQ"
+        ],
+        "speakers_names": [
+            "Teresa Torres"
+        ],
+        "topics": [
+            "recbJb6M6X8AZPTRc",
+            "recmuONwokRtPS6Tp",
+            "recrNBL2FKBzgsQTs",
+            "rec7SonT1KaTGquvb"
+        ],
+        "topics_names": [
+            "Generative AI",
+            "AI",
+            "Product Discovery",
+            "Feedback cycles"
+        ],
+        "url": "https://www.youtube.com/watch?v=N-qAOv_PNPc"
+    },
+    {
         "airtable_createdTime": "2020-01-19T20:37:55.000Z",
         "airtable_id": "reckjL9O859XqGTqO",
         "blog_url": "https://www.eferro.net/2014/10/podcaststalks-2014-24-30-oct.html",
@@ -29260,7 +29335,8 @@
         "airtable_id": "recqHwpxvGyu5AyHC",
         "created": "2025-08-14T13:05:55.000Z",
         "duration": 1320,
-        "last_modified": "2025-08-14T13:06:14.000Z",
+        "language": "Spanish",
+        "last_modified": "2025-08-21T17:24:04.000Z",
         "less_15": 0,
         "name": "Descubre eXtreme Programming en 20 minutos",
         "registered_at": "2025-08-14T13:05:55.000Z",
