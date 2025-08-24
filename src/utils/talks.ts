@@ -1,7 +1,7 @@
 import { AirtableItem } from '../hooks/useTalks';
 import { Talk } from '../types/talks';
 
-const VALID_RESOURCE_TYPES = ['podcast', 'talk', 'videopodcast'];
+const VALID_RESOURCE_TYPES = ['podcast', 'talk', 'videopodcast', 'video'];
 
 /**
  * Check if a talk has meaningful notes (not just whitespace or newlines)

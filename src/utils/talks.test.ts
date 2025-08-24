@@ -160,4 +160,17 @@ describe('processTalks', () => {
     expect(result[0]).toHaveProperty('format', 'talk');
     expect(result[1]).toHaveProperty('format', 'podcast');
   });
+
+  it('includes and maps video resource_type to talk format', () => {
+    const videoItem = {
+      ...items[0],
+      airtable_id: 'video1',
+      name: 'Red Bead Experiment',
+      resource_type: 'video'
+    };
+    const result = processTalks([videoItem], false);
+    expect(result).toHaveLength(1);
+    expect(result[0]).toHaveProperty('format', 'talk');
+    expect(result[0].title).toBe('Red Bead Experiment');
+  });
 });
