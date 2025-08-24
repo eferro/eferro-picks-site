@@ -19311,6 +19311,45 @@
         "url": "https://www.youtube.com/watch?v=9dccd8lihpQ"
     },
     {
+        "airtable_createdTime": "2025-08-24T08:39:51.000Z",
+        "airtable_id": "recanTcSgfJsZO3mj",
+        "core_topic": "AI",
+        "created": "2025-08-24T08:39:51.000Z",
+        "description": "This talk explores \\*\\*how AI is changing the development and growth of engineers, particularly junior co-workers\\*\\*, emphasizing the increased importance of foundational skills, critical thinking, and the shift from writing to reviewing code in the age of AI.\n",
+        "duration": 3120,
+        "language": "English",
+        "last_modified": "2025-08-24T08:55:14.000Z",
+        "less_15": 0,
+        "name": "Diversity, AI, and Junior Engineers with Meri Williams",
+        "notes": "This talk emphasizes that **AI necessitates a fundamental shift in how engineers are developed, particularly junior co-workers**, by making foundational skills, critical thinking, and the ability to effectively review AI-generated code far more crucial than the ability to write code from scratch. It highlights the challenge of teaching these complex skills earlier in careers, as well as the need for a holistic, systems-thinking approach to leveraging AI across the entire development pipeline.\n\nIntroduction to the Podcast and Meri Williams' Background:\n- Meri Williams, CTO of Pleo and host of LeadDev conferences for over 10 years, brings a **unique perspective on the evolution of engineering leadership**.\n- Her \"upside down career,\" starting in corporate management at Procter & Gamble (P&G) and later moving to scale-ups and start-ups, provided her with **early leadership development and commercial awareness** that is often only gained later in an engineer's career. This early exposure helped her understand business dynamics at a much younger age.\n\nDiversity and Inclusion in Engineering Leadership:\n- **Diversity is crucial for better outcomes**: Diverse teams are inherently more innovative, profitable, creative, and ultimately more likely to succeed. The data supporting this is \"resolute\".\n- The **misconception of meritocracy** is challenged by the reality that individuals from underrepresented groups often face significantly harder paths in tech. If they reach senior roles, it's \"at least twice as hard\" for them, indicating they are often \"significantly better\" than their peers, having overcome additional hurdles.\n- **Inclusivity must precede diversity**: The most critical aspect of building a diverse team is ensuring an inclusive environment where everyone can \"be themselves and be successful\". Asking \"Am I expected here? Am I respected here? Can I be myself and be successful?\" are the core questions people consider, with the last being the most important.\n- **Diversity is more challenging, not easier**: Getting people with different backgrounds and perspectives to agree leads to reliance on data, increased collaboration, and ultimately \"better decisions,\" even if it takes a little longer.\n- **Proactive adjustment of practices**: To foster diversity, organizations must proactively change their activities, ceremonies, and rituals to be inclusive of various needs (e.g., offering diverse social events, accommodating parents/carers, considering neurodiversity) _before_ diverse individuals are hired. The onus is on the existing homogenous group to adjust, not on the new diverse hires.\n- **Diversity encompasses more than common tropes**: It extends beyond gender and ethnicity to include age (e.g., young people versus those with families) and neurodiversity (e.g., ADHD, autism, dyslexia), requiring an understanding of varying needs and working styles.\n\nInsights on Memorable Conferences and Talks:\n- **Key elements of a memorable talk**: They typically involve **personal stories or case studies**, provide an **abstracted framework** that attendees can use, and are designed for **easy application of theory into practice**.\n- **LeadDev's approach to speaker selection**: Talks are scored \"unseen\" based on description, takeaways, and categories, prioritizing proposals with strong case studies, frameworks, or real-life applications.\n- **What makes a conference memorable**: Beyond great talks, it includes **helpful sponsors** who genuinely engage with attendees and a **multi-track, interactive \"choose your own adventure\" experience** with workshops, \"ask me anything\" sessions, and panels.\n- **Encouraging new speakers**: LeadDev actively supports new speakers with professional coaching, content reviews, and opportunities to present, believing that everyone has valuable experiences to share.\n- **Benefits of public speaking**: It enhances one's craft, builds a professional network, increases personal profile, and positively impacts an employer's brand, recruitment, and retention efforts.\n### \nAI's Transformative Impact on Engineer Development, Especially Junior Co-workers:\n- **Shift in Engineer Roles and Skills**:\n    - AI is fundamentally changing how engineers develop, particularly junior co-workers, by **shifting the primary activity from writing code to reviewing code**. Junior engineers are now reviewing AI-generated code much earlier in their careers than previously.\n    - This necessitates **teaching code review skills much earlier** and more intentionally.\n- **Foundational Skills and Critical Thinking**:\n    - There is an **increased and urgent need to focus on foundational skills** such as code structure, security, performance, predictability of failure, maintainability, and scalability. These skills, once learned gradually on the job, now require more deliberate teaching.\n    - Developing **critical thinking** is paramount to identify code smells, security risks, or potential failures under load, although teaching this \"hard-won experience\" is challenging.\n    - The analogy to architecture's evolution (from hand-drafting to CAD/3D modeling) suggests that while AI speeds creation, it **heightens the importance of detail, maintainability, and understanding complex rules**, leading to a need for greater \"professionalism\" in software engineering.\n- **Impact on the Engineering Career Ladder**:\n    - AI has contributed to a **significant reduction in entry-level jobs** (75% disappeared \"almost overnight\"), which is \"terrifying\" as it risks creating a future gap in senior engineering talent.\n    - LLMs are unlikely to replace senior engineers capable of building maintainable, scalable solutions because their underlying mechanism of \"stealing from what they've seen written before\" limits their ability to produce truly innovative or robust architectures for complex, non-functional requirements.\n- **Guidance for Junior Engineer Development**:\n    - **Junior engineers often adopt AI in innovative ways**, seeing it as an \"endlessly patient mentor\" to ask questions without fear of judgment, fostering a different learning experience than previous generations.\n    - **Senior engineers, while more likely to spot AI's flaws**, can be held back by skepticism and may primarily use AI for simple code generation, rather than leveraging its full potential for structural thinking or broader problem-solving.\n    - **Recommendations for development include**: maintaining or increasing the importance of **pairing with senior engineers**, conducting **technical design sessions** to teach upfront structural thinking, and providing **early exposure to the broader risks** associated with larger pieces of work that juniors can now generate with AI.\n    - Learning to **ask good questions** is a crucial skill for effectively leveraging AI as a mentor.\n- **A Holistic View of AI in Software Delivery**:\n    - AI should be considered a **systems design problem**, requiring a holistic approach to its application across the entire software development pipeline, including coding, review, documentation, and QA, rather than just focusing on the coding phase, to avoid creating new bottlenecks.\n\n",
+        "rating": 5,
+        "registered_at": "2025-08-24T08:39:51.000Z",
+        "resource": "Diversity, AI, and Junior Engineers with Meri Williams - https://youtu.be/MfXaVKC9odg",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            true
+        ],
+        "speakers": [
+            "reclSAf5gzxww1lwv"
+        ],
+        "speakers_names": [
+            "Meri Williams"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "recWFKWrPEdeEYbzx",
+            "recUP8TZ3O1cNiioY",
+            "reczAU2D6v8xOYZZb"
+        ],
+        "topics_names": [
+            "AI",
+            "Engineering Culture",
+            "leadership",
+            "Diversity"
+        ],
+        "url": "https://youtu.be/MfXaVKC9odg"
+    },
+    {
         "airtable_createdTime": "2021-03-07T08:15:44.000Z",
         "airtable_id": "recaonIzEHQuY9RmH",
         "blog_url": "https://www.eferro.net/2021/03/good-talkspodcasts-march-2021-i.html",
@@ -23159,6 +23198,45 @@
         ],
         "url": "https://www.youtube.com/watch?v=44sJLFgzhn4",
         "year": 2012
+    },
+    {
+        "airtable_createdTime": "2025-08-24T08:55:32.000Z",
+        "airtable_id": "recgeS8VqfPc981Zp",
+        "core_topic": "Lean-Agile",
+        "created": "2025-08-24T08:55:32.000Z",
+        "description": "A compelling talk on Lean Product Development that contrasts resource efficiency with flow efficiency, demonstrating how optimizing for flow through cross-functional teams enhances project delivery and portfolio management.\n",
+        "duration": 1440,
+        "language": "English",
+        "last_modified": "2025-08-24T09:01:52.000Z",
+        "less_15": 0,
+        "name": "Lean Product Development: Resource management vs. Flow efficiency",
+        "notes": "Focusing on **flow efficiency** over resource efficiency, particularly through the use of **cross-functional teams** that collaborate closely, is the cornerstone of effective **Lean Product Development** for knowledge work. This approach dramatically shortens cycle times, improves estimation accuracy by accounting for feedback loops, and simplifies project portfolio management by assigning work to teams rather than multitasking individuals.\n\n- **Prioritize flow efficiency over resource efficiency** in product development, as optimizing for 100% individual utilization and functional silos actually slows down knowledge work.\n- **Form and empower cross-functional teams** to work collaboratively (e.g., pairing, swarming, mobbing) on single features from start to finish to dramatically reduce cycle times and improve delivery.\n- **Shift measurement from individual output to team outcomes**, focusing on completed features, throughput, cycle time, and lead time to accurately gauge progress and value delivery.\n- **Simplify project portfolio management** by assigning entire teams to projects, thereby eliminating the delays and estimation inaccuracies caused by individual multitasking across multiple initiatives.\n- **Transform management's role** from directing individual tasks to facilitating team collaboration, setting organization-wide goals, visualizing bottlenecks, and fostering a culture of continuous improvement and feedback.\n\n",
+        "rating": 5,
+        "registered_at": "2025-08-24T08:55:32.000Z",
+        "resource": "Lean Product Development: Resource management vs. Flow efficiency - https://www.youtube.com/watch?v=SqI9jV7afpE",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            true
+        ],
+        "speakers": [
+            "recoyZ9ViX4zVaAmG"
+        ],
+        "speakers_names": [
+            "Johanna Rothman"
+        ],
+        "topics": [
+            "recO11XlolI72a1fV",
+            "reck50u1RzhJj6MIy",
+            "recs3XV2rYhyC6qe8",
+            "rec0PB37LN1Kz0Blh"
+        ],
+        "topics_names": [
+            "Lean",
+            "Flow",
+            "Teams",
+            "Lean Product Management"
+        ],
+        "url": "https://www.youtube.com/watch?v=SqI9jV7afpE"
     },
     {
         "airtable_createdTime": "2020-01-19T20:33:37.000Z",
@@ -29373,14 +29451,40 @@
     {
         "airtable_createdTime": "2025-08-14T13:05:55.000Z",
         "airtable_id": "recqHwpxvGyu5AyHC",
+        "core_topic": "Agile-XP",
         "created": "2025-08-14T13:05:55.000Z",
+        "description": "Este video introduce eXtreme Programming (XP), explorando sus valores, principios y pr\u00e1cticas como un conjunto de sugerencias para mejorar el desarrollo de software en solo 20 minutos.\n",
         "duration": 1320,
         "language": "Spanish",
-        "last_modified": "2025-08-21T17:24:04.000Z",
+        "last_modified": "2025-08-24T09:38:55.000Z",
         "less_15": 0,
         "name": "Descubre eXtreme Programming en 20 minutos",
+        "notes": "**eXtreme Programming (XP)** se presenta como un **compendio de valores, principios y pr\u00e1cticas** que ofrecen sugerencias adaptables para **mejorar el desarrollo de software**, m\u00e1s all\u00e1 de ser una metodolog\u00eda r\u00edgida o una lista de verificaci\u00f3n. Su esencia radica en promover un **cambio social** y de h\u00e1bitos, enfoc\u00e1ndose en el **trabajo en equipo** y la comprensi\u00f3n de que cada pr\u00e1ctica tiene sentido al estar ligada a principios y valores que abordan problemas espec\u00edficos.\n\n- **eXtreme Programming (XP) no es una metodolog\u00eda r\u00edgida ni una lista de verificaci\u00f3n**, sino un compendio de **valores, principios y pr\u00e1cticas** que ofrecen sugerencias para solucionar problemas en el desarrollo de software.\n- Es fundamental entender que XP implica un **cambio social y de h\u00e1bitos**, buscando **mejorar la forma en que se desarrolla el software** y el trabajo en equipo.\n- Las **pr\u00e1cticas de XP tienen sentido cuando se basan en principios y estos, a su vez, en valores**. Los valores y principios se ubican en el \"espacio del problema\", mientras que las pr\u00e1cticas son las \"soluciones\".\n- La implementaci\u00f3n de XP es una **labor de equipo**, donde el \u00e9xito depende de que todos compartan valores y principios para hacer mejor software.\n- XP se trata de ser **flexible y adaptativo**, ofreciendo ideas que pueden funcionar o no seg\u00fan el contexto, pero siempre con el objetivo de **mejorar y resolver problemas espec\u00edficos**.\n- Las pr\u00e1cticas de XP van desde la **colocaci\u00f3n f\u00edsica del equipo** hasta el **pair programming**, la **integraci\u00f3n continua**, el **dise\u00f1o incremental** y los **ciclos de feedback r\u00e1pidos**, buscando optimizar la eficiencia y la calidad.\n\n",
         "registered_at": "2025-08-14T13:05:55.000Z",
         "resource": "Descubre eXtreme Programming en 20 minutos - https://www.youtube.com/watch?v=ejtOeIqx1Ps",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null,
+            null
+        ],
+        "speakers": [
+            "recBl0N2hkqmFZhKq",
+            "rec41jHbt5MvvPizz"
+        ],
+        "speakers_names": [
+            "Dani Santamaria",
+            "Nino Dafonte"
+        ],
+        "topics": [
+            "recYkFYw6BSRfA0Ce",
+            "rechj5WeSQRH211np",
+            "recFbzSbd07ttDIYJ"
+        ],
+        "topics_names": [
+            "XP",
+            "Agile",
+            "Technical Practices"
+        ],
         "url": "https://www.youtube.com/watch?v=ejtOeIqx1Ps"
     },
     {
