@@ -17,7 +17,9 @@
     "test:components": "vitest run src/components",
     "test:changed": "vitest run --changed",
     "test:single": "vitest run --singleThread",
-    "test:profile": "vitest run --reporter=verbose --slowTestThreshold=1000"
+    "test:profile": "vitest run --reporter=verbose --slowTestThreshold=1000",
+    "prepare": "husky",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@headlessui/react": "1.7.17",
@@ -47,6 +49,7 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "globals": "^16.3.0",
     "happy-dom": "^18.0.1",
+    "husky": "^9.1.7",
     "jsdom": "^26.0.0",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
