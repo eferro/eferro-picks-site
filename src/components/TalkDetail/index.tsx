@@ -7,6 +7,7 @@ import { LoadingSpinner, ErrorMessage, PageContainer, Button } from '../ui';
 import { Talk } from '../../types/talks';
 import { formatDuration } from '../../utils/format';
 import ReactMarkdown from 'react-markdown';
+import rehypeSanitize from 'rehype-sanitize';
 import { hasMeaningfulNotes } from '../../utils/talks';
 
 
@@ -124,7 +125,9 @@ function TalkDetail() {
             <div className="mt-8">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Key Notes</h2>
               <div className="prose prose-blue max-w-none">
-                <ReactMarkdown>{talk.notes}</ReactMarkdown>
+                <ReactMarkdown rehypePlugins={[rehypeSanitize]}>
+                  {talk.notes}
+                </ReactMarkdown>
               </div>
             </div>
           )}
@@ -161,4 +164,4 @@ function TalkDetail() {
     </PageContainer>
   );
 }
-export { TalkDetail }; 
+export { TalkDetail };
