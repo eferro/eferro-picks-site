@@ -202,6 +202,20 @@ describe('TalkDetail', () => {
       expect(screen.getByText('Key Notes')).toBeInTheDocument();
       expect(screen.getByText('Some actual notes')).toBeInTheDocument();
     });
+
+    it('sanitizes HTML in notes to prevent XSS', () => {
+      const maliciousNotes = '<img src=x onerror="alert(1)" /><script>alert("xss")</script>'; 
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks: [createTalk({ notes: maliciousNotes })],
+        loading: false,
+        error: null
+      }));
+
+      const { container } = renderComponent();
+
+      expect(container.querySelector('script')).toBeNull();
+      expect(container.querySelector('img')).toBeNull();
+    });
   });
 
   describe('Navigation', () => {
