@@ -62,10 +62,13 @@ jobs:
           
       - name: Install Dependencies
         run: npm ci
-        
+
       - name: Run tests
         run: npm test -- --run
-        
+
+      - name: Type check
+        run: npm run typecheck
+
       - name: Build site
         run: npm run build
         
