@@ -38,7 +38,7 @@ describe('talks utils', () => {
 }); 
 
 
-import { filterTalks, processTalks } from './talks';
+import { filterTalks, processTalks, transformAirtableItemToTalk } from './talks';
 import type { AirtableItem } from '../hooks/useTalks';
 
 describe('filterTalks', () => {
@@ -79,6 +79,33 @@ describe('filterTalks', () => {
   it('also filters by rating when enabled', () => {
     const result = filterTalks(sample, true);
     expect(result.map(i => i.airtable_id)).toEqual(['1']);
+  });
+});
+
+describe('transformAirtableItemToTalk', () => {
+  it('maps article/paper resource_type to article format and handles missing arrays', () => {
+    const item = {
+      airtable_id: 'a1',
+      name: 'Article',
+      url: 'https://article',
+      duration: undefined,
+      topics_names: undefined,
+      speakers_names: undefined,
+      description: '',
+      core_topic: '',
+      notes: '',
+      language: 'English',
+      rating: 5,
+      resource_type: 'article/paper',
+      year: 2024,
+      conference_name: 'Conf'
+    } as unknown as AirtableItem;
+
+    const talk = transformAirtableItemToTalk(item);
+    expect(talk.format).toBe('article');
+    expect(talk.duration).toBe(0);
+    expect(talk.topics).toEqual([]);
+    expect(talk.speakers).toEqual([]);
   });
 });
 
