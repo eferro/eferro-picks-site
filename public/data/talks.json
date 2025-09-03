@@ -8779,6 +8779,37 @@
         "url": "http://www.ted.com/talks/bruce_feiler_agile_programming_for_your_family"
     },
     {
+        "airtable_createdTime": "2025-09-03T14:02:27.000Z",
+        "airtable_id": "recH0zkskCff6zkUk",
+        "core_topic": "AI",
+        "created": "2025-09-03T14:02:27.000Z",
+        "language": "English",
+        "last_modified": "2025-09-03T14:11:38.000Z",
+        "less_15": 1,
+        "name": "Vibe coding is not the same as AI-Assisted engineering.",
+        "registered_at": "2025-09-03T14:02:27.000Z",
+        "resource": "Vibe coding is not the same as AI-Assisted engineering. - https://addyo.substack.com/p/vibe-coding-is-not-the-same-as-ai",
+        "resource_type": "article/paper",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "rech75AMWdboABNQ5"
+        ],
+        "speakers_names": [
+            "Addy Osmani"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "recbJb6M6X8AZPTRc"
+        ],
+        "topics_names": [
+            "AI",
+            "Generative AI"
+        ],
+        "url": "https://addyo.substack.com/p/vibe-coding-is-not-the-same-as-ai"
+    },
+    {
         "airtable_createdTime": "2020-01-19T20:41:33.000Z",
         "airtable_id": "recH9V6eU7rQ4XcbX",
         "blog_url": "https://www.eferro.net/2017/08/good-talkspodcasts-purging-queue-iii.html",
