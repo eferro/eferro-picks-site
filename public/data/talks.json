@@ -14885,6 +14885,43 @@
         "url": "https://www.youtube.com/watch?v=EzLiRqiRNLk#DOES19"
     },
     {
+        "airtable_createdTime": "2025-09-07T20:16:42.000Z",
+        "airtable_id": "recRqeTb5L4YCDw0f",
+        "core_topic": "Lean",
+        "created": "2025-09-07T20:16:42.000Z",
+        "description": "Jim Womack offers a comprehensive retrospective and prospective view of Lean thinking, exploring its evolution, current relevance, and future potential for a \"second lean leap\".\n",
+        "duration": 1920,
+        "language": "English",
+        "last_modified": "2025-09-07T20:30:34.000Z",
+        "less_15": 0,
+        "name": "Jim Womack on Lean Thinking: Past, Present & Future",
+        "notes": "Jim Womack's central message emphasizes that the \"first lean leap\" has been exhausted, necessitating a \"second lean leap\" where the next generation must drive a deeper, more resilient application of Lean principles by transforming management practices, embracing technology, and fostering employee loyalty to ensure its continued relevance and sustained value creation. This evolution involves changing both beliefs and practices to convert \"muda\" (waste) into value, making Lean a long-term commitment rather than a short-game fix.\n\n- Lean is a way of thinking and practice, empirically tested through PDCA/A3, aiming to create more value with less resource.\n- The \"first lean leap\" (1990-pandemic) is exhausted, marked by lack of sustainability, misblame of JIT for shortages, loss of relevance to tech and green movements, and erosion of employee loyalty.\n- Lean is inherently fragile; it disappears if people don't believe in it and managers don't practice it.\n- Modern management, focused on KPIs and top-down directives, has created less value than hoped and contributes to a rework loop rather than true improvement.\n- A \"second lean leap\" is necessary, driven by the next generation, to regain relevance and apply Lean principles more deeply.\n- Reasons for optimism include geopolitical shifts enabling \"lean shoring,\" creative engagement with the tech world (e.g., Lean Tech Manifesto), an elaborated lean management system, and Toyota's continued success and innovation in areas like EVs.\n- Lean can be a great enabler for green initiatives by making them cost-affordable.\n- JIT protects against normal variation, while \"recovery methods\" (like those led by OMDD at Toyota) are crucial for Black Swan events.\n- The \"bank of muda\" is still open, allowing for the conversion of waste into value to boost productivity.\n- The transition requires changing both beliefs and practices regarding Lean.\n- Toyota's sustained success is built on commitments like never laying off permanent employees (since 1950), making Kaizen during downturns, and practicing daily management (real-time problem resolution) and hoshin (big strategic improvements).\n- Concurrent engineering (considering alternative countermeasures) and simultaneity (integrating product and process development) are key to rapid time to market.\n\n",
+        "rating": 5,
+        "registered_at": "2025-09-07T20:16:42.000Z",
+        "resource": "Jim Womack on Lean Thinking: Past, Present & Future - https://www.youtube.com/watch?v=mP_lc3ZVVeA",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recB9Y63WTDfmmYGr"
+        ],
+        "speakers_names": [
+            "Jim Womack"
+        ],
+        "topics": [
+            "recH4PbrLpkXZVGDh",
+            "recvlsvAt2LHjlKU2",
+            "rechSTvKX9sm9HHMA"
+        ],
+        "topics_names": [
+            "Lean Manufacturing",
+            "Management",
+            "Company Culture"
+        ],
+        "url": "https://www.youtube.com/watch?v=mP_lc3ZVVeA"
+    },
+    {
         "airtable_createdTime": "2021-11-07T19:17:17.000Z",
         "airtable_id": "recRtAWnx4lTVvYUO",
         "blog_url": "https://www.eferro.net/2021/11/good-talkspodcasts-november-2021-i.html",
