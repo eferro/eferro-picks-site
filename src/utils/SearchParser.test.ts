@@ -43,6 +43,27 @@ describe('parseSearch', () => {
     expect(result.query).toBe('');
   });
 
+  it('treats common lowercase name particles as part of author names', () => {
+    const result = parseSearch('author:Guido van Rossum topic:python');
+    expect(result.author).toBe('Guido van Rossum');
+    expect(result.topics).toEqual(['python']);
+    expect(result.query).toBe('');
+  });
+
+  it('includes additional capitalized words in topic values without quotes', () => {
+    const result = parseSearch('topic:Functional Programming author:Alice');
+    expect(result.topics).toEqual(['Functional Programming']);
+    expect(result.author).toBe('Alice');
+    expect(result.query).toBe('');
+  });
+
+  it('retains lowercase suffixes for author names', () => {
+    const result = parseSearch('author:Bob jr topic:testing');
+    expect(result.author).toBe('Bob jr');
+    expect(result.topics).toEqual(['testing']);
+    expect(result.query).toBe('');
+  });
+
   it('gracefully handles empty author token', () => {
     const result = parseSearch('author:   ');
     expect(result.author).toBeNull();
