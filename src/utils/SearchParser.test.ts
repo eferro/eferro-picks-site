@@ -77,4 +77,18 @@ describe('parseSearch', () => {
     expect(result.topics).toEqual([]);
     expect(result.query).toBe('');
   });
+
+  it('does not treat the next keyword as part of a missing author value', () => {
+    const result = parseSearch('author: topic:architecture inspiring talk');
+    expect(result.author).toBeNull();
+    expect(result.topics).toEqual(['architecture']);
+    expect(result.query).toBe('inspiring talk');
+  });
+
+  it('keeps uppercase general query terms out of author values', () => {
+    const result = parseSearch('author:Kent Beck TDD fundamentals');
+    expect(result.author).toBe('Kent Beck');
+    expect(result.topics).toEqual([]);
+    expect(result.query).toBe('TDD fundamentals');
+  });
 });

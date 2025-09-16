@@ -127,6 +127,9 @@ function readSimpleWord(text: string, startIndex: number): { text: string; nextI
   let i = startIndex;
   let word = '';
   while (i < text.length && !/\s/.test(text[i])) {
+    if (isAtKeyword(text, i)) {
+      break;
+    }
     word += text[i];
     i++;
   }
@@ -153,5 +156,17 @@ function collectContinuationWords(text: string, index: number, currentValue: str
 }
 
 function shouldContinueName(word: string): boolean {
-  return isCapitalized(word) || isCommonNameWord(word);
+  if (isCommonNameWord(word)) {
+    return true;
+  }
+
+  if (/^[A-Z]\.$/.test(word)) {
+    return true;
+  }
+
+  if (!isCapitalized(word)) {
+    return false;
+  }
+
+  return /[a-z]/.test(word.slice(1));
 }
