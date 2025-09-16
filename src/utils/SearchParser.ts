@@ -14,90 +14,45 @@ export function parseSearch(input: string): ParsedSearch {
   const text = input.trim();
 
   while (i < text.length) {
-    // Skip whitespace
     i = skipWhitespace(text, i);
-
     if (i >= text.length) break;
-    
-    // Check for author: or topic: prefix
-    if (text.slice(i).toLowerCase().startsWith('author:')) {
-      i += 'author:'.length;
-      const value = extractValue(text, i);
-      if (value.text) author = value.text;
+
+    const prefix = matchPrefix(text, i);
+    if (prefix) {
+      const prefixLength = prefix.length + 1; // account for colon
+      const value = extractValue(text, i + prefixLength);
+      if (value.text) {
+        if (prefix === 'author') {
+          author = value.text;
+        } else {
+          topics.push(value.text);
+        }
+      }
       i = value.nextIndex;
-    } else if (text.slice(i).toLowerCase().startsWith('topic:')) {
-      i += 'topic:'.length;
-      const value = extractValue(text, i);
-      if (value.text) topics.push(value.text);
-      i = value.nextIndex;
-    } else {
-      // Regular query text - collect until next keyword
-      const word = extractQueryWord(text, i);
-      if (word.text) queryParts.push(word.text);
-      i = word.nextIndex;
+      continue;
     }
+
+    const word = extractQueryWord(text, i);
+    if (word.text) {
+      queryParts.push(word.text);
+    }
+    i = word.nextIndex;
   }
 
   return { author, topics, query: queryParts.join(' ') };
 }
 
 function extractValue(text: string, startIndex: number): { text: string; nextIndex: number } {
-  let i = skipWhitespace(text, startIndex);
+  const firstIndex = skipWhitespace(text, startIndex);
+  if (firstIndex >= text.length) {
+    return { text: '', nextIndex: firstIndex };
+  }
 
-  if (i >= text.length) {
-    return { text: '', nextIndex: i };
+  if (text[firstIndex] === '"') {
+    return consumeQuotedValue(text, firstIndex + 1);
   }
-  
-  // Handle quoted strings
-  if (text[i] === '"') {
-    i++; // Skip opening quote
-    let value = '';
-    while (i < text.length && text[i] !== '"') {
-      value += text[i];
-      i++;
-    }
-    if (i < text.length) i++; // Skip closing quote
-    return { text: value, nextIndex: i };
-  }
-  
-  // Handle unquoted values - collect first word
-  let value = '';
-  while (i < text.length && !/\s/.test(text[i])) {
-    value += text[i];
-    i++;
-  }
-  
-  // For unquoted values, check if next words might be part of the same name
-  // Only continue if we have a common name pattern (no keywords in between)
-  let potentialMultiWord = value;
-  let tempIndex = i;
 
-  while (tempIndex < text.length) {
-    // Skip whitespace
-    tempIndex = skipWhitespace(text, tempIndex);
-    
-    if (tempIndex >= text.length || isAtKeyword(text, tempIndex)) {
-      break;
-    }
-    
-    // Collect next word
-    let nextWord = '';
-    while (tempIndex < text.length && !/\s/.test(text[tempIndex]) && !isAtKeyword(text, tempIndex)) {
-      nextWord += text[tempIndex];
-      tempIndex++;
-    }
-    
-    // Only add if this looks like a continuation of a name (capitalized or common patterns)
-    if (nextWord && (isCapitalized(nextWord) || isCommonNameWord(nextWord))) {
-      potentialMultiWord += ' ' + nextWord;
-      i = tempIndex;
-    } else {
-      // This word doesn't seem to be part of the name, stop here
-      break;
-    }
-  }
-  
-  return { text: potentialMultiWord, nextIndex: i };
+  return consumeUnquotedValue(text, firstIndex);
 }
 
 function isCapitalized(word: string): boolean {
@@ -113,12 +68,12 @@ function isCommonNameWord(word: string): boolean {
 function extractQueryWord(text: string, startIndex: number): { text: string; nextIndex: number } {
   let i = startIndex;
   let word = '';
-  
+
   while (i < text.length && !isAtKeyword(text, i) && !/\s/.test(text[i])) {
     word += text[i];
     i++;
   }
-  
+
   return { text: word, nextIndex: i };
 }
 
@@ -132,4 +87,71 @@ function skipWhitespace(text: string, index: number): number {
     index++;
   }
   return index;
+}
+
+function matchPrefix(text: string, index: number): 'author' | 'topic' | null {
+  const lower = text.slice(index).toLowerCase();
+  if (lower.startsWith('author:')) {
+    return 'author';
+  }
+  if (lower.startsWith('topic:')) {
+    return 'topic';
+  }
+  return null;
+}
+
+function consumeQuotedValue(text: string, index: number): { text: string; nextIndex: number } {
+  let i = index;
+  let value = '';
+  while (i < text.length && text[i] !== '"') {
+    value += text[i];
+    i++;
+  }
+  if (i < text.length) {
+    i++; // Skip closing quote
+  }
+  return { text: value, nextIndex: i };
+}
+
+function consumeUnquotedValue(text: string, startIndex: number): { text: string; nextIndex: number } {
+  const firstWord = readSimpleWord(text, startIndex);
+  if (!firstWord.text) {
+    return { text: '', nextIndex: firstWord.nextIndex };
+  }
+
+  const continuation = collectContinuationWords(text, firstWord.nextIndex, firstWord.text);
+  return continuation;
+}
+
+function readSimpleWord(text: string, startIndex: number): { text: string; nextIndex: number } {
+  let i = startIndex;
+  let word = '';
+  while (i < text.length && !/\s/.test(text[i])) {
+    word += text[i];
+    i++;
+  }
+  return { text: word, nextIndex: i };
+}
+
+function collectContinuationWords(text: string, index: number, currentValue: string): { text: string; nextIndex: number } {
+  let nextIndex = index;
+  let value = currentValue;
+
+  let candidateStart = skipWhitespace(text, nextIndex);
+  while (candidateStart < text.length && !isAtKeyword(text, candidateStart)) {
+    const candidate = readSimpleWord(text, candidateStart);
+    if (!candidate.text || !shouldContinueName(candidate.text)) {
+      return { text: value, nextIndex: candidateStart };
+    }
+
+    value += ` ${candidate.text}`;
+    nextIndex = candidate.nextIndex;
+    candidateStart = skipWhitespace(text, nextIndex);
+  }
+
+  return { text: value, nextIndex: candidateStart };
+}
+
+function shouldContinueName(word: string): boolean {
+  return isCapitalized(word) || isCommonNameWord(word);
 }
