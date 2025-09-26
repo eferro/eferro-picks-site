@@ -31295,6 +31295,40 @@
         "url": "https://www.heavybit.com/library/podcasts/o11ycast/ep-7-observability-at-asana-and-honeycomb/"
     },
     {
+        "airtable_createdTime": "2025-09-26T06:28:43.000Z",
+        "airtable_id": "rectBmhn5nvVx9aYT",
+        "core_topic": "AI",
+        "created": "2025-09-26T06:28:43.000Z",
+        "duration": 540,
+        "language": "English",
+        "last_modified": "2025-09-26T06:31:22.000Z",
+        "less_15": 1,
+        "name": "This Mental Model Changed How I Design Software FOREVER",
+        "registered_at": "2025-09-26T06:28:43.000Z",
+        "resource": "This Mental Model Changed How I Design Software FOREVER - youtube.com/watch?v=U6PM8WehhJg",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            true
+        ],
+        "speakers": [
+            "reczijcDpu4sMjnlA"
+        ],
+        "speakers_names": [
+            "Emily Bache"
+        ],
+        "topics": [
+            "recmPbBNpUB7Q5XyX",
+            "recbJb6M6X8AZPTRc",
+            "recm3GCPgEVSDmeVI"
+        ],
+        "topics_names": [
+            "tdd",
+            "Generative AI",
+            "Software Design"
+        ],
+        "url": "youtube.com/watch?v=U6PM8WehhJg"
+    },
+    {
         "airtable_createdTime": "2020-01-19T20:41:20.000Z",
         "airtable_id": "rectE9e9yPCU27fm5",
         "blog_url": "https://www.eferro.net/2017/08/good-talkspodcasts-episodes-purging.html",
