@@ -17165,6 +17165,42 @@
         "url": "https://www.infoq.com/presentations/high-performance-passion-grace-fire/"
     },
     {
+        "airtable_createdTime": "2025-10-11T09:36:17.000Z",
+        "airtable_id": "recWJYXXVeuAXXJ57",
+        "core_topic": "AI",
+        "created": "2025-10-11T09:36:17.000Z",
+        "description": "A discussion on how to safely practice \"vibe coding\" (letting AI generate code while forgetting the code exists) in production by acting as the AI's Product Manager and focusing on verification of leaf nodes and abstraction layers.\n",
+        "duration": 1860,
+        "language": "English",
+        "last_modified": "2025-10-11T09:40:26.000Z",
+        "less_15": 0,
+        "name": "Vibe coding in prod | Code w/ Claude",
+        "notes": "Focusing on the product's existence rather than the code itself is essential for safely capitalizing on AI's exponential growth in code generation, requiring engineers to act as the AI's Product Manager by verifying abstraction layers, setting clear requirements, and concentrating AI-generated work on leaf nodes of the codebase to manage technical debt. This shift allows teams to leverage models capable of generating a week's worth of work without becoming a bottleneck by demanding review of every single line of code.\n\n- **Vibe Coding Defined:** Vibe coding is defined as fully giving into the vibes, embracing exponentials, and, crucially, forgetting that the code itself even exists.\n- **The Exponential Imperative:** The length of tasks AI can handle is doubling every seven months; to leverage this exponential growth and avoid becoming a even exists.\n- **The Exponential Imperative:** The length of tasks AI can handle is doubling every seven months; to leverage this exponential growth and avoid becoming a bottleneck, engineers must find a way to responsibly use AI for large chunks of work without reviewing every line of code.\n- **The Product Focus:** The solution to safe vibe coding in production is to **forget the code exists, but not the product exists**.\n- **Engineers as Product Managers (PMs):** When vibe coding, the engineer acts as the AI's Product Manager, needing to set clear requirements, specifications, and constraints for the AI (Claude).\n- **Verification through Abstraction:** Safety is achieved by finding and verifying an abstraction layer that can be checked without needing to understand the underlying implementation, similar to how managers oversee experts or how software engineers trust compilers.\n- **Mitigating Technical Debt:** Focus vibe coding on **leaf nodes** of the codebase\u2014parts that nothing else depends on and are unlikely to change\u2014to contain any AI-generated technical debt.\n- **Protect Core Architecture:** Human engineers must still deeply understand, protect, and heavily review the core architecture, trunks, and underlying branches of the system, ensuring they remain extensible, understandable, and flexible.\n- **Verifiable Checkpoints:** Design the system and changes with easily human-verifiable inputs and outputs, and stress tests, to build confidence in correctness and stability without reading all the code.\n- **Effective Prompting:** Spend time (e.g., 15-20 minutes) collaborating with the AI to gather guidance, explore the codebase, build a plan, and capture necessary context into a single, comprehensive prompt before letting the AI execute the plan.\n- **Learning with AI:** AI tools can accelerate learning by enabling engineers to take many more \"shots on goal\" (trying new features/architectures) and by acting as an always-available pair programmer to explain libraries, decisions, and code it generated.\n- **TDD and Testing:** Utilize end-to-end, general, and minimalist tests, often reading the tests first, to provide verifiable checkpoints and guidance for the AI, even if the implementation is generated.\n\n\n",
+        "registered_at": "2025-10-11T09:36:17.000Z",
+        "resource": "Vibe coding in prod | Code w/ Claude - https://www.youtube.com/watch?v=fHWFF_pnqDk",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "rec6IwsBANJhVlPOQ"
+        ],
+        "speakers_names": [
+            "Erik Schluntz"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "rechj5WeSQRH211np",
+            "recin3Ync8iZldW0q"
+        ],
+        "topics_names": [
+            "AI",
+            "Agile",
+            "Continuous Delivery"
+        ],
+        "url": "https://www.youtube.com/watch?v=fHWFF_pnqDk"
+    },
+    {
         "airtable_createdTime": "2021-09-05T16:10:38.000Z",
         "airtable_id": "recWP9pM7wNVhBvmR",
         "blog_url": "https://www.eferro.net/2021/09/good-talkspodcasts-september-2021-ii.html",
@@ -17969,6 +18005,42 @@
         "resource": "Testing in Production (TiP) \u2013 It Really Happens\u2013Examples from Facebook, Amazon, Google, and Microsoft - https://blogs.msdn.microsoft.com/seliot/2011/06/07/testing-in-production-tip-it-really-happensexamples-from-facebook-amazon-google-and-microsoft/",
         "resource_type": "article/paper",
         "url": "https://blogs.msdn.microsoft.com/seliot/2011/06/07/testing-in-production-tip-it-really-happensexamples-from-facebook-amazon-google-and-microsoft/"
+    },
+    {
+        "airtable_createdTime": "2025-10-11T09:58:02.000Z",
+        "airtable_id": "recYJAjXW4pn2hSkO",
+        "core_topic": "AI",
+        "created": "2025-10-11T09:58:02.000Z",
+        "description": "A pragmatic exploration of AI coding agents that encourages developers, who identify as builders, to overcome fear and embrace these tools as collaborative partners to enhance development.\n",
+        "duration": 2400,
+        "language": "English",
+        "last_modified": "2025-10-11T10:04:48.000Z",
+        "less_15": 0,
+        "name": "CORECURSIVE #113 / When AI Codes, What\u2019s Left for me?",
+        "notes": "Builders should overcome the fear that AI coding agents devalue their identity and instead embrace them as collaborative partners, treating their use as a learning project to enhance problem-solving, tackle more ambitious work, and retain the fundamental satisfaction of creating. This transition, though initially awkward and frustrating like any new skill, is necessary to leverage the tools' power and maintain the drive to build.\n\n- **Identity Shift:** Builders often resist AI coding agents because coding is deeply tied to their identity and self-worth; overcoming this fear is necessary to embrace the new tools.\n- **Collaborative Partnership:** AI coding agents are not AGI; they function best when treated as collaborative partners, similar to pair programmers, requiring continuous guidance and iteration.\n- **Leveraging Strengths:** The optimal approach is \"human with machine.\" The builder provides intuition, strategy, complex problem breakdown, and quality checks, while the AI handles speed, pattern recognition, and tedious or grunt work.\n- **Learning Curve:** Using these agents must be treated as a learning project or deliberate practice; initial experiences will feel frustrating, clunky, and slow, mirroring the adoption of any new, powerful technology (like switching OS or paradigms).\n- **Skill Transformation:** While some low-level coding skills may become less valuable, architectural thinking, problem decomposition, and high-level guiding skills become significantly more powerful and valuable.\n- **Tackling Ambition:** Collaboration with agents allows developers to tackle complex, ambitious projects they previously wouldn't have time or capacity for alone (expanded ambition).\n- **Practical Application:** Start small, such as using an agent to explore an unfamiliar codebase, and rely on strong engineering practices like comprehensive linting, static typing, and duplicate code detection to stabilize the agent\u2019s probabilistic output.\n- **Refactoring Power:** AI agents excel at mass refactorings; after a developer manually completes the first complex instance, the agent can flawlessly replicate the changes across many files and call sites.\n\n",
+        "registered_at": "2025-10-11T09:58:02.000Z",
+        "resource": "CORECURSIVE #113 / When AI Codes, What\u2019s Left for me? - https://corecursive.com/coding-agents/#",
+        "resource_type": "podcast",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "rec6NSDpMZpviDfcC"
+        ],
+        "speakers_names": [
+            "Adam Gordon Bell"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "recWFKWrPEdeEYbzx",
+            "rec436FbBa6hFiWcj"
+        ],
+        "topics_names": [
+            "AI",
+            "Engineering Culture",
+            "Developer Productivity"
+        ],
+        "url": "https://corecursive.com/coding-agents/#"
     },
     {
         "airtable_createdTime": "2021-08-12T13:26:22.000Z",
@@ -22919,6 +22991,42 @@
         "url": "https://www.youtube.com/watch?v=pXQr4UK1lfo"
     },
     {
+        "airtable_createdTime": "2025-10-11T09:41:29.000Z",
+        "airtable_id": "recg9qqmH63R87cbj",
+        "core_topic": "AI",
+        "created": "2025-10-11T09:41:29.000Z",
+        "description": "Launch Darkly\u2019s Director of Engineering outlines strategies for integrating AI in large enterprises, focusing on creating centralized documentation and rules for AI agents, using AI to burn down technical debt, and leveraging custom GPTs to raise the hiring bar\n",
+        "duration": 2640,
+        "language": "English",
+        "last_modified": "2025-10-11T09:53:03.000Z",
+        "less_15": 0,
+        "name": "Successfully coding with AI in large enterprises: Centralized rules, workflows for tech debt, & more",
+        "notes": "Successfully deploying AI agents in large engineering organizations requires moving beyond \"vibe coding\" by creating **centralized documentation and rules** within the repository that both humans and LLMs can access, transforming AI into a powerful, scalable tool for ensuring code quality and efficiently **burning down technical debt**.\n\n**Centralized Rules and Documentation** Establish centralized documentation (style guides, organization rules) directly within the code repository so both human engineers and Large Language Models (LLMs) can access it easily. Move beyond \"vibe coding\" by consolidating tool-specific AI rules (e.g., for Cursor, Claude, Devon) into a single `agents rules` directory to ensure consistency and scalability across multiple tools. What is good for humans in the repo (clear structure, detailed documentation) is also good for LLMs.\n**Burning Down Technical Debt** Leverage AI agents to target and resolve large, annoying technical debt issues (like fixing noisy test logs, reducing accessibility warnings, or performing mass code migrations) that are often hard to justify for human developers. Create specific, prioritized checklists and task lists in markdown files within the repository that any AI agent or human team member can pick up and execute sequentially.\n**Operationalizing AI Adoption** Assign a dedicated organizational leader (manager or director level) who is close to the code to drive the engineering-wide transformation and ensure AI tools are adopted successfully. Use AI agents (like Devon) to help generate the initial human-readable documentation and rules required for standardization.\n**Raising the Hiring Bar** Implement custom GPTs trained on hiring rubrics and scorecard examples to provide objective feedback on interviewer scorecards. This workflow ensures consistency in feedback quality across interview panels and coaches human interviewers to write more specific and accurate assessments.\n",
+        "registered_at": "2025-10-11T09:41:29.000Z",
+        "resource": "Successfully coding with AI in large enterprises: Centralized rules, workflows for tech debt, & more - https://www.youtube.com/watch?v=HtzkfjEH-GU",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "rec2hcJ3pZ1SC6um0"
+        ],
+        "speakers_names": [
+            "Zach Davis"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "rec436FbBa6hFiWcj",
+            "recWFKWrPEdeEYbzx"
+        ],
+        "topics_names": [
+            "AI",
+            "Developer Productivity",
+            "Engineering Culture"
+        ],
+        "url": "https://www.youtube.com/watch?v=HtzkfjEH-GU"
+    },
+    {
         "airtable_createdTime": "2022-10-16T16:57:53.000Z",
         "airtable_id": "recgCeFdi993pAe7V",
         "blog_url": "https://www.eferro.net/2022/10/good-talkspodcasts-oct-2022-ii.html",
@@ -23131,6 +23239,42 @@
             "Technical Practices"
         ],
         "url": "https://docs.google.com/document/d/1dGyhrW-2ivwi0iVdmwJoi0-mhRtKOMQp5eBSYkUR0Ek/edit?usp=drivesdk"
+    },
+    {
+        "airtable_createdTime": "2025-10-11T09:23:57.000Z",
+        "airtable_id": "recgOiBKCr7F8BvXp",
+        "core_topic": "AI",
+        "created": "2025-10-11T09:23:57.000Z",
+        "description": "This talk critiques \"vibe coding,\" arguing that AI programming fundamentally reinforces the need for sound Software Design, precise executable specifications, and robust Continuous Delivery practices for building complex, evolvable systems.\n",
+        "duration": 1020,
+        "language": "English",
+        "last_modified": "2025-10-11T09:27:33.000Z",
+        "less_15": 0,
+        "name": "Vibe Coding Is The WORST IDEA Of 2025",
+        "notes": "The rise of AI programming, particularly the vague approach known as \"vibe coding,\" emphasizes that successful software development requires precise, executable specifications, robust **Software Design** principles, and the use of enhanced **Continuous Delivery** techniques. These established technical practices are crucial for verifying that AI-generated code meets requirements and ensuring that complex systems remain safely evolvable and easy to change over time.\n\n- **Vibe coding** is a naive, vague approach to programming with AI assistance that fundamentally misunderstands the complexity and necessity of precision in software development.\n- The primary challenge in programming is not writing code, but **decomposing problems** into precise, deterministic instructions and understanding the system's requirements in detail.\n- The essential measure of code quality is the **ability to change it** safely and easily, requiring an evolutionary approach to design.\n- AI generation often regenerates code entirely, making the established practices of **Continuous Delivery** and **Continuous Integration** critically important for reliable verification and evolution.\n- Effective use of AI requires providing an **executable specification**\u2014a precise, accurate example defining exactly how the system must behave\u2014to both clearly define intent and verify the outcome.\n- Programming must shift from specifying implementation details to precisely specifying the **intent** of the system.\n- Good **Software Design** principles (like modularity, abstraction, and separation of concerns) remain necessary to manage complexity, regardless of whether the code is human- or AI-written.\n\n",
+        "registered_at": "2025-10-11T09:23:57.000Z",
+        "resource": "Vibe Coding Is The WORST IDEA Of 2025 - https://www.youtube.com/watch?v=1A6uPztchXk",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recTA39Jo1ozZG61R"
+        ],
+        "speakers_names": [
+            "Dave Farley"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "recin3Ync8iZldW0q",
+            "recm3GCPgEVSDmeVI"
+        ],
+        "topics_names": [
+            "AI",
+            "Continuous Delivery",
+            "Software Design"
+        ],
+        "url": "https://www.youtube.com/watch?v=1A6uPztchXk"
     },
     {
         "airtable_createdTime": "2021-06-13T22:22:51.000Z",
@@ -26918,6 +27062,42 @@
             "Company Culture"
         ],
         "url": "https://podcasts.apple.com/us/podcast/why-it-pays-to-raise-pay/id1346314086?i=1000521240998"
+    },
+    {
+        "airtable_createdTime": "2025-10-11T09:07:57.000Z",
+        "airtable_id": "recm6WOgLtGXbgL6b",
+        "core_topic": "AI",
+        "created": "2025-10-11T09:07:57.000Z",
+        "description": "Dave Farley examines the DORA report on AI in software development, detailing how successful adoption requires mitigating AI's inherent unreliability by applying core modern software engineering practices, such as working in small, verified steps.\n",
+        "duration": 1140,
+        "language": "English",
+        "last_modified": "2025-10-11T09:17:27.000Z",
+        "less_15": 0,
+        "name": "Has This Report EXPOSED THE TRUTH About AI Assisted Software Development?",
+        "notes": "Since AI programming assistants are inherently unreliable and prone to making unintended or unsupported changes, successful integration demands strict control measures; engineers must adopt core modern software engineering practices, specifically **making incremental progress in small, controlled steps** and **continuously verifying** the system's correctness after every change to ensure determinism and reliability.\n\n- AI programming assistance is widely adopted (95% reliance) and highly effective at improving productivity (80% report improvement).\n- Despite productivity gains, relying on AI risks software delivery stability and throughput because AI outputs are often imperfect, unreliable, and prone to making unintended or unsupported changes.\n- A major risk is over-trust: A significant majority (70%) of developers trust AI output, even though research indicates AI systems frequently produce unsupported claims or fabricated answers (between 30% and 95% unreliability).\n- Successful AI adoption requires strict control measures and applying core modern software engineering practices to mitigate AI's inherent unreliability.\n- The most vital practice is **making progress incrementally in small, controlled steps**, which constrains the often \"overeager\" AI.\n- Engineers must **continuously verify** the system's correct operation after every small change to maintain determinism and ensure the system is still doing what it is intended to do.\n- Detailed and precise specification is paramount; techniques like Behavior-Driven Development (BDD) and Acceptance Test-Driven Development (ATDD) help achieve the necessary clarity.\n- Other important capabilities for success include strong version control, working in small batches, user-centric focus, and quality internal platforms.\n- Organizations must establish clear communicated AI stances (guide rails) and should exercise caution, particularly when allowing junior developers to use AI without detailed supervision.\n\n\n",
+        "registered_at": "2025-10-11T09:07:57.000Z",
+        "resource": "Has This Report EXPOSED THE TRUTH About AI Assisted Software Development? - https://www.youtube.com/watch?v=CoGO6s7bS3A",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recTA39Jo1ozZG61R"
+        ],
+        "speakers_names": [
+            "Dave Farley"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "reck5fBLLF9Drj8rk",
+            "recin3Ync8iZldW0q"
+        ],
+        "topics_names": [
+            "AI",
+            "Small Safe Steps (3s)",
+            "Continuous Delivery"
+        ],
+        "url": "https://www.youtube.com/watch?v=CoGO6s7bS3A"
     },
     {
         "airtable_createdTime": "2020-01-19T20:36:17.000Z",
@@ -33385,6 +33565,44 @@
         "url": "https://www.youtube.com/watch?v=97YRxrKNLP0"
     },
     {
+        "airtable_createdTime": "2025-10-11T09:29:01.000Z",
+        "airtable_id": "recwnMZ86yxakodPJ",
+        "core_topic": "AI",
+        "created": "2025-10-11T09:29:01.000Z",
+        "description": "OpenAI's Sean Grove introduces \"The New Code,\" arguing that specifications are the universal artifact of intent, crucial for aligning both humans and advanced AI models.\n",
+        "duration": 1260,
+        "language": "English",
+        "last_modified": "2025-10-11T09:32:39.000Z",
+        "less_15": 0,
+        "name": "The New Code \u2014 Sean Grove, OpenAI",
+        "notes": "Specifications, not the resulting code, are the universal artifact of intent and value, serving as the essential tool for aligning humans across different disciplines (like engineering, product, and legal) and for effectively training and evaluating advanced AI models. Therefore, the ability to write robust specifications that clearly capture intent is quickly becoming the most valuable and scarce skill for programmers in the emerging era of \"The New Code\".\n\n- The value programmers bring is largely in **structured communication** (80-90%), not just the resulting code (10-20%).\n- The **source specification**, not the generated code or binary, is the valuable artifact of intent.\n- **Specifications** are the universal artifact of intent and value, essential for aligning humans (engineering, product, legal, policy, safety) on shared goals.\n- The more advanced AI models become, the more severely the bottleneck of knowing _what_, _how_, and _why_ to build will be felt; **effective communication** becomes the most valuable programming skill.\n- **Code is a lossy projection** from the specification; specifications embody all necessary intentions and values to generate the code.\n- A robust specification contains enough information to translate into multiple targets (e.g., code, clients, documentation, tutorials).\n- The new scarce skill is **writing specifications that fully capture intent and values**.\n- The **OpenAI model spec**, a collection of versioned, human-readable markdown files, serves as an example of a specification that aligns all humans within the company and can be used for model alignment.\n- Specifications can encode **success criteria** and unit tests to verify model compliance (e.g., using IDs to link clauses to challenging prompts).\n- Specs serve as a **trust anchor** and a reference point for determining expected behavior and identifying bugs (as seen in the 40 sycophancy issue).\n- Specifications can be used as both **training material and evaluation material** for automatically aligning AI models through techniques like deliberative alignment.\n- Specs are analogous to code: they compose, are executable, testable, have interfaces, and can be shipped as modules.\n- The concept of specification is **universal**: Programmers align silicon (via code specs), Product Managers align teams (via product specs), and Lawmakers align humans (via legal specs).\n- Every prompt used to align an AI model is a **proto-specification**; users are spec authors.\n- **Engineering is not about code**, but the precise exploration by humans of software solutions to human problems, moving towards a unified human encoding (specification) of how to solve these problems.\n- The future IDE may be an **Integrated Thought Clarifier** that pulls out ambiguity in specifications to improve communication between humans and models.\n\n\n",
+        "registered_at": "2025-10-11T09:29:01.000Z",
+        "resource": "The New Code \u2014 Sean Grove, OpenAI - https://www.youtube.com/watch?v=8rABwKRsec4",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "rec1rWfrYaUep1mk1"
+        ],
+        "speakers_names": [
+            "Sean Grove"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "rechj5WeSQRH211np",
+            "recQ4hio93eTgzFTS",
+            "recPoM7t8neA7gkZ5"
+        ],
+        "topics_names": [
+            "AI",
+            "Agile",
+            "Architecture",
+            "Devops"
+        ],
+        "url": "https://www.youtube.com/watch?v=8rABwKRsec4"
+    },
+    {
         "airtable_createdTime": "2020-01-19T20:41:17.000Z",
         "airtable_id": "recwnfi1SlL62kcgW",
         "blog_url": "https://www.eferro.net/2017/08/good-talkspodcasts-episodes-purging.html",
@@ -34433,6 +34651,42 @@
         ],
         "url": "https://www.youtube.com/watch?v=PEeTsJhbcdo",
         "year": 2018
+    },
+    {
+        "airtable_createdTime": "2025-10-11T09:20:09.000Z",
+        "airtable_id": "recyfw2FJ9LSI4EW9",
+        "core_topic": "AI",
+        "created": "2025-10-11T09:20:09.000Z",
+        "description": "Henrik Kniberg discusses transitioning from pioneering Agile methods to building autonomous AI agents, exploring radical coding productivity gains and the evolution of software architecture decisions\n",
+        "duration": 2700,
+        "language": "English",
+        "last_modified": "2025-10-11T09:22:48.000Z",
+        "less_15": 0,
+        "name": "#43 Henrik Kniberg - Agentifying Software Development",
+        "notes": "AI coding agents offer radical productivity gains, potentially reaching 10 times or more effectiveness for developers who adopt an \"AI-first thinking\" mindset and master the skill of determining when and how much to rely on AI assistance. The key takeaway for developers is that their role is shifting from typing lines of code to becoming high-level problem solvers who collaborate with AI, requiring a greater focus on architectural decisions and problem breakdown to ensure high-quality software development.\n\n- **AI coding agents enable radical productivity gains**\u2014up to 10 times or more effectiveness\u2014far exceeding earlier reported 20% improvements.\n- Maximal productivity requires three components: **high-quality foundational models**, **specialized development tools** (like Kurser), and advanced developer skills in prompt and context engineering.\n- Developers must adopt an **\"AI-first thinking\" mindset**, viewing AI as a tool to solve problems, rather than focusing on typing lines of code.\n- The crucial developer skill is mastering the **\"Developer Laziness Scale,\"** determining precisely when to rely on AI (from 0% self-coding to 100% vibe coding) for any given task.\n- If a developer defines their job as writing lines of code, that role is quickly disappearing; the modern developer is a **high-level problem solver and architect**.\n- **Architectural control is essential** for complex platforms; developers must retain ownership of core architecture and use the extra time freed by AI to focus on high-level system design.\n- Timeless architectural principles (modular design, clear interfaces, low coupling) are more important than ever to prevent AI from creating technical debt.\n- Monorepos facilitate AI-powered development by allowing the model to see and integrate changes across the entire codebase (front-end, back-end, multiple services) simultaneously.\n- AI agents should be treated like interns; they must operate in safe environments where mistakes are reversible (e.g., leveraging version control) and should never be granted unnecessary access, such as write access to production databases.\n- Historically, increased developer productivity has led to industry growth; the trend is toward **everyone coding** simple tasks, with professional engineers focusing on strategic problem-solving.\n- Future AI models will be capable of taking on massive, complex tasks, such as complete legacy system rewrites, driving the work process with incremental plans and check-in points, requiring the engineer to act as a sophisticated \"customer.\"\n\n\n",
+        "registered_at": "2025-10-11T09:20:09.000Z",
+        "resource": "#43 Henrik Kniberg - Agentifying Software Development - https://www.youtube.com/watch?v=w5DBbchMTYg",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recZna9MiT6dErU4E"
+        ],
+        "speakers_names": [
+            "Henrik Kniberg"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "rec436FbBa6hFiWcj",
+            "recQ4hio93eTgzFTS"
+        ],
+        "topics_names": [
+            "AI",
+            "Developer Productivity",
+            "Architecture"
+        ],
+        "url": "https://www.youtube.com/watch?v=w5DBbchMTYg"
     },
     {
         "airtable_createdTime": "2020-01-19T20:32:29.000Z",
