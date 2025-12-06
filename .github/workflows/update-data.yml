@@ -2,14 +2,8 @@ name: Update Database
 
 on:
   schedule:
-    - cron: "0 */6 * * *"  # Run every 6 hours
+    - cron: "0 * * * *"  # Run every hour
   workflow_dispatch:
-    inputs:
-      force_update:
-        description: 'Force update even if no changes detected'
-        required: false
-        type: boolean
-        default: false
 
 permissions:
   contents: write
@@ -48,11 +42,32 @@ jobs:
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
           AIRTABLE_DATABASE_ID: ${{ secrets.AIRTABLE_DATABASE_ID }}
         run: |
-          echo "Starting Airtable export..."
+          echo "========================================="
+          echo "Starting Airtable export at $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+          echo "========================================="
+          
+          # Save current file hash if exists
+          if [ -f public/data/talks.json ]; then
+            OLD_HASH=$(md5sum public/data/talks.json | cut -d' ' -f1)
+            OLD_SIZE=$(wc -c < public/data/talks.json)
+            OLD_RECORDS=$(grep -o '"id"' public/data/talks.json | wc -l)
+            echo "Current file: $OLD_RECORDS records, $OLD_SIZE bytes, hash: $OLD_HASH"
+          else
+            echo "No existing talks.json file"
+          fi
+          
           mkdir -p database
           airtable-export --verbose database $AIRTABLE_DATABASE_ID --key=$AIRTABLE_API_KEY --json --http-read-timeout 60 Resources
           mv database/Resources.json public/data/talks.json
-          echo "Airtable export completed"
+          
+          # Show new file info
+          NEW_HASH=$(md5sum public/data/talks.json | cut -d' ' -f1)
+          NEW_SIZE=$(wc -c < public/data/talks.json)
+          NEW_RECORDS=$(grep -o '"id"' public/data/talks.json | wc -l)
+          echo "========================================="
+          echo "Export completed at $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+          echo "New file: $NEW_RECORDS records, $NEW_SIZE bytes, hash: $NEW_HASH"
+          echo "========================================="
           
       - name: Install Node.js
         uses: actions/setup-node@v4
@@ -80,15 +95,25 @@ jobs:
       - name: Commit and push if changed
         shell: bash
         run: |
-          FORCE_UPDATE="${{ github.event.inputs.force_update }}"
-          if [ "$FORCE_UPDATE" = "true" ] || ! git diff --quiet; then
-            echo "Changes detected or force update requested"
-            git add public/data/talks.json
-            git commit -m "chore: Update talks data" || echo "No changes to commit"
-            git push || echo "No changes to push"
+          echo "========================================="
+          echo "Checking for changes..."
+          echo "========================================="
+          
+          git add public/data/talks.json
+          
+          if git diff --staged --quiet; then
+            echo "✓ No changes in talks.json - Airtable data is identical to repo"
           else
-            echo "No changes detected and no force update requested"
+            echo "✓ Changes detected in talks.json"
+            echo ""
+            echo "Diff summary:"
+            git diff --staged --stat public/data/talks.json
+            echo ""
+            git commit -m "chore: Update talks data"
+            git push
+            echo "✓ Changes committed and pushed"
           fi
+          echo "========================================="
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -100,4 +125,4 @@ jobs:
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4 
+        uses: actions/deploy-pages@v4
