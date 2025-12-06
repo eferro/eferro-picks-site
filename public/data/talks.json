@@ -446,6 +446,47 @@
         "year": 2013
     },
     {
+        "airtable_createdTime": "2025-12-06T16:55:46.000Z",
+        "airtable_id": "rec0rUcyjhNVkNsdd",
+        "core_topic": "Architecture",
+        "created": "2025-12-06T16:55:46.000Z",
+        "description": "Applying the mental model of Test-Driven Development (TDD) as an empirical engineering approach to master software design and manage complexity alongside Agentic AI tools.\n",
+        "duration": 540,
+        "language": "English",
+        "last_modified": "2025-12-06T17:06:45.000Z",
+        "less_15": 1,
+        "name": "This Mental Model Changed How I Design Software FOREVER",
+        "notes": "Test-Driven Development (TDD) functions as an empirical engineering approach and a vital mental model for software design, enabling engineers to manage complexity and break down problems efficiently, which is essential when working with Agentic AI tools. Mastering TDD allows humans to bring necessary engineering skills to the process, ensuring good designs are achieved faster, whereas a lack of a good design mental model means Agentic AI will likely help make a mess faster.\n\n- **TDD as the Essential Mental Model for Software Design:** Test-Driven Development (TDD) provides a crucial mental model for approaching software design, enabling engineers to achieve better results and reduce cognitive load.\n- **Human Engineering Skills Remain Paramount with Agentic AI:** In the age of Generative AI coding agents, what humans contribute is no longer typing but engineering skills, making a good design mental model like TDD more important than ever.\n- **TDD as an Empirical Engineering Approach:** TDD functions as an empirical engineering approach to software design, focusing on iteration and continuous learning about the problem and the medium.\n- **Managing Complexity is the Core Job:** A fundamental job of a software engineer is to manage complexity in software by finding good abstractions, modularizing code, and separating concerns. TDD facilitates this by forcing focus and breaking down problems into smaller, manageable chunks.\n- **The Risk of Agentic AI Without Good Design Skills:** Lacking a good mental model for software design means Agentic AI tools will likely only help create a complex mess faster, leading to difficulty managing complexity and failure to produce modular, loosely coupled code.\n- **The Iterative Process with Agentic AI:** The recommended process involves starting with user needs, breaking the problem into chunks, specifying behavior and coding standards for one chunk, having the AI write the code, improving the design, and iterating on the next chunk.\n- **Importance of Acceptance Tests and Specifications:** Working with AI tools is enhanced by using automated acceptance tests to specify required functionality in detail, providing clear constraints and guards against regression.\n- **Guiding AI with Principles:** It is helpful to include clear code principles in prompts, such as preferring simple, clean, and maintainable solutions, prioritizing readability, using small functions, and following the Single Responsibility Principle, to ensure the AI generates reasonably good designs.\n- **AI for Design Improvement vs. Refactoring:** If the AI's initial design needs improvement, engineers can ask the Generative AI tool to try again and create a new design that fits the constraints, but this is distinct from deterministic refactoring, which often still requires a dedicated tool or manual work in an IDE.\n- **Context Window Optimization:** A new consideration when working with Agentic AI is optimizing the tool's context window as a first-order concern, though this is closely related to the TDD process of managing complexity and focusing on one aspect of design at a time.\n\n",
+        "rating": 5,
+        "registered_at": "2025-12-06T16:55:46.000Z",
+        "resource": "This Mental Model Changed How I Design Software FOREVER - https://www.youtube.com/watch?v=U6PM8WehhJg",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            true
+        ],
+        "speakers": [
+            "reczijcDpu4sMjnlA"
+        ],
+        "speakers_names": [
+            "Emily Bache"
+        ],
+        "topics": [
+            "recmuONwokRtPS6Tp",
+            "recDnzAEazkBJFFZh",
+            "recmPbBNpUB7Q5XyX",
+            "rechj5WeSQRH211np",
+            "recQ4hio93eTgzFTS"
+        ],
+        "topics_names": [
+            "AI",
+            "Mental models",
+            "tdd",
+            "Agile",
+            "Architecture"
+        ],
+        "url": "https://www.youtube.com/watch?v=U6PM8WehhJg"
+    },
+    {
         "airtable_createdTime": "2020-01-19T20:37:52.000Z",
         "airtable_id": "rec0szxoxg4meCztF",
         "blog_url": "https://www.eferro.net/2014/10/podcaststalks-2014-16-24-oct.html",
@@ -3592,6 +3633,44 @@
             "Devops"
         ],
         "url": "https://www.codurance.com/publications/challenges-oportunities-platform-engineering-devops"
+    },
+    {
+        "airtable_createdTime": "2025-12-06T17:17:14.000Z",
+        "airtable_id": "rec6dNBlOT9adUKdG",
+        "conference_name": "Agile Meets Architecture",
+        "core_topic": "AI",
+        "created": "2025-12-06T17:17:14.000Z",
+        "description": "Simon Wardley introduces maps for strategic situational awareness, detailing how technological evolution, inertia, and the rise of AI impact decision-making and software architecture, emphasizing the challenge of deciding where humans maintain control\n",
+        "duration": 3420,
+        "language": "English",
+        "last_modified": "2025-12-06T17:23:25.000Z",
+        "less_15": 0,
+        "name": "From here to there and back again",
+        "notes": "Understanding and mapping your competitive landscape is crucial for effective strategy, as everything evolves and past success often creates inertia to necessary change. The rise of AI makes architectural decision-making increasingly about **consciously deciding where humans must maintain control** in systems, given the machine's ability to act as the real architect and decision-maker.\n\n- Strategy requires true situational awareness achieved through **maps**, which utilize an anchor (the user), position, and an evolutionary axis (Genesis to Commodity/Utility) to provide meaning to space.\n- Maps help overcome organizational inertia and past narratives, allowing for useful challenges focused on the landscape rather than the person or their \"story.\"\n- There is **no one-size-fits-all approach**; project methodologies (like Agile or Six Sigma), financing, and contracting must be tailored to the specific evolutionary stage of the components being addressed.\n- **Climactic Patterns** (economic rules like 'everything evolves,' 'past success breeds inertia,' and 'efficiency enables innovation') predict necessary changes and guide investment toward future needs and emerging practices, and away from inertia barriers.\n- The industrialization of machine cognition (LLMs/AI) results in **conversational programming** (vibe coding), where the machine rapidly builds systems and often becomes the real architect and decision-maker.\n- Architectural diagrams represent a belief of the system; the **real architecture is the code itself**, and the decisions are made by the entity creating that code.\n- The primary challenge for future system architecture is making the **conscious decision** about **where humans must maintain control** and involvement (requiring software engineering) and where control can be abandoned to the machine for convenience.\n\n",
+        "registered_at": "2025-12-06T17:17:14.000Z",
+        "resource": "From here to there and back again - https://www.youtube.com/watch?v=hEjjCI3kTM4",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "rec8kTBPLmBnKVM6g"
+        ],
+        "speakers_names": [
+            "Simon Wardley"
+        ],
+        "topics": [
+            "rec94mSWZ4bx2wFpf",
+            "recSz178X5sMJ2WW5",
+            "recmuONwokRtPS6Tp"
+        ],
+        "topics_names": [
+            "Technology Strategy",
+            "Strategy",
+            "AI"
+        ],
+        "url": "https://www.youtube.com/watch?v=hEjjCI3kTM4",
+        "year": 2025
     },
     {
         "airtable_createdTime": "2020-01-19T20:32:21.000Z",
@@ -8892,6 +8971,48 @@
         ],
         "url": "https://www.youtube.com/watch?v=9r9WDzzTcr0",
         "year": 2023
+    },
+    {
+        "airtable_createdTime": "2025-12-06T16:44:55.000Z",
+        "airtable_id": "recHBuUA3YcnehNZK",
+        "core_topic": "Company Culture",
+        "created": "2025-12-06T16:44:55.000Z",
+        "description": "Experts Jeff Gothelf and Josh Seiden detail how to define customer-centric Objectives and Key Results (OKRs) by focusing on measurable outcomes, encapsulated in the framework\u2019s core question: \"Who Does What By How Much?\"\n",
+        "duration": 4440,
+        "language": "English",
+        "last_modified": "2025-12-06T16:55:38.000Z",
+        "less_15": 0,
+        "name": "Who Does What by How Much? Customer-Centric OKRs explained with Jeff Gothelf and Josh Seiden #ccokrs",
+        "notes": "Effective goal setting using Objectives and Key Results (OKRs) must shift focus away from managing outputs (making a specific \"thing\") towards measuring measurable changes in **human behavior**\u2014defined by the question, **\"Who Does What By How Much?\"**\u2014which are the true indicators of delivered value and strategic success. This outcome-centric approach encourages organizations to **embrace agility** by constantly testing assumptions and changing course based on evidence, rather than relying on risky, long-term predictions about what to build.\n\n- **Outcome-Centric Goal Setting:** The most important shift in goal setting is moving from managing outputs (making a specific \"thing\") to managing outcomes, which are measurable changes in human behavior that deliver value.\n- **The Core Question for Outcomes:** The definition of an outcome is encapsulated in the question: \"**Who Does What By How Much?**\" This framework ensures goals are customer-centric, focused on a specific human, their changed behavior, and the degree of that change.\n- **OKRs as a Strategy Expression:** Objectives and Key Results (OKRs) must be an expression of your organization's strategy\u2014the opinionated approach to solving its most important problems and succeeding in the market. Implementing OKRs without considering strategy makes the framework a mechanical exercise.\n- **Objectives (O) Definition:** Objectives are qualitative, aspirational, inspirational, and time-bound goals that describe the desired future state of the world, focusing on solving a problem (e.g., \"the simplest,\" \"the safest\"). Objectives should explicitly exclude features, solutions, or metrics.\n- **Key Results (KR) Definition:** Key Results are the measurable metrics that answer: \"How will we know we have achieved the objective?\" They must be outcomes (measurable changes in human behavior) and are ideally expressed as ratios or rates (e.g., 25% more of this). Key Results should also exclude features or solutions.\n- **Embracing Uncertainty:** Organizations must acknowledge that they are constantly guessing because the future is unpredictable, especially with digital products. Modern technology and methodologies like Agile and Lean UX reduce the risk of guessing incorrectly, but organizations must use outcomes to course-correct quickly based on evidence.\n- **The Customer is Always Human:** Every person in an organization has a customer\u2014the human who consumes the product, system, or service they create. This includes external consumers, vendors, or internal colleagues. Measuring success requires measuring the behavior change of this specific human customer.\n- **Iterating on OKRs:** OKRs are based on assumptions and should not be static. Teams must use a regular cycle (commonly quarterly) to pause, reflect, and iterate on their objectives and key results based on new evidence and learning.\n- **Avoiding the \"Output Trap\" (The Anti-Pattern):** Managing to output carries high risk because it assumes certainty about what to build. While managing output may make sense for high-certainty, low-risk endeavors (like building a bridge), it is a dangerous anti-pattern in modern product development.\n- **Internal OKRs for Support Teams:** It is possible for internal teams (like IT or platform teams) to set valid OKRs by defining internal colleagues as their customers and measuring the value delivered to them (e.g., reducing deployment time from X to Y for developer teams).\n- **OKRs and Agility:** OKRs naturally integrate with Agile methodologies like Scrum, where sprints can be used for discovery activities and testing assumptions to see if they are moving the Key Results forward, thereby encouraging genuine agility by changing course based on evidence.\n\n",
+        "rating": 5,
+        "registered_at": "2025-12-06T16:44:55.000Z",
+        "resource": "Who Does What by How Much? Customer-Centric OKRs explained with Jeff Gothelf and Josh Seiden #ccokrs - https://www.youtube.com/watch?v=BjnwcC1Yia0",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null,
+            null
+        ],
+        "speakers": [
+            "recYTIjINdxXgPGxF",
+            "recVTZsARF8e43Dsk"
+        ],
+        "speakers_names": [
+            "Jeff Gothelf",
+            "Josh Seiden"
+        ],
+        "topics": [
+            "rechj5WeSQRH211np",
+            "recvlsvAt2LHjlKU2",
+            "recSz178X5sMJ2WW5",
+            "rechSTvKX9sm9HHMA"
+        ],
+        "topics_names": [
+            "Agile",
+            "Management",
+            "Strategy",
+            "Company Culture"
+        ],
+        "url": "https://www.youtube.com/watch?v=BjnwcC1Yia0"
     },
     {
         "airtable_createdTime": "2022-06-26T16:23:17.000Z",
@@ -18640,6 +18761,42 @@
             "Engineering Culture"
         ],
         "url": "https://www.youtube.com/watch?v=p5W_VCJ_2d0"
+    },
+    {
+        "airtable_createdTime": "2025-12-06T17:10:42.000Z",
+        "airtable_id": "recZIeA1YxWqFijf7",
+        "conference_name": "NDC",
+        "core_topic": "Data Engineering",
+        "created": "2025-12-06T17:10:42.000Z",
+        "description": "A deep dive into DuckDB, an embedded analytical database optimized for running high-performance analytical queries on \"medium data\" (1-100 GB range) locally on a single machine, with seamless integration for Python and diverse data sources\n",
+        "duration": 3720,
+        "language": "English",
+        "last_modified": "2025-12-06T17:16:10.000Z",
+        "less_15": 0,
+        "name": "Analytics for not-so-big data with DuckDB",
+        "notes": "Recognizing that most analytical workloads typically involve \"medium data\" (ranging from 1 to 100 gigabytes), professionals should leverage **DuckDB**, an embedded analytical database, for running complex, high-performance queries efficiently on a single machine without the cost and complexity associated with traditional big data infrastructure. DuckDB pushes the boundary of what is possible on a single machine, offering seamless integration with tools like Python and the ability to query diverse local and remote data sources, including Parquet files and databases like MySQL.\n\n- DuckDB is an **embedded analytical database** specifically designed to handle \"medium data\" workloads (typically 1 to 100 gigabytes) that are too large for standard transactional databases but do not justify expensive, complex big data infrastructure.\n- It is optimized for high-performance execution of complex analytical queries (like aggregations, joins, and pivots) by fully utilizing the CPU and memory resources of a **single machine** (such as a modern laptop).\n- Deployment is simple, requiring only a single file download, and it runs as an in-process library, making it highly portable and easy to set up.\n- DuckDB offers **seamless integration with Python** and the data science ecosystem, treating in-memory Pandas DataFrames as queryable tables, enabling fast data manipulation using SQL directly within application code.\n- It efficiently queries diverse local and remote data sources, including CSV, JSON, Excel, and especially the **columnar format Parquet**, leveraging internal statistics to minimize data transfer when querying remote files.\n- The database can connect to and query external databases (like MySQL), performing efficient joins between remote database tables and files in the cloud, often by pushing filtering conditions to the source data.\n- It is an excellent, low-overhead tool for quick and efficient Extract, Transform, Load (ETL) tasks, such as easily converting large CSV files into optimized Parquet files.\n\n\n",
+        "registered_at": "2025-12-06T17:10:42.000Z",
+        "resource": "Analytics for not-so-big data with DuckDB - https://www.youtube.com/watch?v=3iy9qaGopyw",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recPttJ98PPwKt848"
+        ],
+        "speakers_names": [
+            "David Ostrovsky"
+        ],
+        "topics": [
+            "recUnYzKrJyW20xWO",
+            "rec1itjm3GvHRxFZu"
+        ],
+        "topics_names": [
+            "Data Engineering",
+            "Performance"
+        ],
+        "url": "https://www.youtube.com/watch?v=3iy9qaGopyw",
+        "year": 2025
     },
     {
         "airtable_createdTime": "2020-01-19T20:39:05.000Z",
