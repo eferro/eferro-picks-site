@@ -55,4 +55,37 @@ describe('Autocomplete', () => {
   it('deduplicates speakers', () => {
     expect(ac.autocompleteSpeakers('')).toEqual(['Alice', 'Bob', 'Carol']);
   });
+
+  describe('accent/diacritic handling', () => {
+    const talksWithAccents: Talk[] = [
+      {
+        id: '1',
+        title: 'Talk',
+        url: '',
+        duration: 0,
+        topics: ['Diseño de Software', 'Programación'],
+        speakers: ['Rafa Gómez', 'José García'],
+        description: '',
+        core_topic: ''
+      }
+    ];
+    const acWithAccents = new Autocomplete(talksWithAccents);
+
+    it('finds speakers when searching without accents', () => {
+      expect(acWithAccents.autocompleteSpeakers('Gomez')).toEqual(['Rafa Gómez']);
+      expect(acWithAccents.autocompleteSpeakers('gomez')).toEqual(['Rafa Gómez']);
+      expect(acWithAccents.autocompleteSpeakers('Garcia')).toEqual(['José García']);
+      expect(acWithAccents.autocompleteSpeakers('Jose')).toEqual(['José García']);
+    });
+
+    it('finds speakers when searching with accents', () => {
+      expect(acWithAccents.autocompleteSpeakers('Gómez')).toEqual(['Rafa Gómez']);
+      expect(acWithAccents.autocompleteSpeakers('García')).toEqual(['José García']);
+    });
+
+    it('finds topics when searching without accents', () => {
+      expect(acWithAccents.autocompleteTopics('Diseno')).toEqual(['Diseño de Software']);
+      expect(acWithAccents.autocompleteTopics('Programacion')).toEqual(['Programación']);
+    });
+  });
 });

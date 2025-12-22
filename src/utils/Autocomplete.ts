@@ -1,5 +1,17 @@
 import type { Talk } from '../types/talks';
 
+/**
+ * Normalizes text for accent-insensitive comparison.
+ * Uses NFD normalization to decompose accented characters,
+ * then removes combining diacritical marks.
+ */
+function normalizeForSearch(text: string): string {
+  return text
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+}
+
 export class Autocomplete {
   private topics: string[];
   private speakers: string[];
@@ -22,12 +34,12 @@ export class Autocomplete {
   }
 
   autocompleteTopics(query: string): string[] {
-    const normalized = query.toLowerCase();
-    return this.topics.filter(t => t.toLowerCase().includes(normalized));
+    const normalized = normalizeForSearch(query);
+    return this.topics.filter(t => normalizeForSearch(t).includes(normalized));
   }
 
   autocompleteSpeakers(query: string): string[] {
-    const normalized = query.toLowerCase();
-    return this.speakers.filter(s => s.toLowerCase().includes(normalized));
+    const normalized = normalizeForSearch(query);
+    return this.speakers.filter(s => normalizeForSearch(s).includes(normalized));
   }
 }
