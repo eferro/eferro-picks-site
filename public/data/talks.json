@@ -2887,6 +2887,29 @@
         "year": 2018
     },
     {
+        "airtable_createdTime": "2025-12-22T10:56:47.000Z",
+        "airtable_id": "rec5XHxmxsE61xKzG",
+        "created": "2025-12-22T10:56:47.000Z",
+        "duration": 1015,
+        "language": "English",
+        "last_modified": "2025-12-22T11:16:01.000Z",
+        "less_15": 0,
+        "name": "You ONLY Get Code LIKE THIS With TDD",
+        "registered_at": "2025-12-22T10:56:47.000Z",
+        "resource": "You ONLY Get Code LIKE THIS With TDD - https://www.youtube.com/watch?v=aG6yhdQ9mLc",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recTA39Jo1ozZG61R"
+        ],
+        "speakers_names": [
+            "Dave Farley"
+        ],
+        "url": "https://www.youtube.com/watch?v=aG6yhdQ9mLc"
+    },
+    {
         "airtable_createdTime": "2021-06-19T11:36:15.000Z",
         "airtable_id": "rec5ZcieT8peh37cq",
         "created": "2021-06-19T11:36:15.000Z",
@@ -7115,6 +7138,29 @@
         "url": "https://changelog.com/shipit/62"
     },
     {
+        "airtable_createdTime": "2025-12-22T10:56:46.000Z",
+        "airtable_id": "recDLvMvnYp9HLPv9",
+        "created": "2025-12-22T10:56:46.000Z",
+        "duration": 1885,
+        "language": "English",
+        "last_modified": "2025-12-22T11:14:42.000Z",
+        "less_15": 0,
+        "name": "Building effective engineering teams; lessons from 10 years at Google | Addy Osmani",
+        "registered_at": "2025-12-22T10:56:46.000Z",
+        "resource": "Building effective engineering teams; lessons from 10 years at Google | Addy Osmani - https://www.youtube.com/watch?v=_yzPibVuBxc",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "rech75AMWdboABNQ5"
+        ],
+        "speakers_names": [
+            "Addy Osmani"
+        ],
+        "url": "https://www.youtube.com/watch?v=_yzPibVuBxc"
+    },
+    {
         "airtable_createdTime": "2020-01-19T20:37:08.000Z",
         "airtable_id": "recDPS7fNMOi7VkSD",
         "blog_url": "https://www.eferro.net/2015/06/more-interesting-podcaststalks.html",
@@ -10041,6 +10087,29 @@
         "url": "https://softwareengineeringdaily.com/2018/08/30/kubernetes-impact/"
     },
     {
+        "airtable_createdTime": "2025-12-22T10:56:49.000Z",
+        "airtable_id": "recIhlghfA5tyEg1w",
+        "created": "2025-12-22T10:56:49.000Z",
+        "duration": 1382,
+        "language": "English",
+        "last_modified": "2025-12-22T11:17:47.000Z",
+        "less_15": 0,
+        "name": "Rethinking growing engineers in the age of AI | Meri Williams | LDX3 London 2025",
+        "registered_at": "2025-12-22T10:56:49.000Z",
+        "resource": "Rethinking growing engineers in the age of AI | Meri Williams | LDX3 London 2025 - https://www.youtube.com/watch?v=palpFFMKuSU",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            true
+        ],
+        "speakers": [
+            "reclSAf5gzxww1lwv"
+        ],
+        "speakers_names": [
+            "Meri Williams"
+        ],
+        "url": "https://www.youtube.com/watch?v=palpFFMKuSU"
+    },
+    {
         "airtable_createdTime": "2020-11-09T08:50:02.000Z",
         "airtable_id": "recIpeGLRiiX3Wxw8",
         "blog_url": "https://www.eferro.net/2020/11/good-talkspodcasts-nov-2020-i.html",
@@ -10585,6 +10654,29 @@
             "Barry O'Reilly"
         ],
         "url": "http://www.se-radio.net/2015/08/se-radio-episode-234-barry-oreilly-on-lean-enterprise/"
+    },
+    {
+        "airtable_createdTime": "2025-12-22T10:56:48.000Z",
+        "airtable_id": "recK5kMUi3D1ogO09",
+        "created": "2025-12-22T10:56:48.000Z",
+        "duration": 938,
+        "language": "English",
+        "last_modified": "2025-12-22T11:17:19.000Z",
+        "less_15": 0,
+        "name": "The Biggest Problem With UI",
+        "registered_at": "2025-12-22T10:56:48.000Z",
+        "resource": "The Biggest Problem With UI - https://www.youtube.com/watch?v=xrg6vlKBAZ8",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recTA39Jo1ozZG61R"
+        ],
+        "speakers_names": [
+            "Dave Farley"
+        ],
+        "url": "https://www.youtube.com/watch?v=xrg6vlKBAZ8"
     },
     {
         "airtable_createdTime": "2021-12-04T13:50:37.000Z",
@@ -17444,6 +17536,29 @@
         "url": "https://www.youtube.com/watch?v=XhN6fJYG81A"
     },
     {
+        "airtable_createdTime": "2025-12-22T10:56:47.000Z",
+        "airtable_id": "recWXFcpVk5RubgFD",
+        "created": "2025-12-22T10:56:47.000Z",
+        "duration": 1424,
+        "language": "English",
+        "last_modified": "2025-12-22T11:15:23.000Z",
+        "less_15": 0,
+        "name": "Shaped by demand: The power of fluid teams | Daniel Terhorst-North | LDX3 London 2025",
+        "registered_at": "2025-12-22T10:56:47.000Z",
+        "resource": "Shaped by demand: The power of fluid teams | Daniel Terhorst-North | LDX3 London 2025 - https://www.youtube.com/watch?v=42cIULTvFiE",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recFwCH6SfELfIX3t"
+        ],
+        "speakers_names": [
+            "Dan North"
+        ],
+        "url": "https://www.youtube.com/watch?v=42cIULTvFiE"
+    },
+    {
         "airtable_createdTime": "2021-07-03T06:55:55.000Z",
         "airtable_id": "recWauvTxPOSravWx",
         "blog_url": "https://www.eferro.net/2021/07/good-talkspodcasts-jul-2021-i.html",
@@ -20809,6 +20924,29 @@
             "Technology Strategy"
         ],
         "url": "https://www.softwaretalks.io/v/4568/why-the-fuss-about-serverless-simon-wardley-at-ijs-london-2018"
+    },
+    {
+        "airtable_createdTime": "2025-12-22T10:56:45.000Z",
+        "airtable_id": "reccaIj8uTrWW1PIM",
+        "created": "2025-12-22T10:56:45.000Z",
+        "duration": 3432,
+        "language": "English",
+        "last_modified": "2025-12-22T11:13:38.000Z",
+        "less_15": 0,
+        "name": "Tidy First? A Daily Exercise in Empirical Design \u2022 Kent Beck \u2022 GOTO 2024",
+        "registered_at": "2025-12-22T10:56:45.000Z",
+        "resource": "Tidy First? A Daily Exercise in Empirical Design \u2022 Kent Beck \u2022 GOTO 2024 - https://www.youtube.com/watch?v=Saaz6D1azlU",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "rechBhL1vENLzvUi6"
+        ],
+        "speakers_names": [
+            "Kent Beck"
+        ],
+        "url": "https://www.youtube.com/watch?v=Saaz6D1azlU"
     },
     {
         "airtable_createdTime": "2024-09-15T07:27:42.000Z",
@@ -30193,6 +30331,29 @@
         "year": 2022
     },
     {
+        "airtable_createdTime": "2025-12-22T10:56:50.000Z",
+        "airtable_id": "recqf9rPtwIwFBBXd",
+        "created": "2025-12-22T10:56:50.000Z",
+        "duration": 2504,
+        "language": "English",
+        "last_modified": "2025-12-22T11:18:07.000Z",
+        "less_15": 0,
+        "name": "Rafa Gomez - Attacking tech Debt: A Marathon, Not a Sprint - SCBCN 25",
+        "registered_at": "2025-12-22T10:56:50.000Z",
+        "resource": "Rafa Gomez - Attacking tech Debt: A Marathon, Not a Sprint - SCBCN 25 - https://www.youtube.com/watch?v=8Zio1xIswug",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recGSWXy8idm6MBGP"
+        ],
+        "speakers_names": [
+            "Rafa G\u00f3mez"
+        ],
+        "url": "https://www.youtube.com/watch?v=8Zio1xIswug"
+    },
+    {
         "airtable_createdTime": "2020-01-19T20:36:44.000Z",
         "airtable_id": "recqhZpuINMBR9A9W",
         "blog_url": "https://www.eferro.net/2015/01/index.html",
@@ -32009,6 +32170,29 @@
             "Management"
         ],
         "url": "https://www.youtube.com/watch?v=jMpCF0Z623s"
+    },
+    {
+        "airtable_createdTime": "2025-12-22T10:56:48.000Z",
+        "airtable_id": "recteNE4yuLEneV3M",
+        "created": "2025-12-22T10:56:48.000Z",
+        "duration": 1133,
+        "language": "English",
+        "last_modified": "2025-12-22T11:16:52.000Z",
+        "less_15": 0,
+        "name": "An Ultimate Guide To BDD",
+        "registered_at": "2025-12-22T10:56:48.000Z",
+        "resource": "An Ultimate Guide To BDD - https://www.youtube.com/watch?v=gXh0iUt4TXA",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recTA39Jo1ozZG61R"
+        ],
+        "speakers_names": [
+            "Dave Farley"
+        ],
+        "url": "https://www.youtube.com/watch?v=gXh0iUt4TXA"
     },
     {
         "airtable_createdTime": "2020-01-19T20:35:25.000Z",
@@ -35348,6 +35532,29 @@
         ],
         "url": "https://www.youtube.com/watch?v=oKg1hTOQXoY",
         "year": 1997
+    },
+    {
+        "airtable_createdTime": "2025-12-22T10:56:46.000Z",
+        "airtable_id": "reczZkFQmqcwVw5Uj",
+        "created": "2025-12-22T10:56:46.000Z",
+        "duration": 1232,
+        "language": "English",
+        "last_modified": "2025-12-22T11:14:07.000Z",
+        "less_15": 0,
+        "name": "Unit Testing Is The BARE MINIMUM",
+        "registered_at": "2025-12-22T10:56:46.000Z",
+        "resource": "Unit Testing Is The BARE MINIMUM - https://www.youtube.com/watch?v=h-4i5N89TUI",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recTA39Jo1ozZG61R"
+        ],
+        "speakers_names": [
+            "Dave Farley"
+        ],
+        "url": "https://www.youtube.com/watch?v=h-4i5N89TUI"
     },
     {
         "airtable_createdTime": "2020-08-31T21:03:01.000Z",
