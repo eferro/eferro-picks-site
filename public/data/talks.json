@@ -2889,12 +2889,15 @@
     {
         "airtable_createdTime": "2025-12-22T10:56:47.000Z",
         "airtable_id": "rec5XHxmxsE61xKzG",
+        "core_topic": "Software Design",
         "created": "2025-12-22T10:56:47.000Z",
+        "description": "This talk explores Software Design as the core of development, illustrating how test-driven development (TDD) serves as a critical design tool for achieving modularity, cohesion, and continuous structural improvement.\n",
         "duration": 1015,
         "language": "English",
-        "last_modified": "2025-12-22T11:16:01.000Z",
+        "last_modified": "2025-12-22T15:44:01.000Z",
         "less_15": 0,
         "name": "You ONLY Get Code LIKE THIS With TDD",
+        "notes": "**Test-driven development (TDD)** serves as a primary **approach to software design** that utilizes rapid feedback loops to naturally produce high-quality code attributes such as **modularity, cohesion, and separation of concerns**. By writing tests first, developers can work in **small, incremental steps** and gain the confidence to safely **refactor and evolve** their designs while ensuring the intended behavior remains intact.\n\n- **Incremental Progress:** TDD organizes work into extremely small, manageable steps, providing a clear path forward even when tasks are complex.\n- **Rapid Feedback:** The cycle of writing a test and seeing it fail as predicted offers immediate feedback and learning before any production code is written.\n- **Software Design Tool:** TDD is primarily an approach to design that utilizes feedback to improve the quality and structure of the code.\n- **Quality Side Effects:** Aiming for testable code naturally promotes essential quality markers such as modularity, cohesion, separation of concerns, abstraction, and minimal coupling.\n- **Inherent Testability:** Writing tests before code ensures the resulting implementation is easy to test, avoiding the extra work of trying to test complex, existing code.\n- **Safe Refactoring:** The suite of tests created through TDD allows developers to safely change the structure of the code (refactor) with the confidence that they are not altering its intended behavior.\n- **Reduced Debugging:** Because tests are fine-grained and provide specific reasons for failure, the time spent manually debugging is significantly decreased.\n- **Flow Maintenance:** A failing test acts as a perfect \"bookmark,\" making it easy for a developer to pick up exactly where they left off after a break.\n- **Reliability:** Simple automated tests generated during TDD can prevent the majority of critical production failures caused by common coding mistakes like off-by-one errors.\n- **Creativity and Exploration:** Rather than limiting creativity, TDD acts as a tool\u2014much like a ruler for a carpenter\u2014to help developers explore the problem space and find better design answers.\n- **Support for Continuous Integration:** The fast, automated feedback provided by TDD is a prerequisite for successful continuous integration and high-frequency delivery.\n\n",
         "registered_at": "2025-12-22T10:56:47.000Z",
         "resource": "You ONLY Get Code LIKE THIS With TDD - https://www.youtube.com/watch?v=aG6yhdQ9mLc",
         "resource_type": "videopodcast",
@@ -2906,6 +2909,16 @@
         ],
         "speakers_names": [
             "Dave Farley"
+        ],
+        "topics": [
+            "recmPbBNpUB7Q5XyX",
+            "recin3Ync8iZldW0q",
+            "recm3GCPgEVSDmeVI"
+        ],
+        "topics_names": [
+            "tdd",
+            "Continuous Delivery",
+            "Software Design"
         ],
         "url": "https://www.youtube.com/watch?v=aG6yhdQ9mLc"
     },
@@ -7140,12 +7153,16 @@
     {
         "airtable_createdTime": "2025-12-22T10:56:46.000Z",
         "airtable_id": "recDLvMvnYp9HLPv9",
+        "conference_name": "LeadDev",
+        "core_topic": "Engineering Culture",
         "created": "2025-12-22T10:56:46.000Z",
+        "description": "An exploration of how Engineering Culture integrates Technical Leadership, Management, and Developer Productivity to optimize Teams through Agile and DevOps practices.\t\n",
         "duration": 1885,
         "language": "English",
-        "last_modified": "2025-12-22T11:14:42.000Z",
+        "last_modified": "2025-12-22T15:39:46.000Z",
         "less_15": 0,
         "name": "Building effective engineering teams; lessons from 10 years at Google | Addy Osmani",
+        "notes": "Fostering a strong Engineering Culture is the essential foundation for synchronizing Technical Leadership, Management, and Agile practices to optimize Developer Productivity within Teams.... Achieving this alignment ensures that Technology Strategy and Technical Practices work together to drive continuous improvement and successful Product delivery.\n\n- **Engineering Culture** serves as the unifying framework for **Technical Leadership**, **Management**, and the development of **Teams**.\n- High-performing organizations prioritize **Developer Productivity** and **Developer Experience (Devex)** to maximize organizational **Flow**.\n- The core of technical success involves embedding **Agile**, **XP**, and **DevOps** practices to ensure reliable **Continuous Delivery**.\n- **Systems Thinking** and **Team Topologies** are essential for designing organizations that can handle **Scalability** and complex **Architecture**.\n- **Technical Practices** must include **Evolutionary Design**, **Software Design**, and **Craftsmanship** to effectively manage **Legacy Code**.\n- Success requires aligning **Technology Strategy** with **Product Strategy** through **Lean Startup** and **Product Discovery** principles.\n- Continuous improvement is driven by a focus on **Feedback Cycles**, **Testing**, **Refactoring**, and **Observability**.\n\n",
         "registered_at": "2025-12-22T10:56:46.000Z",
         "resource": "Building effective engineering teams; lessons from 10 years at Google | Addy Osmani - https://www.youtube.com/watch?v=_yzPibVuBxc",
         "resource_type": "talk",
@@ -7158,7 +7175,18 @@
         "speakers_names": [
             "Addy Osmani"
         ],
-        "url": "https://www.youtube.com/watch?v=_yzPibVuBxc"
+        "topics": [
+            "recWFKWrPEdeEYbzx",
+            "recin3Ync8iZldW0q",
+            "rechj5WeSQRH211np"
+        ],
+        "topics_names": [
+            "Engineering Culture",
+            "Continuous Delivery",
+            "Agile"
+        ],
+        "url": "https://www.youtube.com/watch?v=_yzPibVuBxc",
+        "year": 2022
     },
     {
         "airtable_createdTime": "2020-01-19T20:37:08.000Z",
@@ -10658,10 +10686,12 @@
     {
         "airtable_createdTime": "2025-12-22T10:56:48.000Z",
         "airtable_id": "recK5kMUi3D1ogO09",
+        "core_topic": "Software Design",
         "created": "2025-12-22T10:56:48.000Z",
+        "description": "This talk explains why UI/UX design should be treated as an integral software design choice rather than a static specification, advocating for development teams to own the UI to ensure the system accurately reflects the user's mental model.\n",
         "duration": 938,
         "language": "English",
-        "last_modified": "2025-12-22T11:17:19.000Z",
+        "last_modified": "2025-12-22T16:25:50.000Z",
         "less_15": 0,
         "name": "The Biggest Problem With UI",
         "registered_at": "2025-12-22T10:56:48.000Z",
@@ -10675,6 +10705,16 @@
         ],
         "speakers_names": [
             "Dave Farley"
+        ],
+        "topics": [
+            "recin3Ync8iZldW0q",
+            "recynJ6SkSnezmQrV",
+            "recm3GCPgEVSDmeVI"
+        ],
+        "topics_names": [
+            "Continuous Delivery",
+            "team topologies",
+            "Software Design"
         ],
         "url": "https://www.youtube.com/watch?v=xrg6vlKBAZ8"
     },
@@ -17538,12 +17578,16 @@
     {
         "airtable_createdTime": "2025-12-22T10:56:47.000Z",
         "airtable_id": "recWXFcpVk5RubgFD",
+        "conference_name": "LDX3",
+        "core_topic": "Agile",
         "created": "2025-12-22T10:56:47.000Z",
+        "description": "Daniel Terhorst-North presents demand-led planning as a framework for building fluid, autonomous teams that self-organize quarterly to balance delivery, discovery, and Kaizen based on real-time organizational demand.\n",
         "duration": 1424,
         "language": "English",
-        "last_modified": "2025-12-22T11:15:23.000Z",
+        "last_modified": "2025-12-22T15:39:09.000Z",
         "less_15": 0,
         "name": "Shaped by demand: The power of fluid teams | Daniel Terhorst-North | LDX3 London 2025",
+        "notes": "Organizations can achieve true business agility by **shaping fluid, autonomous teams to fit shifting demand** rather than forcing work into static structures, relying on shared values and clear \"rules of the road\" to enable rapid team formation. By allowing people to **self-organize around pitched work**\u2014balancing delivery, discovery, and continuous improvement\u2014companies foster higher engagement and a stronger connection to the value being delivered.\n\n- **Business agility** is the process of designing an organization so it can effectively respond to feedback, understand its customers, and execute its goals.\n- Effective organizational design builds the best structure to perform the best work for the present moment, acknowledging that **structures must change** as the nature of work evolves.\n- Work is categorized into **Delivery** (features), **Discovery** (learning and risk management), **Kaizen** (continuous system improvement), and **BAU** (running the business).\n- The belief that teams require long \"stable\" periods to jell is based on flawed research; teams with shared values and goals can become productive within **hours or days**.\n- **Demand-led planning** flips traditional structures by shaping teams to fit current demand rather than forcing work into pre-existing team silos.\n- Quarterly planning cycles should shift focus between delivery, discovery, and Kaizen, with the rule that **none of these categories should ever be zero**.\n- **True autonomy** means a team has the skills, knowledge, experience, authority, and resources (the \"plane\") to consume work without being blocked by external delays.\n- Optimal team sizes range from **three to ten people** to avoid the overhead of constant meetings or internal friction.\n- Knowledge is spread by **\"bumblebees\"** who move between teams, ideally limited by a **3x3 rule**: no more than three teams per person and no more than three such individuals per team per quarter.\n- High engagement occurs when work is pitched by product or technical leads and individuals are allowed to **choose the projects** they find most valuable.\n- Teams should establish **\"Big Hairy Audacious Goals\"** (BHAGs) that are aspirational and encourage maximum progress without the threat of punishment for falling short.\n- Collaborative planning sessions should be high-energy and conclude with social activities like **\"breaking bread\"** to foster a sense of community and culture.\n\n",
         "registered_at": "2025-12-22T10:56:47.000Z",
         "resource": "Shaped by demand: The power of fluid teams | Daniel Terhorst-North | LDX3 London 2025 - https://www.youtube.com/watch?v=42cIULTvFiE",
         "resource_type": "talk",
@@ -17556,7 +17600,18 @@
         "speakers_names": [
             "Dan North"
         ],
-        "url": "https://www.youtube.com/watch?v=42cIULTvFiE"
+        "topics": [
+            "recs3XV2rYhyC6qe8",
+            "rechj5WeSQRH211np",
+            "recrNBL2FKBzgsQTs"
+        ],
+        "topics_names": [
+            "Teams",
+            "Agile",
+            "Product Discovery"
+        ],
+        "url": "https://www.youtube.com/watch?v=42cIULTvFiE",
+        "year": 2025
     },
     {
         "airtable_createdTime": "2021-07-03T06:55:55.000Z",
@@ -32191,12 +32246,15 @@
     {
         "airtable_createdTime": "2025-12-22T10:56:48.000Z",
         "airtable_id": "recteNE4yuLEneV3M",
+        "core_topic": "Continuous Delivery",
         "created": "2025-12-22T10:56:48.000Z",
+        "description": "Dave Farley explains how Behavior-Driven Development (BDD) utilizes executable specifications to improve software design and collaboration, facilitating excellence in Continuous Delivery through a user-centric, outside-in approach.\n",
         "duration": 1133,
         "language": "English",
-        "last_modified": "2025-12-22T11:16:52.000Z",
+        "last_modified": "2025-12-22T16:05:19.000Z",
         "less_15": 0,
         "name": "An Ultimate Guide To BDD",
+        "notes": "Effective software development requires shifting the focus from testing implementation details to creating **executable specifications** that describe desired behaviors from an outside-in, user-centric perspective,. This approach ensures that tests remain durable in the face of change while providing a clear functional description that facilitates better communication across the entire team,.\n\n- **Focus on Behavior over Implementation:** Behavior-Driven Development (BDD) is a design and development methodology focused on defining system behavior from the user's perspective rather than testing internal implementation details.\n- **Shift from Testing to Specification:** Transition terminology from \"tests\" and \"test cases\" to \"specifications\" and \"scenarios\" to emphasize defining desired outcomes and functional requirements.\n- **Outside-In Design:** Design software by first considering the user's goals and experiences; if a specification is difficult to write, it indicates the code will be difficult to use.\n- **Decoupling from Code Details:** Ensure specifications are durable by avoiding technical details like UI element IDs or specific database schemas, which allows the internal implementation to change without breaking the tests.\n- **Ubiquitous Problem Language:** Use the language of the problem domain rather than technical solution language to improve collaboration and communication between developers, domain experts, and stakeholders.\n- **Executable Specifications:** Treat tests as live documentation that provides a clear functional description of what the software actually does, verified by the fact that the tests pass.\n- **Incremental Translation Process:** Move from vague user wishes to refined user stories, then to concrete examples (acceptance criteria), and finally to executable code.\n- **Maintainability and Scale:** Abstracting domain-level concepts allows for better reuse of test logic and ensures that when a system change occurs, maintenance can be handled in a single step rather than across hundreds of brittle tests.\n- **Freedom to Evolve:** By focusing on outcomes rather than how the code works, teams retain the freedom to refactor and improve their designs as they learn more without losing the safety net of their specifications.\n\n\n",
         "registered_at": "2025-12-22T10:56:48.000Z",
         "resource": "An Ultimate Guide To BDD - https://www.youtube.com/watch?v=gXh0iUt4TXA",
         "resource_type": "videopodcast",
@@ -32208,6 +32266,16 @@
         ],
         "speakers_names": [
             "Dave Farley"
+        ],
+        "topics": [
+            "recm3GCPgEVSDmeVI",
+            "recmPbBNpUB7Q5XyX",
+            "recin3Ync8iZldW0q"
+        ],
+        "topics_names": [
+            "Software Design",
+            "tdd",
+            "Continuous Delivery"
         ],
         "url": "https://www.youtube.com/watch?v=gXh0iUt4TXA"
     },
@@ -35553,12 +35621,15 @@
     {
         "airtable_createdTime": "2025-12-22T10:56:46.000Z",
         "airtable_id": "reczZkFQmqcwVw5Uj",
+        "core_topic": "Software Design",
         "created": "2025-12-22T10:56:46.000Z",
+        "description": "Learn how Test-Driven Development (TDD) serves as a critical act of design to achieve high-quality software by specifying behavior over implementation and enhancing modularity\n",
         "duration": 1232,
         "language": "English",
-        "last_modified": "2025-12-22T11:14:07.000Z",
+        "last_modified": "2025-12-22T15:26:29.000Z",
         "less_15": 0,
         "name": "Unit Testing Is The BARE MINIMUM",
+        "notes": "True **test-driven development** serves as a vital **design tool** that focuses on **specifying behavior** rather than implementation, which naturally results in **high-quality, modular, and loosely coupled code**. Conversely, writing tests after the code is finished lacks this design pressure, often leading to **complex, fragile systems** where tests and code are \"welded\" together, ultimately hindering long-term agility and speed.\n\n**Analogy for Understanding:** Practicing **TDD** is like **drafting a precise blueprint for a puzzle piece** before you carve it, ensuring it fits perfectly into the overall structure; writing tests **after** the code is like **shaping a block of wood first** and then trying to build a cage around it, only to realize the cage is so tight that neither the piece nor the structure can ever be moved again.\n\n- **TDD is primarily a tool for design** rather than just a testing activity, focusing on driving code development from tests to ensure testability from the start.\n- The ultimate goal of TDD is to achieve **very high-quality software**, which is the fundamental driver that allows teams to build software **faster and better**.\n- Writing tests first forces developers to design the **external view** of their code, creating \"measurement points\" that expose what is happening without increasing coupling or compromising information hiding.\n- **\"Test-after\" development** (writing tests after the functional code) lacks design pressure, resulting in code that is inherently less testable, more complex, and harder to maintain.\n- Tests written after the fact tend to be **bigger, flakier, and more tightly coupled** to implementation details because the code was not designed to be easily faked or isolated.\n- The properties valued in high-quality design\u2014such as **modularity, cohesion, and separation of concerns**\u2014are the exact same properties that make code testable.\n- TDD serves as a **specification of behavior**, focusing on what the code should do rather than how it works, which results in simpler and more flexible implementations.\n- Systems built without test-first pressure often become **\"set like concrete,\"** where code and tests are so \"welded\" together that changing the implementation unnecessarily breaks the tests.\n- In **legacy systems**, a \"test-after\" approach should be used only as a **tactical defensive layer** to facilitate refactoring, while all new work should be done using true TDD.\n- True unit tests should be **small, narrowly scoped, and simple**, providing a single reason to fail and acting as a clear specification of intended outcomes.\n\n\n\n",
         "registered_at": "2025-12-22T10:56:46.000Z",
         "resource": "Unit Testing Is The BARE MINIMUM - https://www.youtube.com/watch?v=h-4i5N89TUI",
         "resource_type": "videopodcast",
@@ -35570,6 +35641,16 @@
         ],
         "speakers_names": [
             "Dave Farley"
+        ],
+        "topics": [
+            "recmPbBNpUB7Q5XyX",
+            "recin3Ync8iZldW0q",
+            "recm3GCPgEVSDmeVI"
+        ],
+        "topics_names": [
+            "tdd",
+            "Continuous Delivery",
+            "Software Design"
         ],
         "url": "https://www.youtube.com/watch?v=h-4i5N89TUI"
     },
