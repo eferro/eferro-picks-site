@@ -20928,12 +20928,16 @@
     {
         "airtable_createdTime": "2025-12-22T10:56:45.000Z",
         "airtable_id": "reccaIj8uTrWW1PIM",
+        "conference_name": "GOTO",
+        "core_topic": "Software Design",
         "created": "2025-12-22T10:56:45.000Z",
+        "description": "Kent Beck explores software design as a socio-technical exercise in human relationships and economic optionality, offering a framework to balance feature delivery with a sustainable engineering culture rooted in Agile-XP principles\n",
         "duration": 3432,
         "language": "English",
-        "last_modified": "2025-12-22T11:13:38.000Z",
+        "last_modified": "2025-12-22T15:20:33.000Z",
         "less_15": 0,
         "name": "Tidy First? A Daily Exercise in Empirical Design \u2022 Kent Beck \u2022 GOTO 2024",
+        "notes": "Effective software design is a socio-technical discipline where managing technical **coupling** serves to strengthen human relationships and create economic value through **optionality**,,. By interlacing structural improvements with feature delivery in small, interruptible steps, developers can balance immediate business needs with the long-term sustainability and flexibility of the system.\n\n- **Software design is primarily an exercise in human relationships**, where technical skills serve to build trust, align incentives, and improve communication within a team,.\n- **The core technical challenge of design is managing coupling**, defined as a relationship where changing one element necessitates changing another, thereby controlling the propagation of change,,.\n- **Design decisions are governed by three economic imperatives**: ensuring the software's survival through early growth phases, maximizing Net Present Value by deferring costs and accelerating earnings, and creating optionality for future pivots,,,.\n- **The \"Tidy First\" moment represents the smallest quantum of design**, occurring when a programmer chooses whether to improve code structure before implementing a functional change as a form of \"self-care\" or team care,.\n- **Empirical software design seeks to balance visible feature delivery with the indirectly observable health of the system's structure**, preventing the \"feature hamster wheel\" from eroding long-term sustainability,,.\n- **Systems should grow like a tree through differentiation**, starting from a small \"seed\" and evolving through continuous structural splits rather than big design up front,.\n- **Structural changes should be made interruptible by utilizing \"parallels,\"** allowing old and new designs to coexist so that technical improvements do not block immediate business needs,.\n- **At a micro level, developers should strictly separate structural \"tidying\" from functional changes** in their workflow to preserve the clarity and reversibility of their work,.\n- **Effective leadership prioritizes purpose over pressure**, creating the necessary creative space for designers to realize the nonlinear value and \"jackpot payoffs\" possible in software,,.\n\n",
         "registered_at": "2025-12-22T10:56:45.000Z",
         "resource": "Tidy First? A Daily Exercise in Empirical Design \u2022 Kent Beck \u2022 GOTO 2024 - https://www.youtube.com/watch?v=Saaz6D1azlU",
         "resource_type": "talk",
@@ -20946,7 +20950,20 @@
         "speakers_names": [
             "Kent Beck"
         ],
-        "url": "https://www.youtube.com/watch?v=Saaz6D1azlU"
+        "topics": [
+            "recm3GCPgEVSDmeVI",
+            "recWFKWrPEdeEYbzx",
+            "rechj5WeSQRH211np",
+            "recYkFYw6BSRfA0Ce"
+        ],
+        "topics_names": [
+            "Software Design",
+            "Engineering Culture",
+            "Agile",
+            "XP"
+        ],
+        "url": "https://www.youtube.com/watch?v=Saaz6D1azlU",
+        "year": 2024
     },
     {
         "airtable_createdTime": "2024-09-15T07:27:42.000Z",
