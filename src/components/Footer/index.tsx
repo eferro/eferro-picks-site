@@ -13,6 +13,15 @@ export function Footer() {
             >
               Visit my website
             </a>
+            {' · '}
+            <a 
+              href="https://eferro.github.io/eferro-picks-site/data/talks.json" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-800 transition-colors"
+            >
+              JSON API
+            </a>
           </p>
           <a href="https://librecounter.org/refer/show" target="_blank" rel="noopener noreferrer">
             <img 

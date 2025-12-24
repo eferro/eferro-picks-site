@@ -22,4 +22,12 @@ describe('Footer', () => {
     expect(img).toHaveAttribute('src', 'https://librecounter.org/counter.svg');
     expect(img).toHaveClass('h-6 w-auto opacity-50 hover:opacity-75 transition-opacity');
   });
+
+  it('displays JSON API link pointing to talks data', () => {
+    renderWithRouter(<Footer />);
+    const apiLink = screen.getByRole('link', { name: /json api/i });
+    expect(apiLink).toHaveAttribute('href', 'https://eferro.github.io/eferro-picks-site/data/talks.json');
+    expect(apiLink).toHaveAttribute('target', '_blank');
+    expect(apiLink).toHaveAttribute('rel', 'noopener noreferrer');
+  });
 });
