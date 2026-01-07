@@ -5,6 +5,30 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 import type { Talk } from '../types/talks';
 
+// Configure window.location for happy-dom compatibility with react-router
+// BrowserRouter needs window.location.origin and window.location.href
+if (!window.location.origin || window.location.origin === 'null') {
+  const TEST_ORIGIN = 'http://localhost:3000';
+  Object.defineProperty(window, 'location', {
+    value: {
+      origin: TEST_ORIGIN,
+      href: `${TEST_ORIGIN}/`,
+      pathname: '/',
+      search: '',
+      hash: '',
+      host: 'localhost:3000',
+      hostname: 'localhost',
+      port: '3000',
+      protocol: 'http:',
+      assign: vi.fn(),
+      replace: vi.fn(),
+      reload: vi.fn(),
+      toString: () => `${TEST_ORIGIN}/`,
+    },
+    writable: true,
+  });
+}
+
 // Cache parsed JSON to avoid repeated I/O
 let cachedTalksData: Talk[] | null = null;
 
