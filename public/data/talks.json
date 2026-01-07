@@ -10128,14 +10128,14 @@
         "description": "Meri Williams explores the urgent need to rethink engineering growth in the age of AI, advocating for a shift from manual coding tasks toward early tech leadership, systems thinking, and a \"healthy paranoia\" that allows leaders to \"surf\" the waves of technological change rather than be overwhelmed by them.\t\n",
         "duration": 1382,
         "language": "English",
-        "last_modified": "2025-12-22T17:04:32.000Z",
+        "last_modified": "2026-01-06T09:53:40.000Z",
         "less_15": 0,
-        "name": "Rethinking growing engineers in the age of AI | Meri Williams | LDX3 London 2025",
+        "name": "Rethinking growing engineers in the age of AI",
         "notes": "Engineering leaders must proactively **redesign training models** to replace the \"deliberate practice\" once provided by repetitive junior tasks now handled by AI, focusing instead on accelerating **foundational skills, systems thinking, and code review** much earlier in an engineer's career,,. Ultimately, rather than resisting technological shifts, organizations should embrace a sense of **\"healthy paranoia\"** and teach their teams to \"surf\" the waves of AI by prioritizing critical thinking and a deep understanding of why systems work or fail,.\n\n- **Disruption of Entry-Level Roles:** AI coding assistants are performing the well-scoped, repetitive tasks traditionally assigned to junior engineers, leading to a significant reduction\u2014estimated at 75%\u2014in entry-level hiring across the industry.\n- **Loss of Deliberate Practice:** Traditional junior work provided \"accidental\" deliberate practice through repetitive tasks and immediate feedback; because AI now handles this work, leaders must find new ways to help engineers build foundational skills like debugging and recognizing \"code smells\".\n- **Accelerated Career Expectations:** Junior engineers are being required to perform \"tech lead\" functions, such as systems thinking and code review, much earlier in their careers because AI allows them to handle larger stories and complex tasks immediately.\n- **New Required Skillsets:** Beyond coding, engineers must now prioritize critical thinking, effective AI prompting, and \"healthy paranoia\" to verify AI-generated outputs against documentation and real-world behavior.\n- **AI as an \"Endlessly Patient Mentor\":** Junior staff are increasingly using AI to explain code and troubleshoot, which provides constant support but lacks the wisdom of human experience and may reduce traditional coaching interactions.\n- **Bridging the \"Unconscious Competence\" Gap:** Senior engineers often struggle to teach because they perform expert tasks automatically; they must learn to actively deconstruct their knowledge and explain the \"why\" behind design decisions rather than hiding behind \"best practices\".\n- **Adapting Training Models:** Rather than resisting AI, engineering leaders must redesign training to focus on foundations and mentorship, adopting the philosophy that while you \"can't hold back the ocean\" of technological change, you can \"learn to surf\".\n\n",
         "published": true,
         "rating": 5,
         "registered_at": "2025-12-22T10:56:49.000Z",
-        "resource": "Rethinking growing engineers in the age of AI | Meri Williams | LDX3 London 2025 - https://www.youtube.com/watch?v=palpFFMKuSU",
+        "resource": "Rethinking growing engineers in the age of AI - https://www.youtube.com/watch?v=palpFFMKuSU",
         "resource_type": "talk",
         "speaker_women_in_tech": [
             true
@@ -11243,15 +11243,16 @@
         "conference_name": "hack.summit()",
         "core_topic": "Continuous Delivery",
         "created": "2020-01-19T20:42:36.000Z",
-        "description": "Hack Summit 2016\n",
+        "description": "Chad Fowler explores the concept of building software that can be thrown away, advocating for immutable infrastructure and heterogeneous microservices that mimic biological homeostasis to create resilient, long-lasting systems through the constant replacement of small, disposable components.\n",
         "duration": 3420,
         "language": "English",
-        "last_modified": "2025-05-02T07:24:28.000Z",
+        "last_modified": "2026-01-07T12:37:48.000Z",
         "less_15": 0,
-        "name": "https://www.youtube.com/watch?v=DVSNsAei0VE",
+        "name": "Hacksummit 2014 Chad Fowler / Disposable components",
+        "notes": "Developers can create resilient, long-lasting software by building systems composed of **tiny, disposable components** and **immutable infrastructure** that mimic biological homeostasis through constant replacement. This approach emphasizes **prioritizing automation** and **rapid failure resolution** over the impossible goal of preventing errors, ensuring the system remains easy to change and upgrade indefinitely.\nMuch like the human body remains a single, healthy organism while constantly replacing millions of individual cells every second, a robust software architecture should thrive by treating its components as short-lived, replaceable units rather than permanent fixtures.\n\n- **The Problem of \"Legacy\":** Most software projects fail or become \"legacy\"\u2014a state where code is feared, tightly coupled, and difficult to understand or change.\n- **The Biological Metaphor (Homeostasis):** Software should mimic living organisms that maintain health by constantly replacing millions of individual cells while the overall system lives on.\n- **Immutable Infrastructure:** Servers (nodes) should be treated as disposable; instead of patching or changing an existing server, it should be killed and replaced with a fresh, automated deployment to prevent \"cruft\" and configuration drift.\n- **Tiny, Disposable Components:** Build systems using microservices that are so small (\"this big\") they can be rewritten or thrown away in a few hours if they become problematic or obsolete.\n- **Heterogeneous Tech Stacks:** Using a variety of languages (Ruby, Scala, Haskell, etc.) prevents technology lock-in and makes continuous technology upgrades a natural part of the development lifecycle.\n- **Prioritize MTTR over MTBF:** Instead of trying to prevent all failures (Mean Time Between Failures), optimize for **Mean Time to Resolution** by assuming things will fail and building the capacity to recover instantly.\n- **Monitoring as \"Religion\":** Favor live monitoring and business-metric tracking (e.g., sign-up dips) over massive, brittle test suites to identify and resolve issues in production.\n- **Data Encapsulation:** Each service should own its own data and database, allowing for independent scaling and technology choices, even at the cost of traditional referential integrity.\n- **Postel's Law for Evolution:** Be conservative in what you send and liberal in what you accept; services should be designed to ignore unexpected data to allow for seamless versioning and upgrades.\n- **Extreme Automation:** For a \"replace instead of repair\" philosophy to work, provisioning and deployment must be trivial, automated, and performed constantly to remove the fear of change.\n\n",
         "published": true,
         "registered_at": "2020-01-19T20:42:36.000Z",
-        "resource": "https://www.youtube.com/watch?v=DVSNsAei0VE - https://www.youtube.com/watch?v=DVSNsAei0VE",
+        "resource": "Hacksummit 2014 Chad Fowler / Disposable components - https://www.youtube.com/watch?v=DVSNsAei0VE",
         "resource_type": "talk",
         "speaker_women_in_tech": [
             null
@@ -18481,6 +18482,43 @@
         "url": "https://www.youtube.com/watch?v=NaK2az4GNWE"
     },
     {
+        "airtable_createdTime": "2026-01-06T09:52:13.000Z",
+        "airtable_id": "recYVqQiJrqbUTzgz",
+        "core_topic": "Lean",
+        "created": "2026-01-06T09:52:13.000Z",
+        "description": "Michael Ball\u00e9 redefines Lean as a humanistic engineering philosophy centered on \"making people before making parts\" by prioritizing technical competence, Gemba-based collaboration, and strengthening workplace conditions to bridge the gap between top-down management and true frontline engagement.\n",
+        "duration": 3720,
+        "language": "English",
+        "last_modified": "2026-01-06T10:06:27.000Z",
+        "less_15": 0,
+        "name": "#156 How to deploy lean projects and more with author Michael Balle",
+        "notes": "**Lean** is a humanistic engineering philosophy that focuses on **\"making people to make parts\"** by shifting from top-down control to a collaborative partnership where leaders stretch the **technical competence** and responsibility of employees to ensure process changes genuinely make frontline work easier. This approach requires leaders to prioritize **Gemba-based curiosity** and co-construct solutions with their teams, focusing on strengthening workplace **conditions** rather than simply burdening processes with administrative checks.\n\n- **\"Make people before making parts\"**: The core philosophy of Lean is developing the technical competence and sense of responsibility of individuals so they can effectively solve problems.\n- **Engineering-Centric Focus**: Lean success is rooted in engineering rather than just production; the work environment serves as a \"test method\" for the quality of a design.\n- **Gemba-Based Leadership**: Leaders must reconcile their vision with reality by physically going to the Gemba (the place where work happens) to understand what staff and customers actually experience.\n- **Strengthening Conditions vs. Fighting Causes**: Rather than burdening processes with administrative checks to stop specific failures, focus on strengthening general conditions through maintenance, 5S, and teamwork training.\n- **Technical Competence for Leaders**: Leadership credibility is built on technical knowledge and curiosity; employees value technical competence and earnestness over administrative perfection or specific \"perfect\" behaviors.\n- **Making Work Easier**: A leader's responsibility for a change is only fulfilled when the new process is genuinely easier and smoother for the frontline operator than the previous one.\n- **Humanistic Partnership vs. Participative Taylorism**: Avoid \"participative Taylorism\"\u2014where workshops are held merely to gain buy-in for top-down changes\u2014and instead co-construct technical solutions with those doing the work.\n- **Solutions as the Next Problem**: Recognize that every solution eventually creates new failure modes; leadership involves taking responsibility for these consequences and working through them via a continuous cycle of Kaizen.\n- **Curiosity over Unilateral Control**: Shift from giving instructions and seeking command-and-control to curiosity-driven engagement that frames problems clearly so teams can experiment with solutions.\n\n",
+        "rating": 5,
+        "registered_at": "2026-01-06T09:52:13.000Z",
+        "resource": "#156 How to deploy lean projects and more with author Michael Balle - https://www.youtube.com/watch?v=p7cPZts3U5U",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recpkg79WnNLxEN24"
+        ],
+        "speakers_names": [
+            "Michael Balle"
+        ],
+        "topics": [
+            "recO11XlolI72a1fV",
+            "recWFKWrPEdeEYbzx",
+            "recvlsvAt2LHjlKU2"
+        ],
+        "topics_names": [
+            "Lean",
+            "Engineering Culture",
+            "Management"
+        ],
+        "url": "https://www.youtube.com/watch?v=p7cPZts3U5U"
+    },
+    {
         "airtable_createdTime": "2024-03-30T17:02:08.000Z",
         "airtable_id": "recYZ3cyr9Rm2u5Br",
         "blog_url": "https://www.eferro.net/2024/03/good-talkspodcasts-mar-2024-i.html",
@@ -24314,6 +24352,49 @@
             "James Turnbull"
         ],
         "url": "http://www.se-radio.net/2015/01/episode-217-james-turnbull-on-docker/"
+    },
+    {
+        "airtable_createdTime": "2026-01-06T10:21:59.000Z",
+        "airtable_id": "rechQinVg9p5VtZhE",
+        "core_topic": "AI Assisted Engineering",
+        "created": "2026-01-06T10:21:59.000Z",
+        "description": "Lada Kessler introduces Augmented Coding Patterns to navigate the \"black box\" of AI-assisted development by employing specialized single-purpose agents, high-level test specifications, and emoji-based context markers to monitor an agent's focus and internal knowledge.\n",
+        "duration": 2880,
+        "language": "English",
+        "last_modified": "2026-01-06T10:31:17.000Z",
+        "less_15": 0,
+        "name": "o11ycast - Ep. #87, Augmented Coding Patterns with Lada Kesseler",
+        "notes": "To effectively navigate the **\"silent black box\"** of AI coding assistants, developers must actively **manage complexity** by using **narrowly focused, single-purpose agents** and establishing **high-level observability** through visual markers and **rigorous feedback loops** like TDD. By maintaining strictly curated **\"knowledge checkpoints\"** and treating the AI as an **external cortex**, engineers can prevent context rot and ensure the agent remains a predictable, productive partner rather than a source of overwhelming noise.\n\n- **The Black Box Problem:** AI coding assistants act as silent, mysterious \"black boxes\" with invisible contexts; developers must actively create views and summaries to understand the agent's current goal and internal state.\n- **Augmented Coding Patterns:** A collection of bite-sized, combinable techniques designed to move beyond \"vibing\" with LLMs toward a structured engineering approach.\n- **Context Markers (Starter Emojis):** Using specific emojis to provide immediate observability. For example, a \"starter emoji\" confirms an agent has read the ground rules, while specific markers for phases (Red/Green/Refactor) or proactive warnings show when specific instructions have \"fired.\"\n- **Monitoring Context Rot:** Developers can stack emojis representing different rule sets; if an emoji disappears from the output, it serves as a visual indicator that the associated information has been pushed out of the AI's context window.\n- **Narrow, Single-Purpose Agents:** Overloading an agent with too much information causes it to lose focus. Using specialized, narrowly focused agents (e.g., a dedicated \"committer\" agent) results in higher accuracy and more proactive feedback.\n- **Knowledge Checkpoints:** Because AI context is ephemeral and \"rots,\" developers should externalize the AI's learning and plans into persistent files. These act as \"save points\" that allow a developer to clear the context, restart, or branch off into parallel explorations without losing progress.\n- **Semantic Zoom:** The ability to move between different levels of abstraction using natural language. This involves \"zooming out\" to see high-level architecture or gist-style summaries and \"zooming in\" only when specific detail is required.\n- **Feedback Flip:** A pattern where the developer asks the same agent that produced the code to immediately find issues or mistakes in its own work, providing an instant feedback loop.\n- **Spec-Driven Development:** Using high-level specifications (like Gherkin or BDD) that the agent implements. This allows the developer to stay at a high level of abstraction and easily instruct the agent to \"rebuild\" based on the original spec if it goes off-track.\n- **Approval Testing:** Using \"golden standards\" or snapshots to verify AI output. This makes it easy to quickly scan a visual diff and confirm if the agent made the intended change or broke existing functionality.\n- **The External Cortex:** Treating the LLM and its associated files as an external memory system. This allows the developer to manage higher levels of complexity than the human brain can hold at once by \"saving\" the current state of an investigation.\n- **Avoiding Answer Injection:** Prompting the AI to recommend solutions rather than providing a solution in the question, which prevents the developer from accidentally limiting the agent's breadth of knowledge and ideas.\n\n",
+        "rating": 5,
+        "registered_at": "2026-01-06T10:21:59.000Z",
+        "resource": "o11ycast - Ep. #87, Augmented Coding Patterns with Lada Kesseler - youtube.com/watch?v=KR2uWL12W4A",
+        "resource_type": "podcast",
+        "speaker_women_in_tech": [
+            true,
+            true,
+            null
+        ],
+        "speakers": [
+            "recvqDxzFj4ACOp7y",
+            "rec3jntKOHmKJ3Is5",
+            "rectmYcbcdoDRlCYH"
+        ],
+        "speakers_names": [
+            "Lada Kesseler",
+            "Jessica Kerr",
+            "Ken Rimple"
+        ],
+        "topics": [
+            "rec4uuxgf0CbGa5gW",
+            "recbJb6M6X8AZPTRc",
+            "recmPbBNpUB7Q5XyX"
+        ],
+        "topics_names": [
+            "AI Assisted Engineering",
+            "Generative AI",
+            "tdd"
+        ],
+        "url": "youtube.com/watch?v=KR2uWL12W4A"
     },
     {
         "airtable_createdTime": "2020-03-15T08:56:14.000Z",
@@ -30443,13 +30524,13 @@
         "description": "Learn how the \"Marathon\" approach enables engineers to tackle technical debt by adopting a product mindset that aligns long-term technical health with business value and consistent product delivery.\n",
         "duration": 2504,
         "language": "English",
-        "last_modified": "2025-12-22T17:04:46.000Z",
+        "last_modified": "2026-01-06T09:53:27.000Z",
         "less_15": 0,
-        "name": "Rafa Gomez - Attacking tech Debt: A Marathon, Not a Sprint - SCBCN 25",
+        "name": "Attacking tech Debt: A Marathon, Not a Sprint",
         "notes": "Effectively managing technical debt requires a **\"Marathon\" approach** of small, incremental improvements that are prioritized based on their objective impact on **business value** and product delivery. Engineers must adopt a **product mindset** to translate technical issues into manageable risks and opportunities, ensuring the platform remains healthy and scalable over the long term without requiring permission to maintain its quality.\n\n\n- **Technical debt** is the accumulated cost of shortcuts and trade-offs made during development to ship faster, and it becomes a problem primarily when there is an **absence of action** to address it.\n- A **\"Marathon\" approach** uses a mid- to long-term strategy to tackle debt through **small, incremental steps** that do not disrupt product delivery.\n- Unmanaged debt causes **slower delivery**, higher maintenance costs, team frustration, knowledge silos, and increased firefighting.\n- A structured **five-step framework** should be used: identification, measurement, solution design, product buy-in, and prioritization.\n- Debt must be **formally documented** in shared spaces (like Jira or Notion) to ensure it is owned by the team rather than remaining as \"invisible\" knowledge in individual heads.\n- Identification should be based on **objective criteria**, such as frequent incidents, lack of observability, manual workarounds, and blockers for new features.\n- Translate technical issues into **objective metrics**\u2014such as error rates, support ticket volume, and manual effort\u2014to describe the situation to non-technical stakeholders.\n- Design solutions in **independent, phased milestones** so that value is delivered at each step and the process can be paused or pivoted if priorities shift.\n- Bridge the gap between engineering and product by connecting technical health to **business value**, such as customer satisfaction OKRs and opportunity costs.\n- Instead of asking for permission to fix technical debt, **ask for prioritization** within the product lifecycle.\n- Engineers must adopt a **\"product mindset,\"** moving beyond purely technical concerns to understand the business, detect problems proactively, and align with the product vision.\n- Addressing technical debt can **unlock new revenue** by making the platform scalable enough to support features or clients that were previously unsupportable.\n\n\n",
         "published": true,
         "registered_at": "2025-12-22T10:56:50.000Z",
-        "resource": "Rafa Gomez - Attacking tech Debt: A Marathon, Not a Sprint - SCBCN 25 - https://www.youtube.com/watch?v=8Zio1xIswug",
+        "resource": "Attacking tech Debt: A Marathon, Not a Sprint - https://www.youtube.com/watch?v=8Zio1xIswug",
         "resource_type": "talk",
         "speaker_women_in_tech": [
             null
