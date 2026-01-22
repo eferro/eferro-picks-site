@@ -848,15 +848,37 @@
     {
         "airtable_createdTime": "2026-01-22T18:13:48.000Z",
         "airtable_id": "rec1jjoG9pOImPjMo",
+        "conference_name": "AI Engineer",
+        "core_topic": "AI Assisted Engineering",
         "created": "2026-01-22T18:13:48.000Z",
+        "description": "Dex Horthy explores advanced context engineering and the \"Research, Plan, Implement\" (RPI) workflow to effectively solve complex problems in brownfield codebases while minimizing AI-generated \"slop\" and maintaining team alignment.\n",
         "duration": 1231,
-        "last_modified": "2026-01-22T18:13:48.000Z",
+        "language": "English",
+        "last_modified": "2026-01-22T19:00:23.000Z",
         "less_15": 0,
         "name": "No Vibes Allowed: Solving Hard Problems in Complex Codebases \u2013\u00a0Dex Horthy, HumanLayer",
+        "notes": "Successfully solving complex problems in brownfield codebases requires **intentional context engineering** through a \"Research, Plan, Implement\" (RPI) workflow to keep AI agents in their high-performance \"smart zone\" and prevent the accumulation of low-quality \"slop\". This methodology emphasizes that humans must **not outsource their thinking**, but instead use compacted research and detailed plans to maintain mental alignment across the team and ensure high-leverage, reliable code execution.\n\n- **Advanced context engineering** is essential for solving complex problems in brownfield codebases and avoiding the production of low-quality \"slop\".\n- LLM performance drops significantly in the **\"dumb zone,\"** which begins when the context window reaches roughly 40% capacity; maintaining a small context window keeps the model in the \"smart zone\".\n- **Intentional compaction** involves regularly compressing a conversation or codebase state into markdown files to give agents a clear, succinct starting point.\n- The **Research, Plan, Implement (RPI) workflow** is a systematic framework designed to maintain objective truth, explicit intent, and low-context execution.\n- **Sub-agents** should be utilized specifically for **context management**\u2014such as searching a large codebase to return a single relevant file\u2014rather than for anthropomorphizing team roles.\n- **Planning provides leverage** when it includes explicit steps and **code snippets**, ensuring high confidence that the model will execute the intended changes correctly.\n- A primary goal of using AI in teams is maintaining **mental alignment**; technical leaders should review AI-generated plans to ensure the entire team understands how the system is evolving.\n- AI cannot replace thinking; it only **amplifies human intent**, meaning engineers must remain \"in the loop\" to validate research and plans before implementation.\n- The future challenge for technical leadership is **adapting the SDLC and team culture** to a world where 99% of code may be AI-generated, preventing a rift between senior engineers and those using AI to fill skill gaps.\n\n",
+        "rating": 5,
         "registered_at": "2026-01-22T18:13:48.000Z",
         "resource": "No Vibes Allowed: Solving Hard Problems in Complex Codebases \u2013\u00a0Dex Horthy, HumanLayer - https://www.youtube.com/watch?v=rmvDxxNubIg",
         "resource_type": "talk",
-        "url": "https://www.youtube.com/watch?v=rmvDxxNubIg"
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "rectZ9ip0GKSbgN4r"
+        ],
+        "speakers_names": [
+            "Dex Horthy"
+        ],
+        "topics": [
+            "rec4uuxgf0CbGa5gW"
+        ],
+        "topics_names": [
+            "AI Assisted Engineering"
+        ],
+        "url": "https://www.youtube.com/watch?v=rmvDxxNubIg",
+        "year": 2025
     },
     {
         "airtable_createdTime": "2020-03-15T07:48:48.000Z",
@@ -22481,15 +22503,41 @@
     {
         "airtable_createdTime": "2026-01-22T18:13:49.000Z",
         "airtable_id": "receI0u1oAyStBQru",
+        "conference_name": "GOTO",
+        "core_topic": "Engineering Culture",
         "created": "2026-01-22T18:13:49.000Z",
+        "description": "Jessica Kerr redefines software development as software parenting and system moving, arguing that teams should prioritize acceleration\u2014the ability to change direction and improve the system\u2014over mere velocity by fostering generativity and mutual learning through strategic automation.\n",
         "duration": 3287,
-        "last_modified": "2026-01-22T18:13:49.000Z",
+        "language": "English",
+        "last_modified": "2026-01-22T19:03:39.000Z",
         "less_15": 0,
         "name": "Forget Velocity, Let's Talk Acceleration \u2022 Jessica Kerr \u2022 GOTO 2017",
+        "notes": "Success in software development requires shifting from a focus on constant velocity to **acceleration**, which enables a team to change direction toward **usefulness** through a process of mutual learning known as **symmathesy**. Developers should act as **\"system movers\"** who use automation to protect their limited **attention (creplets)** and prioritize **generative** actions that simplify decision-making and nurture software systems from fragile \"babies\" into self-sufficient \"adults\".\n\n- Prioritize **acceleration over velocity**; while velocity is a constant rate of change, acceleration allows a team to **change direction** and adapt to shifting requirements or new information.\n- Shift the mental model from \"system building\" to **\"system moving\"**, acknowledging that developers are constantly evolving a living system rather than just delivering a finished product.\n- View software development as a **symmathesy**, which is a system of **mutual learning** where people learn from the code and the code \"learns\" as people change it.\n- Practice **software parenting** by guiding code from a \"baby\" stage (scripts/prototypes) to \"adulthood\" (mature, observable, self-healing systems).\n- Avoid creating **zombie software**, which occurs when development stops and no one retains a **mental model** of the system, making it dangerous and impossible to change.\n- Understand the **law of downhill invention and uphill analysis**: it is mentally easier to build a new system from scratch than to perform the hard work of understanding an existing one.\n- Value **generativity**\u2014the contribution to a team's collective knowledge and output\u2014over individual personal productivity.\n- Focus on **making fewer and easier decisions** by utilizing **local automation** and linters to reduce cognitive load and eliminate repetitive trade-offs.\n- Use **local automation** strategically to **change behavior and incentives** within the team, such as making it easier to spin up new projects or services when appropriate.\n- Recognize that a developer's primary value lies in their **deep knowledge of the business and the system**, rather than just mastery of a specific programming language.\n- Foster a **culture of transfer** and \"open mode\" thinking to enable **creativity and problem-solving**, which requires an environment where people do not feel defensive.\n\n",
+        "rating": 5,
         "registered_at": "2026-01-22T18:13:49.000Z",
         "resource": "Forget Velocity, Let's Talk Acceleration \u2022 Jessica Kerr \u2022 GOTO 2017 - https://www.youtube.com/watch?v=Lbcyyu8XB_Y",
         "resource_type": "talk",
-        "url": "https://www.youtube.com/watch?v=Lbcyyu8XB_Y"
+        "speaker_women_in_tech": [
+            true
+        ],
+        "speakers": [
+            "rec3jntKOHmKJ3Is5"
+        ],
+        "speakers_names": [
+            "Jessica Kerr"
+        ],
+        "topics": [
+            "recDnzAEazkBJFFZh",
+            "recWFKWrPEdeEYbzx",
+            "rec1S54WAgSRzsQQB"
+        ],
+        "topics_names": [
+            "Mental models",
+            "Engineering Culture",
+            "Systems Thinking"
+        ],
+        "url": "https://www.youtube.com/watch?v=Lbcyyu8XB_Y",
+        "year": 2017
     },
     {
         "airtable_createdTime": "2021-06-19T11:36:13.000Z",
@@ -32683,14 +32731,41 @@
     {
         "airtable_createdTime": "2026-01-22T18:13:47.000Z",
         "airtable_id": "recu8T5KXQ2SfAwwq",
+        "core_topic": "Testing",
         "created": "2026-01-22T18:13:47.000Z",
+        "description": "This expert discussion highlights how Test-Driven Development (TDD) acts as a fundamental software design tool that facilitates Agile development by providing constant feedback, enforcing separation of concerns, and enabling developers to proceed with confidence through small, iterative steps.\n",
         "duration": 1603,
-        "last_modified": "2026-01-22T18:13:47.000Z",
+        "language": "English",
+        "last_modified": "2026-01-22T18:51:00.000Z",
         "less_15": 0,
         "name": "Should Test-Driven Development (TDD) Be Used MORE In Software Engineering?",
+        "notes": "**Test-Driven Development** serves as a fundamental **design tool** that compels developers to create **modular, high-quality code** by focusing on observable outcomes and consumer interfaces before implementation,,. Adopting this disciplined test-first approach provides **constant feedback** through small, safe steps, ultimately resulting in flexible systems that are cheaper to maintain and better aligned with business goals.\n\n- **Test-Driven Development (TDD) Definition**: A disciplined cycle of thinking about a problem, breaking it into a test list, writing a failing test, writing minimal code to pass, and then refactoring.\n- **A Primary Design Tool**: TDD's greatest value is as a design tool rather than just a testing method. It forces developers to design external interfaces from the perspective of a consumer before writing implementation details.\n- **The \"Test-First\" Requirement**: For the process to be TDD, tests must be written before the code. Writing tests after implementation often results in tests that are tightly coupled to the code, making the system fragile and difficult to change.\n- **Forcing Function for Quality**: TDD inherently drives \"testable code,\" which is characterized by modularity, high cohesion, better separation of concerns, and loose coupling.\n- **Small, Safe Steps**: The process allows developers to work in tiny increments with a constant stream of feedback, providing a high level of confidence and security during development.\n- **Refactoring as a Distinct Step**: The refactoring stage is critical for improving the internal design of the code once the tests are green, ensuring the internal structure remains clean and maintainable.\n- **Focus on Observable Outcomes**: TDD encourages focusing on what the system should achieve (behavior) rather than how it achieves it (implementation), allowing for more freedom in how logic is realized.\n- **The \"Backward\" Approach**: A practical technique for TDD is to write the test in comments first, starting with the assertion (the outcome) and then working backward to the action and the initial state.\n- **Teaching Software Design**: TDD is one of the most effective ways to teach and learn software design. Challenges encountered during TDD are typically symptoms of underlying design flaws rather than the testing process itself.\n- **Business Value**: By producing more flexible and higher-quality software, TDD makes systems cheaper to maintain and more responsive to changing business needs.\n\n",
+        "rating": 5,
         "registered_at": "2026-01-22T18:13:47.000Z",
         "resource": "Should Test-Driven Development (TDD) Be Used MORE In Software Engineering? - https://www.youtube.com/watch?v=6yb7jKpxTjM",
-        "resource_type": "talk",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            true,
+            null
+        ],
+        "speakers": [
+            "reczijcDpu4sMjnlA",
+            "recTA39Jo1ozZG61R"
+        ],
+        "speakers_names": [
+            "Emily Bache",
+            "Dave Farley"
+        ],
+        "topics": [
+            "recmPbBNpUB7Q5XyX",
+            "recm3GCPgEVSDmeVI",
+            "rechj5WeSQRH211np"
+        ],
+        "topics_names": [
+            "tdd",
+            "Software Design",
+            "Agile"
+        ],
         "url": "https://www.youtube.com/watch?v=6yb7jKpxTjM"
     },
     {
