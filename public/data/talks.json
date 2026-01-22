@@ -846,6 +846,19 @@
         "url": "https://medium.com/@skamille/product-for-internal-platforms-9205c3a08142"
     },
     {
+        "airtable_createdTime": "2026-01-22T18:13:48.000Z",
+        "airtable_id": "rec1jjoG9pOImPjMo",
+        "created": "2026-01-22T18:13:48.000Z",
+        "duration": 1231,
+        "last_modified": "2026-01-22T18:13:48.000Z",
+        "less_15": 0,
+        "name": "No Vibes Allowed: Solving Hard Problems in Complex Codebases \u2013\u00a0Dex Horthy, HumanLayer",
+        "registered_at": "2026-01-22T18:13:48.000Z",
+        "resource": "No Vibes Allowed: Solving Hard Problems in Complex Codebases \u2013\u00a0Dex Horthy, HumanLayer - https://www.youtube.com/watch?v=rmvDxxNubIg",
+        "resource_type": "talk",
+        "url": "https://www.youtube.com/watch?v=rmvDxxNubIg"
+    },
+    {
         "airtable_createdTime": "2020-03-15T07:48:48.000Z",
         "airtable_id": "rec1o14iQ4afC7mJy",
         "blog_url": "https://www.eferro.net/2020/03/good-talkspodcasts-march-2020-ii.html",
@@ -22466,6 +22479,19 @@
         "url": "https://www.youtube.com/watch?v=2Afk9KVEgpE"
     },
     {
+        "airtable_createdTime": "2026-01-22T18:13:49.000Z",
+        "airtable_id": "receI0u1oAyStBQru",
+        "created": "2026-01-22T18:13:49.000Z",
+        "duration": 3287,
+        "last_modified": "2026-01-22T18:13:49.000Z",
+        "less_15": 0,
+        "name": "Forget Velocity, Let's Talk Acceleration \u2022 Jessica Kerr \u2022 GOTO 2017",
+        "registered_at": "2026-01-22T18:13:49.000Z",
+        "resource": "Forget Velocity, Let's Talk Acceleration \u2022 Jessica Kerr \u2022 GOTO 2017 - https://www.youtube.com/watch?v=Lbcyyu8XB_Y",
+        "resource_type": "talk",
+        "url": "https://www.youtube.com/watch?v=Lbcyyu8XB_Y"
+    },
+    {
         "airtable_createdTime": "2021-06-19T11:36:13.000Z",
         "airtable_id": "receNBT9XJlANzS0W",
         "created": "2021-06-19T11:36:13.000Z",
@@ -32653,6 +32679,19 @@
         ],
         "url": "https://www.youtube.com/watch?v=tuunGZ-4wPQ",
         "year": 2023
+    },
+    {
+        "airtable_createdTime": "2026-01-22T18:13:47.000Z",
+        "airtable_id": "recu8T5KXQ2SfAwwq",
+        "created": "2026-01-22T18:13:47.000Z",
+        "duration": 1603,
+        "last_modified": "2026-01-22T18:13:47.000Z",
+        "less_15": 0,
+        "name": "Should Test-Driven Development (TDD) Be Used MORE In Software Engineering?",
+        "registered_at": "2026-01-22T18:13:47.000Z",
+        "resource": "Should Test-Driven Development (TDD) Be Used MORE In Software Engineering? - https://www.youtube.com/watch?v=6yb7jKpxTjM",
+        "resource_type": "talk",
+        "url": "https://www.youtube.com/watch?v=6yb7jKpxTjM"
     },
     {
         "airtable_createdTime": "2023-01-28T14:25:12.000Z",
