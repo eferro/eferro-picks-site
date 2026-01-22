@@ -1230,7 +1230,7 @@
         "description": "This talk by Steve Yegge exploring the inevitable transformation of software engineering due to AI and LLMs, detailing changing developer roles and the increasing importance of testing and validation\n",
         "duration": 1740,
         "language": "English",
-        "last_modified": "2026-01-22T17:51:50.000Z",
+        "last_modified": "2026-01-22T19:18:03.000Z",
         "less_15": 0,
         "name": "Stop Writing Code \u2013 That\u2019s what LLMs are for",
         "notes": "**AI and LLMs are fundamentally transforming the role of software engineers**, shifting it from direct code writing to managing AI tools and necessitating a **five to ten times greater rigor in testing and validation** due to the non-deterministic nature and \"hallucinations\" of AI-generated code. This inevitable change means developers must adapt by focusing on higher-level architectural tasks and ensuring the quality and correctness of AI-produced output, with practices like Test-Driven Development becoming crucial.\n\n- **AI and LLMs are fundamentally transforming software engineering**, making direct code writing less common.\n- The developer role is shifting from a \"cook\" to a **\"head chef\" managing fleets of AI agents**, focusing on higher-level architectural tasks and orchestration.\n- There's an **inevitable and urgent need for 5 to 10 times more rigorous testing and validation** due to AI hallucinations and the non-deterministic nature of AI-generated code.\n- **Test-Driven Development (TDD) becomes crucial**, with LLMs even helping to write tests.\n- The **path for junior developers is changing**, moving them towards more architectural roles and learning to manage agents, rather than focusing on low-level coding.\n- Companies that **drag their feet on AI adoption are in serious trouble** and are \"doomed.\"\n- Engineers must **learn to deal with ambiguity and \"noisy data\"** from LLMs and develop an \"instinct\" for quality.\n- Human \"taste\" and **creativity remain essential**, as AI currently lacks these qualities, allowing engineers to focus on innovative solutions.\n- The change is **inevitable within the next 18 months to two years**, and it will not revert to previous methods.\n\n",
@@ -1251,12 +1251,14 @@
         "topics": [
             "recmuONwokRtPS6Tp",
             "recPcLVyg0S4ORUkX",
-            "recD5hNaJCwpTdERc"
+            "recD5hNaJCwpTdERc",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "AI",
             "testing",
-            "Engineering Career"
+            "Engineering Career",
+            "AI Assisted Engineering"
         ],
         "url": "https://www.youtube.com/watch?v=yUv1xK9KOtE"
     },
@@ -7050,7 +7052,7 @@
         "description": "Legendary builder Bret Taylor offers profound insights on the future of AI agents and their impact on business, the evolving landscape of software development, and critical lessons for product and startup success.\n",
         "duration": 5280,
         "language": "English",
-        "last_modified": "2026-01-22T17:50:43.000Z",
+        "last_modified": "2026-01-22T19:17:30.000Z",
         "less_15": 0,
         "name": "He saved OpenAI, invented the \u201cLike\u201d button, and built Google Maps: Bret Taylor (Sierra)",
         "notes": "The talk emphasizes the critical need for **intellectual honesty and relentless self-reflection** to identify the **true, most impactful problems** to solve, rather than defaulting to solutions that align with personal strengths or comfortable assumptions. This involves actively seeking out the actual root causes of issues, even when uncomfortable, and being willing to do what is most impactful for the business, even if it falls outside one's preferred skill set.\n\n**AI and the Future of Software**\n- The entire AI market is moving towards **agents and outcomes-based pricing**.\n- **Agents are the new app**, becoming the primary product form factor and driving true productivity gains by autonomously accomplishing jobs.\n- The act of creating software is transforming from typing code to **operating code-generating machines**.\n- **Computer science remains extremely valuable for developing systems thinking**, essential for operating AI code generators and connecting technology with business problems.\n- There's a need for a **new programming system designed for AI**, prioritizing verifiability and human leverage over human ergonomics, enabling the creation of robust and complex systems where coding is \"free.\"\n- The AI market segments are:\n    - **Frontier/Foundation Models:** Dominated by large hyperscalers due to high CapEx; **startups should generally avoid this space**.\n    - **Tooling:** Risky due to potential competition from large infrastructure providers moving up the stack.\n    - **Applied AI (Agents):** The most significant opportunity for startups, akin to the SaaS market, focusing on building agents for specific business outcomes.\n- AI models can serve as **highly effective personalized educational tools**, democratizing access to learning by adapting to individual styles.\n- To achieve productivity gains with AI tools, **focus on root cause analysis for incorrect AI outputs and implement AI supervising AI (self-reflection)** to improve robustness.\n- AI agents can automate a significant portion of **customer service interactions (50-90%) with high customer satisfaction**.\n**Product Strategy**\n- The most important lesson in product is to **create entirely new experiences native to the platform**, rather than just digitizing existing solutions or copying competitors.\n- Successful products must answer the fundamental question: \"**Why should a customer use this thing in the first place?**\"\n- Product design should focus on **systems that deliver delightful experiences even with messy, uncontrolled real-world data inputs**.\n- Adding \"sizzle\" (like Google Maps' satellite imagery) can generate **viral moments and initial adoption**, complementing the product's core enduring value.\n**Business Models & Go-to-Market**\n- **Outcome-based pricing is the superior model for AI products**, especially when AI autonomously performs a job with measurable results, aligning vendor and customer incentives.\n- **Usage-based pricing (e.g., per token) is often a poor indicator of value** for AI products, as it doesn't necessarily correlate with actual business outcomes.\n    - **Choosing the correct go-to-market motion is critical:Developer-led:** For platform products where engineers have buying latitude.\n    - **Product-led Growth (PLG):** When the user and buyer are the same person.\n    - **Direct Sales:** Increasingly relevant for AI products where the buyer and user are different, and **founders should embrace this approach** even if it's outside their comfort zone.\n**Mindset & Leadership**\n- Consistently ask: \"**What is the most impactful thing I could do today?**\" and prioritize tasks based on maximizing impact for the business.\n- Cultivate **intellectual honesty and relentless self-reflection** to identify the true, most impactful problems, rather than defaulting to solutions that align with personal strengths or assumptions.\n- Be **flexible with your professional identity** and willing to adapt to what the company needs from you at any given time.\n- **Seek and listen to advice from external advisors and boards who will tell you what you _need_ to hear**, even if it's uncomfortable.\n- When receiving advice, **always ask \"why\"** to understand the underlying framework and avoid applying anecdotal experiences as universal rules.\n- **Develop good judgment** by rigorously reflecting on past decisions and understanding the context of advice.\n\n\n",
@@ -7076,14 +7078,16 @@
             "recg6F5ajOhEkbrdW",
             "recDFzWENoFZ1WRp9",
             "recLS0zTJxflAcqBu",
-            "recvlsvAt2LHjlKU2"
+            "recvlsvAt2LHjlKU2",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "AI",
             "Product",
             "Business models",
             "startup",
-            "Management"
+            "Management",
+            "AI Assisted Engineering"
         ],
         "url": "https://www.youtube.com/watch?v=qImgGtnNbx0"
     },
@@ -8952,7 +8956,7 @@
         "core_topic": "AI Assisted Engineering",
         "created": "2025-09-03T14:02:27.000Z",
         "language": "English",
-        "last_modified": "2026-01-22T17:52:54.000Z",
+        "last_modified": "2026-01-22T19:18:21.000Z",
         "less_15": 1,
         "name": "Vibe coding is not the same as AI-Assisted engineering.",
         "registered_at": "2025-09-03T14:02:27.000Z",
@@ -8969,11 +8973,13 @@
         ],
         "topics": [
             "recmuONwokRtPS6Tp",
-            "recbJb6M6X8AZPTRc"
+            "recbJb6M6X8AZPTRc",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "AI",
-            "Generative AI"
+            "Generative AI",
+            "AI Assisted Engineering"
         ],
         "url": "https://addyo.substack.com/p/vibe-coding-is-not-the-same-as-ai"
     },
@@ -9781,7 +9787,7 @@
         "description": "Interesting reflections on how the profession of software developer might evolve with the introduction of AI (LLMs, GenAI). Among other topics, Michael talks about the importance of quality in this environment, the adaptation of practices like TDD, and the need to specify precise requirements, etc.\n",
         "duration": 1980,
         "language": "English",
-        "last_modified": "2026-01-22T17:48:45.000Z",
+        "last_modified": "2026-01-22T19:17:08.000Z",
         "less_15": 0,
         "name": "AI Impacts in Development Practice",
         "published": true,
@@ -9799,11 +9805,13 @@
         ],
         "topics": [
             "recxJkIWVynhDpBOI",
-            "recmuONwokRtPS6Tp"
+            "recmuONwokRtPS6Tp",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "Devex",
-            "AI"
+            "AI",
+            "AI Assisted Engineering"
         ],
         "url": "https://www.youtube.com/watch?v=_oHiyunEMF0",
         "year": 2023
@@ -10131,7 +10139,7 @@
         "description": "Meri Williams explores the urgent need to rethink engineering growth in the age of AI, advocating for a shift from manual coding tasks toward early tech leadership, systems thinking, and a \"healthy paranoia\" that allows leaders to \"surf\" the waves of technological change rather than be overwhelmed by them.\t\n",
         "duration": 1382,
         "language": "English",
-        "last_modified": "2026-01-22T17:51:40.000Z",
+        "last_modified": "2026-01-22T19:18:00.000Z",
         "less_15": 0,
         "name": "Rethinking growing engineers in the age of AI",
         "notes": "Engineering leaders must proactively **redesign training models** to replace the \"deliberate practice\" once provided by repetitive junior tasks now handled by AI, focusing instead on accelerating **foundational skills, systems thinking, and code review** much earlier in an engineer's career,,. Ultimately, rather than resisting technological shifts, organizations should embrace a sense of **\"healthy paranoia\"** and teach their teams to \"surf\" the waves of AI by prioritizing critical thinking and a deep understanding of why systems work or fail,.\n\n- **Disruption of Entry-Level Roles:** AI coding assistants are performing the well-scoped, repetitive tasks traditionally assigned to junior engineers, leading to a significant reduction\u2014estimated at 75%\u2014in entry-level hiring across the industry.\n- **Loss of Deliberate Practice:** Traditional junior work provided \"accidental\" deliberate practice through repetitive tasks and immediate feedback; because AI now handles this work, leaders must find new ways to help engineers build foundational skills like debugging and recognizing \"code smells\".\n- **Accelerated Career Expectations:** Junior engineers are being required to perform \"tech lead\" functions, such as systems thinking and code review, much earlier in their careers because AI allows them to handle larger stories and complex tasks immediately.\n- **New Required Skillsets:** Beyond coding, engineers must now prioritize critical thinking, effective AI prompting, and \"healthy paranoia\" to verify AI-generated outputs against documentation and real-world behavior.\n- **AI as an \"Endlessly Patient Mentor\":** Junior staff are increasingly using AI to explain code and troubleshoot, which provides constant support but lacks the wisdom of human experience and may reduce traditional coaching interactions.\n- **Bridging the \"Unconscious Competence\" Gap:** Senior engineers often struggle to teach because they perform expert tasks automatically; they must learn to actively deconstruct their knowledge and explain the \"why\" behind design decisions rather than hiding behind \"best practices\".\n- **Adapting Training Models:** Rather than resisting AI, engineering leaders must redesign training to focus on foundations and mentorship, adopting the philosophy that while you \"can't hold back the ocean\" of technological change, you can \"learn to surf\".\n\n",
@@ -10153,13 +10161,15 @@
             "recD5hNaJCwpTdERc",
             "recF9sEGaOJ0hiQgV",
             "recWFKWrPEdeEYbzx",
-            "recmuONwokRtPS6Tp"
+            "recmuONwokRtPS6Tp",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "Engineering Career",
             "Technical leadership",
             "Engineering Culture",
-            "AI"
+            "AI",
+            "AI Assisted Engineering"
         ],
         "url": "https://www.youtube.com/watch?v=palpFFMKuSU",
         "year": 2025
@@ -11791,7 +11801,7 @@
         "description": "Practical best practices for effective vibe coding and using AI tools/LLMs in software development workflows, from planning and testing to debugging and leveraging multiple models.\n",
         "duration": 960,
         "language": "English",
-        "last_modified": "2026-01-22T17:50:55.000Z",
+        "last_modified": "2026-01-22T19:17:38.000Z",
         "less_15": 0,
         "name": "How To Get The Most Out Of Vibe Coding | Startup School",
         "notes": "Based on the sources, the most important lesson conveyed by the talk is that **effectively using AI for software development**, often called \"vibe coding,\" is achieved by **integrating AI tools into established professional software engineering practices**. The overarching theme is to **make the LLM follow the processes that a good professional software developer would use**.\nWhat someone should remember after watching/listening to it is that getting great results with AI coding involves **treating the AI as a different kind of programming language** that requires detailed context and careful guidance, **planning comprehensively** before diving into code, **using version control (Git) religiously** to manage changes and mistakes, **writing high-level tests** to catch regressions, being **willing to `git reset`** when the AI produces incorrect or layered code, and **iteratively refining** the process by providing clear instructions, local documentation, and switching models as needed. Essentially, it's about applying discipline, testing, and iteration to the AI-assisted workflow.\n\nHere are the most important points conveyed by the talk about effectively using AI (LLMs) for software development, often referred to as \"vibe coding\":\n- **Treat AI Coding as a New Programming Language:** Think of vibe coding as a different kind of programming language where you program with language rather than code. You need to provide a lot of necessary context and detailed information to get good results. The overarching theme is to **make the LLM follow the processes that a good professional software developer would use**.\n- **Start with a Comprehensive Plan:** Before diving into writing code, work with the LLM to **create a detailed plan** for your project in a markdown file within your project folder. Refine this plan by deleting disliked items, explicitly marking features as \"won't do,\" and keeping a section for later ideas. Keep referring back to this plan during implementation.\n- **Implement Piece by Piece:** Don't expect the models to \"oneshot\" entire complicated products. Instead, **implement the plan section by section**, checking that each step works, running tests, and committing it to Git before moving to the next.\n- **Use Version Control Religiously:** **Git is your friend**; use it religiously. Commit frequently after successful steps. Be prepared to **`git reset --head hard`** if things aren't working, as prompting multiple times can accumulate layers of bad code. Don't trust the AI tools' internal revert functions yet.\n- **Write High-Level Tests:** **Write high-level integration tests** that simulate user interaction (like clicking through the site) rather than just low-level unit tests. These tests are crucial for catching regressions when LLMs make unnecessary changes to unrelated logic.\n- **Leverage Error Messages for Debugging:** When encountering a bug, **copy and paste the error message directly into the LLM**. Often, the error message alone is enough for the AI to identify and fix the problem.\n- **Reset After Failed Debugging Attempts:** Similar to implementation, after each failed attempt at fixing a bug, **`git reset` and start again** to avoid accumulating layers of \"crust\" or \"crap\" code. Add logging (`logging is your friend`) if in doubt.\n- **Switch Models When Stuck:** If an LLM is struggling with a problem, **try switching to a different model** (e.g., Claude, OpenAI models like GPT, Gemini), as different models may succeed where others fail. Different models might also perform better at specific tasks like planning vs. implementation.\n- **Provide Explicit Instructions and Context:** Write **detailed instructions** for your AI coding agent, potentially hundreds of lines, to make them significantly more effective. Provide necessary context in a detailed way.\n- **Use Local Documentation:** If possible, **download documentation for APIs and put it in a local subdirectory** so the LLM can access it locally, as pointing to online documentation can be patchy. Instruct the LLM to read these local docs.\n- **Refactor Frequently with Tests:** Once the code works and tests are implemented, **refactor frequently**, knowing that your tests will catch any regressions. LLMs can even help identify parts of your codebase that are candidates for refactoring. Keep files small and modular for both human and LLM readability.\n- **Use AI Beyond Coding:** LLMs aren't just for coding; they can act as a **DevOps engineer** (e.g., configuring DNS, setting up hosting) and even a **designer** (e.g., creating images, resizing favicons), accelerating non-coding tasks.\n- **Use the LLM as a Teacher:** Ask the AI to walk through code implementations line by line and explain them; it's a great way to **learn new technologies**.\n- **Keep Experimenting:** The state-of-the-art in AI coding changes rapidly, so **keep experimenting** with new model releases to see which performs best for different tasks.\n\n",
@@ -11812,13 +11822,15 @@
             "recmuONwokRtPS6Tp",
             "recbJb6M6X8AZPTRc",
             "recxJkIWVynhDpBOI",
-            "rec436FbBa6hFiWcj"
+            "rec436FbBa6hFiWcj",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "AI",
             "Generative AI",
             "Devex",
-            "Developer Productivity"
+            "Developer Productivity",
+            "AI Assisted Engineering"
         ],
         "url": "https://www.youtube.com/watch?v=BJjsfNO5JTo"
     },
@@ -12021,7 +12033,7 @@
         "description": "Gene Kim discusses the transformative power and inherent dangers of AI-assisted \"Vibe Coding\", emphasizing the critical role of architecture and sound practices in achieving high performance and avoiding \"vibe coding disasters\"\n",
         "duration": 2220,
         "language": "English",
-        "last_modified": "2026-01-22T17:52:50.000Z",
+        "last_modified": "2026-01-22T19:18:16.000Z",
         "less_15": 0,
         "name": "Vibe Coding For Grownups with Gene Kim",
         "notes": "While AI-assisted \"Vibe Coding\" offers unprecedented productivity and an expanded option space, its profound dangers\u2014like generating non-modular, tightly coupled \"Eldrich horrors\"\u2014necessitate **sound architecture** that promotes independence of action, alongside **fast feedback loops** and disciplined practices such as **test-driven development** to ensure code quality and prevent \"vibe coding disasters\". The ability to structure systems with **loosely coupled architectures** and maintain vigilance against AI-generated \"big balls of mud\" is paramount for leveraging this new technology effectively.\n\n- **AI-assisted \"Vibe Coding\" significantly boosts productivity** by enabling faster, more ambitious work that can be done solo, leading to more fun and the ability to explore a much larger option space.\n- However, **AI-generated code poses significant dangers**, including the rapid creation of non-modular, tightly coupled systems, \"Eldrich horrors,\" and \"big balls of mud\" that are hard to understand or change.\n- **Architecture is a top predictor of performance** and is crucial for mitigating these risks, specifically by promoting **independence of action** and **loosely coupled systems**. Good architecture prevents \"vibe coding disasters.\"\n- **Fast feedback loops** and **test-driven development (TDD)** become even more critical with AI-generated code to ensure quality, provide specifications, and prevent AI from creating undesired code that merely passes tests.\n- The developer's role shifts from writing code by hand to **reviewing, selecting, and exercising judgment and taste** over large volumes of AI-generated options.\n- It is essential to **work on small, manageable tasks** (e.g., around 100 lines of code) and to **explicitly signal to AI tools to work only on specified files or modules**, preventing \"backdoor\" changes and cascading design problems.\n- The initial \"DORA anomaly\" suggesting AI worsens performance likely points to the need for specific practices like sound architecture and fast feedback loops to realize AI's benefits.\n- **Modular architectures increase \"option value\"** by enabling more independent experiments and deferring decisions until more data is available, which is highly valuable in uncertain times.\n\n",
@@ -12041,12 +12053,14 @@
         "topics": [
             "recmuONwokRtPS6Tp",
             "recPoM7t8neA7gkZ5",
-            "recQ4hio93eTgzFTS"
+            "recQ4hio93eTgzFTS",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "AI",
             "Devops",
-            "Architecture"
+            "Architecture",
+            "AI Assisted Engineering"
         ],
         "url": "https://www.youtube.com/watch?v=0aJRtCn_WqM"
     },
@@ -13470,7 +13484,7 @@
         "description": "Great introduction to the differences between traditional software development and the development cycle with AI models. Nerea introduces concepts such as Continuous training, model deployment, MLOps, and collaboration between data scientists and software engineers. Highly recommended for software engineers looking to delve into these topics and collaborate more closely on AI-based feature development.\n",
         "duration": 3240,
         "language": "English",
-        "last_modified": "2026-01-22T17:49:06.000Z",
+        "last_modified": "2026-01-22T19:17:18.000Z",
         "less_15": 0,
         "name": "Artificial Intelligence seen from the software development lifecycle perspective",
         "published": true,
@@ -13489,11 +13503,13 @@
         ],
         "topics": [
             "rec7W7Us70Af2REIy",
-            "recmuONwokRtPS6Tp"
+            "recmuONwokRtPS6Tp",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "MLOps",
-            "AI"
+            "AI",
+            "AI Assisted Engineering"
         ],
         "url": "https://www.youtube.com/watch?v=a_T21Lf26pc",
         "year": 2023
@@ -14257,7 +14273,7 @@
         "description": "Explore augmented coding with Kent Beck, discussing how AI agents transform software development, the essential role of observability and testing for control and understanding, and the future impact on engineering careers.\n",
         "duration": 2340,
         "language": "English",
-        "last_modified": "2026-01-22T17:51:34.000Z",
+        "last_modified": "2026-01-22T19:17:54.000Z",
         "less_15": 0,
         "name": "o11ycast - Ep. #80, Augmented Coding with Kent Beck",
         "notes": "The most important lesson conveyed is that **augmented coding, powered by AI agents, represents a fundamental shift in software development that requires developers to adopt new practices focused on influence, feedback loops, and process refinement rather than traditional control**.\nSomeone should remember that working with these powerful, non-deterministic systems means **relying heavily on constraints, testing, and observability** to guide, understand, and ensure the desired outcomes of the code generated by agents, acknowledging that deep line-by-line understanding of all code may become less feasible. It's a time for experimentation and continuously refining the \"making\" process alongside building the product itself.\n\n\n- **Augmented Coding is a Fundamental Shift:** The core concept is that AI agents are transforming software development, moving beyond traditional coding to \"augmented coding\" where developers create the tools and workflows alongside the product itself. This process involves working with **non-deterministic systems sensitive to initial conditions**, which means results can vary even with similar prompts. It allows developers to **explore more ideas more easily** by automating minutiae like programming language syntax and dependencies.\n- **Control Shifts to Influence and Feedback Loops:** With AI agents, direct line-by-line control of code becomes less feasible and perhaps less important. Instead, developers must rely on **constraints, testing, and observability** to guide and understand the agents' behavior. **Testing acts as a crucial \"super ego\"** providing validation and preventing undesirable actions like commenting out failed tests. **Observability** provides essential feedback on emergent properties like performance or error rates in production, necessary because we let go of deep understanding of all the generated code.\n- **The Process (\"Making Making\") is as Important as the Product:** Working with agents requires **continuously refining the process** itself, such as iterating on prompts, defining rules, and establishing workflows like automatically running tests and committing code. **Experimentation is key**, and it's important to have the discipline to iterate in smaller steps, back up, and restart when necessary, rather than getting stuck in a \"go-to loop\" or falling prey to the sunk cost fallacy.\n- **Significant Impact on the Engineering Career:** Augmented coding raises questions about the future of engineering roles, particularly for **junior developers**, potentially limiting opportunities for \"legitimate peripheral participation\" where foundational experience is gained through assisting senior engineers. However, it may also lead to the rise of a new generation of **\"native augmented coders\"** who are uniquely skilled at leveraging these tools in ways current developers might not fully grasp.\n\n",
@@ -14285,13 +14301,15 @@
             "recmuONwokRtPS6Tp",
             "recPcLVyg0S4ORUkX",
             "rec6JMQpL2LSjoP2E",
-            "recWFKWrPEdeEYbzx"
+            "recWFKWrPEdeEYbzx",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "AI",
             "testing",
             "Inspirational",
-            "Engineering Culture"
+            "Engineering Culture",
+            "AI Assisted Engineering"
         ],
         "url": "https://www.youtube.com/watch?v=kisZtCK0Bg0"
     },
@@ -14384,7 +14402,7 @@
         "description": "The talk discusses reactions and scenarios related to the Anthropic CEO's prediction that AI will soon write essentially all code, proposing challenges to this claim and exploring different potential futures for software engineering roles and processes\n",
         "duration": 1320,
         "language": "English",
-        "last_modified": "2026-01-22T17:48:59.000Z",
+        "last_modified": "2026-01-22T19:17:16.000Z",
         "less_15": 0,
         "name": "Anthropic CEO Declares Programming Over, We Respond",
         "notes": "Here are the most important points discussed in the presentation regarding the Anthropic CEO's prediction about AI writing code:\n- The talk is a direct **response to the prediction by Anthropic CEO Dario Amodei** that AI will be writing 90% of code in 3-6 months and **essentially all code in 12 months**.\n- The speaker, Ry Myers, states they **don't personally believe this extreme prediction** but emphasizes that it's a **situation worth taking seriously** due to the significant investment and attention such narratives receive.\n- While the CEO was speaking to a general audience and potentially using terms like \"coding\" and \"programming\" interchangeably, the speaker argues that **\"coding,\" \"programming,\" and \"software engineering\" are not interchangeable concepts** in practice. Software engineering involves challenges of **scale, managing real-world needs and risks, and is a social process**, with coding being only a part of it. Improving coding speed doesn't automatically speed up the entire engineering process proportionally.\n- The speaker proposes **specific, challenging tasks for current AI systems** that they argue are orders of magnitude _easier_ than replacing all code, using them as challenges to the CEO's prediction:\n    - Successfully **replacing the software running on a single Mainframe**. This is highly relevant as 50% of the US GDP is tied to companies still dependent on mainframes.\n    - **Rewriting the highly stable and well-documented TeX command** (a complex 1982 codebase under 40,000 lines) into a modern language like Rust. TeX is still core to academic papers and textbooks, is exceedingly well-documented (even using \"literate programming\" to generate both program and book).\n- The presentation outlines **six potential scenarios for the future of software engineering** in the context of AI, noting that these are part of the current conversation:\n    - **Extreme Completion:** AI acts as advanced autocomplete, streamlining work without fundamentally changing roles.\n    - **Dev-ocalypse / Innovator's Paradise:** Traditional programmer roles are essentially eliminated.\n    - **Abstraction Leap:** A significant shift to much higher levels of abstraction in building software.\n    - **Uncharted Waters:** New, currently unknown programming paradigms emerge.\n    - **Review Economy:** Humans primarily spend their time reviewing and debugging AI-generated code, becoming a bottleneck.\n    - **Infinite Pile of Garbage:** Premature adoption of low-quality AI systems creates an unsustainable, intractable software infrastructure (an \"ecological disaster scenario\").\n- These scenarios can interact; for instance, attempting the Dev-ocalypse might lead to the Infinite Pile of Garbage if not done carefully.\n- The speaker's personal preferred future scenario leans towards a **combination of Extreme Completion and Abstraction Leap**, suggesting developing better building blocks like Domain Specific Languages (DSLs) in concert with advanced completion tools.\n- The speaker notes that debates around AI replacing software roles can sometimes feel like a **\"thinly disguised labor dispute,\"** raising questions about how society treats people whose skills may become less in demand.\n- A crucial takeaway is that **software engineers have the expertise and a say in shaping the future**. The future is not an inevitable \"meteor\" but something that society, including software engineers, will **actively build**.\n- The ultimate goal should be to deliberate on **what society wants out of software** (e.g., quality, tractability, value) and work together towards that desired future, rather than passively accepting a predicted one.\n\n",
@@ -14405,12 +14423,14 @@
         "topics": [
             "recWFKWrPEdeEYbzx",
             "recbJb6M6X8AZPTRc",
-            "recmuONwokRtPS6Tp"
+            "recmuONwokRtPS6Tp",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "Engineering Culture",
             "Generative AI",
-            "AI"
+            "AI",
+            "AI Assisted Engineering"
         ],
         "url": "https://www.youtube.com/watch?v=-aGyDDoaHww"
     },
@@ -15384,7 +15404,7 @@
         "description": "This talk critically examines \"vibe coding,\" arguing that effective software engineering requires precise problem definition, structured thinking, and robust automated testing to manage complexity and enable evolvability, rather than relying on vague AI-assisted code generation.\n",
         "duration": 1020,
         "language": "English",
-        "last_modified": "2026-01-22T17:52:57.000Z",
+        "last_modified": "2026-01-22T19:18:23.000Z",
         "less_15": 0,
         "name": "Vibe Coding Is The WORST IDEA Of 2025",
         "notes": "Effective software engineering demands **precise problem definition, structured thinking, and robust automated testing** to build evolvable and verifiable systems, as reliance on vague AI-assisted \"vibe coding\" overlooks these fundamental challenges inherent in complex software development.\n\n- \"Vibe coding,\" or vague AI-assisted programming, is insufficient for complex software, which requires **precision, structured thinking, and deterministic instructions**.\n- The real challenge in software engineering is **understanding and defining problems in detail**, not merely writing code.\n- Effective programming languages are tools that help **structure thinking, decompose problems, communicate understanding to other humans, and precisely instruct computers**.\n- A crucial measure of software quality is its **evolvability and ease of change**.\n- AI-generated code exacerbates challenges in **specifying precise intent, verifying outcomes, and making incremental changes**, highlighting the critical need for **robust automated testing, continuous integration, and continuous delivery**.\n- The optimal approach for AI programming involves providing **executable specifications** that define desired system behavior precisely and allow for verification.\n- Relying on AI to regenerate code from scratch without deterministic, incremental changes risks repeating past mistakes where the inability to update or correct code was a major stumbling block.\n\n",
@@ -15404,12 +15424,14 @@
         "topics": [
             "recmuONwokRtPS6Tp",
             "recPcLVyg0S4ORUkX",
-            "recm3GCPgEVSDmeVI"
+            "recm3GCPgEVSDmeVI",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "AI",
             "testing",
-            "Software Design"
+            "Software Design",
+            "AI Assisted Engineering"
         ],
         "url": "https://www.youtube.com/watch?v=1A6uPztchXk"
     },
@@ -17360,7 +17382,7 @@
         "description": "This talk explores a radical idea that acceptance testing, rather than being just a way to verify software, may be the next step in the evolution of how we program computers, using AI to generate code from detailed specifications\n",
         "duration": 960,
         "language": "English",
-        "last_modified": "2026-01-22T17:48:01.000Z",
+        "last_modified": "2026-01-22T19:17:03.000Z",
         "less_15": 0,
         "name": "Acceptance Testing Is the FUTURE of Programming",
         "published": true,
@@ -17380,12 +17402,14 @@
         "topics": [
             "recmuONwokRtPS6Tp",
             "recbJb6M6X8AZPTRc",
-            "recPcLVyg0S4ORUkX"
+            "recPcLVyg0S4ORUkX",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "AI",
             "Generative AI",
-            "testing"
+            "testing",
+            "AI Assisted Engineering"
         ],
         "url": "https://www.youtube.com/watch?v=NsOUKfzyZiU",
         "year": 2025
@@ -17473,7 +17497,7 @@
         "description": "A discussion on how to safely practice \"vibe coding\" (letting AI generate code while forgetting the code exists) in production by acting as the AI's Product Manager and focusing on verification of leaf nodes and abstraction layers.\n",
         "duration": 1860,
         "language": "English",
-        "last_modified": "2026-01-22T17:52:51.000Z",
+        "last_modified": "2026-01-22T19:18:18.000Z",
         "less_15": 0,
         "name": "Vibe coding in prod | Code w/ Claude",
         "notes": "Focusing on the product's existence rather than the code itself is essential for safely capitalizing on AI's exponential growth in code generation, requiring engineers to act as the AI's Product Manager by verifying abstraction layers, setting clear requirements, and concentrating AI-generated work on leaf nodes of the codebase to manage technical debt. This shift allows teams to leverage models capable of generating a week's worth of work without becoming a bottleneck by demanding review of every single line of code.\n\n- **Vibe Coding Defined:** Vibe coding is defined as fully giving into the vibes, embracing exponentials, and, crucially, forgetting that the code itself even exists.\n- **The Exponential Imperative:** The length of tasks AI can handle is doubling every seven months; to leverage this exponential growth and avoid becoming a even exists.\n- **The Exponential Imperative:** The length of tasks AI can handle is doubling every seven months; to leverage this exponential growth and avoid becoming a bottleneck, engineers must find a way to responsibly use AI for large chunks of work without reviewing every line of code.\n- **The Product Focus:** The solution to safe vibe coding in production is to **forget the code exists, but not the product exists**.\n- **Engineers as Product Managers (PMs):** When vibe coding, the engineer acts as the AI's Product Manager, needing to set clear requirements, specifications, and constraints for the AI (Claude).\n- **Verification through Abstraction:** Safety is achieved by finding and verifying an abstraction layer that can be checked without needing to understand the underlying implementation, similar to how managers oversee experts or how software engineers trust compilers.\n- **Mitigating Technical Debt:** Focus vibe coding on **leaf nodes** of the codebase\u2014parts that nothing else depends on and are unlikely to change\u2014to contain any AI-generated technical debt.\n- **Protect Core Architecture:** Human engineers must still deeply understand, protect, and heavily review the core architecture, trunks, and underlying branches of the system, ensuring they remain extensible, understandable, and flexible.\n- **Verifiable Checkpoints:** Design the system and changes with easily human-verifiable inputs and outputs, and stress tests, to build confidence in correctness and stability without reading all the code.\n- **Effective Prompting:** Spend time (e.g., 15-20 minutes) collaborating with the AI to gather guidance, explore the codebase, build a plan, and capture necessary context into a single, comprehensive prompt before letting the AI execute the plan.\n- **Learning with AI:** AI tools can accelerate learning by enabling engineers to take many more \"shots on goal\" (trying new features/architectures) and by acting as an always-available pair programmer to explain libraries, decisions, and code it generated.\n- **TDD and Testing:** Utilize end-to-end, general, and minimalist tests, often reading the tests first, to provide verifiable checkpoints and guidance for the AI, even if the implementation is generated.\n\n\n",
@@ -17493,12 +17517,14 @@
         "topics": [
             "recmuONwokRtPS6Tp",
             "rechj5WeSQRH211np",
-            "recin3Ync8iZldW0q"
+            "recin3Ync8iZldW0q",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "AI",
             "Agile",
-            "Continuous Delivery"
+            "Continuous Delivery",
+            "AI Assisted Engineering"
         ],
         "url": "https://www.youtube.com/watch?v=fHWFF_pnqDk"
     },
@@ -18357,7 +18383,7 @@
         "description": "A pragmatic exploration of AI coding agents that encourages developers, who identify as builders, to overcome fear and embrace these tools as collaborative partners to enhance development.\n",
         "duration": 2400,
         "language": "English",
-        "last_modified": "2026-01-22T17:49:25.000Z",
+        "last_modified": "2026-01-22T19:17:21.000Z",
         "less_15": 0,
         "name": "CORECURSIVE #113 / When AI Codes, What\u2019s Left for me?",
         "notes": "Builders should overcome the fear that AI coding agents devalue their identity and instead embrace them as collaborative partners, treating their use as a learning project to enhance problem-solving, tackle more ambitious work, and retain the fundamental satisfaction of creating. This transition, though initially awkward and frustrating like any new skill, is necessary to leverage the tools' power and maintain the drive to build.\n\n- **Identity Shift:** Builders often resist AI coding agents because coding is deeply tied to their identity and self-worth; overcoming this fear is necessary to embrace the new tools.\n- **Collaborative Partnership:** AI coding agents are not AGI; they function best when treated as collaborative partners, similar to pair programmers, requiring continuous guidance and iteration.\n- **Leveraging Strengths:** The optimal approach is \"human with machine.\" The builder provides intuition, strategy, complex problem breakdown, and quality checks, while the AI handles speed, pattern recognition, and tedious or grunt work.\n- **Learning Curve:** Using these agents must be treated as a learning project or deliberate practice; initial experiences will feel frustrating, clunky, and slow, mirroring the adoption of any new, powerful technology (like switching OS or paradigms).\n- **Skill Transformation:** While some low-level coding skills may become less valuable, architectural thinking, problem decomposition, and high-level guiding skills become significantly more powerful and valuable.\n- **Tackling Ambition:** Collaboration with agents allows developers to tackle complex, ambitious projects they previously wouldn't have time or capacity for alone (expanded ambition).\n- **Practical Application:** Start small, such as using an agent to explore an unfamiliar codebase, and rely on strong engineering practices like comprehensive linting, static typing, and duplicate code detection to stabilize the agent\u2019s probabilistic output.\n- **Refactoring Power:** AI agents excel at mass refactorings; after a developer manually completes the first complex instance, the agent can flawlessly replicate the changes across many files and call sites.\n\n",
@@ -18377,12 +18403,14 @@
         "topics": [
             "recmuONwokRtPS6Tp",
             "recWFKWrPEdeEYbzx",
-            "rec436FbBa6hFiWcj"
+            "rec436FbBa6hFiWcj",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "AI",
             "Engineering Culture",
-            "Developer Productivity"
+            "Developer Productivity",
+            "AI Assisted Engineering"
         ],
         "url": "https://corecursive.com/coding-agents/#"
     },
@@ -23408,7 +23436,7 @@
         "description": "Inspirational (and funny) talk about how to approach testing in a system using AI.\n",
         "duration": 1620,
         "language": "English",
-        "last_modified": "2026-01-22T17:52:45.000Z",
+        "last_modified": "2026-01-22T19:18:13.000Z",
         "less_15": 0,
         "name": "The reality of testing in an artificial world",
         "published": true,
@@ -23426,11 +23454,13 @@
         ],
         "topics": [
             "recPcLVyg0S4ORUkX",
-            "recmuONwokRtPS6Tp"
+            "recmuONwokRtPS6Tp",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "testing",
-            "AI"
+            "AI",
+            "AI Assisted Engineering"
         ],
         "url": "https://www.youtube.com/watch?v=ouLawtQ87Dw",
         "year": 2019
@@ -23502,7 +23532,7 @@
         "description": "Launch Darkly\u2019s Director of Engineering outlines strategies for integrating AI in large enterprises, focusing on creating centralized documentation and rules for AI agents, using AI to burn down technical debt, and leveraging custom GPTs to raise the hiring bar\n",
         "duration": 2640,
         "language": "English",
-        "last_modified": "2026-01-22T17:51:55.000Z",
+        "last_modified": "2026-01-22T19:18:06.000Z",
         "less_15": 0,
         "name": "Successfully coding with AI in large enterprises: Centralized rules, workflows for tech debt, & more",
         "notes": "Successfully deploying AI agents in large engineering organizations requires moving beyond \"vibe coding\" by creating **centralized documentation and rules** within the repository that both humans and LLMs can access, transforming AI into a powerful, scalable tool for ensuring code quality and efficiently **burning down technical debt**.\n\n**Centralized Rules and Documentation** Establish centralized documentation (style guides, organization rules) directly within the code repository so both human engineers and Large Language Models (LLMs) can access it easily. Move beyond \"vibe coding\" by consolidating tool-specific AI rules (e.g., for Cursor, Claude, Devon) into a single `agents rules` directory to ensure consistency and scalability across multiple tools. What is good for humans in the repo (clear structure, detailed documentation) is also good for LLMs.\n**Burning Down Technical Debt** Leverage AI agents to target and resolve large, annoying technical debt issues (like fixing noisy test logs, reducing accessibility warnings, or performing mass code migrations) that are often hard to justify for human developers. Create specific, prioritized checklists and task lists in markdown files within the repository that any AI agent or human team member can pick up and execute sequentially.\n**Operationalizing AI Adoption** Assign a dedicated organizational leader (manager or director level) who is close to the code to drive the engineering-wide transformation and ensure AI tools are adopted successfully. Use AI agents (like Devon) to help generate the initial human-readable documentation and rules required for standardization.\n**Raising the Hiring Bar** Implement custom GPTs trained on hiring rubrics and scorecard examples to provide objective feedback on interviewer scorecards. This workflow ensures consistency in feedback quality across interview panels and coaches human interviewers to write more specific and accurate assessments.\n",
@@ -23522,12 +23552,14 @@
         "topics": [
             "recmuONwokRtPS6Tp",
             "rec436FbBa6hFiWcj",
-            "recWFKWrPEdeEYbzx"
+            "recWFKWrPEdeEYbzx",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "AI",
             "Developer Productivity",
-            "Engineering Culture"
+            "Engineering Culture",
+            "AI Assisted Engineering"
         ],
         "url": "https://www.youtube.com/watch?v=HtzkfjEH-GU"
     },
@@ -27586,7 +27618,7 @@
         "description": "Dave Farley examines the DORA report on AI in software development, detailing how successful adoption requires mitigating AI's inherent unreliability by applying core modern software engineering practices, such as working in small, verified steps.\n",
         "duration": 1140,
         "language": "English",
-        "last_modified": "2026-01-22T17:50:08.000Z",
+        "last_modified": "2026-01-22T19:17:27.000Z",
         "less_15": 0,
         "name": "Has This Report EXPOSED THE TRUTH About AI Assisted Software Development?",
         "notes": "Since AI programming assistants are inherently unreliable and prone to making unintended or unsupported changes, successful integration demands strict control measures; engineers must adopt core modern software engineering practices, specifically **making incremental progress in small, controlled steps** and **continuously verifying** the system's correctness after every change to ensure determinism and reliability.\n\n- AI programming assistance is widely adopted (95% reliance) and highly effective at improving productivity (80% report improvement).\n- Despite productivity gains, relying on AI risks software delivery stability and throughput because AI outputs are often imperfect, unreliable, and prone to making unintended or unsupported changes.\n- A major risk is over-trust: A significant majority (70%) of developers trust AI output, even though research indicates AI systems frequently produce unsupported claims or fabricated answers (between 30% and 95% unreliability).\n- Successful AI adoption requires strict control measures and applying core modern software engineering practices to mitigate AI's inherent unreliability.\n- The most vital practice is **making progress incrementally in small, controlled steps**, which constrains the often \"overeager\" AI.\n- Engineers must **continuously verify** the system's correct operation after every small change to maintain determinism and ensure the system is still doing what it is intended to do.\n- Detailed and precise specification is paramount; techniques like Behavior-Driven Development (BDD) and Acceptance Test-Driven Development (ATDD) help achieve the necessary clarity.\n- Other important capabilities for success include strong version control, working in small batches, user-centric focus, and quality internal platforms.\n- Organizations must establish clear communicated AI stances (guide rails) and should exercise caution, particularly when allowing junior developers to use AI without detailed supervision.\n\n\n",
@@ -27606,12 +27638,14 @@
         "topics": [
             "recmuONwokRtPS6Tp",
             "reck5fBLLF9Drj8rk",
-            "recin3Ync8iZldW0q"
+            "recin3Ync8iZldW0q",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "AI",
             "Small Safe Steps (3s)",
-            "Continuous Delivery"
+            "Continuous Delivery",
+            "AI Assisted Engineering"
         ],
         "url": "https://www.youtube.com/watch?v=CoGO6s7bS3A"
     },
@@ -30085,7 +30119,7 @@
         "description": "A deep dive into Shopify's AI-first transformation, emphasizing pervasive AI tool adoption, internal AI infrastructure, and cultural shifts empowering all employees to leverage AI.\n",
         "duration": 2820,
         "language": "English",
-        "last_modified": "2026-01-22T17:50:48.000Z",
+        "last_modified": "2026-01-22T19:17:33.000Z",
         "less_15": 0,
         "name": "How AI is changing software engineering at Shopify with Farhan Thawar",
         "notes": "The most important lesson conveyed is that for a company to become AI-first, it must make a **deep and widespread investment in AI tools and infrastructure**, actively fostering a culture of **experimentation and adoption across all roles**, even empowering non-technical individuals to create software solutions, with leadership role-modeling usage and prioritizing learning and productivity gains over immediate cost concerns. Shopify, for example, demonstrates this by having no cost limit on AI tokens for engineers, deploying tools like GitHub Copilot and Cursor broadly, building internal AI infrastructure like an LLM proxy and MCP servers, and intentionally hiring AI-reflexive interns to drive cultural change.\n\n- **Early and Deep Adoption of AI Tools**: Shopify was an early adopter of AI coding tools like GitHub Copilot (as early as 2021) and Cursor, deploying them widely across engineering and even beyond.\n- **No Cost Limit on AI Tokens**: Shopify encourages engineers to spend on AI tokens, viewing it as a productivity investment rather than an expense to penny-pinch, even celebrating high usage. They believe the potential productivity gains far outweigh the costs, which they currently cannot precisely measure but believe are significant.\n- **Building Internal AI Infrastructure**: To facilitate secure and widespread AI adoption, Shopify built an internal LLM proxy (based on Libra Chat) to prevent leakage of sensitive data to external models and to track internal usage, and actively implements MCP (Microservice Compute Protocol) servers to make internal data accessible to AI agents.\n- **Cultural Expectation of AI Usage**: Leadership, including the CEO, actively role-models AI usage and expects all employees, not just engineers, to use AI tools, treating it as essential as other productivity software like spreadsheets. They evaluate impact as if employees had these tools available.\n- **Empowering Non-Technical Users to Build Software**: The widespread adoption of tools like Cursor has led to non-technical teams (finance, sales, support) building their own software solutions and homepages to access services like Salesforce, Google Calendar, and Gmail, often without engineering intervention. This is seen as a welcome expansion of software creation, satisfying unmet demand.\n- **Hiring \"AI-Reflexive\" Talent**: Shopify is strategically hiring a large number of interns (e.g., 1,000 in a year) with the hypothesis that these younger individuals are naturally \"AI-reflexive\" and can help change the internal culture around AI usage. They prioritize learning from interns.\n- **Embracing Experimentation and Learning**: Shopify actively tries new AI tools (e.g., Cloud Code, Devin, Gum Loop) and is open to experimenting, even with the risk of tools producing \"garbage\" code, and reverting if they find AI reduces essential context or understanding.\n- **AI Integration in Core Workflows**: AI is used to automate tedious tasks like generating weekly project updates in their internal project management tool (GSD), though human review and accountability remain crucial.\n- **AI in Interview Processes**: Shopify embraces AI coding tools (like Copilot) during technical interviews for all roles, including engineering directors and above, to assess candidates' ability to work with and evaluate AI-generated code rather than just writing it from scratch.\n- **Focus on AI for Tech Debt and Refactoring**: The best engineers are leveraging AI tools to tackle long-standing infrastructure improvements, tech debt reduction, and refactoring, projects they previously felt they lacked the time or resources for.\n- **Role-Modeling and Sharing Best Practices**: The most effective way to drive AI adoption is through leadership role-modeling, sharing successful AI use cases, and creating internal prompt libraries for others to learn from and adapt.\n\n",
@@ -30110,13 +30144,15 @@
             "recmuONwokRtPS6Tp",
             "recWFKWrPEdeEYbzx",
             "rec436FbBa6hFiWcj",
-            "rec94mSWZ4bx2wFpf"
+            "rec94mSWZ4bx2wFpf",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "AI",
             "Engineering Culture",
             "Developer Productivity",
-            "Technology Strategy"
+            "Technology Strategy",
+            "AI Assisted Engineering"
         ],
         "url": "https://www.youtube.com/watch?v=u-3IILWQPRM"
     },
@@ -30129,7 +30165,7 @@
         "description": "Gene Kim explores how Developer Experience, Generative AI, and Platform Engineering serve as the next chapter in organizational transformation, fundamentally improving developer productivity and value creation.\n",
         "duration": 2640,
         "language": "English",
-        "last_modified": "2026-01-22T17:49:54.000Z",
+        "last_modified": "2026-01-22T19:17:24.000Z",
         "less_15": 0,
         "name": "Gene Kim on developer experience and AI engineering",
         "notes": "The central insight conveyed is that **organizational transformation is evolving beyond traditional DevOps**, with **Developer Experience, Generative AI, and Platform Engineering** emerging as critical drivers for fundamentally improving **developer productivity, accelerating innovation, and enabling value creation** by systematically removing friction and enabling independence of action in the technology value stream.\n\n- **Developer Experience (DevEx)** is the **next chapter in organizational transformation**, crucial for **value creation** by enabling hundreds or thousands of people to do their work easily and well. Poor DevEx is a **\"painkiller,\" not a \"vitamin,\"** as it costs significant time, innovation, and leads to top talent attrition due to friction like hours spent on trivial issues (e.g., CI/CD configuration, environment setup).\n- **Generative AI (GenAI)** is a radical breakthrough that can **massively improve individual and group productivity**, allowing developers to work faster, be more ambitious, accomplish tasks alone that previously required a team, and have more \"swings at the bat\" (experiments). It shifts roles, potentially leading to the **\"death of the junior developer\" or \"death of the stubborn developer\"** by augmenting skills and accelerating learning, making \"novices optional\" in some scenarios.\n- **Platform Engineering** is essential for this transformation, designed to **enable independence of action** for developers through self-service and faster feedback loops, preventing them from being \"locked up\" by complex ticketing systems. Platforms deliver critical prerequisites (logging, CI/CD, environment creation) via world-class experts, allowing developers to focus on value creation.\n- These concepts (DevEx, GenAI, Platform Engineering) are **incomplete expressions of a \"far greater whole\"** aimed at optimizing the system for performance by reducing friction and enabling more experiments.\n- The underlying principles for successful transformation involve understanding **coupling** (when to directly connect and when to decouple for independence) and applying **three mechanisms of performance**: **slowification** (solving consequential problems in planning/practice), **simplification** (dividing problems into smaller, safer parts), and **amplification** (ensuring weak signals of failure are detected and corrected).\n- **Layer 3 (the management system)** is the primary difference-maker in organizational performance, and radical breakthroughs in Layer 2 (tools and technology like CI/CD, cloud, and certainly GenAI) can **\"blow up\" Layer 3**, forcing a reconfiguration of how work structures and organizations operate.\n\n\n",
@@ -30151,13 +30187,15 @@
             "recxJkIWVynhDpBOI",
             "rec436FbBa6hFiWcj",
             "recbJb6M6X8AZPTRc",
-            "recmuONwokRtPS6Tp"
+            "recmuONwokRtPS6Tp",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "Devex",
             "Developer Productivity",
             "Generative AI",
-            "AI"
+            "AI",
+            "AI Assisted Engineering"
         ],
         "url": "https://www.youtube.com/watch?v=4Vp_Wnpvg_E"
     },
@@ -30329,7 +30367,7 @@
         "description": "Industry legend Kent Beck, creator of XP and TDD, shares insights on the evolution of Agile, Extreme Programming, and Test-Driven Development, alongside his current experience of \"most fun ever\" coding with AI agents.\n",
         "duration": 4500,
         "language": "English",
-        "last_modified": "2026-01-22T17:51:58.000Z",
+        "last_modified": "2026-01-22T19:18:09.000Z",
         "less_15": 0,
         "name": "TDD, AI agents and coding with Kent Beck",
         "notes": "The most important lesson conveyed is that **AI coding tools are fundamentally transforming the landscape of software development**, making programming the \"most fun I've ever had\" for industry legend Kent Beck by providing immense leverage for \"insanely ambitious ideas\" and shifting what's cheap and expensive. This profound shift necessitates **continuous experimentation with new processes** and underscores the ongoing relevance of foundational practices like **Test-Driven Development (TDD)** for communicating with and managing the \"unpredictable genie\" of AI.\n- **AI coding tools are profoundly transforming software development**, making programming the \"most fun I've ever had\" by offering immense leverage for \"insanely ambitious ideas\" and shifting the landscape of what's cheap and expensive.\n- These **AI tools are like an \"unpredictable genie,\"** requiring continuous experimentation with new processes, as they often don't do exactly what's intended and lack inherent design sense.\n- **Test-Driven Development (TDD) significantly reduces programming anxiety** by providing constant verification and certainty that code works.\n- TDD is not just about testing; it **inherently involves design decisions** about the interface before implementation, offering clarity and a \"moment of breath\" for broader design thoughts.\n- **TDD is highly relevant when working with AI agents** for communicating expected values and catching the AI \"accidentally breaking things\" or changing tests.\n- **Agile, particularly Extreme Programming (XP), emerged from a need to move away from rigid waterfall methodologies** towards continuous feedback, rapid iterations, and constant adjustment.\n- Kent Beck initially **disliked the term \"Agile\" because it was \"too attractive,\"** leading to widespread adoption without adherence to its core principles; he preferred \"conversational.\"\n- **XP emphasizes \"crank[ing] the knobs up to 11\" on effective practices**, like three-week deployable iterations and programmers writing tests, and **strongly recommends pairing** due to observed zero defects from paired code.\n- At massive scale (e.g., Facebook), **traditional TDD became less critical due to alternative, faster feedback loops**, high individual ownership, sophisticated observability, and the extensive use of feature flags.\n- Organizations will need to **get used to \"throwing away a lot more code\"** as AI makes experimenting with ideas drastically cheaper, leading to a higher quantity of explored solutions.\n\n",
@@ -30352,12 +30390,14 @@
         "topics": [
             "recYkFYw6BSRfA0Ce",
             "recmPbBNpUB7Q5XyX",
-            "recmuONwokRtPS6Tp"
+            "recmuONwokRtPS6Tp",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "XP",
             "tdd",
-            "AI"
+            "AI",
+            "AI Assisted Engineering"
         ],
         "url": "https://www.youtube.com/watch?v=aSXaxOdVtAQ"
     },
@@ -34214,7 +34254,7 @@
         "description": "OpenAI's Sean Grove introduces \"The New Code,\" arguing that specifications are the universal artifact of intent, crucial for aligning both humans and advanced AI models.\n",
         "duration": 1260,
         "language": "English",
-        "last_modified": "2026-01-22T17:52:26.000Z",
+        "last_modified": "2026-01-22T19:18:11.000Z",
         "less_15": 0,
         "name": "The New Code \u2014 Sean Grove, OpenAI",
         "notes": "Specifications, not the resulting code, are the universal artifact of intent and value, serving as the essential tool for aligning humans across different disciplines (like engineering, product, and legal) and for effectively training and evaluating advanced AI models. Therefore, the ability to write robust specifications that clearly capture intent is quickly becoming the most valuable and scarce skill for programmers in the emerging era of \"The New Code\".\n\n- The value programmers bring is largely in **structured communication** (80-90%), not just the resulting code (10-20%).\n- The **source specification**, not the generated code or binary, is the valuable artifact of intent.\n- **Specifications** are the universal artifact of intent and value, essential for aligning humans (engineering, product, legal, policy, safety) on shared goals.\n- The more advanced AI models become, the more severely the bottleneck of knowing _what_, _how_, and _why_ to build will be felt; **effective communication** becomes the most valuable programming skill.\n- **Code is a lossy projection** from the specification; specifications embody all necessary intentions and values to generate the code.\n- A robust specification contains enough information to translate into multiple targets (e.g., code, clients, documentation, tutorials).\n- The new scarce skill is **writing specifications that fully capture intent and values**.\n- The **OpenAI model spec**, a collection of versioned, human-readable markdown files, serves as an example of a specification that aligns all humans within the company and can be used for model alignment.\n- Specifications can encode **success criteria** and unit tests to verify model compliance (e.g., using IDs to link clauses to challenging prompts).\n- Specs serve as a **trust anchor** and a reference point for determining expected behavior and identifying bugs (as seen in the 40 sycophancy issue).\n- Specifications can be used as both **training material and evaluation material** for automatically aligning AI models through techniques like deliberative alignment.\n- Specs are analogous to code: they compose, are executable, testable, have interfaces, and can be shipped as modules.\n- The concept of specification is **universal**: Programmers align silicon (via code specs), Product Managers align teams (via product specs), and Lawmakers align humans (via legal specs).\n- Every prompt used to align an AI model is a **proto-specification**; users are spec authors.\n- **Engineering is not about code**, but the precise exploration by humans of software solutions to human problems, moving towards a unified human encoding (specification) of how to solve these problems.\n- The future IDE may be an **Integrated Thought Clarifier** that pulls out ambiguity in specifications to improve communication between humans and models.\n\n\n",
@@ -34235,13 +34275,15 @@
             "recmuONwokRtPS6Tp",
             "rechj5WeSQRH211np",
             "recQ4hio93eTgzFTS",
-            "recPoM7t8neA7gkZ5"
+            "recPoM7t8neA7gkZ5",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "AI",
             "Agile",
             "Architecture",
-            "Devops"
+            "Devops",
+            "AI Assisted Engineering"
         ],
         "url": "https://www.youtube.com/watch?v=8rABwKRsec4"
     },
@@ -35304,7 +35346,7 @@
         "description": "Henrik Kniberg discusses transitioning from pioneering Agile methods to building autonomous AI agents, exploring radical coding productivity gains and the evolution of software architecture decisions\n",
         "duration": 2700,
         "language": "English",
-        "last_modified": "2026-01-22T17:47:55.000Z",
+        "last_modified": "2026-01-22T19:16:57.000Z",
         "less_15": 0,
         "name": "#43 Henrik Kniberg - Agentifying Software Development",
         "notes": "AI coding agents offer radical productivity gains, potentially reaching 10 times or more effectiveness for developers who adopt an \"AI-first thinking\" mindset and master the skill of determining when and how much to rely on AI assistance. The key takeaway for developers is that their role is shifting from typing lines of code to becoming high-level problem solvers who collaborate with AI, requiring a greater focus on architectural decisions and problem breakdown to ensure high-quality software development.\n\n- **AI coding agents enable radical productivity gains**\u2014up to 10 times or more effectiveness\u2014far exceeding earlier reported 20% improvements.\n- Maximal productivity requires three components: **high-quality foundational models**, **specialized development tools** (like Kurser), and advanced developer skills in prompt and context engineering.\n- Developers must adopt an **\"AI-first thinking\" mindset**, viewing AI as a tool to solve problems, rather than focusing on typing lines of code.\n- The crucial developer skill is mastering the **\"Developer Laziness Scale,\"** determining precisely when to rely on AI (from 0% self-coding to 100% vibe coding) for any given task.\n- If a developer defines their job as writing lines of code, that role is quickly disappearing; the modern developer is a **high-level problem solver and architect**.\n- **Architectural control is essential** for complex platforms; developers must retain ownership of core architecture and use the extra time freed by AI to focus on high-level system design.\n- Timeless architectural principles (modular design, clear interfaces, low coupling) are more important than ever to prevent AI from creating technical debt.\n- Monorepos facilitate AI-powered development by allowing the model to see and integrate changes across the entire codebase (front-end, back-end, multiple services) simultaneously.\n- AI agents should be treated like interns; they must operate in safe environments where mistakes are reversible (e.g., leveraging version control) and should never be granted unnecessary access, such as write access to production databases.\n- Historically, increased developer productivity has led to industry growth; the trend is toward **everyone coding** simple tasks, with professional engineers focusing on strategic problem-solving.\n- Future AI models will be capable of taking on massive, complex tasks, such as complete legacy system rewrites, driving the work process with incremental plans and check-in points, requiring the engineer to act as a sophisticated \"customer.\"\n\n\n",
@@ -35324,12 +35366,14 @@
         "topics": [
             "recmuONwokRtPS6Tp",
             "rec436FbBa6hFiWcj",
-            "recQ4hio93eTgzFTS"
+            "recQ4hio93eTgzFTS",
+            "rec4uuxgf0CbGa5gW"
         ],
         "topics_names": [
             "AI",
             "Developer Productivity",
-            "Architecture"
+            "Architecture",
+            "AI Assisted Engineering"
         ],
         "url": "https://www.youtube.com/watch?v=w5DBbchMTYg"
     },
