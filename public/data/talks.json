@@ -5821,48 +5821,6 @@
         "year": 2017
     },
     {
-        "airtable_createdTime": "2022-06-12T08:06:27.000Z",
-        "airtable_id": "recBWtd51w0wIIcKB",
-        "blog_url": "https://www.eferro.net/2022/06/good-talkspodcasts-jun-2022-i.html",
-        "core_topic": "Testing",
-        "created": "2022-06-12T08:06:27.000Z",
-        "description": "Great interview with great ideas (mocking-free testing, scalability of horizontal organization, FAST framework, code evolution with evolutionary design...). Very worthwhile.\n",
-        "duration": 2880,
-        "language": "English",
-        "last_modified": "2025-04-12T23:02:30.000Z",
-        "less_15": 0,
-        "name": "Scaling Organizations and Design with James Shore",
-        "notes": "The most important lesson conveyed is that **software development benefits from embracing iterative and adaptive approaches across various aspects, from team scaling with fluid models like FAST to continuously evolving software design and considering different philosophies in testing**. Someone should remember the emphasis on **continuous improvement and adapting to change rather than adhering to rigid upfront plans**.\nHere are the most important points of the presentation:\n- **Scaling Organizations:**\n    - James Shore contrasts **horizontal scaling (adding more autonomous teams)** with **vertical scaling using Fluid Scaling Technology (FAST), where more people work as a single, rapidly re-organizing team**.\n    - Horizontal scaling, while beneficial for autonomy, can struggle with Conway's Law and adapting to changing business needs over time.\n    - **FAST emphasizes fluidity with teams self-organizing every two days based on the work to be done**, allowing for flexible allocation of skills and potentially being a superior approach to horizontal scaling.\n    - Concerns about the perceived chaos of FAST can be mitigated with proper change management and coaching, emphasizing that people are expected to stay on a task or team until they are no longer needed there.\n- **Evolutionary Design:**\n    - Evolutionary design, considered the most important idea in Agile, involves **incremental design (simplest design for today), reflective design (refactoring to enable new features), and continuous design (constant revision and improvement)**.\n    - It is crucial for maintaining a low cost of change over time, which is fundamental for Agile to work effectively.\n    - The principle of making the design \"perfect for today\" should be balanced with leaving the code \"better than you found it,\" prompting ongoing small refactorings.\n    - Refactoring should often occur _before_ adding a new feature (reflective design) to make the addition easier and improve the existing design.\n- **Testing:**\n    - There are two fundamental approaches to testing: **isolated interaction-based testing (often using mocks) and sociable state-based testing (testing without mocks)**.\n    - **Isolated interaction-based testing** validates behavior by verifying communication between units but can lead to tests that don't reflect real system behavior.\n    - **Sociable state-based testing** involves testing the system's observable state changes as it interacts with other parts of the system, offering more realism but potentially requiring modifications to production code to expose state.\n    - \"Testing without mocks\" in James Shore's view is about this sociable state-based approach, where you might use \"nullable infrastructure objects\" or \"embedded stubs\" to manage external interactions in tests rather than isolating with traditional mocks.\n\n",
-        "published": true,
-        "rating": 5,
-        "registered_at": "2022-06-12T08:06:27.000Z",
-        "resource": "Scaling Organizations and Design with James Shore - https://www.youtube.com/watch?v=duF4e3CwW9k",
-        "resource_type": "videopodcast",
-        "speaker_women_in_tech": [
-            null
-        ],
-        "speakers": [
-            "recbLh2HOz1bkIzL2"
-        ],
-        "speakers_names": [
-            "James Shore"
-        ],
-        "topics": [
-            "recYkFYw6BSRfA0Ce",
-            "recm3GCPgEVSDmeVI",
-            "recnvzS3XS3MGHk3e",
-            "rechj5WeSQRH211np"
-        ],
-        "topics_names": [
-            "XP",
-            "Software Design",
-            "Evolutionary Design",
-            "Agile"
-        ],
-        "url": "https://www.youtube.com/watch?v=duF4e3CwW9k",
-        "year": 2022
-    },
-    {
         "airtable_createdTime": "2020-01-19T20:36:44.000Z",
         "airtable_id": "recBZwhDTylUgYDno",
         "blog_url": "https://www.eferro.net/2015/01/index.html",
@@ -22738,6 +22696,46 @@
         ],
         "url": "https://www.youtube.com/watch?v=jzeKPKpucS0",
         "year": 2017
+    },
+    {
+        "airtable_createdTime": "2026-02-18T15:06:42.000Z",
+        "airtable_id": "receqtYaeFvahRCh0",
+        "conference_name": "Scrum Tokyo",
+        "core_topic": "Engineering Culture",
+        "created": "2026-02-18T15:06:42.000Z",
+        "description": "James Shore outlines a holistic framework for building a world-class engineering culture by focusing on six core pillars\u2014People, Internal Quality, Lovability, Visibility, Agility, and Profitability\u2014while leveraging Extreme Programming (XP) and Fluid Scaling Technology (FaST) to drive sustainable business impact.\n",
+        "duration": 6000,
+        "last_modified": "2026-02-18T15:11:02.000Z",
+        "less_15": 0,
+        "name": "The Best Product Engineering Org in the World",
+        "notes": "https://www.jamesshore.com/v2/blog/2025/the-best-product-engineering-org-in-the-world\n\nTrue organizational success comes from shifting focus from impossible productivity metrics to a culture of continuous improvement across **people, quality, and business alignment**, where technical excellence through **Extreme Programming** and organizational fluidity via **FaST** enable a truly adaptive, product-driven environment. This transformation requires moving from predictive, project-based governance to a **product-based model** that prioritizes delivering \"lovable\" products and long-term profitability over adherence to rigid plans.\n\n- **Six Core Pillars:** A world-class engineering organization focuses on **People, Internal Quality, Lovability, Visibility, Agility, and Profitability**.\n- **Redefining Talent:** High-performing cultures prioritize **peer leadership, teamwork, and ownership** over prestige, credentials, or algorithmic skill.\n- **Career Ladder as Culture Tool:** The career ladder should be used to codify and reward specific behaviors like **mentoring, simple design, and technical excellence** (TDD and refactoring) rather than rewarding the creation of complex systems.\n- **Inverted Organization:** Shift tactical decision-making away from managers and delegate it to the people actually performing the work.\n- **XP Player-Coaches:** Maintain a high ratio of specialized **Extreme Programming (XP) coaches** (ideally 1:6) who work hands-on with teams to lead by example.\n- **Eliminating Muda (Waste):** Focus on reducing the $850k of \"muda\" for every $1M spent, primarily caused by **complexity, slow feedback loops, and deferred maintenance**.\n- **Technical Agility:** Achieving business agility requires technical excellence; builds and tests must run in **under five seconds** (ideally under one second) to enable developers to work at the \"speed of thought.\"\n- **Improving in Place:** Avoid \"big-bang\" rewrites, which are high-risk and frequently fail; instead, **improve existing systems incrementally** or use \"change-driven rewrites\" integrated into normal feature work.\n- **Product-Based Governance:** Transition from tracking adherence to a fixed plan (project-based) to tracking **impact, return on investment, and the \"lovability\"** of the product.\n- **Product Bets:** Align leadership using one-page hypotheses that define a **thesis, sponsor, expected value, and maximum wager** to test strategic ideas before committing to full development.\n- **Build-Measure-Learn:** Use the Minimum Viable Product (MVP) as the **smallest possible test to learn**, often using surveys or prototypes rather than actual software.\n- **Adaptive Forecasting:** Replace rigid, politically-charged \"on-time\" dates with **time-range forecasts** based on historical data, only predicting duration once work has actually started.\n- **Fluid Scaling Technology (FaST):** Replace rigid, siloed teams (like Team Topologies) with **dynamic self-selection**, where engineers re-organize into small teams every few days based on the highest business priorities.\n- **Vertical Scaling:** Scale by keeping one **large collective value stream per product** rather than horizontal scaling, which creates coordination delays and specialties spread too thin.\n- **Strategic Profitability:** Engineering's primary role is to **change the trajectory of the business** by creating new opportunities that permanently increase the company's growth rate.\n\n",
+        "rating": 5,
+        "registered_at": "2026-02-18T15:06:42.000Z",
+        "resource": "The Best Product Engineering Org in the World - https://www.youtube.com/watch?v=Rzhun0yBnzE",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recbLh2HOz1bkIzL2"
+        ],
+        "speakers_names": [
+            "James Shore"
+        ],
+        "topics": [
+            "recWFKWrPEdeEYbzx",
+            "recAWBXaGl1ujO9Gc",
+            "rec51AOvJVPEWfUVK",
+            "rec94mSWZ4bx2wFpf"
+        ],
+        "topics_names": [
+            "Engineering Culture",
+            "agile-XP",
+            "Product Strategy",
+            "Technology Strategy"
+        ],
+        "url": "https://www.youtube.com/watch?v=Rzhun0yBnzE",
+        "year": 2025
     },
     {
         "airtable_createdTime": "2023-04-23T18:14:54.000Z",
