@@ -40,6 +40,7 @@ export interface TalksFilterData {
   rating?: number | null;
   query?: string;
   formats?: string[];
+  _testCurrentYear?: number; // For deterministic testing - injects "now"
 }
 
 export class TalksFilter {
@@ -52,6 +53,7 @@ export class TalksFilter {
   readonly rating: number | null;
   readonly query: string;
   readonly formats: string[];
+  private readonly _testCurrentYear?: number;
 
   constructor({
     year = null,
@@ -63,6 +65,7 @@ export class TalksFilter {
     rating = null,
     query = '',
     formats = [],
+    _testCurrentYear,
   }: TalksFilterData = {}) {
     this.year = year;
     this.yearType = yearType;
@@ -73,10 +76,11 @@ export class TalksFilter {
     this.rating = rating;
     this.query = query || '';
     this.formats = formats;
+    this._testCurrentYear = _testCurrentYear;
   }
 
   private matchesYear(talk: Talk): boolean {
-    const currentYear = new Date().getFullYear();
+    const currentYear = this._testCurrentYear ?? new Date().getFullYear();
     const effectiveYearType = this.yearType || (this.year != null ? 'specific' : null);
     switch (effectiveYearType) {
       case 'last2':

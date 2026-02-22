@@ -1,6 +1,12 @@
 import { describe, it, expect } from 'vitest';
 import { TalksFilter } from './TalksFilter';
 import { createTalk } from '../test/utils';
+import {
+  FIXED_TEST_YEAR,
+  createTestYear,
+  createYearRangeTalks,
+  createBoundaryYearTalks
+} from '../test/testHelpers';
 
 describe('TalksFilter', () => {
   describe('constructor', () => {
@@ -167,27 +173,23 @@ describe('TalksFilter', () => {
     });
 
     it('should respect last2 yearType', () => {
-      const current = new Date().getFullYear();
-      const talks = [
-        createTalk({ id: 'l1', title: 'current', year: current }),
-        createTalk({ id: 'l2', title: 'minus1', year: current - 1 }),
-        createTalk({ id: 'l3', title: 'minus2', year: current - 2 }),
-        createTalk({ id: 'l4', title: 'minus3', year: current - 3 })
-      ];
-      const filter = TalksFilter.fromUrlParams('yearType=last2');
+      const talks = createYearRangeTalks(FIXED_TEST_YEAR, 4);
+      const filter = new TalksFilter({
+        yearType: 'last2',
+        _testCurrentYear: FIXED_TEST_YEAR
+      });
       expect(filter.filter(talks)).toEqual([talks[0], talks[1], talks[2]]);
     });
 
     it('should respect last5 yearType', () => {
-      const current = new Date().getFullYear();
-      const talks = [
-        createTalk({ id: 'p1', title: 'current', year: current }),
-        createTalk({ id: 'p2', title: 'minus4', year: current - 4 }),
-        createTalk({ id: 'p3', title: 'minus5', year: current - 5 }),
-        createTalk({ id: 'p4', title: 'minus6', year: current - 6 })
-      ];
-      const filter = TalksFilter.fromUrlParams('yearType=last5');
-      expect(filter.filter(talks)).toEqual([talks[0], talks[1], talks[2]]);
+      const talks = createYearRangeTalks(FIXED_TEST_YEAR, 7);
+      const filter = new TalksFilter({
+        yearType: 'last5',
+        _testCurrentYear: FIXED_TEST_YEAR
+      });
+      const result = filter.filter(talks);
+      expect(result).toHaveLength(6); // current + 5 years back
+      expect(result).not.toContain(talks[6]); // 6 years ago excluded
     });
   });
 
@@ -656,96 +658,133 @@ describe('TalksFilter', () => {
   });
 
   describe('Year Filter Boundaries', () => {
-    it('should include talks from exactly 2 years ago in last2 filter', () => {
-      const current = new Date().getFullYear();
-      const talkExactly2YearsAgo = createTalk({ id: 'exact2', year: current - 2 });
-      const talkMoreThan2YearsAgo = createTalk({ id: 'more2', year: current - 3 });
+    // Using FIXED_TEST_YEAR for deterministic testing
+    const testYear = FIXED_TEST_YEAR;
 
-      const filter = new TalksFilter({ yearType: 'last2' });
-      const result = filter.filter([talkExactly2YearsAgo, talkMoreThan2YearsAgo]);
+    describe('last2 filter', () => {
+      it('includes current year', () => {
+        const talk = createTalk({ year: testYear });
+        const filter = new TalksFilter({ yearType: 'last2', _testCurrentYear: testYear });
+        expect(filter.filter([talk])).toContain(talk);
+      });
 
-      expect(result).toContain(talkExactly2YearsAgo);
-      expect(result).not.toContain(talkMoreThan2YearsAgo);
+      it('includes one year ago', () => {
+        const talk = createTalk({ year: createTestYear(-1) });
+        const filter = new TalksFilter({ yearType: 'last2', _testCurrentYear: testYear });
+        expect(filter.filter([talk])).toContain(talk);
+      });
+
+      it('includes exactly two years ago', () => {
+        const talk = createTalk({ year: createTestYear(-2) });
+        const filter = new TalksFilter({ yearType: 'last2', _testCurrentYear: testYear });
+        expect(filter.filter([talk])).toContain(talk);
+      });
+
+      it('excludes three years ago', () => {
+        const talk = createTalk({ year: createTestYear(-3) });
+        const filter = new TalksFilter({ yearType: 'last2', _testCurrentYear: testYear });
+        expect(filter.filter([talk])).not.toContain(talk);
+      });
+
+      it('returns correct count for boundary range', () => {
+        const talks = createBoundaryYearTalks(testYear);
+        const filter = new TalksFilter({ yearType: 'last2', _testCurrentYear: testYear });
+        const result = filter.filter([talks.current, talks.minus1, talks.minus2, talks.minus3]);
+        expect(result).toHaveLength(3);
+      });
     });
 
-    it('should include talks from exactly 5 years ago in last5 filter', () => {
-      const current = new Date().getFullYear();
-      const talkExactly5YearsAgo = createTalk({ id: 'exact5', year: current - 5 });
-      const talkMoreThan5YearsAgo = createTalk({ id: 'more5', year: current - 6 });
+    describe('last5 filter', () => {
+      it('includes current year', () => {
+        const talk = createTalk({ year: testYear });
+        const filter = new TalksFilter({ yearType: 'last5', _testCurrentYear: testYear });
+        expect(filter.filter([talk])).toContain(talk);
+      });
 
-      const filter = new TalksFilter({ yearType: 'last5' });
-      const result = filter.filter([talkExactly5YearsAgo, talkMoreThan5YearsAgo]);
+      it('includes exactly five years ago', () => {
+        const talk = createTalk({ year: createTestYear(-5) });
+        const filter = new TalksFilter({ yearType: 'last5', _testCurrentYear: testYear });
+        expect(filter.filter([talk])).toContain(talk);
+      });
 
-      expect(result).toContain(talkExactly5YearsAgo);
-      expect(result).not.toContain(talkMoreThan5YearsAgo);
+      it('excludes six years ago', () => {
+        const talk = createTalk({ year: createTestYear(-6) });
+        const filter = new TalksFilter({ yearType: 'last5', _testCurrentYear: testYear });
+        expect(filter.filter([talk])).not.toContain(talk);
+      });
+
+      it('returns correct count for boundary range', () => {
+        const talks = createBoundaryYearTalks(testYear);
+        const filter = new TalksFilter({ yearType: 'last5', _testCurrentYear: testYear });
+        const result = filter.filter([talks.current, talks.minus5, talks.minus6]);
+        expect(result).toHaveLength(2);
+      });
     });
 
-    it('should NOT include talk from exact year in before filter', () => {
-      const talkExactYear = createTalk({ id: 'exact', year: 2020 });
-      const talkBefore = createTalk({ id: 'before', year: 2019 });
-      const talkAfter = createTalk({ id: 'after', year: 2021 });
+    describe('before filter', () => {
+      const referenceYear = 2020;
 
-      const filter = new TalksFilter({ yearType: 'before', year: 2020 });
-      const result = filter.filter([talkExactYear, talkBefore, talkAfter]);
+      it('includes year before reference', () => {
+        const talk = createTalk({ year: 2019 });
+        const filter = new TalksFilter({ yearType: 'before', year: referenceYear });
+        expect(filter.filter([talk])).toContain(talk);
+      });
 
-      expect(result).toEqual([talkBefore]);
-      expect(result).not.toContain(talkExactYear);
-      expect(result).not.toContain(talkAfter);
+      it('excludes exact reference year', () => {
+        const talk = createTalk({ year: referenceYear });
+        const filter = new TalksFilter({ yearType: 'before', year: referenceYear });
+        expect(filter.filter([talk])).not.toContain(talk);
+      });
+
+      it('excludes year after reference', () => {
+        const talk = createTalk({ year: 2021 });
+        const filter = new TalksFilter({ yearType: 'before', year: referenceYear });
+        expect(filter.filter([talk])).not.toContain(talk);
+      });
     });
 
-    it('should NOT include talk from exact year in after filter', () => {
-      const talkExactYear = createTalk({ id: 'exact', year: 2020 });
-      const talkBefore = createTalk({ id: 'before', year: 2019 });
-      const talkAfter = createTalk({ id: 'after', year: 2021 });
+    describe('after filter', () => {
+      const referenceYear = 2020;
 
-      const filter = new TalksFilter({ yearType: 'after', year: 2020 });
-      const result = filter.filter([talkExactYear, talkBefore, talkAfter]);
+      it('includes year after reference', () => {
+        const talk = createTalk({ year: 2021 });
+        const filter = new TalksFilter({ yearType: 'after', year: referenceYear });
+        expect(filter.filter([talk])).toContain(talk);
+      });
 
-      expect(result).toEqual([talkAfter]);
-      expect(result).not.toContain(talkExactYear);
-      expect(result).not.toContain(talkBefore);
+      it('excludes exact reference year', () => {
+        const talk = createTalk({ year: referenceYear });
+        const filter = new TalksFilter({ yearType: 'after', year: referenceYear });
+        expect(filter.filter([talk])).not.toContain(talk);
+      });
+
+      it('excludes year before reference', () => {
+        const talk = createTalk({ year: 2019 });
+        const filter = new TalksFilter({ yearType: 'after', year: referenceYear });
+        expect(filter.filter([talk])).not.toContain(talk);
+      });
     });
 
-    it('should include talk from exact year in specific filter', () => {
-      const talkExactYear = createTalk({ id: 'exact', year: 2020 });
-      const talkBefore = createTalk({ id: 'before', year: 2019 });
-      const talkAfter = createTalk({ id: 'after', year: 2021 });
+    describe('specific filter', () => {
+      const referenceYear = 2020;
 
-      const filter = new TalksFilter({ yearType: 'specific', year: 2020 });
-      const result = filter.filter([talkExactYear, talkBefore, talkAfter]);
+      it('includes exact reference year', () => {
+        const talk = createTalk({ year: referenceYear });
+        const filter = new TalksFilter({ yearType: 'specific', year: referenceYear });
+        expect(filter.filter([talk])).toContain(talk);
+      });
 
-      expect(result).toEqual([talkExactYear]);
-    });
+      it('excludes year before reference', () => {
+        const talk = createTalk({ year: 2019 });
+        const filter = new TalksFilter({ yearType: 'specific', year: referenceYear });
+        expect(filter.filter([talk])).not.toContain(talk);
+      });
 
-    it('should handle boundary at current year for last2', () => {
-      const current = new Date().getFullYear();
-      const talkCurrentYear = createTalk({ id: 'current', year: current });
-      const talk1YearAgo = createTalk({ id: 'minus1', year: current - 1 });
-      const talk2YearsAgo = createTalk({ id: 'minus2', year: current - 2 });
-      const talk3YearsAgo = createTalk({ id: 'minus3', year: current - 3 });
-
-      const filter = new TalksFilter({ yearType: 'last2' });
-      const result = filter.filter([talkCurrentYear, talk1YearAgo, talk2YearsAgo, talk3YearsAgo]);
-
-      expect(result).toContain(talkCurrentYear);
-      expect(result).toContain(talk1YearAgo);
-      expect(result).toContain(talk2YearsAgo);
-      expect(result).not.toContain(talk3YearsAgo);
-      expect(result).toHaveLength(3);
-    });
-
-    it('should handle boundary at current year for last5', () => {
-      const current = new Date().getFullYear();
-      const talkCurrentYear = createTalk({ id: 'current', year: current });
-      const talk5YearsAgo = createTalk({ id: 'minus5', year: current - 5 });
-      const talk6YearsAgo = createTalk({ id: 'minus6', year: current - 6 });
-
-      const filter = new TalksFilter({ yearType: 'last5' });
-      const result = filter.filter([talkCurrentYear, talk5YearsAgo, talk6YearsAgo]);
-
-      expect(result).toContain(talkCurrentYear);
-      expect(result).toContain(talk5YearsAgo);
-      expect(result).not.toContain(talk6YearsAgo);
+      it('excludes year after reference', () => {
+        const talk = createTalk({ year: 2021 });
+        const filter = new TalksFilter({ yearType: 'specific', year: referenceYear });
+        expect(filter.filter([talk])).not.toContain(talk);
+      });
     });
   });
 

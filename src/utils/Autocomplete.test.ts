@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { Autocomplete, getSuggestions } from './Autocomplete';
 import type { Talk } from '../types/talks';
+import { createManyTalks } from '../test/testHelpers';
 
 const talks: Talk[] = [
   {
@@ -149,31 +150,13 @@ describe('getSuggestions', () => {
 
   describe('MaxSuggestions Limit', () => {
     it('should respect maxSuggestions limit', () => {
-      const manyTalks = Array.from({ length: 20 }, (_, i) => ({
-        id: `${i}`,
-        title: 'Talk',
-        url: '',
-        duration: 0,
-        topics: [`Topic${i}`],
-        speakers: [`Speaker${i}`],
-        description: '',
-        core_topic: ''
-      }));
+      const manyTalks = createManyTalks(20);
       const result = getSuggestions(manyTalks, 'e', 5);
       expect(result.length).toBeLessThanOrEqual(5);
     });
 
     it('should return exactly maxSuggestions when more matches available', () => {
-      const manyTalks = Array.from({ length: 20 }, (_, i) => ({
-        id: `${i}`,
-        title: 'Talk',
-        url: '',
-        duration: 0,
-        topics: [],
-        speakers: [`Speaker${i}`],
-        description: '',
-        core_topic: ''
-      }));
+      const manyTalks = createManyTalks(20, { topics: [] });
       const result = getSuggestions(manyTalks, 'Speaker', 7);
       expect(result.length).toBe(7);
     });
@@ -185,16 +168,7 @@ describe('getSuggestions', () => {
     });
 
     it('should use default maxSuggestions of 10 when not specified', () => {
-      const manyTalks = Array.from({ length: 20 }, (_, i) => ({
-        id: `${i}`,
-        title: 'Talk',
-        url: '',
-        duration: 0,
-        topics: [`Topic${i}`],
-        speakers: [`Speaker${i}`],
-        description: '',
-        core_topic: ''
-      }));
+      const manyTalks = createManyTalks(20);
       const result = getSuggestions(manyTalks, 'e');
       expect(result.length).toBeLessThanOrEqual(10);
     });
@@ -202,66 +176,20 @@ describe('getSuggestions', () => {
 
   describe('Deduplication', () => {
     it('should deduplicate speakers across talks', () => {
-      const duplicateSpeakers = [
-        {
-          id: '1',
-          title: 'T1',
-          url: '',
-          duration: 0,
-          topics: [],
-          speakers: ['Alice'],
-          description: '',
-          core_topic: ''
-        },
-        {
-          id: '2',
-          title: 'T2',
-          url: '',
-          duration: 0,
-          topics: [],
-          speakers: ['Alice'],
-          description: '',
-          core_topic: ''
-        },
-        {
-          id: '3',
-          title: 'T3',
-          url: '',
-          duration: 0,
-          topics: [],
-          speakers: ['Alice'],
-          description: '',
-          core_topic: ''
-        }
-      ];
+      const duplicateSpeakers = createManyTalks(3, {
+        speakers: ['Alice'],
+        topics: []
+      });
       const result = getSuggestions(duplicateSpeakers, 'Alice');
       expect(result).toHaveLength(1);
       expect(result[0].value).toBe('Alice');
     });
 
     it('should deduplicate topics across talks', () => {
-      const duplicateTopics = [
-        {
-          id: '1',
-          title: 'T1',
-          url: '',
-          duration: 0,
-          topics: ['React'],
-          speakers: [],
-          description: '',
-          core_topic: ''
-        },
-        {
-          id: '2',
-          title: 'T2',
-          url: '',
-          duration: 0,
-          topics: ['React'],
-          speakers: [],
-          description: '',
-          core_topic: ''
-        }
-      ];
+      const duplicateTopics = createManyTalks(3, {
+        topics: ['React'],
+        speakers: []
+      });
       const result = getSuggestions(duplicateTopics, 'React');
       expect(result).toHaveLength(1);
       expect(result[0].value).toBe('React');
