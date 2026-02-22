@@ -16,11 +16,11 @@ describe('TalkCard', () => {
     });
 
     it('renders the speaker name', () => {
-      const talk = createTalk({ 
+      const talk = createTalk({
         speakers: ['Test Speaker']
       });
       renderTalkCard({ talk });
-      expect(screen.getByRole('button', { name: /Filter by speaker: Test Speaker/i })).toBeInTheDocument();
+      expect(screen.getByLabelText(/Speaker: Test Speaker/i)).toBeInTheDocument();
     });
 
     it('renders the duration in hours and minutes', () => {
@@ -30,12 +30,12 @@ describe('TalkCard', () => {
     });
 
     it('renders the topic', () => {
-      const talk = createTalk({ 
+      const talk = createTalk({
         topics: ['test'],
         core_topic: 'test'
       });
       renderTalkCard({ talk });
-      expect(screen.getByRole('button', { name: /Filter by topic test/i })).toBeInTheDocument();
+      expect(screen.getByLabelText(/Topic: test/i)).toBeInTheDocument();
     });
 
     it('renders the conference name', () => {
@@ -121,40 +121,7 @@ describe('TalkCard', () => {
   });
 
   describe('Interactions', () => {
-    it('calls onTopicClick when topic is clicked and stops event propagation', () => {
-      const onTopicClick = vi.fn();
-      const talk = createTalk({ 
-        topics: ['test'],
-        core_topic: 'test'
-      });
-      const { onTopicClick: handler } = renderTalkCard({ talk, onTopicClick });
-      
-      const topicButton = screen.getByRole('button', { name: /Filter by topic test/i });
-      const clickEvent = new MouseEvent('click', { bubbles: true });
-      Object.defineProperty(clickEvent, 'stopPropagation', { value: vi.fn() });
-      
-      fireEvent(topicButton, clickEvent);
-      
-      expect(handler).toHaveBeenCalledWith('test');
-      expect(clickEvent.stopPropagation).toHaveBeenCalled();
-    });
-
-    it('calls onAuthorClick when author is clicked and stops event propagation', () => {
-      const onAuthorClick = vi.fn();
-      const talk = createTalk({ 
-        speakers: ['Test Speaker']
-      });
-      const { onAuthorClick: handler } = renderTalkCard({ talk, onAuthorClick });
-      
-      const authorButton = screen.getByRole('button', { name: /Filter by speaker: Test Speaker/i });
-      const clickEvent = new MouseEvent('click', { bubbles: true });
-      Object.defineProperty(clickEvent, 'stopPropagation', { value: vi.fn() });
-      
-      fireEvent(authorButton, clickEvent);
-      
-      expect(handler).toHaveBeenCalledWith('Test Speaker');
-      expect(clickEvent.stopPropagation).toHaveBeenCalled();
-    });
+    // onTopicClick and onAuthorClick tests removed - functionality migrated to unified search
 
     it('calls onConferenceClick when conference is clicked and stops event propagation', () => {
       const onConferenceClick = vi.fn();
@@ -219,26 +186,7 @@ describe('TalkCard', () => {
   });
 
   describe('Styling', () => {
-    it('applies selected styling to topic when it is selected', () => {
-      const talk = createTalk({ 
-        topics: ['test'],
-        core_topic: 'test'
-      });
-      renderTalkCard({ talk, selectedTopics: ['test'] });
-      
-      const topicButton = screen.getByRole('button', { name: /Filter by topic test/i });
-      expect(topicButton).toHaveClass('bg-gray-700', 'text-white');
-    });
-
-    it('applies selected styling to speaker when they are selected', () => {
-      const talk = createTalk({ 
-        speakers: ['Test Speaker']
-      });
-      renderTalkCard({ talk, selectedAuthor: 'Test Speaker' });
-      
-      const authorButton = screen.getByRole('button', { name: /Filter by speaker: Test Speaker/i });
-      expect(authorButton).toHaveClass('bg-blue-500', 'text-white');
-    });
+    // Selected styling tests for topics/speakers removed - no longer clickeable
 
     it('applies selected styling to conference when it is selected', () => {
       const talk = createTalk({ 
@@ -271,15 +219,15 @@ describe('TalkCard', () => {
       const card = screen.getByRole('article');
       expect(card).toHaveAttribute('aria-label', 'Talk: Test Talk');
 
-      // Topic button accessibility
-      const topicButton = screen.getByRole('button', { name: /filter by topic test/i });
-      expect(topicButton).toHaveAttribute('aria-label', 'Filter by topic test');
+      // Topic span accessibility (no longer clickeable)
+      const topicSpan = screen.getByLabelText(/topic: test/i);
+      expect(topicSpan).toHaveAttribute('aria-label', 'Topic: test');
 
-      // Author button accessibility
-      const authorButton = screen.getByRole('button', { name: /filter by speaker: test speaker/i });
-      expect(authorButton).toHaveAttribute('aria-label', 'Filter by speaker: Test Speaker');
+      // Speaker span accessibility (no longer clickeable)
+      const speakerSpan = screen.getByLabelText(/speaker: test speaker/i);
+      expect(speakerSpan).toHaveAttribute('aria-label', 'Speaker: Test Speaker');
 
-      // Conference button accessibility
+      // Conference button accessibility (still clickeable)
       const conferenceButton = screen.getByRole('button', { name: /filter by conference test conference/i });
       expect(conferenceButton).toHaveAttribute('aria-label', 'Filter by conference Test Conference');
 
@@ -289,16 +237,5 @@ describe('TalkCard', () => {
     });
   });
 
-  describe('Selected Styling', () => {
-    it('applies selected styling to topic when it is selected', () => {
-      const talk = createTalk({ 
-        topics: ['test'],
-        core_topic: 'test'
-      });
-      renderTalkCard({ talk, selectedTopics: ['test'] });
-      
-      const topicButton = screen.getByRole('button', { name: /Filter by topic test/i });
-      expect(topicButton).toHaveClass('bg-gray-700', 'text-white');
-    });
-  });
+  // Selected Styling section removed - topics/speakers no longer clickeable
 }); 

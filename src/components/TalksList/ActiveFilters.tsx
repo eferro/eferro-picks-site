@@ -5,10 +5,7 @@ import { FilterChip } from '../ui';
 interface ActiveFiltersProps {
   filter: TalksFilter;
   yearFilter: YearFilterData | null;
-  onRemoveAuthor: () => void;
   onRemoveConference: () => void;
-  onRemoveTopic: (topic: string) => void;
-  onClearTopics: () => void;
   onRemoveYearFilter: () => void;
   onRemoveHasNotes: () => void;
   onRemoveRating: () => void;
@@ -18,23 +15,18 @@ interface ActiveFiltersProps {
 export function ActiveFilters({
   filter,
   yearFilter,
-  onRemoveAuthor,
   onRemoveConference,
-  onRemoveTopic,
-  onClearTopics,
   onRemoveYearFilter,
   onRemoveHasNotes,
   onRemoveRating,
   onRemoveFormat,
 }: ActiveFiltersProps) {
   // Check if any filters are active
-  const hasActiveFilters = 
-    filter.author || 
-    filter.topics.length > 0 || 
-    filter.conference || 
-    yearFilter || 
-    filter.hasNotes || 
-    filter.rating === 5 || 
+  const hasActiveFilters =
+    filter.conference ||
+    yearFilter ||
+    filter.hasNotes ||
+    filter.rating === 5 ||
     filter.formats.length > 0;
 
   if (!hasActiveFilters) {
@@ -43,15 +35,6 @@ export function ActiveFilters({
 
   return (
     <div className="mb-6 space-y-3">
-      {filter.author && (
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-500">Speaker:</span>
-          <FilterChip onRemove={onRemoveAuthor}>
-            {filter.author}
-          </FilterChip>
-        </div>
-      )}
-      
       {filter.conference && (
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-500">Conference:</span>
@@ -60,28 +43,7 @@ export function ActiveFilters({
           </FilterChip>
         </div>
       )}
-      
-      {filter.topics.length > 0 && (
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="text-sm text-gray-500">Topics:</span>
-          {filter.topics.map(topic => (
-            <FilterChip
-              key={topic}
-              variant="gray"
-              onRemove={() => onRemoveTopic(topic)}
-            >
-              {topic}
-            </FilterChip>
-          ))}
-          <button
-            className="text-sm text-gray-500 hover:text-gray-700"
-            onClick={onClearTopics}
-          >
-            Clear all topics
-          </button>
-        </div>
-      )}
-      
+
       {yearFilter && (
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-500">Year:</span>

@@ -63,44 +63,7 @@ describe('TalkDetail', () => {
     expect(screen.getByText('Test notes')).toBeInTheDocument();
   });
 
-  describe('Author Filter', () => {
-    it('sets author filter when clicking on a speaker', () => {
-      renderComponent();
-      
-      const speakerButton = screen.getByText('Test Speaker 1');
-      fireEvent.click(speakerButton);
-      
-      expect(mockSetSearchParams).toHaveBeenCalled();
-      const [[rawParams]] = mockSetSearchParams.mock.calls;
-      const params = rawParams instanceof URLSearchParams ? rawParams : new URLSearchParams(String(rawParams));
-      expect(params.get('author')).toBe('Test Speaker 1');
-    });
-
-    it('removes author filter when clicking on the same speaker', () => {
-      // Set initial state
-      setMockSearchParams(new URLSearchParams('author=Test Speaker 1'));
-      
-      renderComponent();
-      
-      const speakerButton = screen.getByText('Test Speaker 1');
-      fireEvent.click(speakerButton);
-      
-      expect(mockSetSearchParams).toHaveBeenCalled();
-      const lastCall = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1];
-      const rawParams = lastCall[0];
-      const params = rawParams instanceof URLSearchParams ? rawParams : new URLSearchParams(String(rawParams));
-      expect(params.get('author')).toBeNull();
-    });
-
-    it('applies selected styling to the active speaker', () => {
-      setMockSearchParams(new URLSearchParams('author=Test Speaker 1'));
-      renderComponent();
-      
-      // Re-query the button after render
-      const speakerButton = screen.getByText('Test Speaker 1');
-      expect(speakerButton).toHaveClass('bg-blue-500', 'text-white');
-    });
-  });
+  // Author Filter tests removed - speakers are no longer clickeable (migrated to unified search)
 
   describe('Conference Filter', () => {
     it('sets conference filter when clicking on a conference', () => {
@@ -220,8 +183,8 @@ describe('TalkDetail', () => {
 
   describe('Navigation', () => {
     it('preserves filters when going back to talks', () => {
-      // Set complete params with yearType for proper filter state
-      const mockParams = new URLSearchParams('yearType=specific&year=2023&author=Test%20Speaker');
+      // Set complete params with yearType for proper filter state (using unified query)
+      const mockParams = new URLSearchParams('yearType=specific&year=2023&query=Test%20Speaker');
       setMockSearchParams(mockParams);
 
       (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
@@ -237,7 +200,7 @@ describe('TalkDetail', () => {
 
       const backLink = screen.getByRole('link', { name: /back to talks/i });
       // Expect the complete URL params with yearType (+ encoding for spaces)
-      expect(backLink).toHaveAttribute('href', '/?yearType=specific&year=2023&author=Test+Speaker');
+      expect(backLink).toHaveAttribute('href', '/?yearType=specific&year=2023&query=Test+Speaker');
     });
   });
 });

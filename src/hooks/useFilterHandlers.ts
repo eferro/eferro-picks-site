@@ -24,26 +24,6 @@ export function useFilterHandlers(filter: TalksFilter, updateFilter: UpdateFilte
     updateFilter({ formats });
   }, [updateFilter]);
 
-  const updateTopics = useCallback((topics: string[]) => {
-    updateFilter({ topics });
-  }, [updateFilter]);
-
-  const handleTopicClick = useCallback((topic: string) => {
-    const isSelected = filter.topics.includes(topic);
-    const newTopics = isSelected 
-      ? filter.topics.filter(t => t !== topic) 
-      : [...filter.topics, topic];
-    updateTopics(newTopics);
-  }, [filter.topics, updateTopics]);
-
-  const handleClearTopics = useCallback(() => {
-    updateTopics([]);
-  }, [updateTopics]);
-
-  const handleTopicsChange = useCallback((topics: string[]) => {
-    updateTopics(topics);
-  }, [updateTopics]);
-
   const handleConferenceClick = useCallback((conference: string) => {
     const newConference = filter.conference === conference ? null : conference;
     updateFilter({ conference: newConference });
@@ -57,20 +37,11 @@ export function useFilterHandlers(filter: TalksFilter, updateFilter: UpdateFilte
     }
   }, [updateFilter]);
 
-  const handleAuthorClick = useCallback((author: string) => {
-    const newAuthor = filter.author === author ? null : author;
-    updateFilter({ author: newAuthor });
-  }, [filter.author, updateFilter]);
-
   return {
     handleHasNotesClick,
     handleRatingClick,
     handleFormatChange,
-    handleTopicClick,
-    handleClearTopics,
-    handleTopicsChange,
     handleConferenceClick,
     handleYearFilterChange,
-    handleAuthorClick,
   };
 }

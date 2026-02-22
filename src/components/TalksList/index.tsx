@@ -10,7 +10,6 @@ import { DocumentTextIcon, StarIcon } from '@heroicons/react/24/outline';
 import { LoadingSpinner, ErrorMessage, PageContainer, Button } from '../ui';
 
 import { SearchBox } from '../SearchBox';
-import { TopicsFilter } from './TopicsFilter';
 import { FormatFilter } from './FormatFilter';
 import { ActiveFilters } from './ActiveFilters';
 
@@ -29,12 +28,8 @@ export function TalksList() {
     handleHasNotesClick,
     handleRatingClick,
     handleFormatChange,
-    handleTopicClick,
-    handleClearTopics,
-    handleTopicsChange,
     handleConferenceClick,
     handleYearFilterChange,
-    handleAuthorClick,
   } = useFilterHandlers(filter, updateFilter);
 
   // Derive yearType and year from TalksFilter
@@ -92,11 +87,6 @@ export function TalksList() {
           selectedFilter={yearFilter}
           onFilterChange={handleYearFilterChange}
         />
-        <TopicsFilter
-          talks={talks || []}
-          selectedTopics={filter.topics}
-          onChange={handleTopicsChange}
-        />
         <FormatFilter selectedFormats={filter.formats} onChange={handleFormatChange} />
         <Button
           variant="toggle"
@@ -122,10 +112,7 @@ export function TalksList() {
       <ActiveFilters
         filter={filter}
         yearFilter={yearFilter}
-        onRemoveAuthor={() => handleAuthorClick(filter.author!)}
         onRemoveConference={() => handleConferenceClick(filter.conference!)}
-        onRemoveTopic={handleTopicClick}
-        onClearTopics={handleClearTopics}
         onRemoveYearFilter={() => handleYearFilterChange(null)}
         onRemoveHasNotes={handleHasNotesClick}
         onRemoveRating={handleRatingClick}
@@ -143,10 +130,6 @@ export function TalksList() {
             key={topic}
             coreTopic={topic}
             talks={topicTalks}
-            onAuthorClick={handleAuthorClick}
-            selectedAuthor={filter.author}
-            onTopicClick={handleTopicClick}
-            selectedTopics={filter.topics}
             onConferenceClick={handleConferenceClick}
             selectedConference={filter.conference}
           />

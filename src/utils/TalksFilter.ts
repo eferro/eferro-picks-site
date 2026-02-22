@@ -1,6 +1,35 @@
 import { Talk } from "../types/talks";
 import { hasMeaningfulNotes } from "./talks";
 
+/**
+ * Normalizes text for search: lowercase and removes accents
+ */
+function normalizeText(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+}
+
+/**
+ * Searches for query terms in multiple talk fields (title, description, speakers, topics, notes)
+ * All terms must match (AND logic) in any combination of fields
+ */
+function searchInFields(talk: Talk, query: string): boolean {
+  if (!query.trim()) return true;
+
+  const searchTerms = query.trim().split(/\s+/).map(normalizeText);
+  const searchableText = normalizeText([
+    talk.title,
+    talk.description || '',
+    ...(talk.speakers || []),
+    ...(talk.topics || []),
+    talk.notes || ''
+  ].join(' '));
+
+  return searchTerms.every(term => searchableText.includes(term));
+}
+
 export interface TalksFilterData {
   year?: number | null;
   yearType?: 'specific' | 'before' | 'after' | 'last2' | 'last5' | null;
@@ -79,12 +108,7 @@ export class TalksFilter {
       params.set('yearType', 'specific');
       params.set('year', this.year.toString());
     }
-    if (this.author) {
-      params.set('author', this.author);
-    }
-    if (this.topics && this.topics.length > 0) {
-      params.set('topics', this.topics.join(','));
-    }
+    // No longer write author/topics - migrated to query
     if (this.conference) {
       params.set('conference', this.conference);
     }
@@ -104,10 +128,9 @@ export class TalksFilter {
   }
 
   filter(talks: Talk[]): Talk[] {
-    const queryLower = this.query.toLowerCase();
     return talks.filter(talk => {
       const yearMatch = this.matchesYear(talk);
-      const queryMatch = !queryLower || talk.title.toLowerCase().includes(queryLower);
+      const queryMatch = searchInFields(talk, this.query);
       const authorMatch = !this.author || talk.speakers.includes(this.author);
       const topicsMatch =
         this.topics.length === 0 || this.topics.every(t => talk.topics.includes(t));
@@ -132,13 +155,27 @@ export class TalksFilter {
     const searchParams = typeof params === 'string' ? new URLSearchParams(params) : params;
     const yearType = (searchParams.get('yearType') as 'specific' | 'before' | 'after' | 'last2' | 'last5' | null) || null;
     const yearParam = searchParams.get('year');
-    const author = searchParams.get('author');
-    const topicsParam = searchParams.get('topics');
     const conference = searchParams.get('conference');
     const hasNotesParam = searchParams.get('hasNotes');
     const ratingParam = searchParams.get('rating');
     const formatParam = searchParams.get('format');
-    const query = searchParams.get('query') || '';
+
+    // Migrate legacy author/topics params to unified query
+    const queryTerms: string[] = [];
+
+    const query = searchParams.get('query');
+    if (query) queryTerms.push(query);
+
+    // Legacy: migrate author to query
+    const author = searchParams.get('author');
+    if (author) queryTerms.push(author);
+
+    // Legacy: migrate topics to query
+    const topicsParam = searchParams.get('topics');
+    if (topicsParam) {
+      queryTerms.push(...topicsParam.split(',').filter(Boolean));
+    }
+
     const parseValidInt = (value: string | null): number | null => {
       if (!value || value.trim() === '') return null;
       const parsed = parseInt(value, 10);
@@ -148,12 +185,12 @@ export class TalksFilter {
     return new TalksFilter({
       yearType,
       year: parseValidInt(yearParam),
-      author: author || null,
-      topics: topicsParam ? topicsParam.split(',').filter(Boolean) : [],
+      author: null,  // No longer used - migrated to query
+      topics: [],    // No longer used - migrated to query
       conference: conference || null,
       hasNotes: hasNotesParam === 'true',
       rating: parseValidInt(ratingParam),
-      query,
+      query: queryTerms.length > 0 ? queryTerms.join(' ') : '',
       formats:
         formatParam && formatParam !== 'all'
           ? formatParam.split(',').filter(Boolean)

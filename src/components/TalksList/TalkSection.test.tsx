@@ -7,28 +7,20 @@ import { createTalk, renderWithRouter } from '../../test/utils';
 interface MockTalkCardProps {
   talk: {
     id: string;
-    speakers: string[];
-    topics: string[];
     conference_name: string;
   };
-  onAuthorClick: (author: string) => void;
-  onTopicClick: (topic: string) => void;
   onConferenceClick: (conference: string) => void;
 }
 
 vi.mock('./TalkCard', () => ({
-  TalkCard: ({ talk, onAuthorClick, onTopicClick, onConferenceClick }: MockTalkCardProps) => (
+  TalkCard: ({ talk, onConferenceClick }: MockTalkCardProps) => (
     <div data-testid={`talk-${talk.id}`}>
-      <button onClick={() => onAuthorClick(talk.speakers[0])}>author</button>
-      <button onClick={() => onTopicClick(talk.topics[0])}>topic</button>
       <button onClick={() => onConferenceClick(talk.conference_name)}>conf</button>
     </div>
   )
 }));
 
 const makeHandlers = () => ({
-  onAuthorClick: vi.fn(),
-  onTopicClick: vi.fn(),
   onConferenceClick: vi.fn(),
 });
 
@@ -40,8 +32,6 @@ describe('TalkSection', () => {
       <TalkSection
         coreTopic="Testing"
         talks={talks}
-        selectedAuthor={null}
-        selectedTopics={[]}
         selectedConference={null}
         {...handlers}
       />
@@ -53,25 +43,19 @@ describe('TalkSection', () => {
   });
 
   it('forwards handler props to TalkCard', () => {
-    const talk = createTalk({ id: '1', speakers: ['Author'], topics: ['Topic'], conference_name: 'Conf' });
+    const talk = createTalk({ id: '1', conference_name: 'Conf' });
     const handlers = makeHandlers();
     renderWithRouter(
       <TalkSection
         coreTopic="Core"
         talks={[talk]}
-        selectedAuthor={null}
-        selectedTopics={[]}
         selectedConference={null}
         {...handlers}
       />
     );
     const heading = screen.getByRole('heading', { name: /Core \(1\)/ });
     expect(heading).toBeInTheDocument();
-    fireEvent.click(screen.getByText('author'));
-    fireEvent.click(screen.getByText('topic'));
     fireEvent.click(screen.getByText('conf'));
-    expect(handlers.onAuthorClick).toHaveBeenCalledWith('Author');
-    expect(handlers.onTopicClick).toHaveBeenCalledWith('Topic');
     expect(handlers.onConferenceClick).toHaveBeenCalledWith('Conf');
   });
 });

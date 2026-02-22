@@ -12,19 +12,18 @@ describe('SearchBox', () => {
   it('suggests topics based on input', () => {
     renderWithRouter(<SearchBox talks={talks} />);
     const input = screen.getByRole('textbox');
-    fireEvent.change(input, { target: { value: 'topic:r' } });
-    expect(screen.getByText('react')).toBeInTheDocument();
+    fireEvent.change(input, { target: { value: 'r' } });
+    expect(screen.getByText(/react/)).toBeInTheDocument();
   });
 
   it('updates url params on submit', async () => {
     renderWithRouter(<SearchBox talks={talks} />);
     const input = screen.getByRole('textbox');
-    fireEvent.change(input, { target: { value: 'author:Alice topic:react' } });
+    fireEvent.change(input, { target: { value: 'Alice react' } });
     fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
     await waitFor(() => expect(mockSetSearchParams).toHaveBeenCalled());
     const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
-    expect(params.get('author')).toBe('Alice');
-    expect(params.get('topics')).toBe('react');
+    expect(params.get('query')).toBe('Alice react');
   });
 
   it('handles multi-word author names correctly', async () => {
@@ -34,12 +33,12 @@ describe('SearchBox', () => {
     renderWithRouter(<SearchBox talks={talksWithMultiWordNames} />);
 
     const input = screen.getByRole('textbox');
-    fireEvent.change(input, { target: { value: 'author:Kent Beck' } });
+    fireEvent.change(input, { target: { value: 'Kent Beck' } });
     fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
-    
+
     await waitFor(() => expect(mockSetSearchParams).toHaveBeenCalled());
     const params = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0] as URLSearchParams;
-    
-    expect(params.get('author')).toBe('Kent Beck');
+
+    expect(params.get('query')).toBe('Kent Beck');
   });
 });

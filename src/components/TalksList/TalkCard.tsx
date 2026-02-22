@@ -7,20 +7,12 @@ import { DocumentTextIcon, PlayIcon, VideoCameraIcon, MicrophoneIcon } from '@he
 
 interface TalkCardProps {
   talk: Talk;
-  onAuthorClick: (author: string) => void;
-  selectedAuthor: string | null;
-  onTopicClick: (topic: string) => void;
-  selectedTopics: string[];
   onConferenceClick: (conference: string) => void;
   selectedConference: string | null;
 }
 
-export function TalkCard({ 
-  talk, 
-  onAuthorClick, 
-  selectedAuthor,
-  onTopicClick,
-  selectedTopics,
+export function TalkCard({
+  talk,
   onConferenceClick,
   selectedConference
 }: TalkCardProps) {
@@ -31,23 +23,15 @@ export function TalkCard({
   const topicElements = useMemo(
     () =>
       talk.topics.map((topic) => (
-        <button
+        <span
           key={topic}
-          onClick={(e) => {
-            e.stopPropagation(); // Prevent card click
-            onTopicClick(topic);
-          }}
-          aria-label={`Filter by topic ${topic}`}
-          className={`break-words px-2 py-1 rounded-full text-xs transition-colors ${
-            selectedTopics.includes(topic)
-              ? 'bg-gray-700 text-white'
-              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-          }`}
+          aria-label={`Topic: ${topic}`}
+          className="break-words px-2 py-1 rounded-full text-xs bg-gray-100 text-gray-600"
         >
           {topic}
-        </button>
+        </span>
       )),
-    [talk.topics, onTopicClick, selectedTopics]
+    [talk.topics]
   );
 
   const handleCardClick = () => {
@@ -95,21 +79,13 @@ export function TalkCard({
           </div>
           <div className="flex flex-wrap gap-2 mb-3">
             {talk.speakers.map((speaker) => (
-              <button
+              <span
                 key={speaker}
-                onClick={(e) => {
-                  e.stopPropagation(); // Prevent card click
-                  onAuthorClick(speaker);
-                }}
-                aria-label={`Filter by speaker: ${speaker}`}
-                className={`break-words px-2 py-1 rounded-full text-xs transition-colors ${
-                  selectedAuthor === speaker
-                    ? 'bg-blue-500 text-white'
-                    : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
-                }`}
+                aria-label={`Speaker: ${speaker}`}
+                className="break-words px-2 py-1 rounded-full text-xs bg-blue-50 text-blue-700"
               >
                 {speaker}
-              </button>
+              </span>
             ))}
             <span className="px-2 py-1 text-xs text-gray-500" aria-label={`Duration: ${formatDuration(talk.duration)}`}>
               {formatDuration(talk.duration)}

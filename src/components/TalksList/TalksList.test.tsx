@@ -8,12 +8,10 @@ import { renderWithRouter, getMockSearchParams, mockSetSearchParams, mockNavigat
 interface MockTalkSectionProps {
   coreTopic: string;
   talks: Array<{ id: string; title: string; }>;
-  selectedTopics?: string[];
 }
 
 vi.mock('./TalkSection', () => ({
   TalkSection: (props: MockTalkSectionProps) => {
-    const selectedTopics = props.selectedTopics || [];
     return (
       <section>
         <h2>{props.coreTopic} ({props.talks.length})</h2>
@@ -24,28 +22,24 @@ vi.mock('./TalkSection', () => ({
             >
               {talk.title}
             </div>
-            {/* Topic buttons */}
+            {/* Topics as spans (no click handlers) */}
             {talk.topics.map((topic: string) => (
-              <button
+              <span
                 key={`topic-${talk.id}-${topic}`}
-                onClick={() => props.onTopicClick(topic)}
-                aria-label={`Filter by topic ${topic}`}
+                aria-label={`Topic: ${topic}`}
                 data-testid={`topic-${topic}`}
-                data-selected={selectedTopics.includes(topic)}
               >
                 {topic}
-              </button>
+              </span>
             ))}
-            {/* Author buttons */}
+            {/* Speakers as spans (no click handlers) */}
             {(talk.speakers || []).map((speaker: string) => (
-              <button
-                key={`author-${talk.id}-${speaker}`}
-                onClick={() => props.onAuthorClick(speaker)}
-                aria-label={`Filter by speaker: ${speaker}`}
-                data-selected={props.selectedAuthor === speaker}
+              <span
+                key={`speaker-${talk.id}-${speaker}`}
+                aria-label={`Speaker: ${speaker}`}
               >
                 {speaker}
-              </button>
+              </span>
             ))}
           </div>
         ))}
@@ -71,50 +65,7 @@ vi.mock('react-router-dom', async () => {
 });
 
 // Author Filter tests for TalksList
-describe('Author Filter', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-    setMockSearchParams(new URLSearchParams());
-    // Setup talks with different authors and titles
-    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
-      talks: [
-        createTalk({ id: '1', title: 'Talk A', speakers: ['Author A'] }),
-        createTalk({ id: '2', title: 'Talk B', speakers: ['Author B'] }),
-      ],
-      loading: false,
-      error: null
-    }));
-  });
-
-  it('sets author filter and updates URL params', () => {
-    renderWithRouter(<TalksList />);
-    const btn = screen.getByRole('button', { name: /filter by speaker: Author A/i });
-    fireEvent.click(btn);
-    expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
-    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
-    expect(params.get('author')).toBe('Author A');
-  });
-
-  it('removes author filter when clicking the same speaker again', () => {
-    // Initialize with author filter
-    getMockSearchParams().set('author', 'Author B');
-    renderWithRouter(<TalksList />);
-    const btn = screen.getByRole('button', { name: /filter by speaker: Author B/i });
-    fireEvent.click(btn);
-    expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
-    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
-    expect(params.get('author')).toBeNull();
-  });
-  
-  it('filters talks to only selected author', () => {
-    renderWithRouter(<TalksList />);
-    const btn = screen.getByRole('button', { name: /filter by speaker: Author A/i });
-    fireEvent.click(btn);
-    expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
-    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
-    expect(params.get('author')).toBe('Author A');
-  });
-});
+// Author Filter tests removed - functionality migrated to unified search
 
 describe('Rating Filter', () => {
   beforeEach(() => {
@@ -264,47 +215,7 @@ describe('TalksList', () => {
     });
   });
 
-  it('filters talks using AND condition when multiple topics are selected', () => {
-    getMockSearchParams().set('topics', 'react,typescript');
-    renderWithRouter(<TalksList />);
-    // Should only show talks with both topics
-    expect(screen.getAllByText('Talk with both topics 1')).toHaveLength(1);
-    expect(screen.getAllByText('Talk with both topics 2')).toHaveLength(1);
-    // Should not show talks with only one topic
-    expect(screen.queryByText('Talk with only first topic')).not.toBeInTheDocument();
-    expect(screen.queryByText('Talk with only second topic')).not.toBeInTheDocument();
-    expect(screen.queryByText('Talk with no matching topics')).not.toBeInTheDocument();
-    cleanup();
-  });
-
-  it('updates topics parameter when selecting topics', () => {
-    renderWithRouter(<TalksList />);
-    // Simulate clicking both topics in sequence
-    let topicButtons = screen.getAllByTestId(/^topic-/);
-    // Click 'react'
-    const reactBtn = topicButtons.find(btn => btn.textContent === 'react');
-    if (!reactBtn) throw new Error('React topic button not found');
-    fireEvent.click(reactBtn);
-    getMockSearchParams().set('topics', 'react');
-    cleanup();
-    renderWithRouter(<TalksList />);
-    // Re-query topic buttons after re-render
-    topicButtons = screen.getAllByTestId(/^topic-/);
-    const tsBtn = topicButtons.find(btn => btn.textContent === 'typescript');
-    if (!tsBtn) throw new Error('Typescript topic button not found');
-    fireEvent.click(tsBtn);
-    getMockSearchParams().set('topics', 'react,typescript');
-    cleanup();
-    renderWithRouter(<TalksList />);
-    // Check all calls for the expected value
-    const found = mockSetSearchParams.mock.calls.some(call => {
-      const arg = call[0] instanceof URLSearchParams ? call[0] : new URLSearchParams(String(call[0]));
-      return arg.get('topics') === 'react,typescript';
-    });
-    expect(found).toBe(true);
-    cleanup();
-  });
-
+  // Topics filter tests removed - functionality migrated to unified search
 
 });
 
@@ -415,31 +326,7 @@ describe('URL parameters for other filters', () => {
     }));
   });
 
-  it('updates topics parameter when selecting topics (URL parameters for other filters)', () => {
-    renderWithRouter(<TalksList />);
-    // Simulate clicking both topics in sequence
-    let topicButtons2 = screen.getAllByTestId(/^topic-/);
-    const reactBtn2 = topicButtons2.find(btn => btn.textContent === 'react');
-    if (!reactBtn2) throw new Error('React topic button not found');
-    fireEvent.click(reactBtn2);
-    getMockSearchParams().set('topics', 'react');
-    cleanup();
-    renderWithRouter(<TalksList />);
-    // Re-query topic buttons after re-render
-    topicButtons2 = screen.getAllByTestId(/^topic-/);
-    const tsBtn2 = topicButtons2.find(btn => btn.textContent === 'typescript');
-    if (!tsBtn2) throw new Error('Typescript topic button not found');
-    fireEvent.click(tsBtn2);
-    getMockSearchParams().set('topics', 'react,typescript');
-    cleanup();
-    renderWithRouter(<TalksList />);
-    const found2 = mockSetSearchParams.mock.calls.some(call => {
-      const arg = call[0] instanceof URLSearchParams ? call[0] : new URLSearchParams(String(call[0]));
-      return arg.get('topics') === 'react,typescript';
-    });
-    expect(found2).toBe(true);
-    cleanup();
-  });
+  // Topics parameter test removed - functionality migrated to unified search
 
 it('updates yearType parameter when selecting year filter', () => {
   renderWithRouter(<TalksList />);
@@ -457,10 +344,10 @@ it('updates yearType parameter when selecting year filter', () => {
 
 it('displays search box for user input', () => {
   renderWithRouter(<TalksList />);
-  
-  const searchInput = screen.getByPlaceholderText(/search.*author.*topic/i);
+
+  const searchInput = screen.getByPlaceholderText(/search in titles, speakers, topics/i);
   expect(searchInput).toBeInTheDocument();
-  
+
   const searchForm = screen.getByTestId('search-form');
   expect(searchForm).toBeInTheDocument();
 });
@@ -478,19 +365,20 @@ it('integrates search box with filter system', () => {
   }));
 
   renderWithRouter(<TalksList />);
-  
-  const searchInput = screen.getByPlaceholderText(/search.*author.*topic/i);
-  
-  // Type a search query
-  fireEvent.change(searchInput, { target: { value: 'author:Alice topic:react' } });
+
+  const searchInput = screen.getByPlaceholderText(/search in titles, speakers, topics/i);
+
+  // Type a search query (unified search without prefixes)
+  fireEvent.change(searchInput, { target: { value: 'Alice react' } });
   fireEvent.submit(screen.getByTestId('search-form'));
-  
-  // Verify URL parameters were updated with expected values
+
+  // Verify URL parameters were updated with unified query
   const lastCall = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1];
   const params = lastCall[0] as URLSearchParams;
-  
-  expect(params.get('author')).toBe('Alice');
-  expect(params.get('topics')).toBe('react');
+
+  expect(params.get('query')).toBe('Alice react');
+  expect(params.get('author')).toBeNull(); // Migrated to query
+  expect(params.get('topics')).toBeNull(); // Migrated to query
 });
 });
 

@@ -59,6 +59,28 @@ describe('useFilterHandlers', () => {
 
       expect(mockUpdateFilter).toHaveBeenCalledWith({ rating: null });
     });
+
+    it('sets rating to 5 when currently 4', () => {
+      const filter = new TalksFilter({ rating: 4 });
+      const { result } = renderHook(() => useFilterHandlers(filter, mockUpdateFilter));
+
+      act(() => {
+        result.current.handleRatingClick();
+      });
+
+      expect(mockUpdateFilter).toHaveBeenCalledWith({ rating: 5 });
+    });
+
+    it('sets rating to 5 when currently 3', () => {
+      const filter = new TalksFilter({ rating: 3 });
+      const { result } = renderHook(() => useFilterHandlers(filter, mockUpdateFilter));
+
+      act(() => {
+        result.current.handleRatingClick();
+      });
+
+      expect(mockUpdateFilter).toHaveBeenCalledWith({ rating: 5 });
+    });
   });
 
   describe('handleFormatChange', () => {
@@ -75,67 +97,7 @@ describe('useFilterHandlers', () => {
     });
   });
 
-  describe('handleTopicClick', () => {
-    it('adds topic when not currently selected', () => {
-      const filter = new TalksFilter({ topics: ['React'] });
-      const { result } = renderHook(() => useFilterHandlers(filter, mockUpdateFilter));
-
-      act(() => {
-        result.current.handleTopicClick('Testing');
-      });
-
-      expect(mockUpdateFilter).toHaveBeenCalledWith({ topics: ['React', 'Testing'] });
-    });
-
-    it('removes topic when currently selected', () => {
-      const filter = new TalksFilter({ topics: ['React', 'Testing'] });
-      const { result } = renderHook(() => useFilterHandlers(filter, mockUpdateFilter));
-
-      act(() => {
-        result.current.handleTopicClick('React');
-      });
-
-      expect(mockUpdateFilter).toHaveBeenCalledWith({ topics: ['Testing'] });
-    });
-
-    it('adds topic to empty topics array', () => {
-      const filter = new TalksFilter({ topics: [] });
-      const { result } = renderHook(() => useFilterHandlers(filter, mockUpdateFilter));
-
-      act(() => {
-        result.current.handleTopicClick('React');
-      });
-
-      expect(mockUpdateFilter).toHaveBeenCalledWith({ topics: ['React'] });
-    });
-  });
-
-  describe('handleClearTopics', () => {
-    it('clears all topics', () => {
-      const filter = new TalksFilter({ topics: ['React', 'Testing', 'JavaScript'] });
-      const { result } = renderHook(() => useFilterHandlers(filter, mockUpdateFilter));
-
-      act(() => {
-        result.current.handleClearTopics();
-      });
-
-      expect(mockUpdateFilter).toHaveBeenCalledWith({ topics: [] });
-    });
-  });
-
-  describe('handleTopicsChange', () => {
-    it('updates topics with new array', () => {
-      const filter = new TalksFilter();
-      const { result } = renderHook(() => useFilterHandlers(filter, mockUpdateFilter));
-      const newTopics = ['React', 'TypeScript'];
-
-      act(() => {
-        result.current.handleTopicsChange(newTopics);
-      });
-
-      expect(mockUpdateFilter).toHaveBeenCalledWith({ topics: newTopics });
-    });
-  });
+  // handleTopicClick, handleClearTopics, handleTopicsChange tests removed - functionality migrated to unified search
 
   describe('handleConferenceClick', () => {
     it('sets conference when not currently selected', () => {
@@ -210,29 +172,7 @@ describe('useFilterHandlers', () => {
     });
   });
 
-  describe('handleAuthorClick', () => {
-    it('sets author when not currently selected', () => {
-      const filter = new TalksFilter({ author: null });
-      const { result } = renderHook(() => useFilterHandlers(filter, mockUpdateFilter));
-
-      act(() => {
-        result.current.handleAuthorClick('John Doe');
-      });
-
-      expect(mockUpdateFilter).toHaveBeenCalledWith({ author: 'John Doe' });
-    });
-
-    it('clears author when currently selected', () => {
-      const filter = new TalksFilter({ author: 'John Doe' });
-      const { result } = renderHook(() => useFilterHandlers(filter, mockUpdateFilter));
-
-      act(() => {
-        result.current.handleAuthorClick('John Doe');
-      });
-
-      expect(mockUpdateFilter).toHaveBeenCalledWith({ author: null });
-    });
-  });
+  // handleAuthorClick tests removed - functionality migrated to unified search
 
   describe('hook stability', () => {
     it('returns stable handler functions when dependencies do not change', () => {
@@ -250,12 +190,8 @@ describe('useFilterHandlers', () => {
       expect(firstResult.handleHasNotesClick).toBe(secondResult.handleHasNotesClick);
       expect(firstResult.handleRatingClick).toBe(secondResult.handleRatingClick);
       expect(firstResult.handleFormatChange).toBe(secondResult.handleFormatChange);
-      expect(firstResult.handleTopicClick).toBe(secondResult.handleTopicClick);
-      expect(firstResult.handleClearTopics).toBe(secondResult.handleClearTopics);
-      expect(firstResult.handleTopicsChange).toBe(secondResult.handleTopicsChange);
       expect(firstResult.handleConferenceClick).toBe(secondResult.handleConferenceClick);
       expect(firstResult.handleYearFilterChange).toBe(secondResult.handleYearFilterChange);
-      expect(firstResult.handleAuthorClick).toBe(secondResult.handleAuthorClick);
     });
   });
 });

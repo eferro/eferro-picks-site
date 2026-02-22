@@ -4,10 +4,6 @@ import { TalkCard } from './TalkCard';
 interface TalkSectionProps {
   coreTopic: string;
   talks: Talk[];
-  onAuthorClick: (author: string) => void;
-  selectedAuthor: string | null;
-  onTopicClick: (topic: string) => void;
-  selectedTopics: string[];
   onConferenceClick: (conference: string) => void;
   selectedConference: string | null;
 }
@@ -15,10 +11,6 @@ interface TalkSectionProps {
 export function TalkSection({
   coreTopic,
   talks,
-  onAuthorClick,
-  selectedAuthor,
-  onTopicClick,
-  selectedTopics,
   onConferenceClick,
   selectedConference,
 }: TalkSectionProps) {
@@ -32,10 +24,6 @@ export function TalkSection({
           <TalkCard
             key={talk.id}
             talk={talk}
-            onAuthorClick={onAuthorClick}
-            selectedAuthor={selectedAuthor}
-            onTopicClick={onTopicClick}
-            selectedTopics={selectedTopics}
             onConferenceClick={onConferenceClick}
             selectedConference={selectedConference}
           />
