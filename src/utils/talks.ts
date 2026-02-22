@@ -36,8 +36,9 @@ export function transformAirtableItemToTalk(item: AirtableItem): Talk {
 
 export function filterTalks(items: AirtableItem[], filterByRating: boolean = false): AirtableItem[] {
   return items.filter(item => {
-    // Filter by language (only English for now)
-    if (item.language !== 'English') return false;
+    // Filter by language (only English for now); treat missing language as English
+    const lang = item.language?.trim() || 'English';
+    if (lang !== 'English') return false;
 
     // Filter by rating if enabled
     if (filterByRating && item.rating !== 5) return false;

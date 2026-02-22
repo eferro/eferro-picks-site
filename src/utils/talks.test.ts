@@ -68,17 +68,25 @@ describe('filterTalks', () => {
     make({ airtable_id: '1' }),
     make({ airtable_id: '2', language: 'Spanish' as never }),
     make({ airtable_id: '3', rating: 4 }),
-    make({ airtable_id: '4', resource_type: 'invalid' as never })
+    make({ airtable_id: '4', resource_type: 'invalid' as never }),
+    make({ airtable_id: '5', language: undefined as never }) // missing language treated as English
   ];
 
   it('filters by language and resource type', () => {
     const result = filterTalks(sample, false);
-    expect(result.map(i => i.airtable_id)).toEqual(['1', '3']);
+    expect(result.map(i => i.airtable_id)).toEqual(['1', '3', '5']);
+  });
+
+  it('treats missing language as English so new items are included', () => {
+    const withMissingLang = [make({ airtable_id: 'x', language: undefined as never })];
+    const result = filterTalks(withMissingLang, false);
+    expect(result).toHaveLength(1);
+    expect(result[0].airtable_id).toBe('x');
   });
 
   it('also filters by rating when enabled', () => {
     const result = filterTalks(sample, true);
-    expect(result.map(i => i.airtable_id)).toEqual(['1']);
+    expect(result.map(i => i.airtable_id)).toEqual(['1', '5']);
   });
 });
 
