@@ -27,6 +27,23 @@ describe('useUrlFilter', () => {
     expect(params.get('query')).toBe('testing');
   });
 
+  it('updateFilter overrides existing filter values (spread order)', () => {
+    // Start with existing query value
+    setMockSearchParams(new URLSearchParams('query=oldValue&hasNotes=true'));
+    const { result } = renderHook(() => useUrlFilter());
+
+    // Update query to new value
+    result.current.updateFilter({ query: 'newValue' });
+
+    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+    expect(params.get('query')).toBe('newValue');  // Should be new, not old
+    expect(params.get('hasNotes')).toBe('true');   // Other filters preserved
+
+    // This test kills the spread order mutation:
+    // Wrong order: {...updates, ...filter} would keep 'oldValue'
+    // Correct order: {...filter, ...updates} uses 'newValue' ✅
+  });
+
   describe('Year Filter Removal', () => {
     it('clears year filter including yearType parameter', () => {
       setMockSearchParams(new URLSearchParams('year=2023&yearType=specific'));
