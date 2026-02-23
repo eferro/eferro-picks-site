@@ -1,5 +1,6 @@
 export const TALKS_FILTER_KEYS = [
   'year',
+  'yearType',
   'author',
   'topics',
   'conference',
