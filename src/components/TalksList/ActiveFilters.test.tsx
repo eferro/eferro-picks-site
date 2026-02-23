@@ -77,7 +77,7 @@ describe('ActiveFilters', () => {
   it('renders year filter for "last2" type', () => {
     const emptyFilter = new TalksFilter();
     const yearFilter: YearFilterData = { type: 'last2', year: null };
-    
+
     render(
       <ActiveFilters
         filter={emptyFilter}
@@ -87,6 +87,84 @@ describe('ActiveFilters', () => {
     );
 
     expect(screen.getByText('Last 2 Years')).toBeInTheDocument();
+  });
+
+  it('calls onRemoveYearFilter when clicking last2 year filter chip', () => {
+    const emptyFilter = new TalksFilter();
+    const yearFilter: YearFilterData = { type: 'last2', year: null };
+
+    render(
+      <ActiveFilters
+        filter={emptyFilter}
+        yearFilter={yearFilter}
+        {...mockHandlers}
+      />
+    );
+
+    const removeButton = screen.getByRole('button', { name: /last 2 years/i });
+    fireEvent.click(removeButton);
+
+    expect(mockHandlers.onRemoveYearFilter).toHaveBeenCalledTimes(1);
+  });
+
+  it('calls onRemoveYearFilter when clicking last5 year filter chip', () => {
+    const emptyFilter = new TalksFilter();
+    const yearFilter: YearFilterData = { type: 'last5', year: null };
+
+    render(
+      <ActiveFilters
+        filter={emptyFilter}
+        yearFilter={yearFilter}
+        {...mockHandlers}
+      />
+    );
+
+    expect(screen.getByText('Last 5 Years')).toBeInTheDocument();
+
+    const removeButton = screen.getByRole('button', { name: /last 5 years/i });
+    fireEvent.click(removeButton);
+
+    expect(mockHandlers.onRemoveYearFilter).toHaveBeenCalledTimes(1);
+  });
+
+  it('calls onRemoveYearFilter when clicking before year filter chip', () => {
+    const emptyFilter = new TalksFilter();
+    const yearFilter: YearFilterData = { type: 'before', year: 2020 };
+
+    render(
+      <ActiveFilters
+        filter={emptyFilter}
+        yearFilter={yearFilter}
+        {...mockHandlers}
+      />
+    );
+
+    expect(screen.getByText('Before 2020')).toBeInTheDocument();
+
+    const removeButton = screen.getByRole('button', { name: /before 2020/i });
+    fireEvent.click(removeButton);
+
+    expect(mockHandlers.onRemoveYearFilter).toHaveBeenCalledTimes(1);
+  });
+
+  it('calls onRemoveYearFilter when clicking after year filter chip', () => {
+    const emptyFilter = new TalksFilter();
+    const yearFilter: YearFilterData = { type: 'after', year: 2020 };
+
+    render(
+      <ActiveFilters
+        filter={emptyFilter}
+        yearFilter={yearFilter}
+        {...mockHandlers}
+      />
+    );
+
+    expect(screen.getByText('After 2020')).toBeInTheDocument();
+
+    const removeButton = screen.getByRole('button', { name: /after 2020/i });
+    fireEvent.click(removeButton);
+
+    expect(mockHandlers.onRemoveYearFilter).toHaveBeenCalledTimes(1);
   });
 
   it('renders hasNotes filter with remove button', () => {

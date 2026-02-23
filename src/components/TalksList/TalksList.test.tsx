@@ -217,9 +217,170 @@ describe('TalksList', () => {
 
   // Topics filter tests removed - functionality migrated to unified search
 
+  describe('Year Filter Integration', () => {
+    it('removes year filter when clicking chip remove button', () => {
+      const talks = [
+        createTalk({ id: '1', year: 2024, title: 'Recent Talk' }),
+        createTalk({ id: '2', year: 2020, title: 'Old Talk' }),
+      ];
+
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks,
+        isLoading: false,
+        error: null,
+      }));
+
+      // Start with year filter active
+      setMockSearchParams(new URLSearchParams('yearType=last2'));
+
+      renderWithRouter(<TalksList />);
+
+      // Verify filter chip is rendered
+      expect(screen.getByText('Last 2 Years')).toBeInTheDocument();
+
+      // Click remove button on the chip
+      const removeButton = screen.getByRole('button', { name: /last 2 years/i });
+      fireEvent.click(removeButton);
+
+      // Verify URL parameters were cleared
+      const updatedParams = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0] as URLSearchParams;
+      expect(updatedParams.get('yearType')).toBeNull();
+      expect(updatedParams.get('year')).toBeNull();
+    });
+
+    it('removes specific year filter when clicking chip remove button', () => {
+      const talks = [
+        createTalk({ id: '1', year: 2023, title: 'Talk from 2023' }),
+        createTalk({ id: '2', year: 2024, title: 'Talk from 2024' }),
+      ];
+
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks,
+        isLoading: false,
+        error: null,
+      }));
+
+      // Start with specific year filter active
+      setMockSearchParams(new URLSearchParams('year=2023&yearType=specific'));
+
+      renderWithRouter(<TalksList />);
+
+      // Verify filter chip is rendered
+      expect(screen.getByText('2023')).toBeInTheDocument();
+
+      // Click remove button on the chip
+      const removeButton = screen.getByRole('button', { name: /2023/i });
+      fireEvent.click(removeButton);
+
+      // Verify both URL parameters were cleared
+      const updatedParams = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0] as URLSearchParams;
+      expect(updatedParams.get('year')).toBeNull();
+      expect(updatedParams.get('yearType')).toBeNull();
+    });
+
+    it('removes last5 year filter when clicking chip remove button', () => {
+      const talks = [createTalk({ id: '1', year: 2024 })];
+
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks,
+        isLoading: false,
+        error: null,
+      }));
+
+      setMockSearchParams(new URLSearchParams('yearType=last5'));
+
+      renderWithRouter(<TalksList />);
+
+      expect(screen.getByText('Last 5 Years')).toBeInTheDocument();
+
+      const removeButton = screen.getByRole('button', { name: /last 5 years/i });
+      fireEvent.click(removeButton);
+
+      const updatedParams = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0] as URLSearchParams;
+      expect(updatedParams.get('yearType')).toBeNull();
+      expect(updatedParams.get('year')).toBeNull();
+    });
+
+    it('removes before year filter when clicking chip remove button', () => {
+      const talks = [createTalk({ id: '1', year: 2019 })];
+
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks,
+        isLoading: false,
+        error: null,
+      }));
+
+      setMockSearchParams(new URLSearchParams('year=2020&yearType=before'));
+
+      renderWithRouter(<TalksList />);
+
+      expect(screen.getByText('Before 2020')).toBeInTheDocument();
+
+      const removeButton = screen.getByRole('button', { name: /before 2020/i });
+      fireEvent.click(removeButton);
+
+      const updatedParams = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0] as URLSearchParams;
+      expect(updatedParams.get('year')).toBeNull();
+      expect(updatedParams.get('yearType')).toBeNull();
+    });
+
+    it('removes after year filter when clicking chip remove button', () => {
+      const talks = [createTalk({ id: '1', year: 2021 })];
+
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks,
+        isLoading: false,
+        error: null,
+      }));
+
+      setMockSearchParams(new URLSearchParams('year=2020&yearType=after'));
+
+      renderWithRouter(<TalksList />);
+
+      expect(screen.getByText('After 2020')).toBeInTheDocument();
+
+      const removeButton = screen.getByRole('button', { name: /after 2020/i });
+      fireEvent.click(removeButton);
+
+      const updatedParams = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0] as URLSearchParams;
+      expect(updatedParams.get('year')).toBeNull();
+      expect(updatedParams.get('yearType')).toBeNull();
+    });
+
+    it('preserves other filters when removing year filter', () => {
+      const talks = [createTalk({ id: '1', year: 2024, notes: 'Great talk' })];
+
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks,
+        isLoading: false,
+        error: null,
+      }));
+
+      // Start with year filter AND hasNotes filter
+      setMockSearchParams(new URLSearchParams('yearType=last2&hasNotes=true'));
+
+      renderWithRouter(<TalksList />);
+
+      // Remove year filter
+      const yearRemoveButton = screen.getByRole('button', { name: /last 2 years/i });
+      fireEvent.click(yearRemoveButton);
+
+      // Verify year params cleared but hasNotes preserved
+      const updatedParams = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0] as URLSearchParams;
+      expect(updatedParams.get('yearType')).toBeNull();
+      expect(updatedParams.get('year')).toBeNull();
+      expect(updatedParams.get('hasNotes')).toBe('true');
+    });
+  });
+
 });
 
 describe('Has Notes Filter', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    setMockSearchParams(new URLSearchParams());
+  });
+
   it('shows the Has Notes filter button', () => {
     (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
       talks: [],
@@ -228,7 +389,7 @@ describe('Has Notes Filter', () => {
     }));
 
     renderWithRouter(<TalksList />);
-    const button = screen.getByRole('button', { name: /has notes/i });
+    const button = screen.getByRole('button', { name: /toggle has notes filter/i });
     expect(button).toBeInTheDocument();
     expect(button).toHaveClass('bg-white');
     expect(button).toHaveClass('text-gray-700');
