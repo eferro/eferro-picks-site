@@ -47,6 +47,18 @@ This is **eferro's picks** - a curated collection of software development talks 
 - Run `npm audit` regularly and fix security vulnerabilities
 - Ensure ESLint configuration is compatible with installed packages
 
+### Language and Communication
+
+**CRITICAL: All project artifacts must be in English:**
+- **Code**: Variables, functions, classes, interfaces, types, comments
+- **Commits**: All commit messages and descriptions
+- **Documentation**: README files, inline comments, API docs
+- **Tests**: Test descriptions, assertions, test data
+- **User-facing content**: UI text, error messages, labels
+- **Configuration**: Config files, environment variables
+
+**This applies regardless of the language used in conversations with AI assistants or team members.** The codebase is international and English ensures maximum accessibility and collaboration.
+
 ### Code Style & Patterns
 
 ```typescript
