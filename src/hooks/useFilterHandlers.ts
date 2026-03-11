@@ -29,6 +29,11 @@ export function useFilterHandlers(filter: TalksFilter, updateFilter: UpdateFilte
     updateFilter({ conference: newConference });
   }, [filter.conference, updateFilter]);
 
+  const handleTopicClick = useCallback((topic: string) => {
+    const newQuery = filter.query === topic ? '' : topic;
+    updateFilter({ query: newQuery });
+  }, [filter.query, updateFilter]);
+
   const handleYearFilterChange = useCallback((yearFilter: YearFilterData | null) => {
     if (!yearFilter) {
       updateFilter({ yearType: null, year: null });
@@ -42,6 +47,7 @@ export function useFilterHandlers(filter: TalksFilter, updateFilter: UpdateFilte
     handleRatingClick,
     handleFormatChange,
     handleConferenceClick,
+    handleTopicClick,
     handleYearFilterChange,
   };
 }

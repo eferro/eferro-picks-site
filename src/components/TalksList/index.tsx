@@ -29,6 +29,7 @@ export function TalksList() {
     handleRatingClick,
     handleFormatChange,
     handleConferenceClick,
+    handleTopicClick,
     handleYearFilterChange,
   } = useFilterHandlers(filter, updateFilter);
 
@@ -132,6 +133,8 @@ export function TalksList() {
             talks={topicTalks}
             onConferenceClick={handleConferenceClick}
             selectedConference={filter.conference}
+            onTopicClick={handleTopicClick}
+            selectedQuery={filter.query}
           />
         ))
       ) : (

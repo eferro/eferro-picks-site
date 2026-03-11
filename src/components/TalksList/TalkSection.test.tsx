@@ -8,20 +8,26 @@ interface MockTalkCardProps {
   talk: {
     id: string;
     conference_name: string;
+    topics: string[];
   };
   onConferenceClick: (conference: string) => void;
+  onTopicClick: (topic: string) => void;
 }
 
 vi.mock('./TalkCard', () => ({
-  TalkCard: ({ talk, onConferenceClick }: MockTalkCardProps) => (
+  TalkCard: ({ talk, onConferenceClick, onTopicClick }: MockTalkCardProps) => (
     <div data-testid={`talk-${talk.id}`}>
       <button onClick={() => onConferenceClick(talk.conference_name)}>conf</button>
+      {talk.topics.map((topic) => (
+        <button key={topic} onClick={() => onTopicClick(topic)}>{`topic-${topic}`}</button>
+      ))}
     </div>
   )
 }));
 
 const makeHandlers = () => ({
   onConferenceClick: vi.fn(),
+  onTopicClick: vi.fn(),
 });
 
 describe('TalkSection', () => {
@@ -33,6 +39,7 @@ describe('TalkSection', () => {
         coreTopic="Testing"
         talks={talks}
         selectedConference={null}
+        selectedQuery=""
         {...handlers}
       />
     );
@@ -42,7 +49,7 @@ describe('TalkSection', () => {
     expect(cards.length).toBeGreaterThanOrEqual(2);
   });
 
-  it('forwards handler props to TalkCard', () => {
+  it('forwards onConferenceClick to TalkCard', () => {
     const talk = createTalk({ id: '1', conference_name: 'Conf' });
     const handlers = makeHandlers();
     renderWithRouter(
@@ -50,6 +57,7 @@ describe('TalkSection', () => {
         coreTopic="Core"
         talks={[talk]}
         selectedConference={null}
+        selectedQuery=""
         {...handlers}
       />
     );
@@ -57,5 +65,21 @@ describe('TalkSection', () => {
     expect(heading).toBeInTheDocument();
     fireEvent.click(screen.getByText('conf'));
     expect(handlers.onConferenceClick).toHaveBeenCalledWith('Conf');
+  });
+
+  it('forwards onTopicClick to TalkCard', () => {
+    const talk = createTalk({ id: '1', topics: ['agile'] });
+    const handlers = makeHandlers();
+    renderWithRouter(
+      <TalkSection
+        coreTopic="Core"
+        talks={[talk]}
+        selectedConference={null}
+        selectedQuery=""
+        {...handlers}
+      />
+    );
+    fireEvent.click(screen.getByText('topic-agile'));
+    expect(handlers.onTopicClick).toHaveBeenCalledWith('agile');
   });
 });
