@@ -14,11 +14,10 @@ export default defineConfig({
     include: ['src/**/*.{test,spec}.{js,jsx,ts,tsx}'],
     
     // Performance optimizations
-    pool: 'threads',
+    pool: 'forks',
     poolOptions: {
-      threads: {
-        // Use single thread with no isolation for significant speed boost
-        singleThread: true,
+      forks: {
+        singleFork: true,
         isolate: false,
       }
     },

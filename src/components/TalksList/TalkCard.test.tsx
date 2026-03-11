@@ -29,13 +29,13 @@ describe('TalkCard', () => {
       expect(screen.getByText('1h 0m')).toBeInTheDocument();
     });
 
-    it('renders the topic', () => {
+    it('renders the topic as a clickable button', () => {
       const talk = createTalk({
         topics: ['test'],
         core_topic: 'test'
       });
       renderTalkCard({ talk });
-      expect(screen.getByLabelText(/Topic: test/i)).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: /Filter by topic test/i })).toBeInTheDocument();
     });
 
     it('renders the conference name', () => {
@@ -121,7 +121,20 @@ describe('TalkCard', () => {
   });
 
   describe('Interactions', () => {
-    // onTopicClick and onAuthorClick tests removed - functionality migrated to unified search
+    it('calls onTopicClick when a topic tag is clicked and stops event propagation', () => {
+      const onTopicClick = vi.fn();
+      const talk = createTalk({ topics: ['testing', 'agile'] });
+      renderTalkCard({ talk, onTopicClick });
+
+      const topicButton = screen.getByRole('button', { name: /Filter by topic testing/i });
+      const clickEvent = new MouseEvent('click', { bubbles: true });
+      Object.defineProperty(clickEvent, 'stopPropagation', { value: vi.fn() });
+
+      fireEvent(topicButton, clickEvent);
+
+      expect(onTopicClick).toHaveBeenCalledWith('testing');
+      expect(clickEvent.stopPropagation).toHaveBeenCalled();
+    });
 
     it('calls onConferenceClick when conference is clicked and stops event propagation', () => {
       const onConferenceClick = vi.fn();
@@ -186,7 +199,22 @@ describe('TalkCard', () => {
   });
 
   describe('Styling', () => {
-    // Selected styling tests for topics/speakers removed - no longer clickeable
+    it('applies selected styling to topic when it matches selectedQuery', () => {
+      const talk = createTalk({ topics: ['testing'] });
+      renderTalkCard({ talk, selectedQuery: 'testing' });
+
+      const topicButton = screen.getByRole('button', { name: /Filter by topic testing/i });
+      expect(topicButton).toHaveClass('bg-blue-500', 'text-white');
+    });
+
+    it('applies unselected styling to topic when it does not match selectedQuery', () => {
+      const talk = createTalk({ topics: ['testing'] });
+      renderTalkCard({ talk, selectedQuery: 'other' });
+
+      const topicButton = screen.getByRole('button', { name: /Filter by topic testing/i });
+      expect(topicButton).not.toHaveClass('bg-blue-500', 'text-white');
+      expect(topicButton).toHaveClass('bg-gray-100', 'text-gray-600');
+    });
 
     it('applies selected styling to conference when it is selected', () => {
       const talk = createTalk({ 
@@ -219,9 +247,9 @@ describe('TalkCard', () => {
       const card = screen.getByRole('article');
       expect(card).toHaveAttribute('aria-label', 'Talk: Test Talk');
 
-      // Topic span accessibility (no longer clickeable)
-      const topicSpan = screen.getByLabelText(/topic: test/i);
-      expect(topicSpan).toHaveAttribute('aria-label', 'Topic: test');
+      // Topic button accessibility (now clickeable)
+      const topicButton = screen.getByRole('button', { name: /filter by topic test/i });
+      expect(topicButton).toHaveAttribute('aria-label', 'Filter by topic test');
 
       // Speaker span accessibility (no longer clickeable)
       const speakerSpan = screen.getByLabelText(/speaker: test speaker/i);

@@ -9,12 +9,16 @@ interface TalkCardProps {
   talk: Talk;
   onConferenceClick: (conference: string) => void;
   selectedConference: string | null;
+  onTopicClick: (topic: string) => void;
+  selectedQuery: string;
 }
 
 export function TalkCard({
   talk,
   onConferenceClick,
-  selectedConference
+  selectedConference,
+  onTopicClick,
+  selectedQuery,
 }: TalkCardProps) {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -23,15 +27,23 @@ export function TalkCard({
   const topicElements = useMemo(
     () =>
       talk.topics.map((topic) => (
-        <span
+        <button
           key={topic}
-          aria-label={`Topic: ${topic}`}
-          className="break-words px-2 py-1 rounded-full text-xs bg-gray-100 text-gray-600"
+          onClick={(e) => {
+            e.stopPropagation();
+            onTopicClick(topic);
+          }}
+          aria-label={`Filter by topic ${topic}`}
+          className={`break-words px-2 py-1 rounded-full text-xs transition-colors ${
+            selectedQuery === topic
+              ? 'bg-blue-500 text-white'
+              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+          }`}
         >
           {topic}
-        </span>
+        </button>
       )),
-    [talk.topics]
+    [talk.topics, onTopicClick, selectedQuery]
   );
 
   const handleCardClick = () => {

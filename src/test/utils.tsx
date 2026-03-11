@@ -109,12 +109,12 @@ export const createTalk = (overrides: Partial<Talk> = {}): Talk => ({
 
 // Helper to render a TalkCard with default props
 export const renderTalkCard = (props: Partial<React.ComponentProps<typeof TalkCard>> = {}) => {
-  const defaultProps = {
+  const defaultProps: React.ComponentProps<typeof TalkCard> = {
     talk: mockTalk,
-    ...mockHandlers,
-    selectedAuthor: null,
-    selectedTopics: [],
-    selectedConference: null
+    onConferenceClick: mockHandlers.onConferenceClick,
+    onTopicClick: mockHandlers.onTopicClick,
+    selectedConference: null,
+    selectedQuery: '',
   };
 
   const finalProps = { ...defaultProps, ...props };
@@ -125,7 +125,6 @@ export const renderTalkCard = (props: Partial<React.ComponentProps<typeof TalkCa
   return {
     ...result,
     onTopicClick: finalProps.onTopicClick,
-    onAuthorClick: finalProps.onAuthorClick,
     onConferenceClick: finalProps.onConferenceClick
   };
 };
