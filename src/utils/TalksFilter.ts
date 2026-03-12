@@ -40,6 +40,7 @@ export interface TalksFilterData {
   rating?: number | null;
   query?: string;
   formats?: string[];
+  quickWatch?: boolean;
   _testCurrentYear?: number; // For deterministic testing - injects "now"
 }
 
@@ -53,6 +54,7 @@ export class TalksFilter {
   readonly rating: number | null;
   readonly query: string;
   readonly formats: string[];
+  readonly quickWatch: boolean;
   private readonly _testCurrentYear?: number;
 
   constructor({
@@ -65,6 +67,7 @@ export class TalksFilter {
     rating = null,
     query = '',
     formats = [],
+    quickWatch = false,
     _testCurrentYear,
   }: TalksFilterData = {}) {
     this.year = year;
@@ -76,6 +79,7 @@ export class TalksFilter {
     this.rating = rating;
     this.query = query || '';
     this.formats = formats;
+    this.quickWatch = quickWatch;
     this._testCurrentYear = _testCurrentYear;
   }
 
@@ -128,6 +132,9 @@ export class TalksFilter {
     if (this.formats.length > 0) {
       params.set('format', this.formats.join(','));
     }
+    if (this.quickWatch) {
+      params.set('quickWatch', 'true');
+    }
     return params.toString();
   }
 
@@ -142,6 +149,7 @@ export class TalksFilter {
       const notesMatch = !this.hasNotes || hasMeaningfulNotes(talk.notes);
       const formatMatch =
         this.formats.length === 0 || this.formats.includes(talk.format ?? 'talk');
+      const quickWatchMatch = !this.quickWatch || talk.duration < 900;
       return (
         yearMatch &&
         queryMatch &&
@@ -149,7 +157,8 @@ export class TalksFilter {
         topicsMatch &&
         conferenceMatch &&
         notesMatch &&
-        formatMatch
+        formatMatch &&
+        quickWatchMatch
       );
     });
   }
@@ -163,6 +172,7 @@ export class TalksFilter {
     const hasNotesParam = searchParams.get('hasNotes');
     const ratingParam = searchParams.get('rating');
     const formatParam = searchParams.get('format');
+    const quickWatchParam = searchParams.get('quickWatch');
 
     // Migrate legacy author/topics params to unified query
     const queryTerms: string[] = [];
@@ -193,6 +203,7 @@ export class TalksFilter {
       topics: [],    // No longer used - migrated to query
       conference: conference || null,
       hasNotes: hasNotesParam === 'true',
+      quickWatch: quickWatchParam === 'true',
       rating: parseValidInt(ratingParam),
       query: queryTerms.length > 0 ? queryTerms.join(' ') : '',
       formats:

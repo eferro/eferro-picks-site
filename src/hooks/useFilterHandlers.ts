@@ -34,6 +34,10 @@ export function useFilterHandlers(filter: TalksFilter, updateFilter: UpdateFilte
     updateFilter({ query: newQuery });
   }, [filter.query, updateFilter]);
 
+  const handleQuickWatchClick = useCallback(() => {
+    updateFilter({ quickWatch: !filter.quickWatch });
+  }, [filter.quickWatch, updateFilter]);
+
   const handleYearFilterChange = useCallback((yearFilter: YearFilterData | null) => {
     if (!yearFilter) {
       updateFilter({ yearType: null, year: null });
@@ -49,5 +53,6 @@ export function useFilterHandlers(filter: TalksFilter, updateFilter: UpdateFilte
     handleConferenceClick,
     handleTopicClick,
     handleYearFilterChange,
+    handleQuickWatchClick,
   };
 }
