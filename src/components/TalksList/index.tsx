@@ -12,6 +12,7 @@ import { LoadingSpinner, ErrorMessage, PageContainer, Button } from '../ui';
 import { SearchBox } from '../SearchBox';
 import { FormatFilter } from './FormatFilter';
 import { ActiveFilters } from './ActiveFilters';
+import { CategoryIndex, type CategoryData } from './CategoryIndex';
 
 export function TalksList() {
   const { filter, updateFilter } = useUrlFilter();
@@ -71,6 +72,21 @@ export function TalksList() {
       });
   }, [filteredTalks]);
 
+  // Generate category data for the index
+  const categoryData: CategoryData[] = useMemo(() => {
+    return sortedTopics.map(([topic, topicTalks]) => ({
+      name: topic,
+      count: topicTalks.length,
+    }));
+  }, [sortedTopics]);
+
+  // Handle category click - scroll to section
+  const handleCategoryClick = (categoryName: string) => {
+    const element = document.querySelector(`[data-category="${categoryName}"]`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   if (loading) return <LoadingSpinner />;
   if (error) return <ErrorMessage message={error.message} />;
@@ -136,24 +152,41 @@ export function TalksList() {
       <div className="text-sm text-gray-500 mb-6">
         Showing {filteredTalks.length} of {talks.length} talks
       </div>
-      
-      {sortedTopics.length > 0 ? (
-        sortedTopics.map(([topic, topicTalks]) => (
-          <TalkSection
-            key={topic}
-            coreTopic={topic}
-            talks={topicTalks}
-            onConferenceClick={handleConferenceClick}
-            selectedConference={filter.conference}
-            onTopicClick={handleTopicClick}
-            selectedQuery={filter.query}
-          />
-        ))
-      ) : (
-        <div className="text-center py-8">
-          <p className="text-gray-600 text-lg">No talks found matching your criteria.</p>
+
+      {/* Main content with sidebar layout */}
+      <div className="flex gap-8">
+        {/* Category Index Sidebar */}
+        {categoryData.length > 1 && (
+          <div className="hidden lg:block w-64 flex-shrink-0">
+            <CategoryIndex
+              categories={categoryData}
+              onCategoryClick={handleCategoryClick}
+            />
+          </div>
+        )}
+
+        {/* Main talks content */}
+        <div className="flex-1 min-w-0">
+          {sortedTopics.length > 0 ? (
+            sortedTopics.map(([topic, topicTalks]) => (
+              <div key={topic} data-category={topic}>
+                <TalkSection
+                  coreTopic={topic}
+                  talks={topicTalks}
+                  onConferenceClick={handleConferenceClick}
+                  selectedConference={filter.conference}
+                  onTopicClick={handleTopicClick}
+                  selectedQuery={filter.query}
+                />
+              </div>
+            ))
+          ) : (
+            <div className="text-center py-8">
+              <p className="text-gray-600 text-lg">No talks found matching your criteria.</p>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </PageContainer>
   );
 } 
