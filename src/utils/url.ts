@@ -7,7 +7,8 @@ export const TALKS_FILTER_KEYS = [
   'hasNotes',
   'rating',
   'query',
-  'format'
+  'format',
+  'quickWatch'
 ] as const;
 
 export function mergeParams(

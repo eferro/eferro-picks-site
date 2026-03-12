@@ -1014,4 +1014,85 @@ describe('TalksFilter', () => {
       expect(result).toEqual([talkWithoutFormat]);
     });
   });
+
+  describe('Quick Watch (Under 15 Minutes) Filter', () => {
+    it('should include talks under 15 minutes when quickWatch is true', () => {
+      const shortTalk = createTalk({ id: '1', duration: 600 }); // 10 min
+      const longTalk = createTalk({ id: '2', duration: 3600 }); // 60 min
+
+      const filter = new TalksFilter({ quickWatch: true });
+      expect(filter.filter([shortTalk, longTalk])).toEqual([shortTalk]);
+    });
+
+    it('should include all talks when quickWatch is false', () => {
+      const shortTalk = createTalk({ id: '1', duration: 600 });
+      const longTalk = createTalk({ id: '2', duration: 3600 });
+
+      const filter = new TalksFilter({ quickWatch: false });
+      expect(filter.filter([shortTalk, longTalk])).toEqual([shortTalk, longTalk]);
+    });
+
+    it('should exclude talks exactly at 15 minutes (900 seconds)', () => {
+      const exactlyFifteen = createTalk({ id: '1', duration: 900 });
+
+      const filter = new TalksFilter({ quickWatch: true });
+      expect(filter.filter([exactlyFifteen])).toEqual([]);
+    });
+
+    it('should include talks just under 15 minutes', () => {
+      const justUnder = createTalk({ id: '1', duration: 899 });
+
+      const filter = new TalksFilter({ quickWatch: true });
+      expect(filter.filter([justUnder])).toEqual([justUnder]);
+    });
+
+    it('should include talks with zero duration when quickWatch is true', () => {
+      const zeroDuration = createTalk({ id: '1', duration: 0 });
+
+      const filter = new TalksFilter({ quickWatch: true });
+      expect(filter.filter([zeroDuration])).toEqual([zeroDuration]);
+    });
+
+    it('should default quickWatch to false', () => {
+      const filter = new TalksFilter({});
+      expect(filter.quickWatch).toBe(false);
+    });
+
+    it('should combine with other filters', () => {
+      const shortDDD = createTalk({ id: '1', duration: 600, year: 2023, conference_name: 'DDD Europe' });
+      const longDDD = createTalk({ id: '2', duration: 3600, year: 2023, conference_name: 'DDD Europe' });
+      const shortOther = createTalk({ id: '3', duration: 600, year: 2023, conference_name: 'Other' });
+
+      const filter = new TalksFilter({ quickWatch: true, conference: 'DDD Europe' });
+      expect(filter.filter([shortDDD, longDDD, shortOther])).toEqual([shortDDD]);
+    });
+
+    describe('URL parameter serialization', () => {
+      it('should serialize quickWatch=true to URL params', () => {
+        const filter = new TalksFilter({ quickWatch: true });
+        expect(filter.toParams()).toContain('quickWatch=true');
+      });
+
+      it('should not serialize quickWatch=false to URL params', () => {
+        const filter = new TalksFilter({ quickWatch: false });
+        expect(filter.toParams()).not.toContain('quickWatch');
+      });
+
+      it('should parse quickWatch from URL params', () => {
+        const filter = TalksFilter.fromUrlParams('quickWatch=true');
+        expect(filter.quickWatch).toBe(true);
+      });
+
+      it('should default quickWatch to false when not in URL', () => {
+        const filter = TalksFilter.fromUrlParams('');
+        expect(filter.quickWatch).toBe(false);
+      });
+
+      it('should round-trip quickWatch through URL params', () => {
+        const original = new TalksFilter({ quickWatch: true });
+        const restored = TalksFilter.fromUrlParams(original.toParams());
+        expect(restored.quickWatch).toBe(true);
+      });
+    });
+  });
 });

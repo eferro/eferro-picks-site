@@ -6,7 +6,7 @@ import { YearFilter, type YearFilterData } from './YearFilter';
 import { useUrlFilter } from '../../hooks/useUrlFilter';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { useFilterHandlers } from '../../hooks/useFilterHandlers';
-import { DocumentTextIcon, StarIcon } from '@heroicons/react/24/outline';
+import { DocumentTextIcon, StarIcon, BoltIcon } from '@heroicons/react/24/outline';
 import { LoadingSpinner, ErrorMessage, PageContainer, Button } from '../ui';
 
 import { SearchBox } from '../SearchBox';
@@ -31,6 +31,7 @@ export function TalksList() {
     handleConferenceClick,
     handleTopicClick,
     handleYearFilterChange,
+    handleQuickWatchClick,
   } = useFilterHandlers(filter, updateFilter);
 
   // Derive yearType and year from TalksFilter
@@ -91,6 +92,15 @@ export function TalksList() {
         <FormatFilter selectedFormats={filter.formats} onChange={handleFormatChange} />
         <Button
           variant="toggle"
+          active={filter.quickWatch}
+          onClick={handleQuickWatchClick}
+          aria-label="Toggle Quick Watch filter"
+          icon={<BoltIcon />}
+        >
+          Quick Watch
+        </Button>
+        <Button
+          variant="toggle"
           active={filter.hasNotes}
           onClick={handleHasNotesClick}
           aria-label="Toggle Has Notes filter"
@@ -117,6 +127,7 @@ export function TalksList() {
         onRemoveYearFilter={() => handleYearFilterChange(null)}
         onRemoveHasNotes={handleHasNotesClick}
         onRemoveRating={handleRatingClick}
+        onRemoveQuickWatch={handleQuickWatchClick}
         onRemoveFormat={(format) => handleFormatChange(filter.formats.filter(f => f !== format))}
       />
 

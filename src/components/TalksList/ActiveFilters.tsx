@@ -9,6 +9,7 @@ interface ActiveFiltersProps {
   onRemoveYearFilter: () => void;
   onRemoveHasNotes: () => void;
   onRemoveRating: () => void;
+  onRemoveQuickWatch: () => void;
   onRemoveFormat: (format: string) => void;
 }
 
@@ -19,6 +20,7 @@ export function ActiveFilters({
   onRemoveYearFilter,
   onRemoveHasNotes,
   onRemoveRating,
+  onRemoveQuickWatch,
   onRemoveFormat,
 }: ActiveFiltersProps) {
   // Check if any filters are active
@@ -26,6 +28,7 @@ export function ActiveFilters({
     filter.conference ||
     yearFilter ||
     filter.hasNotes ||
+    filter.quickWatch ||
     filter.rating === 5 ||
     filter.formats.length > 0;
 
@@ -75,6 +78,18 @@ export function ActiveFilters({
         </div>
       )}
       
+      {filter.quickWatch && (
+        <div className="flex items-center gap-2">
+          <span className="text-sm text-gray-500">Filter:</span>
+          <FilterChip
+            onRemove={onRemoveQuickWatch}
+            ariaLabel="Remove Quick Watch filter"
+          >
+            Quick Watch
+          </FilterChip>
+        </div>
+      )}
+
       {filter.rating === 5 && (
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-500">Filter:</span>
