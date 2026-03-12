@@ -79,19 +79,25 @@ describe('Rating Filter', () => {
   });
 
   it('shows the rating filter button with correct initial state', () => {
-    // Default (no rating param) shows all talks
+    // Default (no rating param) shows "Top Picks" label (inactive)
     renderWithRouter(<TalksList />);
-    const button = screen.getByRole('button', { name: /toggle rating filter/i });
+    const button = screen.getByRole('button', { name: /toggle top picks filter/i });
     expect(button).toBeInTheDocument();
-    expect(button).toHaveTextContent('All');
+    expect(button).toHaveTextContent('Top Picks');
     expect(button).toHaveClass('bg-white', 'text-gray-700', 'border', 'border-gray-300');
     expect(mockSetSearchParams).not.toHaveBeenCalled();
+  });
+
+  it('shows tooltip on the rating filter button', () => {
+    renderWithRouter(<TalksList />);
+    const button = screen.getByRole('button', { name: /toggle top picks filter/i });
+    expect(button).toHaveAttribute('title', "Show only 5-star talks — the curator's top recommendations");
   });
 
   it('toggles the rating filter and updates URL params', () => {
     // Initial state shows all talks (no rating filter)
     renderWithRouter(<TalksList />);
-    const [toggle] = screen.getAllByRole('button', { name: /toggle rating filter/i });
+    const [toggle] = screen.getAllByRole('button', { name: /toggle top picks filter/i });
     // Click to enable rating filter (to show 5 stars only)
     fireEvent.click(toggle);
     expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
@@ -103,9 +109,9 @@ describe('Rating Filter', () => {
     // Re-render after click to simulate navigation
     cleanup();
     renderWithRouter(<TalksList />);
-    const [updated] = screen.getAllByRole('button', { name: /toggle rating filter/i });
-    // After first click, button should now show "5 Stars"
-    expect(updated.textContent?.trim()).toBe('5 Stars');
+    const [updated] = screen.getAllByRole('button', { name: /toggle top picks filter/i });
+    // After first click, button should show star emoji with "Top Picks" (active state)
+    expect(updated.textContent?.trim()).toContain('Top Picks');
     // Click to disable rating filter (back to showing all)
     fireEvent.click(updated);
     expect(mockSetSearchParams).toHaveBeenCalledTimes(2);
@@ -120,8 +126,8 @@ describe('Rating Filter', () => {
     
     // The component should not force rating=5 just because there's no rating param
     // This test will fail because of the bug in the initialization logic
-    const button = screen.getByRole('button', { name: /toggle rating filter/i });
-    expect(button.textContent).toBe('All'); // Should show 'All' when rating filter is off
+    const button = screen.getByRole('button', { name: /toggle top picks filter/i });
+    expect(button.textContent).toContain('Top Picks'); // Should show 'Top Picks' when rating filter is off
   });
 });
 

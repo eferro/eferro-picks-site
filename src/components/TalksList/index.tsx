@@ -112,10 +112,11 @@ export function TalksList() {
           variant="toggle"
           active={filter.rating === 5}
           onClick={handleRatingClick}
-          aria-label="Toggle Rating filter"
+          aria-label="Toggle Top Picks filter"
+          title="Show only 5-star talks — the curator's top recommendations"
           icon={<StarIcon />}
         >
-          {filter.rating === 5 ? '5 Stars' : 'All'}
+          {filter.rating === 5 ? '⭐ Top Picks' : 'Top Picks'}
         </Button>
       </div>
 

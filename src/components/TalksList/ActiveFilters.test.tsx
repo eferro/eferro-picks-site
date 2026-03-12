@@ -197,10 +197,10 @@ describe('ActiveFilters', () => {
       />
     );
 
-    expect(screen.getByText('5 Stars')).toBeInTheDocument();
-    expect(screen.getByLabelText('Remove Rating filter')).toBeInTheDocument();
-    
-    const removeButton = screen.getByLabelText('Remove Rating filter');
+    expect(screen.getByText('⭐ Top Picks')).toBeInTheDocument();
+    expect(screen.getByLabelText('Remove Top Picks filter')).toBeInTheDocument();
+
+    const removeButton = screen.getByLabelText('Remove Top Picks filter');
     fireEvent.click(removeButton);
     expect(mockHandlers.onRemoveRating).toHaveBeenCalledTimes(1);
   });

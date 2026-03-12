@@ -93,11 +93,11 @@ export function ActiveFilters({
       {filter.rating === 5 && (
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-500">Filter:</span>
-          <FilterChip 
+          <FilterChip
             onRemove={onRemoveRating}
-            ariaLabel="Remove Rating filter"
+            ariaLabel="Remove Top Picks filter"
           >
-            5 Stars
+            ⭐ Top Picks
           </FilterChip>
         </div>
       )}
