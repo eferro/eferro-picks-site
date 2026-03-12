@@ -181,6 +181,138 @@ describe('TalkDetail', () => {
     });
   });
 
+  describe('More by this speaker', () => {
+    it('shows related talks by the same speaker', () => {
+      const talks = [
+        createTalk({ id: '1', title: 'Current Talk', speakers: ['Dan North'], year: 2023, duration: 1800 }),
+        createTalk({ id: '2', title: 'Another Talk by Dan', speakers: ['Dan North'], year: 2022, duration: 2700 }),
+        createTalk({ id: '3', title: 'Third Talk by Dan', speakers: ['Dan North'], year: 2021, duration: 3600 }),
+        createTalk({ id: '4', title: 'Unrelated Talk', speakers: ['Other Speaker'], year: 2023, duration: 1200 }),
+      ];
+
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks,
+        loading: false,
+        error: null
+      }));
+      (useParams as ReturnType<typeof vi.fn>).mockImplementation(() => ({ id: '1' }));
+
+      renderComponent();
+
+      expect(screen.getByText('More by Dan North')).toBeInTheDocument();
+      expect(screen.getByText('Another Talk by Dan')).toBeInTheDocument();
+      expect(screen.getByText('Third Talk by Dan')).toBeInTheDocument();
+      expect(screen.queryByText('Unrelated Talk')).not.toBeInTheDocument();
+    });
+
+    it('excludes the current talk from related talks', () => {
+      const talks = [
+        createTalk({ id: '1', title: 'Current Talk', speakers: ['Dan North'] }),
+        createTalk({ id: '2', title: 'Other Talk by Dan', speakers: ['Dan North'] }),
+      ];
+
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks,
+        loading: false,
+        error: null
+      }));
+      (useParams as ReturnType<typeof vi.fn>).mockImplementation(() => ({ id: '1' }));
+
+      renderComponent();
+
+      expect(screen.getByText('More by Dan North')).toBeInTheDocument();
+      expect(screen.getByText('Other Talk by Dan')).toBeInTheDocument();
+      // Current talk title appears in the main detail, not in the related section
+      const relatedSection = screen.getByText('More by Dan North').closest('section');
+      expect(relatedSection).not.toHaveTextContent('Current Talk');
+    });
+
+    it('hides section when speaker has no other talks', () => {
+      const talks = [
+        createTalk({ id: '1', title: 'Only Talk', speakers: ['Lone Speaker'] }),
+        createTalk({ id: '2', title: 'Unrelated', speakers: ['Other Speaker'] }),
+      ];
+
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks,
+        loading: false,
+        error: null
+      }));
+      (useParams as ReturnType<typeof vi.fn>).mockImplementation(() => ({ id: '1' }));
+
+      renderComponent();
+
+      expect(screen.queryByText(/More by/)).not.toBeInTheDocument();
+    });
+
+    it('shows related talks for multi-speaker talks', () => {
+      const talks = [
+        createTalk({ id: '1', title: 'Joint Talk', speakers: ['Alice', 'Bob'] }),
+        createTalk({ id: '2', title: 'Alice Solo', speakers: ['Alice'] }),
+        createTalk({ id: '3', title: 'Bob Solo', speakers: ['Bob'] }),
+        createTalk({ id: '4', title: 'Unrelated', speakers: ['Charlie'] }),
+      ];
+
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks,
+        loading: false,
+        error: null
+      }));
+      (useParams as ReturnType<typeof vi.fn>).mockImplementation(() => ({ id: '1' }));
+
+      renderComponent();
+
+      // Should show talks by any of the speakers
+      expect(screen.getByText('Alice Solo')).toBeInTheDocument();
+      expect(screen.getByText('Bob Solo')).toBeInTheDocument();
+      expect(screen.queryByText('Unrelated')).not.toBeInTheDocument();
+    });
+
+    it('limits to 5 related talks', () => {
+      const talks = [
+        createTalk({ id: '1', title: 'Current Talk', speakers: ['Prolific Speaker'] }),
+        ...Array.from({ length: 7 }, (_, i) =>
+          createTalk({ id: `${i + 2}`, title: `Talk ${i + 2}`, speakers: ['Prolific Speaker'] })
+        ),
+      ];
+
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks,
+        loading: false,
+        error: null
+      }));
+      (useParams as ReturnType<typeof vi.fn>).mockImplementation(() => ({ id: '1' }));
+
+      renderComponent();
+
+      const relatedSection = screen.getByText(/More by/).closest('section');
+      const links = relatedSection!.querySelectorAll('a[href^="/talk/"]');
+      expect(links).toHaveLength(5);
+    });
+
+    it('displays duration and year for related talks', () => {
+      const talks = [
+        createTalk({ id: '1', title: 'Current Talk', speakers: ['Dan North'] }),
+        createTalk({ id: '2', title: 'Related Talk', speakers: ['Dan North'], year: 2022, duration: 1800 }),
+      ];
+
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks,
+        loading: false,
+        error: null
+      }));
+      (useParams as ReturnType<typeof vi.fn>).mockImplementation(() => ({ id: '1' }));
+
+      renderComponent();
+
+      expect(screen.getByText('Related Talk')).toBeInTheDocument();
+      // Duration formatted
+      expect(screen.getAllByText('30m').length).toBeGreaterThanOrEqual(1);
+      // Year shown
+      expect(screen.getAllByText('2022').length).toBeGreaterThanOrEqual(1);
+    });
+  });
+
   describe('Navigation', () => {
     it('preserves filters when going back to talks', () => {
       // Set complete params with yearType for proper filter state (using unified query)

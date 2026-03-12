@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTalks } from '../../hooks/useTalks';
 import { useUrlFilter } from '../../hooks/useUrlFilter';
@@ -12,6 +13,8 @@ import { hasMeaningfulNotes } from '../../utils/talks';
 
 
 
+const MAX_RELATED_TALKS = 5;
+
 function TalkDetail() {
   const { id } = useParams<{ id: string }>();
   const { filter, updateFilter } = useUrlFilter();
@@ -19,7 +22,15 @@ function TalkDetail() {
 
   const { talks, loading, error } = useTalks();
 
+  const talk = talks.find((t: Talk) => t.id === id);
 
+  const relatedTalksBySpeaker = useMemo(() => {
+    if (!talk) return [];
+    const speakerSet = new Set(talk.speakers);
+    return talks
+      .filter((t: Talk) => t.id !== talk.id && t.speakers.some(s => speakerSet.has(s)))
+      .slice(0, MAX_RELATED_TALKS);
+  }, [talks, talk]);
 
   if (loading) {
     return (
@@ -37,8 +48,6 @@ function TalkDetail() {
     );
   }
 
-  const talk = talks.find((t: Talk) => t.id === id);
-
   if (!talk) {
     return (
       <PageContainer>
@@ -49,8 +58,8 @@ function TalkDetail() {
 
   return (
     <PageContainer>
-      <Link 
-        to={{ 
+      <Link
+        to={{
           pathname: "..",
           search: filter.toParams().toString()
         }}
@@ -161,6 +170,38 @@ function TalkDetail() {
 
         </div>
       </article>
+      {relatedTalksBySpeaker.length > 0 && (
+        <section className="mt-8">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">
+            More by {talk.speakers[0]}
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {relatedTalksBySpeaker.map((relatedTalk: Talk) => (
+              <Link
+                key={relatedTalk.id}
+                to={{
+                  pathname: `/talk/${relatedTalk.id}`,
+                  search: filter.toParams().toString()
+                }}
+                className="block bg-white shadow rounded-lg p-4 hover:shadow-md transition-shadow"
+              >
+                <h3 className="text-base font-medium text-gray-900 mb-2 line-clamp-2">
+                  {relatedTalk.title}
+                </h3>
+                <div className="text-sm text-gray-500 flex items-center gap-2">
+                  <span>{formatDuration(relatedTalk.duration)}</span>
+                  {relatedTalk.year && (
+                    <>
+                      <span>·</span>
+                      <span>{relatedTalk.year}</span>
+                    </>
+                  )}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
     </PageContainer>
   );
 }
