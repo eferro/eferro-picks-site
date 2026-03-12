@@ -1046,11 +1046,18 @@ describe('TalksFilter', () => {
       expect(filter.filter([justUnder])).toEqual([justUnder]);
     });
 
-    it('should include talks with zero duration when quickWatch is true', () => {
+    it('should exclude talks with zero duration when quickWatch is true', () => {
       const zeroDuration = createTalk({ id: '1', duration: 0 });
 
       const filter = new TalksFilter({ quickWatch: true });
-      expect(filter.filter([zeroDuration])).toEqual([zeroDuration]);
+      expect(filter.filter([zeroDuration])).toEqual([]);
+    });
+
+    it('should include talks with positive duration under 15 minutes when quickWatch is true', () => {
+      const shortTalk = createTalk({ id: '1', duration: 300 }); // 5 minutes
+
+      const filter = new TalksFilter({ quickWatch: true });
+      expect(filter.filter([shortTalk])).toEqual([shortTalk]);
     });
 
     it('should default quickWatch to false', () => {

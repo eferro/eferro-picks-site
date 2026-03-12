@@ -149,7 +149,7 @@ export class TalksFilter {
       const notesMatch = !this.hasNotes || hasMeaningfulNotes(talk.notes);
       const formatMatch =
         this.formats.length === 0 || this.formats.includes(talk.format ?? 'talk');
-      const quickWatchMatch = !this.quickWatch || talk.duration < 900;
+      const quickWatchMatch = !this.quickWatch || (talk.duration > 0 && talk.duration < 900);
       return (
         yearMatch &&
         queryMatch &&
