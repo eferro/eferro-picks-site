@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTalks } from '../../hooks/useTalks';
 import { useUrlFilter } from '../../hooks/useUrlFilter';
@@ -19,7 +20,15 @@ function TalkDetail() {
 
   const { talks, loading, error } = useTalks();
 
+  const talk = useMemo(() => talks.find((t: Talk) => t.id === id), [talks, id]);
 
+  const relatedTalks = useMemo(() => {
+    if (!talk) return [];
+    const speakerSet = new Set(talk.speakers);
+    return talks
+      .filter((t: Talk) => t.id !== talk.id && t.speakers.some(s => speakerSet.has(s)))
+      .slice(0, 5);
+  }, [talk, talks]);
 
   if (loading) {
     return (
@@ -36,8 +45,6 @@ function TalkDetail() {
       </PageContainer>
     );
   }
-
-  const talk = talks.find((t: Talk) => t.id === id);
 
   if (!talk) {
     return (
@@ -161,6 +168,29 @@ function TalkDetail() {
 
         </div>
       </article>
+
+      {relatedTalks.length > 0 && (
+        <section className="mt-8" aria-label="More talks by this speaker">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">
+            More by {talk.speakers.join(' & ')}
+          </h2>
+          <div className="grid gap-3">
+            {relatedTalks.map(related => (
+              <Link
+                key={related.id}
+                to={{ pathname: `/talk/${related.id}`, search: filter.toParams().toString() }}
+                className="block bg-white shadow rounded-lg p-4 hover:shadow-md transition-shadow"
+              >
+                <h3 className="font-medium text-gray-900">{related.title}</h3>
+                <div className="flex items-center gap-3 mt-1 text-sm text-gray-500">
+                  <span>{formatDuration(related.duration)}</span>
+                  {related.year && <span>{related.year}</span>}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
     </PageContainer>
   );
 }
