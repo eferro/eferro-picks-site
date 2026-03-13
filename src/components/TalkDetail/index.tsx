@@ -128,6 +128,20 @@ function TalkDetail() {
             </p>
           </div>
 
+          {talk.blog_url && (
+            <div className="mb-6">
+              <a
+                href={talk.blog_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+              >
+                <span className="mr-2" aria-hidden="true">📝</span>
+                Mentioned in curator's blog
+              </a>
+            </div>
+          )}
+
           {hasMeaningfulNotes(talk.notes) && (
             <div className="mt-8">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Key Notes</h2>

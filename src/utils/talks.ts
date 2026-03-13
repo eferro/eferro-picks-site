@@ -30,7 +30,8 @@ export function transformAirtableItemToTalk(item: AirtableItem): Talk {
     notes: hasMeaningfulNotes(item.notes) ? item.notes : undefined,
     year: item.year,
     conference_name: item.conference_name,
-    format
+    format,
+    blog_url: item.blog_url || undefined
   };
 }
 

@@ -134,6 +134,45 @@ describe('TalkDetail', () => {
     });
   });
 
+  describe('Blog Link', () => {
+    it('renders blog link when blog_url is present', () => {
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks: [createTalk({ blog_url: 'https://www.eferro.net/2017/03/interesting-talkspodcasts-march.html' })],
+        loading: false,
+        error: null
+      }));
+      renderComponent();
+
+      const blogLink = screen.getByRole('link', { name: /mentioned in curator's blog/i });
+      expect(blogLink).toBeInTheDocument();
+      expect(blogLink).toHaveAttribute('href', 'https://www.eferro.net/2017/03/interesting-talkspodcasts-march.html');
+      expect(blogLink).toHaveAttribute('target', '_blank');
+      expect(blogLink).toHaveAttribute('rel', 'noopener noreferrer');
+    });
+
+    it('does not render blog link when blog_url is absent', () => {
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks: [createTalk({ blog_url: undefined })],
+        loading: false,
+        error: null
+      }));
+      renderComponent();
+
+      expect(screen.queryByRole('link', { name: /mentioned in curator's blog/i })).not.toBeInTheDocument();
+    });
+
+    it('does not render blog link when blog_url is empty string', () => {
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks: [createTalk({ blog_url: '' })],
+        loading: false,
+        error: null
+      }));
+      renderComponent();
+
+      expect(screen.queryByRole('link', { name: /mentioned in curator's blog/i })).not.toBeInTheDocument();
+    });
+  });
+
   describe('Notes Section', () => {
     it('does not render notes section when notes are not present', () => {
       (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({

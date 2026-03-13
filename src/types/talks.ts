@@ -11,4 +11,5 @@ export interface Talk {
   year?: number;  // Optional field for the talk's year
   conference_name?: string;  // Optional field for conference name
   format?: 'talk' | 'podcast' | 'article';
+  blog_url?: string;
 }
