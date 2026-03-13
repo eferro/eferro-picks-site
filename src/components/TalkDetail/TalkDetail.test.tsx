@@ -203,4 +203,134 @@ describe('TalkDetail', () => {
       expect(backLink).toHaveAttribute('href', '/?yearType=specific&year=2023&query=Test+Speaker');
     });
   });
+
+  describe('More by Speaker Section', () => {
+    const talkBySpeaker1 = createTalk({
+      id: '2',
+      title: 'Another Talk by Speaker 1',
+      speakers: ['Test Speaker 1'],
+      duration: 1800,
+      year: 2022,
+    });
+
+    const talkBySpeaker2 = createTalk({
+      id: '3',
+      title: 'Talk by Speaker 2',
+      speakers: ['Test Speaker 2'],
+      duration: 2700,
+      year: 2021,
+    });
+
+    const talkByOtherSpeaker = createTalk({
+      id: '4',
+      title: 'Unrelated Talk',
+      speakers: ['Other Speaker'],
+      duration: 3600,
+      year: 2020,
+    });
+
+    it('shows "More by" section when other talks by the same speaker exist', () => {
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks: [mockTalk, talkBySpeaker1, talkByOtherSpeaker],
+        loading: false,
+        error: null,
+      }));
+
+      renderComponent();
+
+      expect(screen.getByText(/More by/)).toBeInTheDocument();
+      expect(screen.getByText('Another Talk by Speaker 1')).toBeInTheDocument();
+    });
+
+    it('does not show "More by" section when no other talks by the speaker exist', () => {
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks: [mockTalk, talkByOtherSpeaker],
+        loading: false,
+        error: null,
+      }));
+
+      renderComponent();
+
+      expect(screen.queryByText(/More by/)).not.toBeInTheDocument();
+    });
+
+    it('excludes the current talk from the related talks list', () => {
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks: [mockTalk, talkBySpeaker1],
+        loading: false,
+        error: null,
+      }));
+
+      renderComponent();
+
+      const relatedSection = screen.getByText(/More by/).closest('section');
+      expect(relatedSection).not.toHaveTextContent('Test Talk');
+      expect(screen.getByText('Another Talk by Speaker 1')).toBeInTheDocument();
+    });
+
+    it('shows talks from any speaker of a multi-speaker talk', () => {
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks: [mockTalk, talkBySpeaker1, talkBySpeaker2],
+        loading: false,
+        error: null,
+      }));
+
+      renderComponent();
+
+      expect(screen.getByText('Another Talk by Speaker 1')).toBeInTheDocument();
+      expect(screen.getByText('Talk by Speaker 2')).toBeInTheDocument();
+    });
+
+    it('displays title, duration, and year for related talks', () => {
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks: [mockTalk, talkBySpeaker1],
+        loading: false,
+        error: null,
+      }));
+
+      renderComponent();
+
+      expect(screen.getByText('Another Talk by Speaker 1')).toBeInTheDocument();
+      expect(screen.getByText('30m')).toBeInTheDocument();
+      expect(screen.getByText('2022')).toBeInTheDocument();
+    });
+
+    it('limits related talks to a maximum of 5', () => {
+      const manyTalks = Array.from({ length: 8 }, (_, i) =>
+        createTalk({
+          id: `extra-${i}`,
+          title: `Extra Talk ${i}`,
+          speakers: ['Test Speaker 1'],
+          duration: 1800,
+          year: 2020 + i,
+        })
+      );
+
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks: [mockTalk, ...manyTalks],
+        loading: false,
+        error: null,
+      }));
+
+      renderComponent();
+
+      const relatedLinks = screen.getAllByRole('link').filter(
+        (link) => link.getAttribute('href')?.startsWith('/talk/')
+      );
+      expect(relatedLinks.length).toBeLessThanOrEqual(5);
+    });
+
+    it('renders related talks as links to their detail pages', () => {
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks: [mockTalk, talkBySpeaker1],
+        loading: false,
+        error: null,
+      }));
+
+      renderComponent();
+
+      const relatedLink = screen.getByText('Another Talk by Speaker 1').closest('a');
+      expect(relatedLink).toHaveAttribute('href', expect.stringContaining('/talk/2'));
+    });
+  });
 });
