@@ -1102,4 +1102,60 @@ describe('TalksFilter', () => {
       });
     });
   });
+
+  describe('isEmpty', () => {
+    it('should return true when no filters are active', () => {
+      const filter = new TalksFilter({});
+      expect(filter.isEmpty()).toBe(true);
+    });
+
+    it('should return false when conference filter is active', () => {
+      const filter = new TalksFilter({ conference: 'GOTO' });
+      expect(filter.isEmpty()).toBe(false);
+    });
+
+    it('should return false when year filter is active', () => {
+      const filter = new TalksFilter({ year: 2023 });
+      expect(filter.isEmpty()).toBe(false);
+    });
+
+    it('should return false when yearType filter is active', () => {
+      const filter = new TalksFilter({ yearType: 'last2' });
+      expect(filter.isEmpty()).toBe(false);
+    });
+
+    it('should return false when hasNotes filter is active', () => {
+      const filter = new TalksFilter({ hasNotes: true });
+      expect(filter.isEmpty()).toBe(false);
+    });
+
+    it('should return false when rating filter is active', () => {
+      const filter = new TalksFilter({ rating: 5 });
+      expect(filter.isEmpty()).toBe(false);
+    });
+
+    it('should return false when query filter is active', () => {
+      const filter = new TalksFilter({ query: 'refactoring' });
+      expect(filter.isEmpty()).toBe(false);
+    });
+
+    it('should return false when formats filter is active', () => {
+      const filter = new TalksFilter({ formats: ['podcast'] });
+      expect(filter.isEmpty()).toBe(false);
+    });
+
+    it('should return false when quickWatch filter is active', () => {
+      const filter = new TalksFilter({ quickWatch: true });
+      expect(filter.isEmpty()).toBe(false);
+    });
+
+    it('should return false when multiple filters are active', () => {
+      const filter = new TalksFilter({
+        conference: 'GOTO',
+        rating: 5,
+        query: 'testing'
+      });
+      expect(filter.isEmpty()).toBe(false);
+    });
+  });
 });

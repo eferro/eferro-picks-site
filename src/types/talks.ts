@@ -13,4 +13,5 @@ export interface Talk {
   format?: 'talk' | 'podcast' | 'article';
   blog_url?: string;
   rating?: number;
+  registered_at?: string;  // Optional field for when the talk was added to the collection
 }
