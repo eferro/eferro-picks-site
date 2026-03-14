@@ -1,8 +1,15 @@
 # Test Desiderata Analysis - eferro-picks-site
 
-**Analysis Date:** 2026-03-13
+> **⚠️ ARCHIVED - March 13, 2026**
+>
+> This is the **original baseline analysis**. For current status, see:
+> - **[test-desiderata-current-status.md](./test-desiderata-current-status.md)** - Current status (A- grade)
+> - **[README.md](./README.md)** - Quick navigation guide
+
+**Analysis Date:** 2026-03-13 (Baseline)
 **Total Test Files Analyzed:** 33 files
 **Framework:** Kent Beck's Test Desiderata
+**Original Grade:** B+ (Strong foundation, room for excellence)
 
 ---
 

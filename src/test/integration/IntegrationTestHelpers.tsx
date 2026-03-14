@@ -1,11 +1,17 @@
 /* eslint-disable react-refresh/only-export-components */
 import { ReactElement, ReactNode } from 'react';
 import { render } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Routes, Route } from 'react-router-dom';
 
 interface TestAppOptions {
   initialPath?: string;
   initialParams?: URLSearchParams;
+  /**
+   * When true, wraps component in Routes with catchall route.
+   * Required for components that use useParams.
+   * Default: false
+   */
+  withRoutes?: boolean;
 }
 
 /**
@@ -14,10 +20,18 @@ interface TestAppOptions {
  * Unlike BrowserRouter, MemoryRouter supports programmatic navigation
  * and is ideal for testing navigation flows and URL parameter handling.
  *
+ * @param withRoutes - When true, wraps in <Routes> for components using useParams
+ *
  * @example
  * ```typescript
+ * // For components WITHOUT route parameters
  * <TestAppProvider initialPath="/talks" initialParams={new URLSearchParams('rating=5')}>
  *   <TalksList />
+ * </TestAppProvider>
+ *
+ * // For components WITH route parameters (e.g., /talk/:id)
+ * <TestAppProvider initialPath="/talk/123" withRoutes>
+ *   <TalkDetail />
  * </TestAppProvider>
  * ```
  */
@@ -25,14 +39,21 @@ export function TestAppProvider({
   children,
   initialPath = '/',
   initialParams = new URLSearchParams(),
+  withRoutes = false,
 }: TestAppOptions & { children: ReactNode }) {
   const fullPath = initialParams.toString()
     ? `${initialPath}?${initialParams.toString()}`
     : initialPath;
 
+  const content = withRoutes ? (
+    <Routes>
+      <Route path="*" element={children} />
+    </Routes>
+  ) : children;
+
   return (
     <MemoryRouter initialEntries={[fullPath]}>
-      {children}
+      {content}
     </MemoryRouter>
   );
 }
@@ -46,11 +67,20 @@ export function TestAppProvider({
  * - Real child components render (no mocking needed)
  * - Ideal for testing user workflows and filter interactions
  *
+ * @param options.withRoutes - Set to true for components using useParams (e.g., TalkDetail)
+ *
  * @example
  * ```typescript
+ * // For components WITHOUT route parameters
  * renderIntegration(<TalksList />, {
  *   initialPath: '/talks',
  *   initialParams: new URLSearchParams('rating=5&hasNotes=true')
+ * });
+ *
+ * // For components WITH route parameters
+ * renderIntegration(<TalkDetail />, {
+ *   initialPath: '/talk/123',
+ *   withRoutes: true
  * });
  *
  * // User interactions work naturally
