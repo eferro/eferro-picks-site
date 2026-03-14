@@ -1,8 +1,14 @@
 import { renderHook, waitFor } from '@testing-library/react';
-import { useTalks } from './useTalks';
+import { useTalks, FetchConfig } from './useTalks';
 import { TestProvider } from '../test/context/TestContext';
 import { processTalks } from '../utils/talks';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+
+// Fast test configuration - no duplicating production retry logic!
+const TEST_FETCH_CONFIG: FetchConfig = {
+  maxRetries: 3,
+  retryDelayMs: 10 // Fast for tests (10ms vs 1000ms in production)
+};
 
 // Store original fetch
 const originalFetch = global.fetch;
@@ -44,14 +50,14 @@ const mockProcessedResponse = (data: unknown) => {
 
 // Helper function for rendering hook and waiting for load
 const renderUseTalksHook = async () => {
-  const hook = renderHook(() => useTalks(), {
+  const hook = renderHook(() => useTalks(false, TEST_FETCH_CONFIG), {
     wrapper: TestProvider
   });
 
-  // Wait for loading to complete
+  // Wait for loading to complete - using fast test config
   await waitFor(() => {
     expect(hook.result.current.loading).toBe(false);
-  }, { timeout: 150 }); // Reduced from 1000ms
+  }, { timeout: 150 }); // Fast because we control timing with TEST_FETCH_CONFIG
 
   return hook;
 };
@@ -116,14 +122,14 @@ describe('useTalks', () => {
   it('handles fetch error correctly', async () => {
     mockFetchFailure();
 
-    const hook = renderHook(() => useTalks(), {
+    const hook = renderHook(() => useTalks(false, TEST_FETCH_CONFIG), {
       wrapper: TestProvider
     });
 
-    // Wait with longer timeout for retry logic
+    // Wait for retry logic to complete - using fast test config (10ms * 3 retries = 30ms)
     await waitFor(() => {
       expect(hook.result.current.loading).toBe(false);
-    }, { timeout: 8000 });
+    }, { timeout: 150 }); // Reduced from 8000ms
 
     // Check error state
     expect(hook.result.current.error).toBeInstanceOf(Error);
@@ -160,13 +166,14 @@ describe('useTalks', () => {
   it('handles network errors correctly with retry logic', async () => {
     mockFetchError(new Error('Network error'));
 
-    const hook = renderHook(() => useTalks(), {
+    const hook = renderHook(() => useTalks(false, TEST_FETCH_CONFIG), {
       wrapper: TestProvider
     });
 
+    // Wait for retry logic with fast test config (exponential: 10ms, 20ms, 40ms = 70ms total)
     await waitFor(() => {
       expect(hook.result.current.loading).toBe(false);
-    }, { timeout: 8000 });
+    }, { timeout: 150 }); // Reduced from 8000ms
 
     // Verify error state includes retry message
     expect(hook.result.current.error).toBeDefined();
@@ -175,7 +182,7 @@ describe('useTalks', () => {
     expect(hook.result.current.talks).toHaveLength(0);
 
     // Verify retry attempts were made
-    expect(global.fetch).toHaveBeenCalledTimes(3);
+    expect(global.fetch).toHaveBeenCalledTimes(TEST_FETCH_CONFIG.maxRetries);
   });
 
   it('handles invalid JSON response', async () => {
@@ -207,19 +214,20 @@ describe('useTalks', () => {
       })
     );
 
-    const hook = renderHook(() => useTalks(), {
+    const hook = renderHook(() => useTalks(false, TEST_FETCH_CONFIG), {
       wrapper: TestProvider
     });
 
+    // Wait for retry logic with fast test config
     await waitFor(() => {
       expect(hook.result.current.loading).toBe(false);
-    }, { timeout: 8000 });
+    }, { timeout: 150 }); // Reduced from 8000ms
 
     // Verify error state
     expect(hook.result.current.error).toBeDefined();
     expect(hook.result.current.error?.message).toContain('HTTP 404: Not Found');
     expect(hook.result.current.talks).toHaveLength(0);
-    expect(global.fetch).toHaveBeenCalledTimes(3);
+    expect(global.fetch).toHaveBeenCalledTimes(TEST_FETCH_CONFIG.maxRetries);
   });
 
   it('handles invalid data format', async () => {

@@ -20,17 +20,30 @@ export interface AirtableItem {
   blog_url?: string;
 }
 
-const MAX_RETRIES = 3;
-const RETRY_DELAY = 1000; // 1 second
+/**
+ * Configuration for fetch retry behavior.
+ * Extracted to allow deterministic testing without duplicating retry logic.
+ */
+export interface FetchConfig {
+  /** Maximum number of retry attempts */
+  maxRetries: number;
+  /** Base delay for retry attempts (ms) */
+  retryDelayMs: number;
+}
+
+const DEFAULT_FETCH_CONFIG: FetchConfig = {
+  maxRetries: 3,
+  retryDelayMs: 1000 // 1 second, exponential backoff: 1s, 2s, 4s
+};
 
 async function delay(ms: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function fetchWithRetry(url: string, maxRetries: number = MAX_RETRIES): Promise<Response> {
+async function fetchWithRetry(url: string, config: FetchConfig): Promise<Response> {
   let lastError: Error;
-  
-  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+
+  for (let attempt = 1; attempt <= config.maxRetries; attempt++) {
     try {
       const response = await fetch(url);
       if (!response.ok) {
@@ -39,21 +52,30 @@ async function fetchWithRetry(url: string, maxRetries: number = MAX_RETRIES): Pr
       return response;
     } catch (err) {
       lastError = err instanceof Error ? err : new Error('Unknown fetch error');
-      
-      if (attempt === maxRetries) {
+
+      if (attempt === config.maxRetries) {
         throw lastError;
       }
-      
-      // Exponential backoff: 1s, 2s, 4s
-      const delayMs = RETRY_DELAY * Math.pow(2, attempt - 1);
+
+      // Exponential backoff: config.retryDelayMs * 2^(attempt-1)
+      const delayMs = config.retryDelayMs * Math.pow(2, attempt - 1);
       await delay(delayMs);
     }
   }
-  
+
   throw lastError!;
 }
 
-export function useTalks(filterByRating: boolean = false) {
+/**
+ * Hook to fetch and process talks data.
+ *
+ * @param filterByRating - Whether to filter talks by rating
+ * @param config - Optional fetch configuration (mainly for testing)
+ */
+export function useTalks(
+  filterByRating: boolean = false,
+  config: FetchConfig = DEFAULT_FETCH_CONFIG
+) {
   const [talks, setTalks] = useState<Talk[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
@@ -62,13 +84,13 @@ export function useTalks(filterByRating: boolean = false) {
     const loadTalks = async () => {
       try {
         setError(null);
-        const response = await fetchWithRetry(`${import.meta.env.BASE_URL}data/talks.json`);
+        const response = await fetchWithRetry(`${import.meta.env.BASE_URL}data/talks.json`, config);
         const data: AirtableItem[] = await response.json();
-        
+
         if (!Array.isArray(data)) {
           throw new Error('Invalid data format: expected an array of talks');
         }
-        
+
         const processedTalks = processTalks(data, filterByRating);
         setTalks(processedTalks);
       } catch (err) {
@@ -80,7 +102,7 @@ export function useTalks(filterByRating: boolean = false) {
     };
 
     loadTalks();
-  }, [filterByRating]);
+  }, [filterByRating, config]);
 
   return { talks, loading, error };
 } 
