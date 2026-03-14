@@ -1158,4 +1158,140 @@ describe('TalksFilter', () => {
       expect(filter.isEmpty()).toBe(false);
     });
   });
+
+  describe('Performance', () => {
+    /**
+     * CONTEXT: Performance testing ensures TalksFilter remains fast as datasets grow
+     *
+     * WHY: Users expect instant filtering even with hundreds of talks
+     * - Real-world scenario: Conference sites with 500+ talks
+     * - Combined filters (query + year + rating) should still be instant
+     *
+     * THRESHOLDS:
+     * - 1000 talks with simple filter: < 100ms
+     * - Complex filtering (query + multiple fields): < 100ms
+     * - Talks with 100+ topics: < 10ms per talk
+     */
+
+    it('filters 1000 talks in under 100ms', () => {
+      // Generate realistic test dataset
+      const manyTalks = Array.from({ length: 1000 }, (_, i) =>
+        createTalk({
+          id: `talk-${i}`,
+          title: `Talk ${i}`,
+          topics: i % 2 === 0 ? ['react', 'testing'] : ['vue', 'deployment'],
+          year: 2020 + (i % 5),
+          rating: (i % 5) + 1
+        })
+      );
+
+      const filter = new TalksFilter({ query: 'react', year: 2023 });
+
+      const start = performance.now();
+      const result = filter.filter(manyTalks);
+      const duration = performance.now() - start;
+
+      expect(duration).toBeLessThan(100);
+      expect(result.length).toBeGreaterThan(0);
+    });
+
+    it('handles talks with 100+ topics efficiently', () => {
+      // Simulate a talk with many categorizations
+      const talkWithManyTopics = createTalk({
+        id: 'complex-talk',
+        title: 'Comprehensive Software Engineering Talk',
+        topics: Array.from({ length: 100 }, (_, i) => `topic-${i}`)
+      });
+
+      const filter = new TalksFilter({ query: 'topic-50' });
+
+      const start = performance.now();
+      const result = filter.filter([talkWithManyTopics]);
+      const duration = performance.now() - start;
+
+      expect(duration).toBeLessThan(10);
+      expect(result).toHaveLength(1);
+    });
+
+    it('applies combined filters efficiently on large dataset', () => {
+      // Create diverse dataset with explicit matches
+      const matchingTalks = Array.from({ length: 50 }, (_, i) =>
+        createTalk({
+          id: `match-${i}`,
+          title: `Advanced testing strategies ${i}`,
+          speakers: [`Speaker ${i}`],
+          topics: [`testing`],
+          year: 2023,
+          rating: 5,
+          notes: 'Important insights about testing'
+        })
+      );
+
+      const nonMatchingTalks = Array.from({ length: 950 }, (_, i) =>
+        createTalk({
+          id: `talk-${i}`,
+          title: `Talk about refactoring ${i}`,
+          speakers: [`Speaker ${i % 10}`],
+          topics: [`topic-${i % 20}`],
+          year: 2020 + (i % 4),
+          rating: (i % 4) + 1,
+          notes: i % 5 === 0 ? 'Some notes' : undefined
+        })
+      );
+
+      const manyTalks = [...matchingTalks, ...nonMatchingTalks];
+
+      // Apply multiple filters simultaneously
+      const filter = new TalksFilter({
+        query: 'testing',
+        year: 2023,
+        rating: 5,
+        hasNotes: true
+      });
+
+      const start = performance.now();
+      const result = filter.filter(manyTalks);
+      const duration = performance.now() - start;
+
+      expect(duration).toBeLessThan(100);
+      // Verify filtering actually happened - should match exactly 50 talks
+      expect(result.length).toBe(50);
+      result.forEach(talk => {
+        expect(talk.title).toContain('testing');
+        expect(talk.year).toBe(2023);
+        expect(talk.rating).toBe(5);
+        expect(talk.notes).toBeTruthy();
+      });
+    });
+
+    it('handles repeated filtering without performance degradation', () => {
+      const talks = Array.from({ length: 500 }, (_, i) =>
+        createTalk({
+          id: `talk-${i}`,
+          title: `Talk ${i}`,
+          topics: [`topic-${i % 10}`],
+          year: 2020 + (i % 5)
+        })
+      );
+
+      const filter = new TalksFilter({ query: 'Talk', year: 2023 });
+
+      // Run filter multiple times to test for memory leaks or accumulation
+      const durations: number[] = [];
+      for (let i = 0; i < 10; i++) {
+        const start = performance.now();
+        filter.filter(talks);
+        durations.push(performance.now() - start);
+      }
+
+      // Each iteration should be similarly fast (no degradation)
+      const avgDuration = durations.reduce((a, b) => a + b, 0) / durations.length;
+      const maxDuration = Math.max(...durations);
+
+      expect(avgDuration).toBeLessThan(50);
+      expect(maxDuration).toBeLessThan(100);
+      // Last run should not be significantly slower than first
+      expect(durations[9]).toBeLessThan(durations[0] * 2);
+    });
+  });
 });
