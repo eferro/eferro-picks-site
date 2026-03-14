@@ -13,6 +13,7 @@ import { SearchBox } from '../SearchBox';
 import { FormatFilter } from './FormatFilter';
 import { ActiveFilters } from './ActiveFilters';
 import { CategoryIndex, type CategoryData } from './CategoryIndex';
+import { RecentlyAddedTalks } from '../RecentlyAddedTalks';
 
 export function TalksList() {
   const { filter, updateFilter } = useUrlFilter();
@@ -97,6 +98,11 @@ export function TalksList() {
       <div className="mb-6">
         <SearchBox talks={talks || []} />
       </div>
+
+      {/* Recently Added Talks - only show when no filters are active */}
+      {filter.isEmpty() && (
+        <RecentlyAddedTalks talks={talks || []} />
+      )}
 
       {/* Filters */}
       <div className="mb-6 flex items-center gap-4">

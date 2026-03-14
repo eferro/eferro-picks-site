@@ -18,6 +18,7 @@ export interface AirtableItem {
   year: number;
   conference_name: string;
   blog_url?: string;
+  registered_at?: string;
 }
 
 const MAX_RETRIES = 3;

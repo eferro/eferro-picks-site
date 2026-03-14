@@ -163,6 +163,25 @@ export class TalksFilter {
     });
   }
 
+  /**
+   * Checks if the filter is empty (no active filters)
+   * @returns true if all filter properties are in their default/empty state
+   */
+  isEmpty(): boolean {
+    return (
+      this.year === null &&
+      this.yearType === null &&
+      this.author === null &&
+      this.topics.length === 0 &&
+      this.conference === null &&
+      !this.hasNotes &&
+      this.rating === null &&
+      this.query.trim() === '' &&
+      this.formats.length === 0 &&
+      !this.quickWatch
+    );
+  }
+
   static fromUrlParams(params: URLSearchParams | string | null | undefined): TalksFilter {
     if (params == null) params = '';
     const searchParams = typeof params === 'string' ? new URLSearchParams(params) : params;

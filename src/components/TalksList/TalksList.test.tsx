@@ -54,6 +54,21 @@ vi.mock('./YearFilter', () => ({
   )
 }));
 
+// Mock RecentlyAddedTalks component
+vi.mock('../RecentlyAddedTalks', () => ({
+  RecentlyAddedTalks: ({ talks }: { talks: Array<{ id: string; title: string; registered_at?: string }> }) => (
+    <section data-testid="recently-added-talks" aria-label="Recently added talks">
+      <h2>Recently Added</h2>
+      <div data-testid="recently-added-count">{talks.length} talks</div>
+      {talks.map(talk => (
+        <div key={talk.id} data-testid={`recently-added-${talk.id}`}>
+          {talk.title}
+        </div>
+      ))}
+    </section>
+  )
+}));
+
 // Mock the hooks
 vi.mock('../../hooks/useTalks');
 vi.mock('react-router-dom', async () => {
@@ -438,8 +453,8 @@ describe('Has Notes Filter', () => {
       expect(screen.getByText('No talks found matching your criteria.')).toBeInTheDocument();
     } else {
       expect(initialArticles).toHaveLength(3);
-      expect(screen.getByText('Talk with notes')).toBeInTheDocument();
-      expect(screen.getByText('Talk without notes')).toBeInTheDocument();
+      expect(screen.getAllByText('Talk with notes')).toHaveLength(2); // Once in Recently Added, once in main list
+      expect(screen.getAllByText('Talk without notes')).toHaveLength(2);
     }
 
     // Click the Has Notes filter
@@ -546,6 +561,202 @@ it('integrates search box with filter system', () => {
   expect(params.get('query')).toBe('Alice react');
   expect(params.get('author')).toBeNull(); // Migrated to query
   expect(params.get('topics')).toBeNull(); // Migrated to query
+});
+
+describe('Recently Added Talks Integration', () => {
+  it('should show Recently Added section when no filters are active', () => {
+    const talks = [
+      createTalk({
+        id: '1',
+        title: 'Recent Talk 1',
+        registered_at: '2023-11-01T00:00:00Z',
+        core_topic: 'Engineering Culture'
+      }),
+      createTalk({
+        id: '2',
+        title: 'Recent Talk 2',
+        registered_at: '2023-10-01T00:00:00Z',
+        core_topic: 'Engineering Culture'
+      })
+    ];
+
+    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      talks,
+      loading: false,
+      error: null
+    }));
+
+    // No filters active (empty URL params)
+    setMockSearchParams(new URLSearchParams(''));
+
+    renderWithRouter(<TalksList />);
+
+    // Should show Recently Added section
+    expect(screen.getByTestId('recently-added-talks')).toBeInTheDocument();
+    expect(screen.getByText('Recently Added')).toBeInTheDocument();
+    expect(screen.getByTestId('recently-added-count')).toHaveTextContent('2 talks');
+  });
+
+  it('should hide Recently Added section when filters are active', () => {
+    const talks = [
+      createTalk({
+        id: '1',
+        title: 'Recent Talk with Notes',
+        registered_at: '2023-11-01T00:00:00Z',
+        core_topic: 'Engineering Culture',
+        notes: 'Some meaningful notes'
+      })
+    ];
+
+    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      talks,
+      loading: false,
+      error: null
+    }));
+
+    // Set hasNotes filter active
+    setMockSearchParams(new URLSearchParams('hasNotes=true'));
+
+    renderWithRouter(<TalksList />);
+
+    // Should NOT show Recently Added section
+    expect(screen.queryByTestId('recently-added-talks')).not.toBeInTheDocument();
+    expect(screen.queryByText('Recently Added')).not.toBeInTheDocument();
+  });
+
+  it('should hide Recently Added section when query filter is active', () => {
+    const talks = [
+      createTalk({
+        id: '1',
+        title: 'Search Result Talk',
+        registered_at: '2023-11-01T00:00:00Z',
+        core_topic: 'Engineering Culture'
+      })
+    ];
+
+    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      talks,
+      loading: false,
+      error: null
+    }));
+
+    // Set query filter active
+    setMockSearchParams(new URLSearchParams('query=testing'));
+
+    renderWithRouter(<TalksList />);
+
+    // Should NOT show Recently Added section
+    expect(screen.queryByTestId('recently-added-talks')).not.toBeInTheDocument();
+    expect(screen.queryByText('Recently Added')).not.toBeInTheDocument();
+  });
+
+  it('should hide Recently Added section when year filter is active', () => {
+    const talks = [
+      createTalk({
+        id: '1',
+        title: 'Filtered Talk',
+        registered_at: '2023-11-01T00:00:00Z',
+        core_topic: 'Engineering Culture',
+        year: 2023
+      })
+    ];
+
+    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      talks,
+      loading: false,
+      error: null
+    }));
+
+    // Set year filter active
+    setMockSearchParams(new URLSearchParams('yearType=last2'));
+
+    renderWithRouter(<TalksList />);
+
+    // Should NOT show Recently Added section
+    expect(screen.queryByTestId('recently-added-talks')).not.toBeInTheDocument();
+    expect(screen.queryByText('Recently Added')).not.toBeInTheDocument();
+  });
+
+  it('should show Recently Added section with correct positioning', () => {
+    const talks = [
+      createTalk({
+        id: '1',
+        title: 'Recent Talk',
+        registered_at: '2023-11-01T00:00:00Z',
+        core_topic: 'Engineering Culture'
+      })
+    ];
+
+    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      talks,
+      loading: false,
+      error: null
+    }));
+
+    // No filters active
+    setMockSearchParams(new URLSearchParams(''));
+
+    renderWithRouter(<TalksList />);
+
+    // Get all main sections in order
+    const searchBox = screen.getByPlaceholderText(/search in titles, speakers, topics/i);
+    const recentlyAdded = screen.getByTestId('recently-added-talks');
+    const filterButtons = screen.getByText('Year Filter');
+
+    // Verify positioning: SearchBox -> Recently Added -> Filters -> Main List
+    expect(searchBox).toBeInTheDocument();
+    expect(recentlyAdded).toBeInTheDocument();
+    expect(filterButtons).toBeInTheDocument();
+
+    // In jsdom, getBoundingClientRect returns 0 values, so check DOM order instead
+    const pageContainer = searchBox.closest('[role="main"]');
+    expect(pageContainer).toBeInTheDocument();
+
+    const children = Array.from(pageContainer!.children);
+    const searchBoxIndex = children.findIndex(child => child.contains(searchBox));
+    const recentlyAddedIndex = children.findIndex(child => child.contains(recentlyAdded));
+    const filtersIndex = children.findIndex(child => child.contains(filterButtons));
+
+    // Verify correct order: SearchBox -> Recently Added -> Filters
+    expect(recentlyAddedIndex).toBeGreaterThan(searchBoxIndex);
+    expect(filtersIndex).toBeGreaterThan(recentlyAddedIndex);
+  });
+
+  it('should pass talks with registered_at to RecentlyAddedTalks component', () => {
+    const talks = [
+      createTalk({
+        id: '1',
+        title: 'Talk with Date',
+        registered_at: '2023-11-01T00:00:00Z',
+        core_topic: 'Engineering Culture'
+      }),
+      createTalk({
+        id: '2',
+        title: 'Talk without Date',
+        core_topic: 'Engineering Culture'
+        // no registered_at
+      })
+    ];
+
+    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      talks,
+      loading: false,
+      error: null
+    }));
+
+    // No filters active
+    setMockSearchParams(new URLSearchParams(''));
+
+    renderWithRouter(<TalksList />);
+
+    // Should show Recently Added section with all talks passed
+    expect(screen.getByTestId('recently-added-talks')).toBeInTheDocument();
+    expect(screen.getByTestId('recently-added-count')).toHaveTextContent('2 talks');
+
+    // Component should receive both talks (filtering happens inside RecentlyAddedTalks)
+    expect(screen.getByTestId('recently-added-1')).toBeInTheDocument();
+    expect(screen.getByTestId('recently-added-2')).toBeInTheDocument();
+  });
 });
 });
 

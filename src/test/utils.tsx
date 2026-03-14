@@ -77,7 +77,8 @@ export const mockTalk: Talk = {
   url: 'https://example.com',
   description: 'Test description',
   notes: undefined,
-  format: 'talk'
+  format: 'talk',
+  registered_at: '2023-01-01T00:00:00Z'
 };
 
 // Types for mock handlers
