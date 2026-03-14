@@ -4,55 +4,17 @@ import { TalksList } from '.';
 import { useTalks } from '../../hooks/useTalks';
 import { renderWithRouter, getMockSearchParams, mockSetSearchParams, mockNavigate, createTalk, setMockSearchParams } from '../../test/utils';
 
-// Mock the child components
-interface MockTalkSectionProps {
-  coreTopic: string;
-  talks: Array<{ id: string; title: string; }>;
-}
+// Mock child components with shared, well-documented mocks
+// Note: vi.mock is hoisted, so we import inside the factory
+vi.mock('./TalkSection', async () => {
+  const { MockTalkSection } = await import('../../test/mocks/components');
+  return { TalkSection: MockTalkSection };
+});
 
-vi.mock('./TalkSection', () => ({
-  TalkSection: (props: MockTalkSectionProps) => {
-    return (
-      <section>
-        <h2>{props.coreTopic} ({props.talks.length})</h2>
-        {props.talks.map((talk) => (
-          <div key={talk.id} role="article">
-            <div
-              onClick={() => mockNavigate({ pathname: `/talk/${talk.id}`, search: getMockSearchParams().toString() })}
-            >
-              {talk.title}
-            </div>
-            {/* Topics as spans (no click handlers) */}
-            {talk.topics.map((topic: string) => (
-              <span
-                key={`topic-${talk.id}-${topic}`}
-                aria-label={`Topic: ${topic}`}
-                data-testid={`topic-${topic}`}
-              >
-                {topic}
-              </span>
-            ))}
-            {/* Speakers as spans (no click handlers) */}
-            {(talk.speakers || []).map((speaker: string) => (
-              <span
-                key={`speaker-${talk.id}-${speaker}`}
-                aria-label={`Speaker: ${speaker}`}
-              >
-                {speaker}
-              </span>
-            ))}
-          </div>
-        ))}
-      </section>
-    );
-  }
-}));
-
-vi.mock('./YearFilter', () => ({
-  YearFilter: ({ onFilterChange }: { onFilterChange: (filter: { type: string }) => void }) => (
-    <button onClick={() => onFilterChange({ type: 'last2' })}>Year Filter</button>
-  )
-}));
+vi.mock('./YearFilter', async () => {
+  const { MockYearFilter } = await import('../../test/mocks/components');
+  return { YearFilter: MockYearFilter };
+});
 
 // Mock the hooks
 vi.mock('../../hooks/useTalks');
