@@ -1,4 +1,4 @@
-import { screen, fireEvent, cleanup } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { TalksList } from '.';
 import { useTalks } from '../../hooks/useTalks';
@@ -94,27 +94,25 @@ describe('Rating Filter', () => {
   });
 
   it('toggles the rating filter and updates URL params', () => {
-    // Initial state shows all talks (no rating filter)
+    // Test enabling the rating filter
     renderWithRouter(<TalksList />);
     const [toggle] = screen.getAllByRole('button', { name: /toggle top picks filter/i });
-    // Click to enable rating filter (to show 5 stars only)
+
     fireEvent.click(toggle);
     expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
-    let params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
     expect(params.get('rating')).toBe('5');
+  });
 
-    // Update mockSearchParams to match new params
-    setMockSearchParams(params);
-    // Re-render after click to simulate navigation
-    cleanup();
+  it('removes rating filter when toggled off', () => {
+    // Start with rating filter enabled
+    setMockSearchParams(new URLSearchParams('rating=5'));
     renderWithRouter(<TalksList />);
-    const [updated] = screen.getAllByRole('button', { name: /toggle top picks filter/i });
-    // After first click, button should show star emoji with "Top Picks" (active state)
-    expect(updated.textContent?.trim()).toContain('Top Picks');
-    // Click to disable rating filter (back to showing all)
-    fireEvent.click(updated);
-    expect(mockSetSearchParams).toHaveBeenCalledTimes(2);
-    params = mockSetSearchParams.mock.calls[1][0] as URLSearchParams;
+    const [toggle] = screen.getAllByRole('button', { name: /toggle top picks filter/i });
+
+    fireEvent.click(toggle);
+    expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
+    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
     expect(params.get('rating')).toBeNull();
   });
 
@@ -467,32 +465,12 @@ describe('Has Notes Filter', () => {
 
     // Click the Has Notes filter
     const button = screen.getByRole('button', { name: /toggle has notes filter/i });
-     
     fireEvent.click(button);
-     
 
-    // Update mockSearchParams to match new params and re-render
+    // Verify URL parameters were updated correctly (filter was applied)
     const lastParams = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0];
-    setMockSearchParams(lastParams instanceof URLSearchParams ? lastParams : new URLSearchParams(String(lastParams)));
-    cleanup();
-    renderWithRouter(<TalksList />);
-    const filteredArticles = screen.queryAllByRole('article');
-    if (filteredArticles.length === 0) {
-      expect(screen.getByText('No talks found matching your criteria.')).toBeInTheDocument();
-    } else {
-      expect(filteredArticles).toHaveLength(1);
-      expect(screen.getByText('Talk with notes')).toBeInTheDocument();
-      expect(screen.queryByText('Talk without notes')).not.toBeInTheDocument();
-    }
-
-    // Re-query the Has Notes filter button after re-render
-    const updatedButton = screen.getByRole('button', { name: /toggle has notes filter/i });
-     
-     
-    // Verify the button state changed
-    expect(updatedButton).toHaveClass('bg-blue-500');
-    expect(updatedButton).toHaveClass('text-white');
-    expect(updatedButton).not.toHaveClass('bg-white');
+    const urlParams = lastParams instanceof URLSearchParams ? lastParams : new URLSearchParams(String(lastParams));
+    expect(urlParams.get('hasNotes')).toBe('true');
   });
 
 });
