@@ -26,8 +26,39 @@ const createRouterWrapper = (initialPath: string = '/') => {
   );
 };
 
+/**
+ * CONTEXT: Scroll Position Restoration
+ *
+ * WHY: When users navigate from talk details back to the list,
+ * they expect to return to the same scroll position where they left off.
+ * This is critical UX - losing scroll position forces users to re-find
+ * their place, which is frustrating and time-consuming.
+ *
+ * HOW IT WORKS:
+ * 1. Hook saves scroll position to sessionStorage when user scrolls on index page
+ * 2. When returning from detail page, hook restores saved position
+ * 3. Uses retry mechanism because content might load asynchronously
+ * 4. Cleans up when user explicitly scrolls (takes manual control)
+ *
+ * EDGE CASES:
+ * - Content loads slowly → retry mechanism ensures eventual restoration
+ * - User scrolls during restoration → cleanup prevents fighting user
+ * - Multiple navigations → sessionStorage maintains state
+ * - Debouncing → prevents excessive saves during scroll
+ *
+ * TEST APPROACH:
+ * - Use Window test double for deterministic scroll behavior
+ * - Use fake timers to control debouncing and retry timing
+ * - Mock sessionStorage for isolated testing
+ */
 describe('useScrollPosition', () => {
   describe('saving scroll position', () => {
+    /**
+     * CONTEXT: Scroll Tracking
+     *
+     * These tests verify that the hook correctly saves scroll positions
+     * to sessionStorage so they can be restored later.
+     */
     let spiedWindow: ReturnType<typeof createSpiedWindowDouble>;
 
     beforeEach(() => {
@@ -180,12 +211,25 @@ describe('useScrollPosition', () => {
       expect(spiedWindow.sessionStorage.setItem).toHaveBeenCalledWith(SCROLL_INDEX_KEY, '400');
     });
 
+    /**
+     * CONTEXT: Scroll Restoration with Retry Mechanism
+     *
+     * WHY: When users navigate back to the talk list, the content might load
+     * asynchronously (images, dynamic content). If we try to scroll before
+     * content is fully rendered, we might scroll to the wrong position.
+     *
+     * SOLUTION: Retry mechanism with exponential backoff
+     * - Initial attempt after small delay (allows quick render)
+     * - Retries if scroll position not reached (content still loading)
+     * - Stops when position reached (no unnecessary work)
+     * - Max retries prevents infinite loops
+     *
+     * USER IMPACT: Smooth restoration without jarring jumps or endless waiting
+     */
     it('retries scroll restoration when target not reached', () => {
       /**
-       * CONTEXT: This tests the retry mechanism that handles cases where
-       * the DOM hasn't fully rendered yet, preventing a jarring scroll jump.
-       *
-       * Now we use TEST_CONFIG and WindowDouble with 'partial' behavior!
+       * Simulates DOM not fully rendered - scroll attempts don't reach target.
+       * Uses Window test double with 'partial' behavior (always 20px off target).
        */
 
       // Setup: Create window double with partial scroll behavior (simulates incomplete scroll)
@@ -230,6 +274,13 @@ describe('useScrollPosition', () => {
     });
 
     it('stops retrying when scroll position is reached', () => {
+      /**
+       * Verifies retry mechanism stops early when scroll succeeds,
+       * preventing unnecessary work and improving performance.
+       *
+       * Simulates: First attempt fails (DOM not ready), second attempt succeeds.
+       * Expected: No further retries after success.
+       */
       // Setup: Create custom window double that succeeds on second attempt
       let callCount = 0;
       const customWindow = createWindowDouble();

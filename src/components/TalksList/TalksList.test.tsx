@@ -64,10 +64,47 @@ vi.mock('react-router-dom', async () => {
   };
 });
 
+/**
+ * CONTEXT: TalksList Component - Filter UI Integration Tests
+ *
+ * WHY: TalksList is the main interface for discovering talks. Users need
+ * intuitive, responsive filtering to find relevant content quickly.
+ *
+ * COMPONENT RESPONSIBILITY:
+ * - Orchestrates multiple filter UI components (Year, Format, Rating, etc.)
+ * - Manages filter state through URL parameters (shareable, bookmarkable)
+ * - Uses TalksFilter class as single source of truth for filter logic
+ * - Displays filtered results with proper visual feedback
+ *
+ * FILTER ARCHITECTURE:
+ * 1. URL params → TalksFilter instance (centralized parsing)
+ * 2. TalksFilter.filter(talks) → filtered results (centralized logic)
+ * 3. User action → TalksFilter.toParams() → URL update (centralized serialization)
+ *
+ * TEST APPROACH:
+ * - Mock useTalks (data boundary) but use real TalksFilter
+ * - Mock child components (TalkSection, YearFilter) to isolate TalksList logic
+ * - Verify URL parameter updates (filter state persistence)
+ * - Test filter combinations (multiple filters active simultaneously)
+ *
+ * USER WORKFLOWS TESTED:
+ * - Apply single filter
+ * - Combine multiple filters
+ * - Remove individual filters
+ * - Clear all filters
+ * - Filter state persists across navigation
+ */
+
 // Author Filter tests for TalksList
 // Author Filter tests removed - functionality migrated to unified search
 
 describe('Rating Filter', () => {
+  /**
+   * CONTEXT: Top Picks Filter (5-star talks)
+   *
+   * WHY: Users want to quickly find highest-quality talks.
+   * Rating filter is one of the most-used filters.
+   */
   beforeEach(() => {
     vi.clearAllMocks();
     setMockSearchParams(new URLSearchParams());
@@ -132,6 +169,15 @@ describe('Rating Filter', () => {
 });
 
 describe('Format Filter', () => {
+  /**
+   * CONTEXT: Content Type Selection (Talks vs Podcasts)
+   *
+   * WHY: Users consume content differently based on context:
+   * - Talks: For focused learning sessions with visuals
+   * - Podcasts: For audio-only consumption (commute, exercise)
+   *
+   * Filter allows users to match content to their current context.
+   */
   beforeEach(() => {
     vi.clearAllMocks();
     setMockSearchParams(new URLSearchParams());
@@ -382,6 +428,23 @@ describe('TalksList', () => {
 });
 
 describe('Has Notes Filter', () => {
+  /**
+   * CONTEXT: Curator's Notes Filter
+   *
+   * WHY: Talks with detailed notes indicate curator's personal insights
+   * and key takeaways. Users value these curated summaries for quick
+   * evaluation before watching.
+   *
+   * IMPLEMENTATION:
+   * - Uses hasMeaningfulNotes() to filter whitespace-only notes
+   * - Visual feedback: button changes color when active
+   * - Combines with other filters (rating, year, format)
+   *
+   * USER VALUE:
+   * - "Show me talks worth watching" (curator pre-vetted)
+   * - Quick decision-making without watching entire talk
+   * - Discover hidden gems through curator's commentary
+   */
   beforeEach(() => {
     vi.clearAllMocks();
     setMockSearchParams(new URLSearchParams());

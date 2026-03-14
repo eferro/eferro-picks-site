@@ -53,6 +53,36 @@ const renderUseTalksHook = async () => {
   return hook;
 };
 
+/**
+ * CONTEXT: useTalks Hook - Data Fetching with Resilience
+ *
+ * WHY: Users need reliable access to talks data even when network is unstable.
+ * This hook is the critical data boundary for the entire application.
+ *
+ * KEY FEATURES:
+ * 1. **Fetch & Transform**: Loads talks from Airtable, transforms to app format
+ * 2. **Retry with Exponential Backoff**: Handles transient network failures
+ * 3. **Error Handling**: Provides clear error messages to users
+ * 4. **Real Transformation**: Tests use real processTalks/filterTalks functions
+ *
+ * RETRY STRATEGY:
+ * - Production: 3 retries with 1000ms base delay (exponential backoff)
+ * - Tests: 3 retries with 10ms base delay (fast, deterministic)
+ * - Why: Network failures are often transient (DNS, CDN, temporary outage)
+ *
+ * TEST APPROACH:
+ * - Mock only at boundary (global.fetch)
+ * - Let real transformation pipeline run
+ * - Use TEST_FETCH_CONFIG for fast, deterministic tests
+ * - Verify end-to-end behavior (fetch → transform → filter → render)
+ *
+ * EDGE CASES TESTED:
+ * - Network errors (transient failures)
+ * - HTTP errors (404, 500)
+ * - Invalid data (bad JSON, wrong format)
+ * - Partial data (missing fields)
+ * - Empty responses
+ */
 describe('useTalks', () => {
   const mockAirtableItem = {
     airtable_id: '1',
@@ -146,6 +176,24 @@ describe('useTalks', () => {
     expect(result.current.talks[0].notes).toBeUndefined(); // Empty notes become undefined
   });
 
+  /**
+   * CONTEXT: Error Handling and Retry Strategy
+   *
+   * WHY: Network failures happen in production (CDN issues, DNS timeouts,
+   * mobile connectivity). Immediate failure frustrates users when a simple
+   * retry would succeed.
+   *
+   * RETRY LOGIC:
+   * - Retries on: Network errors, HTTP errors (404, 500, etc.)
+   * - NO retry on: Invalid JSON (fetch succeeded, data is broken)
+   * - Exponential backoff: 10ms → 20ms → 40ms (test) / 1s → 2s → 4s (prod)
+   * - User sees error only after all retries exhausted
+   *
+   * USER EXPERIENCE:
+   * - Transient failures: Automatic recovery, seamless
+   * - Persistent failures: Clear error message after reasonable attempts
+   * - No hanging: Timeout ensures eventual completion
+   */
   it('handles network errors correctly with retry logic', async () => {
     mockFetchError(new Error('Network error'));
 
