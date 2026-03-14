@@ -4,6 +4,7 @@ import { useTalks } from '../../hooks/useTalks';
 import { useUrlFilter } from '../../hooks/useUrlFilter';
 import { useFilterHandlers } from '../../hooks/useFilterHandlers';
 import { PlayIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
+import { StarIcon } from '@heroicons/react/24/solid';
 import { LoadingSpinner, ErrorMessage, PageContainer, Button } from '../ui';
 import { Talk } from '../../types/talks';
 import { formatDuration } from '../../utils/format';
@@ -69,9 +70,21 @@ function TalkDetail() {
 
       <article className="bg-white shadow rounded-lg overflow-hidden">
         <div className="p-6">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">
-            {talk.title}
-          </h1>
+          <div className="flex items-start justify-between mb-4">
+            <h1 className="text-3xl font-bold text-gray-900">
+              {talk.title}
+            </h1>
+            {talk.rating === 5 && (
+              <span
+                role="img"
+                aria-label="Top rated"
+                title="Top rated"
+                className="text-yellow-500 flex-shrink-0 ml-3"
+              >
+                <StarIcon className="h-7 w-7" aria-hidden="true" />
+              </span>
+            )}
+          </div>
           
           <div className="flex items-center text-gray-600 mb-6">
             <div className="flex flex-wrap gap-2">

@@ -12,4 +12,5 @@ export interface Talk {
   conference_name?: string;  // Optional field for conference name
   format?: 'talk' | 'podcast' | 'article';
   blog_url?: string;
+  rating?: number;
 }

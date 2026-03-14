@@ -173,6 +173,41 @@ describe('TalkDetail', () => {
     });
   });
 
+  describe('Top Rated Indicator', () => {
+    it('renders top rated indicator when rating is 5', () => {
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks: [createTalk({ rating: 5 })],
+        loading: false,
+        error: null
+      }));
+      renderComponent();
+
+      expect(screen.getByRole('img', { name: /top rated/i })).toBeInTheDocument();
+    });
+
+    it('does not render top rated indicator when rating is less than 5', () => {
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks: [createTalk({ rating: 4 })],
+        loading: false,
+        error: null
+      }));
+      renderComponent();
+
+      expect(screen.queryByRole('img', { name: /top rated/i })).not.toBeInTheDocument();
+    });
+
+    it('does not render top rated indicator when rating is undefined', () => {
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks: [createTalk({ rating: undefined })],
+        loading: false,
+        error: null
+      }));
+      renderComponent();
+
+      expect(screen.queryByRole('img', { name: /top rated/i })).not.toBeInTheDocument();
+    });
+  });
+
   describe('Notes Section', () => {
     it('does not render notes section when notes are not present', () => {
       (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({

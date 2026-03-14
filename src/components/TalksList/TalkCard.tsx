@@ -4,6 +4,7 @@ import { Talk } from '../../types/talks';
 import { formatDuration } from '../../utils/format';
 import { hasMeaningfulNotes } from '../../utils/talks';
 import { DocumentTextIcon, PlayIcon, VideoCameraIcon, MicrophoneIcon } from '@heroicons/react/24/outline';
+import { StarIcon } from '@heroicons/react/24/solid';
 
 interface TalkCardProps {
   talk: Talk;
@@ -70,6 +71,16 @@ export function TalkCard({
               {talk.title}
             </h3>
             <div className="flex items-center gap-1">
+              {talk.rating === 5 && (
+                <span
+                  role="img"
+                  aria-label="Top rated"
+                  title="Top rated"
+                  className="text-yellow-500 flex-shrink-0 ml-1"
+                >
+                  <StarIcon className="h-5 w-5" aria-hidden="true" />
+                </span>
+              )}
               {hasMeaningfulNotes(talk.notes) && (
                 <span
                   role="img"
