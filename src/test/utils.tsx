@@ -129,7 +129,29 @@ export const renderTalkCard = (props: Partial<React.ComponentProps<typeof TalkCa
   };
 };
 
-// Optimized wrapper component to provide router context
+/**
+ * @deprecated Use renderIntegration() from test/integration/IntegrationTestHelpers for new tests.
+ *
+ * This function uses BrowserRouter which doesn't support programmatic navigation in tests.
+ * Existing tests can continue using this, but new integration tests should use MemoryRouter.
+ *
+ * Migration guide:
+ * - Replace renderWithRouter(ui) with renderIntegration(ui, options)
+ * - Remove component mocks (let real components render)
+ * - Verify user behavior instead of mock calls
+ *
+ * @example
+ * // OLD (structure-sensitive)
+ * vi.mock('./ChildComponent');
+ * renderWithRouter(<Component />);
+ * expect(mockFn).toHaveBeenCalled();
+ *
+ * // NEW (structure-insensitive)
+ * renderIntegration(<Component />, {
+ *   initialParams: new URLSearchParams('filter=value')
+ * });
+ * expect(screen.getByText('Result')).toBeInTheDocument();
+ */
 export const renderWithRouter = (ui: React.ReactElement) => {
   return render(ui, { wrapper: getRouterWrapper() });
 };

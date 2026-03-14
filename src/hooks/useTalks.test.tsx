@@ -1,7 +1,6 @@
 import { renderHook, waitFor } from '@testing-library/react';
 import { useTalks, FetchConfig } from './useTalks';
 import { TestProvider } from '../test/context/TestContext';
-import { processTalks } from '../utils/talks';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 // Fast test configuration - no duplicating production retry logic!
@@ -13,12 +12,8 @@ const TEST_FETCH_CONFIG: FetchConfig = {
 // Store original fetch
 const originalFetch = global.fetch;
 
-// Mock the processTalks function
-vi.mock('../utils/talks', () => ({
-  ...vi.importActual('../utils/talks'),
-  processTalks: vi.fn(),
-  hasMeaningfulNotes: vi.fn().mockImplementation((notes: string) => notes.trim().length > 0)
-}));
+// No mocking of processTalks - let real transformation run
+// This ensures tests verify complete data pipeline
 
 // Helper functions for mocking
 const mockFetchResponse = (data: unknown) => {
@@ -42,10 +37,6 @@ const mockFetchFailure = () => {
       ok: false,
     })
   );
-};
-
-const mockProcessedResponse = (data: unknown) => {
-  (processTalks as ReturnType<typeof vi.fn>).mockReturnValue(data);
 };
 
 // Helper function for rendering hook and waiting for load
@@ -80,27 +71,10 @@ describe('useTalks', () => {
     conference_name: 'Test Conference'
   };
 
-  const mockProcessedTalk = {
-    id: '1',
-    title: 'Test Talk',
-    url: 'https://example.com',
-    duration: 30,
-    topics: ['topic1', 'topic2'],
-    speakers: ['speaker1', 'speaker2'],
-    description: 'Test description',
-    core_topic: 'test',
-    notes: 'Test notes',
-    year: 2024,
-    conference_name: 'Test Conference',
-    conference: 'Test Conference',
-    language: 'English'
-  };
-
   beforeEach(() => {
     // Reset mocks before each test
     vi.clearAllMocks();
     mockFetchResponse([mockAirtableItem]);
-    mockProcessedResponse([mockProcessedTalk]);
   });
 
   afterEach(() => {
@@ -113,10 +87,23 @@ describe('useTalks', () => {
   it('loads and processes talks correctly', async () => {
     const { result } = await renderUseTalksHook();
 
-    // Check final state
+    // Check final state - real processTalks transformation happened
     expect(result.current.error).toBeNull();
     expect(result.current.talks).toHaveLength(1);
-    expect(result.current.talks[0]).toEqual(mockProcessedTalk);
+    expect(result.current.talks[0]).toMatchObject({
+      id: '1',
+      title: 'Test Talk',
+      url: 'https://example.com',
+      duration: 30,
+      topics: ['topic1', 'topic2'],
+      speakers: ['speaker1', 'speaker2'],
+      description: 'Test description',
+      core_topic: 'test',
+      notes: 'Test notes',
+      year: 2024,
+      conference_name: 'Test Conference',
+      format: 'talk'
+    });
   });
 
   it('handles fetch error correctly', async () => {
@@ -139,28 +126,24 @@ describe('useTalks', () => {
   it('filters out invalid resource types', async () => {
     const invalidItem = { ...mockAirtableItem, resource_type: 'invalid' };
     mockFetchResponse([invalidItem]);
-    mockProcessedResponse([]);
 
     const { result } = await renderUseTalksHook();
 
-    // Check that invalid items are filtered out
+    // Check that invalid items are filtered out by real filterTalks function
     expect(result.current.error).toBeNull();
     expect(result.current.talks).toEqual([]);
   });
 
   it('correctly handles talks with empty notes', async () => {
-    const emptyNotesItem = { ...mockAirtableItem, Notes: '' };
-    const talkWithEmptyNotes = { ...mockProcessedTalk, notes: '' };
-
+    const emptyNotesItem = { ...mockAirtableItem, notes: '' };
     mockFetchResponse([emptyNotesItem]);
-    mockProcessedResponse([talkWithEmptyNotes]);
 
     const { result } = await renderUseTalksHook();
 
-    // Check that empty notes are handled correctly
+    // Check that empty notes are handled correctly by real hasMeaningfulNotes
     expect(result.current.error).toBeNull();
     expect(result.current.talks).toHaveLength(1);
-    expect(result.current.talks[0].notes).toBe('');
+    expect(result.current.talks[0].notes).toBeUndefined(); // Empty notes become undefined
   });
 
   it('handles network errors correctly with retry logic', async () => {
@@ -242,36 +225,34 @@ describe('useTalks', () => {
   });
 
   it('filters talks by language', async () => {
-    const nonEnglishTalk = { ...mockAirtableItem, language: 'Spanish' };
-    const englishTalk = { ...mockAirtableItem, language: 'English' };
-    const processedEnglishTalk = { ...mockProcessedTalk };
+    const nonEnglishTalk = { ...mockAirtableItem, airtable_id: '2', language: 'Spanish', name: 'Spanish Talk' };
+    const englishTalk = { ...mockAirtableItem, airtable_id: '1', language: 'English', name: 'English Talk' };
 
     mockFetchResponse([nonEnglishTalk, englishTalk]);
-    mockProcessedResponse([processedEnglishTalk]);
 
     const { result } = await renderUseTalksHook();
 
-    // Verify only English talks are included
+    // Verify only English talks are included by real filterTalks
     expect(result.current.talks).toHaveLength(1);
-    expect(result.current.talks[0]).toEqual(processedEnglishTalk);
+    expect(result.current.talks[0].title).toBe('English Talk');
+    expect(result.current.talks[0].id).toBe('1');
   });
 
-  it('filters talks by rating', async () => {
-    const lowRatingTalk = { ...mockAirtableItem, rating: 2 };
-    const highRatingTalk = { ...mockAirtableItem, rating: 5 };
-    const processedHighRatingTalk = { ...mockProcessedTalk };
+  it('does not filter by rating by default', async () => {
+    const lowRatingTalk = { ...mockAirtableItem, airtable_id: '2', rating: 2, name: 'Low Rating' };
+    const highRatingTalk = { ...mockAirtableItem, airtable_id: '1', rating: 5, name: 'High Rating' };
 
     mockFetchResponse([lowRatingTalk, highRatingTalk]);
-    mockProcessedResponse([processedHighRatingTalk]);
 
     const { result } = await renderUseTalksHook();
 
-    // Verify only high rating talks are included
-    expect(result.current.talks).toHaveLength(1);
-    expect(result.current.talks[0]).toEqual(processedHighRatingTalk);
+    // Verify both talks are included when filterByRating is false (default)
+    expect(result.current.talks).toHaveLength(2);
+    expect(result.current.talks.find(t => t.rating === 2)).toBeDefined();
+    expect(result.current.talks.find(t => t.rating === 5)).toBeDefined();
   });
 
-  it('handles missing optional fields', async () => {
+  it('handles missing optional fields with real transformation', async () => {
     const rawTalkWithMissingFields = {
       airtable_id: 'test-1',
       name: 'Test Talk',
@@ -281,26 +262,11 @@ describe('useTalks', () => {
       resource_type: 'talk'
     };
 
-    const transformedTalkWithDefaults = {
-      id: 'test-1',
-      title: 'Test Talk',
-      url: 'https://example.com',
-      duration: 0,
-      topics: [],
-      speakers: [],
-      description: '',
-      core_topic: '',
-      language: 'English',
-      conference: '',
-      conference_name: ''
-    };
-
     mockFetchResponse([rawTalkWithMissingFields]);
-    mockProcessedResponse([transformedTalkWithDefaults]);
 
     const { result } = await renderUseTalksHook();
 
-    // Verify default values for missing fields
+    // Verify real transformAirtableItemToTalk applies default values
     expect(result.current.error).toBeNull();
     expect(result.current.talks).toHaveLength(1);
     const talk = result.current.talks[0];
@@ -310,6 +276,150 @@ describe('useTalks', () => {
     expect(talk.description).toBe('');
     expect(talk.core_topic).toBe('');
     expect(talk.notes).toBeUndefined();
-    expect(talk.conference_name).toBe('');
+    expect(talk.conference_name).toBeUndefined();
+  });
+
+  describe('End-to-End Data Transformation', () => {
+    it('transforms complete Airtable items with all fields', async () => {
+      const completeAirtableItem = {
+        airtable_id: 'rec123',
+        name: 'Advanced TypeScript Patterns',
+        url: 'https://youtube.com/watch?v=abc',
+        duration: 2700, // 45 minutes
+        topics_names: ['typescript', 'patterns', 'advanced'],
+        speakers_names: ['Jane Smith', 'John Doe'],
+        description: 'Deep dive into advanced TypeScript patterns',
+        core_topic: 'TypeScript',
+        notes: 'Excellent coverage of generics and conditional types',
+        language: 'English',
+        rating: 5,
+        resource_type: 'talk',
+        year: 2024,
+        conference_name: 'TSConf EU'
+      };
+
+      mockFetchResponse([completeAirtableItem]);
+      const { result } = await renderUseTalksHook();
+
+      // Verify complete end-to-end transformation
+      expect(result.current.talks).toHaveLength(1);
+      const talk = result.current.talks[0];
+      expect(talk.id).toBe('rec123');
+      expect(talk.title).toBe('Advanced TypeScript Patterns');
+      expect(talk.url).toBe('https://youtube.com/watch?v=abc');
+      expect(talk.duration).toBe(2700);
+      expect(talk.topics).toEqual(['typescript', 'patterns', 'advanced']);
+      expect(talk.speakers).toEqual(['Jane Smith', 'John Doe']);
+      expect(talk.description).toBe('Deep dive into advanced TypeScript patterns');
+      expect(talk.core_topic).toBe('TypeScript');
+      expect(talk.notes).toBe('Excellent coverage of generics and conditional types');
+      expect(talk.year).toBe(2024);
+      expect(talk.conference_name).toBe('TSConf EU');
+      expect(talk.rating).toBe(5);
+      expect(talk.format).toBe('talk');
+    });
+
+    it('correctly transforms podcast format', async () => {
+      const podcastItem = {
+        airtable_id: 'rec456',
+        name: 'Software Engineering Radio',
+        url: 'https://example.com/podcast',
+        resource_type: 'podcast',
+        language: 'English',
+        rating: 4
+      };
+
+      mockFetchResponse([podcastItem]);
+      const { result } = await renderUseTalksHook();
+
+      expect(result.current.talks).toHaveLength(1);
+      expect(result.current.talks[0].format).toBe('podcast');
+    });
+
+    it('correctly transforms videopodcast format to podcast', async () => {
+      const videoPodcastItem = {
+        airtable_id: 'rec789',
+        name: 'Video Podcast Episode',
+        url: 'https://example.com/videopodcast',
+        resource_type: 'videopodcast',
+        language: 'English',
+        rating: 4
+      };
+
+      mockFetchResponse([videoPodcastItem]);
+      const { result } = await renderUseTalksHook();
+
+      expect(result.current.talks).toHaveLength(1);
+      expect(result.current.talks[0].format).toBe('podcast');
+    });
+
+    it('filters out non-English talks during processing', async () => {
+      const items = [
+        { ...mockAirtableItem, airtable_id: '1', language: 'English', name: 'English Talk' },
+        { ...mockAirtableItem, airtable_id: '2', language: 'Spanish', name: 'Spanish Talk' },
+        { ...mockAirtableItem, airtable_id: '3', language: 'French', name: 'French Talk' },
+        { ...mockAirtableItem, airtable_id: '4', language: 'English', name: 'Another English Talk' }
+      ];
+
+      mockFetchResponse(items);
+      const { result } = await renderUseTalksHook();
+
+      // Only English talks should be processed
+      expect(result.current.talks).toHaveLength(2);
+      expect(result.current.talks[0].title).toBe('English Talk');
+      expect(result.current.talks[1].title).toBe('Another English Talk');
+    });
+
+    it('treats missing language as English', async () => {
+      const itemWithoutLanguage = {
+        ...mockAirtableItem,
+        language: undefined
+      };
+
+      mockFetchResponse([itemWithoutLanguage]);
+      const { result } = await renderUseTalksHook();
+
+      // Should be processed as English
+      expect(result.current.talks).toHaveLength(1);
+    });
+
+    it('applies hasMeaningfulNotes logic during transformation', async () => {
+      const items = [
+        { ...mockAirtableItem, airtable_id: '1', notes: 'Real notes', name: 'Talk 1' },
+        { ...mockAirtableItem, airtable_id: '2', notes: '   \n\t  ', name: 'Talk 2' },
+        { ...mockAirtableItem, airtable_id: '3', notes: undefined, name: 'Talk 3' },
+        { ...mockAirtableItem, airtable_id: '4', notes: '', name: 'Talk 4' }
+      ];
+
+      mockFetchResponse(items);
+      const { result } = await renderUseTalksHook();
+
+      expect(result.current.talks).toHaveLength(4);
+      expect(result.current.talks[0].notes).toBe('Real notes');
+      expect(result.current.talks[1].notes).toBeUndefined(); // Whitespace only
+      expect(result.current.talks[2].notes).toBeUndefined(); // Undefined
+      expect(result.current.talks[3].notes).toBeUndefined(); // Empty string
+    });
+
+    it('filters by valid resource types during processing', async () => {
+      const items = [
+        { ...mockAirtableItem, airtable_id: '1', resource_type: 'talk', name: 'Valid Talk' },
+        { ...mockAirtableItem, airtable_id: '2', resource_type: 'podcast', name: 'Valid Podcast' },
+        { ...mockAirtableItem, airtable_id: '3', resource_type: 'invalid', name: 'Invalid Type' },
+        { ...mockAirtableItem, airtable_id: '4', resource_type: 'video', name: 'Valid Video' },
+        { ...mockAirtableItem, airtable_id: '5', resource_type: 'book', name: 'Invalid Book' }
+      ];
+
+      mockFetchResponse(items);
+      const { result } = await renderUseTalksHook();
+
+      // Only valid resource types should be processed
+      expect(result.current.talks).toHaveLength(3);
+      expect(result.current.talks.map(t => t.title)).toEqual([
+        'Valid Talk',
+        'Valid Podcast',
+        'Valid Video'
+      ]);
+    });
   });
 });
