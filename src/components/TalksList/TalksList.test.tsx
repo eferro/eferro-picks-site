@@ -429,9 +429,7 @@ describe('Has Notes Filter', () => {
 
     renderWithRouter(<TalksList />);
     
-    // Debug output for talks and filter state
      
-    console.log('Talks at start:', (useTalks as ReturnType<typeof vi.fn>).mock.results?.[0]?.value?.talks);
     // Initially all talks should be visible
     const initialArticles = screen.queryAllByRole('article');
     if (initialArticles.length === 0) {
@@ -445,10 +443,8 @@ describe('Has Notes Filter', () => {
     // Click the Has Notes filter
     const button = screen.getByRole('button', { name: /toggle has notes filter/i });
      
-    console.log('Before click: button class:', button.className, 'search params:', getMockSearchParams().toString());
     fireEvent.click(button);
      
-    console.log('After click: button class:', button.className, 'search params:', getMockSearchParams().toString());
 
     // Update mockSearchParams to match new params and re-render
     const lastParams = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0];
@@ -466,11 +462,8 @@ describe('Has Notes Filter', () => {
 
     // Re-query the Has Notes filter button after re-render
     const updatedButton = screen.getByRole('button', { name: /toggle has notes filter/i });
-    // Debug output for button class and search params
      
-    console.log('Has Notes button class:', updatedButton.className);
      
-    console.log('Search params after toggle:', getMockSearchParams().toString());
     // Verify the button state changed
     expect(updatedButton).toHaveClass('bg-blue-500');
     expect(updatedButton).toHaveClass('text-white');

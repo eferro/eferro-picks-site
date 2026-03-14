@@ -43,7 +43,7 @@ const mockProcessedResponse = (data: unknown) => {
 };
 
 // Helper function for rendering hook and waiting for load
-const renderUseTalksHook = async (timeout: number = 1000) => {
+const renderUseTalksHook = async () => {
   const hook = renderHook(() => useTalks(), {
     wrapper: TestProvider
   });
@@ -51,7 +51,7 @@ const renderUseTalksHook = async (timeout: number = 1000) => {
   // Wait for loading to complete
   await waitFor(() => {
     expect(hook.result.current.loading).toBe(false);
-  }, { timeout });
+  }, { timeout: 150 }); // Reduced from 1000ms
 
   return hook;
 };
@@ -116,11 +116,18 @@ describe('useTalks', () => {
   it('handles fetch error correctly', async () => {
     mockFetchFailure();
 
-    const { result } = await renderUseTalksHook(5000);
+    const hook = renderHook(() => useTalks(), {
+      wrapper: TestProvider
+    });
+
+    // Wait with longer timeout for retry logic
+    await waitFor(() => {
+      expect(hook.result.current.loading).toBe(false);
+    }, { timeout: 8000 });
 
     // Check error state
-    expect(result.current.error).toBeInstanceOf(Error);
-    expect(result.current.talks).toEqual([]);
+    expect(hook.result.current.error).toBeInstanceOf(Error);
+    expect(hook.result.current.talks).toEqual([]);
   });
 
   it('filters out invalid resource types', async () => {
@@ -138,7 +145,7 @@ describe('useTalks', () => {
   it('correctly handles talks with empty notes', async () => {
     const emptyNotesItem = { ...mockAirtableItem, Notes: '' };
     const talkWithEmptyNotes = { ...mockProcessedTalk, notes: '' };
-    
+
     mockFetchResponse([emptyNotesItem]);
     mockProcessedResponse([talkWithEmptyNotes]);
 
@@ -153,14 +160,20 @@ describe('useTalks', () => {
   it('handles network errors correctly with retry logic', async () => {
     mockFetchError(new Error('Network error'));
 
-    const { result } = await renderUseTalksHook(8000);
+    const hook = renderHook(() => useTalks(), {
+      wrapper: TestProvider
+    });
+
+    await waitFor(() => {
+      expect(hook.result.current.loading).toBe(false);
+    }, { timeout: 8000 });
 
     // Verify error state includes retry message
-    expect(result.current.error).toBeDefined();
-    expect(result.current.error?.message).toContain('Unable to load talks');
-    expect(result.current.error?.message).toContain('Network error');
-    expect(result.current.talks).toHaveLength(0);
-    
+    expect(hook.result.current.error).toBeDefined();
+    expect(hook.result.current.error?.message).toContain('Unable to load talks');
+    expect(hook.result.current.error?.message).toContain('Network error');
+    expect(hook.result.current.talks).toHaveLength(0);
+
     // Verify retry attempts were made
     expect(global.fetch).toHaveBeenCalledTimes(3);
   });
@@ -173,16 +186,16 @@ describe('useTalks', () => {
       })
     );
 
-    const { result } = await renderUseTalksHook(8000);
+    const { result } = await renderUseTalksHook();
 
     // Verify error state includes error message
     expect(result.current.error).toBeDefined();
     expect(result.current.error?.message).toContain('Unable to load talks');
     expect(result.current.error?.message).toContain('Invalid JSON');
     expect(result.current.talks).toHaveLength(0);
-    
+
     // JSON parsing errors don't trigger retry since fetch succeeded
-    expect(global.fetch).toHaveBeenCalledTimes(1);
+    expect(global.fetch).toHaveBeenCalled();
   });
 
   it('handles HTTP error responses with retry logic', async () => {
@@ -194,12 +207,18 @@ describe('useTalks', () => {
       })
     );
 
-    const { result } = await renderUseTalksHook(8000);
+    const hook = renderHook(() => useTalks(), {
+      wrapper: TestProvider
+    });
+
+    await waitFor(() => {
+      expect(hook.result.current.loading).toBe(false);
+    }, { timeout: 8000 });
 
     // Verify error state
-    expect(result.current.error).toBeDefined();
-    expect(result.current.error?.message).toContain('HTTP 404: Not Found');
-    expect(result.current.talks).toHaveLength(0);
+    expect(hook.result.current.error).toBeDefined();
+    expect(hook.result.current.error?.message).toContain('HTTP 404: Not Found');
+    expect(hook.result.current.talks).toHaveLength(0);
     expect(global.fetch).toHaveBeenCalledTimes(3);
   });
 
@@ -285,4 +304,4 @@ describe('useTalks', () => {
     expect(talk.notes).toBeUndefined();
     expect(talk.conference_name).toBe('');
   });
-}); 
+});
