@@ -408,15 +408,15 @@ describe('Has Notes Filter', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     setMockSearchParams(new URLSearchParams());
-  });
-
-  it('shows the Has Notes filter button', () => {
+    // Set up default mock for useTalks
     (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
       talks: [],
       loading: false,
       error: null
     }));
+  });
 
+  it('shows the Has Notes filter button', () => {
     renderWithRouter(<TalksList />);
     const button = screen.getByRole('button', { name: /toggle has notes filter/i });
     expect(button).toBeInTheDocument();

@@ -32,6 +32,11 @@ describe('TalkDetail', () => {
   };
 
   beforeEach(() => {
+    // Reset mocks and internal state FIRST
+    vi.clearAllMocks();
+    setMockSearchParams(new URLSearchParams());
+
+    // THEN set up all mocks
     (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
       talks: [mockTalk],
       loading: false,
@@ -39,11 +44,6 @@ describe('TalkDetail', () => {
     }));
 
     (useParams as ReturnType<typeof vi.fn>).mockImplementation(() => ({ id: '1' }));
-    
-    // Reset mocks and internal state
-    vi.clearAllMocks();
-    setMockSearchParams(new URLSearchParams());
-    
     (useSearchParams as ReturnType<typeof vi.fn>).mockImplementation(() => [getMockSearchParams(), mockSetSearchParams]);
   });
 
