@@ -1,11 +1,21 @@
 import React from 'react';
 import { renderHook } from '@testing-library/react';
-import { useScrollPosition } from './useScrollPosition';
+import { useScrollPosition, ScrollConfig } from './useScrollPosition';
 import { vi, describe, it, expect, beforeEach, afterEach, Mock } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
 import { setMockSearchParams } from '../test/utils';
+import { createWindowDouble, createSpiedWindowDouble } from '../test/doubles/window';
 
 const SCROLL_INDEX_KEY = 'scroll_index';
+
+// Fast test configuration - no duplicating production timing logic!
+const TEST_CONFIG: ScrollConfig = {
+  debounceMs: 10,      // Fast for tests
+  initialDelayMs: 10,  // Fast initial delay
+  retryDelayMs: 10,    // Fast retry delay
+  maxRetries: 3,       // Fewer retries in tests
+  maxDelayMs: 100,     // Lower max delay
+};
 
 // Helper to create router wrapper with specific initial location
 const createRouterWrapper = (initialPath: string = '/') => {
@@ -18,62 +28,34 @@ const createRouterWrapper = (initialPath: string = '/') => {
 
 describe('useScrollPosition', () => {
   describe('saving scroll position', () => {
-    const mockStorage = {
-      store: {} as Record<string, string>,
-      clear() {
-        this.store = {};
-      },
-      getItem(key: string) {
-        return this.store[key] || null;
-      },
-      setItem(key: string, value: string) {
-        this.store[key] = value;
-      },
-      removeItem(key: string) {
-        delete this.store[key];
-      },
-      key(index: number) {
-        return Object.keys(this.store)[index] || null;
-      },
-      length: 0
-    };
+    let spiedWindow: ReturnType<typeof createSpiedWindowDouble>;
 
     beforeEach(() => {
       vi.useFakeTimers();
-      
-      // Reset window.scrollY
+
+      // Create window test double with instant scroll behavior
+      spiedWindow = createSpiedWindowDouble(vi, { scrollBehavior: 'instant' });
+
+      // Replace global window properties with test double
       Object.defineProperty(window, 'scrollY', {
-        writable: true,
-        value: 0,
+        get: () => spiedWindow.scrollY,
         configurable: true
       });
-      
-      // Mock required methods
-      window.scrollTo = vi.fn().mockImplementation((x, y) => {
-        // Update scrollY when scrollTo is called
-        Object.defineProperty(window, 'scrollY', {
-          writable: true,
-          value: y,
-          configurable: true
-        });
-      });
-      
-      // Mock sessionStorage
+      (window as Window).scrollTo = spiedWindow.scrollTo as typeof window.scrollTo;
+      (window as Window).addEventListener = spiedWindow.addEventListener as typeof window.addEventListener;
+      (window as Window).removeEventListener = spiedWindow.removeEventListener as typeof window.removeEventListener;
+      (window as Window).dispatchEvent = spiedWindow.dispatchEvent as typeof window.dispatchEvent;
       Object.defineProperty(window, 'sessionStorage', {
-        value: mockStorage,
-        writable: true
+        value: spiedWindow.sessionStorage,
+        writable: true,
+        configurable: true
       });
-      
-      // Spy on our mock implementation
-      vi.spyOn(mockStorage, 'setItem');
-      vi.spyOn(mockStorage, 'getItem');
-      
-      // Spy on window event listeners
-      vi.spyOn(window, 'addEventListener');
-      vi.spyOn(window, 'removeEventListener');
-      
-      mockStorage.clear();
-      
+
+      // Spy on sessionStorage methods
+      vi.spyOn(spiedWindow.sessionStorage, 'setItem');
+      vi.spyOn(spiedWindow.sessionStorage, 'getItem');
+      vi.spyOn(spiedWindow.sessionStorage, 'removeItem');
+
       // Reset search params to simulate index page
       setMockSearchParams(new URLSearchParams());
     });
@@ -85,196 +67,224 @@ describe('useScrollPosition', () => {
     });
 
     it('saves scroll position when scrolling', () => {
-      // Render the hook with router context
-      renderHook(() => useScrollPosition(), {
+      // Render the hook with test config
+      renderHook(() => useScrollPosition(TEST_CONFIG), {
         wrapper: createRouterWrapper('/')
       });
-      
-      // Set scroll position and trigger scroll event
-      Object.defineProperty(window, 'scrollY', {
-        value: 100,
-        configurable: true,
-        writable: true
-      });
-      
+
+      // Scroll to position 100
+      spiedWindow.scrollTo(0, 100);
+
       // Trigger scroll event
       window.dispatchEvent(new Event('scroll'));
-      
-      // Run timers
-      vi.advanceTimersByTime(100);
-      
+
+      // Run timers (using test config debounce time)
+      vi.advanceTimersByTime(TEST_CONFIG.debounceMs);
+
       // Verify sessionStorage was called with correct values
-      expect(mockStorage.setItem).toHaveBeenCalledWith(SCROLL_INDEX_KEY, '100');
+      expect(spiedWindow.sessionStorage.setItem).toHaveBeenCalledWith(SCROLL_INDEX_KEY, '100');
     });
 
     it('restores scroll position when returning to index page', () => {
       // Setup: Save a scroll position
-      mockStorage.store[SCROLL_INDEX_KEY] = '150';
-      
-      // Render hook (simulating return to index page)
-      renderHook(() => useScrollPosition(), {
+      spiedWindow.sessionStorage.setItem(SCROLL_INDEX_KEY, '150');
+
+      // Render hook with test config
+      renderHook(() => useScrollPosition(TEST_CONFIG), {
         wrapper: createRouterWrapper('/')
       });
-      
-      // Run initial delay timer (100ms)
-      vi.advanceTimersByTime(100);
-      
+
+      // Run initial delay timer (using test config)
+      vi.advanceTimersByTime(TEST_CONFIG.initialDelayMs);
+
       // Verify window was scrolled to saved position
-      expect(window.scrollTo).toHaveBeenCalledWith(0, 150);
-      
-      // Since our mock updates scrollY, no retry should be needed
-      expect(window.scrollTo).toHaveBeenCalledTimes(1);
+      expect(spiedWindow.scrollTo).toHaveBeenCalledWith(0, 150);
+
+      // Since our test double updates scrollY instantly, no retry should be needed
+      expect(spiedWindow.scrollTo).toHaveBeenCalledTimes(1);
     });
 
     it('scrolls to top when navigating to non-index page', () => {
-      // Setup: Save a previous scroll position
-      mockStorage.store[SCROLL_INDEX_KEY] = '200';
-      
-      // Set current scroll position
-      Object.defineProperty(window, 'scrollY', {
-        value: 300,
-        configurable: true,
-        writable: true
-      });
-      
+      // Setup: Save a previous scroll position and set current position
+      spiedWindow.sessionStorage.setItem(SCROLL_INDEX_KEY, '200');
+      spiedWindow.scrollTo(0, 300);
+
+      // Clear mocks after setup to isolate test behavior
+      vi.clearAllMocks();
+
       // Render hook simulating navigation to detail page
-      renderHook(() => useScrollPosition(), {
+      renderHook(() => useScrollPosition(TEST_CONFIG), {
         wrapper: createRouterWrapper('/talks/123')
       });
-      
+
       // Verify immediate scroll to top
-      expect(window.scrollTo).toHaveBeenCalledWith(0, 0);
-      expect(window.scrollTo).toHaveBeenCalledTimes(1);
+      expect(spiedWindow.scrollTo).toHaveBeenCalledWith(0, 0);
+      expect(spiedWindow.scrollTo).toHaveBeenCalledTimes(1);
       expect(window.scrollY).toBe(0);
-      
+
       // Verify no scroll events are handled
       window.dispatchEvent(new Event('scroll'));
-      vi.advanceTimersByTime(100);
-      expect(mockStorage.setItem).not.toHaveBeenCalled();
+      vi.advanceTimersByTime(TEST_CONFIG.debounceMs);
+      expect(spiedWindow.sessionStorage.setItem).not.toHaveBeenCalled();
     });
 
     it('cleans up event listeners and timeouts when unmounting', () => {
       // Setup: Render hook on index page
-      const { unmount } = renderHook(() => useScrollPosition(), {
+      const { unmount } = renderHook(() => useScrollPosition(TEST_CONFIG), {
         wrapper: createRouterWrapper('/')
       });
-      
+
       // Verify event listener was added
-      expect(window.addEventListener).toHaveBeenCalledWith('scroll', expect.any(Function), { passive: true });
-      
+      expect(spiedWindow.addEventListener).toHaveBeenCalledWith('scroll', expect.any(Function), { passive: true });
+
       // Get the actual event handler that was registered
-      const scrollHandler = (window.addEventListener as Mock).mock.calls.find(
+      const scrollHandler = (spiedWindow.addEventListener as Mock).mock.calls.find(
         call => call[0] === 'scroll'
       )?.[1];
-      
+
       // Trigger a scroll event but don't let the timer complete
       window.dispatchEvent(new Event('scroll'));
-      
+
       // Unmount the hook
       unmount();
-      
+
       // Verify event listener was removed with the same handler
-      expect(window.removeEventListener).toHaveBeenCalledWith('scroll', scrollHandler);
-      
+      expect(spiedWindow.removeEventListener).toHaveBeenCalledWith('scroll', scrollHandler);
+
       // Advance timer and verify no storage updates happened after unmount
-      vi.advanceTimersByTime(100);
-      expect(mockStorage.setItem).not.toHaveBeenCalled();
+      vi.advanceTimersByTime(TEST_CONFIG.debounceMs);
+      expect(spiedWindow.sessionStorage.setItem).not.toHaveBeenCalled();
     });
 
     it('debounces multiple scroll events and only saves the last position', () => {
-      // Render the hook
-      renderHook(() => useScrollPosition(), {
+      // Render the hook with test config
+      renderHook(() => useScrollPosition(TEST_CONFIG), {
         wrapper: createRouterWrapper('/')
       });
-      
+
       // Simulate rapid scrolling
       for (let i = 0; i < 5; i++) {
-        Object.defineProperty(window, 'scrollY', {
-          value: i * 100,
-          configurable: true,
-          writable: true
-        });
+        spiedWindow.scrollTo(0, i * 100);
         window.dispatchEvent(new Event('scroll'));
-        vi.advanceTimersByTime(50); // Less than debounce time
+        vi.advanceTimersByTime(5); // Less than debounce time
       }
-      
+
       // At this point, no storage updates should have happened yet
-      expect(mockStorage.setItem).not.toHaveBeenCalled();
-      
+      expect(spiedWindow.sessionStorage.setItem).not.toHaveBeenCalled();
+
       // Advance timer to complete the last debounce
-      vi.advanceTimersByTime(100);
-      
+      vi.advanceTimersByTime(TEST_CONFIG.debounceMs);
+
       // Verify only the last position was saved
-      expect(mockStorage.setItem).toHaveBeenCalledTimes(1);
-      expect(mockStorage.setItem).toHaveBeenCalledWith(SCROLL_INDEX_KEY, '400');
+      expect(spiedWindow.sessionStorage.setItem).toHaveBeenCalledTimes(1);
+      expect(spiedWindow.sessionStorage.setItem).toHaveBeenCalledWith(SCROLL_INDEX_KEY, '400');
     });
 
-    it('retries scroll restoration with exponential backoff when target not reached', () => {
-      // Setup: Save a scroll position
-      mockStorage.store[SCROLL_INDEX_KEY] = '500';
-      
-      // Mock scrollTo to simulate failed scroll attempts
-      window.scrollTo = vi.fn().mockImplementation((x, y) => {
-        // Simulate scroll not reaching target (off by 20px)
-        Object.defineProperty(window, 'scrollY', {
-          writable: true,
-          value: Math.max(0, y - 20),
-          configurable: true
-        });
+    it('retries scroll restoration when target not reached', () => {
+      /**
+       * CONTEXT: This tests the retry mechanism that handles cases where
+       * the DOM hasn't fully rendered yet, preventing a jarring scroll jump.
+       *
+       * Now we use TEST_CONFIG and WindowDouble with 'partial' behavior!
+       */
+
+      // Setup: Create window double with partial scroll behavior (simulates incomplete scroll)
+      const partialWindow = createSpiedWindowDouble(vi, {
+        scrollBehavior: 'partial',
+        scrollOffset: 20
       });
-      
-      // Render hook
-      renderHook(() => useScrollPosition(), {
+
+      // Replace window with partial scroll double
+      Object.defineProperty(window, 'scrollY', {
+        get: () => partialWindow.scrollY,
+        configurable: true
+      });
+      (window as Window).scrollTo = partialWindow.scrollTo as typeof window.scrollTo;
+
+      // Save a scroll position
+      spiedWindow.sessionStorage.setItem(SCROLL_INDEX_KEY, '500');
+
+      // Render hook with test config
+      renderHook(() => useScrollPosition(TEST_CONFIG), {
         wrapper: createRouterWrapper('/')
       });
-      
+
       // Initial delay
-      vi.advanceTimersByTime(100);
-      
+      vi.advanceTimersByTime(TEST_CONFIG.initialDelayMs);
+
       // First attempt
-      expect(window.scrollTo).toHaveBeenCalledWith(0, 500);
+      expect(partialWindow.scrollTo).toHaveBeenCalledWith(0, 500);
       expect(window.scrollY).toBe(480); // 20px off target
-      
-      // Verify exponential backoff timing
-      for (let attempt = 1; attempt < 5; attempt++) {
-        const backoffDelay = Math.min(100 * Math.pow(2, attempt), 2000);
+
+      // Verify retries happen with exponential backoff
+      for (let attempt = 1; attempt <= TEST_CONFIG.maxRetries; attempt++) {
+        const backoffDelay = Math.min(
+          TEST_CONFIG.retryDelayMs * Math.pow(2, attempt),
+          TEST_CONFIG.maxDelayMs
+        );
         vi.advanceTimersByTime(backoffDelay);
-        expect(window.scrollTo).toHaveBeenCalledWith(0, 500);
       }
-      
-      // After 5 attempts, fix the scroll behavior
-      window.scrollTo = vi.fn().mockImplementation((x, y) => {
-        Object.defineProperty(window, 'scrollY', {
-          writable: true,
-          value: y,
-          configurable: true
-        });
+
+      // Verify multiple retry attempts were made
+      expect(partialWindow.scrollTo).toHaveBeenCalledTimes(TEST_CONFIG.maxRetries);
+    });
+
+    it('stops retrying when scroll position is reached', () => {
+      // Setup: Create custom window double that succeeds on second attempt
+      let callCount = 0;
+      const customWindow = createWindowDouble();
+      const customScrollTo = vi.fn((x: number, y: number) => {
+        callCount++;
+        if (callCount === 1) {
+          // First attempt: partial scroll (simulates DOM not ready)
+          customWindow.scrollTo(0, y - 20);
+        } else {
+          // Second attempt: success!
+          customWindow.scrollTo(0, y);
+        }
       });
-      
-      // Advance timer for next attempt
-      vi.advanceTimersByTime(2000); // Max delay
-      
-      // Verify scroll succeeded and stopped retrying
-      expect(window.scrollY).toBe(500);
-      const totalCalls = (window.scrollTo as Mock).mock.calls.length;
-      
-      // No more calls should happen
-      vi.advanceTimersByTime(2000);
-      expect(window.scrollTo).toHaveBeenCalledTimes(totalCalls);
+
+      // Replace window with custom behavior
+      Object.defineProperty(window, 'scrollY', {
+        get: () => customWindow.scrollY,
+        configurable: true
+      });
+      (window as Window).scrollTo = customScrollTo as typeof window.scrollTo;
+
+      // Save a scroll position
+      spiedWindow.sessionStorage.setItem(SCROLL_INDEX_KEY, '300');
+
+      // Render hook with test config
+      renderHook(() => useScrollPosition(TEST_CONFIG), {
+        wrapper: createRouterWrapper('/')
+      });
+
+      // Initial delay
+      vi.advanceTimersByTime(TEST_CONFIG.initialDelayMs);
+      expect(window.scrollY).toBe(280); // First attempt: off by 20px
+
+      // First retry with exponential backoff
+      vi.advanceTimersByTime(TEST_CONFIG.retryDelayMs * 2); // 2^1 = 2
+      expect(window.scrollY).toBe(300); // Success!
+
+      const callsAfterSuccess = customScrollTo.mock.calls.length;
+
+      // Advance time further - no more retries should happen
+      vi.advanceTimersByTime(TEST_CONFIG.maxDelayMs * 2);
+      expect(customScrollTo).toHaveBeenCalledTimes(callsAfterSuccess);
     });
 
     it('ignores invalid saved scroll position', () => {
-      mockStorage.store[SCROLL_INDEX_KEY] = 'not-a-number';
-      const removeSpy = vi.spyOn(mockStorage, 'removeItem');
+      spiedWindow.sessionStorage.setItem(SCROLL_INDEX_KEY, 'not-a-number');
 
-      renderHook(() => useScrollPosition(), {
+      renderHook(() => useScrollPosition(TEST_CONFIG), {
         wrapper: createRouterWrapper('/')
       });
 
-      vi.advanceTimersByTime(100);
+      vi.advanceTimersByTime(TEST_CONFIG.initialDelayMs);
 
-      expect(removeSpy).toHaveBeenCalledWith(SCROLL_INDEX_KEY);
-      expect(window.scrollTo).not.toHaveBeenCalled();
+      expect(spiedWindow.sessionStorage.removeItem).toHaveBeenCalledWith(SCROLL_INDEX_KEY);
+      expect(spiedWindow.scrollTo).not.toHaveBeenCalled();
     });
   });
 });
