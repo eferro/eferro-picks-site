@@ -32,11 +32,6 @@ describe('TalkDetail', () => {
   };
 
   beforeEach(() => {
-    // Reset mocks and internal state FIRST
-    vi.clearAllMocks();
-    setMockSearchParams(new URLSearchParams());
-
-    // THEN set up all mocks
     (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
       talks: [mockTalk],
       loading: false,
@@ -44,6 +39,11 @@ describe('TalkDetail', () => {
     }));
 
     (useParams as ReturnType<typeof vi.fn>).mockImplementation(() => ({ id: '1' }));
+    
+    // Reset mocks and internal state
+    vi.clearAllMocks();
+    setMockSearchParams(new URLSearchParams());
+    
     (useSearchParams as ReturnType<typeof vi.fn>).mockImplementation(() => [getMockSearchParams(), mockSetSearchParams]);
   });
 
@@ -170,41 +170,6 @@ describe('TalkDetail', () => {
       renderComponent();
 
       expect(screen.queryByRole('link', { name: /mentioned in curator's blog/i })).not.toBeInTheDocument();
-    });
-  });
-
-  describe('Top Rated Indicator', () => {
-    it('renders top rated indicator when rating is 5', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
-        talks: [createTalk({ rating: 5 })],
-        loading: false,
-        error: null
-      }));
-      renderComponent();
-
-      expect(screen.getByRole('img', { name: /top rated/i })).toBeInTheDocument();
-    });
-
-    it('does not render top rated indicator when rating is less than 5', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
-        talks: [createTalk({ rating: 4 })],
-        loading: false,
-        error: null
-      }));
-      renderComponent();
-
-      expect(screen.queryByRole('img', { name: /top rated/i })).not.toBeInTheDocument();
-    });
-
-    it('does not render top rated indicator when rating is undefined', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
-        talks: [createTalk({ rating: undefined })],
-        loading: false,
-        error: null
-      }));
-      renderComponent();
-
-      expect(screen.queryByRole('img', { name: /top rated/i })).not.toBeInTheDocument();
     });
   });
 

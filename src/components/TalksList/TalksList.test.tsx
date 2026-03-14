@@ -1,20 +1,58 @@
-import { screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent, cleanup } from '@testing-library/react';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { TalksList } from '.';
 import { useTalks } from '../../hooks/useTalks';
 import { renderWithRouter, getMockSearchParams, mockSetSearchParams, mockNavigate, createTalk, setMockSearchParams } from '../../test/utils';
 
-// Mock child components with shared, well-documented mocks
-// Note: vi.mock is hoisted, so we import inside the factory
-vi.mock('./TalkSection', async () => {
-  const { MockTalkSection } = await import('../../test/mocks/components');
-  return { TalkSection: MockTalkSection };
-});
+// Mock the child components
+interface MockTalkSectionProps {
+  coreTopic: string;
+  talks: Array<{ id: string; title: string; }>;
+}
 
-vi.mock('./YearFilter', async () => {
-  const { MockYearFilter } = await import('../../test/mocks/components');
-  return { YearFilter: MockYearFilter };
-});
+vi.mock('./TalkSection', () => ({
+  TalkSection: (props: MockTalkSectionProps) => {
+    return (
+      <section>
+        <h2>{props.coreTopic} ({props.talks.length})</h2>
+        {props.talks.map((talk) => (
+          <div key={talk.id} role="article">
+            <div
+              onClick={() => mockNavigate({ pathname: `/talk/${talk.id}`, search: getMockSearchParams().toString() })}
+            >
+              {talk.title}
+            </div>
+            {/* Topics as spans (no click handlers) */}
+            {talk.topics.map((topic: string) => (
+              <span
+                key={`topic-${talk.id}-${topic}`}
+                aria-label={`Topic: ${topic}`}
+                data-testid={`topic-${topic}`}
+              >
+                {topic}
+              </span>
+            ))}
+            {/* Speakers as spans (no click handlers) */}
+            {(talk.speakers || []).map((speaker: string) => (
+              <span
+                key={`speaker-${talk.id}-${speaker}`}
+                aria-label={`Speaker: ${speaker}`}
+              >
+                {speaker}
+              </span>
+            ))}
+          </div>
+        ))}
+      </section>
+    );
+  }
+}));
+
+vi.mock('./YearFilter', () => ({
+  YearFilter: ({ onFilterChange }: { onFilterChange: (filter: { type: string }) => void }) => (
+    <button onClick={() => onFilterChange({ type: 'last2' })}>Year Filter</button>
+  )
+}));
 
 // Mock the hooks
 vi.mock('../../hooks/useTalks');
@@ -26,47 +64,10 @@ vi.mock('react-router-dom', async () => {
   };
 });
 
-/**
- * CONTEXT: TalksList Component - Filter UI Integration Tests
- *
- * WHY: TalksList is the main interface for discovering talks. Users need
- * intuitive, responsive filtering to find relevant content quickly.
- *
- * COMPONENT RESPONSIBILITY:
- * - Orchestrates multiple filter UI components (Year, Format, Rating, etc.)
- * - Manages filter state through URL parameters (shareable, bookmarkable)
- * - Uses TalksFilter class as single source of truth for filter logic
- * - Displays filtered results with proper visual feedback
- *
- * FILTER ARCHITECTURE:
- * 1. URL params → TalksFilter instance (centralized parsing)
- * 2. TalksFilter.filter(talks) → filtered results (centralized logic)
- * 3. User action → TalksFilter.toParams() → URL update (centralized serialization)
- *
- * TEST APPROACH:
- * - Mock useTalks (data boundary) but use real TalksFilter
- * - Mock child components (TalkSection, YearFilter) to isolate TalksList logic
- * - Verify URL parameter updates (filter state persistence)
- * - Test filter combinations (multiple filters active simultaneously)
- *
- * USER WORKFLOWS TESTED:
- * - Apply single filter
- * - Combine multiple filters
- * - Remove individual filters
- * - Clear all filters
- * - Filter state persists across navigation
- */
-
 // Author Filter tests for TalksList
 // Author Filter tests removed - functionality migrated to unified search
 
 describe('Rating Filter', () => {
-  /**
-   * CONTEXT: Top Picks Filter (5-star talks)
-   *
-   * WHY: Users want to quickly find highest-quality talks.
-   * Rating filter is one of the most-used filters.
-   */
   beforeEach(() => {
     vi.clearAllMocks();
     setMockSearchParams(new URLSearchParams());
@@ -94,25 +95,27 @@ describe('Rating Filter', () => {
   });
 
   it('toggles the rating filter and updates URL params', () => {
-    // Test enabling the rating filter
+    // Initial state shows all talks (no rating filter)
     renderWithRouter(<TalksList />);
     const [toggle] = screen.getAllByRole('button', { name: /toggle top picks filter/i });
-
+    // Click to enable rating filter (to show 5 stars only)
     fireEvent.click(toggle);
     expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
-    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+    let params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
     expect(params.get('rating')).toBe('5');
-  });
 
-  it('removes rating filter when toggled off', () => {
-    // Start with rating filter enabled
-    setMockSearchParams(new URLSearchParams('rating=5'));
+    // Update mockSearchParams to match new params
+    setMockSearchParams(params);
+    // Re-render after click to simulate navigation
+    cleanup();
     renderWithRouter(<TalksList />);
-    const [toggle] = screen.getAllByRole('button', { name: /toggle top picks filter/i });
-
-    fireEvent.click(toggle);
-    expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
-    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+    const [updated] = screen.getAllByRole('button', { name: /toggle top picks filter/i });
+    // After first click, button should show star emoji with "Top Picks" (active state)
+    expect(updated.textContent?.trim()).toContain('Top Picks');
+    // Click to disable rating filter (back to showing all)
+    fireEvent.click(updated);
+    expect(mockSetSearchParams).toHaveBeenCalledTimes(2);
+    params = mockSetSearchParams.mock.calls[1][0] as URLSearchParams;
     expect(params.get('rating')).toBeNull();
   });
 
@@ -129,15 +132,6 @@ describe('Rating Filter', () => {
 });
 
 describe('Format Filter', () => {
-  /**
-   * CONTEXT: Content Type Selection (Talks vs Podcasts)
-   *
-   * WHY: Users consume content differently based on context:
-   * - Talks: For focused learning sessions with visuals
-   * - Podcasts: For audio-only consumption (commute, exercise)
-   *
-   * Filter allows users to match content to their current context.
-   */
   beforeEach(() => {
     vi.clearAllMocks();
     setMockSearchParams(new URLSearchParams());
@@ -388,35 +382,18 @@ describe('TalksList', () => {
 });
 
 describe('Has Notes Filter', () => {
-  /**
-   * CONTEXT: Curator's Notes Filter
-   *
-   * WHY: Talks with detailed notes indicate curator's personal insights
-   * and key takeaways. Users value these curated summaries for quick
-   * evaluation before watching.
-   *
-   * IMPLEMENTATION:
-   * - Uses hasMeaningfulNotes() to filter whitespace-only notes
-   * - Visual feedback: button changes color when active
-   * - Combines with other filters (rating, year, format)
-   *
-   * USER VALUE:
-   * - "Show me talks worth watching" (curator pre-vetted)
-   * - Quick decision-making without watching entire talk
-   * - Discover hidden gems through curator's commentary
-   */
   beforeEach(() => {
     vi.clearAllMocks();
     setMockSearchParams(new URLSearchParams());
-    // Set up default mock for useTalks
+  });
+
+  it('shows the Has Notes filter button', () => {
     (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
       talks: [],
       loading: false,
       error: null
     }));
-  });
 
-  it('shows the Has Notes filter button', () => {
     renderWithRouter(<TalksList />);
     const button = screen.getByRole('button', { name: /toggle has notes filter/i });
     expect(button).toBeInTheDocument();
@@ -452,7 +429,9 @@ describe('Has Notes Filter', () => {
 
     renderWithRouter(<TalksList />);
     
+    // Debug output for talks and filter state
      
+    console.log('Talks at start:', (useTalks as ReturnType<typeof vi.fn>).mock.results?.[0]?.value?.talks);
     // Initially all talks should be visible
     const initialArticles = screen.queryAllByRole('article');
     if (initialArticles.length === 0) {
@@ -465,12 +444,37 @@ describe('Has Notes Filter', () => {
 
     // Click the Has Notes filter
     const button = screen.getByRole('button', { name: /toggle has notes filter/i });
+     
+    console.log('Before click: button class:', button.className, 'search params:', getMockSearchParams().toString());
     fireEvent.click(button);
+     
+    console.log('After click: button class:', button.className, 'search params:', getMockSearchParams().toString());
 
-    // Verify URL parameters were updated correctly (filter was applied)
+    // Update mockSearchParams to match new params and re-render
     const lastParams = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0];
-    const urlParams = lastParams instanceof URLSearchParams ? lastParams : new URLSearchParams(String(lastParams));
-    expect(urlParams.get('hasNotes')).toBe('true');
+    setMockSearchParams(lastParams instanceof URLSearchParams ? lastParams : new URLSearchParams(String(lastParams)));
+    cleanup();
+    renderWithRouter(<TalksList />);
+    const filteredArticles = screen.queryAllByRole('article');
+    if (filteredArticles.length === 0) {
+      expect(screen.getByText('No talks found matching your criteria.')).toBeInTheDocument();
+    } else {
+      expect(filteredArticles).toHaveLength(1);
+      expect(screen.getByText('Talk with notes')).toBeInTheDocument();
+      expect(screen.queryByText('Talk without notes')).not.toBeInTheDocument();
+    }
+
+    // Re-query the Has Notes filter button after re-render
+    const updatedButton = screen.getByRole('button', { name: /toggle has notes filter/i });
+    // Debug output for button class and search params
+     
+    console.log('Has Notes button class:', updatedButton.className);
+     
+    console.log('Search params after toggle:', getMockSearchParams().toString());
+    // Verify the button state changed
+    expect(updatedButton).toHaveClass('bg-blue-500');
+    expect(updatedButton).toHaveClass('text-white');
+    expect(updatedButton).not.toHaveClass('bg-white');
   });
 
 });

@@ -138,19 +138,6 @@ export class TalksFilter {
     return params.toString();
   }
 
-  isEmpty(): boolean {
-    return (
-      this.year === null &&
-      this.yearType === null &&
-      this.conference === null &&
-      !this.hasNotes &&
-      this.rating === null &&
-      this.query === '' &&
-      this.formats.length === 0 &&
-      !this.quickWatch
-    );
-  }
-
   filter(talks: Talk[]): Talk[] {
     return talks.filter(talk => {
       const yearMatch = this.matchesYear(talk);

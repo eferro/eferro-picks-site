@@ -74,26 +74,6 @@ describe('TalkCard', () => {
       });
     });
 
-    describe('Top Rated Indicator', () => {
-      it('renders top rated indicator when rating is 5', () => {
-        const talk = createTalk({ rating: 5 });
-        renderTalkCard({ talk });
-        expect(screen.getByRole('img', { name: /top rated/i })).toBeInTheDocument();
-      });
-
-      it('does not render top rated indicator when rating is less than 5', () => {
-        const talk = createTalk({ rating: 4 });
-        renderTalkCard({ talk });
-        expect(screen.queryByRole('img', { name: /top rated/i })).not.toBeInTheDocument();
-      });
-
-      it('does not render top rated indicator when rating is undefined', () => {
-        const talk = createTalk({ rating: undefined });
-        renderTalkCard({ talk });
-        expect(screen.queryByRole('img', { name: /top rated/i })).not.toBeInTheDocument();
-      });
-    });
-
     it('shows format icon based on talk format', () => {
       const talk = createTalk({ format: 'podcast' });
       renderTalkCard({ talk });

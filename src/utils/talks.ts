@@ -31,8 +31,7 @@ export function transformAirtableItemToTalk(item: AirtableItem): Talk {
     year: item.year,
     conference_name: item.conference_name,
     format,
-    blog_url: item.blog_url || undefined,
-    rating: item.rating || undefined
+    blog_url: item.blog_url || undefined
   };
 }
 
