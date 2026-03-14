@@ -1,5 +1,6 @@
 .cursorindexingignore
 .specstory/
+.claude/
 # Logs
 logs
 *.log
