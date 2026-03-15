@@ -150,6 +150,7 @@ export class TalksFilter {
       const formatMatch =
         this.formats.length === 0 || this.formats.includes(talk.format ?? 'talk');
       const quickWatchMatch = !this.quickWatch || (talk.duration > 0 && talk.duration < 900);
+      const ratingMatch = this.rating === null || talk.rating === this.rating;
       return (
         yearMatch &&
         queryMatch &&
@@ -158,7 +159,8 @@ export class TalksFilter {
         conferenceMatch &&
         notesMatch &&
         formatMatch &&
-        quickWatchMatch
+        quickWatchMatch &&
+        ratingMatch
       );
     });
   }

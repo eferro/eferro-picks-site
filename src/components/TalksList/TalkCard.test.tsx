@@ -118,6 +118,31 @@ describe('TalkCard', () => {
         expect(description).toHaveClass('line-clamp-5');
       });
     });
+
+    describe('Rating Display', () => {
+      it('displays star icon for 5-star rated talks', () => {
+        const talk = createTalk({ rating: 5 });
+        renderTalkCard({ talk });
+
+        const starIcon = screen.getByRole('img', { name: /Top rated/i });
+        expect(starIcon).toBeInTheDocument();
+        expect(starIcon).toHaveAttribute('title', 'Top rated');
+      });
+
+      it('does not display star icon for talks with rating less than 5', () => {
+        const talk = createTalk({ rating: 4 });
+        renderTalkCard({ talk });
+
+        expect(screen.queryByRole('img', { name: /Top rated/i })).not.toBeInTheDocument();
+      });
+
+      it('does not display star icon for talks without rating', () => {
+        const talk = createTalk({ rating: undefined });
+        renderTalkCard({ talk });
+
+        expect(screen.queryByRole('img', { name: /Top rated/i })).not.toBeInTheDocument();
+      });
+    });
   });
 
   describe('Interactions', () => {
@@ -262,6 +287,16 @@ describe('TalkCard', () => {
       // Watch link accessibility
       const watchLink = screen.getByRole('link', { name: /watch test talk/i });
       expect(watchLink).toHaveAttribute('aria-label', 'Watch Test Talk');
+    });
+
+    it('has proper accessibility attributes for rating star', () => {
+      const talk = createTalk({ rating: 5 });
+      renderTalkCard({ talk });
+
+      const starIcon = screen.getByRole('img', { name: /Top rated/i });
+      expect(starIcon).toHaveAttribute('role', 'img');
+      expect(starIcon).toHaveAttribute('aria-label', 'Top rated');
+      expect(starIcon).toHaveAttribute('title', 'Top rated');
     });
   });
 

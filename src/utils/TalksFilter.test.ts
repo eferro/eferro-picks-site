@@ -1028,6 +1028,65 @@ describe('TalksFilter', () => {
     });
   });
 
+  describe('Rating Filter', () => {
+    it('should include talks with exact rating match', () => {
+      const fiveStarTalk = createTalk({ rating: 5 });
+      const fourStarTalk = createTalk({ rating: 4 });
+      const threeStarTalk = createTalk({ rating: 3 });
+
+      const filter = new TalksFilter({ rating: 5 });
+      const result = filter.filter([fiveStarTalk, fourStarTalk, threeStarTalk]);
+
+      expect(result).toEqual([fiveStarTalk]);
+    });
+
+    it('should exclude talks with different ratings', () => {
+      const fourStarTalk = createTalk({ rating: 4 });
+      const filter = new TalksFilter({ rating: 5 });
+
+      expect(filter.filter([fourStarTalk])).toEqual([]);
+    });
+
+    it('should include talks without rating when filtering for null rating', () => {
+      const ratedTalk = createTalk({ rating: 5 });
+      const unratedTalk = createTalk({ rating: undefined });
+
+      const filter = new TalksFilter({ rating: null });
+      const result = filter.filter([ratedTalk, unratedTalk]);
+
+      expect(result).toEqual([ratedTalk, unratedTalk]);
+    });
+
+    it('should exclude unrated talks when filtering for specific rating', () => {
+      const unratedTalk = createTalk({ rating: undefined });
+      const filter = new TalksFilter({ rating: 5 });
+
+      expect(filter.filter([unratedTalk])).toEqual([]);
+    });
+
+    it('should parse rating from URL parameters', () => {
+      const filter = TalksFilter.fromUrlParams('rating=5');
+      expect(filter.rating).toBe(5);
+    });
+
+    it('should handle invalid rating in URL parameters', () => {
+      const filter = TalksFilter.fromUrlParams('rating=invalid');
+      expect(filter.rating).toBeNull();
+    });
+
+    it('should include rating in URL params when set', () => {
+      const filter = new TalksFilter({ rating: 5 });
+      const params = filter.toParams();
+      expect(params).toContain('rating=5');
+    });
+
+    it('should not include rating in URL params when null', () => {
+      const filter = new TalksFilter({ rating: null });
+      const params = filter.toParams();
+      expect(params).not.toContain('rating');
+    });
+  });
+
   describe('parseValidInt - Radix Edge Cases', () => {
     it('should parse octal-looking strings correctly with radix 10', () => {
       const filter = TalksFilter.fromUrlParams('year=08');

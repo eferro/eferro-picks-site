@@ -32,7 +32,8 @@ export function transformAirtableItemToTalk(item: AirtableItem): Talk {
     conference_name: item.conference_name,
     format,
     blog_url: item.blog_url || undefined,
-    registered_at: item.registered_at
+    registered_at: item.registered_at,
+    rating: item.rating
   };
 }
 

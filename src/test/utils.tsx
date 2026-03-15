@@ -78,7 +78,8 @@ export const mockTalk: Talk = {
   description: 'Test description',
   notes: undefined,
   format: 'talk',
-  registered_at: '2023-01-01T00:00:00Z'
+  registered_at: '2023-01-01T00:00:00Z',
+  rating: undefined
 };
 
 // Types for mock handlers

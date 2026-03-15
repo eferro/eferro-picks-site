@@ -28,7 +28,8 @@ describe('TalkDetail', () => {
     url: 'https://example.com',
     description: 'Test description',
     notes: 'Test notes',
-    year: 2023
+    year: 2023,
+    rating: undefined
   };
 
   beforeEach(() => {
@@ -61,6 +62,57 @@ describe('TalkDetail', () => {
     expect(screen.getByText('Test description')).toBeInTheDocument();
     expect(screen.getByText('Key Notes')).toBeInTheDocument();
     expect(screen.getByText('Test notes')).toBeInTheDocument();
+  });
+
+  describe('Rating Display', () => {
+    it('displays star icon for 5-star rated talks', () => {
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks: [{ ...mockTalk, rating: 5 }],
+        loading: false,
+        error: null
+      }));
+      renderComponent();
+
+      const starIcon = screen.getByRole('img', { name: /Top rated/i });
+      expect(starIcon).toBeInTheDocument();
+      expect(starIcon).toHaveAttribute('title', 'Top rated');
+    });
+
+    it('does not display star icon for talks with rating less than 5', () => {
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks: [{ ...mockTalk, rating: 4 }],
+        loading: false,
+        error: null
+      }));
+      renderComponent();
+
+      expect(screen.queryByRole('img', { name: /Top rated/i })).not.toBeInTheDocument();
+    });
+
+    it('does not display star icon for talks without rating', () => {
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks: [{ ...mockTalk, rating: undefined }],
+        loading: false,
+        error: null
+      }));
+      renderComponent();
+
+      expect(screen.queryByRole('img', { name: /Top rated/i })).not.toBeInTheDocument();
+    });
+
+    it('has proper accessibility attributes for rating star', () => {
+      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+        talks: [{ ...mockTalk, rating: 5 }],
+        loading: false,
+        error: null
+      }));
+      renderComponent();
+
+      const starIcon = screen.getByRole('img', { name: /Top rated/i });
+      expect(starIcon).toHaveAttribute('role', 'img');
+      expect(starIcon).toHaveAttribute('aria-label', 'Top rated');
+      expect(starIcon).toHaveAttribute('title', 'Top rated');
+    });
   });
 
   // Author Filter tests removed - speakers are no longer clickeable (migrated to unified search)
