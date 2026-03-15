@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { createElement } from 'react';
 import {
   MockDataFactory,
@@ -13,6 +13,13 @@ vi.mock('../../hooks/useTalks', () => ({
 }));
 
 describe('Consolidated Test Utilities', () => {
+  beforeEach(() => {
+    vi.useRealTimers();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+  });
   describe('MockDataFactory', () => {
     it('creates a default mock talk', () => {
       const talk = MockDataFactory.createTalk();

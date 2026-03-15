@@ -1199,4 +1199,245 @@ describe('TalksFilter', () => {
       });
     });
   });
+
+  describe('Topics Array Logic - Critical Mutation Tests', () => {
+    it('should require ALL topics to match when multiple topics specified (AND logic)', () => {
+      const filter = new TalksFilter({ topics: ['React', 'TypeScript'] });
+      const talks = [
+        createTalk({ id: '1', topics: ['React'] }),               // Should NOT match (missing TypeScript)
+        createTalk({ id: '2', topics: ['TypeScript'] }),          // Should NOT match (missing React)
+        createTalk({ id: '3', topics: ['React', 'TypeScript'] }), // Should match (has both)
+        createTalk({ id: '4', topics: ['React', 'TypeScript', 'Testing'] }), // Should match (has both + more)
+      ];
+      const result = filter.filter(talks);
+      expect(result).toHaveLength(2);
+      expect(result.map(t => t.id)).toEqual(['3', '4']);
+    });
+
+    it('should match all talks when topics array is empty', () => {
+      const filter = new TalksFilter({ topics: [] });
+      const talks = [
+        createTalk({ id: '1', topics: ['React'] }),
+        createTalk({ id: '2', topics: [] }),
+      ];
+      const result = filter.filter(talks);
+      expect(result).toHaveLength(2); // Empty topics filter should match all
+    });
+
+    it('should handle edge case of talk with empty topics array', () => {
+      const filter = new TalksFilter({ topics: ['React'] });
+      const talkWithEmptyTopics = createTalk({ id: '1', topics: [] });
+      const result = filter.filter([talkWithEmptyTopics]);
+      expect(result).toHaveLength(0); // Talk with no topics can't match required topics
+    });
+  });
+
+  describe('Formats Array Logic - Critical Mutation Tests', () => {
+    it('should use OR logic for multiple formats', () => {
+      const filter = new TalksFilter({ formats: ['video', 'podcast'] });
+      const talks = [
+        createTalk({ id: '1', format: 'video' }),    // Should match
+        createTalk({ id: '2', format: 'podcast' }),  // Should match
+        createTalk({ id: '3', format: 'article' }),  // Should NOT match
+      ];
+      const result = filter.filter(talks);
+      expect(result).toHaveLength(2);
+      expect(result.map(t => t.id)).toEqual(['1', '2']);
+    });
+
+    it('should match all talks when formats array is empty', () => {
+      const filter = new TalksFilter({ formats: [] });
+      const talks = [
+        createTalk({ id: '1', format: 'video' }),
+        createTalk({ id: '2', format: 'podcast' }),
+      ];
+      const result = filter.filter(talks);
+      expect(result).toHaveLength(2); // Empty formats filter should match all
+    });
+
+    it('should default undefined format to "talk" format', () => {
+      const filter = new TalksFilter({ formats: ['talk'] });
+      const talkWithUndefinedFormat = createTalk({ id: '1', format: undefined });
+      const result = filter.filter([talkWithUndefinedFormat]);
+      expect(result).toHaveLength(1); // undefined format should be treated as 'talk'
+    });
+  });
+
+  describe('Search Logic - Critical Mutation Tests', () => {
+    it('should use AND logic for multiple search terms', () => {
+      const talks = [
+        createTalk({ id: '1', title: 'Domain Driven Design' }),     // Has both terms
+        createTalk({ id: '2', title: 'Domain Modeling' }),          // Has 'Domain' but not 'Design'
+        createTalk({ id: '3', title: 'Good Design Practices' }),    // Has 'Design' but not 'Domain'
+        createTalk({ id: '4', title: 'Other Topic' }),              // Has neither term
+      ];
+
+      const filter = new TalksFilter({ query: 'Domain Design' });
+      const result = filter.filter(talks);
+
+      expect(result).toHaveLength(1); // Only the first talk has both terms
+      expect(result[0].id).toBe('1');
+    });
+
+    it('should catch empty string mutations in search', () => {
+      const talks = [
+        createTalk({ id: '1', title: 'React Testing' }),
+        createTalk({ id: '2', title: 'Vue Development' }),
+      ];
+
+      // Empty query should match all talks
+      const emptyFilter = new TalksFilter({ query: '' });
+      expect(emptyFilter.filter(talks)).toHaveLength(2);
+
+      // Whitespace-only query should match all talks
+      const whitespaceFilter = new TalksFilter({ query: '   \n\t   ' });
+      expect(whitespaceFilter.filter(talks)).toHaveLength(2);
+
+      // Non-empty query should filter to matching talks only
+      const realFilter = new TalksFilter({ query: 'React' });
+      expect(realFilter.filter(talks)).toHaveLength(1);
+      expect(realFilter.filter(talks)[0].id).toBe('1');
+    });
+
+    it('should search across all fields with AND logic', () => {
+      const talk = createTalk({
+        id: '1',
+        title: 'React Talk',
+        description: 'Testing strategies',
+        speakers: ['Kent Beck'],
+        topics: ['TDD'],
+        notes: 'Performance insights'
+      });
+
+      // All terms must be found across different fields
+      const filter = new TalksFilter({ query: 'React Kent Performance' });
+      const result = filter.filter([talk]);
+
+      expect(result).toHaveLength(1); // All terms found in different fields
+
+      // Missing one term should fail
+      const failingFilter = new TalksFilter({ query: 'React Kent Missing' });
+      const failingResult = failingFilter.filter([talk]);
+
+      expect(failingResult).toHaveLength(0); // 'Missing' not found anywhere
+    });
+  });
+
+  describe('Boolean Logic Mutations - Critical Tests', () => {
+    it('should detect logical operator mutations in filter combination', () => {
+      const talk = createTalk({
+        id: '1',
+        year: 2023,
+        conference_name: 'TestConf',
+        notes: 'Good notes',
+        format: 'video',
+        title: 'Domain Talk'
+      });
+
+      // Test that ALL conditions must be true (AND logic)
+      const allTrueFilter = new TalksFilter({
+        yearType: 'specific',
+        year: 2023,
+        conference: 'TestConf',
+        hasNotes: true,
+        formats: ['video'],
+        query: 'Domain'
+      });
+
+      expect(allTrueFilter.filter([talk])).toHaveLength(1);
+
+      // Change one condition to make it false - should fail if AND logic is working
+      const oneFalseFilter = new TalksFilter({
+        yearType: 'specific',
+        year: 2022, // Wrong year
+        conference: 'TestConf',
+        hasNotes: true,
+        formats: ['video'],
+        query: 'Domain'
+      });
+
+      expect(oneFalseFilter.filter([talk])).toHaveLength(0); // Should fail with AND logic
+    });
+
+    it('should catch negation mutations in hasNotes filter', () => {
+      const talkWithNotes = createTalk({ id: '1', notes: 'Some notes' });
+      const talkWithoutNotes = createTalk({ id: '2', notes: undefined });
+
+      // hasNotes: true should only match talks WITH notes
+      const hasNotesFilter = new TalksFilter({ hasNotes: true });
+      const withNotesResult = hasNotesFilter.filter([talkWithNotes, talkWithoutNotes]);
+      expect(withNotesResult).toHaveLength(1);
+      expect(withNotesResult[0].id).toBe('1');
+
+      // hasNotes: false should match talks WITHOUT notes requirement (all talks)
+      const noNotesFilter = new TalksFilter({ hasNotes: false });
+      const noNotesResult = noNotesFilter.filter([talkWithNotes, talkWithoutNotes]);
+      expect(noNotesResult).toHaveLength(2); // Both should match when hasNotes is false
+    });
+
+    it('should catch quickWatch boolean logic mutations', () => {
+      const shortTalk = createTalk({ id: '1', duration: 600 }); // 10 minutes
+      const longTalk = createTalk({ id: '2', duration: 1200 }); // 20 minutes
+      const zeroTalk = createTalk({ id: '3', duration: 0 }); // 0 minutes
+
+      // quickWatch: true should only match short talks with duration > 0 AND < 900
+      const quickFilter = new TalksFilter({ quickWatch: true });
+      const quickResult = quickFilter.filter([shortTalk, longTalk, zeroTalk]);
+      expect(quickResult).toHaveLength(1);
+      expect(quickResult[0].id).toBe('1');
+
+      // quickWatch: false should match all talks
+      const allFilter = new TalksFilter({ quickWatch: false });
+      const allResult = allFilter.filter([shortTalk, longTalk, zeroTalk]);
+      expect(allResult).toHaveLength(3);
+    });
+  });
+
+  describe('isEmpty() Logic Mutations', () => {
+    it('should catch OR vs AND mutations in isEmpty check', () => {
+      // A filter is empty only when ALL conditions are in default state
+      // This would catch mutations like && -> || in the isEmpty logic
+
+      const completelyEmpty = new TalksFilter();
+      expect(completelyEmpty.isEmpty()).toBe(true);
+
+      // Each single non-default value should make isEmpty return false
+      const filters = [
+        new TalksFilter({ year: 2023 }),
+        new TalksFilter({ yearType: 'last2' }),
+        new TalksFilter({ conference: 'Test' }),
+        new TalksFilter({ hasNotes: true }),
+        new TalksFilter({ rating: 5 }),
+        new TalksFilter({ query: 'test' }),
+        new TalksFilter({ formats: ['video'] }),
+        new TalksFilter({ quickWatch: true }),
+      ];
+
+      filters.forEach((filter) => {
+        expect(filter.isEmpty()).toBe(false); // Each should be non-empty
+      });
+
+      // Multiple non-default values should definitely be non-empty
+      const multipleFilters = new TalksFilter({
+        year: 2023,
+        conference: 'Test',
+        hasNotes: true
+      });
+      expect(multipleFilters.isEmpty()).toBe(false);
+    });
+
+    it('should handle query string edge cases in isEmpty', () => {
+      // Empty string should count as empty
+      const emptyQuery = new TalksFilter({ query: '' });
+      expect(emptyQuery.isEmpty()).toBe(true);
+
+      // Whitespace-only should count as empty (after trim)
+      const whitespaceQuery = new TalksFilter({ query: '   \n\t   ' });
+      expect(whitespaceQuery.isEmpty()).toBe(true);
+
+      // Actual content should count as non-empty
+      const realQuery = new TalksFilter({ query: 'test' });
+      expect(realQuery.isEmpty()).toBe(false);
+    });
+  });
 });

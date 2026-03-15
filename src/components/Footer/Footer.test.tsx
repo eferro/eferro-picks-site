@@ -1,9 +1,17 @@
 import { screen } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { renderWithRouter } from '../../test/utils';
 import { Footer } from './index';
 
 describe('Footer', () => {
+  beforeEach(() => {
+    vi.useRealTimers();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
   it('displays current year and website link', () => {
     renderWithRouter(<Footer />);
     const year = new Date().getFullYear().toString();
