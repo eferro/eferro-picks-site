@@ -1,174 +1,141 @@
-import { AirtableItem } from '../../hooks/useTalks';
+import { Talk } from '../../types/talks';
 
-export const mockTalks: AirtableItem[] = [
+export const mockTalks: Talk[] = [
   {
-    airtable_id: 'test-1',
-    name: 'Test Talk',
+    id: 'test-1',
+    title: 'Test Talk',
     url: 'https://example.com',
     duration: 1800,
-    topics_names: ['test'],
-    speakers_names: ['Test Speaker'],
+    topics: ['test'],
+    speakers: ['Test Speaker'],
     description: 'A test talk description',
     core_topic: 'test',
     notes: 'Test notes',
-    language: 'English',
     rating: 5,
-    resource_type: 'talk',
+    format: 'talk',
     year: 2024,
     conference_name: 'Test Conference'
   }
 ];
 
-export const mockTalksWithEmptyNotes: AirtableItem[] = [
+export const mockTalksWithEmptyNotes: Talk[] = [
   {
-    airtable_id: 'test-2',
-    name: 'Empty Notes Talk',
+    id: 'test-2',
+    title: 'Empty Notes Talk',
     url: 'https://example.com/empty',
     duration: 1800,
-    topics_names: ['test'],
-    speakers_names: ['Test Speaker'],
+    topics: ['test'],
+    speakers: ['Test Speaker'],
     description: 'A talk with empty notes',
     core_topic: 'test',
-    notes: '   ', // Empty notes with whitespace
-    language: 'English',
+    notes: undefined, // Empty notes are now undefined after processing
     rating: 5,
-    resource_type: 'talk',
+    format: 'talk',
     year: 2024,
     conference_name: 'Test Conference'
   }
 ];
 
-export const mockTalksWithMixedLanguages: AirtableItem[] = [
+export const mockTalksWithMixedLanguages: Talk[] = [
   {
-    airtable_id: 'test-1',
-    name: 'English Talk',
+    id: 'test-1',
+    title: 'English Talk',
     url: 'https://example.com',
     duration: 1800,
-    topics_names: ['test'],
-    speakers_names: ['Test Speaker'],
+    topics: ['test'],
+    speakers: ['Test Speaker'],
     description: 'An English talk',
     core_topic: 'test',
     notes: 'Test notes',
-    language: 'English',
     rating: 5,
-    resource_type: 'talk',
-    year: 2024,
-    conference_name: 'Test Conference'
-  },
-  {
-    airtable_id: 'test-2',
-    name: 'Spanish Talk',
-    url: 'https://example.com/es',
-    duration: 1800,
-    topics_names: ['test'],
-    speakers_names: ['Test Speaker'],
-    description: 'A Spanish talk',
-    core_topic: 'test',
-    notes: 'Test notes',
-    language: 'Spanish',
-    rating: 5,
-    resource_type: 'talk',
+    format: 'talk',
     year: 2024,
     conference_name: 'Test Conference'
   }
+  // Spanish talk would be filtered out during data loading, so only English talk remains
 ];
 
-export const mockTalksWithMixedRatings: AirtableItem[] = [
+export const mockTalksWithMixedRatings: Talk[] = [
   {
-    airtable_id: 'test-1',
-    name: 'High Rating Talk',
+    id: 'test-1',
+    title: 'High Rating Talk',
     url: 'https://example.com',
     duration: 1800,
-    topics_names: ['test'],
-    speakers_names: ['Test Speaker'],
+    topics: ['test'],
+    speakers: ['Test Speaker'],
     description: 'A high rating talk',
     core_topic: 'test',
     notes: 'Test notes',
-    language: 'English',
     rating: 5,
-    resource_type: 'talk',
+    format: 'talk',
     year: 2024,
     conference_name: 'Test Conference'
   },
   {
-    airtable_id: 'test-2',
-    name: 'Low Rating Talk',
+    id: 'test-2',
+    title: 'Low Rating Talk',
     url: 'https://example.com/low',
     duration: 1800,
-    topics_names: ['test'],
-    speakers_names: ['Test Speaker'],
+    topics: ['test'],
+    speakers: ['Test Speaker'],
     description: 'A low rating talk',
     core_topic: 'test',
     notes: 'Test notes',
-    language: 'English',
     rating: 4,
-    resource_type: 'talk',
+    format: 'talk',
     year: 2024,
     conference_name: 'Test Conference'
   }
 ];
 
-export const mockTalksWithMixedResourceTypes: AirtableItem[] = [
+export const mockTalksWithMixedResourceTypes: Talk[] = [
   {
-    airtable_id: 'test-1',
-    name: 'Valid Talk',
+    id: 'test-1',
+    title: 'Valid Talk',
     url: 'https://example.com',
     duration: 1800,
-    topics_names: ['test'],
-    speakers_names: ['Test Speaker'],
+    topics: ['test'],
+    speakers: ['Test Speaker'],
     description: 'A valid talk',
     core_topic: 'test',
     notes: 'Test notes',
-    language: 'English',
     rating: 5,
-    resource_type: 'talk',
-    year: 2024,
-    conference_name: 'Test Conference'
-  },
-  {
-    airtable_id: 'test-2',
-    name: 'Invalid Resource',
-    url: 'https://example.com/invalid',
-    duration: 1800,
-    topics_names: ['test'],
-    speakers_names: ['Test Speaker'],
-    description: 'An invalid resource',
-    core_topic: 'test',
-    notes: 'Test notes',
-    language: 'English',
-    rating: 5,
-    resource_type: 'invalid',
+    format: 'talk',
     year: 2024,
     conference_name: 'Test Conference'
   }
+  // Invalid resource would be filtered out during data loading
 ];
 
-export const mockTalksWithAllFields: AirtableItem[] = [
+export const mockTalksWithAllFields: Talk[] = [
   {
-    airtable_id: 'test-1',
-    name: 'Test Talk',
+    id: 'test-1',
+    title: 'Test Talk',
     url: 'https://example.com',
     duration: 1800,
-    topics_names: ['test', 'example'],
-    speakers_names: ['Speaker 1', 'Speaker 2'],
+    topics: ['test', 'example'],
+    speakers: ['Speaker 1', 'Speaker 2'],
     description: 'A test talk description',
     core_topic: 'test',
     notes: 'Test notes',
-    language: 'English',
     rating: 5,
-    resource_type: 'talk',
+    format: 'talk',
     year: 2024,
     conference_name: 'Test Conference'
   }
 ];
 
-export const mockTalksWithMissingFields: AirtableItem[] = [
+export const mockTalksWithMissingFields: Talk[] = [
   {
-    airtable_id: 'test-1',
-    name: 'Test Talk',
+    id: 'test-1',
+    title: 'Test Talk',
     url: 'https://example.com',
-    language: 'English',
+    duration: 0,
+    topics: [],
+    speakers: [],
+    description: '',
+    core_topic: '',
     rating: 5,
-    resource_type: 'talk'
+    format: 'talk'
   }
 ];

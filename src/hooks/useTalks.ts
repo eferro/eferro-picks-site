@@ -1,25 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Talk } from '../types/talks';
-import { processTalks } from '../utils/talks';
-
-export interface AirtableItem {
-  airtable_id: string;
-  name: string;
-  url: string;
-  duration: number;
-  topics_names: string[];
-  speakers_names: string[];
-  description: string;
-  core_topic: string;
-  notes?: string;
-  language: string;
-  rating: number;
-  resource_type: string;
-  year: number;
-  conference_name: string;
-  blog_url?: string;
-  registered_at?: string;
-}
 
 const MAX_RETRIES = 3;
 const RETRY_DELAY = 1000; // 1 second
@@ -64,14 +44,18 @@ export function useTalks(filterByRating: boolean = false) {
       try {
         setError(null);
         const response = await fetchWithRetry(`${import.meta.env.BASE_URL}data/talks.json`);
-        const data: AirtableItem[] = await response.json();
-        
+        const data: Talk[] = await response.json();
+
         if (!Array.isArray(data)) {
           throw new Error('Invalid data format: expected an array of talks');
         }
-        
-        const processedTalks = processTalks(data, filterByRating);
-        setTalks(processedTalks);
+
+        // Apply rating filter if requested
+        const filteredTalks = filterByRating
+          ? data.filter(talk => talk.rating === 5)
+          : data;
+
+        setTalks(filteredTalks);
       } catch (err) {
         const errorMessage = err instanceof Error ? err.message : 'Unknown error';
         setError(new Error(`Unable to load talks: ${errorMessage}. Please check your connection and try again.`));

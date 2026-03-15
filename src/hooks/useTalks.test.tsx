@@ -1,18 +1,10 @@
 import { renderHook, waitFor } from '@testing-library/react';
 import { useTalks } from './useTalks';
 import { TestProvider } from '../test/context/TestContext';
-import { processTalks } from '../utils/talks';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 // Store original fetch
 const originalFetch = global.fetch;
-
-// Mock the processTalks function
-vi.mock('../utils/talks', () => ({
-  ...vi.importActual('../utils/talks'),
-  processTalks: vi.fn(),
-  hasMeaningfulNotes: vi.fn().mockImplementation((notes: string) => notes.trim().length > 0)
-}));
 
 // Helper functions for mocking
 const mockFetchResponse = (data: unknown) => {
@@ -38,9 +30,7 @@ const mockFetchFailure = () => {
   );
 };
 
-const mockProcessedResponse = (data: unknown) => {
-  (processTalks as ReturnType<typeof vi.fn>).mockReturnValue(data);
-};
+// Mock response helper for normalized Talk[] data
 
 // Helper function for rendering hook and waiting for load
 const renderUseTalksHook = async (timeout: number = 1000) => {
@@ -57,24 +47,7 @@ const renderUseTalksHook = async (timeout: number = 1000) => {
 };
 
 describe('useTalks', () => {
-  const mockAirtableItem = {
-    airtable_id: '1',
-    name: 'Test Talk',
-    url: 'https://example.com',
-    duration: 30,
-    topics_names: ['topic1', 'topic2'],
-    speakers_names: ['speaker1', 'speaker2'],
-    description: 'Test description',
-    core_topic: 'test',
-    notes: 'Test notes',
-    language: 'English',
-    rating: 5,
-    resource_type: 'talk',
-    year: 2024,
-    conference_name: 'Test Conference'
-  };
-
-  const mockProcessedTalk = {
+  const mockTalk = {
     id: '1',
     title: 'Test Talk',
     url: 'https://example.com',
@@ -86,15 +59,14 @@ describe('useTalks', () => {
     notes: 'Test notes',
     year: 2024,
     conference_name: 'Test Conference',
-    conference: 'Test Conference',
-    language: 'English'
+    format: 'talk',
+    rating: 5
   };
 
   beforeEach(() => {
     // Reset mocks before each test
     vi.clearAllMocks();
-    mockFetchResponse([mockAirtableItem]);
-    mockProcessedResponse([mockProcessedTalk]);
+    mockFetchResponse([mockTalk]);
   });
 
   afterEach(() => {
@@ -104,13 +76,13 @@ describe('useTalks', () => {
     vi.restoreAllMocks();
   });
 
-  it('loads and processes talks correctly', async () => {
+  it('loads talks correctly from normalized JSON', async () => {
     const { result } = await renderUseTalksHook();
 
     // Check final state
     expect(result.current.error).toBeNull();
     expect(result.current.talks).toHaveLength(1);
-    expect(result.current.talks[0]).toEqual(mockProcessedTalk);
+    expect(result.current.talks[0]).toEqual(mockTalk);
   });
 
   it('handles fetch error correctly', async () => {
@@ -123,31 +95,16 @@ describe('useTalks', () => {
     expect(result.current.talks).toEqual([]);
   });
 
-  it('filters out invalid resource types', async () => {
-    const invalidItem = { ...mockAirtableItem, resource_type: 'invalid' };
-    mockFetchResponse([invalidItem]);
-    mockProcessedResponse([]);
-
-    const { result } = await renderUseTalksHook();
-
-    // Check that invalid items are filtered out
-    expect(result.current.error).toBeNull();
-    expect(result.current.talks).toEqual([]);
-  });
-
   it('correctly handles talks with empty notes', async () => {
-    const emptyNotesItem = { ...mockAirtableItem, Notes: '' };
-    const talkWithEmptyNotes = { ...mockProcessedTalk, notes: '' };
-    
-    mockFetchResponse([emptyNotesItem]);
-    mockProcessedResponse([talkWithEmptyNotes]);
+    const talkWithEmptyNotes = { ...mockTalk, notes: undefined };
+    mockFetchResponse([talkWithEmptyNotes]);
 
     const { result } = await renderUseTalksHook();
 
     // Check that empty notes are handled correctly
     expect(result.current.error).toBeNull();
     expect(result.current.talks).toHaveLength(1);
-    expect(result.current.talks[0].notes).toBe('');
+    expect(result.current.talks[0].notes).toBeUndefined();
   });
 
   it('handles network errors correctly with retry logic', async () => {
@@ -214,47 +171,26 @@ describe('useTalks', () => {
     expect(result.current.talks).toHaveLength(0);
   });
 
-  it('filters talks by language', async () => {
-    const nonEnglishTalk = { ...mockAirtableItem, language: 'Spanish' };
-    const englishTalk = { ...mockAirtableItem, language: 'English' };
-    const processedEnglishTalk = { ...mockProcessedTalk };
-
-    mockFetchResponse([nonEnglishTalk, englishTalk]);
-    mockProcessedResponse([processedEnglishTalk]);
-
-    const { result } = await renderUseTalksHook();
-
-    // Verify only English talks are included
-    expect(result.current.talks).toHaveLength(1);
-    expect(result.current.talks[0]).toEqual(processedEnglishTalk);
-  });
-
-  it('filters talks by rating', async () => {
-    const lowRatingTalk = { ...mockAirtableItem, rating: 2 };
-    const highRatingTalk = { ...mockAirtableItem, rating: 5 };
-    const processedHighRatingTalk = { ...mockProcessedTalk };
+  it('filters talks by rating when requested', async () => {
+    const lowRatingTalk = { ...mockTalk, rating: 2 };
+    const highRatingTalk = { ...mockTalk, rating: 5 };
 
     mockFetchResponse([lowRatingTalk, highRatingTalk]);
-    mockProcessedResponse([processedHighRatingTalk]);
 
-    const { result } = await renderUseTalksHook();
+    // Test with rating filter enabled
+    const { result } = renderHook(() => useTalks(true), { wrapper: TestProvider });
 
-    // Verify only high rating talks are included
+    await waitFor(() => {
+      expect(result.current.loading).toBe(false);
+    });
+
+    // Verify only 5-star talks are included
     expect(result.current.talks).toHaveLength(1);
-    expect(result.current.talks[0]).toEqual(processedHighRatingTalk);
+    expect(result.current.talks[0].rating).toBe(5);
   });
 
-  it('handles missing optional fields', async () => {
-    const rawTalkWithMissingFields = {
-      airtable_id: 'test-1',
-      name: 'Test Talk',
-      url: 'https://example.com',
-      language: 'English',
-      rating: 5,
-      resource_type: 'talk'
-    };
-
-    const transformedTalkWithDefaults = {
+  it('handles talks with minimal fields', async () => {
+    const minimalTalk = {
       id: 'test-1',
       title: 'Test Talk',
       url: 'https://example.com',
@@ -263,17 +199,16 @@ describe('useTalks', () => {
       speakers: [],
       description: '',
       core_topic: '',
-      language: 'English',
-      conference: '',
+      rating: 5,
+      format: 'talk',
       conference_name: ''
     };
 
-    mockFetchResponse([rawTalkWithMissingFields]);
-    mockProcessedResponse([transformedTalkWithDefaults]);
+    mockFetchResponse([minimalTalk]);
 
     const { result } = await renderUseTalksHook();
 
-    // Verify default values for missing fields
+    // Verify minimal fields are handled correctly
     expect(result.current.error).toBeNull();
     expect(result.current.talks).toHaveLength(1);
     const talk = result.current.talks[0];
@@ -283,6 +218,5 @@ describe('useTalks', () => {
     expect(talk.description).toBe('');
     expect(talk.core_topic).toBe('');
     expect(talk.notes).toBeUndefined();
-    expect(talk.conference_name).toBe('');
   });
 }); 
