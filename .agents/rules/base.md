@@ -34,6 +34,27 @@ This is **eferro's picks** - a curated collection of software development talks 
 
 ## Development Guidelines
 
+### Make Target Usage (MANDATORY)
+
+**ALL development operations MUST use Make targets** for consistency, documentation, and reliability:
+
+```bash
+make help                 # Always start here - shows all available targets
+make validate            # REQUIRED before every commit - complete validation
+make test                # Fast testing during development
+make dev                 # Development server
+make build               # Production builds
+```
+
+**Why Make targets are mandatory:**
+- **Centralized commands** - No need to memorize npm script parameters
+- **Clear documentation** - Each target is self-documenting with emoji feedback
+- **Consistent execution** - Same commands work across all environments
+- **Validation protocol** - `make validate` ensures quality standards
+- **Future-proof** - Commands can evolve without breaking workflows
+
+**NEVER use direct npm commands** - they bypass our standardized workflow and quality gates.
+
 ### Code Quality & Type Safety
 
 **Complete Type Safety Requirements:**
@@ -108,7 +129,9 @@ setSearchParams(nextFilter.toParams());
 ```
 
 **Performance & Isolation Standards:**
-- **Run tests with:** `npm test -- --run` (NEVER use watch mode)
+- **Run tests with:** `make test` (uses --run flag, NEVER watch mode)
+- **Coverage reports:** `make test-coverage` for detailed analysis
+- **Visual interface:** `make test-ui` for debugging (development only)
 - **happy-dom environment** provides 3x faster performance than jsdom
 - **Cached mocks** reduce test overhead
 - **Deterministic time** using `vi.useFakeTimers()` for date-dependent tests
@@ -143,35 +166,35 @@ src/
 1. **Write failing tests first** (TDD approach)
 2. **Implement minimal code** to make tests pass
 3. **Refactor only after tests are green**
-4. **Run all tests** after each change: `npm test -- --run`
+4. **Validate after each change:** `make validate`
 5. **Commit frequently** with descriptive messages
+
+**Development cycle:**
+- `make test` - Quick test feedback during development
+- `make validate` - Complete validation before commit
+- `make test-coverage` - Verify coverage improvements
 
 ### Pre-Commit Validation Protocol
 
 **MANDATORY: Before any `git commit`, AI assistants MUST:**
 
-1. **🧪 Test Validation**
-   ```bash
-   npm test -- --run
-   ```
-   - Ensure ALL tests pass (0 failures)
-   - Verify no test regressions
+Use the centralized Make target for complete validation:
 
-2. **🔍 Linting Validation**
-   ```bash
-   npm run lint
-   ```
-   - Ensure 0 errors, 0 warnings
-   - Maintain 100% clean code quality
+```bash
+make validate
+```
 
-3. **📝 Type Check** (when relevant)
-   ```bash
-   npx tsc --noEmit
-   ```
-   - Verify TypeScript compilation
-   - Catch type errors early
+This single command executes the full protocol:
+1. **🧪 Test Validation** - Runs all tests with --run flag
+2. **🔍 Linting Validation** - ESLint with 0 errors/warnings requirement
+3. **📝 Type Check** - TypeScript compilation verification
 
-**Only commit after ALL validations pass.** This maintains our high-quality, deployable codebase.
+**Individual validation steps** (if needed):
+- `make test` - Run tests only
+- `make lint` - Run linting only
+- `make typecheck` - Run type checking only
+
+**Only commit after `make validate` passes completely.** This maintains our high-quality, deployable codebase.
 
 ### When Refactoring
 
@@ -503,6 +526,7 @@ it('should navigate to talk detail when Enter key is pressed', () => {
 ```
 
 ### ❌ General Development Anti-Patterns:
+- **Use direct npm commands instead of Make targets**
 - Manipulate URL parameters directly (bypass TalksFilter)
 - Create duplicate filter logic in components
 - Skip writing tests (breaks TDD workflow)
@@ -511,25 +535,38 @@ it('should navigate to talk detail when Enter key is pressed', () => {
 - Use watch mode for tests in CI/development
 - Test implementation details instead of behavior
 - Skip accessibility testing
+- Skip `make validate` before committing
 
 ### ✅ Required Development Patterns:
+- **Use Make targets for ALL operations** (`make validate`, `make test`, etc.)
 - Use TalksFilter for ALL filtering operations
 - Write tests BEFORE implementation (TDD)
 - Use TypeScript interfaces for all data structures
 - Handle loading/error states properly
 - Follow established code patterns consistently
-- Run tests with `--run` flag (performance + consistency)
+- Complete validation before every commit (`make validate`)
 - Test user behavior, not internal implementation
 - Include accessibility testing for all interactive components
 
 ## Development Workflow
 
 1. **Understand the requirement** - read existing code and tests
-2. **Write failing tests** that describe the desired behavior
+2. **Write failing tests** that describe the desired behavior (`make test` for feedback)
 3. **Implement minimal code** to make tests pass
-4. **Refactor if needed** while keeping tests green
-5. **Run full test suite** to ensure no regressions
+4. **Refactor if needed** while keeping tests green (`make test` continuously)
+5. **Complete validation** before commit (`make validate`)
 6. **Commit changes** with descriptive messages
+
+**Command sequence for typical feature development:**
+```bash
+make test                # Verify current state
+# Write failing tests
+make test                # Confirm tests fail as expected
+# Implement feature
+make test                # Verify tests now pass
+make validate           # Complete pre-commit validation
+git add . && git commit  # Commit with confidence
+```
 
 ## Systematic Code Quality Improvement
 
@@ -553,22 +590,34 @@ it('should navigate to talk detail when Enter key is pressed', () => {
    - Maintain 100% passing tests throughout cleanup
    - Never compromise test coverage for code quality fixes
 
-## Quick Reference Commands
+## Make Target Reference
+
+**Use Make targets for all development operations:**
 
 ```bash
-# Development
-npm run dev                 # Start dev server
-npm run build              # Build for production
-npm run lint               # Run ESLint
+# Complete validation (PRE-COMMIT REQUIRED)
+make validate             # Full validation: tests + lint + typecheck
 
-# Testing (ALWAYS use --run flag)
-npm test -- --run          # Run all tests
-npm run test:coverage      # Run with coverage
-npm run test:ui            # Visual test interface
+# Development workflow
+make dev                  # Start development server
+make build                # Build production bundle
 
-# Type checking
-npx tsc --noEmit          # Check TypeScript without building
+# Testing operations
+make test                 # Run all tests (fast, with --run flag)
+make test-coverage        # Run tests with coverage report
+make test-ui             # Visual test interface (development only)
+
+# Code quality
+make lint                 # Run ESLint validation
+make typecheck           # TypeScript type checking
+
+# Environment management
+make local-setup         # Setup local development environment
+make clean               # Clean and reinstall dependencies
+make help                # Show all available targets
 ```
+
+**Never use npm commands directly** - always use Make targets for consistency and documentation.
 
 ## Project-Specific Context
 
@@ -756,11 +805,13 @@ describe('Error Handling', () => {
 
 ### Code Quality Gates
 Before any commit, verify:
-1. ✅ All tests pass (`npm test -- --run`)
-2. ✅ Linting clean (`npm run lint`)
-3. ✅ Type checking passes (`npx tsc --noEmit`)
-4. ✅ Test coverage maintained or improved
-5. ✅ Accessibility tests included for UI changes
-6. ✅ TDD workflow followed (tests written first)
+1. ✅ **Complete validation passes (`make validate`)**
+   - All tests pass (0 failures)
+   - Linting clean (0 errors, 0 warnings)
+   - Type checking passes
+2. ✅ Test coverage maintained or improved (`make test-coverage`)
+3. ✅ Accessibility tests included for UI changes
+4. ✅ TDD workflow followed (tests written first)
+5. ✅ Make targets used instead of direct npm commands
 
 Remember: This codebase follows strict TDD principles with **exceptional Test Desiderata compliance (12/12)** and has a sophisticated centralized filtering system. The testing approach is optimized for speed, reliability, and maintainability. Always respect these architectural decisions and maintain the high quality standards established in the existing code.
