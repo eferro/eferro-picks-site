@@ -67,22 +67,20 @@ export function TalkCard({
       <div className="p-6 flex flex-col h-full">
         <div className="flex-1">
           <div className="flex justify-between items-start mb-2">
-            <div className="flex items-center">
-              <h3 className="text-lg font-semibold text-gray-900">
-                {talk.title}
-              </h3>
+            <h3 className="text-lg font-semibold text-gray-900">
+              {talk.title}
+            </h3>
+            <div className="flex items-center gap-1">
               {talk.rating === 5 && (
                 <span
                   role="img"
                   aria-label="Top rated"
                   title="Top rated"
-                  className="text-yellow-500 flex-shrink-0 ml-1"
+                  className="text-yellow-500 flex-shrink-0"
                 >
                   <StarIcon className="h-5 w-5" aria-hidden="true" />
                 </span>
               )}
-            </div>
-            <div className="flex items-center gap-1">
               {hasMeaningfulNotes(talk.notes) && (
                 <span
                   role="img"
