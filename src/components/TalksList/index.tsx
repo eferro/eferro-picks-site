@@ -105,41 +105,53 @@ export function TalksList() {
       )}
 
       {/* Filters */}
-      <div className="mb-6 flex items-center gap-4">
-        <YearFilter
-          talks={talks}
-          selectedFilter={yearFilter}
-          onFilterChange={handleYearFilterChange}
-        />
-        <FormatFilter selectedFormats={filter.formats} onChange={handleFormatChange} />
-        <Button
-          variant="toggle"
-          active={filter.quickWatch}
-          onClick={handleQuickWatchClick}
-          aria-label="Toggle Quick Watch filter"
-          icon={<BoltIcon />}
-        >
-          Quick Watch
-        </Button>
-        <Button
-          variant="toggle"
-          active={filter.hasNotes}
-          onClick={handleHasNotesClick}
-          aria-label="Toggle Has Notes filter"
-          icon={<DocumentTextIcon />}
-        >
-          Has Notes
-        </Button>
-        <Button
-          variant="toggle"
-          active={filter.rating === 5}
-          onClick={handleRatingClick}
-          aria-label="Toggle Top Picks filter"
-          title="Show only 5-star talks — the curator's top recommendations"
-          icon={<StarIcon />}
-        >
-          {filter.rating === 5 ? '⭐ Top Picks' : 'Top Picks'}
-        </Button>
+      <div className="mb-6">
+        {/* Filter dropdowns - responsive layout */}
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-4">
+          <YearFilter
+            talks={talks}
+            selectedFilter={yearFilter}
+            onFilterChange={handleYearFilterChange}
+          />
+          <FormatFilter selectedFormats={filter.formats} onChange={handleFormatChange} />
+        </div>
+
+        {/* Toggle buttons - responsive layout */}
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4">
+          <Button
+            variant="toggle"
+            active={filter.quickWatch}
+            onClick={handleQuickWatchClick}
+            aria-label="Toggle Quick Watch filter"
+            icon={<BoltIcon />}
+            className="text-sm sm:text-base"
+          >
+            <span className="hidden sm:inline">Quick Watch</span>
+            <span className="sm:hidden">Quick</span>
+          </Button>
+          <Button
+            variant="toggle"
+            active={filter.hasNotes}
+            onClick={handleHasNotesClick}
+            aria-label="Toggle Has Notes filter"
+            icon={<DocumentTextIcon />}
+            className="text-sm sm:text-base"
+          >
+            <span className="hidden sm:inline">Has Notes</span>
+            <span className="sm:hidden">Notes</span>
+          </Button>
+          <Button
+            variant="toggle"
+            active={filter.rating === 5}
+            onClick={handleRatingClick}
+            aria-label="Toggle Top Picks filter"
+            title="Show only 5-star talks — the curator's top recommendations"
+            icon={<StarIcon />}
+            className="text-sm sm:text-base"
+          >
+            {filter.rating === 5 ? '⭐ Top Picks' : 'Top Picks'}
+          </Button>
+        </div>
       </div>
 
       {/* Active filters */}

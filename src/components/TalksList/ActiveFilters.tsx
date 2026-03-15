@@ -37,10 +37,10 @@ export function ActiveFilters({
   }
 
   return (
-    <div className="mb-6 space-y-3">
+    <div className="mb-6 space-y-2 sm:space-y-3">
       {filter.conference && (
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-500">Conference:</span>
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs sm:text-sm text-gray-500">Conference:</span>
           <FilterChip onRemove={onRemoveConference}>
             {filter.conference}
           </FilterChip>
@@ -48,8 +48,8 @@ export function ActiveFilters({
       )}
 
       {yearFilter && (
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-500">Year:</span>
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs sm:text-sm text-gray-500">Year:</span>
           <FilterChip onRemove={onRemoveYearFilter}>
             {yearFilter.type === 'specific' && yearFilter.year ? (
               yearFilter.year
@@ -65,11 +65,11 @@ export function ActiveFilters({
           </FilterChip>
         </div>
       )}
-      
+
       {filter.hasNotes && (
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-500">Filter:</span>
-          <FilterChip 
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs sm:text-sm text-gray-500">Filter:</span>
+          <FilterChip
             onRemove={onRemoveHasNotes}
             ariaLabel="Remove Has Notes filter"
           >
@@ -77,10 +77,10 @@ export function ActiveFilters({
           </FilterChip>
         </div>
       )}
-      
+
       {filter.quickWatch && (
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-500">Filter:</span>
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs sm:text-sm text-gray-500">Filter:</span>
           <FilterChip
             onRemove={onRemoveQuickWatch}
             ariaLabel="Remove Quick Watch filter"
@@ -91,8 +91,8 @@ export function ActiveFilters({
       )}
 
       {filter.rating === 5 && (
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-500">Filter:</span>
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs sm:text-sm text-gray-500">Filter:</span>
           <FilterChip
             onRemove={onRemoveRating}
             ariaLabel="Remove Top Picks filter"
@@ -103,8 +103,8 @@ export function ActiveFilters({
       )}
 
       {filter.formats.length > 0 && (
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-500">Format:</span>
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs sm:text-sm text-gray-500">Format:</span>
           {filter.formats.map(fmt => (
             <FilterChip
               key={fmt}
