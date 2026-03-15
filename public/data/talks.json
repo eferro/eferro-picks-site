@@ -16440,6 +16440,43 @@
         "url": "https://www.codurance.com/es/publications/como-impulsar-el-crecimiento-de-tu-organizacion-atraves-de-la-developer-experience"
     },
     {
+        "airtable_createdTime": "2026-03-14T09:54:51.000Z",
+        "airtable_id": "recUHlz6PRvJL4o9P",
+        "core_topic": "Software Design",
+        "created": "2026-03-14T09:54:51.000Z",
+        "description": "Kent Beck discusses the tension between delivering features and maintaining software \"optionality,\" advocating for a \"tidy first\" approach to make hard changes easy by improving code structure as both an economic and moral necessity,,,.\n",
+        "duration": 2940,
+        "language": "English",
+        "last_modified": "2026-03-14T09:57:48.000Z",
+        "less_15": 0,
+        "name": "Kent L Beck: You\u2019re Ignoring Optionality\u2026 and Paying for It",
+        "notes": "Effective software engineering requires balancing the visible progress of **feature development** with the less legible but vital preservation of **future optionality** through continuous, incremental \"tidying\". By learning to **\"make the change easy, then make the easy change,\"** developers fulfill both an economic and an ethical obligation to keep the codebase maintainable for their colleagues and future requirements.\n\n- Software design requires balancing the **visible progress of features** with the **preservation of optionality** for future changes.\n- While stakeholders easily notice new features, the **below-the-surface design work** is what determines long-term velocity and defect rates.\n- The core strategy for handling difficult updates is to **\"make the change easy, then make the easy change\"** through incremental structural improvements.\n- **Speculative flexibility** should be avoided by deferring design investments until just before they are needed to maximize their net present value.\n- Maintaining a clean codebase is both an **economic necessity** and a **moral obligation** to colleagues to prevent making their future work unnecessarily hard.\n- **Structural changes** (refactoring) should be isolated from **behavioral changes** (features) in separate pull requests because structural changes are usually reversible while behavioral changes are often not.\n- Teams must avoid **100% utilization**, as approaching full capacity causes the wait time for new work to approach infinity.\n- To escape a cycle of declining productivity, developers must periodically **restore optionality** by tidying code\u2014such as rationalizing names or improving tests\u2014between feature implementations.\n- Effective tidying can be as simple as **adding a strategic blank line** to clarify logic or **deleting redundant comments** that the code already makes clear.\n\n",
+        "rating": 5,
+        "registered_at": "2026-03-14T09:54:51.000Z",
+        "resource": "Kent L Beck: You\u2019re Ignoring Optionality\u2026 and Paying for It - https://maintainable.fm/episodes/kent-l-beck-youre-ignoring-optionality-and-paying-for-it",
+        "resource_type": "podcast",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "rechBhL1vENLzvUi6"
+        ],
+        "speakers_names": [
+            "Kent Beck"
+        ],
+        "topics": [
+            "recWFKWrPEdeEYbzx",
+            "rechj5WeSQRH211np",
+            "recm3GCPgEVSDmeVI"
+        ],
+        "topics_names": [
+            "Engineering Culture",
+            "Agile",
+            "Software Design"
+        ],
+        "url": "https://maintainable.fm/episodes/kent-l-beck-youre-ignoring-optionality-and-paying-for-it"
+    },
+    {
         "airtable_createdTime": "2022-11-06T19:03:09.000Z",
         "airtable_id": "recUIDymP9vqzyyTI",
         "blog_url": "https://www.eferro.net/2022/11/good-talkspodcasts-nov-2022-i.html",
@@ -19476,6 +19513,42 @@
         "url": "http://www.ted.com/talks/amy_cuddy_your_body_language_shapes_who_you_are"
     },
     {
+        "airtable_createdTime": "2026-03-14T10:10:33.000Z",
+        "airtable_id": "recZyeBAFneq1yNyo",
+        "core_topic": "Platform Engineering",
+        "created": "2026-03-14T10:10:33.000Z",
+        "description": "James Lewis explores the mechanics of value streams and queuing theory, demonstrating how reducing batch sizes and managing work-in-progress are the most effective ways to accelerate software delivery and maximize value.\n",
+        "duration": 2400,
+        "language": "English",
+        "last_modified": "2026-03-14T10:15:02.000Z",
+        "less_15": 0,
+        "name": "How Flow Works and other curiosities",
+        "notes": "Optimizing the flow of work requires making invisible information visible and aggressively reducing **batch sizes** to minimize wait times and prevent systemic bottlenecks. By managing **queue depth** instead of just tracking completion times, organizations can deliver value significantly faster and more consistently without needing additional resources.\n\n- **Work as Information Flow**: In knowledge work, value flows through the organization as information. Unlike physical manufacturing, this \"inventory\" (untested code, unstarted requirements) is invisible, making it harder to identify and manage bottlenecks.\n- **The Cost of Wait Times**: Total production lead time is dominated by wait times rather than active work. Mapping value streams reveals that the majority of a project's duration is often spent in queues or waiting for coordination.\n- **Wait Time Categories**: Delays are primarily caused by coordination (waiting on other teams), scheduling (waiting for periodic meetings or boards), and queuing (backlogs).\n- **Blockers and Performance**: Formal Change Request Boards and Architecture Review Boards are statistical predictors of low organizational performance because they introduce significant \"stop-and-wait\" blockers into the flow of work.\n- **Elimination of Shared Environments**: Shared test or integration environments should be replaced with on-demand environments. The economic loss caused by teams waiting for a shared environment usually exceeds the cost of provisioning individual ones.\n- **Queuing Theory in Platforms**: Effective platform engineering requires moving from human-serviced queues (limited by headcount) to self-service infrastructure (limited only by the platform's capacity), allowing for near-infinite scaling of provisioning.\n- **Congestion Collapse**: Teams and systems undergo \"congestion collapse\" when they are overloaded. When occupancy is too high, output does not just slow down; it can drop catastrophically.\n- **Leading vs. Trailing Indicators**: Cycle time and lead time are trailing metrics that identify problems after they happen. Queue size is a leading indicator that allows managers to address bottlenecks before they impact delivery.\n- **WIP Limits**: Controlling occupancy by limiting Work in Progress (WIP) is the most effective way to keep a system in an equilibrium state and maintain steady throughput.\n- **Batch Size Reduction**: Reducing batch sizes is the most powerful and cost-effective lever for accelerating software delivery. Smaller batches shorten cycle times and enable faster feedback without requiring more staff or harder work.\n- **Simulating the World of Work**: Using complexity science and agent-based modeling allows organizations to treat their processes as \"algorithms\" that can be simulated, tested, and optimized for better flow.\n\n",
+        "registered_at": "2026-03-14T10:10:33.000Z",
+        "resource": "How Flow Works and other curiosities - https://www.youtube.com/watch?v=PpigE_gJ_mU",
+        "resource_type": "talk",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recTcX5TNO8Zp0gCu"
+        ],
+        "speakers_names": [
+            "James Lewis"
+        ],
+        "topics": [
+            "reck50u1RzhJj6MIy",
+            "recin3Ync8iZldW0q",
+            "recuR2w480ko3dSKR"
+        ],
+        "topics_names": [
+            "Flow",
+            "Continuous Delivery",
+            "Platform engineering"
+        ],
+        "url": "https://www.youtube.com/watch?v=PpigE_gJ_mU"
+    },
+    {
         "airtable_createdTime": "2020-01-19T20:42:36.000Z",
         "airtable_id": "recZzcEBKP19ATZZb",
         "blog_url": "https://www.eferro.net/2017/10/index.html",
@@ -21451,6 +21524,40 @@
             "Bruno Miranda"
         ],
         "url": "https://blog.brunomiranda.com/the-role-of-a-vp-of-engineering-648a09a3ad56"
+    },
+    {
+        "airtable_createdTime": "2026-03-14T09:58:41.000Z",
+        "airtable_id": "recd1abtbMsZ86K3T",
+        "core_topic": "Platform Engineering",
+        "created": "2026-03-14T09:58:41.000Z",
+        "description": "Escaping \"ticketing hell\" by evolving platform engineering from a manual service desk into an automated self-service model that reduces queue times and empowers delivery teams to accelerate.\n",
+        "duration": 420,
+        "language": "English",
+        "last_modified": "2026-03-14T10:03:29.000Z",
+        "less_15": 1,
+        "name": "Platform Engineering in 2025: Still Stuck in Ticket Hell?",
+        "notes": "True platform engineering requires a shift from a manual \"service desk\" ticketing model to **automated self-service workflows** that eliminate queuing and unblock delivery teams. By prioritizing these self-service capabilities and maintaining **transparent audit trails**, organizations can reduce lead times and platform team burnout while significantly increasing overall delivery speed and reliability.\n\n- **Platform Engineering's Core Purpose:** The discipline is intended to accelerate delivery teams by empowering them to handle their own infrastructure, repository creation, and deployments, moving away from a traditional model of filing manual tickets.\n- **The Trap of \"Ticketing Hell\":** This occurs when a platform team functions like a manual operations service desk. While well-intentioned, this model creates significant queuing, long lead times, and prioritization conflicts that prevent delivery teams from meeting business demands.\n- **Impact on Delivery Teams:** High reliance on tickets causes teams to become stuck, unable to reach daily deployments. In extreme cases, simple requests like repository access can take weeks, leaving engineers unproductive and unwelcomed.\n- **Cost to Platform Teams:** A ticket-based system is unsustainable for platform engineers, leading to constant context-switching, high stress, and burnout as they attempt to \"run fast just to stand still.\"\n- **Transition to Self-Service:** The solution is to transform manual workflows into automated self-service pipelines. This allows delivery teams to trigger processes independently without waiting for a platform engineer to pick up a ticket.\n- **Measuring Success via Queue Time:** Instead of just measuring activity time, platform teams must measure \"queue time\"\u2014the duration a ticket sits waiting to be actioned. Lead time starts the moment a ticket is filed, not when work begins.\n- **Prioritizing for Value:** Platform teams should identify and automate the specific workflows that are currently the most costly or time-consuming for delivery teams to maximize the impact of the platform.\n- **Importance of Transparency:** A fully automated audit trail within a platform portal is critical. It provides stakeholders with visibility into actions and impacts, building the trust and confidence required to move away from manual approvals.\n- **The Outcome of Effective Platform Engineering:** By unblocking delivery teams through self-service, organizations achieve higher speed, quality, and reliability while reducing the inbound ticket burden on the platform team.\n\n",
+        "registered_at": "2026-03-14T09:58:41.000Z",
+        "resource": "Platform Engineering in 2025: Still Stuck in Ticket Hell? - https://www.youtube.com/watch?v=dqhmNxLyZ20",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            null
+        ],
+        "speakers": [
+            "recbd8yKU3ZUQmcFl"
+        ],
+        "speakers_names": [
+            "Steve Smith"
+        ],
+        "topics": [
+            "recuR2w480ko3dSKR",
+            "recxJkIWVynhDpBOI"
+        ],
+        "topics_names": [
+            "Platform engineering",
+            "Devex"
+        ],
+        "url": "https://www.youtube.com/watch?v=dqhmNxLyZ20"
     },
     {
         "airtable_createdTime": "2020-03-14T08:52:24.000Z",
@@ -23602,6 +23709,46 @@
             "Software Design"
         ],
         "url": "https://www.youtube.com/watch?v=UGD8pMMJlbk"
+    },
+    {
+        "airtable_createdTime": "2026-03-14T09:47:39.000Z",
+        "airtable_id": "recgJfxVxw1Jw0pmr",
+        "core_topic": "AI Assisted Engineering",
+        "created": "2026-03-14T09:47:39.000Z",
+        "description": "This videopodcast examines how AI-augmented development shifts the developer's role from writing syntax to exercising high-leverage skills like curiosity, design taste, strategic testing, and effective communication to navigate rapid feedback loops and maintain optionality.\n",
+        "duration": 1440,
+        "language": "English",
+        "last_modified": "2026-03-14T09:51:53.000Z",
+        "less_15": 0,
+        "name": "What Skills Do Developers NEED To Have In An AI Future?",
+        "notes": "In an AI-powered future, the focus of software development shifts from the mechanics of writing syntax to the exercise of high-leverage human skills like **curiosity**, **design taste**, **strategic testing**, and **effective communication** to manage rapid feedback loops and maintain system optionality. You should remember that while AI can generate code instantly, the developer's essential role is to act as a confident bridge between business requirements and technical execution through critical thinking and goal-oriented problem-solving.\n\n- **Shift from Creation to Review**: Software development is transitioning from manual code writing to a process focused on reading, reviewing, planning, and managing feedback loops.\n- **High-Leverage Design Taste**: As the cost of generating code drops to zero, the developer's \"taste,\" sense of timing, and knowing when to apply architectural principles become the primary drivers of value.\n- **Optionality over Debt**: Focus on making technical decisions that increase future \"options\" (the ease of making future changes) rather than just viewing shortcuts as technical debt.\n- **Confidence as a Skill**: Cultivating the confidence to learn and adapt to new abstractions is essential as traditional technical shortcuts (like IDE hotkeys) lose relevance.\n- **Stating High-Level Goals**: A critical skill in augmented coding is the ability to articulate high-level intent and goals, which guides the AI and helps the developer maintain focus on the desired outcome.\n- **AI as an Infinitely Patient Tutor**: Curiosity becomes a highly leveraged skill when using AI to explore new domains, learn internals, or understand complex concepts through customized teaching styles.\n- **Strategic Testing Awareness**: While AI can generate tests, developers must maintain the awareness to review for corner cases and use AI to perform advanced tasks like mutation and coverage testing more frequently.\n- **The Developer as a Bridge**: The core role of a developer remains acting as the bridge between \"fluffy\" business requirements and technical execution\u2014a task requiring deep communication and analysis skills.\n- **Advanced Problem Slicing**: The ability to break down problems and prioritize features is more valuable in an AI environment because it allows for much faster feedback cycles (daily instead of monthly).\n- **Interpersonal and Intrapersonal Skills**: Skills such as saying \"no,\" managing stakeholder expectations, and understanding one's own learning needs are becoming more important than specific language syntax.\n\n",
+        "rating": 5,
+        "registered_at": "2026-03-14T09:47:39.000Z",
+        "resource": "What Skills Do Developers NEED To Have In An AI Future? - https://www.youtube.com/watch?v=lJiDBRh96oU",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            true,
+            null
+        ],
+        "speakers": [
+            "rec6YK7iVlaLvwiXV",
+            "rechBhL1vENLzvUi6"
+        ],
+        "speakers_names": [
+            "Trisha Gee",
+            "Kent Beck"
+        ],
+        "topics": [
+            "recWFKWrPEdeEYbzx",
+            "recF9sEGaOJ0hiQgV",
+            "rec4uuxgf0CbGa5gW"
+        ],
+        "topics_names": [
+            "Engineering Culture",
+            "Technical leadership",
+            "AI Assisted Engineering"
+        ],
+        "url": "https://www.youtube.com/watch?v=lJiDBRh96oU"
     },
     {
         "airtable_createdTime": "2024-08-18T08:21:22.000Z",
@@ -29911,6 +30058,45 @@
         ],
         "url": "https://www.youtube.com/watch?v=cH6bnQzJojo",
         "year": 2016
+    },
+    {
+        "airtable_createdTime": "2026-03-14T10:04:31.000Z",
+        "airtable_id": "recpYVXPI9Ix8oLad",
+        "core_topic": "Startup",
+        "created": "2026-03-14T10:04:31.000Z",
+        "description": "A data-driven exploration of how shifting venture capital dynamics and AI are reshaping startup hiring, team structures, and the engineering landscape.\n",
+        "duration": 4740,
+        "language": "English",
+        "last_modified": "2026-03-14T10:09:14.000Z",
+        "less_15": 0,
+        "name": "The state of VC within software and AI startups \u2013 with Peter Walker",
+        "notes": "The landscape for startups is shifting toward **extreme capital efficiency**, where AI-enhanced productivity enables smaller, high-impact teams to achieve significantly higher revenue benchmarks than in previous years. Success in this new era requires both founders and engineers to move beyond a \"growth at all costs\" mindset and prioritize **deep business alignment and sustainable value creation**.\n\n- **VC Funding Dynamics:** While total capital invested remains high, it is concentrated in a few \"power law\" winners. The number of startups successfully raising rounds has dropped by approximately 50% since 2021.\n- **Hiring and AI Impact:** Startup hiring has plummeted from 73,000 monthly hires in early 2022 to a projected 20,000 in 2025. AI tools are significantly increasing individual productivity, allowing companies to remain small rather than scaling headcount.\n- **The \"Efficiency\" Era:** The key metric for VCs has shifted to ARR per FTE (Annual Recurring Revenue per Full-Time Employee). Series A startups are now raising with fewer employees (median of 15 vs. 22) but much higher revenue (median ~$3M ARR vs. $1.3M in 2021).\n- **Funding Intervals:** The traditional 18-month cycle between rounds has extended to 2.5 or 3 years. Startups are being forced to reach profitability or significantly longer runways to survive the current market.\n- **The Bridge Round Trap:** Bridge rounds\u2014capital meant to \"bridge\" a company to its next stage\u2014have become much riskier. Success rates for companies moving from a bridge round to a Series A have dropped from 33% to roughly 8%.\n- **Rise of Solo Founders:** Solo-founded companies now represent over one-third of new startups. However, VCs still fund them at lower rates than co-founded teams due to perceived \"key person risk\" and the desire for proven talent attraction.\n- **Valuation Trends:** Seed valuations remain surprisingly high (median ~$16M), often driven by AI hype. SAFEs (Simple Agreements for Future Equity) remain the dominant instrument for early-stage fundraising to delay formal valuation.\n- **Equity and Dilution:** Employee option pools are starting smaller (5\u201310% rather than the historical 15\u201320%). Employees must account for dilution and liquidation preferences, where investors are paid back their initial capital before any common shareholders.\n- **Advisor Reality:** Median equity for startup advisors has settled at 0.25%, not the 1% often cited. The most valuable advisors provide either deep technical expertise for specific scaling problems or direct commercial introductions.\n- **Due Diligence and Transparency:** VC due diligence is taking longer and becoming more rigorous. Prospective employees are encouraged to \"interview like an investor,\" asking specifically about burn rates, growth metrics, and unique technological moats.\n\n",
+        "registered_at": "2026-03-14T10:04:31.000Z",
+        "resource": "The state of VC within software and AI startups \u2013 with Peter Walker - https://www.youtube.com/watch?v=bBQhzsoJ0uM",
+        "resource_type": "videopodcast",
+        "speaker_women_in_tech": [
+            null,
+            null
+        ],
+        "speakers": [
+            "recxCjALQl0ESOB8x",
+            "recrARrQXlgrH2dAK"
+        ],
+        "speakers_names": [
+            "Peter Walker",
+            "Gergely Orosz"
+        ],
+        "topics": [
+            "recWFKWrPEdeEYbzx",
+            "recLS0zTJxflAcqBu",
+            "recmuONwokRtPS6Tp"
+        ],
+        "topics_names": [
+            "Engineering Culture",
+            "startup",
+            "AI"
+        ],
+        "url": "https://www.youtube.com/watch?v=bBQhzsoJ0uM"
     },
     {
         "airtable_createdTime": "2021-01-30T19:52:14.000Z",
