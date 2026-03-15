@@ -2,14 +2,14 @@
 
 ## Project Overview
 
-This is **eferro's picks** - a curated collection of software development talks built with React + TypeScript. The application features a sophisticated filtering system, comprehensive testing, and automated data synchronization from Airtable.
+This is **eferro's picks** - a curated collection of software development talks built with React + TypeScript. The application features a sophisticated filtering system, comprehensive testing, and static data management.
 
 **Key Technologies:**
 - React 18 + TypeScript
 - Tailwind CSS for styling
 - React Router for navigation
 - Vitest + Testing Library for testing
-- Airtable for data management
+- Static JSON files for data storage
 - GitHub Pages for deployment
 
 ## Architecture Principles
@@ -622,7 +622,7 @@ make help                # Show all available targets
 ## Project-Specific Context
 
 ### Data Structure
-- Talks are fetched from Airtable and stored as JSON
+- Talks are stored as static JSON files in `public/data/talks.json`
 - Each talk has: id, title, url, speakers, topics, description, core_topic, notes, year, conference_name
 - The `Talk` interface is defined in `src/types/talks.ts`
 

@@ -4,7 +4,7 @@ A curated collection of software development talks that I find interesting and v
 
 ## Overview
 
-This site showcases a handpicked selection of talks about software development, engineering practices, and technical leadership. The content is managed in Airtable and automatically synchronized with the site.
+This site showcases a handpicked selection of talks about software development, engineering practices, and technical leadership.
 
 🌐 **Visit the site**: [eferro's picks](https://eferro.github.io/eferro-picks-site/)
 
@@ -14,7 +14,7 @@ This site showcases a handpicked selection of talks about software development, 
 
 - **Frontend**: React + TypeScript
 - **Styling**: Tailwind CSS
-- **Data Source**: Airtable
+- **Data Storage**: Static JSON files
 - **Hosting**: GitHub Pages
 - **Automation**: GitHub Actions
 - **Testing**: Vitest + Testing Library (robust coverage for all filters, including Author Filter)
@@ -24,9 +24,9 @@ This site showcases a handpicked selection of talks about software development, 
 The site follows a simple and efficient architecture:
 
 1. **Data Management**:
-   - All talk data is managed in Airtable
-   - GitHub Actions syncs data every 6 hours
-   - Data is stored as JSON in the `public/data` directory
+   - Talk data is stored as static JSON files
+   - Data is located in the `public/data` directory
+   - Updates are managed through direct file modifications
 
 2. **Frontend**:
    - React components for UI
@@ -81,20 +81,10 @@ npm test
 
 Tests are run automatically in CI to ensure code quality and prevent regressions. Contributions should include relevant tests for new features or bug fixes.
 
-## Data Updates
-
-The site's content is automatically updated through GitHub Actions:
-
-- **Scheduled Updates**: Every 6 hours
-- **Manual Updates**: Available through GitHub Actions UI
-- **Force Updates**: Option available in manual triggers
-
 ## Environment Variables
 
 The following secrets need to be configured in GitHub repository settings:
 
-- `AIRTABLE_API_KEY`: Your Airtable API key
-- `AIRTABLE_DATABASE_ID`: Your Airtable base ID
 - `GH_ACTIONS_PAT`: GitHub Personal Access Token for deployments
 
 ## Contributing
