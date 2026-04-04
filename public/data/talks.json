@@ -259,7 +259,8 @@
     "blog_url": "https://www.eferro.net/2025/12/good-talkspodcasts-dec.html",
     "registered_at": "2025-12-06T16:55:46.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2025
   },
   {
     "id": "rec0szxoxg4meCztF",
@@ -306,7 +307,8 @@
     "blog_url": "https://www.eferro.net/2022/02/good-talkspodcasts-february-2022-ii.html",
     "registered_at": "2022-02-12T21:40:35.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "Focusing on the **care and feeding of rapid feedback cycles** allows organizations to replace risky speculation with empirical evidence, ultimately transforming them into highly competitive learning organizations. By **automating processes** and driving testing to the lowest possible level, teams drastically reduce feedback latency and ensure their implementations truly align with actual user needs.\n\n* **Feedback cycles** consist of doing a thing, observing the result, and adjusting (steering) accordingly based on what was learned.\n* There are **three essential feedback loops** in development: checking if intentions match needs, if implementation matches intentions, and if the final implementation actually meets the need.\n* **Feedback latency**—the time it takes to go from action to observation—directly determines project risk; reducing this time is the most effective way to manage uncertainty.\n* **Empirical evidence trumps speculation** every time; requirements and design documents are merely forms of speculation until the software is running in production.\n* The **\"risk curve\"** represents the accumulation of speculation over time; long cycles without validation create massive, hidden risks that lead to budget and schedule overruns.\n* **\"Fragile\" agile** occurs when teams utilize \"stabilization sprints,\" which act as mini-waterfalls that prevent software from being truly \"done-done\" and delay critical feedback.\n* **Automation of \"all the things\"** is required to shorten cycles and free engineers from the manual, repetitive tasks that hinder exploration and rapid delivery.\n* **Quality is a collective responsibility**; having a separate, siloed QA team creates weight states and communication gaps that break feedback loops.\n* A healthy ecosystem requires **layered feedback**: local unit tests (first line of defense), automated CI, continuous story acceptance, exploratory testing, and production monitoring.\n* **Product Managers should own story acceptance** and perform it as soon as a story is ready, rather than waiting for a sprint demo.\n* **Exploratory testing** is vital for discovering unknown risks and ensuring the team is not \"fooling themselves\" with passing automated tests.\n* The **\"Tetris Principle of Testing\"** involves driving tests to the lowest possible level (unit tests) to maximize execution speed and efficiency.\n* **Visibility of feedback** is crucial; teams should be surrounded by real-time data via dashboards and monitors showing build health and production metrics.\n* High-functioning feedback loops transform a company into a **\"learning organization,\"** which is the ultimate competitive advantage in a rapidly changing world."
   },
   {
     "id": "rec0y0YDWPOzKxVXq",
@@ -418,13 +420,14 @@
       "Joshua Kerievsky"
     ],
     "description": "Inspirational. These two minutes summarize very well why it is important to be fast but maintain control in order to be truly agile.\n",
-    "core_topic": "",
+    "core_topic": "Agile",
     "year": 2019,
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/08/good-talkspodcasts-aug-2024-i.html",
     "registered_at": "2024-06-27T12:04:43.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "Mastering the balance between **quickness and haste** is essential for true agility, as moving quickly allows for speed and ease while maintaining control, whereas hurrying leads to being out of control and making mistakes. You should remember to operate on that **laser-thin edge** where you move as fast as possible without losing the grace and control necessary to avoid waste.\n\n* **\"Be Quick But Don't Hurry\" Mantra**: A fundamental principle for success in both sports and business, emphasizing speed without losing composure.\n* **Quickness vs. Haste**: Quickness is moving with ease, grace, and control. Haste (or hurrying) is being out of control, which leads to waste, errors, and potential harm.\n* **Defining Agile**: In an agile context, being \"agile\" means being quick, easy, and graceful in execution.\n* **The \"Laser Thin Edge\"**: There is a very fine line between moving at maximum speed and falling into haste. Finding this balance is a critical skill.\n* **Maintaining Control**: Speed is valuable as long as you remain in control, even when pushed to the edge of your abilities. Once control is lost, quickness turns into waste-producing haste.\n* **Practice**: Mastering the ability to be quick without hurrying is a difficult discipline that requires consistent practice."
   },
   {
     "id": "rec1XEvSduXUMZFkK",
@@ -578,7 +581,8 @@
     "blog_url": "https://www.eferro.net/2017/11/good-talkspodcasts-october-2017-part-ii.html",
     "registered_at": "2020-01-19T20:43:07.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "As cloud ecosystems and third-party dependencies shift software risk from internal code units to external integrations, teams must evolve beyond the traditional testing pyramid toward **active production monitoring** and **visual, approval-based verification**. This transition acknowledges that in a world of commodity infrastructure and algorithmic users, the most critical risks often emerge only after a release is live.\n\n*   **Shift in Risk Profiles:** The transition from controlled, \"immortal\" hardware to commodity cloud and serverless ecosystems means software must be designed to be \"broken\" all the time, as infrastructure is no longer under the developer's direct control.\n*   **Algorithmic Users:** As APIs and marketplaces grow, software users are increasingly algorithms rather than humans. Algorithms can enter self-reinforcing loops—such as automated pricing wars or high-frequency trading—that human-centric testing heuristics cannot predict.\n*   **Difficulty of Asserting Correctness:** With the rise of machine learning, image recognition, and voice interfaces, the traditional practice of asserting a single \"correct\" result is failing. Results are often probabilistic, making standard verification difficult.\n*   **Integration vs. Unit Testing:** Risk has shifted away from individual code units toward the integration of third-party services. If a product is mostly a \"mashup\" of external APIs, testing the internal code unit provides little value compared to testing the integration points.\n*   **Post-Deployment Risks:** Major risks now occur after release. Changes in third-party APIs or cloud environments (e.g., a Google Drive update) can break software without any changes being made to the internal codebase.\n*   **Obsolescence of the Testing Pyramid:** The traditional testing pyramid—which prioritizes unit tests because UI tests were slow and expensive—is becoming irrelevant. Cheap, parallel cloud compute allows for thousands of UI/integration tests to run in seconds, making high-level testing more viable.\n*   **New Interaction Heuristics:** Voice and robotic interfaces introduce unique edge cases—such as twins confusing facial/voice recognition or subsonic sounds triggering smart home devices—for which the testing community currently has no established heuristics.\n*   **Active Monitoring and Production Testing:** Testing is moving from a predictive \"pre-deployment\" act to active monitoring in production. Real-world data and external dependencies make it impossible to predict all failure modes in a staging environment.\n*   **Visual Approval over Verification:** For complex UI and generative outputs, testing is shifting toward visual \"approval\" tests. Instead of mathematical assertions, developers use cheap compute to generate screenshots and diffs for human or algorithmic approval.\n*   **Machine Learning as a Testing Tool:** Machine learning is beginning to be used to identify bugs in source code or to guide exploratory testing by statistically predicting where failures are most likely to occur."
   },
   {
     "id": "rec2EPhhNCTR9v5vS",
@@ -15752,7 +15756,8 @@
     "blog_url": "https://www.eferro.net/2025/10/good-talkspodcasts-oct-i-ai-ai.html",
     "registered_at": "2025-09-26T06:28:43.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2025
   },
   {
     "id": "rectE9e9yPCU27fm5",
