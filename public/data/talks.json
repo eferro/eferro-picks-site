@@ -83,7 +83,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/01/good-talkspodcasts-january-2022-ii.html",
     "registered_at": "2022-01-17T08:12:35.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rec0KaONkdG6kSkzW",
@@ -146,7 +147,9 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/04/good-talkspodcasts-april-2022-i.html",
     "registered_at": "2022-04-09T18:12:26.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English",
+    "notes": "Organizations should prioritize a holistic and people-centered developer experience by treating internal tools as products and focusing on the entire development workflow rather than solving technical problems in isolation. This approach ensures that improvements in discoverability, usability, capabilities, and stability directly enhance the daily lives and productivity of engineers.\n\n* **Holistic Approach**: Focus on the **entire development workflow** and its impact on people rather than solving isolated, small issues in a \"whack-a-mole\" fashion.\n* **Developer UX**: Treat internal tools as products where **UX includes command lines, configurations, and documentation**, not just graphical interfaces.\n* **The Four Pillars (DUCS)**:\n    * **Discoverability**: Reduce the toil of finding information by **single-sourcing guidance and templates** through developer hubs. Track metrics such as **onboarding time** and customer satisfaction.\n    * **Usability**: Ensure tasks can be completed with effectiveness and efficiency using **\"Golden Paths,\" automation, and linters**. Measure **success rates** and time-based efficiency through usability testing.\n    * **Capabilities**: Provide tools tailored to **specific developer personas** (e.g., machine learning) by using **journey mapping** to identify gaps in offerings.\n    * **Stability**: Build developer confidence by prioritizing **intentional post-mortems** and tracking **Mean Time Between Outages** and uptime.\n* **Human-Centered Strategy**: Prioritize the **\"who\" before the \"how\"** by using empathy to understand developer challenges.\n* **Collaboration**: Avoid solving problems in silos; instead, **connect and collaborate continuously** across teams to create a seamless workflow."
   },
   {
     "id": "rec0QeqSAE9n3RAu6",
@@ -210,7 +213,9 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/11/good-talkspodcasts-nov-2024-i.html",
     "registered_at": "2024-11-24T08:50:04.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English",
+    "notes": "**Efficient flow in product development is achieved by using economic tradeoffs to manage invisible information queues and reducing batch sizes through lower transaction costs, rather than attempting to eliminate the variability essential for innovation.** You should remember to **monitor queue sizes as a leading indicator** of performance and avoid high capacity utilization, which triggers \"congestion collapse\" and causes cycle times to grow nonlinearly in stochastic systems.\n\n* **Nonlinear Impact of Utilization:** In stochastic systems like product development, cycle time increases nonlinearly as capacity utilization approaches 100%. Queues typically double every time the remaining distance to full capacity is halved.\n* **Invisibility of Development Queues:** Unlike manufacturing queues, which are physical and visible on balance sheets, product development queues consist of information. This makes them both physically and financially invisible, leading to chronic over-utilization.\n* **Economic Trade-offs:** Managing flow requires bringing capacity utilization and queue size into the same unit of measure—money. This is done by quantifying the Cost of Delay to find the \"flat-bottomed U-curve\" of optimal total cost.\n* **Mathematical Leverage:** Reducing capacity utilization provides more leverage for reducing queues than reducing variation does.\n* **Arrival Variation:** Flow through a bottleneck can be improved by reducing the arrival time variation from the preceding process, not just by increasing the capacity of the bottleneck itself.\n* **Batch Size and Transaction Costs:** Batch size is an economic trade-off between transaction costs and holding costs. Reducing transaction costs is the key to enabling smaller batch sizes, which in turn facilitates faster feedback.\n* **Leading vs. Lagging Indicators:** Queue size is a leading indicator of future cycle time problems, whereas cycle time is a lagging indicator. Processes should be managed by monitoring and reacting to queue size.\n* **Asymmetric Queue Growth:** Queues build much faster than they can be cleared. Rapidly responding to emergent queues prevents \"passenger minutes\" of delay from accumulating without adding to the long-term cost of capacity.\n* **The \"Knee of the Curve\":** Peak throughput does not occur at maximum occupancy or maximum speed. Operating at the \"knee\" of the throughput curve provides the best balance of flow and stability.\n* **Congestion Collapse:** When occupancy exceeds optimal levels, feedback loops become unstable and regenerative, causing speed to drop and density to increase until the system collapses.\n* **Strategic Capacity Margins:** Extra capacity should be added specifically in zones of high variation (e.g., \"steep hills\" in traffic) rather than distributed evenly across the system.\n* **Managing vs. Eliminating Variation:** Innovation inherently requires introducing variability. Systems should be designed to function in the presence of variability (using models like the internet or air traffic control) rather than trying to eliminate it through manufacturing-style standardization.\n* **Decentralized Control:** Fast and effective adjustments are best achieved by combining decentralized actors with valid, centralized, real-time information (e.g., \"time to next exit\" signs).\n* **Beyond Manufacturing Models:** Product development involves non-homogeneous, unpredictable flows. Practitioners should look toward operating system design and internet protocols for advanced flow control strategies rather than relying solely on repetitive manufacturing techniques."
   },
   {
     "id": "rec0pXBv3G5TprPIB",
@@ -253,7 +258,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2025/12/good-talkspodcasts-dec.html",
     "registered_at": "2025-12-06T16:55:46.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rec0szxoxg4meCztF",
@@ -299,7 +305,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/02/good-talkspodcasts-february-2022-ii.html",
     "registered_at": "2022-02-12T21:40:35.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rec0y0YDWPOzKxVXq",
@@ -416,7 +423,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/08/good-talkspodcasts-aug-2024-i.html",
     "registered_at": "2024-06-27T12:04:43.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rec1XEvSduXUMZFkK",
@@ -455,7 +463,8 @@
     "conference_name": "AI Engineer",
     "format": "talk",
     "registered_at": "2026-01-22T18:13:48.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rec1o14iQ4afC7mJy",
@@ -501,7 +510,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2025/04/good-talkspodcasts-april.html",
     "registered_at": "2025-04-30T07:08:45.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rec1sxXfGMcC2JXvw",
@@ -567,7 +577,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2017/11/good-talkspodcasts-october-2017-part-ii.html",
     "registered_at": "2020-01-19T20:43:07.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rec2EPhhNCTR9v5vS",
@@ -610,7 +621,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2025/07/good-talkspodcasts-jul-ai-ai-augmented.html",
     "registered_at": "2025-07-15T07:56:23.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rec2OjotXEUQMg9Nc",
@@ -833,7 +845,8 @@
     "format": "talk",
     "blog_url": "http://www.eferro.net/2020/03/good-talkspodcasts-march-2020-i.html",
     "registered_at": "2020-03-14T09:01:20.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rec3GO9MC5qIQ3aBs",
@@ -879,7 +892,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2025/06/good-talkspodcasts-jun.html",
     "registered_at": "2025-06-11T12:49:35.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rec3hHVVbf5BUn1u9",
@@ -981,7 +995,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2019/04/good-talkspodcasts-april-2019-i.html",
     "registered_at": "2020-01-19T20:39:24.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rec42snEPpunYVroW",
@@ -1005,7 +1020,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2025/02/good-talkspodcasts-feb-i.html",
     "registered_at": "2025-02-09T09:53:04.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rec4BtlnPEhus1Zdg",
@@ -1077,7 +1093,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2025/06/good-talkspodcasts-jun.html",
     "registered_at": "2025-06-07T19:28:41.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rec4SJpVcSeIFUOfq",
@@ -1136,7 +1153,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2014/11/podcaststalks-2014-30-oct-19-nov.html",
     "registered_at": "2020-01-19T20:37:09.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rec4grFdhA7wAX8Wy",
@@ -1221,7 +1239,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2015/08/index.html",
     "registered_at": "2020-01-19T20:36:17.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rec51dDzTblHDqyN1",
@@ -1301,7 +1320,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/11/good-talkspodcasts-nov-2022-ii.html",
     "registered_at": "2022-11-10T17:33:11.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rec5MK2KUQVjRiY3I",
@@ -1320,7 +1340,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/09/good-talkspodcasts-september-2021-i.html",
     "registered_at": "2021-08-14T20:40:12.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rec5P4elHGjT2xG2H",
@@ -1399,7 +1420,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/07/good-talkspodcasts-jul-2020-i.html",
     "registered_at": "2020-07-08T06:46:19.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rec5ibnyAK7zHbul9",
@@ -1476,7 +1498,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2019/07/index.html",
     "registered_at": "2020-01-19T20:40:09.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rec63r3FZtJBpSY9F",
@@ -1753,7 +1776,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2018/02/interesting-talkspodcasts-2018-feb-i.html",
     "registered_at": "2020-01-19T20:32:20.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rec7CKTggoOCBDBwj",
@@ -2195,7 +2219,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/08/good-talkspodcasts-aug-2020-i.html",
     "registered_at": "2020-07-27T09:20:46.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rec9Tj1nxKdg4J2ii",
@@ -2377,7 +2402,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/09/good-talkspodcasts-september-2021-ii.html",
     "registered_at": "2021-09-05T15:44:24.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recABM6yOE21zVLfd",
@@ -2417,7 +2443,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2018/03/interesting-talkspodcasts-2018-march-i.html",
     "registered_at": "2020-01-19T20:31:53.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recAMPx4U1nMXBIiM",
@@ -2461,7 +2488,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2024/03/good-talkspodcasts-mar-2024-i.html",
     "registered_at": "2024-03-30T16:50:29.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recAPcDnNbOci5msP",
@@ -2704,7 +2732,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2018/05/good-talkspodcasts-april-2018.html",
     "registered_at": "2020-01-19T20:32:54.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recBZwhDTylUgYDno",
@@ -2744,7 +2773,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2022/10/good-talkspodcasts-oct-2022-ii.html",
     "registered_at": "2022-10-16T16:45:52.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recBfVsYe3o327PKD",
@@ -2765,7 +2795,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/06/good-talkspodcasts-jun-2020-i.html",
     "registered_at": "2020-06-14T11:13:00.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recBgNNTaB15VLMCw",
@@ -2787,7 +2818,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/01/good-talkspodcasts-jan-2024-ii.html",
     "registered_at": "2024-01-14T19:04:38.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recBglPmZE7Z709Sa",
@@ -2809,7 +2841,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/10/good-talkspodcasts-oct-2022-i.html",
     "registered_at": "2022-10-09T09:41:07.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recBhYq8BJVoKYAu4",
@@ -2830,7 +2863,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/10/good-talkspodcasts-oct-2022-ii.html",
     "registered_at": "2022-10-16T17:04:13.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recBk5M98Nf6b43gM",
@@ -2853,7 +2887,8 @@
     "format": "talk",
     "blog_url": "http://www.eferro.net/2020/03/good-talkspodcasts-march-2020-i.html",
     "registered_at": "2020-03-14T09:06:56.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recBllU9Ze8z1kLai",
@@ -2978,7 +3013,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/12/good-talkspodcasts-dec-2024-i.html",
     "registered_at": "2024-12-08T21:06:39.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recCQqPHzmbJv7cvR",
@@ -3095,7 +3131,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/06/good-talkspodcasts-jun-2022-i.html",
     "registered_at": "2022-06-12T08:29:01.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recCfPcWj8tXixXyC",
@@ -3162,7 +3199,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/05/good-talkspodcasts-may-2020-i.html",
     "registered_at": "2020-05-17T14:09:22.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recCiJLjLExH5URns",
@@ -3281,7 +3319,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/11/good-talkspodcasts-november-2021-i.html",
     "registered_at": "2020-01-19T20:41:29.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recCxk54pyh2xb4bM",
@@ -3321,7 +3360,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2025/10/good-talkspodcasts-oct-i-ai-ai.html",
     "registered_at": "2025-08-02T16:35:50.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recD9l1jhSzNfqx8E",
@@ -3405,7 +3445,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2015/06/more-interesting-podcaststalks.html",
     "registered_at": "2020-01-19T20:37:08.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recDUqXlgYHwvfn78",
@@ -3426,7 +3467,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2025/07/good-talkspodcasts-jul-ai-ai-augmented.html",
     "registered_at": "2025-07-15T07:43:13.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recDbVkDBWzvAFP9N",
@@ -3550,7 +3592,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2018/07/good-talkspodcasts-junjul-2018-i.html",
     "registered_at": "2020-01-19T20:33:19.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recE6pYNOPnFoST0M",
@@ -3650,7 +3693,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/05/good-talkspodcasts-may-2020-ii.html",
     "registered_at": "2020-05-31T07:06:27.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recELoGuryNrKrASv",
@@ -3845,7 +3889,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/08/good-talkspodcasts-aug-2022-i.html",
     "registered_at": "2022-08-15T15:34:55.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recFDjTMre1IS3zjg",
@@ -3902,7 +3947,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/10/good-talkspodcasts-oct-2022-ii.html",
     "registered_at": "2022-10-16T17:13:11.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recFR3CbGmtkWG1a3",
@@ -3948,7 +3994,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/05/good-talkspodcasts-may-2020-i.html",
     "registered_at": "2020-05-17T14:13:11.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recFhmUuWwAuRL1L0",
@@ -4011,7 +4058,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2019/11/good-talkspodcasts-october-november.html",
     "registered_at": "2020-01-19T20:40:43.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recFssGR3GcaytzUE",
@@ -4221,7 +4269,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2019/03/good-talkspodcasts-feb-2019-ii.html",
     "registered_at": "2020-01-19T20:38:31.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recGcwP2C85UB93hd",
@@ -4321,7 +4370,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2025/12/good-talkspodcasts-dec.html",
     "registered_at": "2025-12-06T16:44:55.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recHDaDCXpcA83eDd",
@@ -4400,7 +4450,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/09/good-talkspodcasts-sept-2024-i.html",
     "registered_at": "2024-09-15T06:51:12.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recHPBnTLb8q4PCyN",
@@ -4468,7 +4519,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/11/good-talkspodcasts-nov-2024-ii.html",
     "registered_at": "2020-06-14T11:18:41.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recHWrpa3aDWJVu6v",
@@ -4759,7 +4811,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2023/02/good-talkspodcasts-feb-2023-i.html",
     "registered_at": "2023-02-19T20:43:34.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recIRMVjD9tYayRAE",
@@ -4858,7 +4911,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2025/12/good-talkspodcasts-dec-ii.html",
     "registered_at": "2025-12-22T10:56:49.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recIpeGLRiiX3Wxw8",
@@ -4939,7 +4993,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/10/good-talkspodcasts-october-2021-ii.html",
     "registered_at": "2021-10-17T14:10:40.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recJ383HkMXqK0sLl",
@@ -5024,7 +5079,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2022/11/good-talkspodcasts-nov-2022-i.html",
     "registered_at": "2022-11-05T13:01:48.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recJj5CkUuT3Im6BR",
@@ -5047,7 +5103,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/01/good-talkspodcasts-jan-2021-i.html",
     "registered_at": "2021-01-30T20:14:08.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recJjbDXnmBGYUBZM",
@@ -5145,7 +5202,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/12/good-talkspodcasts-december-2021-i.html",
     "registered_at": "2021-12-04T13:50:37.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recKAp6JHZZDlKe95",
@@ -5184,7 +5242,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2023/04/good-talkspodcasts-apr-2023-i.html",
     "registered_at": "2023-04-23T18:10:49.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recKNfwdWS8hn9PRn",
@@ -5267,7 +5326,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2025/03/good-talkspodcasts-march-i.html",
     "registered_at": "2025-03-02T17:32:50.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recKchMC3VYT3JoC7",
@@ -5438,7 +5498,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/08/good-talkspodcasts-august-2021-i.html",
     "registered_at": "2021-08-14T10:19:49.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recLR82kfTPOBHYoi",
@@ -5461,7 +5522,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2016/12/interesting-talks-ive-seen-during.html",
     "registered_at": "2020-01-19T20:34:05.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recLRaxTfrALcrqUQ",
@@ -5554,7 +5616,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2025/08/good-talkspodcasts-aug.html",
     "registered_at": "2025-06-24T13:54:43.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recLnRF2aJnuRO2hg",
@@ -5615,7 +5678,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/09/good-talkspodcasts-sept-2024-i.html",
     "registered_at": "2024-09-02T21:27:42.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recMCjk51zSF8I6Jm",
@@ -5701,7 +5765,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/07/good-talkspodcasts-jul-2020-ii.html",
     "registered_at": "2020-07-27T08:02:02.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recMK9byb9akbMylA",
@@ -5891,7 +5956,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2024/06/good-talkspodcasts-june-2024-i.html",
     "registered_at": "2024-06-23T07:54:14.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recN1rxeNLr4B1sZV",
@@ -5931,7 +5997,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/10/good-talkspodcasts-october-2021-i.html",
     "registered_at": "2021-10-03T20:50:18.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recN2OiGQL1lafVnC",
@@ -6056,7 +6123,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2018/10/good-talkspodcasts-oct-2018-ii.html",
     "registered_at": "2020-01-19T20:33:26.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recNVbjexRqEredPK",
@@ -6100,7 +6168,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/06/good-talkspodcasts-jun-2022-i.html",
     "registered_at": "2022-06-12T08:23:05.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recNmOkWAzhRiHGaY",
@@ -6207,7 +6276,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/11/good-talkspodcasts-nov-2020-i.html",
     "registered_at": "2020-11-09T09:04:54.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recO0DG5oqYcZ55lA",
@@ -6232,7 +6302,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/10/good-talkspodcasts-october-2021-ii.html",
     "registered_at": "2021-10-17T14:02:57.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recO2LzcYZC0kaDOl",
@@ -6364,7 +6435,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2025/03/good-talkspodcasts-march-i.html",
     "registered_at": "2025-03-02T17:32:09.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recOYUG7Jri6tIt4O",
@@ -6409,7 +6481,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2018/05/good-talkspodcasts-april-2018.html",
     "registered_at": "2020-01-19T20:32:56.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recOnGZQXXW3aCdgI",
@@ -6453,7 +6526,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/12/good-talkspodcasts-dec-2022-i.html",
     "registered_at": "2022-12-06T20:52:52.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recOuZnBtAOlBoiwo",
@@ -6475,7 +6549,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2023/08/good-talkspodcasts-ago-2023-i.html",
     "registered_at": "2023-08-26T21:28:04.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recOvNtGBIJcF8sw0",
@@ -6519,7 +6594,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2017/11/good-talkspodcasts-october-2017-part-ii.html",
     "registered_at": "2020-01-19T20:43:04.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recP6JVPIkZphh1PN",
@@ -6543,7 +6619,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/05/good-talkspodcasts-may-2020-i.html",
     "registered_at": "2020-05-17T14:17:43.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recP95LX5v5ykRxvV",
@@ -6660,7 +6737,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/03/good-talkspodcasts-march-2021-i.html",
     "registered_at": "2021-03-07T08:27:28.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recPimGXOeaAHSQ3S",
@@ -6702,7 +6780,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/01/good-talkspodcasts-jan-2024-i.html",
     "registered_at": "2023-11-17T09:12:34.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recPkHjbOsYO1HFdH",
@@ -6723,7 +6802,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/09/good-talkspodcasts-september-2021-ii.html",
     "registered_at": "2021-09-03T15:32:12.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recPzBHdMTTy2zr9j",
@@ -6783,7 +6863,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2023/05/good-talkspodcasts-may-2023-i.html",
     "registered_at": "2023-05-06T20:09:18.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recQGfbwsNl5WtAws",
@@ -6806,7 +6887,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/11/good-talkspodcasts-nov-2022-i.html",
     "registered_at": "2022-11-06T19:11:42.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recQMQpGIFTjizKaX",
@@ -6869,7 +6951,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2025/05/good-talkspodcasts-may.html",
     "registered_at": "2025-05-01T16:53:17.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recQQbDcXuUhH7qiq",
@@ -6911,7 +6994,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2018/08/good-talkspodcasts-aug-2018-i.html",
     "registered_at": "2020-01-19T20:32:31.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recQXhTz2JNupuQUs",
@@ -6933,7 +7017,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2025/04/good-talkspodcasts-april.html",
     "registered_at": "2025-04-30T07:01:32.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recQgeVzH01tWQEUD",
@@ -7184,7 +7269,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/03/good-talkspodcasts-march-2021-ii.html",
     "registered_at": "2021-03-14T07:06:49.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recRVTF0x6Pige5Ks",
@@ -7286,7 +7372,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2025/12/good-talkspodcasts-dec.html",
     "registered_at": "2025-09-07T20:16:42.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recRtAWnx4lTVvYUO",
@@ -7330,7 +7417,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/08/good-talkspodcasts-aug-2024-i.html",
     "registered_at": "2024-07-26T08:37:11.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recSAamOq3VNnKbru",
@@ -7473,7 +7561,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/06/good-talkspodcasts-june-2024-i.html",
     "registered_at": "2024-06-23T07:32:56.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recSgs7pW9bondsBC",
@@ -7669,7 +7758,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/06/good-talkspodcasts-jun-2020-ii.html",
     "registered_at": "2020-06-27T07:02:05.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recT5zagJ5XLcNfo6",
@@ -7724,7 +7814,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/01/good-talkspodcasts-january-2022-ii.html",
     "registered_at": "2022-01-22T18:36:50.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recTLLUeNHzpm3ciV",
@@ -7746,7 +7837,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/11/good-talkspodcasts-nov-2020-i.html",
     "registered_at": "2020-11-09T08:44:59.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recTVpEDvvpGidXxv",
@@ -7804,7 +7896,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2019/11/good-talkspodcasts-october-november.html",
     "registered_at": "2020-01-19T20:40:44.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recU3ahWWaBZfihRf",
@@ -7864,7 +7957,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2025/02/good-talkspodcasts-feb-i.html",
     "registered_at": "2025-02-09T10:02:59.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recUCselSVEWT3ayu",
@@ -7926,7 +8020,8 @@
     "notes": "Effective software engineering requires balancing the visible progress of **feature development** with the less legible but vital preservation of **future optionality** through continuous, incremental \"tidying\". By learning to **\"make the change easy, then make the easy change,\"** developers fulfill both an economic and an ethical obligation to keep the codebase maintainable for their colleagues and future requirements.\n\n- Software design requires balancing the **visible progress of features** with the **preservation of optionality** for future changes.\n- While stakeholders easily notice new features, the **below-the-surface design work** is what determines long-term velocity and defect rates.\n- The core strategy for handling difficult updates is to **\"make the change easy, then make the easy change\"** through incremental structural improvements.\n- **Speculative flexibility** should be avoided by deferring design investments until just before they are needed to maximize their net present value.\n- Maintaining a clean codebase is both an **economic necessity** and a **moral obligation** to colleagues to prevent making their future work unnecessarily hard.\n- **Structural changes** (refactoring) should be isolated from **behavioral changes** (features) in separate pull requests because structural changes are usually reversible while behavioral changes are often not.\n- Teams must avoid **100% utilization**, as approaching full capacity causes the wait time for new work to approach infinity.\n- To escape a cycle of declining productivity, developers must periodically **restore optionality** by tidying code—such as rationalizing names or improving tests—between feature implementations.\n- Effective tidying can be as simple as **adding a strategic blank line** to clarify logic or **deleting redundant comments** that the code already makes clear.\n\n",
     "format": "podcast",
     "registered_at": "2026-03-14T09:54:51.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recUIDymP9vqzyyTI",
@@ -7951,7 +8046,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2022/11/good-talkspodcasts-nov-2022-i.html",
     "registered_at": "2022-11-06T19:03:09.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recUJOAZZjUhx4qJy",
@@ -8014,7 +8110,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/01/good-talkspodcasts-jan-2021-i.html",
     "registered_at": "2021-01-30T19:42:52.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recUW0ltnurmCJfSA",
@@ -8164,7 +8261,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/08/good-talkspodcasts-aug-2024-i.html",
     "registered_at": "2024-08-17T21:10:31.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recVH2i379PcXzNAc",
@@ -8248,7 +8346,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2018/01/interesting-talkspodcasts-2018-jan-ii.html",
     "registered_at": "2020-01-19T20:33:12.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recVUDePMyuwLViaC",
@@ -8287,7 +8386,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2022/04/good-talkspodcasts-april-2022-i.html",
     "registered_at": "2022-03-30T06:24:51.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recVlzEmpFmIEigTw",
@@ -8348,7 +8448,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2025/03/good-talkspodcasts-march-i.html",
     "registered_at": "2025-02-13T14:10:26.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recWJ9a4t7jffG5DR",
@@ -8412,7 +8513,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/09/good-talkspodcasts-september-2021-ii.html",
     "registered_at": "2021-09-05T16:10:38.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recWQUvgF3YqjA3lv",
@@ -8494,7 +8596,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/07/good-talkspodcasts-jul-2021-i.html",
     "registered_at": "2021-07-03T06:55:55.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recWfUV0NqBVUvrz1",
@@ -8515,7 +8618,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2019/04/good-talkspodcasts-april-2019-i.html",
     "registered_at": "2020-01-19T20:39:26.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recWr0AUmugIvM9fn",
@@ -8540,7 +8644,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/07/good-talkspodcasts-jul-2021-ii.html",
     "registered_at": "2021-07-25T18:02:02.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recWsPImFvQo51sT0",
@@ -8561,7 +8666,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2023/02/good-talkspodcasts-feb-2023-i.html",
     "registered_at": "2023-02-19T20:49:45.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recWvQfR6LdDU9Nte",
@@ -8616,7 +8722,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/12/good-talkspodcasts-dec-2020-ii.html",
     "registered_at": "2020-12-19T21:36:18.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recXEpirYSV9PXjMZ",
@@ -8701,7 +8808,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/02/good-talkspodcasts-february-2022-i.html",
     "registered_at": "2022-02-06T22:04:48.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recXjNi3DnV2sM1SG",
@@ -8737,7 +8845,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2023/06/good-talkspodcasts-jun-2023-i.html",
     "registered_at": "2023-06-18T06:37:47.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recXooBJg7DRlLquE",
@@ -8760,7 +8869,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/10/good-talkspodcasts-october-2021-ii.html",
     "registered_at": "2021-10-17T14:40:43.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recXtA7phfvXSLFlc",
@@ -8842,7 +8952,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/03/good-talkspodcasts-march-2021-ii.html",
     "registered_at": "2021-03-14T07:13:20.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recYU4svEXED3rmx9",
@@ -8877,7 +8988,8 @@
     "notes": "**Lean** is a humanistic engineering philosophy that focuses on **\"making people to make parts\"** by shifting from top-down control to a collaborative partnership where leaders stretch the **technical competence** and responsibility of employees to ensure process changes genuinely make frontline work easier. This approach requires leaders to prioritize **Gemba-based curiosity** and co-construct solutions with their teams, focusing on strengthening workplace **conditions** rather than simply burdening processes with administrative checks.\n\n- **\"Make people before making parts\"**: The core philosophy of Lean is developing the technical competence and sense of responsibility of individuals so they can effectively solve problems.\n- **Engineering-Centric Focus**: Lean success is rooted in engineering rather than just production; the work environment serves as a \"test method\" for the quality of a design.\n- **Gemba-Based Leadership**: Leaders must reconcile their vision with reality by physically going to the Gemba (the place where work happens) to understand what staff and customers actually experience.\n- **Strengthening Conditions vs. Fighting Causes**: Rather than burdening processes with administrative checks to stop specific failures, focus on strengthening general conditions through maintenance, 5S, and teamwork training.\n- **Technical Competence for Leaders**: Leadership credibility is built on technical knowledge and curiosity; employees value technical competence and earnestness over administrative perfection or specific \"perfect\" behaviors.\n- **Making Work Easier**: A leader's responsibility for a change is only fulfilled when the new process is genuinely easier and smoother for the frontline operator than the previous one.\n- **Humanistic Partnership vs. Participative Taylorism**: Avoid \"participative Taylorism\"—where workshops are held merely to gain buy-in for top-down changes—and instead co-construct technical solutions with those doing the work.\n- **Solutions as the Next Problem**: Recognize that every solution eventually creates new failure modes; leadership involves taking responsibility for these consequences and working through them via a continuous cycle of Kaizen.\n- **Curiosity over Unilateral Control**: Shift from giving instructions and seeking command-and-control to curiosity-driven engagement that frames problems clearly so teams can experiment with solutions.\n\n",
     "format": "podcast",
     "registered_at": "2026-01-06T09:52:13.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recYZ3cyr9Rm2u5Br",
@@ -8962,7 +9074,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2019/03/good-talkspodcasts-feb-2019-ii.html",
     "registered_at": "2020-01-19T20:38:32.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recYnvTNdzrpQ2dRS",
@@ -9025,7 +9138,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2022/10/good-talkspodcasts-oct-2022-i.html",
     "registered_at": "2022-10-09T09:38:40.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recZ4aFMo6i74a1Sl",
@@ -9067,7 +9181,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/04/good-talkspodcasts-april-2022-i.html",
     "registered_at": "2022-03-30T06:26:30.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recZDNCtFnhk12REN",
@@ -9226,7 +9341,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/05/good-talkspodcasts-may-2022-i.html",
     "registered_at": "2022-05-15T06:33:38.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recZW8hH7yNsA3zo7",
@@ -9494,7 +9610,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2024/11/good-talkspodcasts-nov-2024-ii.html",
     "registered_at": "2024-11-24T18:55:28.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recaXSX4WYyspYeRM",
@@ -9578,7 +9695,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2025/08/good-talkspodcasts-aug.html",
     "registered_at": "2025-08-24T08:39:51.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recaonIzEHQuY9RmH",
@@ -9677,7 +9795,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/08/good-talkspodcasts-aug-2020-i.html",
     "registered_at": "2020-08-09T19:42:16.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recb8BKxUfGWW6qA1",
@@ -9740,7 +9859,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/03/good-talkspodcasts-mar-2024-i.html",
     "registered_at": "2024-03-30T16:18:26.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recbH5Ps1JZF9UVbS",
@@ -9781,7 +9901,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2024/01/good-talkspodcasts-jan-2024-i.html",
     "registered_at": "2024-01-14T10:32:53.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recbPgwllMN0O9rA6",
@@ -9805,7 +9926,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/07/good-talkspodcasts-jul-2020-ii.html",
     "registered_at": "2020-07-17T15:36:45.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recbQlP6V3GbNZlrQ",
@@ -10028,7 +10150,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/02/good-talkspodcasts-february-2022-ii.html",
     "registered_at": "2022-02-12T21:31:01.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "reccNlMl6JcDotm1s",
@@ -10147,7 +10270,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2024/09/good-talkspodcasts-sept-2024-i.html",
     "registered_at": "2024-09-15T07:27:42.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "reccfJsxaBnA09Cmu",
@@ -10231,7 +10355,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/08/good-talkspodcasts-aug-2024-i.html",
     "registered_at": "2024-08-18T08:13:50.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "reccqXpeC0nsdeQJp",
@@ -10271,7 +10396,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2016/12/interesting-talks-ive-seen-during.html",
     "registered_at": "2020-01-19T20:34:08.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recd1abtbMsZ86K3T",
@@ -10407,7 +10533,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/09/good-talkspodcasts-sept-2024-i.html",
     "registered_at": "2024-09-15T07:36:48.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recdLJvVSnFgDDGV9",
@@ -10449,7 +10576,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/09/good-talkspodcasts-september-2021-i.html",
     "registered_at": "2021-08-14T20:25:44.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recdNt7GihnbZamNQ",
@@ -10624,7 +10752,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/12/good-talkspodcasts-dec-2022-i.html",
     "registered_at": "2022-12-06T20:58:06.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recdtuuFrAhIbab9g",
@@ -10702,7 +10831,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2025/08/good-talkspodcasts-aug.html",
     "registered_at": "2025-08-21T17:41:07.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rece0mXG2XOZ5Yy6j",
@@ -10726,7 +10856,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2025/04/good-talkspodcasts-april.html",
     "registered_at": "2025-04-12T08:38:05.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rece2CJmPCKHEJ1Zl",
@@ -10748,7 +10879,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/11/good-talkspodcasts-nov-2020-i.html",
     "registered_at": "2020-11-09T08:45:14.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rece3oTqtXw1BhZg9",
@@ -10771,7 +10903,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2019/06/index.html",
     "registered_at": "2020-01-19T20:40:30.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rece8B11u0Arm1S6H",
@@ -10831,7 +10964,8 @@
     "conference_name": "GOTO",
     "format": "talk",
     "registered_at": "2026-01-22T18:13:49.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "receO8rFJW7u7nrd8",
@@ -10873,7 +11007,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2023/08/good-talkspodcasts-ago-2023-i.html",
     "registered_at": "2023-06-26T12:40:13.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "receZQFTy2Xv8ZsQm",
@@ -10935,7 +11070,8 @@
     "conference_name": "Scrum Tokyo",
     "format": "talk",
     "registered_at": "2026-02-18T15:06:42.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recerQytV322uGb6q",
@@ -10956,7 +11092,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2023/04/good-talkspodcasts-apr-2023-i.html",
     "registered_at": "2023-04-23T18:14:54.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recet2VqJjUyBS0xr",
@@ -11036,7 +11173,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/11/good-talkspodcasts-nov-2024-i.html",
     "registered_at": "2024-11-24T08:32:45.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recfCzx00JHmJWmXf",
@@ -11134,7 +11272,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/07/good-talkspodcasts-jul-2022-i.html",
     "registered_at": "2022-07-25T17:09:43.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recfTX9iHgWdVFu6H",
@@ -11210,7 +11349,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/08/good-talkspodcasts-aug-2020-i.html",
     "registered_at": "2020-08-09T19:34:42.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recfodpkUIp7GFrQP",
@@ -11235,7 +11375,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2022/03/good-talkspodcasts-march-2022-i.html",
     "registered_at": "2022-02-27T22:09:57.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recfsDPHjPlSeLYRw",
@@ -11359,7 +11500,8 @@
     "notes": "In an AI-powered future, the focus of software development shifts from the mechanics of writing syntax to the exercise of high-leverage human skills like **curiosity**, **design taste**, **strategic testing**, and **effective communication** to manage rapid feedback loops and maintain system optionality. You should remember that while AI can generate code instantly, the developer's essential role is to act as a confident bridge between business requirements and technical execution through critical thinking and goal-oriented problem-solving.\n\n- **Shift from Creation to Review**: Software development is transitioning from manual code writing to a process focused on reading, reviewing, planning, and managing feedback loops.\n- **High-Leverage Design Taste**: As the cost of generating code drops to zero, the developer's \"taste,\" sense of timing, and knowing when to apply architectural principles become the primary drivers of value.\n- **Optionality over Debt**: Focus on making technical decisions that increase future \"options\" (the ease of making future changes) rather than just viewing shortcuts as technical debt.\n- **Confidence as a Skill**: Cultivating the confidence to learn and adapt to new abstractions is essential as traditional technical shortcuts (like IDE hotkeys) lose relevance.\n- **Stating High-Level Goals**: A critical skill in augmented coding is the ability to articulate high-level intent and goals, which guides the AI and helps the developer maintain focus on the desired outcome.\n- **AI as an Infinitely Patient Tutor**: Curiosity becomes a highly leveraged skill when using AI to explore new domains, learn internals, or understand complex concepts through customized teaching styles.\n- **Strategic Testing Awareness**: While AI can generate tests, developers must maintain the awareness to review for corner cases and use AI to perform advanced tasks like mutation and coverage testing more frequently.\n- **The Developer as a Bridge**: The core role of a developer remains acting as the bridge between \"fluffy\" business requirements and technical execution—a task requiring deep communication and analysis skills.\n- **Advanced Problem Slicing**: The ability to break down problems and prioritize features is more valuable in an AI environment because it allows for much faster feedback cycles (daily instead of monthly).\n- **Interpersonal and Intrapersonal Skills**: Skills such as saying \"no,\" managing stakeholder expectations, and understanding one's own learning needs are becoming more important than specific language syntax.\n\n",
     "format": "podcast",
     "registered_at": "2026-03-14T09:47:39.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recgKG33Jjit6WvBS",
@@ -11404,7 +11546,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2023/06/good-talkspodcasts-jun-2023-i.html",
     "registered_at": "2023-06-18T06:44:04.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recgNHgQpgbXMk5nD",
@@ -11425,7 +11568,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2017/11/good-talkspodcasts-october-2017-part-ii.html",
     "registered_at": "2020-01-19T20:43:06.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recgPMi1jZxWlMVIE",
@@ -11492,7 +11636,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/01/good-talkspodcasts-jan-2024-i.html",
     "registered_at": "2020-01-19T20:39:37.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recgeS8VqfPc981Zp",
@@ -11514,7 +11659,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2025/08/good-talkspodcasts-aug.html",
     "registered_at": "2025-08-24T08:55:32.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recgfniIhW3PeIR8x",
@@ -11577,7 +11723,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/08/good-talkspodcasts-aug-2020-i.html",
     "registered_at": "2020-08-04T16:11:26.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recgprKBJdFn0fNCG",
@@ -11615,7 +11762,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/04/good-talkspodcasts-april-2021-i.html",
     "registered_at": "2021-04-24T19:30:29.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recgu2Tmle3n64G5u",
@@ -11698,7 +11846,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/12/good-talkspodcasts-dec-2020-ii.html",
     "registered_at": "2020-12-19T21:48:10.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rechOxykWf8TgOgfW",
@@ -11735,7 +11884,8 @@
     "notes": "To effectively navigate the **\"silent black box\"** of AI coding assistants, developers must actively **manage complexity** by using **narrowly focused, single-purpose agents** and establishing **high-level observability** through visual markers and **rigorous feedback loops** like TDD. By maintaining strictly curated **\"knowledge checkpoints\"** and treating the AI as an **external cortex**, engineers can prevent context rot and ensure the agent remains a predictable, productive partner rather than a source of overwhelming noise.\n\n- **The Black Box Problem:** AI coding assistants act as silent, mysterious \"black boxes\" with invisible contexts; developers must actively create views and summaries to understand the agent's current goal and internal state.\n- **Augmented Coding Patterns:** A collection of bite-sized, combinable techniques designed to move beyond \"vibing\" with LLMs toward a structured engineering approach.\n- **Context Markers (Starter Emojis):** Using specific emojis to provide immediate observability. For example, a \"starter emoji\" confirms an agent has read the ground rules, while specific markers for phases (Red/Green/Refactor) or proactive warnings show when specific instructions have \"fired.\"\n- **Monitoring Context Rot:** Developers can stack emojis representing different rule sets; if an emoji disappears from the output, it serves as a visual indicator that the associated information has been pushed out of the AI's context window.\n- **Narrow, Single-Purpose Agents:** Overloading an agent with too much information causes it to lose focus. Using specialized, narrowly focused agents (e.g., a dedicated \"committer\" agent) results in higher accuracy and more proactive feedback.\n- **Knowledge Checkpoints:** Because AI context is ephemeral and \"rots,\" developers should externalize the AI's learning and plans into persistent files. These act as \"save points\" that allow a developer to clear the context, restart, or branch off into parallel explorations without losing progress.\n- **Semantic Zoom:** The ability to move between different levels of abstraction using natural language. This involves \"zooming out\" to see high-level architecture or gist-style summaries and \"zooming in\" only when specific detail is required.\n- **Feedback Flip:** A pattern where the developer asks the same agent that produced the code to immediately find issues or mistakes in its own work, providing an instant feedback loop.\n- **Spec-Driven Development:** Using high-level specifications (like Gherkin or BDD) that the agent implements. This allows the developer to stay at a high level of abstraction and easily instruct the agent to \"rebuild\" based on the original spec if it goes off-track.\n- **Approval Testing:** Using \"golden standards\" or snapshots to verify AI output. This makes it easy to quickly scan a visual diff and confirm if the agent made the intended change or broke existing functionality.\n- **The External Cortex:** Treating the LLM and its associated files as an external memory system. This allows the developer to manage higher levels of complexity than the human brain can hold at once by \"saving\" the current state of an investigation.\n- **Avoiding Answer Injection:** Prompting the AI to recommend solutions rather than providing a solution in the question, which prevents the developer from accidentally limiting the agent's breadth of knowledge and ideas.\n\n",
     "format": "podcast",
     "registered_at": "2026-01-06T10:21:59.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rechQzQWRIds2FQDl",
@@ -11813,7 +11963,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2022/09/good-talkspodcasts-sept-2022-i.html",
     "registered_at": "2022-09-18T21:57:09.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rechcjxuU2Gdb0VKR",
@@ -12068,7 +12219,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2015/08/index.html",
     "registered_at": "2020-01-19T20:36:16.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recicia289vkyUb3K",
@@ -12091,7 +12243,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2025/03/good-talkspodcasts-march-ii.html",
     "registered_at": "2025-03-23T09:34:09.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recicunl34WGqbaUv",
@@ -12115,7 +12268,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2016/01/interesting-talks-from-craft-conf-2015.html",
     "registered_at": "2020-01-19T20:35:00.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recifV0MU7kTj0hsl",
@@ -12256,7 +12410,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/04/good-talkspodcasts-april-2021-i.html",
     "registered_at": "2021-04-24T18:31:21.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recirlexFAzgG5gZt",
@@ -12317,7 +12472,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/03/good-talkspodcasts-march-2022-i.html",
     "registered_at": "2022-03-02T10:01:43.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recjEJNWZaeZVjneQ",
@@ -12341,7 +12497,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/03/good-talkspodcasts-march-2021-i.html",
     "registered_at": "2021-03-07T08:21:37.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recjJbd93f3Rgfda1",
@@ -12505,7 +12662,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/01/good-talkspodcasts-january-2022-ii.html",
     "registered_at": "2022-01-22T19:08:56.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recjeXuevrgjW9tqw",
@@ -12572,7 +12730,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/07/good-talkspodcasts-jul-2021-i.html",
     "registered_at": "2021-07-03T07:42:12.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "reck60FOvatP5hPnd",
@@ -12598,7 +12757,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2023/05/good-talkspodcasts-may-2023-i.html",
     "registered_at": "2023-05-06T20:21:25.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "reckA50CAd6BkKqQo",
@@ -12697,7 +12857,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2025/02/good-talkspodcasts-feb-i.html",
     "registered_at": "2025-02-09T09:20:54.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recki3bxkqEB9nbIE",
@@ -12719,7 +12880,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2025/08/good-talkspodcasts-aug.html",
     "registered_at": "2025-08-21T17:23:30.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "reckjL9O859XqGTqO",
@@ -12740,7 +12902,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2014/10/podcaststalks-2014-24-30-oct.html",
     "registered_at": "2020-01-19T20:37:55.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "reckjjc9gpAuwJR9c",
@@ -12930,7 +13093,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/03/good-talkspodcasts-march-2022-ii.html",
     "registered_at": "2022-03-13T08:25:50.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "reclRfFgQccNK21Rs",
@@ -13008,7 +13172,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/06/good-talkspodcasts-jun-2021-i.html",
     "registered_at": "2021-06-13T22:05:50.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "reclgVWShZIfpoTG8",
@@ -13082,7 +13247,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2023/08/good-talkspodcasts-ago-2023-i.html",
     "registered_at": "2023-08-26T18:46:07.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "reclu4ag3R1hrFQI3",
@@ -13123,7 +13289,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2022/01/good-talkspodcasts-january-2022-i.html",
     "registered_at": "2021-12-25T08:54:58.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "reclyCx5pdu7u7vic",
@@ -13208,7 +13375,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/03/good-talkspodcasts-march-2021-i.html",
     "registered_at": "2021-03-07T08:11:42.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recm4jFcHXCYvjXOz",
@@ -13229,7 +13397,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/10/good-talkspodcasts-oct-2022-i.html",
     "registered_at": "2022-10-09T22:02:46.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recm5NyzuUShg6KDI",
@@ -13251,7 +13420,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/11/good-talkspodcasts-nov-2024-ii.html",
     "registered_at": "2024-11-24T19:22:59.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recm671aviaATZ8Rp",
@@ -13469,7 +13639,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/04/good-talkspodcasts-april-2022-i.html",
     "registered_at": "2022-04-09T18:08:51.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recmXjj3gCHCDDrNv",
@@ -13651,7 +13822,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2024/03/good-talkspodcasts-mar-2024-i.html",
     "registered_at": "2024-03-30T16:56:29.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recmxMzHk07eCaRVF",
@@ -13672,7 +13844,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2023/01/good-talkspodcasts-jan-2023-i.html",
     "registered_at": "2023-01-08T17:47:32.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recn6JaGznr53p6Jr",
@@ -13774,7 +13947,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2020/12/good-talkspodcasts-dec-2020-i.html",
     "registered_at": "2020-12-19T21:31:37.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recnOvllU0VNmNHa6",
@@ -14080,7 +14254,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/09/good-talkspodcasts-sept-2020-i.html",
     "registered_at": "2020-08-31T21:09:25.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recoG83FEeHDan6dF",
@@ -14147,7 +14322,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/12/good-talkspodcasts-dec-2024-i.html",
     "registered_at": "2024-12-08T20:35:47.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recoRY63Ih9eboaTI",
@@ -14170,7 +14346,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2022/09/good-talkspodcasts-sept-2022-i.html",
     "registered_at": "2022-09-18T21:47:48.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recoZ0s08wK1SBb4p",
@@ -14324,7 +14501,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/03/good-talkspodcasts-march-2021-ii.html",
     "registered_at": "2021-03-21T09:07:27.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "reconKr3HfuOKZqkE",
@@ -14367,7 +14545,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2016/12/interesting-talks-ive-seen-during.html",
     "registered_at": "2020-01-19T20:34:05.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recovGzxrWfaZYTku",
@@ -14427,7 +14606,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2017/04/interesting-talkspodcasts-april-2017.html",
     "registered_at": "2020-01-19T20:41:59.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recpKZMLlrefwRFES",
@@ -14525,7 +14705,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/01/good-talkspodcasts-jan-2021-i.html",
     "registered_at": "2021-01-30T19:52:14.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recpiZkDYnXWDdCxg",
@@ -14623,7 +14804,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2025/07/good-talkspodcasts-jul-ai-ai-augmented.html",
     "registered_at": "2025-07-08T11:04:52.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recq9J6CSbdnEyYwZ",
@@ -14646,7 +14828,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2025/07/good-talkspodcasts-jul-ai-ai-augmented.html",
     "registered_at": "2025-07-15T07:49:07.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recqBPwWhGCxXDOK1",
@@ -14808,7 +14991,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2022/01/good-talkspodcasts-january-2022-ii.html",
     "registered_at": "2022-01-22T19:26:16.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recqf9rPtwIwFBBXd",
@@ -14985,7 +15169,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/09/good-talkspodcasts-sept-2022-i.html",
     "registered_at": "2022-09-18T21:52:23.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recrGcqVCRBZi01uH",
@@ -15009,7 +15194,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2019/05/index.html",
     "registered_at": "2020-01-19T20:35:41.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recrYATbAMaj4fxd7",
@@ -15032,7 +15218,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/06/good-talkspodcasts-jun-2020-i.html",
     "registered_at": "2020-06-14T11:04:56.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recrYqt5GZlrRAe1P",
@@ -15070,7 +15257,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/05/good-talkspodcasts-may-2020-ii.html",
     "registered_at": "2020-05-17T19:54:35.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recrdJ8zVqkflutM8",
@@ -15365,7 +15553,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2023/10/good-talkspodcasts-oct-2023-i.html",
     "registered_at": "2023-10-15T18:52:33.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recscHyLdiqVlvrn0",
@@ -15406,7 +15595,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/06/good-talkspodcasts-jun-2022-ii.html",
     "registered_at": "2022-06-26T16:01:01.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recsoDlrkESzl0ibA",
@@ -15561,7 +15751,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2025/10/good-talkspodcasts-oct-i-ai-ai.html",
     "registered_at": "2025-09-26T06:28:43.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rectE9e9yPCU27fm5",
@@ -15625,7 +15816,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/07/good-talkspodcasts-jul-2021-ii.html",
     "registered_at": "2021-07-25T18:53:09.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rectSGWYoQ1Yv5lFg",
@@ -15700,7 +15892,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2019/08/good-talkspodcasts-august-2019-i.html",
     "registered_at": "2020-01-19T20:38:54.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "rectduIUy0z2b6gmb",
@@ -15900,7 +16093,8 @@
     "notes": "**Test-Driven Development** serves as a fundamental **design tool** that compels developers to create **modular, high-quality code** by focusing on observable outcomes and consumer interfaces before implementation,,. Adopting this disciplined test-first approach provides **constant feedback** through small, safe steps, ultimately resulting in flexible systems that are cheaper to maintain and better aligned with business goals.\n\n- **Test-Driven Development (TDD) Definition**: A disciplined cycle of thinking about a problem, breaking it into a test list, writing a failing test, writing minimal code to pass, and then refactoring.\n- **A Primary Design Tool**: TDD's greatest value is as a design tool rather than just a testing method. It forces developers to design external interfaces from the perspective of a consumer before writing implementation details.\n- **The \"Test-First\" Requirement**: For the process to be TDD, tests must be written before the code. Writing tests after implementation often results in tests that are tightly coupled to the code, making the system fragile and difficult to change.\n- **Forcing Function for Quality**: TDD inherently drives \"testable code,\" which is characterized by modularity, high cohesion, better separation of concerns, and loose coupling.\n- **Small, Safe Steps**: The process allows developers to work in tiny increments with a constant stream of feedback, providing a high level of confidence and security during development.\n- **Refactoring as a Distinct Step**: The refactoring stage is critical for improving the internal design of the code once the tests are green, ensuring the internal structure remains clean and maintainable.\n- **Focus on Observable Outcomes**: TDD encourages focusing on what the system should achieve (behavior) rather than how it achieves it (implementation), allowing for more freedom in how logic is realized.\n- **The \"Backward\" Approach**: A practical technique for TDD is to write the test in comments first, starting with the assertion (the outcome) and then working backward to the action and the initial state.\n- **Teaching Software Design**: TDD is one of the most effective ways to teach and learn software design. Challenges encountered during TDD are typically symptoms of underlying design flaws rather than the testing process itself.\n- **Business Value**: By producing more flexible and higher-quality software, TDD makes systems cheaper to maintain and more responsive to changing business needs.\n\n",
     "format": "podcast",
     "registered_at": "2026-01-22T18:13:47.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recuCBrk3kcf3ZRh1",
@@ -15920,7 +16114,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2023/01/good-talkspodcasts-jan-2023-ii.html",
     "registered_at": "2023-01-28T14:25:12.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recuEim2tG3QCBz1d",
@@ -15981,7 +16176,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2018/09/index.html",
     "registered_at": "2020-01-19T20:32:40.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recuMrXQfbSdl8hR1",
@@ -16010,7 +16206,8 @@
     "format": "talk",
     "blog_url": "http://www.eferro.net/2020/02/good-talkspodcasts-february-2020.html",
     "registered_at": "2020-02-09T20:13:02.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recua5NehSgf2GCdn",
@@ -16169,7 +16366,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2017/12/interesting-talkspodcasts-december-2017.html",
     "registered_at": "2020-01-19T20:40:58.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recvGNLrmJPPNppAm",
@@ -16253,7 +16451,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2025/03/good-talkspodcasts-march-ii.html",
     "registered_at": "2025-03-09T09:59:37.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recvcszbn9MUJPKJA",
@@ -16277,7 +16476,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/09/good-talkspodcasts-september-2021-ii.html",
     "registered_at": "2021-09-05T15:41:49.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recvdCzerN0wIn8ws",
@@ -16342,7 +16542,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/01/good-talkspodcasts-january-2022-i.html",
     "registered_at": "2021-12-25T07:33:40.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recw83FaLntoQU6kX",
@@ -16448,7 +16649,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/06/good-talkspodcasts-jun-2022-i.html",
     "registered_at": "2022-06-12T08:47:28.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recwX7fcCwTj99GfR",
@@ -16513,7 +16715,8 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/12/good-talkspodcasts-december-2021-i.html",
     "registered_at": "2021-12-20T18:04:48.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recwcdWSq15iUEKwj",
@@ -16595,7 +16798,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/11/good-talkspodcasts-november-2021-i.html",
     "registered_at": "2021-11-07T18:57:25.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recx5w3431xu9BsCX",
@@ -16659,7 +16863,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2018/11/good-talkspodcasts-nov-2018-i.html",
     "registered_at": "2020-01-19T20:34:02.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recxEIqBOISGpgFQb",
@@ -16747,7 +16952,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/01/good-talkspodcasts-jan-2024-i.html",
     "registered_at": "2024-01-14T10:43:16.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recxR1aQ9jW7ovNiX",
@@ -16888,7 +17094,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/08/good-talkspodcasts-august-2021-i.html",
     "registered_at": "2021-08-14T10:10:46.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recy9pfGthIhVLFim",
@@ -17126,7 +17333,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/04/good-talkspodcasts-april-2021-i.html",
     "registered_at": "2021-04-24T19:04:21.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "reczHIzKVw8O2V4Rg",
@@ -17169,7 +17377,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/09/good-talkspodcasts-sept-2020-i.html",
     "registered_at": "2020-08-31T21:07:31.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "reczLoRy2b7S8EQio",
@@ -17233,7 +17442,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2016/05/index.html",
     "registered_at": "2020-01-19T20:32:30.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "reczQnl7pKnPucLLz",
@@ -17273,7 +17483,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2015/10/index.html",
     "registered_at": "2020-01-19T20:34:45.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "reczYEOBiA6KzE1Gv",
@@ -17299,7 +17510,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/08/good-talkspodcasts-aug-2024-i.html",
     "registered_at": "2024-08-18T07:55:26.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "reczZkFQmqcwVw5Uj",
@@ -17343,7 +17555,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/09/good-talkspodcasts-sept-2020-i.html",
     "registered_at": "2020-08-31T21:03:01.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "reczgPOqLahq7Vs7m",
@@ -17435,7 +17648,8 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/07/good-talkspodcasts-jul-2022-i.html",
     "registered_at": "2022-07-25T18:02:56.000Z",
-    "rating": 5
+    "rating": 5,
+    "language": "English"
   },
   {
     "id": "recizbvOUpKqSJhZSQM1",
