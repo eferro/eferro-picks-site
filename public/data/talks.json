@@ -626,7 +626,8 @@
     "blog_url": "https://www.eferro.net/2025/07/good-talkspodcasts-jul-ai-ai-augmented.html",
     "registered_at": "2025-07-15T07:56:23.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2025
   },
   {
     "id": "rec2OjotXEUQMg9Nc",
@@ -850,7 +851,8 @@
     "blog_url": "http://www.eferro.net/2020/03/good-talkspodcasts-march-2020-i.html",
     "registered_at": "2020-03-14T09:01:20.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "To master DynamoDB, you must move beyond relational normalization by first identifying your application's specific access patterns and then designing a schema that uses composite keys and secondary indexes to pre-aggregate data for consistent performance at any scale.\n\n*   **DynamoDB Fundamentals**: A NoSQL, fully managed database providing consistent single-digit millisecond latency at any scale through a stateless HTTP connection model and IAM-based authentication [1-3].\n*   **Key Use Cases**: Specifically optimized for hyper-scale applications (e.g., high-volume retail carts) and hyper-ephemeral compute environments such as AWS Lambda [3-5].\n*   **Data Modeling Philosophy**: Success requires a shift from relational normalization to denormalization and pre-aggregation because DynamoDB does not support joins.\n*   **The Modeling Process**: Developers must start with an Entity Relationship Diagram (ERD), define all specific access patterns with stakeholders, and then design primary keys and indexes to satisfy those patterns.\n*   **Core Components**: Data is organized into tables containing items with a mandatory primary key (Simple or Composite) and flexible, schema-less attributes.\n*   **Single-Table Design**: Multiple entity types (e.g., users and orders) often reside in a single table using generic primary key names (PK and SK) and unique prefixes (e.g., `USER#`) to manage different data shapes and prevent overlaps.\n*   **API Efficiency**: Access is driven by item-based actions (requiring the full primary key) and queries (fetching multiple items within a partition); full-table scans should be avoided as they are expensive and slow at scale.\n*   **One-to-Many Relationship Strategies**: Relationships can be modeled by denormalizing data into a single item (using maps/lists), using composite primary keys to group related items, or using secondary indexes [12-15].\n*   **Filtering Limitations**: \"Filter Expressions\" are inefficient because they occur in memory after data is read from disk; effective filtering must be architected into the primary key or secondary index design.\n*   **Inverted Indexes**: This pattern involves flipping the partition key and sort key in a Global Secondary Index (GSI) to enable alternative query perspectives on the same data.\n*   **Composite Sort Keys**: Combining multiple attributes into a single string (e.g., `STATUS#DATE`) allows for complex hierarchical filtering within a query.\n*   **Sparse Indexes**: A technique where an attribute is added only to specific items so the GSI only replicates a subset of the table, providing an efficient global filter [22-24]."
   },
   {
     "id": "rec3GO9MC5qIQ3aBs",
@@ -1098,7 +1100,9 @@
     "blog_url": "https://www.eferro.net/2025/06/good-talkspodcasts-jun.html",
     "registered_at": "2025-06-07T19:28:41.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "Effective decision-making requires distinguishing between irreversible \"one-way door\" decisions that demand careful deliberation and reversible \"two-way door\" decisions that should be made quickly by individuals or small teams. Organizations must avoid a one-size-fits-all approach to ensure they maintain high velocity without taking catastrophic risks on choices that cannot be easily undone.\n\n* **One-way door decisions** are highly consequential, nearly irreversible, and extremely costly to change once made. These require slow, deliberate analysis and involvement from senior leadership to ensure they are handled correctly from the start.\n* **Two-way door decisions** are reversible; if the decision turns out to be wrong, you can \"walk back through the door\" and try another path. These should be made quickly by individuals or small teams deep within the organization.\n* A common organizational trap is a **\"one-size-fits-all\" decision-making process**, where heavyweight, slow procedures are applied to minor, reversible decisions, stifling speed and innovation.\n* **Technical decisions** can act like \"quick-drying cement\"—choices regarding architecture or core technologies are difficult to change later and must be scrutinized with the same care as one-way door business decisions.\n* The role of a leader in high-stakes environments is often to be a **\"Chief Slowdown Officer,\"** ensuring that irreversible decisions are analyzed from multiple angles before execution.\n* Success in modern engineering requires a blend of **Lean-Agile methodologies**, DevOps, Platform Engineering, and a strong product-focused culture to manage complexity and maintain high productivity.",
+    "year": 2024
   },
   {
     "id": "rec4SJpVcSeIFUOfq",
@@ -1325,7 +1329,8 @@
     "blog_url": "https://www.eferro.net/2022/11/good-talkspodcasts-nov-2022-ii.html",
     "registered_at": "2022-11-10T17:33:11.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "Any process can be dramatically optimized by applying the Toyota Production System's principles of continuous improvement, where breaking down complex tasks into small, structured steps helps eliminate waste. By focusing on Kaizen and optimizing flow through simple, incremental changes, organizations can transform chaotic operations into highly efficient systems that achieve massive gains in productivity.\n\n* **Toyota Production System (TPS)** is the summation of many small, simple, and inexpensive improvements that, when combined, create a significant overall impact.\n* **Lean principles** are universal and can be applied to any process, including service-oriented workflows like food distribution, rather than being limited to manufacturing.\n* **Kaizen** is a philosophy of continuous improvement that emphasizes striving step-by-step to make a process better.\n* **Efficiency** is gained by ensuring materials are available in the right quantity, at the right place, and at the right time to minimize unnecessary motion.\n* **Flow optimization** can be achieved by redesigning physical layouts, such as positioning materials on the opposite side of a production line from workers, to create a smoother work process.\n* **Wasted space reduction**, such as optimizing container sizes to avoid shipping \"air,\" increases logistics capacity and makes items easier for personnel to handle.\n* **Problems** should be viewed as opportunities for improvement rather than negative occurrences.\n* **Complex systems** should be addressed through a structured, one-by-one approach rather than attempting to tackle a disorganized situation as a single whole.\n* **Cycle time reduction** can be dramatic through these principles, with examples showing improvements from minutes down to seconds."
   },
   {
     "id": "rec5MK2KUQVjRiY3I",
@@ -1425,7 +1430,8 @@
     "blog_url": "https://www.eferro.net/2020/07/good-talkspodcasts-jul-2020-i.html",
     "registered_at": "2020-07-08T06:46:19.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "Effective software design should separate complex decision-making into a **\"functional core\"** of pure, value-based functions while isolating external dependencies within a thin **\"imperative shell.\"** This architecture provides fast, naturally isolated testing and greater code mobility by using simple values as the boundaries between system components instead of fragile mocks or heavy integration tests.\n\n* **Test isolation using mocks and stubs** provides valuable design feedback and fast execution, but risks creating tests that pass while production code fails due to out-of-sync interfaces.\n* **Integration tests** are often ineffective at scale because the number of execution paths grows exponentially ($2^n$) and test suite runtime grows super-linearly ($O(n^2)$).\n* The **Functional Core** should contain all system decisions and logic. It is composed of pure functions that take values as input and return values as output, with no external dependencies.\n* The **Imperative Shell** surrounds the core and handles stateful interactions with the outside world (database, network, disk). it should contain minimal logic and few conditionals.\n* **Isolated unit tests** are most effective for the Functional Core's complex logic, while **integration tests** are best reserved for the Imperative Shell's connectivity.\n* Using **simple values (structs or data)** instead of complex objects as boundaries between components allows for natural isolation without the need for mocks or stubs.\n* **\"FOO\" (Functional Objects)** can be used to maintain encapsulation while avoiding mutation, where methods return a new version of the object instead of modifying the current one.\n* Communication via simple values makes systems more **concurrent and mobile**, allowing class boundaries to be easily converted into process boundaries (similar to the Actor model).\n* **External frameworks** (like Django or Rails) should be treated as dependencies to be isolated from the core logic through \"scar tissue,\" mapping stateful models to simple values before they enter the functional core.\n* This architectural pattern mirrors concepts found in **Hexagonal Architecture, Ports and Adapters, and the IO Monad**, focusing on the strict separation of pure logic from side effects."
   },
   {
     "id": "rec5ibnyAK7zHbul9",
@@ -2224,7 +2230,8 @@
     "blog_url": "https://www.eferro.net/2020/08/good-talkspodcasts-aug-2020-i.html",
     "registered_at": "2020-07-27T09:20:46.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "Effective software engineering is defined by a **philosophy of responsibility**, where multi-disciplinary teams focus on achieving overall system outcomes and maintaining a rapid flow of value rather than adhering to rigid processes or relying on organizational proxies. Building for the future requires prioritizing **architectural resilience and adaptability**, ensuring that systems and teams are prepared to respond quickly and effectively to unpredictable \"black swan\" events.\n\n*   **Architecture as a Foundation:** Breakthrough innovations in software engineering are almost always driven by novel architectural concepts that challenge established norms.\n*   **Conway's Law:** Systems architecture and organizational architecture are mirrors of each other; if they do not align, the system will eventually force them into congruence.\n*   **Principles of Serious Scale:** Reliability at scale requires three key elements: redundancy, isolation, and local responsibility. Centralized control is a vulnerability that leads to cascading failures.\n*   **The Philosophy of Responsibility:** Engineering excellence is rooted in the \"Responsible Engineer\" model, where individuals and teams are accountable for their components working correctly and understanding how those components serve the mission of the entire system.\n*   **Flow over Resource Efficiency:** Optimizing for the flow of value (small batches, rapid movement) is more effective than optimizing for resource efficiency. Large batches in software lead to \"spoilage,\" similar to perishable goods.\n*   **Dependency as a Bottleneck:** Dependencies are the greatest barrier to flow. Transitioning from centralized \"systems of record\" to distributed data stores and microservices is essential for independent deployment and speed.\n*   **Cathedral vs. Bazaar:** The \"Bazaar\" model of development (independent actors, local responsibility, open source) has proven more resilient and scalable than the \"Cathedral\" model (centralized planning and standard processes).\n*   **The Problem with Proxies:** Intermediaries like \"Product Owners\" or \"Business Analysts\" often create a gap between engineers and the actual problem. Engineers should have direct contact with customers to develop both technical and product solutions.\n*   **Resilience and Adaptability:** Instead of trying to build systems that never break, organizations should focus on resilience—the ability to respond and rebuild rapidly when \"Black Swan\" events occur.\n*   **Outcome-Oriented Teams:** Future success depends on chartering multi-disciplinary teams with specific outcomes and purposes rather than focusing on tools, technology, or standard processes.\n*   **Implementing Change:** Successful organizational change occurs when management sets a clear vision and urgency, but allows frontline workers to design the detailed implementation of new systems.\n*   **Abstraction and Complexity:** Complexity expands to fit the latest abstraction. Higher-level languages and tools do not eliminate the need for skilled programmers; they simply allow those programmers to manage higher levels of complexity."
   },
   {
     "id": "rec9Tj1nxKdg4J2ii",
@@ -2448,7 +2455,8 @@
     "blog_url": "https://www.eferro.net/2018/03/interesting-talkspodcasts-2018-march-i.html",
     "registered_at": "2020-01-19T20:31:53.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "Scalability is a quantifiable mathematical function where performance is constrained by serialization and the quadratic costs of coordination, meaning that adding more resources can eventually result in decreased total output [1-3]. This Universal Scalability Law applies to both complex technical systems and human teams, highlighting that excessive communication and synchronization overhead are the primary drivers of system degradation.\n\n* **Scalability is a formal mathematical function**, not a vague concept, and can be precisely quantified using the Universal Scalability Law (USL).\n* **System behavior under load is nonlinear** and counterintuitive; small increases in utilization can lead to exponential increases in latency.\n* **Queuing theory** illustrates that as a system approaches 100% utilization, latency follows a \"hockey stick\" curve, rapidly approaching infinity.\n* **Capacity is not a fixed limit**; systems can operate beyond their peak capacity in a \"degraded mode\" or enter \"retrograde scalability\" where adding more load actually reduces total throughput.\n* **Linear scalability is an ideal** that is rarely achieved in real-world systems, despite frequent vendor claims.\n* **Amdahl's Law** defines the ceiling of performance speed-up based on serialization—the parts of a process that cannot be run in parallel.\n* **Crosstalk (coordination overhead)** introduces a quadratic cost ($N^2$) to systems; as more nodes or threads are added, the effort to coordinate them eventually outweighs the benefits of parallelization.\n* **The Universal Scalability Law equation** accounts for three factors: linear growth, serialization ($\\sigma$), and crosstalk ($\\kappa$).\n* **USL parameters can be estimated** using simple external metrics like throughput and concurrency, making it possible to model a system as a \"black box\" without knowing internal service times.\n* **Modeling allows for \"virtual\" load testing**, enabling engineers to forecast system behavior and identify bottlenecks beyond the limits of physical testing environments.\n* **The law applies to human organizations**; communication overhead in large teams acts like crosstalk, reducing individual productivity and necessitating small, autonomous team structures."
   },
   {
     "id": "recAMPx4U1nMXBIiM",
@@ -2737,7 +2745,8 @@
     "blog_url": "https://www.eferro.net/2018/05/good-talkspodcasts-april-2018.html",
     "registered_at": "2020-01-19T20:32:54.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "High-performing organizations achieve superior throughput and stability simultaneously by leveraging transformational leadership and decoupled architecture, proving that speed and reliability are mutually reinforcing rather than a trade-off [1-5]. This success is sustained through a holistic, disciplined approach where technical practices and lean management drive the cultural transformation necessary for exceptional performance [6-9].\n\n* **DevOps Performance Metrics**: High performers achieve 46x more frequent change deployments, are 440x faster from commit to deploy, have a 96x faster mean time to repair (MTTR), and a change failure rate that is five times lower than low performers.\n* **Throughput and Stability**: High performance is not a trade-off; high-performing organizations maximize both speed (throughput) and reliability (stability) simultaneously. Low performers often sacrifice stability when attempting to increase throughput.\n* **Transformational Leadership**: Leadership is a significant amplifier of performance. It is characterized by five key factors: vision, intellectual stimulation, inspirational communication, supportive leadership, and personal recognition.\n* **Architecture as a Predictor**: Architecture is the strongest predictor of continuous delivery. Performance is driven by architectural outcomes rather than specific technologies, specifically the ability for teams to make changes, test, and deploy independently without outside permission or fine-grained coordination.\n* **Automation and the J-Curve**: High performers do significantly less manual work across configuration management, testing, and deployments. Organizations often experience a \"J-curve\" where manual work initially increases as automation uncovers technical debt before performance radically improves.\n* **Reverse Conway's Law**: Organizations should design their technical architecture to enable the desired organizational structure—specifically small, cross-functional, loosely coupled teams that can experiment and deploy independently.\n* **Lean Product Management**: Performance is driven by working in small batches, making work flow visible, and empowering teams to experiment or pivot based on customer feedback.\n* **Organizational Impact**: High IT performance predicts broader organizational success. High performers are twice as likely to exceed both commercial goals (profitability, market share) and non-commercial goals (customer satisfaction, mission objectives).\n* **Cultural Transformation**: Culture is changed by altering behaviors and practices. Implementing technical practices and providing the right tools and leadership transforms the culture, which in turn drives performance.\n* **Technology Agnostic**: These principles apply across all environments, including \"brownfield\" legacy systems, mainframes, and highly regulated industries. Success depends on investing in architecture and culture rather than just adopting new tools."
   },
   {
     "id": "recBZwhDTylUgYDno",
@@ -2800,7 +2809,8 @@
     "blog_url": "https://www.eferro.net/2020/06/good-talkspodcasts-jun-2020-i.html",
     "registered_at": "2020-06-14T11:13:00.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "True product management requires moving beyond administrative \"product owner\" tasks to become an empowered leader who solves business and customer problems through deep knowledge and rapid discovery. Success is measured by achieving meaningful outcomes and creating value, rather than simply delivering a roadmap of features.\n\n*   **Product Manager vs. Product Owner:** The Product Owner role is primarily administrative and represents only about 10% of a Product Manager's job. A true Product Manager requires deep skill-building—often taking one to two years—ideally through coaching by experienced mentors.\n*   **Core Competencies:** A successful Product Manager must possess deep knowledge in four specific areas: users/customers, data analytics, the business (including finance, legal, and sales constraints), and the industry (competitors and technology trends).\n*   **The Four Risks:** Modern product management focuses on tackling four key risks upfront: Value (will customers buy or use it?), Usability (can they figure out how to use it?), Feasibility (can we build it with our current technology and time?), and Viability (does the solution work for our business?).\n*   **Discovery vs. Delivery:** Discovery is the process of finding a solution that is valuable, usable, feasible, and viable using prototypes. Delivery is the separate effort of building a production-quality, scalable, and reliable product.\n*   **Outcome over Output:** Success is measured by solving business problems (outcomes) rather than simply shipping features (output). OKRs should focus on business results, while traditional roadmaps of activities often fail to solve the intended problems.\n*   **Collaborative Innovation:** True innovation rarely comes from customers or requirements documents; it typically comes from engineers who understand what is \"just now possible\" with technology. PMs, designers, and engineers must collaborate side-by-side rather than through a hand-off of requirements.\n*   **Value Creation vs. Value Capture:** Product teams should focus the majority of their efforts on creating new value (discovery) rather than just capturing existing value through low-risk optimizations and minor tweaks.\n*   **High-Frequency Iteration:** Effective discovery involves rapid experimentation. Great teams may test 50 to 200 ideas a month, often performing 15 to 30 iterations per week using prototypes to find a winning solution.\n*   **Deep Work Requirement:** To perform the actual Product Manager role, an individual needs at least four hours of \"deep work\" per day, free from meetings and administrative project management tasks.\n*   **Continuous Customer Research:** Teams should conduct at least three one-hour sessions with users every week to identify pain points and understand why they might *not* use a product.\n*   **Role of Leadership:** The most important responsibility of product leaders (Managers, Directors, VPs) is coaching their Product Managers to become skilled. They are also responsible for setting the vision, strategy, and objectives that align multiple teams.\n*   **Ethical Responsibility:** Beyond technical and business risks, product people must evaluate ethical risk—asking \"should we build it?\"—to consider the potential negative side effects on society and customers."
   },
   {
     "id": "recBgNNTaB15VLMCw",
@@ -2892,7 +2902,8 @@
     "blog_url": "http://www.eferro.net/2020/03/good-talkspodcasts-march-2020-i.html",
     "registered_at": "2020-03-14T09:06:56.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "\"Glue work\" is essential technical leadership that ensures project success, yet it can be career-limiting if it replaces the quantifiable technical achievements required for promotion. To protect your career, you must deliberately balance these high-impact tasks with core technical work while ensuring your contributions are visible and aligned with how your organization evaluates success.\n\n* **Definition of Glue Work:** Glue work refers to the essential but often invisible tasks—such as unblocking teammates, reviewing designs for gaps, onboarding new members, and improving communication—that ensure a software project's success.\n* **The Recognition Gap:** While glue work is critical for shipping products, it is frequently undervalued or dismissed as \"soft skills\" rather than technical leadership, leading to engineers being passed over for promotion in favor of those with high \"quantifiable\" output like code.\n* **Career Risk for Juniors:** Performing excessive glue work early in a career is risky. Because performance reviews often focus on individual technical contributions (coding), junior engineers who act as \"glue\" may fail to meet the specific technical bars required for senior roles.\n* **Systemic Gender Bias:** Research indicates a significant imbalance in who performs this work; women are asked to do and volunteer for non-promotable \"thankless\" tasks (like organizing off-sites or taking notes) significantly more often than men.\n* **Skill Development and Stagnation:** Technical skills are not fixed; they are developed through practice. Over-indexing on glue work can lead to \"skill rot\" in core areas like coding, making it harder to pass technical interviews or be perceived as a senior individual contributor later.\n* **Actionable vs. Vague Feedback:** The feedback that an engineer is \"not technical enough\" is often non-actionable gatekeeping. Effective feedback should be specific, such as requiring a deeper understanding of distributed systems or specific architecture trade-offs.\n* **Strategic Visibility:** To be recognized for glue work, it must be framed as a leadership choice driven by technical judgment. Engineers should create artifacts, such as design proposals or strategic documentation, to make their impact visible and undeniable.\n* **The \"Stop Doing Glue\" Strategy:** If an organization refuses to reward glue work despite its impact, the most effective short-term career move is to temporarily stop doing it and focus exclusively on high-visibility, \"unarguably technical\" tasks to secure a promotion.\n* **Managerial Responsibility:** Managers must ensure that non-promotable work is distributed fairly across the entire team and that senior-level career ladders explicitly require the technical leadership skills demonstrated through glue work.\n* **Long-term Career Pathing:** Moving from an \"engineer\" title to a non-technical role (like project management) can close doors, as industry bias often assumes technical skills disappear once the \"engineer\" title is removed from a resume."
   },
   {
     "id": "recBllU9Ze8z1kLai",
@@ -3018,7 +3029,8 @@
     "blog_url": "https://www.eferro.net/2024/12/good-talkspodcasts-dec-2024-i.html",
     "registered_at": "2024-12-08T21:06:39.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "Effective software delivery is a **socio-technical endeavor** that requires balancing technical excellence—such as continuous delivery and domain-driven design—with strong product management to ensure you are \"baking the right cake\" for the business. You should remember that the most impactful improvements in engineering come from **aligning code with the language of the domain** and fostering a human-centered culture where communication and organizational flow take priority over technical complexity.\n\n*   **Agile Normalization:** Agile practices have become so ubiquitous over the last 20 years that they are now the industry standard, moving from a \"maverick\" approach to a normalized, everyday part of software delivery.\n*   **Cross-Functional Teams:** The industry has shifted away from siloed gated processes toward cross-functional teams that handle a \"full-ish stack\" to deliver capabilities rather than just isolated components.\n*   **Economic Impact of Architecture:** Efficient code and \"green software\" are economic imperatives; well-architected systems reduce server resources, electricity consumption, and operational costs, especially in cloud environments.\n*   **Serverless Paradigm:** Serverless architecture should be viewed as \"shared nothing\" rather than strictly stateless. Optimizing the startup and shared components of functions can enable massive scaling at extremely low costs.\n*   **Go-Style Testing:** Unlike the traditional xUnit school that stops at the first failure, Go's testing allows for a \"roadworthiness\" approach where multiple failures are registered in a single run, providing a comprehensive list of what needs fixing.\n*   **Domain-Driven Design (DDD):** Incorporating the language of the business domain directly into the code makes complex business rules explicit and allows developers and stakeholders to communicate without needing a translator.\n*   **Innovation through Necessity:** Many industry standards, such as CI/CD pipelines, blue-green deployments, and single deployable artifacts, were invented to solve high-pressure, \"impossible\" delivery challenges in real-world projects.\n*   **Theory of Constraints:** Bottlenecks in software delivery often shift: once development becomes agile, the bottleneck moves to operations (release), and once operations is automated, it moves upstream to product management (idea batching).\n*   **Product vs. Project Funding:** Project-based funding focuses on cost and perceived risk, while product-based funding acts like a venture investment, prioritizing continuous value delivery and reducing \"value at risk.\"\n*   **Socio-Technical Systems:** Programming is a socio-technical activity that is as much about human communication and team energy as it is about technology; technical excellence alone is insufficient for long-term organizational success.\n*   **Baking the Right Cake:** High-performing organizations must balance engineering excellence (\"baking the cake right\") with effective product strategy (\"baking the right cake\") to avoid efficiently building the wrong thing.\n*   **Redefining the \"Best\" Programmer:** Mastery in programming is not strictly tied to formal education; a computer science degree is neither a requirement for being a top-tier programmer nor a guarantee of expertise."
   },
   {
     "id": "recCQqPHzmbJv7cvR",
@@ -3365,7 +3377,8 @@
     "blog_url": "https://www.eferro.net/2025/10/good-talkspodcasts-oct-i-ai-ai.html",
     "registered_at": "2025-08-02T16:35:50.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2025
   },
   {
     "id": "recD9l1jhSzNfqx8E",
@@ -3472,7 +3485,8 @@
     "blog_url": "https://www.eferro.net/2025/07/good-talkspodcasts-jul-ai-ai-augmented.html",
     "registered_at": "2025-07-15T07:43:13.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2025
   },
   {
     "id": "recDbVkDBWzvAFP9N",
@@ -4375,7 +4389,8 @@
     "blog_url": "https://www.eferro.net/2025/12/good-talkspodcasts-dec.html",
     "registered_at": "2025-12-06T16:44:55.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2024
   },
   {
     "id": "recHDaDCXpcA83eDd",
@@ -5621,7 +5636,8 @@
     "blog_url": "https://www.eferro.net/2025/08/good-talkspodcasts-aug.html",
     "registered_at": "2025-06-24T13:54:43.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2014
   },
   {
     "id": "recLnRF2aJnuRO2hg",
@@ -6956,7 +6972,8 @@
     "blog_url": "https://www.eferro.net/2025/05/good-talkspodcasts-may.html",
     "registered_at": "2025-05-01T16:53:17.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2025
   },
   {
     "id": "recQQbDcXuUhH7qiq",
@@ -7022,7 +7039,8 @@
     "blog_url": "https://www.eferro.net/2025/04/good-talkspodcasts-april.html",
     "registered_at": "2025-04-30T07:01:32.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2025
   },
   {
     "id": "recQgeVzH01tWQEUD",
@@ -7377,7 +7395,8 @@
     "blog_url": "https://www.eferro.net/2025/12/good-talkspodcasts-dec.html",
     "registered_at": "2025-09-07T20:16:42.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2024
   },
   {
     "id": "recRtAWnx4lTVvYUO",
@@ -8993,7 +9012,8 @@
     "format": "podcast",
     "registered_at": "2026-01-06T09:52:13.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2023
   },
   {
     "id": "recYZ3cyr9Rm2u5Br",
@@ -11505,7 +11525,8 @@
     "format": "podcast",
     "registered_at": "2026-03-14T09:47:39.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2026
   },
   {
     "id": "recgKG33Jjit6WvBS",
@@ -11664,7 +11685,8 @@
     "blog_url": "https://www.eferro.net/2025/08/good-talkspodcasts-aug.html",
     "registered_at": "2025-08-24T08:55:32.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2019
   },
   {
     "id": "recgfniIhW3PeIR8x",
@@ -11889,7 +11911,8 @@
     "format": "podcast",
     "registered_at": "2026-01-06T10:21:59.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2025
   },
   {
     "id": "rechQzQWRIds2FQDl",
@@ -12885,7 +12908,8 @@
     "blog_url": "https://www.eferro.net/2025/08/good-talkspodcasts-aug.html",
     "registered_at": "2025-08-21T17:23:30.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2025
   },
   {
     "id": "reckjL9O859XqGTqO",
@@ -14809,7 +14833,8 @@
     "blog_url": "https://www.eferro.net/2025/07/good-talkspodcasts-jul-ai-ai-augmented.html",
     "registered_at": "2025-07-08T11:04:52.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2025
   },
   {
     "id": "recq9J6CSbdnEyYwZ",
@@ -14833,7 +14858,8 @@
     "blog_url": "https://www.eferro.net/2025/07/good-talkspodcasts-jul-ai-ai-augmented.html",
     "registered_at": "2025-07-15T07:49:07.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2025
   },
   {
     "id": "recqBPwWhGCxXDOK1",
@@ -16099,7 +16125,8 @@
     "format": "podcast",
     "registered_at": "2026-01-22T18:13:47.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2025
   },
   {
     "id": "recuCBrk3kcf3ZRh1",
