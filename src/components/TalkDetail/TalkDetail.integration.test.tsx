@@ -252,6 +252,93 @@ describe('TalkDetail Integration', () => {
     });
   });
 
+  describe('Speaker Filter Interaction', () => {
+    it('user can click speaker to search by speaker name', async () => {
+      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+        talks: [mockTalk],
+        loading: false,
+        error: null
+      });
+
+      renderIntegration(
+        <Routes>
+          <Route path="/talk/:id" element={<TalkDetail />} />
+        </Routes>,
+        {
+          initialPath: '/talk/test-123'
+        }
+      );
+
+      // Click speaker button
+      const speakerButton = screen.getByText('Alice Smith');
+      fireEvent.click(speakerButton);
+
+      // Speaker button should show active state (query set to speaker name)
+      await waitFor(() => {
+        expect(speakerButton).toHaveClass('bg-blue-500', 'text-white');
+      });
+    });
+
+    it('user can toggle speaker filter off by clicking again', async () => {
+      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+        talks: [mockTalk],
+        loading: false,
+        error: null
+      });
+
+      // Start with query set to speaker name
+      renderIntegration(
+        <Routes>
+          <Route path="/talk/:id" element={<TalkDetail />} />
+        </Routes>,
+        {
+          initialPath: '/talk/test-123',
+          initialParams: new URLSearchParams('query=Alice Smith')
+        }
+      );
+
+      const speakerButton = screen.getByText('Alice Smith');
+      expect(speakerButton).toHaveClass('bg-blue-500', 'text-white');
+
+      // Click to remove filter
+      fireEvent.click(speakerButton);
+
+      // Button should return to inactive state
+      await waitFor(() => {
+        expect(speakerButton).not.toHaveClass('bg-blue-500');
+      });
+    });
+
+    it('clicking a different speaker replaces the current query', async () => {
+      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+        talks: [mockTalk],
+        loading: false,
+        error: null
+      });
+
+      // Start with query set to first speaker
+      renderIntegration(
+        <Routes>
+          <Route path="/talk/:id" element={<TalkDetail />} />
+        </Routes>,
+        {
+          initialPath: '/talk/test-123',
+          initialParams: new URLSearchParams('query=Alice Smith')
+        }
+      );
+
+      // Click the other speaker
+      const bobButton = screen.getByText('Bob Jones');
+      fireEvent.click(bobButton);
+
+      // Bob should become active, Alice inactive
+      await waitFor(() => {
+        expect(bobButton).toHaveClass('bg-blue-500', 'text-white');
+      });
+      expect(screen.getByText('Alice Smith')).not.toHaveClass('bg-blue-500');
+    });
+  });
+
   describe('Conference Filter Interaction', () => {
     it('user can click conference to apply filter', async () => {
       (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
