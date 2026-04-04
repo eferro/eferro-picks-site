@@ -17436,5 +17436,126 @@
     "blog_url": "https://www.eferro.net/2022/07/good-talkspodcasts-jul-2022-i.html",
     "registered_at": "2022-07-25T18:02:56.000Z",
     "rating": 5
+  },
+  {
+    "id": "recizbvOUpKqSJhZSQM1",
+    "title": "An AI state of the union: We’ve passed the inflection point & dark factories are coming",
+    "url": "https://www.youtube.com/watch?v=wc8FBhQtdsA",
+    "duration": 5991,
+    "topics": [
+      "AI Assisted Engineering",
+      "Security",
+      "tdd"
+    ],
+    "speakers": [
+      "Simon Willison"
+    ],
+    "description": "Simon Willison explores the \"inflection point\" of AI in software development, detailing agentic engineering patterns, the rise of \"dark factories,\" and the critical security challenges posed by prompt injection.",
+    "notes": "AI has turned writing code into a \"cheap\" commodity, shifting the software engineer's role from manual programming to high-level \"agentic engineering\" where expertise is used to orchestrate, rigorously test, and safely govern automated systems. To thrive in this new landscape, professionals must embrace AI to amplify their ambition and scale while remaining strictly focused on professional standards to manage the security risks and complexities of this high-speed era.\n\n* **The November Inflection Point:** In late 2024/early 2025, AI models (such as GPT-5.1 and Claude Opus 4.5) crossed a threshold where generated code moved from being \"mostly buggy\" to \"consistently functional,\" enabling the rise of reliable autonomous coding agents.\n\n* **Agentic Engineering vs. Vibe Coding:** A distinction exists between \"vibe coding\"—prototyping by non-programmers or for quick ideas without reviewing the code—and \"agentic engineering,\" which is the professional discipline of using AI agents to build production-ready software through rigorous review and automated loops.\n\n* **The Dark Factory Pattern:** This futuristic software development model suggests a \"lights-out\" approach where humans neither write nor read the code. Instead, they define requirements, and \"swarms\" of AI agents build, test, and verify the software through simulated environments and continuous QA.\n\n* **Code as a \"Cheap\" Commodity:** The cost and time required to produce code have plummeted. This shifts the primary bottleneck of software development from technical implementation to product strategy, ideation, and the ability to verify that the output is correct and secure.\n\n* **The Lethal Trifecta (Security):** A high-risk security vulnerability occurs when an AI agent has three capabilities: access to private information (e.g., an inbox), exposure to untrusted instructions (e.g., incoming emails or prompt injection), and a mechanism for data exfiltration (e.g., the ability to reply or forward).\n\n* **Normalization of Deviance:** There is a growing institutional overconfidence in AI systems despite known unreliability in security (prompt injection). This mirrors the \"Challenger disaster,\" where repeated \"near-misses\" lead to increasingly unsafe practices that eventually result in a major catastrophe.\n\n* **Impact on Professional Seniority:** AI acts as a massive skill amplifier for senior \"10X\" engineers and a powerful onboarding tool for juniors. However, it creates a \"missing middle\" problem for mid-career professionals who may lack the deep expertise required to direct and verify complex AI agentic loops.\n\n* **Modernized Test-Driven Development (TDD):** Automated testing is more critical than ever. Using patterns like \"Red/Green TDD\" (writing a failing test, then the implementation, then watching it pass) is the only way to reliably manage the high volume of code agents produce without incurring unmanageable technical debt.\n\n* **Human Agency and Ambition:** The unique value of human workers shifts toward \"agency\"—the motivation and decision-making power to choose which problems to solve. This allows for a dramatic increase in personal ambition, enabling individuals to tackle projects that were previously considered too time-consuming to pursue.\n\n* **Contextual Knowledge Hoarding:** Success in an AI-driven environment requires building personal \"backlogs\" of verified code snippets, small tools, and research markdown files. These serve as a trusted library of context that can be fed into AI agents to solve new problems more effectively.",
+    "core_topic": "AI Assisted Engineering",
+    "conference_name": null,
+    "format": "videopodcast",
+    "blog_url": "",
+    "registered_at": "2026-04-04T08:39:13.000Z",
+    "rating": 5,
+    "year": 2026,
+    "language": "English"
+  },
+  {
+    "id": "recYf5fIMmfyIg27CSPB",
+    "title": "Data vs Hype: How Orgs Actually Win with AI - The Pragmatic Summit",
+    "url": "https://www.youtube.com/watch?v=LOHgRw43fFk",
+    "duration": 1789,
+    "topics": [
+      "AI",
+      "Developer Productivity",
+      "Devex"
+    ],
+    "speakers": [
+      "Laura Tacho"
+    ],
+    "description": "A data-driven exploration of how organizations can move beyond AI hype to achieve real impact by focusing on developer experience, organizational transformation, and clear measurement frameworks.",
+    "notes": "To achieve true organizational impact with AI, you must move beyond individual tool adoption and focus on solving underlying systems-level problems and human constraints. Remember that AI acts as a multiplier of your existing culture and processes, so prioritizing developer experience and clear strategic goals is essential to drive meaningful transformation rather than simply accelerating existing dysfunction.\n\n* **AI Adoption vs. Impact:** While AI adoption among developers is high at 92.6%, organizational transformation remains low because tools are often applied only to individual coding tasks rather than systemic workflows.\n* **Productivity Benchmarks:** Developers report saving an average of 4.08 hours per week using AI tools, which correlates to approximately a 10% productivity increase.\n* **AI-Authored Code:** The amount of code reaching production that is authored by AI without significant human intervention has risen to 26.9%.\n* **Onboarding Acceleration:** AI has cut developer onboarding time (measured by the time to the 10th pull request) in half, a performance gain that typically sticks with an engineer for their first two years.\n* **The Multiplier Effect:** AI acts as a system accelerator; it can reduce customer-facing incidents by 50% in healthy organizations but can double them in dysfunctional ones.\n* **Organizational Barriers:** The primary obstacles to AI success are not technical but relate to change management, lack of executive sponsorship, and unclear expectations.\n* **Agentic Workflows:** There is a significant shift toward agentic workflows and tools like Codeex, where developers using these agents are shipping roughly 60% more pull requests per week.\n* **Multi-Agent Systems:** Emerging frameworks involve multiple agents with specialized roles, requiring new consensus algorithms to validate and calibrate their various outputs.\n* **Systems-Level Constraints:** AI cannot solve human or organizational problems—such as poor communication or bad meeting culture—without first addressing the underlying system constraints.\n* **Measurement and Goals:** Successful organizations avoid \"spray and pray\" license distribution; they set concrete goals and track progress using frameworks like the AI Measurement Framework.\n* **Developer Experience (DevEx) as a Foundation:** Strong DevEx practices, including solid testing, documentation, and fast feedback loops, are critical prerequisites for successful agentic workflows.\n* **Strategic Rebranding:** Rebranding \"Developer Experience\" as \"Agent Experience\" is a practical tactic to secure funding for infrastructure improvements that benefit both human and AI \"engineers\".\n* **Readiness Models:** Organizations are encouraged to use established readiness models, such as the DORA AI capabilities model or the Thoughtworks FOREST framework, to audit their practices.\n* **Customer-Centric Experimentation:** Long-term organizational results come from focusing AI experimentation on solving real customer problems rather than pursuing \"moonshot\" experiments that distract from the core business.",
+    "core_topic": "AI",
+    "conference_name": "The Pragmatic Summit",
+    "format": "talk",
+    "blog_url": "",
+    "registered_at": "2026-04-04T08:49:55.000Z",
+    "rating": null,
+    "year": 2026,
+    "language": "English"
+  },
+  {
+    "id": "recxcpWQ2CeFNXGaT4Hu",
+    "title": "Making Codebases Agent Ready – Eno Reyes, Factory AI",
+    "url": "https://www.youtube.com/watch?v=ShuJ_CN6zr4",
+    "duration": 933,
+    "topics": [
+      "AI Assisted Engineering",
+      "Developer Productivity",
+      "Testing"
+    ],
+    "speakers": [
+      "Eno Reyes"
+    ],
+    "description": "This talk explores how rigorous automated validation and specification-driven development serve as the essential foundation for scaling autonomous AI agents and unlocking exponential engineering velocity.",
+    "notes": "To unlock the transformative velocity of AI agents, organizations must shift from traditional development to a verification-driven model by investing in rigorous automated validation and highly opinionated code environments. The primary limiter for autonomous engineering is not the intelligence of the models, but the lack of comprehensive testing and clear constraints required for agents to operate reliably at scale.\n\n* **Shift from Specification to Verification**: Move from building software purely by defining algorithms to automation driven by verification. The frontier of AI capability is defined by the ability to specify an objective and search for solutions through automated validation.\n* **Asymmetry of Verification**: Many software tasks are significantly easier to verify than they are to solve. Effective verification should be objective, quick to validate, scalable (parallelizable), low noise, and provide continuous signals rather than binary results.\n* **Validation as the Agent Bottleneck**: The primary limiter for autonomous software engineering is not the capability of the AI agents, but the rigor of an organization's validation criteria. Most codebases rely on human intuition to compensate for low test coverage (50-60%) and flaky builds, which breaks agent performance.\n* **Specification-Driven Development**: The traditional development loop is shifting to a flow where developers specify constraints and outcomes, agents generate solutions, and automated systems verify the results for iteration.\n* **Developer as Curator**: The role of the software engineer is evolving into a \"gardener\" who curates the environment, sets opinionated constraints, and builds the automations that guide AI agents.\n* **Opinionated Tooling**: Implement linters and automated validators that are so opinionated they force agents to produce code at a senior engineer's level. High-quality validation ensures that \"AI slop\" fails while high-quality code passes.\n* **Organizational Practices over Tool Procurement**: Instead of spending months comparing specific AI tools, organizations should invest in improving their validation infrastructure. A robust environment enables any coding agent to succeed and allows for complex workflows like large-scale modernization and parallelized task execution.\n* **The New DevX Loop**: Investing in the environment creates a positive feedback loop: better environments enable better agent performance, which gives developers more time to further improve the environment.\n* **Standardization for Agents**: Utilize open standards that coding agents support, such as `agents.md` files and comprehensive Open API specs, to provide agents with the necessary context and pointers.\n* **Path to Autonomy**: Achieving a \"bug-to-deploy\" loop of 1-2 hours is technically feasible today, provided the organization has the rigorous validation criteria to trust autonomous merges. This investment can lead to a 5x-7x increase in engineering velocity.",
+    "core_topic": "AI Assisted Engineering",
+    "conference_name": "AI Engineer",
+    "format": "talk",
+    "blog_url": "",
+    "registered_at": "2026-04-04T08:54:03.000Z",
+    "rating": null,
+    "year": 2025,
+    "language": "English"
+  },
+  {
+    "id": "recmtzrN34Fq4be30AHY",
+    "title": "The Most Polarizing Practice In Modern Software Engineering?",
+    "url": "https://www.youtube.com/watch?v=peY2EhVSL9E",
+    "duration": 2024,
+    "topics": [
+      "Trunk Based Development",
+      "tdd",
+      "CI"
+    ],
+    "speakers": [
+      "Dave Farley",
+      "Dan North"
+    ],
+    "description": "Dave Farley and Daniel Terhorst-North explore the industry's most polarizing practices, such as trunk-based development and estimation, advocating for a pragmatic and outcome-focused approach to software engineering.",
+    "notes": "Software excellence is best achieved by adopting evidence-based technical practices like trunk-based development and continuous integration while prioritizing flexible, outcome-focused strategies over rigid estimation and dogmatic processes. Success depends on understanding the nuance behind these tools and focusing on delivering value rather than adhering to a perceived \"one true way\" of working.\n\n*   **Trunk-Based Development (TBD):** Identified as the most polarizing practice in modern software engineering. It involves merging changes into the main trunk at least once per day, with branches lasting less than 24 hours.\n*   **Continuous Integration (CI):** Viewed as synonymous with Trunk-Based Development. True CI cannot exist with long-lived feature branches, as integration must be continuous and daily to maintain a single \"view of the truth\" of the system.\n*   **Test-Driven Development (TDD):** A polarizing practice often misunderstood as a \"one true way.\" Expert practitioners use it primarily as a tool for design and API experimentation rather than just for test coverage.\n*   **The Problem with Estimation:** Traditional task-based or feature-based estimation is considered \"meaningless\" because complexity is fractal—the more detail you look at, the larger the estimate grows.\n*   **Blink Estimation:** A more effective estimation technique using \"bands\" or ranges. It asks for the earliest possible date (if everything goes perfectly) and the latest date before the team would feel embarrassed. This range helps identify and pay down uncertainty and risk.\n*   **Investment Inversion:** A strategy to shift the conversation from \"how long will it take\" to \"how much is this worth.\" By defining a budget and comparing it against the estimated range of uncertainty, teams can decide whether to start a project or optimize for learning first.\n*   **Backlog Management:** Dogmatic adherence to a large product backlog is counterproductive. Periodically \"nixing\" or resetting the backlog—such as deleting items older than six months—is recommended to remove \"bogus work\" and refocus on immediate needs.\n*   **Outcome Focus vs. Feature Focus:** Engineering should focus on the desired outcome (solving a need) rather than the process of delivering features. Just as a patient wants to be \"well\" rather than have \"more surgery,\" software users want their needs met with the least amount of complexity possible.\n*   **DORA Research:** Data-driven research (such as the *Accelerate* book) identifies 24 practices, including TBD and CI, as \"inferential predictive\" of high-performance software delivery and organizational success.",
+    "core_topic": "Continuous Delivery",
+    "conference_name": null,
+    "format": "videopodcast",
+    "blog_url": "",
+    "registered_at": "2026-04-04T09:05:16.000Z",
+    "rating": null,
+    "year": 2025,
+    "language": "English"
+  },
+  {
+    "id": "rec6S5lNLinJdNHiQiB3",
+    "title": "The Forest & The Desert Are Parallel Universes • Kent Beck • GOTO 2025",
+    "url": "https://www.youtube.com/watch?v=W7XL_LZgvKI",
+    "duration": 2361,
+    "topics": [
+      "XP",
+      "Engineering Culture",
+      "Compliance"
+    ],
+    "speakers": [
+      "Kent Beck"
+    ],
+    "description": "Kent Beck contrasts trust-based \"Forest\" and control-driven \"Desert\" development cultures, revealing how these parallel universes fundamentally redefine the meaning of metrics, accountability, and engineering practices.",
+    "notes": "Kent Beck explains that software development exists in two parallel universes—the \"forest\" of abundance and the \"desert\" of scarcity—where identical terms like metrics and accountability serve either as tools for growth or mechanisms for control. The essential takeaway is that teams must consciously choose to cultivate a \"forest\" culture to unlock the full value of software and find human fulfillment rather than settling for the \"crumbs\" of a fear-based desert.\n\n* **The Forest and The Desert Metaphor**: Software development exists in two parallel universes—the Forest and the Desert—where the same terminology carries completely different meanings based on underlying assumptions.\n* **Core Assumptions**: \n    * **The Forest**: Assumes people are basically good, leads with purpose, embraces change, and operates through community and \"power with\" workers.\n    * **The Desert**: Assumes people must be controlled by authority, leads with pressure, prioritizes prediction, and operates through \"power over\" workers.\n* **Value Creation**: The Forest seeks to \"eat the whole cake\" by maximizing the immense scale and value of software. The Desert is content with \"crumbs\"—profitability achieved through scarcity-based thinking, even if the environment is unhappy.\n* **Metrics**: \n    * **Forest**: A vehicle for self-awareness, learning, and team improvement. \n    * **Desert**: A \"hammer\" used for leverage, pressure, and control, often leading to people reporting desired behaviors rather than actually performing them.\n* **Dependencies**: \n    * **Forest**: An invitation to collaborate and build together.\n    * **Desert**: A defense mechanism and a convenient excuse to avoid blame for failure.\n* **Compliance**: \n    * **Forest**: An active partnership to increase value for users and simplify regulatory hurdles.\n    * **Desert**: A survival strategy and \"adult supervision\" used to catch corners cut by developers.\n* **Accountability**: \n    * **Forest**: An invitation to trust by rendering an account of how resources were used.\n    * **Desert**: A mechanism for blame and a way to force specific outcomes through the threat of consequences.\n* **Status Reporting**: \n    * **Forest**: Honest communication about status and needs to foster a positive spiral of help and success.\n    * **Desert**: A performance or \"play\" where teams avoid reporting \"green\" status to prevent resources from being taken away, resulting in inflated estimates and defensive reporting.\n* **Extreme Programming (XP)**: Represents the \"Forest\" style of development, emphasizing frequent integration, customer collaboration, and treating engineers like adults.\n* **The Choice of Universe**: Living in the Forest is a choice. While the Desert is internally consistent and adapted to scarcity, the Forest approach creates significantly more value and a better environment for engineers and users.",
+    "core_topic": "Agile-XP",
+    "conference_name": "GOTO 2025",
+    "format": "talk",
+    "blog_url": "",
+    "registered_at": "2026-04-04T09:17:13.000Z",
+    "rating": 5,
+    "year": 2026,
+    "language": "English"
   }
 ]
