@@ -1,36 +1,33 @@
-import { renderHook, waitFor } from '@testing-library/react';
+import { renderHook, waitFor, act } from '@testing-library/react';
 import { useTalks } from './useTalks';
 import { TestProvider } from '../test/context/TestContext';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
-// Store original fetch
-const originalFetch = global.fetch;
-
-// Helper functions for mocking
+// Helper functions for mocking fetch using vi.spyOn (better isolation than global mutation)
 const mockFetchResponse = (data: unknown) => {
-  global.fetch = vi.fn().mockImplementation(() =>
+  vi.spyOn(global, 'fetch').mockImplementation(() =>
     Promise.resolve({
       ok: true,
       json: () => Promise.resolve(data),
-    })
+    } as Response)
   );
 };
 
 const mockFetchError = (error: Error) => {
-  global.fetch = vi.fn().mockImplementation(() =>
+  vi.spyOn(global, 'fetch').mockImplementation(() =>
     Promise.reject(error)
   );
 };
 
-const mockFetchFailure = () => {
-  global.fetch = vi.fn().mockImplementation(() =>
+const mockFetchFailure = (status = 404, statusText = 'Not Found') => {
+  vi.spyOn(global, 'fetch').mockImplementation(() =>
     Promise.resolve({
       ok: false,
-    })
+      status,
+      statusText,
+    } as Response)
   );
 };
-
-// Mock response helper for normalized Talk[] data
 
 // Helper function for rendering hook and waiting for load
 const renderUseTalksHook = async (timeout: number = 1000) => {
@@ -38,12 +35,20 @@ const renderUseTalksHook = async (timeout: number = 1000) => {
     wrapper: TestProvider
   });
 
-  // Wait for loading to complete
   await waitFor(() => {
     expect(hook.result.current.loading).toBe(false);
   }, { timeout });
 
   return hook;
+};
+
+// Run all pending timers and flush microtasks for retry tests,
+// then restore real timers so waitFor can proceed normally.
+const runRetryTimersAndRestore = async () => {
+  await act(async () => {
+    await vi.runAllTimersAsync();
+  });
+  vi.useRealTimers();
 };
 
 describe('useTalks', () => {
@@ -64,108 +69,120 @@ describe('useTalks', () => {
   };
 
   beforeEach(() => {
-    // Reset mocks before each test
     vi.clearAllMocks();
+    vi.restoreAllMocks();
     mockFetchResponse([mockTalk]);
   });
 
   afterEach(() => {
-    // Restore original fetch
-    global.fetch = originalFetch;
-    // Restore all mocks
     vi.restoreAllMocks();
+    vi.useRealTimers();
   });
 
   it('loads talks correctly from normalized JSON', async () => {
     const { result } = await renderUseTalksHook();
 
-    // Check final state
     expect(result.current.error).toBeNull();
     expect(result.current.talks).toHaveLength(1);
     expect(result.current.talks[0]).toEqual(mockTalk);
   });
 
   it('handles fetch error correctly', async () => {
+    vi.useFakeTimers();
+    vi.restoreAllMocks();
     mockFetchFailure();
 
-    const { result } = await renderUseTalksHook(5000);
+    const hook = renderHook(() => useTalks(), { wrapper: TestProvider });
 
-    // Check error state
-    expect(result.current.error).toBeInstanceOf(Error);
-    expect(result.current.talks).toEqual([]);
+    await runRetryTimersAndRestore();
+
+    await waitFor(() => {
+      expect(hook.result.current.loading).toBe(false);
+    });
+
+    expect(hook.result.current.error).toBeInstanceOf(Error);
+    expect(hook.result.current.talks).toEqual([]);
   });
 
   it('correctly handles talks with empty notes', async () => {
     const talkWithEmptyNotes = { ...mockTalk, notes: undefined };
+    vi.restoreAllMocks();
     mockFetchResponse([talkWithEmptyNotes]);
 
     const { result } = await renderUseTalksHook();
 
-    // Check that empty notes are handled correctly
     expect(result.current.error).toBeNull();
     expect(result.current.talks).toHaveLength(1);
     expect(result.current.talks[0].notes).toBeUndefined();
   });
 
   it('handles network errors correctly with retry logic', async () => {
+    vi.useFakeTimers();
+    vi.restoreAllMocks();
     mockFetchError(new Error('Network error'));
 
-    const { result } = await renderUseTalksHook(8000);
+    const hook = renderHook(() => useTalks(), { wrapper: TestProvider });
 
-    // Verify error state includes retry message
-    expect(result.current.error).toBeDefined();
-    expect(result.current.error?.message).toContain('Unable to load talks');
-    expect(result.current.error?.message).toContain('Network error');
-    expect(result.current.talks).toHaveLength(0);
-    
-    // Verify retry attempts were made
+    await runRetryTimersAndRestore();
+
+    await waitFor(() => {
+      expect(hook.result.current.loading).toBe(false);
+    });
+
+    expect(hook.result.current.error).toBeDefined();
+    expect(hook.result.current.error?.message).toContain('Unable to load talks');
+    expect(hook.result.current.error?.message).toContain('Network error');
+    expect(hook.result.current.talks).toHaveLength(0);
+
+    // Verify retry attempts were made (3 attempts total)
     expect(global.fetch).toHaveBeenCalledTimes(3);
   });
 
   it('handles invalid JSON response', async () => {
-    global.fetch = vi.fn().mockImplementation(() =>
+    vi.restoreAllMocks();
+    vi.spyOn(global, 'fetch').mockImplementation(() =>
       Promise.resolve({
         ok: true,
         json: () => Promise.reject(new Error('Invalid JSON')),
-      })
+      } as Response)
     );
 
-    const { result } = await renderUseTalksHook(8000);
+    const { result } = await renderUseTalksHook(3000);
 
-    // Verify error state includes error message
     expect(result.current.error).toBeDefined();
     expect(result.current.error?.message).toContain('Unable to load talks');
     expect(result.current.error?.message).toContain('Invalid JSON');
     expect(result.current.talks).toHaveLength(0);
-    
+
     // JSON parsing errors don't trigger retry since fetch succeeded
     expect(global.fetch).toHaveBeenCalledTimes(1);
   });
 
   it('handles HTTP error responses with retry logic', async () => {
-    global.fetch = vi.fn().mockImplementation(() =>
-      Promise.resolve({
-        ok: false,
-        status: 404,
-        statusText: 'Not Found'
-      })
-    );
+    vi.useFakeTimers();
+    vi.restoreAllMocks();
+    mockFetchFailure(404, 'Not Found');
 
-    const { result } = await renderUseTalksHook(8000);
+    const hook = renderHook(() => useTalks(), { wrapper: TestProvider });
 
-    // Verify error state
-    expect(result.current.error).toBeDefined();
-    expect(result.current.error?.message).toContain('HTTP 404: Not Found');
-    expect(result.current.talks).toHaveLength(0);
+    await runRetryTimersAndRestore();
+
+    await waitFor(() => {
+      expect(hook.result.current.loading).toBe(false);
+    });
+
+    expect(hook.result.current.error).toBeDefined();
+    expect(hook.result.current.error?.message).toContain('HTTP 404: Not Found');
+    expect(hook.result.current.talks).toHaveLength(0);
     expect(global.fetch).toHaveBeenCalledTimes(3);
   });
 
   it('handles invalid data format', async () => {
+    vi.restoreAllMocks();
     mockFetchResponse({ invalid: 'data', not: 'array' });
 
     const { result } = await renderUseTalksHook();
 
-    // Verify error state
     expect(result.current.error).toBeDefined();
     expect(result.current.error?.message).toContain('Invalid data format');
     expect(result.current.talks).toHaveLength(0);
@@ -175,16 +192,15 @@ describe('useTalks', () => {
     const lowRatingTalk = { ...mockTalk, rating: 2 };
     const highRatingTalk = { ...mockTalk, rating: 5 };
 
+    vi.restoreAllMocks();
     mockFetchResponse([lowRatingTalk, highRatingTalk]);
 
-    // Test with rating filter enabled
     const { result } = renderHook(() => useTalks(true), { wrapper: TestProvider });
 
     await waitFor(() => {
       expect(result.current.loading).toBe(false);
     });
 
-    // Verify only 5-star talks are included
     expect(result.current.talks).toHaveLength(1);
     expect(result.current.talks[0].rating).toBe(5);
   });
@@ -204,11 +220,11 @@ describe('useTalks', () => {
       conference_name: ''
     };
 
+    vi.restoreAllMocks();
     mockFetchResponse([minimalTalk]);
 
     const { result } = await renderUseTalksHook();
 
-    // Verify minimal fields are handled correctly
     expect(result.current.error).toBeNull();
     expect(result.current.talks).toHaveLength(1);
     const talk = result.current.talks[0];
@@ -219,4 +235,4 @@ describe('useTalks', () => {
     expect(talk.core_topic).toBe('');
     expect(talk.notes).toBeUndefined();
   });
-}); 
+});

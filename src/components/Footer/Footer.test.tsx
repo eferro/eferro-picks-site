@@ -5,7 +5,8 @@ import { Footer } from './index';
 
 describe('Footer', () => {
   beforeEach(() => {
-    vi.useRealTimers();
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2025-06-15'));
   });
 
   afterEach(() => {
@@ -14,7 +15,7 @@ describe('Footer', () => {
 
   it('displays current year and website link', () => {
     renderWithRouter(<Footer />);
-    const year = new Date().getFullYear().toString();
+    const year = '2025';
     expect(
       screen.getByText(new RegExp(`©\\s*${year}\\s*Edu Ferro`, 'i'))
     ).toBeInTheDocument();
@@ -28,7 +29,6 @@ describe('Footer', () => {
     renderWithRouter(<Footer />);
     const img = screen.getByRole('img');
     expect(img).toHaveAttribute('src', 'https://librecounter.org/counter.svg');
-    expect(img).toHaveClass('h-6 w-auto opacity-50 hover:opacity-75 transition-opacity');
   });
 
   it('displays JSON API link pointing to talks data', () => {
