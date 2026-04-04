@@ -12,6 +12,7 @@ export default defineConfig({
     globals: true,
     setupFiles: ['./src/test/setup.ts'],
     include: ['src/**/*.{test,spec}.{js,jsx,ts,tsx}'],
+    exclude: ['src/**/*.integration.test.{ts,tsx}', 'node_modules'],
     
     // Performance optimizations
     pool: 'forks',

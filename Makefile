@@ -1,14 +1,15 @@
 # eferro-picks-site Makefile
 # Development and validation commands
 
-.PHONY: help test test-coverage test-ui lint typecheck build dev validate clean local-setup
+.PHONY: help test test-integration test-coverage test-ui lint typecheck build dev validate clean local-setup
 
 # Default target
 help:
 	@echo "Available targets:"
 	@echo "  local-setup   - Set up local development environment"
 	@echo "  validate      - Run all pre-commit validations (tests + lint + typecheck)"
-	@echo "  test          - Run all tests with --run flag"
+	@echo "  test          - Run all unit tests with --run flag"
+	@echo "  test-integration - Run integration tests (isolated)"
 	@echo "  test-coverage - Run tests with coverage report"
 	@echo "  test-ui       - Open visual test interface"
 	@echo "  lint          - Run ESLint validation"
@@ -19,8 +20,12 @@ help:
 
 # Core validation commands
 test:
-	@echo "🧪 Running tests..."
+	@echo "🧪 Running unit tests..."
 	npm test -- --run
+
+test-integration:
+	@echo "🧪 Running integration tests..."
+	npx vitest run --config vitest.integration.config.ts
 
 test-coverage:
 	@echo "🧪 Running tests with coverage..."
@@ -65,15 +70,19 @@ clean:
 validate:
 	@echo "🚦 Running pre-commit validation protocol..."
 	@echo ""
-	@echo "Step 1/3: Test Validation"
+	@echo "Step 1/4: Unit Test Validation"
 	@$(MAKE) test
-	@echo "✅ Tests passed!"
+	@echo "✅ Unit tests passed!"
 	@echo ""
-	@echo "Step 2/3: Linting Validation"
+	@echo "Step 2/4: Integration Test Validation"
+	@$(MAKE) test-integration
+	@echo "✅ Integration tests passed!"
+	@echo ""
+	@echo "Step 3/4: Linting Validation"
 	@$(MAKE) lint
 	@echo "✅ Linting passed!"
 	@echo ""
-	@echo "Step 3/3: Type Check"
+	@echo "Step 4/4: Type Check"
 	@$(MAKE) typecheck
 	@echo "✅ Type check passed!"
 	@echo ""

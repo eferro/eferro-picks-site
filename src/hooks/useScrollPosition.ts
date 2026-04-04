@@ -2,10 +2,31 @@ import { useEffect, useRef, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const SCROLL_INDEX_KEY = 'scroll_index';
-const DEBOUNCE_DELAY = 100;
-const INITIAL_DELAY = 100;
-const MAX_ATTEMPTS = 10;
-const MAX_DELAY = 2000;
+
+/**
+ * Configuration for scroll position behavior.
+ * Extracted to allow deterministic testing without duplicating timing logic.
+ */
+export interface ScrollConfig {
+  /** Delay for debouncing scroll events (ms) */
+  debounceMs: number;
+  /** Initial delay before attempting scroll restoration (ms) */
+  initialDelayMs: number;
+  /** Base delay for retry attempts (ms) */
+  retryDelayMs: number;
+  /** Maximum retry attempts for scroll restoration */
+  maxRetries: number;
+  /** Maximum delay between retries (ms) */
+  maxDelayMs: number;
+}
+
+const DEFAULT_SCROLL_CONFIG: ScrollConfig = {
+  debounceMs: 100,
+  initialDelayMs: 100,
+  retryDelayMs: 100,
+  maxRetries: 10,
+  maxDelayMs: 2000,
+};
 
 function isValidScrollPosition(value: string | null): boolean {
   if (!value) return false;
@@ -26,8 +47,10 @@ function isValidScrollPosition(value: string | null): boolean {
  *
  * The position is persisted only on the index page and it is reset when
  * navigating to any other route.
+ *
+ * @param config - Optional timing configuration (mainly for testing)
  */
-export const useScrollPosition = () => {
+export const useScrollPosition = (config: ScrollConfig = DEFAULT_SCROLL_CONFIG) => {
   const location = useLocation();
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
   const retryTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
@@ -36,14 +59,14 @@ export const useScrollPosition = () => {
 
   const saveScrollPosition = useCallback(() => {
     if (!isIndexPage) return;
-    
+
     const scrollPosition = window.scrollY;
     sessionStorage.setItem(SCROLL_INDEX_KEY, scrollPosition.toString());
   }, [isIndexPage]);
 
   const restoreScrollPosition = useCallback(() => {
     if (!isIndexPage) return;
-    
+
     const savedScrollPosition = sessionStorage.getItem(SCROLL_INDEX_KEY);
     if (!savedScrollPosition) return;
 
@@ -53,26 +76,29 @@ export const useScrollPosition = () => {
     }
 
     const parsedScrollPosition = parseInt(savedScrollPosition, 10);
-    
+
     // Initial scroll attempt
     window.scrollTo(0, parsedScrollPosition);
-    
+
     // Start retry mechanism if needed
     attemptRef.current = 0;
     const checkScrollPosition = () => {
       if (window.scrollY === parsedScrollPosition) return;
-      
+
       attemptRef.current++;
-      if (attemptRef.current >= MAX_ATTEMPTS) return;
-      
+      if (attemptRef.current >= config.maxRetries) return;
+
       window.scrollTo(0, parsedScrollPosition);
-      
-      const backoffDelay = Math.min(100 * Math.pow(2, attemptRef.current), MAX_DELAY);
+
+      const backoffDelay = Math.min(
+        config.retryDelayMs * Math.pow(2, attemptRef.current),
+        config.maxDelayMs
+      );
       retryTimeoutRef.current = setTimeout(checkScrollPosition, backoffDelay);
     };
-    
-    retryTimeoutRef.current = setTimeout(checkScrollPosition, 100);
-  }, [isIndexPage]);
+
+    retryTimeoutRef.current = setTimeout(checkScrollPosition, config.retryDelayMs);
+  }, [isIndexPage, config]);
 
   // Handle scroll events with debounce
   useEffect(() => {
@@ -82,25 +108,25 @@ export const useScrollPosition = () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
-      
-      timeoutRef.current = setTimeout(saveScrollPosition, DEBOUNCE_DELAY);
+
+      timeoutRef.current = setTimeout(saveScrollPosition, config.debounceMs);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [isIndexPage, saveScrollPosition]);
+  }, [isIndexPage, saveScrollPosition, config.debounceMs]);
 
   // Handle scroll restoration and reset
   useEffect(() => {
     if (isIndexPage) {
       // Initial delay before restoring scroll position
-      timeoutRef.current = setTimeout(restoreScrollPosition, INITIAL_DELAY);
+      timeoutRef.current = setTimeout(restoreScrollPosition, config.initialDelayMs);
     } else {
       // Immediate scroll to top for non-index pages
       window.scrollTo(0, 0);
@@ -114,5 +140,5 @@ export const useScrollPosition = () => {
         clearTimeout(retryTimeoutRef.current);
       }
     };
-  }, [location.pathname, isIndexPage, restoreScrollPosition]);
-}; 
+  }, [location.pathname, isIndexPage, restoreScrollPosition, config.initialDelayMs]);
+};
