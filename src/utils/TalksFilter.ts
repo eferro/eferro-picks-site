@@ -1,15 +1,6 @@
 import { Talk } from "../types/talks";
 import { hasMeaningfulNotes } from "./talks";
-
-/**
- * Normalizes text for search: lowercase and removes accents
- */
-function normalizeText(text: string): string {
-  return text
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '');
-}
+import { normalizeText } from "./normalizeText";
 
 /**
  * Searches for query terms in multiple talk fields (title, description, speakers, topics, notes)

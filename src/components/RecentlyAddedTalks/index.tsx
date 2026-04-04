@@ -1,6 +1,8 @@
 import { useMemo } from 'react';
 import { Talk } from '../../types/talks';
 import { TalkCard } from '../TalksList/TalkCard';
+import { useUrlFilter } from '../../hooks/useUrlFilter';
+import { useFilterHandlers } from '../../hooks/useFilterHandlers';
 
 interface RecentlyAddedTalksProps {
   talks: Talk[];
@@ -8,6 +10,9 @@ interface RecentlyAddedTalksProps {
 }
 
 export function RecentlyAddedTalks({ talks, maxTalks = 6 }: RecentlyAddedTalksProps) {
+  const { filter, updateFilter } = useUrlFilter();
+  const { handleConferenceClick, handleTopicClick } = useFilterHandlers(filter, updateFilter);
+
   const recentTalks = useMemo(() => {
     // Filter talks that have registered_at field
     const talksWithDate = talks.filter(talk => talk.registered_at);
@@ -23,10 +28,6 @@ export function RecentlyAddedTalks({ talks, maxTalks = 6 }: RecentlyAddedTalksPr
     return sorted.slice(0, maxTalks);
   }, [talks, maxTalks]);
 
-  // Mock handlers for TalkCard (these will be implemented properly later)
-  const handleConferenceClick = () => {};
-  const handleTopicClick = () => {};
-
   return (
     <section aria-label="Recently added talks" className="mb-8 bg-gray-50 rounded-lg p-6">
       <h2 className="text-2xl font-bold text-gray-900 mb-6">Recently Added</h2>
@@ -39,8 +40,8 @@ export function RecentlyAddedTalks({ talks, maxTalks = 6 }: RecentlyAddedTalksPr
               talk={talk}
               onConferenceClick={handleConferenceClick}
               onTopicClick={handleTopicClick}
-              selectedConference={null}
-              selectedQuery=""
+              selectedConference={filter.conference}
+              selectedQuery={filter.query}
             />
           ))}
         </div>

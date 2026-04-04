@@ -17,7 +17,7 @@ import { hasMeaningfulNotes } from '../../utils/talks';
 function TalkDetail() {
   const { id } = useParams<{ id: string }>();
   const { filter, updateFilter } = useUrlFilter();
-  const { handleAuthorClick, handleConferenceClick } = useFilterHandlers(filter, updateFilter);
+  const { handleTopicClick, handleConferenceClick } = useFilterHandlers(filter, updateFilter);
 
   const { talks, loading, error } = useTalks();
 
@@ -79,9 +79,9 @@ function TalkDetail() {
               {talk.speakers.map(speaker => (
                 <button
                   key={speaker}
-                  onClick={() => handleAuthorClick(speaker)}
+                  onClick={() => handleTopicClick(speaker)}
                   className={`font-medium px-3 py-1 rounded-full text-sm transition-colors ${
-                    filter.author === speaker
+                    filter.query === speaker
                       ? 'bg-blue-500 text-white'
                       : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
                   }`}

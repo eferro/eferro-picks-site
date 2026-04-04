@@ -1,16 +1,5 @@
 import type { Talk } from '../types/talks';
-
-/**
- * Normalizes text for accent-insensitive comparison.
- * Uses NFD normalization to decompose accented characters,
- * then removes combining diacritical marks.
- */
-function normalizeForSearch(text: string): string {
-  return text
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase();
-}
+import { normalizeText as normalizeForSearch } from './normalizeText';
 
 export interface Suggestion {
   type: 'speaker' | 'topic';
