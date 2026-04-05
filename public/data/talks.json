@@ -247,7 +247,9 @@
       "Mental models",
       "tdd",
       "Agile",
-      "Architecture"
+      "Architecture",
+      "Generative AI",
+      "Software Design"
     ],
     "speakers": [
       "Emily Bache"
@@ -1910,7 +1912,8 @@
     "topics": [
       "XP",
       "Agile",
-      "Lean Software Development"
+      "Lean Software Development",
+      "Technical Practices"
     ],
     "speakers": [
       "Kent Beck"
@@ -1952,22 +1955,6 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2017/08/good-talkspodcasts-episodes-purging.html",
     "registered_at": "2020-01-19T20:41:16.000Z"
-  },
-  {
-    "id": "rec82so3HIE0JyDh5",
-    "title": "http://www.infoq.com/presentations/distributed-systems-production",
-    "url": "http://www.infoq.com/presentations/distributed-systems-production",
-    "duration": 0,
-    "topics": [],
-    "speakers": [
-      "Jeff Hodges"
-    ],
-    "description": "\n",
-    "core_topic": "",
-    "conference_name": "InfoQ",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2014/09/charlaspodcasts-25-31-agosto-2014.html",
-    "registered_at": "2020-01-19T20:37:27.000Z"
   },
   {
     "id": "rec86CWaY07HWFmwz",
@@ -4196,7 +4183,10 @@
       "Management",
       "Inspirational",
       "Lean",
-      "Mental models"
+      "Mental models",
+      "Systems Thinking",
+      "Quality",
+      "Resilience"
     ],
     "speakers": [
       "Russell L. Ackoff"
@@ -5120,7 +5110,8 @@
       "Product Strategy",
       "Lean Product Management",
       "Lean",
-      "Mental models"
+      "Mental models",
+      "Engineering Culture"
     ],
     "speakers": [
       "Donald Reinertsen"
@@ -6204,7 +6195,8 @@
     "blog_url": "https://www.eferro.net/2022/06/good-talkspodcasts-jun-2022-i.html",
     "registered_at": "2022-06-12T08:23:05.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "Organizations should treat their internal infrastructure as a product by creating **\"golden paths\"**—standardized, reliable workflows that reduce developer cognitive load and eliminate toil [1-4]. This developer-led approach to platform engineering acts as a **force multiplier**, shifting the focus from managing complex tooling to efficiently coding, shipping, and running software [5-8].\n\n* **Golden Paths (Paved Roads):** The next step beyond Kubernetes and PaaS is the implementation of \"golden paths\"—standardized, supported workflows that make it easy for developers to do the \"right thing\" by default while allowing them the freedom to deviate if they accept the additional operational responsibility.\n* **Platform Engineering as a Product:** Internal platforms should be treated as products, not just projects. This requires dedicated staffing, resourcing, and a product-led mindset that includes user research, interviews, and iterative feedback cycles.\n* **Reducing Cognitive Load:** The \"shift left\" movement has often resulted in shifting too much responsibility (infrastructure, security, operations) onto developers. Effective platforms provide abstractions and tooling to manage this cognitive load so developers can focus on writing code and delivering value.\n* **Developer Experience (DevEx) through UX:** High-quality DevEx is built on solid User Experience (UX) principles. This involves focusing on developer workflows, tool interoperability, and ensuring that tools are intuitive for \"the 99% of developers\" who may not be infrastructure experts.\n* **Kubernetes as a \"Platform for Platforms\":** Kubernetes is fundamentally an API database or a foundational building block, not a complete developer-friendly PaaS out of the box. The value lies in the \"delta\" between raw Kubernetes and a reliable end-to-end workflow.\n* **The Platform Engineer as a Force Multiplier:** The goal of a platform engineer is not to be a \"10x developer,\" but to be someone who makes 10 other developers more productive by eliminating toil and automating friction points.\n* **Bottom-Up Adoption:** Successful platforms are usually developer-led and built bottom-up by listening to what engineers actually need, rather than being mandated top-down by management.\n* **Integrated Control Plane:** There is an emerging need for a \"Developer Control Plane\" that covers the entire \"Code, Ship, Run\" lifecycle, providing a cohesive interface for developers to manage their applications from the IDE to production.\n* **Team Topologies:** Organizations should use frameworks like Team Topologies to define how specialized platform teams provide \"as-a-service\" capabilities to stream-aligned product teams.\n* **Internal DevRel:** Platform teams need an internal Developer Relations (DevRel) function to communicate the long-term vision, \"sell\" the platform's benefits to internal users, and encourage adoption through hospitality and support."
   },
   {
     "id": "recNmOkWAzhRiHGaY",
@@ -6517,7 +6509,8 @@
     "blog_url": "https://www.eferro.net/2018/05/good-talkspodcasts-april-2018.html",
     "registered_at": "2020-01-19T20:32:56.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "To build truly resilient distributed systems, organizations must move away from trying to prevent all failures and instead learn to **fail better** by shifting reliability from hardware to software, performing risky procedures frequently to build confidence, and fostering a blame-free culture that prioritizes learning over punishment. This paradigm shift treats inevitable outages as opportunities to improve system safety and operational maturity rather than as reasons for blame.\n\n* **Distributed Computing Definition**: Cloud computing is fundamentally distributed computing. While it offers superior scale, memory, and throughput, it introduces greater risks, makes failures more visible, and makes automation mandatory.\n* **Software-Defined Resiliency**: Reliability should be achieved through software architecture rather than expensive hardware redundancy (like high-end RAID or dual power supplies). Software-based resiliency is free to deploy once written and allows for the use of cheaper, more efficient hardware.\n* **Frequency Reduces Risk**: Risky procedures, such as disaster recovery failovers, should be performed frequently. Regular practice surfaces hidden bugs, ensures documentation is accurate, and eliminates single points of failure in team expertise.\n* **Small Batches Principle**: Delivering software in small, frequent increments is significantly safer than large \"Big Bang\" releases. Small batches are easier to debug, have a smaller failure surface area, and improve employee motivation through faster feedback and instant gratification.\n* **Recency of Use**: The risk of a process is inversely proportional to how recently it was last performed. Systems that are not regularly exercised (like data restores or failover protocols) are high-risk because their current operational state is unknown.\n* **Blameless Culture**: Outages should be treated as learning opportunities rather than reasons for punishment. Firing or blaming individuals for failures discourages transparency, stops communication, and causes staff to hide small problems until they become catastrophic.\n* **Postmortem Accountability**: Organizations should use detailed, blameless postmortems to document what happened and identify specific long-term fixes. This shifts the focus from \"blame and shame\" to accountability and systemic improvement.\n* **Proactive Failure Induction**: Intentionally trigger failures (e.g., using \"Chaos Monkey\") during controlled business hours. This ensures that resiliency mechanisms work as intended while the team is available and focused, rather than waiting for failures to occur at inconvenient times.\n* **Feature Flags**: Implement new code with toggleable flags to decouple deployment from activation. This allows for safe testing in production and provides an \"instant off\" switch to disable features that are buggy or not scaling properly.\n* **Continuous Integration and Deployment (CI/CD)**: Automate testing and deployment to gain the confidence needed to release software frequently. This approach is applicable to both modern cloud environments and legacy enterprise systems.\n* **Lean and DevOps Origins**: These practices are modern applications of lean manufacturing principles, focusing on efficiency, the reduction of waste, and continuous improvement."
   },
   {
     "id": "recOnGZQXXW3aCdgI",
@@ -7476,25 +7469,6 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2024/11/good-talkspodcasts-nov-2024-ii.html",
     "registered_at": "2024-11-24T18:50:37.000Z"
-  },
-  {
-    "id": "recSCI2Dui2M3faJX",
-    "title": "How To Build Big Software With Small Agile Teams",
-    "url": "https://www.youtube.com/watch?v=cpVLzcjCB-s",
-    "duration": 960,
-    "topics": [
-      "Agile",
-      "Continuous Delivery",
-      "Engineering Culture"
-    ],
-    "speakers": [
-      "Dave Farley"
-    ],
-    "description": "In this episode, Dave Farley explores the trade-off at the heart of scaling-up and describes useful techniques to allow you to scale your big software projects.\n",
-    "core_topic": "",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2021/03/good-talkspodcasts-march-2021-i.html",
-    "registered_at": "2021-03-07T08:32:38.000Z"
   },
   {
     "id": "recSDDAP9tDLIw1gC",
@@ -8919,7 +8893,9 @@
       "Agile",
       "Technical Practices",
       "XP",
-      "Product Team"
+      "Product Team",
+      "Continuous Delivery",
+      "Engineering Culture"
     ],
     "speakers": [
       "Dave Farley"
@@ -9384,25 +9360,6 @@
     "language": "English"
   },
   {
-    "id": "recZW8hH7yNsA3zo7",
-    "title": "If Russ Ackoff had given a TED Talk... (Beyond continuous improvement)",
-    "url": "https://www.youtube.com/watch?v=OqEeIG8aPPk",
-    "duration": 720,
-    "topics": [
-      "Systems Thinking",
-      "Quality",
-      "Resilience"
-    ],
-    "speakers": [
-      "Russ Ackoff"
-    ],
-    "description": "This talk explores how to avoid common pitfalls in quality improvement programs by applying systems thinking principles, arguing that focusing on improving individual parts in isolation can be detrimental to the overall system's performance.\n",
-    "core_topic": "",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2024/11/good-talkspodcasts-nov-2024-i.html",
-    "registered_at": "2024-11-24T08:51:46.000Z"
-  },
-  {
     "id": "recZb219kInoXeOzf",
     "title": "Software Delivery Glossary",
     "url": "https://smallbatches.fm/57",
@@ -9467,7 +9424,8 @@
     "topics": [
       "Observability",
       "Testing in production",
-      "Continuous Delivery"
+      "Continuous Delivery",
+      "Engineering Culture"
     ],
     "speakers": [
       "Charity Majors",
@@ -9494,25 +9452,6 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2014/09/charlaspodcasts-1-7-septiembre-2014.html",
     "registered_at": "2020-01-19T20:37:25.000Z"
-  },
-  {
-    "id": "recZyeBAFneq1yNyo",
-    "title": "How Flow Works and other curiosities",
-    "url": "https://www.youtube.com/watch?v=PpigE_gJ_mU",
-    "duration": 2400,
-    "topics": [
-      "Flow",
-      "Continuous Delivery",
-      "Platform engineering"
-    ],
-    "speakers": [
-      "James Lewis"
-    ],
-    "description": "James Lewis explores the mechanics of value streams and queuing theory, demonstrating how reducing batch sizes and managing work-in-progress are the most effective ways to accelerate software delivery and maximize value.\n",
-    "core_topic": "Platform Engineering",
-    "notes": "Optimizing the flow of work requires making invisible information visible and aggressively reducing **batch sizes** to minimize wait times and prevent systemic bottlenecks. By managing **queue depth** instead of just tracking completion times, organizations can deliver value significantly faster and more consistently without needing additional resources.\n\n- **Work as Information Flow**: In knowledge work, value flows through the organization as information. Unlike physical manufacturing, this \"inventory\" (untested code, unstarted requirements) is invisible, making it harder to identify and manage bottlenecks.\n- **The Cost of Wait Times**: Total production lead time is dominated by wait times rather than active work. Mapping value streams reveals that the majority of a project's duration is often spent in queues or waiting for coordination.\n- **Wait Time Categories**: Delays are primarily caused by coordination (waiting on other teams), scheduling (waiting for periodic meetings or boards), and queuing (backlogs).\n- **Blockers and Performance**: Formal Change Request Boards and Architecture Review Boards are statistical predictors of low organizational performance because they introduce significant \"stop-and-wait\" blockers into the flow of work.\n- **Elimination of Shared Environments**: Shared test or integration environments should be replaced with on-demand environments. The economic loss caused by teams waiting for a shared environment usually exceeds the cost of provisioning individual ones.\n- **Queuing Theory in Platforms**: Effective platform engineering requires moving from human-serviced queues (limited by headcount) to self-service infrastructure (limited only by the platform's capacity), allowing for near-infinite scaling of provisioning.\n- **Congestion Collapse**: Teams and systems undergo \"congestion collapse\" when they are overloaded. When occupancy is too high, output does not just slow down; it can drop catastrophically.\n- **Leading vs. Trailing Indicators**: Cycle time and lead time are trailing metrics that identify problems after they happen. Queue size is a leading indicator that allows managers to address bottlenecks before they impact delivery.\n- **WIP Limits**: Controlling occupancy by limiting Work in Progress (WIP) is the most effective way to keep a system in an equilibrium state and maintain steady throughput.\n- **Batch Size Reduction**: Reducing batch sizes is the most powerful and cost-effective lever for accelerating software delivery. Smaller batches shorten cycle times and enable faster feedback without requiring more staff or harder work.\n- **Simulating the World of Work**: Using complexity science and agent-based modeling allows organizations to treat their processes as \"algorithms\" that can be simulated, tested, and optimized for better flow.\n\n",
-    "format": "talk",
-    "registered_at": "2026-03-14T10:10:33.000Z"
   },
   {
     "id": "recZzcEBKP19ATZZb",
@@ -9866,7 +9805,10 @@
       "Teams",
       "Technical leadership",
       "Company Culture",
-      "Management"
+      "Management",
+      "Engineering Culture",
+      "Platform",
+      "Devex"
     ],
     "speakers": [
       "Jason Lengstorf"
@@ -10515,24 +10457,6 @@
     "registered_at": "2020-01-19T20:37:36.000Z"
   },
   {
-    "id": "recdHFyE1Tce3CAq8",
-    "title": "Extreme Programming 20 years later",
-    "url": "https://www.youtube.com/watch?v=cGuTmOUdFbo",
-    "duration": 2460,
-    "topics": [
-      "XP",
-      "Technical Practices"
-    ],
-    "speakers": [
-      "Kent Beck"
-    ],
-    "description": "Kent reviewed what he got right, what he got wrong, what he's still working on and how things work at Facebook.\n",
-    "core_topic": "",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2021/04/good-talkspodcasts-april-2021-i.html",
-    "registered_at": "2021-04-24T18:55:09.000Z"
-  },
-  {
     "id": "recdHOiGfQoVZDKB3",
     "title": "Testing in Production - Quality Software Faster",
     "url": "https://www.infoq.com/presentations/testing-software-production",
@@ -10617,26 +10541,6 @@
     "registered_at": "2021-08-14T20:25:44.000Z",
     "rating": 5,
     "language": "English"
-  },
-  {
-    "id": "recdNt7GihnbZamNQ",
-    "title": "Focus (or Stop Starting, Start Finishing)",
-    "url": "https://www.youtube.com/watch?v=n7wH2XdOWpM",
-    "duration": 2580,
-    "topics": [
-      "Agile",
-      "Inspirational"
-    ],
-    "speakers": [
-      "Henrik Kniberg"
-    ],
-    "description": "Another inspiring talk from Henrik Kniberg with live demo of some of the agile concepts.\n",
-    "core_topic": "",
-    "year": 2016,
-    "conference_name": "AgileByExample",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2017/02/more-interesting-talks-teams-agile.html",
-    "registered_at": "2020-01-19T20:41:04.000Z"
   },
   {
     "id": "recdVTU6B196hA6Ds",
@@ -11949,25 +11853,6 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/03/good-talkspodcasts-march-2020-ii.html",
     "registered_at": "2020-03-15T08:56:14.000Z"
-  },
-  {
-    "id": "rechYABcryStzbIMe",
-    "title": "Make the Right Thing the Easy Thing: Designing Processes Teams Will Actually Follow",
-    "url": "https://www.youtube.com/watch?v=xqT8e6_yzLg",
-    "duration": 1920,
-    "topics": [
-      "Engineering Culture",
-      "Platform",
-      "Devex"
-    ],
-    "speakers": [
-      "Jason Lengstorf"
-    ],
-    "description": "In this talk, we’ll learn how IBM is working to get huge, distributed teams to not only agree on a set of best practices but to actually follow them\n",
-    "core_topic": "",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2021/06/good-talkspodcasts-jun-2021-i.html",
-    "registered_at": "2021-06-13T22:09:54.000Z"
   },
   {
     "id": "rechYbL3HpX6eoSBV",
@@ -13294,24 +13179,6 @@
     "language": "English"
   },
   {
-    "id": "reclu4ag3R1hrFQI3",
-    "title": "Second Generation Lean Product Development Flow",
-    "url": "https://www.youtube.com/watch?v=L6v6W7jkwok",
-    "duration": 5220,
-    "topics": [
-      "Lean Product Management",
-      "Engineering Culture"
-    ],
-    "speakers": [
-      "Donald Reinertsen"
-    ],
-    "description": "This talk is a little bit dense but it provided a good mental model to think about product development.\n",
-    "core_topic": "Lean-Product Engineering",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2019/04/good-talkspodcasts-april-2019-i.html",
-    "registered_at": "2020-01-19T20:39:23.000Z"
-  },
-  {
     "id": "reclwbJbacaku1O47",
     "title": "The Principles of Product Development Flow / Small batches podcast ",
     "url": "https://smallbatches.fm/60",
@@ -13824,24 +13691,6 @@
     "registered_at": "2022-03-06T15:27:43.000Z"
   },
   {
-    "id": "recmvGnioINm5MqHN",
-    "title": "Evolutionary Architecture and Microservices",
-    "url": "http://www.infoq.com/presentations/evolutionary-architecture-microservices-cd",
-    "duration": 0,
-    "topics": [
-      "Evolutionary Architecture",
-      "Microservices"
-    ],
-    "speakers": [
-      "Rebecca Parsons"
-    ],
-    "description": "Informative talk about microservices and the Continuous Delivery as the central practice that allow the constant evolution of the apps and real agile development.\n",
-    "core_topic": "",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2015/09/podcaststalks-emptying-queue-ii.html",
-    "registered_at": "2020-01-19T20:36:32.000Z"
-  },
-  {
     "id": "recmvoo351PsP313Q",
     "title": "Scaling Organizations and Design with James Shore",
     "url": "https://www.youtube.com/watch?v=duF4e3CwW9k",
@@ -14310,7 +14159,8 @@
       "Lean Software Development",
       "Lean Product Management",
       "Lean",
-      "Continuous Delivery"
+      "Continuous Delivery",
+      "Platform engineering"
     ],
     "speakers": [
       "James Lewis"
@@ -14608,23 +14458,6 @@
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/08/good-talkspodcasts-august-2021-i.html",
     "registered_at": "2021-08-14T07:18:04.000Z"
-  },
-  {
-    "id": "recowlh3Xj0meQJsm",
-    "title": "Feedback Loops — Company Culture, Change, and DevOps",
-    "url": "https://a16z.com/2018/03/28/devops-org-change-software-performance/",
-    "duration": 2640,
-    "topics": [],
-    "speakers": [
-      "Sonal Chokshi",
-      "Nicole Forsgren",
-      "Jez Humble"
-    ],
-    "description": "A good conversation about the need for DevOps, flow, fast feedback.\n",
-    "core_topic": "",
-    "format": "podcast",
-    "blog_url": "https://www.eferro.net/2019/01/good-talkspodcasts-jan-2019-i.html",
-    "registered_at": "2020-01-19T20:39:57.000Z"
   },
   {
     "id": "recp5VZGEHjnR5CHd",
@@ -15778,29 +15611,6 @@
     "registered_at": "2020-01-19T20:32:07.000Z"
   },
   {
-    "id": "rectBmhn5nvVx9aYT",
-    "title": "This Mental Model Changed How I Design Software FOREVER",
-    "url": "https://www.youtube.com/watch?v=U6PM8WehhJg",
-    "duration": 540,
-    "topics": [
-      "tdd",
-      "Generative AI",
-      "Software Design"
-    ],
-    "speakers": [
-      "Emily Bache"
-    ],
-    "description": "This talk argues that Test-Driven Development (TDD) is the crucial mental model for an empirical engineering approach to software design, making it an essential skill to master for effectively leveraging Agentic AI.\n",
-    "core_topic": "AI",
-    "notes": "To effectively leverage **Agentic AI**, developers must master **Test-Driven Development (TDD)**, which provides the essential mental model for an empirical engineering approach to software design. This structured, iterative process is what enables an engineer to manage complexity and guide AI tools effectively; without this core skill, AI will probably just help you make a mess faster.\n\n- With the rise of **Agentic AI**, the software engineer's primary value shifts from typing code to applying engineering skills to design and manage complexity.\n- Effectively guiding Agentic AI requires a structured, empirical process: work in **small, incremental steps**, specify behavior with detailed descriptions and automated **acceptance tests**, and iterate on the design.\n- The mental model for this process is **Test-Driven Development (TDD)**, which provides a framework for breaking down problems, focusing on one aspect at a time, and managing complexity.\n- TDD reduces cognitive load for the developer and helps manage the AI's limited context window, making it a critical skill for collaborating with AI tools.\n- Without a strong engineering mental model like TDD, developers using Agentic AI risk creating complex, unmaintainable code faster; **mastering TDD is crucial** to successfully augmenting your skills with AI.\n\n",
-    "format": "podcast",
-    "blog_url": "https://www.eferro.net/2025/10/good-talkspodcasts-oct-i-ai-ai.html",
-    "registered_at": "2025-09-26T06:28:43.000Z",
-    "rating": 5,
-    "language": "English",
-    "year": 2025
-  },
-  {
     "id": "rectE9e9yPCU27fm5",
     "title": "Machine Learning for Developers",
     "url": "https://www.youtube.com/watch?v=Q6XJazrZw74",
@@ -16766,27 +16576,6 @@
     "language": "English"
   },
   {
-    "id": "recwcdWSq15iUEKwj",
-    "title": "Observability & Testing in Production - with Charity Majors",
-    "url": "https://www.youtube.com/watch?v=97YRxrKNLP0",
-    "duration": 3180,
-    "topics": [
-      "Observability",
-      "Testing in production",
-      "Continuous Delivery",
-      "Engineering Culture"
-    ],
-    "speakers": [
-      "Charity Majors",
-      "Luca Rossi"
-    ],
-    "description": "This interview with Charity Majors, CTO of Honeycomb, explores the concept of observability, particularly focusing on the differences between observability 1.0 and 2.0 and the advantages of the latter for modern software development. The conversation also touches upon the importance of testing in production, implementing an effective continuous delivery process, and embracing the changing role of software engineers in the age of AI.\n",
-    "core_topic": "",
-    "format": "podcast",
-    "blog_url": "https://www.eferro.net/2024/11/good-talkspodcasts-nov-2024-ii.html",
-    "registered_at": "2024-11-24T19:01:19.000Z"
-  },
-  {
     "id": "recwnMZ86yxakodPJ",
     "title": "The New Code — Sean Grove, OpenAI",
     "url": "https://www.youtube.com/watch?v=8rABwKRsec4",
@@ -17181,26 +16970,6 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2018/05/good-talkspodcasts-may-2018-i.html",
     "registered_at": "2020-01-19T20:33:03.000Z"
-  },
-  {
-    "id": "recyHDYVLwNwCYlMD",
-    "title": "GOTO 2016 Software, Faster",
-    "url": "https://www.youtube.com/watch?v=USc-yLHXNUg",
-    "duration": 3240,
-    "topics": [
-      "Agile",
-      "Software Design",
-      "Technical Practices",
-      "Teams"
-    ],
-    "speakers": [
-      "Dan North"
-    ],
-    "description": "Great talk with great takeaways :) (from time to time I watch this talk, so I think that is not the first time I publish the reference)\n",
-    "core_topic": "Agile",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2016/12/interesting-talks-ive-seen-during.html",
-    "registered_at": "2020-01-19T20:34:07.000Z"
   },
   {
     "id": "recyHgifugldeRg9H",
