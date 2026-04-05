@@ -2482,7 +2482,7 @@
       "Chad Fowler"
     ],
     "description": "Great episode with Chad Fowler. Interesting ideas about design, architecture, software design, microservices, and the state of the industry.\n",
-    "core_topic": "",
+    "core_topic": "Architecture",
     "year": 2024,
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2024/03/good-talkspodcasts-mar-2024-i.html",
@@ -6803,7 +6803,7 @@
       "AgileForAll"
     ],
     "description": "An overview of Frederic Laloux's Reinventing Organizations and how it relates to Lean and Agile Adoption.\n",
-    "core_topic": "",
+    "core_topic": "Company Culture",
     "year": 2018,
     "format": "talk",
     "blog_url": "https://www.eferro.net/2024/01/good-talkspodcasts-jan-2024-i.html",
@@ -7567,7 +7567,7 @@
       "Kevin Kelly"
     ],
     "description": "\nInteresting approach to lean software development focused on how to tackle agile development with this lean mindset. It contains a few interesting points.\n",
-    "core_topic": "",
+    "core_topic": "Lean-Agile",
     "year": 2019,
     "conference_name": "DevTernity",
     "format": "talk",
@@ -8033,7 +8033,8 @@
     "format": "podcast",
     "registered_at": "2026-03-14T09:54:51.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2025
   },
   {
     "id": "recUIDymP9vqzyyTI",
@@ -8882,7 +8883,8 @@
     "blog_url": "https://www.eferro.net/2021/10/good-talkspodcasts-october-2021-ii.html",
     "registered_at": "2021-10-17T14:40:43.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2020
   },
   {
     "id": "recXtA7phfvXSLFlc",
@@ -9357,7 +9359,8 @@
     "blog_url": "https://www.eferro.net/2022/05/good-talkspodcasts-may-2022-i.html",
     "registered_at": "2022-05-15T06:33:38.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2022
   },
   {
     "id": "recZb219kInoXeOzf",
@@ -9674,7 +9677,8 @@
     "blog_url": "https://www.eferro.net/2025/08/good-talkspodcasts-aug.html",
     "registered_at": "2025-08-24T08:39:51.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2025
   },
   {
     "id": "recaonIzEHQuY9RmH",
@@ -9834,7 +9838,7 @@
       "Alistair Cockburn"
     ],
     "description": "Great explanation of hexagonal architecture made by its original author. Essential if you use or are considering using this type of architecture. Good information also to know when not to use them.\n",
-    "core_topic": "",
+    "core_topic": "Architecture",
     "year": 2023,
     "conference_name": "Craft Conf",
     "format": "talk",
@@ -10775,7 +10779,8 @@
     "blog_url": "https://www.eferro.net/2025/08/good-talkspodcasts-aug.html",
     "registered_at": "2025-08-21T17:41:07.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2025
   },
   {
     "id": "rece0mXG2XOZ5Yy6j",
@@ -11216,7 +11221,8 @@
     "blog_url": "https://www.eferro.net/2022/07/good-talkspodcasts-jul-2022-i.html",
     "registered_at": "2022-07-25T17:09:43.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2022
   },
   {
     "id": "recfTX9iHgWdVFu6H",
@@ -11775,7 +11781,7 @@
   {
     "id": "rechDZh2hBLkUULWA",
     "title": "SLO TheoryWhy the Business needs SLOs",
-    "url": "https://www.honeycomb.io/why-the-business-needs-slos-on-demand/",
+    "url": "https://www.honeycomb.io/resources/webinars/slo-theory-why-the-business-needs-slos",
     "duration": 2280,
     "topics": [
       "Technical Practices",
@@ -11792,7 +11798,8 @@
     "blog_url": "https://www.eferro.net/2020/12/good-talkspodcasts-dec-2020-ii.html",
     "registered_at": "2020-12-19T21:48:10.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2020
   },
   {
     "id": "rechOxykWf8TgOgfW",
@@ -12831,7 +12838,8 @@
     "blog_url": "https://www.eferro.net/2014/10/podcaststalks-2014-24-30-oct.html",
     "registered_at": "2020-01-19T20:37:55.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "year": 2014
   },
   {
     "id": "reckjjc9gpAuwJR9c",
@@ -13709,7 +13717,7 @@
       "Austin Chadwick"
     ],
     "description": "Very interesting conversation with James Shores. It covers many topics, including fast-agile, mobbing, testing without mocks, technical practices, etc. Highly recommended.\n",
-    "core_topic": "",
+    "core_topic": "Engineering Culture",
     "year": 2022,
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2024/03/good-talkspodcasts-mar-2024-i.html",
