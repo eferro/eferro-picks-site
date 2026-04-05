@@ -469,7 +469,8 @@
     "format": "talk",
     "registered_at": "2026-01-22T18:13:48.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "blog_url": "https://www.eferro.net/2026/04/good-talkspodcasts-april-i.html"
   },
   {
     "id": "rec1o14iQ4afC7mJy",
@@ -3421,7 +3422,7 @@
     ],
     "description": "An exploration of how Engineering Culture integrates Technical Leadership, Management, and Developer Productivity to optimize Teams through Agile and DevOps practices.\t\n",
     "core_topic": "Engineering Culture",
-    "notes": "Fostering a strong Engineering Culture is the essential foundation for synchronizing Technical Leadership, Management, and Agile practices to optimize Developer Productivity within Teams.... Achieving this alignment ensures that Technology Strategy and Technical Practices work together to drive continuous improvement and successful Product delivery.\n\n- **Engineering Culture** serves as the unifying framework for **Technical Leadership**, **Management**, and the development of **Teams**.\n- High-performing organizations prioritize **Developer Productivity** and **Developer Experience (Devex)** to maximize organizational **Flow**.\n- The core of technical success involves embedding **Agile**, **XP**, and **DevOps** practices to ensure reliable **Continuous Delivery**.\n- **Systems Thinking** and **Team Topologies** are essential for designing organizations that can handle **Scalability** and complex **Architecture**.\n- **Technical Practices** must include **Evolutionary Design**, **Software Design**, and **Craftsmanship** to effectively manage **Legacy Code**.\n- Success requires aligning **Technology Strategy** with **Product Strategy** through **Lean Startup** and **Product Discovery** principles.\n- Continuous improvement is driven by a focus on **Feedback Cycles**, **Testing**, **Refactoring**, and **Observability**.\n\n",
+    "notes": "Fostering a strong Engineering Culture is the essential foundation for synchronizing Technical Leadership, Management, and Agile practices to optimize Developer Productivity within Teams. Achieving this alignment ensures that Technology Strategy and Technical Practices work together to drive continuous improvement and successful Product delivery.\n\n- **Engineering Culture** serves as the unifying framework for **Technical Leadership**, **Management**, and the development of **Teams**.\n- High-performing organizations prioritize **Developer Productivity** and **Developer Experience (Devex)** to maximize organizational **Flow**.\n- The core of technical success involves embedding **Agile**, **XP**, and **DevOps** practices to ensure reliable **Continuous Delivery**.\n- **Systems Thinking** and **Team Topologies** are essential for designing organizations that can handle **Scalability** and complex **Architecture**.\n- **Technical Practices** must include **Evolutionary Design**, **Software Design**, and **Craftsmanship** to effectively manage **Legacy Code**.\n- Success requires aligning **Technology Strategy** with **Product Strategy** through **Lean Startup** and **Product Discovery** principles.\n- Continuous improvement is driven by a focus on **Feedback Cycles**, **Testing**, **Refactoring**, and **Observability**.\n\n",
     "year": 2022,
     "conference_name": "LeadDev",
     "format": "talk",
@@ -3677,7 +3678,7 @@
     "speakers": [
       "Kent Beck"
     ],
-    "description": "Great talk about software economics and the relation with design....\n",
+    "description": "Great talk about software economics and the relation with design.\n",
     "core_topic": "",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2016/09/interesting-technical-talks.html",
@@ -4176,7 +4177,7 @@
   },
   {
     "id": "recG7ySq2hNrwmueq",
-    "title": "If Russ Ackoff had given a TED Talk...",
+    "title": "If Russ Ackoff had given a TED Talk.",
     "url": "https://www.youtube.com/watch?v=OqEeIG8aPPk",
     "duration": 720,
     "topics": [
@@ -4862,7 +4863,7 @@
     "speakers": [
       "Joshua Bloch"
     ],
-    "description": "Every day around the world, software developers spend much of their time working with a variety of Application Programming Interfaces (APIs). Some are integral to the core platform, some provide access to widely distributed frameworks, and some are written in-house for use by a few developers. Nearly all programmers occasionally function as API designers, whether they know it or not. A well-designed API can be a great asset to the organization that wrote it and to all who use it. Good APIs increase the pleasure and productivity of the developers who use them, the quality of the software they produce, and ultimately, the corporate bottom line....\n",
+    "description": "Every day around the world, software developers spend much of their time working with a variety of Application Programming Interfaces (APIs). Some are integral to the core platform, some provide access to widely distributed frameworks, and some are written in-house for use by a few developers. Nearly all programmers occasionally function as API designers, whether they know it or not. A well-designed API can be a great asset to the organization that wrote it and to all who use it. Good APIs increase the pleasure and productivity of the developers who use them, the quality of the software they produce, and ultimately, the corporate bottom line.\n",
     "core_topic": "",
     "year": 2007,
     "conference_name": "Google Tech Talks",
@@ -4922,7 +4923,7 @@
     ],
     "description": "Meri Williams explores the urgent need to rethink engineering growth in the age of AI, advocating for a shift from manual coding tasks toward early tech leadership, systems thinking, and a \"healthy paranoia\" that allows leaders to \"surf\" the waves of technological change rather than be overwhelmed by them.\t\n",
     "core_topic": "AI Assisted Engineering",
-    "notes": "Engineering leaders must proactively **redesign training models** to replace the \"deliberate practice\" once provided by repetitive junior tasks now handled by AI, focusing instead on accelerating **foundational skills, systems thinking, and code review** much earlier in an engineer's career,,. Ultimately, rather than resisting technological shifts, organizations should embrace a sense of **\"healthy paranoia\"** and teach their teams to \"surf\" the waves of AI by prioritizing critical thinking and a deep understanding of why systems work or fail,.\n\n- **Disruption of Entry-Level Roles:** AI coding assistants are performing the well-scoped, repetitive tasks traditionally assigned to junior engineers, leading to a significant reduction—estimated at 75%—in entry-level hiring across the industry.\n- **Loss of Deliberate Practice:** Traditional junior work provided \"accidental\" deliberate practice through repetitive tasks and immediate feedback; because AI now handles this work, leaders must find new ways to help engineers build foundational skills like debugging and recognizing \"code smells\".\n- **Accelerated Career Expectations:** Junior engineers are being required to perform \"tech lead\" functions, such as systems thinking and code review, much earlier in their careers because AI allows them to handle larger stories and complex tasks immediately.\n- **New Required Skillsets:** Beyond coding, engineers must now prioritize critical thinking, effective AI prompting, and \"healthy paranoia\" to verify AI-generated outputs against documentation and real-world behavior.\n- **AI as an \"Endlessly Patient Mentor\":** Junior staff are increasingly using AI to explain code and troubleshoot, which provides constant support but lacks the wisdom of human experience and may reduce traditional coaching interactions.\n- **Bridging the \"Unconscious Competence\" Gap:** Senior engineers often struggle to teach because they perform expert tasks automatically; they must learn to actively deconstruct their knowledge and explain the \"why\" behind design decisions rather than hiding behind \"best practices\".\n- **Adapting Training Models:** Rather than resisting AI, engineering leaders must redesign training to focus on foundations and mentorship, adopting the philosophy that while you \"can't hold back the ocean\" of technological change, you can \"learn to surf\".\n\n",
+    "notes": "Engineering leaders must proactively **redesign training models** to replace the \"deliberate practice\" once provided by repetitive junior tasks now handled by AI, focusing instead on accelerating **foundational skills, systems thinking, and code review** much earlier in an engineer's career. Ultimately, rather than resisting technological shifts, organizations should embrace a sense of **\"healthy paranoia\"** and teach their teams to \"surf\" the waves of AI by prioritizing critical thinking and a deep understanding of why systems work or fail.\n\n- **Disruption of Entry-Level Roles:** AI coding assistants are performing the well-scoped, repetitive tasks traditionally assigned to junior engineers, leading to a significant reduction—estimated at 75%—in entry-level hiring across the industry.\n- **Loss of Deliberate Practice:** Traditional junior work provided \"accidental\" deliberate practice through repetitive tasks and immediate feedback; because AI now handles this work, leaders must find new ways to help engineers build foundational skills like debugging and recognizing \"code smells\".\n- **Accelerated Career Expectations:** Junior engineers are being required to perform \"tech lead\" functions, such as systems thinking and code review, much earlier in their careers because AI allows them to handle larger stories and complex tasks immediately.\n- **New Required Skillsets:** Beyond coding, engineers must now prioritize critical thinking, effective AI prompting, and \"healthy paranoia\" to verify AI-generated outputs against documentation and real-world behavior.\n- **AI as an \"Endlessly Patient Mentor\":** Junior staff are increasingly using AI to explain code and troubleshoot, which provides constant support but lacks the wisdom of human experience and may reduce traditional coaching interactions.\n- **Bridging the \"Unconscious Competence\" Gap:** Senior engineers often struggle to teach because they perform expert tasks automatically; they must learn to actively deconstruct their knowledge and explain the \"why\" behind design decisions rather than hiding behind \"best practices\".\n- **Adapting Training Models:** Rather than resisting AI, engineering leaders must redesign training to focus on foundations and mentorship, adopting the philosophy that while you \"can't hold back the ocean\" of technological change, you can \"learn to surf\".\n\n",
     "year": 2025,
     "conference_name": "LDX3",
     "format": "talk",
@@ -5197,7 +5198,7 @@
     ],
     "description": "This talk explains why UI/UX design should be treated as an integral software design choice rather than a static specification, advocating for development teams to own the UI to ensure the system accurately reflects the user's mental model.\n",
     "core_topic": "Software Design",
-    "notes": "**UI/UX design must be treated as a core software design choice** rather than a static specification, ensuring the resulting system effectively reflects the user's mental model,. Organizations should move away from siloed design teams and instead **empower streamline development teams to own UI responsibility**, using design experts as enabling teams to foster autonomy and improve overall usability.\n\n- **The separation of UI design and backend development** is a significant organizational mistake that fosters transactional working, limits innovation, and results in lower-quality solutions,.\n- **UI/UX design is an integral part of software design**—it is a choice of how a system solves a problem rather than a requirement defining what the system needs to do,.\n- **A real user interface is an interactive system** that relies on the user’s mental model of the entire system; usability cannot be divorced from the code or the assumptions made during development,.\n- **Using UI mockups as static specifications** creates development bottlenecks and prevents teams from focusing on the true behavioral goals of a feature,.\n- **UI specialists should function as \"enabling teams\"** that support and coach stream-aligned teams to build their own capabilities rather than doing the work for them or directing it,.\n- **Stream-aligned development teams should own the responsibility for UI**, ideally handling 80% of typical UI tasks independently and relying on experts for the most exploratory work,.\n- **Autonomy in decision-making** is a key predictor of building better software faster; centralizing UI design often removes this autonomy and creates dependencies,.\n- **Design consistency is best achieved through reusable assets**, such as component libraries, stylesheets, and clear guidelines, rather than through centralized design silos.\n- **Specifications should focus on behavioral needs** using techniques like Behavior-Driven Development (BDD) to ensure the system meets user needs, rather than just matching visual mockups.\n\n",
+    "notes": "**UI/UX design must be treated as a core software design choice** rather than a static specification, ensuring the resulting system effectively reflects the user's mental model. Organizations should move away from siloed design teams and instead **empower streamline development teams to own UI responsibility**, using design experts as enabling teams to foster autonomy and improve overall usability.\n\n- **The separation of UI design and backend development** is a significant organizational mistake that fosters transactional working, limits innovation, and results in lower-quality solutions.\n- **UI/UX design is an integral part of software design**—it is a choice of how a system solves a problem rather than a requirement defining what the system needs to do.\n- **A real user interface is an interactive system** that relies on the user’s mental model of the entire system; usability cannot be divorced from the code or the assumptions made during development.\n- **Using UI mockups as static specifications** creates development bottlenecks and prevents teams from focusing on the true behavioral goals of a feature.\n- **UI specialists should function as \"enabling teams\"** that support and coach stream-aligned teams to build their own capabilities rather than doing the work for them or directing it.\n- **Stream-aligned development teams should own the responsibility for UI**, ideally handling 80% of typical UI tasks independently and relying on experts for the most exploratory work.\n- **Autonomy in decision-making** is a key predictor of building better software faster; centralizing UI design often removes this autonomy and creates dependencies.\n- **Design consistency is best achieved through reusable assets**, such as component libraries, stylesheets, and clear guidelines, rather than through centralized design silos.\n- **Specifications should focus on behavioral needs** using techniques like Behavior-Driven Development (BDD) to ensure the system meets user needs, rather than just matching visual mockups.\n\n",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2025/12/good-talkspodcasts-dec-ii.html",
     "registered_at": "2025-12-22T10:56:48.000Z"
@@ -8035,14 +8036,15 @@
     "speakers": [
       "Kent Beck"
     ],
-    "description": "Kent Beck discusses the tension between delivering features and maintaining software \"optionality,\" advocating for a \"tidy first\" approach to make hard changes easy by improving code structure as both an economic and moral necessity,,,.\n",
+    "description": "Kent Beck discusses the tension between delivering features and maintaining software \"optionality,\" advocating for a \"tidy first\" approach to make hard changes easy by improving code structure as both an economic and moral necessity.\n",
     "core_topic": "Software Design",
     "notes": "Effective software engineering requires balancing the visible progress of **feature development** with the less legible but vital preservation of **future optionality** through continuous, incremental \"tidying\". By learning to **\"make the change easy, then make the easy change,\"** developers fulfill both an economic and an ethical obligation to keep the codebase maintainable for their colleagues and future requirements.\n\n- Software design requires balancing the **visible progress of features** with the **preservation of optionality** for future changes.\n- While stakeholders easily notice new features, the **below-the-surface design work** is what determines long-term velocity and defect rates.\n- The core strategy for handling difficult updates is to **\"make the change easy, then make the easy change\"** through incremental structural improvements.\n- **Speculative flexibility** should be avoided by deferring design investments until just before they are needed to maximize their net present value.\n- Maintaining a clean codebase is both an **economic necessity** and a **moral obligation** to colleagues to prevent making their future work unnecessarily hard.\n- **Structural changes** (refactoring) should be isolated from **behavioral changes** (features) in separate pull requests because structural changes are usually reversible while behavioral changes are often not.\n- Teams must avoid **100% utilization**, as approaching full capacity causes the wait time for new work to approach infinity.\n- To escape a cycle of declining productivity, developers must periodically **restore optionality** by tidying code—such as rationalizing names or improving tests—between feature implementations.\n- Effective tidying can be as simple as **adding a strategic blank line** to clarify logic or **deleting redundant comments** that the code already makes clear.\n\n",
     "format": "podcast",
     "registered_at": "2026-03-14T09:54:51.000Z",
     "rating": 5,
     "language": "English",
-    "year": 2025
+    "year": 2025,
+    "blog_url": "https://www.eferro.net/2026/04/good-talkspodcasts-april-i.html"
   },
   {
     "id": "recUIDymP9vqzyyTI",
@@ -9016,7 +9018,8 @@
     "registered_at": "2026-01-06T09:52:13.000Z",
     "rating": 5,
     "language": "English",
-    "year": 2023
+    "year": 2023,
+    "blog_url": "https://www.eferro.net/2026/04/good-talkspodcasts-april-i.html"
   },
   {
     "id": "recYZ3cyr9Rm2u5Br",
@@ -10239,7 +10242,7 @@
     ],
     "description": "Kent Beck explores software design as a socio-technical exercise in human relationships and economic optionality, offering a framework to balance feature delivery with a sustainable engineering culture rooted in Agile-XP principles\n",
     "core_topic": "Software Design",
-    "notes": "Effective software design is a socio-technical discipline where managing technical **coupling** serves to strengthen human relationships and create economic value through **optionality**,,. By interlacing structural improvements with feature delivery in small, interruptible steps, developers can balance immediate business needs with the long-term sustainability and flexibility of the system.\n\n- **Software design is primarily an exercise in human relationships**, where technical skills serve to build trust, align incentives, and improve communication within a team,.\n- **The core technical challenge of design is managing coupling**, defined as a relationship where changing one element necessitates changing another, thereby controlling the propagation of change,,.\n- **Design decisions are governed by three economic imperatives**: ensuring the software's survival through early growth phases, maximizing Net Present Value by deferring costs and accelerating earnings, and creating optionality for future pivots,,,.\n- **The \"Tidy First\" moment represents the smallest quantum of design**, occurring when a programmer chooses whether to improve code structure before implementing a functional change as a form of \"self-care\" or team care,.\n- **Empirical software design seeks to balance visible feature delivery with the indirectly observable health of the system's structure**, preventing the \"feature hamster wheel\" from eroding long-term sustainability,,.\n- **Systems should grow like a tree through differentiation**, starting from a small \"seed\" and evolving through continuous structural splits rather than big design up front,.\n- **Structural changes should be made interruptible by utilizing \"parallels,\"** allowing old and new designs to coexist so that technical improvements do not block immediate business needs,.\n- **At a micro level, developers should strictly separate structural \"tidying\" from functional changes** in their workflow to preserve the clarity and reversibility of their work,.\n- **Effective leadership prioritizes purpose over pressure**, creating the necessary creative space for designers to realize the nonlinear value and \"jackpot payoffs\" possible in software,,.\n\n",
+    "notes": "Effective software design is a socio-technical discipline where managing technical **coupling** serves to strengthen human relationships and create economic value through **optionality**. By interlacing structural improvements with feature delivery in small, interruptible steps, developers can balance immediate business needs with the long-term sustainability and flexibility of the system.\n\n- **Software design is primarily an exercise in human relationships**, where technical skills serve to build trust, align incentives, and improve communication within a team.\n- **The core technical challenge of design is managing coupling**, defined as a relationship where changing one element necessitates changing another, thereby controlling the propagation of change.\n- **Design decisions are governed by three economic imperatives**: ensuring the software's survival through early growth phases, maximizing Net Present Value by deferring costs and accelerating earnings, and creating optionality for future pivots.\n- **The \"Tidy First\" moment represents the smallest quantum of design**, occurring when a programmer chooses whether to improve code structure before implementing a functional change as a form of \"self-care\" or team care.\n- **Empirical software design seeks to balance visible feature delivery with the indirectly observable health of the system's structure**, preventing the \"feature hamster wheel\" from eroding long-term sustainability.\n- **Systems should grow like a tree through differentiation**, starting from a small \"seed\" and evolving through continuous structural splits rather than big design up front.\n- **Structural changes should be made interruptible by utilizing \"parallels,\"** allowing old and new designs to coexist so that technical improvements do not block immediate business needs.\n- **At a micro level, developers should strictly separate structural \"tidying\" from functional changes** in their workflow to preserve the clarity and reversibility of their work.\n- **Effective leadership prioritizes purpose over pressure**, creating the necessary creative space for designers to realize the nonlinear value and \"jackpot payoffs\" possible in software.\n\n",
     "year": 2024,
     "conference_name": "GOTO",
     "format": "talk",
@@ -10411,7 +10414,8 @@
     "core_topic": "Platform Engineering",
     "notes": "True platform engineering requires a shift from a manual \"service desk\" ticketing model to **automated self-service workflows** that eliminate queuing and unblock delivery teams. By prioritizing these self-service capabilities and maintaining **transparent audit trails**, organizations can reduce lead times and platform team burnout while significantly increasing overall delivery speed and reliability.\n\n- **Platform Engineering's Core Purpose:** The discipline is intended to accelerate delivery teams by empowering them to handle their own infrastructure, repository creation, and deployments, moving away from a traditional model of filing manual tickets.\n- **The Trap of \"Ticketing Hell\":** This occurs when a platform team functions like a manual operations service desk. While well-intentioned, this model creates significant queuing, long lead times, and prioritization conflicts that prevent delivery teams from meeting business demands.\n- **Impact on Delivery Teams:** High reliance on tickets causes teams to become stuck, unable to reach daily deployments. In extreme cases, simple requests like repository access can take weeks, leaving engineers unproductive and unwelcomed.\n- **Cost to Platform Teams:** A ticket-based system is unsustainable for platform engineers, leading to constant context-switching, high stress, and burnout as they attempt to \"run fast just to stand still.\"\n- **Transition to Self-Service:** The solution is to transform manual workflows into automated self-service pipelines. This allows delivery teams to trigger processes independently without waiting for a platform engineer to pick up a ticket.\n- **Measuring Success via Queue Time:** Instead of just measuring activity time, platform teams must measure \"queue time\"—the duration a ticket sits waiting to be actioned. Lead time starts the moment a ticket is filed, not when work begins.\n- **Prioritizing for Value:** Platform teams should identify and automate the specific workflows that are currently the most costly or time-consuming for delivery teams to maximize the impact of the platform.\n- **Importance of Transparency:** A fully automated audit trail within a platform portal is critical. It provides stakeholders with visibility into actions and impacts, building the trust and confidence required to move away from manual approvals.\n- **The Outcome of Effective Platform Engineering:** By unblocking delivery teams through self-service, organizations achieve higher speed, quality, and reliability while reducing the inbound ticket burden on the platform team.\n\n",
     "format": "podcast",
-    "registered_at": "2026-03-14T09:58:41.000Z"
+    "registered_at": "2026-03-14T09:58:41.000Z",
+    "blog_url": "https://www.eferro.net/2026/04/good-talkspodcasts-april-i.html"
   },
   {
     "id": "recd297XY5GIEeMME",
@@ -10571,7 +10575,7 @@
     "speakers": [
       "Dan North"
     ],
-    "description": "An updated version of the agile manifesto and principles (creative individuals, feedback loops, continious delivery, devops...)  A clear message about agile very far away from the Agile/Scrum/NoSense (tm). Real Agile...\n",
+    "description": "An updated version of the agile manifesto and principles (creative individuals, feedback loops, continious delivery, devops...)  A clear message about agile very far away from the Agile/Scrum/NoSense (tm). Real Agile.",
     "core_topic": "Agile",
     "year": 2015,
     "conference_name": "GOTO",
@@ -10627,7 +10631,7 @@
     "speakers": [
       "Michael Norton"
     ],
-    "description": "Acomplement for the Linda Rising talks. Continious learning, experimentation Mindset, double loop learning, ...\n",
+    "description": "Acomplement for the Linda Rising talks. Continious learning, experimentation Mindset, double loop learning, .",
     "core_topic": "",
     "conference_name": "InfoQ",
     "format": "talk",
@@ -10877,7 +10881,7 @@
     "speakers": [
       "Simon Wardley"
     ],
-    "description": "As always, inspiring, and thought-provoking.... \n",
+    "description": "As always, inspiring, and thought-provoking. \n",
     "core_topic": "",
     "year": 2019,
     "conference_name": "Lean Agile Scotland",
@@ -10924,7 +10928,8 @@
     "format": "talk",
     "registered_at": "2026-01-22T18:13:49.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "blog_url": "https://www.eferro.net/2026/04/good-talkspodcasts-april-i.html"
   },
   {
     "id": "receO8rFJW7u7nrd8",
@@ -11030,7 +11035,8 @@
     "format": "talk",
     "registered_at": "2026-02-18T15:06:42.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "blog_url": "https://www.eferro.net/2026/04/good-talkspodcasts-april-i.html"
   },
   {
     "id": "recerQytV322uGb6q",
@@ -11462,7 +11468,8 @@
     "registered_at": "2026-03-14T09:47:39.000Z",
     "rating": 5,
     "language": "English",
-    "year": 2026
+    "year": 2026,
+    "blog_url": "https://www.eferro.net/2026/04/good-talkspodcasts-april-i.html"
   },
   {
     "id": "recgKG33Jjit6WvBS",
@@ -11849,7 +11856,8 @@
     "registered_at": "2026-01-06T10:21:59.000Z",
     "rating": 5,
     "language": "English",
-    "year": 2025
+    "year": 2025,
+    "blog_url": "https://www.eferro.net/2026/04/good-talkspodcasts-april-i.html"
   },
   {
     "id": "rechQzQWRIds2FQDl",
@@ -12206,7 +12214,7 @@
       "Dan North",
       "Jessica Kerr"
     ],
-    "description": "The presentation discusses the complexity of modern software development, moving beyond simple \"box arrow cylinder\" architectures to a landscape of diverse services and technologies1.... It emphasizes the importance of minimizing lead time to business impact rather than focusing solely on code, and suggests that teams should embrace con\ttinuous learning, research and experimentation to manage uncertainty and deliver value\n",
+    "description": "The presentation discusses the complexity of modern software development, moving beyond simple \"box arrow cylinder\" architectures to a landscape of diverse services and technologies1. It emphasizes the importance of minimizing lead time to business impact rather than focusing solely on code, and suggests that teams should embrace con\ttinuous learning, research and experimentation to manage uncertainty and deliver value\n",
     "core_topic": "Architecture",
     "year": 2015,
     "conference_name": "InfoQ",
@@ -14578,7 +14586,8 @@
     "core_topic": "Startup",
     "notes": "The landscape for startups is shifting toward **extreme capital efficiency**, where AI-enhanced productivity enables smaller, high-impact teams to achieve significantly higher revenue benchmarks than in previous years. Success in this new era requires both founders and engineers to move beyond a \"growth at all costs\" mindset and prioritize **deep business alignment and sustainable value creation**.\n\n- **VC Funding Dynamics:** While total capital invested remains high, it is concentrated in a few \"power law\" winners. The number of startups successfully raising rounds has dropped by approximately 50% since 2021.\n- **Hiring and AI Impact:** Startup hiring has plummeted from 73,000 monthly hires in early 2022 to a projected 20,000 in 2025. AI tools are significantly increasing individual productivity, allowing companies to remain small rather than scaling headcount.\n- **The \"Efficiency\" Era:** The key metric for VCs has shifted to ARR per FTE (Annual Recurring Revenue per Full-Time Employee). Series A startups are now raising with fewer employees (median of 15 vs. 22) but much higher revenue (median ~$3M ARR vs. $1.3M in 2021).\n- **Funding Intervals:** The traditional 18-month cycle between rounds has extended to 2.5 or 3 years. Startups are being forced to reach profitability or significantly longer runways to survive the current market.\n- **The Bridge Round Trap:** Bridge rounds—capital meant to \"bridge\" a company to its next stage—have become much riskier. Success rates for companies moving from a bridge round to a Series A have dropped from 33% to roughly 8%.\n- **Rise of Solo Founders:** Solo-founded companies now represent over one-third of new startups. However, VCs still fund them at lower rates than co-founded teams due to perceived \"key person risk\" and the desire for proven talent attraction.\n- **Valuation Trends:** Seed valuations remain surprisingly high (median ~$16M), often driven by AI hype. SAFEs (Simple Agreements for Future Equity) remain the dominant instrument for early-stage fundraising to delay formal valuation.\n- **Equity and Dilution:** Employee option pools are starting smaller (5–10% rather than the historical 15–20%). Employees must account for dilution and liquidation preferences, where investors are paid back their initial capital before any common shareholders.\n- **Advisor Reality:** Median equity for startup advisors has settled at 0.25%, not the 1% often cited. The most valuable advisors provide either deep technical expertise for specific scaling problems or direct commercial introductions.\n- **Due Diligence and Transparency:** VC due diligence is taking longer and becoming more rigorous. Prospective employees are encouraged to \"interview like an investor,\" asking specifically about burn rates, growth metrics, and unique technological moats.\n\n",
     "format": "podcast",
-    "registered_at": "2026-03-14T10:04:31.000Z"
+    "registered_at": "2026-03-14T10:04:31.000Z",
+    "blog_url": "https://www.eferro.net/2026/04/good-talkspodcasts-april-i.html"
   },
   {
     "id": "recpdRwvheycRamLE",
@@ -15684,7 +15693,7 @@
       "Jessica Kerr",
       "Avdi Grimm"
     ],
-    "description": "The journey of a software developer is a climb through abstraction: algorithms, patterns, architecture.... How do we keep expanding scope, without losing focus on the real work? Join us for a journey into the fourth dimension, where we don't just change code; we design change.\n",
+    "description": "The journey of a software developer is a climb through abstraction: algorithms, patterns, architecture. How do we keep expanding scope, without losing focus on the real work? Join us for a journey into the fourth dimension, where we don't just change code; we design change.\n",
     "core_topic": "Architecture",
     "year": 2020,
     "conference_name": "Code BEAM SF",
@@ -15804,7 +15813,7 @@
     ],
     "description": "Dave Farley explains how Behavior-Driven Development (BDD) utilizes executable specifications to improve software design and collaboration, facilitating excellence in Continuous Delivery through a user-centric, outside-in approach.\n",
     "core_topic": "Continuous Delivery",
-    "notes": "Effective software development requires shifting the focus from testing implementation details to creating **executable specifications** that describe desired behaviors from an outside-in, user-centric perspective,. This approach ensures that tests remain durable in the face of change while providing a clear functional description that facilitates better communication across the entire team,.\n\n- **Focus on Behavior over Implementation:** Behavior-Driven Development (BDD) is a design and development methodology focused on defining system behavior from the user's perspective rather than testing internal implementation details.\n- **Shift from Testing to Specification:** Transition terminology from \"tests\" and \"test cases\" to \"specifications\" and \"scenarios\" to emphasize defining desired outcomes and functional requirements.\n- **Outside-In Design:** Design software by first considering the user's goals and experiences; if a specification is difficult to write, it indicates the code will be difficult to use.\n- **Decoupling from Code Details:** Ensure specifications are durable by avoiding technical details like UI element IDs or specific database schemas, which allows the internal implementation to change without breaking the tests.\n- **Ubiquitous Problem Language:** Use the language of the problem domain rather than technical solution language to improve collaboration and communication between developers, domain experts, and stakeholders.\n- **Executable Specifications:** Treat tests as live documentation that provides a clear functional description of what the software actually does, verified by the fact that the tests pass.\n- **Incremental Translation Process:** Move from vague user wishes to refined user stories, then to concrete examples (acceptance criteria), and finally to executable code.\n- **Maintainability and Scale:** Abstracting domain-level concepts allows for better reuse of test logic and ensures that when a system change occurs, maintenance can be handled in a single step rather than across hundreds of brittle tests.\n- **Freedom to Evolve:** By focusing on outcomes rather than how the code works, teams retain the freedom to refactor and improve their designs as they learn more without losing the safety net of their specifications.\n\n\n",
+    "notes": "Effective software development requires shifting the focus from testing implementation details to creating **executable specifications** that describe desired behaviors from an outside-in, user-centric perspective. This approach ensures that tests remain durable in the face of change while providing a clear functional description that facilitates better communication across the entire team.\n\n- **Focus on Behavior over Implementation:** Behavior-Driven Development (BDD) is a design and development methodology focused on defining system behavior from the user's perspective rather than testing internal implementation details.\n- **Shift from Testing to Specification:** Transition terminology from \"tests\" and \"test cases\" to \"specifications\" and \"scenarios\" to emphasize defining desired outcomes and functional requirements.\n- **Outside-In Design:** Design software by first considering the user's goals and experiences; if a specification is difficult to write, it indicates the code will be difficult to use.\n- **Decoupling from Code Details:** Ensure specifications are durable by avoiding technical details like UI element IDs or specific database schemas, which allows the internal implementation to change without breaking the tests.\n- **Ubiquitous Problem Language:** Use the language of the problem domain rather than technical solution language to improve collaboration and communication between developers, domain experts, and stakeholders.\n- **Executable Specifications:** Treat tests as live documentation that provides a clear functional description of what the software actually does, verified by the fact that the tests pass.\n- **Incremental Translation Process:** Move from vague user wishes to refined user stories, then to concrete examples (acceptance criteria), and finally to executable code.\n- **Maintainability and Scale:** Abstracting domain-level concepts allows for better reuse of test logic and ensures that when a system change occurs, maintenance can be handled in a single step rather than across hundreds of brittle tests.\n- **Freedom to Evolve:** By focusing on outcomes rather than how the code works, teams retain the freedom to refactor and improve their designs as they learn more without losing the safety net of their specifications.\n\n\n",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2025/12/good-talkspodcasts-dec-ii.html",
     "registered_at": "2025-12-22T10:56:48.000Z"
@@ -15965,12 +15974,13 @@
     ],
     "description": "This expert discussion highlights how Test-Driven Development (TDD) acts as a fundamental software design tool that facilitates Agile development by providing constant feedback, enforcing separation of concerns, and enabling developers to proceed with confidence through small, iterative steps.\n",
     "core_topic": "Testing",
-    "notes": "**Test-Driven Development** serves as a fundamental **design tool** that compels developers to create **modular, high-quality code** by focusing on observable outcomes and consumer interfaces before implementation,,. Adopting this disciplined test-first approach provides **constant feedback** through small, safe steps, ultimately resulting in flexible systems that are cheaper to maintain and better aligned with business goals.\n\n- **Test-Driven Development (TDD) Definition**: A disciplined cycle of thinking about a problem, breaking it into a test list, writing a failing test, writing minimal code to pass, and then refactoring.\n- **A Primary Design Tool**: TDD's greatest value is as a design tool rather than just a testing method. It forces developers to design external interfaces from the perspective of a consumer before writing implementation details.\n- **The \"Test-First\" Requirement**: For the process to be TDD, tests must be written before the code. Writing tests after implementation often results in tests that are tightly coupled to the code, making the system fragile and difficult to change.\n- **Forcing Function for Quality**: TDD inherently drives \"testable code,\" which is characterized by modularity, high cohesion, better separation of concerns, and loose coupling.\n- **Small, Safe Steps**: The process allows developers to work in tiny increments with a constant stream of feedback, providing a high level of confidence and security during development.\n- **Refactoring as a Distinct Step**: The refactoring stage is critical for improving the internal design of the code once the tests are green, ensuring the internal structure remains clean and maintainable.\n- **Focus on Observable Outcomes**: TDD encourages focusing on what the system should achieve (behavior) rather than how it achieves it (implementation), allowing for more freedom in how logic is realized.\n- **The \"Backward\" Approach**: A practical technique for TDD is to write the test in comments first, starting with the assertion (the outcome) and then working backward to the action and the initial state.\n- **Teaching Software Design**: TDD is one of the most effective ways to teach and learn software design. Challenges encountered during TDD are typically symptoms of underlying design flaws rather than the testing process itself.\n- **Business Value**: By producing more flexible and higher-quality software, TDD makes systems cheaper to maintain and more responsive to changing business needs.\n\n",
+    "notes": "**Test-Driven Development** serves as a fundamental **design tool** that compels developers to create **modular, high-quality code** by focusing on observable outcomes and consumer interfaces before implementation. Adopting this disciplined test-first approach provides **constant feedback** through small, safe steps, ultimately resulting in flexible systems that are cheaper to maintain and better aligned with business goals.\n\n- **Test-Driven Development (TDD) Definition**: A disciplined cycle of thinking about a problem, breaking it into a test list, writing a failing test, writing minimal code to pass, and then refactoring.\n- **A Primary Design Tool**: TDD's greatest value is as a design tool rather than just a testing method. It forces developers to design external interfaces from the perspective of a consumer before writing implementation details.\n- **The \"Test-First\" Requirement**: For the process to be TDD, tests must be written before the code. Writing tests after implementation often results in tests that are tightly coupled to the code, making the system fragile and difficult to change.\n- **Forcing Function for Quality**: TDD inherently drives \"testable code,\" which is characterized by modularity, high cohesion, better separation of concerns, and loose coupling.\n- **Small, Safe Steps**: The process allows developers to work in tiny increments with a constant stream of feedback, providing a high level of confidence and security during development.\n- **Refactoring as a Distinct Step**: The refactoring stage is critical for improving the internal design of the code once the tests are green, ensuring the internal structure remains clean and maintainable.\n- **Focus on Observable Outcomes**: TDD encourages focusing on what the system should achieve (behavior) rather than how it achieves it (implementation), allowing for more freedom in how logic is realized.\n- **The \"Backward\" Approach**: A practical technique for TDD is to write the test in comments first, starting with the assertion (the outcome) and then working backward to the action and the initial state.\n- **Teaching Software Design**: TDD is one of the most effective ways to teach and learn software design. Challenges encountered during TDD are typically symptoms of underlying design flaws rather than the testing process itself.\n- **Business Value**: By producing more flexible and higher-quality software, TDD makes systems cheaper to maintain and more responsive to changing business needs.\n\n",
     "format": "podcast",
     "registered_at": "2026-01-22T18:13:47.000Z",
     "rating": 5,
     "language": "English",
-    "year": 2025
+    "year": 2025,
+    "blog_url": "https://www.eferro.net/2026/04/good-talkspodcasts-april-i.html"
   },
   {
     "id": "recuCBrk3kcf3ZRh1",
@@ -17504,7 +17514,7 @@
     "core_topic": "AI Assisted Engineering",
     "conference_name": null,
     "format": "videopodcast",
-    "blog_url": "",
+    "blog_url": "https://www.eferro.net/2026/04/good-talkspodcasts-april-i.html",
     "registered_at": "2026-04-04T08:39:13.000Z",
     "rating": 5,
     "year": 2026,
@@ -17528,7 +17538,7 @@
     "core_topic": "AI",
     "conference_name": "The Pragmatic Summit",
     "format": "talk",
-    "blog_url": "",
+    "blog_url": "https://www.eferro.net/2026/04/good-talkspodcasts-april-i.html",
     "registered_at": "2026-04-04T08:49:55.000Z",
     "rating": null,
     "year": 2026,
@@ -17552,7 +17562,7 @@
     "core_topic": "AI Assisted Engineering",
     "conference_name": "AI Engineer",
     "format": "talk",
-    "blog_url": "",
+    "blog_url": "https://www.eferro.net/2026/04/good-talkspodcasts-april-i.html",
     "registered_at": "2026-04-04T08:54:03.000Z",
     "rating": null,
     "year": 2025,
@@ -17577,7 +17587,7 @@
     "core_topic": "Continuous Delivery",
     "conference_name": null,
     "format": "videopodcast",
-    "blog_url": "",
+    "blog_url": "https://www.eferro.net/2026/04/good-talkspodcasts-april-i.html",
     "registered_at": "2026-04-04T09:05:16.000Z",
     "rating": null,
     "year": 2025,
@@ -17601,7 +17611,7 @@
     "core_topic": "Agile-XP",
     "conference_name": "GOTO 2025",
     "format": "talk",
-    "blog_url": "",
+    "blog_url": "https://www.eferro.net/2026/04/good-talkspodcasts-april-i.html",
     "registered_at": "2026-04-04T09:17:13.000Z",
     "rating": 5,
     "year": 2026,
