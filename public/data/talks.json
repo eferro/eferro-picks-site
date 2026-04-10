@@ -6866,26 +6866,6 @@
     "notes": "To improve software development effectiveness, teams should move from guesswork to **evidence-based experimentation** by tracking trends in **stability** (defect rate and recovery time) and **throughput** (lead time and deployment frequency). These DORA metrics provide a scientific way to measure the actual impact of any technical, cultural, or organizational change on a team's performance.\n\n* **Evidence-Based Decision-Making:** Move away from guesswork and toward an experimental, evidence-based approach to software development.\n* **Three Primary Goals:** Focus on delivering useful impact to users, maintaining high software quality (stability), and achieving efficient delivery (throughput).\n* **Stability Metrics (Quality):**\n    * **Defect Rate:** Tracking the frequency of defects introduced at different stages, such as after commits, acceptance tests, or production release.\n    * **Time to Recover:** Measuring how long it takes to restore a stage or production environment after a defect is detected.\n* **Throughput Metrics (Efficiency):**\n    * **Lead Time:** The time duration between committing a change and having it ready for release.\n    * **Deployment Frequency:** How often code changes are actually released into production.\n* **Performance Correlations:** High performance correlates with specific technical practices, including committing to mainline multiple times per day, high levels of automated testing, and frequent production releases.\n* **Measuring Change Effectiveness:** Use these metrics to objectively evaluate the impact of any change, whether it involves new technology, tools, team structures, or cultural shifts like stand-up formats.\n* **Automated Tracking:** Deployment pipelines should be used as the primary platform to automatically capture and monitor these success indicators.\n* **Trend Analysis:** Prioritize tracking trends within the organization to determine improvement over time rather than focusing on specific static percentage benchmarks."
   },
   {
-    "id": "recPbG400g95g43yD",
-    "title": "The Technical Debt Trap",
-    "url": "https://youtu.be/SfWCRl75Kas",
-    "duration": 3180,
-    "topics": [
-      "Technical Practices",
-      "Software Design",
-      "Management",
-      "Developer Productivity"
-    ],
-    "speakers": [
-      "Doc Norton"
-    ],
-    "description": "A classical one about technical debt.\n",
-    "core_topic": "Software Design",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2019/11/good-talkspodcasts-october-november.html",
-    "registered_at": "2020-01-19T20:40:45.000Z"
-  },
-  {
     "id": "recPeKtcL1bmOHyXS",
     "title": "Reliable Messaging Without Distributed Transactions",
     "url": "https://www.youtube.com/watch?v=AfAojdORxHs",
@@ -12108,25 +12088,6 @@
     "format": "talk",
     "blog_url": "https://www.eferro.net/2023/05/good-talkspodcasts-may-2023-i.html",
     "registered_at": "2023-05-06T20:00:23.000Z"
-  },
-  {
-    "id": "rechenJ6kgA7BxHI9",
-    "title": "Production - Designing for Testability",
-    "url": "https://www.infoq.com/presentations/quality-production",
-    "duration": 0,
-    "topics": [
-      "testing",
-      "Testing in production"
-    ],
-    "speakers": [
-      "Michael Bryzek"
-    ],
-    "description": "In this talk Susanne will use Wardley Maps to visualise how the value chain can evolve when getting infrastructure components handled by different options: Going from open source software to Kubernetes' container orchestration, to Istio's service mesh and to Serverless technologies, such as AWS Lambda.\n",
-    "core_topic": "",
-    "conference_name": "InfoQ",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2017/10/good-talkspodcasts-september-2017.html",
-    "registered_at": "2020-01-19T20:42:43.000Z"
   },
   {
     "id": "rechnBVbwP7XyJUqp",
