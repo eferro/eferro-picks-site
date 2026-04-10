@@ -10793,7 +10793,7 @@
     "speakers": [
       "Maaret Pyhäjärvi"
     ],
-    "description": "Maaret talk about the experiment they did for three months working with a Product Owner or Product Manager. They experienced the development team delivering multitudes of value and innovate customer-oriented solutions in direct collaboration with customers. Team satisfaction and happiness bloomed. The experiment turned into a continuous way of working.\n",
+    "description": "Maaret talk about the experiment they did for three months working without a Product Owner or Product Manager. They experienced the development team delivering multitudes of value and innovate customer-oriented solutions in direct collaboration with customers. Team satisfaction and happiness bloomed. The experiment turned into a continuous way of working.\n",
     "core_topic": "Agile",
     "year": 2019,
     "conference_name": "Agile India",
@@ -12321,7 +12321,7 @@
     ],
     "speakers": [
       "Charity Majors",
-      "Yan Cuim"
+      "Yan Cui"
     ],
     "description": "This podcast episode features Charity Majors discussing the evolution of observability from her experiences at Parse and Facebook to co-founding Honeycomb, emphasizing its event-based approach for understanding complex systems and contrasting it with traditional metrics and logging, while also covering topics like Open Telemetry, DevOps, and engineering culture.\n",
     "core_topic": "Engineering Culture",
@@ -14514,26 +14514,6 @@
     "registered_at": "2020-01-19T20:42:12.000Z"
   },
   {
-    "id": "recolizJpNH2hh7U3",
-    "title": "The Flywheel Effect Creates Space for Innovation (Europe 2022)",
-    "url": "https://videos.itrevolution.com/watch/708278624/",
-    "duration": 1560,
-    "topics": [
-      "Technology Strategy",
-      "Platform",
-      "Engineering Culture"
-    ],
-    "speakers": [
-      "David Anderson",
-      "Michael O'Reailly"
-    ],
-    "description": "The flywheel effect occurs when we balance business strategy (via Wardley mapping) with technology strategy (via Modern cloud). As a preview of the upcoming IT Revolution book, Dave creates a Wardley Map to show how to use the value flywheel to build confidence, improve your cloud stance and create space for innovation. \n",
-    "core_topic": "",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2022/07/good-talkspodcasts-jul-2022-i.html",
-    "registered_at": "2022-07-25T10:55:49.000Z"
-  },
-  {
     "id": "recolqA3571wuqwDp",
     "title": "When to Use Microservices (And When Not To!)",
     "url": "https://gotopia.tech/bookclub/episodes/moving-to-microservices-with-sam-newman-and-martin-fowler",
@@ -15377,7 +15357,7 @@
       "Serverless"
     ],
     "speakers": [
-      "Yan Cuim"
+      "Yan Cui"
     ],
     "description": "",
     "core_topic": "",
@@ -16015,7 +15995,7 @@
     "speakers": [
       "James Long"
     ],
-    "description": "CDRTs are data structures specifically designed to achieve (eventual) consistency in distributed environments in a simple way. This talk shows a practical example of use and implementation that can help us understand them.\n",
+    "description": "CRDTs are data structures specifically designed to achieve (eventual) consistency in distributed environments in a simple way. This talk shows a practical example of use and implementation that can help us understand them.\n",
     "core_topic": "",
     "year": 2019,
     "conference_name": "dotJS",
