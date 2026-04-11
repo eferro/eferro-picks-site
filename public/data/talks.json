@@ -4654,7 +4654,7 @@
   },
   {
     "id": "recHX1pOmctT8iNO4",
-    "title": "Investing in Innovation: How Situational Awareness Can Put Your Business on the Map",
+    "title": "Wardley Mapping: A Better Way to Plan Strategy",
     "url": "https://www.youtube.com/watch?v=Gfq3ocmadZo",
     "duration": 360,
     "topics": [
@@ -10174,12 +10174,18 @@
   },
   {
     "id": "recbxia9wtLoYSbVM",
-    "title": "Next (SHIFT+n)",
+    "title": "Spotify Engineering Culture (Part 1 & 2)",
     "url": "https://labs.spotify.com/2014/03/27/spotify-engineering-culture-part-1/",
     "duration": 780,
-    "topics": [],
-    "speakers": [],
-    "description": "Spotify engineering culture  and Part 2 From now on these are the videos I'll send to anyone asking me about Agile culture :-)\n",
+    "topics": [
+      "Engineering Culture",
+      "Agile",
+      "Company Culture"
+    ],
+    "speakers": [
+      "Henrik Kniberg"
+    ],
+    "description": "Spotify engineering culture (Part 1 & 2). From now on these are the videos I'll send to anyone asking me about Agile culture :-)\n",
     "core_topic": "",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2014/09/podcaststalks-2014-15-21sept.html",
@@ -17736,7 +17742,7 @@
     "notes": "Software excellence is best achieved by adopting evidence-based technical practices like trunk-based development and continuous integration while prioritizing flexible, outcome-focused strategies over rigid estimation and dogmatic processes. Success depends on understanding the nuance behind these tools and focusing on delivering value rather than adhering to a perceived \"one true way\" of working.\n\n*   **Trunk-Based Development (TBD):** Identified as the most polarizing practice in modern software engineering. It involves merging changes into the main trunk at least once per day, with branches lasting less than 24 hours.\n*   **Continuous Integration (CI):** Viewed as synonymous with Trunk-Based Development. True CI cannot exist with long-lived feature branches, as integration must be continuous and daily to maintain a single \"view of the truth\" of the system.\n*   **Test-Driven Development (TDD):** A polarizing practice often misunderstood as a \"one true way.\" Expert practitioners use it primarily as a tool for design and API experimentation rather than just for test coverage.\n*   **The Problem with Estimation:** Traditional task-based or feature-based estimation is considered \"meaningless\" because complexity is fractal—the more detail you look at, the larger the estimate grows.\n*   **Blink Estimation:** A more effective estimation technique using \"bands\" or ranges. It asks for the earliest possible date (if everything goes perfectly) and the latest date before the team would feel embarrassed. This range helps identify and pay down uncertainty and risk.\n*   **Investment Inversion:** A strategy to shift the conversation from \"how long will it take\" to \"how much is this worth.\" By defining a budget and comparing it against the estimated range of uncertainty, teams can decide whether to start a project or optimize for learning first.\n*   **Backlog Management:** Dogmatic adherence to a large product backlog is counterproductive. Periodically \"nixing\" or resetting the backlog—such as deleting items older than six months—is recommended to remove \"bogus work\" and refocus on immediate needs.\n*   **Outcome Focus vs. Feature Focus:** Engineering should focus on the desired outcome (solving a need) rather than the process of delivering features. Just as a patient wants to be \"well\" rather than have \"more surgery,\" software users want their needs met with the least amount of complexity possible.\n*   **DORA Research:** Data-driven research (such as the *Accelerate* book) identifies 24 practices, including TBD and CI, as \"inferential predictive\" of high-performance software delivery and organizational success.",
     "core_topic": "Continuous Delivery",
     "conference_name": null,
-    "format": "videopodcast",
+    "format": "podcast",
     "blog_url": "https://www.eferro.net/2026/04/good-talkspodcasts-april-i.html",
     "registered_at": "2026-04-04T09:05:16.000Z",
     "rating": null,
