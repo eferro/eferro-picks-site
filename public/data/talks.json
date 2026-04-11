@@ -8221,18 +8221,21 @@
     "url": "https://www.youtube.com/watch?v=gDgAVqkFYWs",
     "duration": 3480,
     "topics": [
-      "Continuous Delivery"
+      "Continuous Delivery",
+      "Feedback cycles",
+      "Trunk Based Development"
     ],
     "speakers": [
       "Dave Farley"
     ],
-    "description": "",
-    "core_topic": "",
+    "description": "Dave Farley explores advanced strategies for optimizing continuous delivery by accelerating feedback loops, streamlining deployment pipelines, and treating automated testing as a mission-critical resource for rapid idea evaluation.",
+    "core_topic": "Continuous Delivery",
     "year": 2018,
     "conference_name": "PIPELINE",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2019/03/good-talkspodcasts-march-2019-i.html",
-    "registered_at": "2020-01-19T20:38:34.000Z"
+    "registered_at": "2020-01-19T20:38:34.000Z",
+    "notes": "Optimizing continuous delivery requires prioritizing fast, reliable feedback loops and treating the deployment pipeline as a strategic resource that must remain in a green, releasable state at all times. By reducing cycle times and focusing on empirical evidence rather than guesses, teams can efficiently evaluate ideas and deliver high-quality software to users.\n\n- Continuous Delivery (CD) is fundamentally about creating efficient feedback loops to learn what users need and getting ideas into their hands quickly.\n- Cycle time is the primary metric used to target, measure, and drive improvements in the development process.\n- The scope of a deployment pipeline must be a single, independently deployable unit; building dependencies between separate pipelines should be avoided.\n- Trunk-based development is essential, requiring developers to commit to the main branch at least once per day to maintain continuous integration.\n- The deployment pipeline must be the only path to production for every change, including code, configuration, libraries, and infrastructure.\n- The commit stage should provide feedback within five minutes to prevent developers from losing focus or increasing batch sizes.\n- Commit stage tests should be pure unit tests that run entirely in memory without accessing the disk, network, or database.\n- Use mocks and stubs to isolate code and maintain the speed and reliability of the commit stage.\n- The total feedback cycle for the entire pipeline should ideally stay under one hour, with the acceptance test stage taking no more than 45 minutes.\n- Acceptance tests must run in production-like environments using automated provisioning and deployment to evaluate software in lifelike circumstances.\n- Use pre-configured canned environments and containerization to speed up deployment times through layered caching.\n- Synthesize test data instead of using massive production data dumps to keep the system lean and migrations fast.\n- Parallelize acceptance tests across a grid of servers to ensure feedback remains fast even as the test suite grows over time.\n- Treat intermittent or flaky tests as real failures; investigate the root cause rather than ignoring them or using auto-retry features.\n- Manage the pipeline as a strategic resource by using version control and Infrastructure as Code for all pipeline hosts and configurations.\n- Pipeline failures are stop the line events and must be prioritized by the team above all other development work."
   },
   {
     "id": "recUU1sBQWcwX539J",
@@ -8672,19 +8675,20 @@
     "url": "https://www.youtube.com/watch?v=jDIZS4IQlQk",
     "duration": 2520,
     "topics": [
-      "Management",
-      "Inspirational",
-      "Company Culture"
+      "Company Culture",
+      "leadership",
+      "Teams"
     ],
     "speakers": [
       "Simon Sinek"
     ],
-    "description": "",
-    "core_topic": "",
+    "description": "A powerful exploration of how true fulfillment and organizational success are built on a culture of trust, mutual care, and the selfless pursuit of helping others realize their own value.",
+    "core_topic": "Company Culture",
     "year": 2012,
     "format": "talk",
     "blog_url": "https://www.eferro.net/2016/07/index.html",
-    "registered_at": "2020-01-19T20:35:08.000Z"
+    "registered_at": "2020-01-19T20:35:08.000Z",
+    "notes": "True fulfillment and professional success are found by shifting the focus from self-interest to the selfless care of others, which fosters a culture of deep trust and collective resilience. Leaders must prioritize building the confidence and value of their people over meeting metrics, as individuals who feel supported are naturally inspired to collaborate and innovate toward a shared destination.\n\n- The Impact of Workplace Culture on Outcomes: Preventable failures, such as medical errors in hospitals, are often rooted in a lack of camaraderie and care among staff rather than a lack of technical skill or equipment.\n- Management vs. Leadership: Many organizations are run by number crunchers who focus on metrics, whereas true leadership involves caring for the people doing the work so they, in turn, can care for the customers.\n- The Biological Basis of Fulfillment: True fulfillment comes from the exertion of time and energy for the benefit of another person. This social behavior releases oxytocin, which strengthens bonds and inspires others to act generously.\n- Trust Through Vulnerability: Trust is not built overnight; it requires taking the risk to be vulnerable. In high-performing teams like the Marines, members trust each other because they know their peers would sacrifice for them.\n- The Role of Confidence: Before individuals can effectively help others, they must have self-confidence. Leaders are responsible for building this confidence by helping employees recognize their own value and strengths.\n- Leadership Responsibility: A leader's job is not to ensure people meet deadlines, but to provide the training, support, and safety for people to fail, learn, and realize they are more capable than they think.\n- The Problem with Shareholder Value: The shift in the 1980s toward prioritizing investors over employees and customers led to the normalization of mass layoffs and increased selfishness in business strategy.\n- Building Authentic Relationships: Trust is built by being honest about intentions. Relationships should be cultivated without an immediate expectation of something in return, as transactional kindness undermines trust.\n- Destination vs. Route: Having a clear, idealistic destination (the Why) allows teams to use their creativity to overcome obstacles. Without a clear destination, teams focus only on counting steps (metrics) and are easily halted by challenges.\n- The Ripple Effect of Small Acts: Small, selfless actions inspire observers to perform their own acts of kindness, eventually reaching a critical mass that can shift an entire culture."
   },
   {
     "id": "recWUWqSES4nBFQE6",
@@ -9117,15 +9121,20 @@
     "title": "Ep. 107. Explore, Expand, Extract with Kent Beck",
     "url": "https://www.youtube.com/watch?v=NaK2az4GNWE",
     "duration": 3000,
-    "topics": [],
+    "topics": [
+      "XP",
+      "Product Discovery",
+      "Software Design"
+    ],
     "speakers": [
       "Kent Beck"
     ],
-    "description": "Agile for Human Podcast. Any interview with Kent Beck is always interesting.\n",
-    "core_topic": "",
+    "description": "Kent Beck discusses his 3X framework (Explore, Expand, Extract) for managing product risk and shares insights on scaling software collaboration, the evolution of Extreme Programming, and the critical role of safety in engineering cultures.",
+    "core_topic": "Agile-XP",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2019/04/good-talkspodcasts-april-2019-i.html",
-    "registered_at": "2020-01-19T20:39:22.000Z"
+    "registered_at": "2020-01-19T20:39:22.000Z",
+    "notes": "Successful software and product development requires recognizing and adapting to three distinct phases, Explore, Expand, and Extract, each of which demands entirely different management styles, engineering disciplines, and risk tolerances. Organizations must foster a culture of safety to allow for diverse experimentation during exploration while maintaining the intense focus needed to navigate the existential crises that arise during rapid growth.\n\n- The 3X Framework (Explore, Expand, Extract): Software development processes must adapt to a project's changing risk profile. Explore is the search for a new reinforcing loop of value, requiring high diversity and rapid experimentation. Expand is the vertical growth phase where infrastructure constantly breaks, requiring emergency intervention and focus on existential bottlenecks. Extract is the mature phase focused on efficiency, predictability, and responsible adult management of a thriving business.\n- Scaling Collaboration (Project Limbo): This research focuses on how thousands of people can collaborate on a single system by reducing the cost and overhead of making a change to near zero. It asks how low can you go regarding the size and frequency of changes.\n- The Nature of Successful Experiments: An experiment is only a failure if nothing is learned. Validating or invalidating a hypothesis are both successful outcomes. Maximum information is generated when an experiment's outcome is as unpredictable as a coin flip.\n- Power Law of Outcomes: In software, successful reinforcing loops follow a power-law distribution rather than a linear one. A home run in software can provide 30x to 400x the impact of a normal result, making frequent experimentation essential to finding high-impact winners.\n- Safety Culture in Software: As software systems reach global scale and impact climate, safety, and commerce, the industry must adopt safety cultures similar to aviation or medicine. This involves meticulously learning from every failure to ensure the same accident never happens twice.\n- Alignment of Authority and Responsibility: Effective organizations ensure that those with the authority to make changes (and potentially break things) are also held responsible for fixing them.\n- The Reboot of Extreme Programming (XP): There is a growing demand for a reboot of XP because many organizations have spent years doing Agile (e.g., just stand-up meetings) without the technical discipline required to create real value.\n- Incentive Alignment in Certifications: Certifications are only meaningful when the incentives of the certifier and the practitioner are aligned with professional excellence rather than just profit.\n- Human-Centric Purpose: The core motivation for improving software development is to stop wasting the limited time (approximately three billion seconds) of a human lifespan on work that doesn't matter, instead focusing talent on solving significant global problems and improving human wellness."
   },
   {
     "id": "recYVqQiJrqbUTzgz",
@@ -9909,22 +9918,23 @@
     "url": "https://www.youtube.com/watch?v=QK6zEFdvXYw",
     "duration": 6900,
     "topics": [
-      "Engineering Culture",
-      "Operations",
-      "Observability"
+      "Observability",
+      "Teams",
+      "Engineering Culture"
     ],
     "speakers": [
       "Charity Majors"
     ],
-    "description": "A ton of useful insights and ideas in this excellent Charity presentation. Great description of observability and its need in modern systems.\n",
-    "core_topic": "Operations",
+    "description": "Charity Majors discusses observability as the essential sociotechnical lever for high-performing engineering teams, arguing that the team is the irreducible unit of complexity and that fast feedback loops are the key safety mechanism.",
+    "core_topic": "Engineering Culture",
     "year": 2020,
     "conference_name": "BuzzConf",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/08/good-talkspodcasts-aug-2020-i.html",
     "registered_at": "2020-08-09T19:42:16.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "Thriving within complex sociotechnical systems requires shifting focus from individual skill to the creation of robust feedback loops that prioritize visibility and structural integrity. The goal is to transform opaque systems into understandable environments where high performance is sustainable.\n\n**Teams & Engineering Performance**\n- The team is the irreducible unit of complexity and serves as the primary interface and framework for resiliency within an organization.\n- Joining a high-performing team is the most critical factor in career development; individual engineers generally reach the performance level of their team within three to six months.\n- High-performing teams produce great engineers, whereas simply hiring smart individuals does not guarantee a high-performing team.\n- Key metrics for team performance (DORA) include deployment frequency, lead time for changes, change failure rate, and time to recover, plus a fifth metric: the frequency of out-of-hours alerts.\n- Moving quickly is a safety mechanism; slowing down increases risk by degrading the feedback loop and losing the developer's mental state during deployment.\n\n**Observability & Development Practices**\n- Observability is the ability to understand any system state, even those never encountered before, by asking questions from the outside without shipping new code.\n- It differs from monitoring, which is rooted in known unknowns and predefined thresholds; observability is required for the unknown unknowns of modern complex architectures.\n- The fundamental building block of observability is the arbitrarily wide structured event, which packs all available context into a single record per request.\n- Observability-Driven Development (ODD) involves instrumenting code with an eye toward future debugging and closing the feedback loop by looking at that instrumentation in production immediately after deployment.\n- A virtuous loop consists of merging code, triggering automated CI/CD, and having the person who wrote the code verify its behavior in production within 15 minutes."
   },
   {
     "id": "recb8BKxUfGWW6qA1",
@@ -14002,21 +14012,22 @@
     "url": "https://www.youtube.com/watch?v=qiDIif7JVMo",
     "duration": 1020,
     "topics": [
-      "Technical Practices",
       "Continuous Delivery",
-      "XP"
+      "Feedback cycles",
+      "Small Safe Steps (3s)"
     ],
     "speakers": [
       "Dave Farley"
     ],
-    "description": "In this episode see Continuous Delivery explained by Dave Farley as he explores the fundamentals in a way that helps us to understand the real value in this advanced approach to software development, this engineering-for-software.\n",
+    "description": "This talk provides a comprehensive overview of Continuous Delivery as a holistic engineering mindset that applies scientific principles, rapid feedback loops, and rigorous automation to ensure software is always releasable and of high quality.",
     "core_topic": "Continuous Delivery",
     "year": 2020,
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2020/12/good-talkspodcasts-dec-2020-i.html",
     "registered_at": "2020-12-19T21:31:37.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "Continuous delivery is a holistic engineering mindset that applies scientific principles and automated feedback loops to transform software development into a reliable process of continuous learning and discovery. By working in small, experimental steps and automating the path to production, teams can manage complexity and ensure their software is always in a high-quality, releasable state.\n\n- Continuous Delivery (CD) is a holistic, engineering-based approach to software development focused on learning, discovery, and managing complexity.\n- The primary goal is to ensure software is always in a releasable state, shifting the focus from thinking harder to running small, controlled experiments.\n- Cycle Time is the core metric, measuring the duration from an initial idea to working software in the hands of users; the objective is to reduce this to under a day or ideally under an hour.\n- Every code commit is treated as a Release Candidate. The deployment process acts as a system to falsify these candidates; if any test fails, the candidate is discarded because it is proven unfit for production.\n- Automation is mandatory for nearly everything, including testing, deployment, and configuration management, to ensure a repeatable and reliable process.\n- A Deployment Pipeline serves as the central mechanism that controls variables and manages the transit of a change from commit to a releasable outcome.\n- CD relies on multiple feedback loops, ranging from seconds-long Test-Driven Development (TDD) cycles to broader executable specifications and direct user feedback.\n- The approach requires small, autonomous, and empowered teams to drive out waste and avoid the bottlenecks of cross-team coordination.\n- Working in small, incremental steps encourages a more modular and cohesive system design, which helps in managing the inherent complexity of software.\n- Seven Essential Techniques: Reduce cycle time, automate nearly everything, control variables, work in small steps, make evidence-based decisions, use small empowered teams, and apply lean/agile principles.\n- CD is a mindset that applies scientific reasoning to solve practical development problems, resulting in higher quality, better efficiency, and improved financial outcomes."
   },
   {
     "id": "recnOvllU0VNmNHa6",
