@@ -454,11 +454,10 @@
       "Simon Sinek"
     ],
     "description": "Inside Quest\n",
-    "core_topic": "AI Assisted Engineering",
+    "core_topic": "Management",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2017/01/interesting-talks-i-saw-these-days-work.html",
-    "registered_at": "2020-01-19T20:42:29.000Z",
-    "notes": "Effectively delivering modern software requires the seamless integration of advanced technical disciplines, such as AI and platform engineering, with iterative organizational frameworks like Lean and Agile. This holistic approach ensures that technical excellence and a strong engineering culture work together to drive product success.\n\n*   **AI and AI-Assisted Engineering:** Integration of Generative AI, Machine Learning, and MLOps into the development lifecycle.\n*   **Lean and Agile Methodologies:** Application of Lean Startup, Lean Product Management, and Agile-XP practices to optimize flow and reduce WIP.\n*   **Engineering Culture and Productivity:** Focus on Developer Experience (DevEx), technical leadership, and building high-performance engineering cultures.\n*   **Modern Architecture Patterns:** Emphasis on Evolutionary Architecture, Domain-Driven Design (DDD), Hexagonal Architecture, CQRS, and Microservices.\n*   **Continuous Delivery and DevOps:** Implementation of CI/CD, Trunk Based Development, and testing in production.\n*   **Platform Engineering:** Developing internal platforms as a product and utilizing team topologies for scalability.\n*   **Systems Thinking and Strategy:** Using Wardley Maps and systems thinking to align technology strategy with business goals.\n*   **Technical Excellence:** Commitment to craftsmanship, TDD, refactoring, and small safe steps (3s) in software design.\n*   **Infrastructure and Operations:** Leveraging Cloud, Kubernetes, Serverless, and Observability for resilient systems.\n*   **Product-Led Engineering:** Bridging the gap between product discovery, strategy, and engineering execution."
+    "registered_at": "2020-01-19T20:42:29.000Z"
   },
   {
     "id": "rec1jjoG9pOImPjMo",
@@ -1575,19 +1574,18 @@
     "url": "https://www.youtube.com/watch?v=MRygMUT0xQw",
     "duration": 0,
     "topics": [
-      "AI",
-      "Architecture",
-      "Cloud"
+      "Product",
+      "Product Discovery",
+      "Product Strategy"
     ],
     "speakers": [
       "Marty Cagan"
     ],
     "description": "A great podcast episode about product management, product teams, with the great Marty Cagan. As always, many insights for any company selling tech-based products.\n",
-    "core_topic": "Architecture",
+    "core_topic": "Product",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2019/07/index.html",
-    "registered_at": "2020-01-19T20:40:10.000Z",
-    "notes": "Modern engineering success requires a holistic integration of technical excellence, lean-agile methodologies, and a supportive organizational culture to drive continuous delivery and scalable product innovation. This comprehensive approach ensures that technology, process, and people remain aligned within an evolving landscape of AI and complex systems.\n\n*   **AI and AI-Assisted Engineering**: Integration of Generative AI, Machine Learning, MLOps, and Data Engineering into the development lifecycle.\n*   **Agile and Lean Methodologies**: Application of Lean-Agile, Lean Startup, XP, and Fast Agile to optimize flow, manage WIP, and shorten feedback cycles.\n*   **Engineering Culture and Leadership**: Focus on developer productivity (DevEx), engineering scalability, team topologies, and technical leadership.\n*   **Modern Architecture and Design**: Emphasis on Evolutionary Architecture, Domain-Driven Design (DDD), Microservices, Hexagonal Architecture, and Software Design principles.\n*   **Platform Engineering**: Adoption of Platform as a Product and the development of dedicated platform teams to support engineering efficiency.\n*   **Continuous Delivery and Technical Excellence**: Implementation of Trunk Based Development, TDD, refactoring, and testing in production.\n*   **Systems Thinking and Strategy**: Use of Wardley Maps and Systems Thinking to align technology strategy with business models.\n*   **Product-Led Engineering**: Convergence of Product Discovery, Product Strategy, and the role of the Product Engineer within multidisciplinary teams.\n*   **Operations and Resilience**: Focus on Observability, Incident Response, and infrastructure management using tools like Kubernetes and Serverless."
+    "registered_at": "2020-01-19T20:40:10.000Z"
   },
   {
     "id": "rec6BnGkociVtZV3W",
@@ -2025,7 +2023,7 @@
   },
   {
     "id": "rec8SCEX0kiFo6sx3",
-    "title": "http://www.infoq.com/presentations/Leaner-Programmer-Anarchy",
+    "title": "Leaner Programmer Anarchy",
     "url": "http://www.infoq.com/presentations/Leaner-Programmer-Anarchy",
     "duration": 0,
     "topics": [
@@ -2198,7 +2196,7 @@
   },
   {
     "id": "rec9NcI91aHTvY3jI",
-    "title": "http://www.infoq.com/presentations/data-modeling-riak",
+    "title": "Data Modeling for Scale with Riak Data Types",
     "url": "http://www.infoq.com/presentations/data-modeling-riak",
     "duration": 0,
     "topics": [],
@@ -4495,7 +4493,7 @@
       "Anita Sengupta"
     ],
     "description": "In this talk, you will learn about the motivation for Mars exploration and how computational modeling, high-tech solutions, and out-of-the-box thinking can be used to overcome engineering challenges.\n",
-    "core_topic": "Agile",
+    "core_topic": "Inspirational",
     "year": 2017,
     "conference_name": "GOTO",
     "format": "talk",
@@ -4859,7 +4857,7 @@
   },
   {
     "id": "recI8vDbaMJUnfGJt",
-    "title": "http://www.se-radio.net/2014/08/episode-208-randy-shoup-on-hiring-in-the-software-industry",
+    "title": "SE Radio 208: Randy Shoup on Hiring in the Software Industry",
     "url": "http://www.se-radio.net/2014/08/episode-208-randy-shoup-on-hiring-in-the-software-industry",
     "duration": 0,
     "topics": [],
@@ -5256,7 +5254,7 @@
     ],
     "description": "Robert Zuber discusses how the evolution of software development since 2011 has driven the evolution of CircleCI's architecture. From the explosive adoption of Docker to the steady rise of microservice architectures, the changing demands of software engineering teams have proven to be deeply coupled with the structure of their service–far more than they anticipated when they started the business.\n",
     "core_topic": "",
-    "year": 2011,
+    "year": 2019,
     "conference_name": "InfoQ",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/05/good-talkspodcasts-may-2020-i.html",
@@ -6459,7 +6457,7 @@
     "description": "Effective Management of Big Data Platforms.  Very interesting discussion about the technological and organizational challenges of maintaining big data platforms.\n",
     "core_topic": "Platform Engineering",
     "notes": "The most important lesson conveyed by this podcast is the critical role and increasing complexity of **building and operating a robust data infrastructure platform** at scale to support core business functions like accurate financial reporting, fraud detection, and product analytics, requiring specialized engineering focused on reliability, tooling, and governance. Someone should remember the **evolution towards platform thinking in data**, emphasizing self-service capabilities for product engineers and the need for strong underlying infrastructure managed by dedicated teams.\nHere are the most important points of the presentation:\n- Data infrastructure becomes business-critical when hitting production databases for analytics, integrating data from multiple sources, or generating data-heavy reports. For companies like Stripe, accuracy in data processing is paramount for reporting and financial reconciliation.\n- Stripe's data infrastructure evolved from a model where data engineers and data infrastructure engineers were the same to a more specialized hybrid model. Data infrastructure teams focus on providing robust tooling and lowering the barrier for product engineers to build data pipelines.\n- Ensuring data quality involves building custom validation frameworks to check the format and rules of the data after jobs run. Architectural decisions like using Scala for Spark jobs and enforcing schemas with Thrift/Proto contribute to data integrity. S3 serves as the source of truth for data at Stripe.\n- Key technologies used include Spark for batch distributed computation, S3 for the data lake, and (historically) Redshift and Presto for data warehousing. Airflow is used for scheduling and managing data pipelines as Directed Acyclic Graphs (DAGs).\n- Data governance, lineage, security, and data locality are increasingly important considerations for data teams, adding complexity to their responsibilities.\n- The trend in big data processing is towards \"SQLification\" and making it easier for individuals with SQL knowledge to work with large datasets, as seen in the popularity of technologies like Snowflake.\n- Current gaps and opportunities in the data infrastructure space include better data pipeline observability and operability tooling (akin to Prometheus/Datadog for applications), more user-friendly (potentially GUI-based) pipeline schedulers, and unified data governance solutions.\n- For those looking to enter the field, taking opportunities to work with data within their current roles and learning from data infrastructure teams are valuable steps.\n- Common pitfalls in setting up data infrastructure include building bespoke solutions instead of leveraging well-established open-source frameworks and cloud provider offerings.\n\n",
-    "year": 2013,
+    "year": 2021,
     "conference_name": "Software at Scale",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/10/good-talkspodcasts-october-2021-ii.html",
@@ -7636,7 +7634,7 @@
     ],
     "description": "Explore, Expand, Extract. In this talk, Beck, explain the different phases for a business and the trade offs and solutions adequate for each phase. Very interesting concept.  Another delivery of a similar talk at <https://www.youtube.com/watch?v=GTzXCdBVSSA>\n",
     "core_topic": "",
-    "year": 2011,
+    "year": 2016,
     "format": "talk",
     "blog_url": "https://www.eferro.net/2017/02/more-interesting-talks-teams-agile.html",
     "registered_at": "2020-01-19T20:41:06.000Z"
@@ -7657,7 +7655,7 @@
     ],
     "description": "Good insights about lean product development.\n",
     "core_topic": "Lean-Product Engineering",
-    "year": 2021,
+    "year": 2018,
     "conference_name": "Productized Conference",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2019/01/good-talkspodcasts-jan-2019-i.html",
@@ -7925,7 +7923,7 @@
   },
   {
     "id": "recT6bHKUIS7mqhP8",
-    "title": "https://www.infoq.com/podcasts/high-performance-cultures/",
+    "title": "Randy Shoup on Creating High-Performance Cultures",
     "url": "https://www.infoq.com/podcasts/high-performance-cultures/",
     "duration": 0,
     "topics": [],
@@ -7987,7 +7985,7 @@
   },
   {
     "id": "recTVpEDvvpGidXxv",
-    "title": "http://www.infoq.com/presentations/automated-testing",
+    "title": "Testing the Hard Stuff and Staying Sane",
     "url": "http://www.infoq.com/presentations/automated-testing",
     "duration": 0,
     "topics": [],
@@ -8491,7 +8489,7 @@
     ],
     "description": "This talk focuses on key product development strategies for developer tools and platforms, highlighting discovery, data-driven decisions, and end-user experience. It also emphasizes collaboration, rapid testing, and iterative development.\n\n",
     "core_topic": "Product",
-    "year": 2020,
+    "year": 2013,
     "format": "talk",
     "blog_url": "https://www.eferro.net/2018/01/interesting-talkspodcasts-2018-jan-ii.html",
     "registered_at": "2020-01-19T20:33:12.000Z",
@@ -8968,7 +8966,7 @@
   },
   {
     "id": "recXjNi3DnV2sM1SG",
-    "title": "http://www.ted.com/talks/itay_talgam_lead_like_the_great_conductors",
+    "title": "Lead Like the Great Conductors",
     "url": "http://www.ted.com/talks/itay_talgam_lead_like_the_great_conductors",
     "duration": 1380,
     "topics": [],
@@ -9590,7 +9588,7 @@
   },
   {
     "id": "recZxUiNmxfoIOobR",
-    "title": "http://www.ted.com/talks/amy_cuddy_your_body_language_shapes_who_you_are",
+    "title": "Your Body Language May Shape Who You Are",
     "url": "http://www.ted.com/talks/amy_cuddy_your_body_language_shapes_who_you_are",
     "duration": 1260,
     "topics": [],
@@ -9926,8 +9924,7 @@
     "blog_url": "https://www.eferro.net/2020/08/good-talkspodcasts-aug-2020-i.html",
     "registered_at": "2020-08-09T19:42:16.000Z",
     "rating": 5,
-    "language": "English",
-    "notes": "Achieving high performance in complex technical and social systems requires implementing **formal frameworks—such as observability in engineering and symbolic reasoning in social networks**—to transform \"black box\" processes into transparent, scientific feedback loops. These structured approaches are essential for driving collective growth, improving system reliability, and explaining how information flow shapes individual and team behavior.\n\n**Observability and High-Performing Engineering Teams**\n\n*   **The Team as the Primary Unit:** The team is the irreducible unit of complexity in engineering, acting as an internal API and providing the resiliency and redundancy necessary to maintain systems too large for any one person.\n*   **Team Performance and Career Growth:** Joining a high-performing team is more critical for professional development than individual skill or education. Most engineers rise or fall to the performance level of their team (CI/CD pipelines, on-call culture, and best practices) within three to six months.\n*   **Key Performance Metrics (DORA):** Elite teams are measured by five key metrics: deployment frequency, lead time for changes, change failure rate, time to restore service, and the frequency of off-hours alerts.\n*   **Observability vs. Monitoring:** Monitoring is suited for \"known-unknowns\" using predefined thresholds and dashboards. Observability handles \"unknown-unknowns\" in complex systems by using high-cardinality, high-dimensionality structured events to debug novel problems without shipping new code.\n*   **Observability-Driven Development (ODD):** This practice involves instrumenting code during development with an eye toward future debugging. Engineers should verify their changes in production immediately after deployment to close the feedback loop while the logic is still fresh in their minds.\n*   **The Virtuous Cycle:** High-performing teams aim for automated deployments that take under 15 minutes. This allows the person who wrote the code to observe its impact in real-time, reducing technical debt and burnout compared to infrequent, manual, high-risk \"train wreck\" deployments.\n\n**Symbolic Reasoning and Knowledge Diffusion in Social Networks**\n\n*   **Formal Framework for Belief Impact:** Beyond black-box algorithms, symbolic reasoning can be used to mathematically formalize how information flowing through social networks impacts the internal beliefs and epistemic states of users.\n*   **Epistemic State Representation:** User beliefs can be modeled as a knowledge base of propositions. An \"Open World Assumption\" is applied, meaning if a proposition or its negation is absent from the knowledge base, the user is considered to have no opinion on the topic.\n*   **Belief Revision Operators:** The process of changing a user’s mind is governed by operators (revision, contraction, and expansion) and a set of formal postulates that ensure \"rational\" behavior and minimal change to existing knowledge.\n*   **Characterizing User Types:** Different behaviors—such as being \"Restrained,\" \"Social,\" or a \"Blind Follower\"—can be formally defined by the specific subsets of postulates a user’s revision process satisfies.\n*   **Social Voting and Influence:** Agents often decide whether to adopt new information by weighing positive and negative opinions from their connections, factoring in the strength and confidence of those social relationships.\n*   **Identifying Bots and Fake News:** By establishing a formal model of \"rational\" human belief revision, researchers can identify abnormal patterns of behavior that may indicate bots, trolls, or the coordinated spread of fake news."
+    "language": "English"
   },
   {
     "id": "recb8BKxUfGWW6qA1",
@@ -13593,14 +13590,13 @@
     "topics": [
       "Management",
       "Technology Strategy",
-      "Company Culture",
-      "AI"
+      "Company Culture"
     ],
     "speakers": [
       "Ray Dalio"
     ],
     "description": "",
-    "core_topic": "AI",
+    "core_topic": "Management",
     "conference_name": "TED",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2017/12/interesting-talkspodcasts-december-2017.html",
@@ -14009,7 +14005,6 @@
     ],
     "description": "In this episode see Continuous Delivery explained by Dave Farley as he explores the fundamentals in a way that helps us to understand the real value in this advanced approach to software development, this engineering-for-software.\n",
     "core_topic": "Continuous Delivery",
-    "notes": "Drawing on the information in the YouTube video transcript and our conversation history, here are the most important points of Dave Farley's presentation on applying software engineering principles to data management and machine learning:\n- **Fundamental software engineering principles are crucial for effective data management and machine learning but are often overlooked.** Farley argues that the underlying challenges of working with information are consistent regardless of scale.\n- **Treating data as \"data plus meaning\" is essential.** This perspective allows for the application of established software engineering ideas to data storage, manipulation, and machine learning.\n- **Basic safety measures like backups and reliable data transfer mechanisms are frequently missing in data workflows.** This lack of foundational practices can lead to significant data loss and corruption.\n- **Version control for both data and the code that manipulates it is critically important but often absent.** This hinders reproducibility, collaboration, and the ability to revert mistakes.\n- **Data management tools often lack basic development features like offline testing and version control, which are standard in software development.** This highlights a gap in applying **Technical Practices** to the data domain.\n- **The \"one model to rule them all\" approach for data (e.g., monolithic data warehouses) is flawed, mirroring outdated software designs.** Modern approaches should favor more distributed, targeted models. This relates to **Architecture patterns** and **Microservices**.\n- **Concepts like bounded contexts from Domain-Driven Design (DDD) are relevant to data management for compartmentalizing information.** This supports the idea of subdividing the information space.\n- **Adopting an iterative approach with small, controlled steps is vital for managing complexity and allowing for course correction.** This aligns with **Lean Software Development** and **Agile** principles. This is also related to the concept of **Small Safe Steps (3s)**.\n- **Establishing a \"steel thread\" – a simple end-to-end implementation – is a crucial first step when integrating data sources or services.** This provides a solid foundation for incremental development.\n- **Ultimately, the core principles of good software design, such as modularity, testability, deployability, and managing complexity, are directly applicable and necessary for success in data management and machine learning.** Farley emphasizes that the fundamental challenges of working with complex digital information are similar across domains. This reinforces **Software Design** as a core topic of the presentation.\n\n",
     "year": 2020,
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2020/12/good-talkspodcasts-dec-2020-i.html",
@@ -16580,7 +16575,7 @@
   },
   {
     "id": "recw83FaLntoQU6kX",
-    "title": "http://simpleleadership.io/why-becoming-an-effective-leader-involves-changing-the-language-you-use-with-krister-ungerbock/",
+    "title": "Why Becoming an Effective Leader Involves Changing the Language You Use",
     "url": "http://simpleleadership.io/why-becoming-an-effective-leader-involves-changing-the-language-you-use-with-krister-ungerbock/",
     "duration": 0,
     "topics": [],
