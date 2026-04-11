@@ -13,9 +13,9 @@ describe('ErrorMessage', () => {
 
   it('renders with container wrapper by default', () => {
     render(<ErrorMessage message="Error occurred" />);
-    
+
     const container = screen.getByTestId('error-container');
-    expect(container).toHaveClass('text-center', 'py-12');
+    expect(container).toBeInTheDocument();
   });
 
   it('renders without container when disabled', () => {

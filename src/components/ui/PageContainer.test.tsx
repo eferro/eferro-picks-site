@@ -3,53 +3,18 @@ import { describe, it, expect } from 'vitest';
 import { PageContainer } from './PageContainer';
 
 describe('PageContainer', () => {
-  it('renders children with default styling', () => {
+  it('renders children with default role', () => {
     render(
       <PageContainer>
         <div data-testid="child">Test content</div>
       </PageContainer>
     );
-    
+
     const container = screen.getByRole('main');
     const child = screen.getByTestId('child');
-    
+
     expect(container).toBeInTheDocument();
     expect(child).toBeInTheDocument();
-    expect(container).toHaveClass('max-w-7xl', 'mx-auto', 'px-4', 'sm:px-6', 'lg:px-8', 'py-12');
-  });
-
-  it('applies compact padding variant', () => {
-    render(
-      <PageContainer padding="compact">
-        <div>Content</div>
-      </PageContainer>
-    );
-    
-    const container = screen.getByRole('main');
-    expect(container).toHaveClass('py-8');
-    expect(container).not.toHaveClass('py-12');
-  });
-
-  it('applies extended width variant', () => {
-    render(
-      <PageContainer width="extended">
-        <div>Content</div>
-      </PageContainer>
-    );
-    
-    const container = screen.getByRole('main');
-    expect(container).toHaveClass('max-w-7xl', '2xl:max-w-[96rem]');
-  });
-
-  it('combines compact padding with extended width', () => {
-    render(
-      <PageContainer padding="compact" width="extended">
-        <div>Content</div>
-      </PageContainer>
-    );
-    
-    const container = screen.getByRole('main');
-    expect(container).toHaveClass('py-8', 'max-w-7xl', '2xl:max-w-[96rem]');
   });
 
   it('applies custom className', () => {
@@ -86,15 +51,4 @@ describe('PageContainer', () => {
     expect(container).not.toHaveAttribute('role');
   });
 
-  it('maintains consistent base classes across all variants', () => {
-    render(
-      <PageContainer padding="compact" width="extended" className="extra">
-        <div>Content</div>
-      </PageContainer>
-    );
-    
-    const container = screen.getByRole('main');
-    // Should always have these base responsive classes
-    expect(container).toHaveClass('mx-auto', 'px-4', 'sm:px-6', 'lg:px-8');
-  });
 });

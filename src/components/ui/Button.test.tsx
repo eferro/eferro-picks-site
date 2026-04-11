@@ -4,6 +4,8 @@ import { DocumentTextIcon, PlayIcon } from '@heroicons/react/24/outline';
 import { Button } from './Button';
 
 describe('Button', () => {
+  // Button's core contract is mapping variant/size/shape props to CSS classes.
+  // These toHaveClass assertions are valid contract tests, not implementation details.
   describe('Basic Rendering', () => {
     it('renders children with default styling', () => {
       render(<Button>Test Button</Button>);

@@ -65,7 +65,7 @@ describe('Rating Filter', () => {
     const button = screen.getByRole('button', { name: /toggle top picks filter/i });
     expect(button).toBeInTheDocument();
     expect(button).toHaveTextContent('Top Picks');
-    expect(button).toHaveClass('bg-white', 'text-gray-700', 'border', 'border-gray-300');
+    expect(button).toHaveAttribute('aria-pressed', 'false');
     expect(mockSetSearchParams).not.toHaveBeenCalled();
   });
 
@@ -362,9 +362,7 @@ describe('Has Notes Filter', () => {
     renderWithRouter(<TalksList />);
     const button = screen.getByRole('button', { name: /toggle has notes filter/i });
     expect(button).toBeInTheDocument();
-    expect(button).toHaveClass('bg-white');
-    expect(button).toHaveClass('text-gray-700');
-    expect(button).not.toHaveClass('bg-blue-500');
+    expect(button).toHaveAttribute('aria-pressed', 'false');
   });
 
   it('filters talks to show only those with notes', () => {
@@ -425,9 +423,7 @@ describe('Has Notes Filter', () => {
     // Re-query the Has Notes filter button after re-render
     const updatedButton = screen.getByRole('button', { name: /toggle has notes filter/i });
     // Verify the button state changed
-    expect(updatedButton).toHaveClass('bg-blue-500');
-    expect(updatedButton).toHaveClass('text-white');
-    expect(updatedButton).not.toHaveClass('bg-white');
+    expect(updatedButton).toHaveAttribute('aria-pressed', 'true');
   });
 
 });

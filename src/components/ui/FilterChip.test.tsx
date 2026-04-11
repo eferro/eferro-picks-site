@@ -2,6 +2,8 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { FilterChip } from './FilterChip';
 
+// FilterChip's core contract is mapping variant props to CSS classes.
+// These toHaveClass assertions are valid contract tests, not implementation details.
 describe('FilterChip', () => {
   it('renders with blue variant by default', () => {
     const mockOnRemove = vi.fn();

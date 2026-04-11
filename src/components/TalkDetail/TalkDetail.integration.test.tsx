@@ -275,7 +275,7 @@ describe('TalkDetail Integration', () => {
 
       // Speaker button should show active state (query set to speaker name)
       await waitFor(() => {
-        expect(speakerButton).toHaveClass('bg-blue-500', 'text-white');
+        expect(speakerButton).toHaveAttribute('aria-pressed', 'true');
       });
     });
 
@@ -298,14 +298,14 @@ describe('TalkDetail Integration', () => {
       );
 
       const speakerButton = screen.getByText('Alice Smith');
-      expect(speakerButton).toHaveClass('bg-blue-500', 'text-white');
+      expect(speakerButton).toHaveAttribute('aria-pressed', 'true');
 
       // Click to remove filter
       fireEvent.click(speakerButton);
 
       // Button should return to inactive state
       await waitFor(() => {
-        expect(speakerButton).not.toHaveClass('bg-blue-500');
+        expect(speakerButton).toHaveAttribute('aria-pressed', 'false');
       });
     });
 
@@ -333,9 +333,9 @@ describe('TalkDetail Integration', () => {
 
       // Bob should become active, Alice inactive
       await waitFor(() => {
-        expect(bobButton).toHaveClass('bg-blue-500', 'text-white');
+        expect(bobButton).toHaveAttribute('aria-pressed', 'true');
       });
-      expect(screen.getByText('Alice Smith')).not.toHaveClass('bg-blue-500');
+      expect(screen.getByText('Alice Smith')).toHaveAttribute('aria-pressed', 'false');
     });
   });
 
@@ -362,7 +362,7 @@ describe('TalkDetail Integration', () => {
 
       // Button should show active state
       await waitFor(() => {
-        expect(conferenceButton).toHaveClass('bg-blue-500', 'text-white');
+        expect(conferenceButton).toHaveAttribute('aria-pressed', 'true');
       });
     });
 
@@ -385,14 +385,14 @@ describe('TalkDetail Integration', () => {
       );
 
       const conferenceButton = screen.getByText('NDC London');
-      expect(conferenceButton).toHaveClass('bg-blue-500', 'text-white');
+      expect(conferenceButton).toHaveAttribute('aria-pressed', 'true');
 
       // Click to remove filter
       fireEvent.click(conferenceButton);
 
       // Button should return to inactive state
       await waitFor(() => {
-        expect(conferenceButton).not.toHaveClass('bg-blue-500');
+        expect(conferenceButton).toHaveAttribute('aria-pressed', 'false');
       });
     });
   });
@@ -703,7 +703,7 @@ describe('TalkDetail Integration', () => {
 
       // Conference filter is active
       await waitFor(() => {
-        expect(conferenceButton).toHaveClass('bg-blue-500');
+        expect(conferenceButton).toHaveAttribute('aria-pressed', 'true');
       });
 
       // User clicks related talk

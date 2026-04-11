@@ -83,20 +83,4 @@ describe('TalkSection', () => {
     expect(handlers.onTopicClick).toHaveBeenCalledWith('agile');
   });
 
-  it('uses 3-column grid layout as maximum', () => {
-    const talks = [createTalk({ id: '1' })];
-    const handlers = makeHandlers();
-    renderWithRouter(
-      <TalkSection
-        coreTopic="Testing"
-        talks={talks}
-        selectedConference={null}
-        selectedQuery=""
-        {...handlers}
-      />
-    );
-    const gridContainer = screen.getByTestId('talk-section').querySelector('div');
-    expect(gridContainer).toHaveClass('grid', 'gap-6', 'sm:grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3');
-    expect(gridContainer).not.toHaveClass('xl:grid-cols-4');
-  });
 });

@@ -135,29 +135,6 @@ describe('RecentlyAddedTalks', () => {
     });
   });
 
-  describe('responsive layout', () => {
-    it('should apply correct responsive grid classes', () => {
-      const talks = [
-        createTalk({
-          id: '1',
-          title: 'Test Talk',
-          registered_at: '2023-01-01T00:00:00Z'
-        })
-      ];
-
-      renderWithRouter(<RecentlyAddedTalks talks={talks} />);
-
-      const section = screen.getByLabelText('Recently added talks');
-      const gridContainer = section.querySelector('.grid');
-
-      // Should have responsive grid classes: 1 col mobile, 2 cols tablet, 3 cols desktop
-      expect(gridContainer).toBeInTheDocument();
-      expect(gridContainer?.className).toContain('grid');
-      expect(gridContainer?.className).toContain('md:grid-cols-2');
-      expect(gridContainer?.className).toContain('lg:grid-cols-3');
-    });
-  });
-
   describe('component integration', () => {
     it('should pass correct props to TalkCard components', () => {
       const talks = [

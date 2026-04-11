@@ -158,7 +158,7 @@ describe('TalkDetail', () => {
       
       // Re-query the button after render
       const conferenceButton = screen.getByText('Test Conference');
-      expect(conferenceButton).toHaveClass('bg-blue-500', 'text-white');
+      expect(conferenceButton).toHaveAttribute('aria-pressed', 'true');
     });
   });
 

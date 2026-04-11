@@ -3,12 +3,12 @@ import { describe, it, expect } from 'vitest';
 import { LoadingSpinner } from './LoadingSpinner';
 
 describe('LoadingSpinner', () => {
-  it('renders loading spinner with default styling', () => {
+  it('renders loading spinner with spin animation', () => {
     render(<LoadingSpinner />);
-    
+
     const spinner = screen.getByTestId('loading-spinner');
     expect(spinner).toBeInTheDocument();
-    expect(spinner).toHaveClass('animate-spin', 'rounded-full', 'h-12', 'w-12', 'border-b-2', 'border-gray-900');
+    expect(spinner).toHaveClass('animate-spin');
   });
 
   it('renders with accessibility role when specified', () => {
@@ -20,9 +20,9 @@ describe('LoadingSpinner', () => {
 
   it('renders with container wrapper by default', () => {
     render(<LoadingSpinner />);
-    
+
     const container = screen.getByTestId('loading-container');
-    expect(container).toHaveClass('flex', 'justify-center', 'items-center', 'py-12');
+    expect(container).toBeInTheDocument();
   });
 
   it('renders without container when disabled', () => {

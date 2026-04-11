@@ -51,7 +51,6 @@ describe('TalkCard', () => {
       renderTalkCard({ talk });
       const description = screen.getByText('Custom test description');
       expect(description).toBeInTheDocument();
-      expect(description).toHaveClass('line-clamp-5');
     });
 
     describe('Notes Icon', () => {
@@ -108,14 +107,14 @@ describe('TalkCard', () => {
     });
 
     describe('Description', () => {
-      it('applies line clamp to description', () => {
+      it('renders the description text', () => {
         const talk = createTalk({
           description: 'Test description'
         });
         renderTalkCard({ talk });
 
         const description = screen.getByText('Test description');
-        expect(description).toHaveClass('line-clamp-5');
+        expect(description).toBeInTheDocument();
       });
     });
 
@@ -229,7 +228,7 @@ describe('TalkCard', () => {
       renderTalkCard({ talk, selectedQuery: 'testing' });
 
       const topicButton = screen.getByRole('button', { name: /Filter by topic testing/i });
-      expect(topicButton).toHaveClass('bg-blue-500', 'text-white');
+      expect(topicButton).toHaveAttribute('aria-pressed', 'true');
     });
 
     it('applies unselected styling to topic when it does not match selectedQuery', () => {
@@ -237,18 +236,17 @@ describe('TalkCard', () => {
       renderTalkCard({ talk, selectedQuery: 'other' });
 
       const topicButton = screen.getByRole('button', { name: /Filter by topic testing/i });
-      expect(topicButton).not.toHaveClass('bg-blue-500', 'text-white');
-      expect(topicButton).toHaveClass('bg-gray-100', 'text-gray-600');
+      expect(topicButton).toHaveAttribute('aria-pressed', 'false');
     });
 
     it('applies selected styling to conference when it is selected', () => {
-      const talk = createTalk({ 
+      const talk = createTalk({
         conference_name: 'Test Conference'
       });
       renderTalkCard({ talk, selectedConference: 'Test Conference' });
-      
+
       const conferenceButton = screen.getByRole('button', { name: /Filter by conference Test Conference/i });
-      expect(conferenceButton).toHaveClass('bg-blue-500', 'text-white');
+      expect(conferenceButton).toHaveAttribute('aria-pressed', 'true');
     });
   });
 

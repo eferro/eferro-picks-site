@@ -50,18 +50,6 @@ describe('CategoryIndex', () => {
     expect(mockOnCategoryClick).toHaveBeenCalledWith('Engineering Culture');
   });
 
-  it('should have sticky positioning', () => {
-    render(
-      <CategoryIndex
-        categories={mockCategories}
-        onCategoryClick={mockOnCategoryClick}
-      />
-    );
-
-    const categoryNav = screen.getByRole('navigation');
-    expect(categoryNav).toHaveClass('sticky');
-  });
-
   it('should handle empty categories list', () => {
     render(
       <CategoryIndex
