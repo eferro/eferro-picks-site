@@ -80,6 +80,8 @@ function TalkDetail() {
                 <button
                   key={speaker}
                   onClick={() => handleTopicClick(speaker)}
+                  aria-label={`Filter by speaker ${speaker}`}
+                  aria-pressed={filter.query === speaker}
                   className={`font-medium px-3 py-1 rounded-full text-sm transition-colors ${
                     filter.query === speaker
                       ? 'bg-blue-500 text-white'

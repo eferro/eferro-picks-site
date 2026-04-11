@@ -53,7 +53,7 @@ vi.mock('react-router-dom', async () => {
 // Reset all mocks before each test
 beforeEach(() => {
   vi.clearAllMocks();
-  // mockSearchParams = new URLSearchParams(); // This line is removed as per the edit hint
+  _mockSearchParams = new URLSearchParams();
 
   // Mock window.location
   Object.defineProperty(window, 'location', {

@@ -41,4 +41,76 @@ describe('SearchBox', () => {
 
     expect(params.get('query')).toBe('Kent Beck');
   });
+
+  it('shows no suggestions for empty input', () => {
+    renderWithRouter(<SearchBox talks={talks} />);
+    const input = screen.getByRole('textbox');
+    fireEvent.change(input, { target: { value: '' } });
+    expect(screen.queryByRole('button', { name: /react/i })).not.toBeInTheDocument();
+  });
+
+  it('trims whitespace on submit', async () => {
+    renderWithRouter(<SearchBox talks={talks} />);
+    const input = screen.getByRole('textbox');
+    fireEvent.change(input, { target: { value: '  react  ' } });
+    fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
+
+    await waitFor(() => expect(mockSetSearchParams).toHaveBeenCalled());
+    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+    expect(params.get('query')).toBe('react');
+  });
+
+  it('shows no suggestions when input does not match any talk data', () => {
+    renderWithRouter(<SearchBox talks={talks} />);
+    const input = screen.getByRole('textbox');
+    fireEvent.change(input, { target: { value: 'xyznonexistent' } });
+    expect(screen.queryAllByRole('button')).toHaveLength(0);
+  });
+
+  it('replaces last word with suggestion when clicked', () => {
+    renderWithRouter(<SearchBox talks={talks} />);
+    const input = screen.getByRole('textbox');
+    fireEvent.change(input, { target: { value: 'hello rea' } });
+
+    const suggestion = screen.getByRole('button', { name: /react/ });
+    fireEvent.click(suggestion);
+
+    expect((input as HTMLInputElement).value).toBe('hello react');
+  });
+
+  it('clears suggestions after clicking a suggestion', () => {
+    renderWithRouter(<SearchBox talks={talks} />);
+    const input = screen.getByRole('textbox');
+    fireEvent.change(input, { target: { value: 'rea' } });
+    expect(screen.getByRole('button', { name: /react/ })).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: /react/ }));
+    expect(screen.queryByRole('button', { name: /react/ })).not.toBeInTheDocument();
+  });
+
+  it('clears suggestions after form submit', async () => {
+    renderWithRouter(<SearchBox talks={talks} />);
+    const input = screen.getByRole('textbox');
+    fireEvent.change(input, { target: { value: 'rea' } });
+    expect(screen.getByRole('button', { name: /react/ })).toBeInTheDocument();
+
+    fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
+    await waitFor(() => {
+      expect(screen.queryByRole('button', { name: /react/ })).not.toBeInTheDocument();
+    });
+  });
+
+  it('displays speaker and topic icons in suggestions', () => {
+    renderWithRouter(<SearchBox talks={talks} />);
+    const input = screen.getByRole('textbox');
+    fireEvent.change(input, { target: { value: 'Ali' } });
+
+    const suggestion = screen.getByRole('button', { name: /Alice/ });
+    expect(suggestion.textContent).toContain('👤');
+  });
+
+  it('has an accessible search placeholder', () => {
+    renderWithRouter(<SearchBox talks={talks} />);
+    expect(screen.getByPlaceholderText(/search in titles/i)).toBeInTheDocument();
+  });
 });

@@ -2,50 +2,16 @@ import { screen, fireEvent, cleanup } from '@testing-library/react';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { TalksList } from '.';
 import { useTalks } from '../../hooks/useTalks';
-import { renderWithRouter, getMockSearchParams, mockSetSearchParams, mockNavigate, createTalk, setMockSearchParams } from '../../test/utils';
+import { renderWithRouter, getMockSearchParams, mockSetSearchParams, createTalk, setMockSearchParams } from '../../test/utils';
 
-// Mock the child components
-interface MockTalkSectionProps {
-  coreTopic: string;
-  talks: Array<{ id: string; title: string; }>;
-}
-
+// Mock child components with minimal stubs — real behavior is tested in integration tests
 vi.mock('./TalkSection', () => ({
-  TalkSection: (props: MockTalkSectionProps) => {
-    return (
-      <section>
-        <h2>{props.coreTopic} ({props.talks.length})</h2>
-        {props.talks.map((talk) => (
-          <div key={talk.id} role="article">
-            <div
-              onClick={() => mockNavigate({ pathname: `/talk/${talk.id}`, search: getMockSearchParams().toString() })}
-            >
-              {talk.title}
-            </div>
-            {/* Topics as spans (no click handlers) */}
-            {talk.topics.map((topic: string) => (
-              <span
-                key={`topic-${talk.id}-${topic}`}
-                aria-label={`Topic: ${topic}`}
-                data-testid={`topic-${topic}`}
-              >
-                {topic}
-              </span>
-            ))}
-            {/* Speakers as spans (no click handlers) */}
-            {(talk.speakers || []).map((speaker: string) => (
-              <span
-                key={`speaker-${talk.id}-${speaker}`}
-                aria-label={`Speaker: ${speaker}`}
-              >
-                {speaker}
-              </span>
-            ))}
-          </div>
-        ))}
-      </section>
-    );
-  }
+  TalkSection: ({ coreTopic, talks }: { coreTopic: string; talks: Array<{ id: string; title: string }> }) => (
+    <section data-testid={`section-${coreTopic}`}>
+      <h2>{coreTopic} ({talks.length})</h2>
+      {talks.map(talk => <div key={talk.id} role="article">{talk.title}</div>)}
+    </section>
+  )
 }));
 
 vi.mock('./YearFilter', () => ({
@@ -220,23 +186,7 @@ describe('TalksList', () => {
     expect(screen.getByText('Year Filter')).toBeInTheDocument();
   });
 
-  it('preserves yearType when navigating', () => {
-    // Set initial state
-    getMockSearchParams().set('yearType', 'last2');
-    
-    renderComponent();
-
-    // Verify that the year filter is preserved in navigation
-    const talkLink = screen.getAllByText('Talk with both topics 1')[0];
-    fireEvent.click(talkLink);
-
-    expect(mockNavigate).toHaveBeenCalledWith({
-      pathname: '/talk/1',
-      search: 'yearType=last2'
-    });
-  });
-
-  // Topics filter tests removed - functionality migrated to unified search
+  // Navigation preservation tested in TalkCard.test.tsx and integration tests
 
   describe('Year Filter Integration', () => {
     it('removes year filter when clicking chip remove button', () => {

@@ -35,6 +35,7 @@ export function TalkCard({
             onTopicClick(topic);
           }}
           aria-label={`Filter by topic ${topic}`}
+          aria-pressed={selectedQuery === topic}
           className={`break-words px-2 py-1 rounded-full text-xs transition-colors ${
             selectedQuery === topic
               ? 'bg-blue-500 text-white'
@@ -123,6 +124,7 @@ export function TalkCard({
                     onConferenceClick(talk.conference_name!);
                   }}
                   aria-label={`Filter by conference ${talk.conference_name}`}
+                  aria-pressed={selectedConference === talk.conference_name}
                   className={`break-words px-2 py-1 rounded-full text-xs transition-colors ${
                     selectedConference === talk.conference_name
                       ? 'bg-blue-500 text-white'

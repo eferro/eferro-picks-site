@@ -110,10 +110,13 @@ export function Button({
     });
   };
 
+  const ariaPressed = (variant === 'toggle' || variant === 'tag') ? active : undefined;
+
   return (
     <button
       className={buttonClasses}
       disabled={disabled}
+      aria-pressed={ariaPressed}
       {...props}
     >
       {iconPosition === 'left' && renderIcon()}
