@@ -6813,11 +6813,12 @@
     "speakers": [
       "Allen Holub"
     ],
-    "description": "",
+    "description": "Allen Holub advocates for the **#NoEstimates** approach, arguing that traditional software estimation is a **wasteful ritual** that causes organizational dysfunction and demonstrating how **counting stories** provides more accurate business projections with significantly less effort.",
     "core_topic": "Agile",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2017/05/interesting-technical-talkspodcasts-may.html",
-    "registered_at": "2020-01-19T20:41:36.000Z"
+    "registered_at": "2020-01-19T20:41:36.000Z",
+    "notes": "Traditional software estimation is a wasteful and dysfunctional form of guesswork that should be abandoned in favor of simply **counting completed stories** to make accurate business projections. By prioritizing high-value work through tools like story maps, organizations can eliminate the stress of arbitrary deadlines and focus on **continuously delivering value** to the customer.\n\n* **Estimates are guesswork:** Software estimation is inherently based on guesses because it involves implementing things that haven't been done before, making past performance an unreliable indicator for new tasks.\n* **Estimation causes dysfunction:** It leads to irrational schedules, unsustainable work paces (burnout), and project failure. Managers often treat \"wild-ass guesses\" as binding contracts.\n* **Deadlines destroy agility:** As soon as estimates become deadlines, the goal shifts from creating value to hitting time targets, which often results in building the wrong product.\n* **The \"Software Crisis\" is an estimation crisis:** High failure rates in industry reports (like the Chaos Report) are often evidence of our inability to estimate accurately, not an inability to build software.\n* **Story points are often misused:** Originally designed to obscure time and focus on difficulty, story points are frequently and incorrectly converted back into hours or days by management.\n* **Velocity measures the environment, not the team:** Velocity is a ratio of perfect working conditions to reality. Low velocity is usually caused by organizational obstacles and bureaucracy rather than team \"slacking.\"\n* **Long backlogs are wasteful:** Anything beyond the top few dozen stories is \"wild fantasy\" that will change or never be built. Estimating or re-estimating items at the bottom of a large backlog is a complete waste of time.\n* **Lean management shifts the power:** Control over time should belong to the people doing the work. The manager's role should flip from controlling schedules to a support role focused on removing obstacles for the team.\n* **Estimation is pure waste:** According to lean principles, if an activity doesn't put value into the customer's hands, it is waste. Estimation produces no software and provides no value to the user.\n* **Projections over estimates:** Businesses need projections to decide whether to kill a project early or add resources. These projections should be based on actual data, not guesses.\n* **Counting is as accurate as estimating:** Data shows that simply counting the number of stories completed is just as predictive for project completion dates as complex Fibonacci-based story pointing, while taking significantly less time.\n* **Horizontal planning via Story Maps:** Use story maps to plan by prioritizing thin slices of functionality across all user activities. This ensures a functional, valuable product is available as quickly as possible without relying on time-based estimates."
   },
   {
     "id": "recPIJdzka6kPoZaw",
@@ -7608,10 +7609,11 @@
       "Dave Farley"
     ],
     "description": "This video explores the five reasons why automated tests fail, including environment, test data, version control, resource use, and system behavior. It then explains how to fix these failures by controlling the environment, isolating test data, using version control, addressing resource constraints, and designing deterministic systems\n",
-    "core_topic": "",
+    "core_topic": "Testing",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2024/11/good-talkspodcasts-nov-2024-ii.html",
-    "registered_at": "2024-11-24T18:50:37.000Z"
+    "registered_at": "2024-11-24T18:50:37.000Z",
+    "notes": "Achieving reliable automated testing requires eliminating intermittency by strictly controlling environments, data, and versioning, ensuring that every test failure reveals a genuine issue rather than a flawed process. When tests are deterministic, they serve as a powerful falsification mechanism that definitively confirms whether a system is truly ready for release.\n\n*   **Goal of Automated Testing**: The primary objective is for tests to pass or fail for the right reasons, providing deterministic and repeatable results for the same version of software.\n*   **Manual vs. Automated Regression**: Manual testing is unsuitable for regression because humans lack the precise repeatability that machines excel at; manual efforts should be reserved for exploratory testing.\n*   **The Trap of Re-running Tests**: Automatically re-running failed tests is a mistake because it accepts \"lying\" results, leaving it unclear if the eventual pass or the initial failure was the accurate representation of the system.\n*   **Falsification over Proof**: Tests should be viewed as a falsification mechanism to prove a system is *not* releasable, rather than a proof that it is perfect.\n*   **Reason 1: Environment**: Unstable or external configuration changes (like disk space or OS updates) cause unpredictability. This is solved by using infrastructure as code and testing in accurate simulations or clones of production.\n*   **Reason 2: Test Data**: Lack of isolation leads to cascade failures where one test affects another. The solution is atomic tests using functional and temporal isolation, such as creating unique entities (e.g., accounts or products) for every test run.\n*   **Reason 3: Version Control**: Discrepancies between the versions of tests, application code, and the environment lead to failures. All three should be kept together in version control and validated through continuous integration at least once per day.\n*   **Reason 4: Resource Use**: Hitting resource limits (memory, disk) in the test environment can cause intermittent failures. Automated environments allow for easily adding capacity to resolve these constraints.\n*   **Reason 5: System Behavior**: Non-determinism within the code, such as unmanaged randomness or race conditions, creates flakiness. These should be addressed architecturally or by using \"time travel\" tests and ensuring tests wait for specific results before proceeding.\n*   **Identifying Real Defects**: If a test remains intermittent after addressing environment, data, versioning, and resources, it serves its ultimate purpose by highlighting a genuine intermittent bug in the system under test."
   },
   {
     "id": "recSDDAP9tDLIw1gC",
@@ -7647,11 +7649,12 @@
       "Kent Beck"
     ],
     "description": "Explore, Expand, Extract. In this talk, Beck, explain the different phases for a business and the trade offs and solutions adequate for each phase. Very interesting concept.  Another delivery of a similar talk at <https://www.youtube.com/watch?v=GTzXCdBVSSA>\n",
-    "core_topic": "",
+    "core_topic": "Engineering Culture",
     "year": 2016,
     "format": "talk",
     "blog_url": "https://www.eferro.net/2017/02/more-interesting-talks-teams-agile.html",
-    "registered_at": "2020-01-19T20:41:06.000Z"
+    "registered_at": "2020-01-19T20:41:06.000Z",
+    "notes": "Effective software engineering requires adapting your practices across the **Explore, Expand, and Extract** phases, as the ideal approach for discovering a new idea is fundamentally different from the one needed to scale it or maximize its long-term efficiency. Success comes from recognizing that there is no \"one true way\" to develop software and instead **aligning your techniques and values with the specific risk-reward profile** of your current stage of development.\n\n* The **3X Model** categorizes software development into three distinct phases: **Explore**, **Expand**, and **Extract**.\n* **Exploration** focuses on high-uncertainty, low-cost experiments intended to discover \"convex\" payouts, where a small investment can lead to massive, unpredictable returns.\n* **Expansion** occurs when an experiment succeeds and growth becomes rapid; the primary goal is to identify and remove immediate bottlenecks to sustain scaling.\n* **Extraction** is the phase of diminishing returns where the focus shifts to stability, efficiency, and \"concave\" payouts, prioritizing the avoidance of large losses while securing steady gains.\n* The model is **fractal**, meaning the 3X cycle repeats at every level of scale, from the lifespan of a company or country down to individual features and single test cases.\n* **Engineering values** change meaning by phase: **simplicity** is most vital for scaling in expansion and managing complexity in extraction, while **courage** is essential for exploration but can be problematic in the high-stakes extraction phase.\n* **Perception of time** varies: time is \"stretchy\" during exploration (uncertain outcomes), \"compressed\" during expansion (urgent swerving to handle growth), and \"linear\" in extraction (predictable tasks).\n* **Communication and coordination** differ by stage: exploration benefits from communicating findings without coordinating efforts to cover more ground, while extraction thrives on functional organization and economies of scale.\n* Technical practices like **Test Driven Development (TDD)** are highly beneficial in the extraction phase to avoid negative payouts but may be bypassed during exploration to increase the velocity of experiments.\n* Success requires moving away from a \"one size fits all\" approach and instead applying the specific style of engineering, planning, and metrics appropriate to the current phase."
   },
   {
     "id": "recSPClaksLA9tYJ3",
@@ -7869,10 +7872,11 @@
       "Charity Majors"
     ],
     "description": "In the first wave of DevOps, practitioners embraced change to incorporate development into design and build processes. To successfully build the next generation of software, practitioners will need to catch the second wave of DevOps to focus on controlling and fine-tuning evolving architectures. Honeycomb CEO, Charity Majors, discusses how to ensure buildability, empower developers, and make a truly observable architecture that’s primed for success.\n",
-    "core_topic": "",
+    "core_topic": "Devops",
     "format": "talk",
     "blog_url": "http://www.eferro.net/2020/03/good-talkspodcasts-march-2020-i.html",
-    "registered_at": "2020-03-14T23:19:09.000Z"
+    "registered_at": "2020-03-14T23:19:09.000Z",
+    "notes": "To thrive in modern distributed systems, teams must shift from reactive monitoring to proactive observability, allowing engineers to navigate unpredictable failures by asking open-ended questions of their production environments. This technical evolution must be paired with a cultural transformation toward shared ownership and production excellence, where empowered developers are encouraged to experiment and find meaning in their work without the burden of a burnout-inducing on-call experience.\n\n* **High-Performing (Elite) Team Metrics:** Success is measured by four key metrics: deployment frequency, lead time from merge to live, time to recover from outages, and change failure rates.\n* **Ordinary Engineers, Elite Teams:** High performance is not about hiring \"rockstars\" but about empowering ordinary engineers who care about their work, communicate well, and invest in the right technical priorities.\n* **The Dual Mandate:** Engineering teams must balance two primary goals: keeping users happy and keeping the engineering team happy, well-rested, and empowered.\n* **Monitoring vs. Observability:** Monitoring focuses on \"known unknowns\" through predefined checks and dashboards. Observability is required for \"unknown unknowns,\" allowing engineers to ask new questions and understand any system state without prior prediction.\n* **Embracing System Complexity:** Modern distributed systems are inherently ephemeral and dynamic. Failure is a constant reality that must be accepted and planned for rather than feared.\n* **\"You Build It, You Run It\":** Developers must be responsible for their code in production. This feedback loop is essential for understanding how users interact with the software and catching bugs early.\n* **On-Call Culture:** While on-call should be a shared responsibility, management must ensure it is not life-impacting or miserable. High-quality systems are built by well-rested people, not exhausted ones.\n* **Continuous Confidence:** Deployment is not a \"big bang\" event but the start of a process to gain confidence in code. One-change-at-a-time deployments are far safer and less scary than batching multiple changes.\n* **Production Excellence:** Because staging environments are often \"black holes\" for time and cannot replicate production complexity, engineering cycles should be prioritized toward production safety, guardrails, and observability.\n* **The High Cost of Investigation:** Roughly 42% of engineering time is often wasted on non-productive work, such as trying to figure out *what* needs to be fixed. Observability drastically reduces this \"investigation\" time.\n* **Role of Senior Engineers:** Senior staff must act as a bridge, surfacing hidden technical costs and risks to decision-makers who may lack visibility into system maintenance needs.\n* **Exploratory Tooling:** Tools should move away from static dashboards toward open-ended exploration, democratizing access to data so any team member can investigate issues regardless of their tenure or specific expertise."
   },
   {
     "id": "recT4JxEAMGOKS7mY",
@@ -7889,10 +7893,11 @@
       "J.B. Rainsberger"
     ],
     "description": "Bad audio and very log, but lot of advice and information. Deserve the effort :)\n",
-    "core_topic": "",
+    "core_topic": "Software Design",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2016/10/great-technical-talks-ive-seen-this.html",
-    "registered_at": "2020-01-19T20:35:27.000Z"
+    "registered_at": "2020-01-19T20:35:27.000Z",
+    "notes": "Technical practices like refactoring, test-driven development, and evolutionary design should be presented as **rational economic decisions** that support effective project delivery and funding rather than just programmer preferences. By framing high-quality code through the lens of basic economic concepts, developers can provide a solid argument that addresses a manager's concerns regarding planning and long-term project success.\n\n*   Addresses the common professional challenge of **justifying refactoring** and technical quality to management.\n*   Argues that while managers often exert micro-control, they should not constrain a programmer's ability to deliver **high-quality code**.\n*   Utilizes **economic concepts** to provide a rational framework for valuing technical excellence.\n*   Relates **evolutionary design** directly to the core business aspects of **delivering, planning, and funding** software projects.\n*   Provides a structured argument to counter skeptics' objections to **writing tests first** (TDD).\n*   Supports the practice of letting **architecture and low-level design emerge** over time rather than being strictly defined upfront."
   },
   {
     "id": "recT5uMkmujev77nz",
@@ -7930,10 +7935,11 @@
       "Steve Jobs"
     ],
     "description": "Excerpt (1m) of Steve Jobs presenting the software as a liability to minimize. You know, make impact, not software. \"The way you get programmer productivity is not by increasing the lines of code per programmer per day. That doesn’t work. The way you get programmer productivity is by eliminating lines of code you have to write.\"\n",
-    "core_topic": "",
+    "core_topic": "Software Design",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/06/good-talkspodcasts-jun-2022-ii.html",
-    "registered_at": "2022-06-26T15:54:09.000Z"
+    "registered_at": "2022-06-26T15:54:09.000Z",
+    "notes": "True programmer productivity is achieved not by increasing the volume of code written, but by **eliminating the need to write it** at all. The most efficient, reliable, and maintenance-free line of code is the one that never had to be created.\n\n* **Productivity is not measured by lines of code written per day.** Increasing the volume of code produced does not inherently improve efficiency.\n* **True productivity comes from eliminating the need to write code.** The goal should be to find ways to solve problems with fewer lines of code rather than more.\n* **The most efficient line of code is the one that is never written.** \n* **Avoidance of unnecessary code provides three primary benefits:**\n    * It is the **fastest** to \"write.\"\n    * It **never breaks**.\n    * It **requires no maintenance**."
   },
   {
     "id": "recT6bHKUIS7mqhP8",
@@ -8029,10 +8035,11 @@
       "Jaana Dogan"
     ],
     "description": "This talk examines practices from design & development, configuration management, observability, release management, capacity planning, security, and compliance. \n",
-    "core_topic": "",
+    "core_topic": "Devops",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/07/good-talkspodcasts-jul-2021-i.html",
-    "registered_at": "2021-07-03T06:47:40.000Z"
+    "registered_at": "2021-07-03T06:47:40.000Z",
+    "notes": "Implementing production readiness reviews as a collaborative knowledge-sharing tool helps teams reduce production anxiety and build more reliable systems by providing clear rationales for operational best practices. To be effective, these reviews must be integrated early into the design phase and kept lightweight and evolving to ensure they remain a valuable resource rather than a bureaucratic burden.\n\n*   **Production Readiness Reviews (PRRs)** serve two primary functions: ensuring a service meets basic operational standards and allowing teams to benefit from organization-wide knowledge.\n*   PRRs should be integrated into the **design phase** rather than being a final \"check-box\" exercise, allowing operational needs to influence architectural trade-offs early.\n*   Effective checklists must include **rationales and historical context** for each item so engineers understand the \"why\" behind the rules and can identify when they become obsolete.\n*   **Design for Independence:** Ensure builds are reproducible without relying on external services (like GitHub) so that teams can still perform **emergency rollbacks** during third-party outages.\n*   **Release Consistency:** Document release processes step-by-step and ensure **rollbacks follow the same procedure as rollouts** to prevent panic and confusion during production incidents.\n*   **Configuration Safety:** Development environments should never inherit from production to prevent accidental **PII leaks** or unauthorized access to user data.\n*   **Observability and SLOs:** Define Service Level Indicators (SLIs) and Objectives (SLOs) at design time; tune alerts to reduce \"toil\" and ensure dashboards include metrics for external dependencies.\n*   **Security Best Practices:** Encrypt external requests, isolate resources by network, and use Access Control Lists (ACLs) to strictly **limit access to debugging endpoints**.\n*   **Capacity Planning:** Document exactly how a service scales (e.g., by user count or payload size) and identify potential **resource constraints** or cloud provider rate limits.\n*   **Blameless Culture:** By standardizing knowledge and reducing trial-and-error mistakes, PRRs help foster a **blameless engineering culture** and reduce \"production anxiety\".\n*   **Process Efficiency:** Keep the review process light and useful; if it is perceived as a \"compliance burden,\" it will limit release velocity and be abandoned by teams.\n*   Use a **combination of manual and automated checks** to handle both trivial validations and complex design reviews."
   },
   {
     "id": "recTZlj6ecEgPAWIC",
@@ -8068,12 +8075,13 @@
       "John Willis"
     ],
     "description": "John Willis' Ignite talk (Velocity NY 2014)\n",
-    "core_topic": "",
+    "core_topic": "Devops",
     "year": 2014,
     "conference_name": "Velocity",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2017/10/index.html",
-    "registered_at": "2020-01-19T20:42:37.000Z"
+    "registered_at": "2020-01-19T20:42:37.000Z",
+    "notes": "Effective organizational transformation depends on applying Dr. Deming’s long-standing principles of building quality directly into the system while fostering a high-trust, blameless culture focused on global optimization. Success requires shifting from rigid command-and-control models to a **systems-thinking approach** that treats humans and technology as a collaborative, non-deterministic, and learning whole.\n\n* **Create a consistency of purpose** by maintaining a laser focus on the organization's goal (the \"aim\") and how to solve problems.\n* **Adopt a new philosophy** that replaces top-down command-and-control with a \"lead, not manage\" approach.\n* **Build quality into the product** from the beginning rather than relying on final inspections or testing only after a product is built.\n* **Prioritize mission over budget** by moving away from awarding business based solely on the lowest price tag and focusing on top-line ROI.\n* **Improve the system constantly** through feedback loops (PDCA), automated testing, and practices that encourage developers to take ownership of their code.\n* **Become a learning organization** that institutes training on the job and emphasizes systems thinking.\n* **Integrate humans and machines** by acknowledging that they must work together within complex, non-deterministic, adaptive systems.\n* **Drive out fear** to create an environment where failure is treated as a learning opportunity through blameless post-mortems and anti-fragile practices.\n* **Break down departmental barriers** to foster high-trust, cross-functional collaboration.\n* **Eliminate management slogans and quotas**, as they often promote local optimization at the expense of the global system.\n* **Shift to intent-driven leadership** where supervisors focus on quality and intent rather than sheer numeric output.\n* **Enable pride of workmanship** by removing barriers that prevent workers from feeling successful and proud of their contributions.\n* **Promote education and self-improvement** through continuous improvement programs and individual growth.\n* **Make transformation everyone's job**, ensuring that global optimization is the shared responsibility of the entire organization."
   },
   {
     "id": "recU8b3AkYHNEIkd7",
