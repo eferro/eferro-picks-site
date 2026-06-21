@@ -126,15 +126,17 @@ describe('getSuggestions', () => {
   });
 
   describe('Speaker and Topic Ordering', () => {
-    it('should return speakers before topics', () => {
-      const result = getSuggestions(talks, 't');
+    it('should place every speaker before every topic when both match', () => {
+      // Query 'a' matches speakers (Alice, Carol) AND a topic (React),
+      // so ordering is actually exercised. This kills a mutant that swaps
+      // the spread order to [...matchingTopics, ...matchingSpeakers].
+      const result = getSuggestions(talks, 'a');
       const types = result.map(s => s.type);
-      const firstTopicIndex = types.indexOf('topic');
-      const lastSpeakerIndex = types.lastIndexOf('speaker');
 
-      if (firstTopicIndex !== -1 && lastSpeakerIndex !== -1) {
-        expect(lastSpeakerIndex).toBeLessThan(firstTopicIndex);
-      }
+      expect(types).toContain('speaker');
+      expect(types).toContain('topic');
+      expect(result[0].type).toBe('speaker');
+      expect(types.lastIndexOf('speaker')).toBeLessThan(types.indexOf('topic'));
     });
 
     it('should return only speakers when no topics match', () => {

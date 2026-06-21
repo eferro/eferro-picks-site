@@ -1259,6 +1259,52 @@ describe('TalksFilter', () => {
     });
   });
 
+  describe('Author Filter (constructor) - Critical Mutation Tests', () => {
+    it('should match only talks whose speakers include the author', () => {
+      const talkAlice = createTalk({ id: '1', speakers: ['Alice', 'Bob'] });
+      const talkBob = createTalk({ id: '2', speakers: ['Bob'] });
+      const filter = new TalksFilter({ author: 'Alice' });
+      expect(filter.filter([talkAlice, talkBob])).toEqual([talkAlice]);
+    });
+
+    it('should exclude talks when the author is not among the speakers', () => {
+      const talk = createTalk({ id: '1', speakers: ['Bob', 'Carol'] });
+      const filter = new TalksFilter({ author: 'Alice' });
+      expect(filter.filter([talk])).toEqual([]);
+    });
+
+    it('should match all talks when author is null (no author filter)', () => {
+      const t1 = createTalk({ id: '1', speakers: ['Alice'] });
+      const t2 = createTalk({ id: '2', speakers: ['Bob'] });
+      const filter = new TalksFilter({ author: null });
+      expect(filter.filter([t1, t2])).toEqual([t1, t2]);
+    });
+  });
+
+  describe('Year Filter - null year with yearType (fallback branch)', () => {
+    // When a yearType requiring a reference year is set but year is null,
+    // matchesYear returns true (no filtering). These kill the `: true` -> `: false` mutant.
+    const talks = [
+      createTalk({ id: '1', year: 2019 }),
+      createTalk({ id: '2', year: 2021 })
+    ];
+
+    it('before with null year matches all talks', () => {
+      const filter = new TalksFilter({ yearType: 'before', year: null });
+      expect(filter.filter(talks)).toEqual(talks);
+    });
+
+    it('after with null year matches all talks', () => {
+      const filter = new TalksFilter({ yearType: 'after', year: null });
+      expect(filter.filter(talks)).toEqual(talks);
+    });
+
+    it('specific with null year matches all talks', () => {
+      const filter = new TalksFilter({ yearType: 'specific', year: null });
+      expect(filter.filter(talks)).toEqual(talks);
+    });
+  });
+
   describe('Topics Array Logic - Critical Mutation Tests', () => {
     it('should require ALL topics to match when multiple topics specified (AND logic)', () => {
       const filter = new TalksFilter({ topics: ['React', 'TypeScript'] });

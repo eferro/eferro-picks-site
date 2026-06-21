@@ -51,10 +51,4 @@ describe('talks utils', () => {
       });
     });
   });
-}); 
-
-
-import { hasMeaningfulNotes } from './talks';
-
-// Note: After normalization, filtering and transformation happen during JSON transformation
-// The data loading pipeline now works directly with normalized Talk[] data
+});
