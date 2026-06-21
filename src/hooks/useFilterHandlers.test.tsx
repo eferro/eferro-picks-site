@@ -97,7 +97,53 @@ describe('useFilterHandlers', () => {
     });
   });
 
-  // handleTopicClick, handleClearTopics, handleTopicsChange tests removed - functionality migrated to unified search
+  describe('handleTopicClick', () => {
+    it('sets query to the topic when a different query is active', () => {
+      const filter = new TalksFilter({ query: 'something else' });
+      const { result } = renderHook(() => useFilterHandlers(filter, mockUpdateFilter));
+
+      act(() => {
+        result.current.handleTopicClick('react');
+      });
+
+      expect(mockUpdateFilter).toHaveBeenCalledWith({ query: 'react' });
+    });
+
+    it('clears the query when the same topic is clicked again (toggle off)', () => {
+      const filter = new TalksFilter({ query: 'react' });
+      const { result } = renderHook(() => useFilterHandlers(filter, mockUpdateFilter));
+
+      act(() => {
+        result.current.handleTopicClick('react');
+      });
+
+      expect(mockUpdateFilter).toHaveBeenCalledWith({ query: '' });
+    });
+  });
+
+  describe('handleQuickWatchClick', () => {
+    it('toggles quickWatch from false to true', () => {
+      const filter = new TalksFilter({ quickWatch: false });
+      const { result } = renderHook(() => useFilterHandlers(filter, mockUpdateFilter));
+
+      act(() => {
+        result.current.handleQuickWatchClick();
+      });
+
+      expect(mockUpdateFilter).toHaveBeenCalledWith({ quickWatch: true });
+    });
+
+    it('toggles quickWatch from true to false', () => {
+      const filter = new TalksFilter({ quickWatch: true });
+      const { result } = renderHook(() => useFilterHandlers(filter, mockUpdateFilter));
+
+      act(() => {
+        result.current.handleQuickWatchClick();
+      });
+
+      expect(mockUpdateFilter).toHaveBeenCalledWith({ quickWatch: false });
+    });
+  });
 
   describe('handleConferenceClick', () => {
     it('sets conference when not currently selected', () => {
@@ -192,6 +238,8 @@ describe('useFilterHandlers', () => {
       expect(firstResult.handleFormatChange).toBe(secondResult.handleFormatChange);
       expect(firstResult.handleConferenceClick).toBe(secondResult.handleConferenceClick);
       expect(firstResult.handleYearFilterChange).toBe(secondResult.handleYearFilterChange);
+      expect(firstResult.handleTopicClick).toBe(secondResult.handleTopicClick);
+      expect(firstResult.handleQuickWatchClick).toBe(secondResult.handleQuickWatchClick);
     });
   });
 });

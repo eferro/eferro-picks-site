@@ -379,6 +379,20 @@ describe('useScrollPosition', () => {
       expect(spiedWindow.scrollTo).not.toHaveBeenCalled();
     });
 
+    it('rejects non-integer (decimal) scroll positions', () => {
+      // Kills mutant: removing the !Number.isInteger(parsed) check
+      spiedWindow.sessionStorage.setItem(SCROLL_INDEX_KEY, '12.5');
+
+      renderHook(() => useScrollPosition(TEST_CONFIG), {
+        wrapper: createRouterWrapper('/')
+      });
+
+      vi.advanceTimersByTime(TEST_CONFIG.initialDelayMs);
+
+      expect(spiedWindow.sessionStorage.removeItem).toHaveBeenCalledWith(SCROLL_INDEX_KEY);
+      expect(spiedWindow.scrollTo).not.toHaveBeenCalled();
+    });
+
     it('rejects negative scroll positions', () => {
       // Kills mutant: removing parsed < 0 check entirely
       spiedWindow.sessionStorage.setItem(SCROLL_INDEX_KEY, '-50');

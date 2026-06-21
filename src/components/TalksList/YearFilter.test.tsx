@@ -49,6 +49,19 @@ describe('YearFilter', () => {
     expect(screen.getByRole('button')).toHaveTextContent('Year: 2023');
   });
 
+  it.each([
+    [{ type: 'before', year: 2020 } as const, 'Before 2020'],
+    [{ type: 'after', year: 2020 } as const, 'After 2020'],
+    [{ type: 'last2' } as const, 'Last 2 Years'],
+    [{ type: 'last5' } as const, 'Last 5 Years'],
+    [null, 'Filter by Year'],
+  ])('shows the correct trigger label for %o', (filter, expectedLabel) => {
+    renderWithRouter(
+      <YearFilter talks={[]} selectedFilter={filter} onFilterChange={() => {}} />
+    );
+    expect(screen.getByRole('button')).toHaveTextContent(expectedLabel);
+  });
+
   describe('year arithmetic mutation tests', () => {
     it('should use correct year calculations for after filter', () => {
       // Mock the current year for deterministic testing
