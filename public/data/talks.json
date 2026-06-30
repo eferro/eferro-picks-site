@@ -492,21 +492,20 @@
     "url": "https://theagilerevolution.com/2020/02/20/episode-180-extreme-programming-3x-explained-with-kent-beck/",
     "duration": 0,
     "topics": [
-      "Agile",
-      "Technology Strategy",
-      "Company Culture",
       "XP",
-      "Mental models"
+      "Agile",
+      "Product Strategy"
     ],
     "speakers": [
       "Kent Beck"
     ],
-    "description": "An interesting conversacion about XP including a potential reboot, 3x, TDD, TRC, etc.\n",
-    "core_topic": "",
+    "description": "The Agile Revolution podcast with Kent Beck on the birth of Extreme Programming and his 3X model (Explore, Expand, Extract) — why the rules of the game, even the value of courage, change with a product's phase.",
+    "core_topic": "Agile-XP",
     "conference_name": "YOW!",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2020/03/good-talkspodcasts-march-2020-ii.html",
-    "registered_at": "2020-03-15T07:48:48.000Z"
+    "registered_at": "2020-03-15T07:48:48.000Z",
+    "notes": "On The Agile Revolution, Kent Beck — father of Extreme Programming — revisits XP's origins and lays out his later 3X model, arguing that good practice depends on which phase of value a product is in.\n\n- XP was born (from his Tektronix Labs days, ~1984) by comparing what genuinely effective developers actually did against what the books on \"proper, grown-up software engineering\" prescribed; today people do XP practices (JUnit, TDD) without realizing it's XP, and Scrum simply \"marketed it better.\"\n- The 3X model — Explore, Expand, Extract — says the rules of the game change by phase: Explore looks for a new source of value, Expand is when you've found one growing faster than you can keep up, and Extract is steady growth that funds the next round of exploration.\n- Even XP's own values are phase-dependent: courage is awesome when exploring (it finds value others chicken out of), but the last thing you want when extracting from a successful business with growth left — there, testing, refactoring and automation pay off because you'll live with the code a long time.\n- He'd rather his work be known than his name: the measure of impact is that the practices live on — and the nostalgia people feel for their one great XP team says something about what those practices made possible."
   },
   {
     "id": "rec1o7TeD1U9AdzKU",
@@ -825,19 +824,19 @@
     "url": "https://maintainable.fm/episodes/brian-scanlan-improving-oncall-support-with-meaningful-alarms-LpBYs2T_",
     "duration": 3180,
     "topics": [
-      "Architecture",
-      "Architecture patterns",
-      "Engineering Culture",
-      "Operations"
+      "Operations",
+      "Incident respond",
+      "Monitoring"
     ],
     "speakers": [
       "Brian Scanlan"
     ],
-    "description": "Robby speaks with Brian Scanlan, Principal Systems Engineer at Intercom. They discuss the benefits of having consistent software patterns across an organization, how run books are a must-have (and why they should be tested), and optimizing for developer productivity. Brian also talks about approaches to reducing deployment time and why it is so vital to be responsive to their customers.\n",
-    "core_topic": "",
+    "description": "Maintainable podcast with Brian Scanlan (Intercom) on rebuilding on-call into a volunteer-led virtual team with high-quality, meaningful alarms — and why you can't just copy-paste another company's on-call process.",
+    "core_topic": "Operations",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/05/good-talkspodcasts-may-2021-i.html",
-    "registered_at": "2021-05-16T07:46:33.000Z"
+    "registered_at": "2021-05-16T07:46:33.000Z",
+    "notes": "On the Maintainable podcast, Brian Scanlan (Principal Systems Engineer at Intercom) describes moving from a fragmented, uneven on-call burden to a volunteer-led virtual on-call team built on meaningful, high-quality alarms — and the realization that the approach depended on enablers at Intercom that don't transfer everywhere.\n\n- \"Treat every alarm like a heart attack\" plus zero-tolerance operations: no noisy alarms. A good alarm is actionable, fires infrequently, requires human intervention, and represents real or inevitable customer pain.\n- Managing alarms as code (Terraform over CloudWatch/Datadog) created useful friction: importing each alarm and writing a runbook gave it a cost, so low-value alarms were simply dropped — sharply reducing the total.\n- Then apply continuous improvement: a monthly review opens an issue for every single paging alarm as the highest priority, and teams stay responsive.\n- Big caveat: when he evangelized this, he found it hard to roll out elsewhere — Intercom's infrastructure model, how teams build, and the absence of certain compliance constraints were unspoken enablers; you can't copy-paste a process without its context."
   },
   {
     "id": "rec3DuZDkQnltDOba",
@@ -1003,16 +1002,21 @@
     "title": "Diseño Libre desde la práctica, la experiencia de un laboratorio maker ciudadano",
     "url": "https://vimeo.com/114004523",
     "duration": 3240,
-    "topics": [],
+    "topics": [
+      "Design",
+      "Culture",
+      "Inspirational"
+    ],
     "speakers": [
       "Josian Llorente"
     ],
-    "description": "FCF lab 2014\n",
-    "core_topic": "",
+    "description": "A Spanish-language talk on opening a citizen maker-lab in Donostia, told as a practical case of free/open and participatory design: building the space, its furniture and its tools communally, and why open hardware is harder than open software.",
+    "core_topic": "Product",
     "year": 2014,
     "format": "talk",
     "blog_url": "https://www.eferro.net/2015/02/charlas-interesantes-enero-2015.html",
-    "registered_at": "2020-01-19T20:36:10.000Z"
+    "registered_at": "2020-01-19T20:36:10.000Z",
+    "notes": "In this opening talk (in Spanish) the speaker shares the practical experience of launching a citizen maker-lab in Donostia — an institutional cultural initiative deliberately built to be \"porous\" to local maker, RepRap and sustainability communities. The throughline is free/open and participatory design: producing physical products, machines and systems that are shared publicly and built communally, enabled by open hardware and open software.\n\n- The lab was created through participatory design rather than a fixed plan: a two-month workshop in which participants built the space's own furniture (starting from pallets, since there were no tables or chairs) while in parallel building the tools — 3D printers, CNC mills, and open-hardware devices like Photoduino (Arduino-based camera control).\n- \"Copying\" is treated as one of the healthiest practices in open design: faced with equipping a space, they studied examples and references and learned from others who had already solved the problem, resolving it collectively.\n- A local collective of architects specialised in personal fabrication (Arquimaña) facilitated the group's dynamics.\n- Open hardware is messier than open software: free software has clear axioms (access to the sources), but open hardware is \"a system of things\" — ideas, documentation and fabrication systems — where a single hard-to-source part can block accessibility. The \"apples and ideas\" metaphor: ideas copy freely and infinitely, but apples need a tree and a whole process — you can't copy apples automatically."
   },
   {
     "id": "rec3wYvn7qGNHE57H",
@@ -2022,15 +2026,20 @@
     "title": "Episode 241 | Tom Gilb - Impactful Value",
     "url": "http://developeronfire.com/podcast/episode-241-tom-gilb-impactful-value",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Agile",
+      "Feedback cycles",
+      "Engineering Career"
+    ],
     "speakers": [
       "Tom Gilb"
     ],
-    "description": "\n",
-    "core_topic": "",
+    "description": "Developer on Fire with Tom Gilb — pioneer of evolutionary/iterative delivery (his Evo method) — on treating every iteration as an experiment that measures delivered value, not code, and acts on it immediately.",
+    "core_topic": "Agile",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2017/08/good-talkspodcasts-episodes-purging.html",
-    "registered_at": "2020-01-19T20:41:16.000Z"
+    "registered_at": "2020-01-19T20:41:16.000Z",
+    "notes": "On Developer on Fire, Tom Gilb — author of Competitive Engineering and pioneer of the agile rapid-development cycle (his method Evo, used as a front-end to Scrum) — makes the case for value-driven iterative delivery, a practice he traces back to his first step-by-step project in 1960.\n\n- Every iteration is an experiment: at each sprint, measure the value actually delivered (not the code delivered) and the cost, treat it as a scientific experiment, and act on the result immediately — including changing the architecture then and there to get more value.\n- Science is exploration to find knowledge; engineering is building stuff that feeds off that knowledge to make smart moves — Gilb frames his work as engineering with strong scientific paradigms.\n- He was \"iterative before it was cool\": in 1960 he delivered a system in 20 steps of value delivery — not from any theory, just common sense when working with brand-new computers.\n- The throughline is impact: optimize for value and feedback at every step rather than for volume of code or adherence to a plan."
   },
   {
     "id": "rec86CWaY07HWFmwz",
@@ -2572,22 +2581,22 @@
     "url": "https://maintainable.fm/episodes/chad-fowler-how-small-can-we-make-this-problem",
     "duration": 3480,
     "topics": [
-      "Engineering Culture",
-      "Engineering Career",
-      "Architecture",
-      "Architecture patterns"
+      "Legacy code",
+      "Software Design",
+      "Architecture"
     ],
     "speakers": [
       "Chad Fowler"
     ],
-    "description": "Great episode with Chad Fowler. Interesting ideas about design, architecture, software design, microservices, and the state of the industry.\n",
-    "core_topic": "Architecture",
+    "description": "Maintainable podcast with Chad Fowler (The Passionate Programmer; ex-CTO of Wunderlist) on keeping software alive by touching it frequently, and making components small enough that they're disposable and trivially swappable.",
+    "core_topic": "Software Design",
     "year": 2024,
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2024/03/good-talkspodcasts-mar-2024-i.html",
     "registered_at": "2024-03-30T16:50:29.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "On the Maintainable podcast, Chad Fowler (co-author of The Passionate Programmer, ex-CTO of Wunderlist, now CTO/partner at BlueYard Capital) argues that well-maintained software is software that keeps changing — and that the way to keep it healthy is to make each problem, and each component, as small as possible.\n\n- Well-maintained software changes frequently at the behest of real users; a system that is alive and used can't stay healthy unless it's frequently touched (a stale repo isn't necessarily \"done\" — living systems need ongoing change).\n- Make components small with a clear interface dictated by the system, so they can be swapped in and out without catastrophe — \"how small can we make this problem\" is the guiding question.\n- War story: at Wunderlist (a to-do app that was really a multi-master distributed database with a real-time sync protocol), the Wunderlist 2 rewrite collapsed under load on a Christmas-Day launch, leaving a team too afraid to touch anything — the antithesis of healthy, frequently-changed software."
   },
   {
     "id": "recAPcDnNbOci5msP",
@@ -5111,15 +5120,20 @@
     "title": "Kubernetes Impact with Clayton Coleman",
     "url": "https://softwareengineeringdaily.com/2018/08/30/kubernetes-impact/",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Kubernetes",
+      "Platform",
+      "Cloud"
+    ],
     "speakers": [
       "Clayton Coleman"
     ],
-    "description": "Software Engineering daily\n",
-    "core_topic": "",
+    "description": "SE Daily interview with Clayton Coleman, lead engineer of OpenShift (Red Hat), on Kubernetes' shift toward stability at scale — etcd, autoscaling, monitoring — and why platform-as-a-service is the productive interface between developers and complex clouds.",
+    "core_topic": "Platform Engineering",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2018/09/index.html",
-    "registered_at": "2020-01-19T20:32:42.000Z"
+    "registered_at": "2020-01-19T20:32:42.000Z",
+    "notes": "In this Software Engineering Daily interview, Clayton Coleman — lead engineer of OpenShift, Red Hat's Kubernetes-based PaaS — discusses how Kubernetes, now running clusters with hundreds of thousands of containers, has shifted its core contributors' focus toward stability, and why platform-as-a-service is the missing layer that makes enterprises productive on complex clouds.\n\n- Stability over features: the architecture goal is to \"do the minimum we need\" and keep Kubernetes simple — round it off so people build on top or alongside it; \"if Kubernetes is done to a 95% level, people can rely on it and focus on what drives their business.\"\n- etcd is praised as \"the simplest possible thing that works\" — Google adopted it off the shelf rather than its internal Chubby, and etcd3 was redesigned with CoreOS using lessons from etcd2; in HA configurations the masters tolerate node failures and rarely cause outages.\n- They explore pulling the Prometheus monitoring system into Kubernetes itself, weighing the architectural pros and cons; autoscaling and monitoring are the areas making Kubernetes easier to operate.\n- PaaS as interface: it sits between the cloud provider and the developer shipping code, giving an opinionated, more productive, multi-cloud-portable way to use complex clouds — Coleman is surprised more organizations haven't adopted some form of PaaS. He closes on the selfless open-source community that keeps the software going."
   },
   {
     "id": "recIhlghfA5tyEg1w",
@@ -10501,19 +10515,19 @@
     "url": "https://softwareengineeringdaily.com/2021/10/06/developer-productivity-with-utsav-shah/",
     "duration": 2460,
     "topics": [
-      "Platform",
-      "Devex",
-      "Devops",
-      "Platform as a product"
+      "Developer Productivity",
+      "CI",
+      "Engineering productivity"
     ],
     "speakers": [
       "Utsav Shah"
     ],
-    "description": "In this episode of Software Engineering Daily podcast, Utsav Shah talk about developer productivity in the context of the monolith, CI/CD, and best practices for growing teams.\n",
-    "core_topic": "",
+    "description": "SE Daily interview with Utsav Shah on developer productivity — what a dev-productivity team actually owns, how to measure it, the cost of running tests, and the perennial monorepo-vs-multirepo trade-off, drawn from his years on Dropbox's build tooling.",
+    "core_topic": "Platform Engineering",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/10/good-talkspodcasts-october-2021-ii.html",
-    "registered_at": "2021-10-17T14:18:42.000Z"
+    "registered_at": "2021-10-17T14:18:42.000Z",
+    "notes": "In this Software Engineering Daily interview, Utsav Shah (Dropbox's developer-productivity team and Python monolith, now at Vanta) explains what developer productivity work really is — anything in tooling or process that helps developers ship features and fix bugs faster — and how to reason about it as teams grow.\n\n- A dev-productivity team owns the shared rails: which version-control, code-review and task-tracking systems are used, and the build/test infrastructure (a build farm of thousands of servers, in the Blaze/Bazel/Buck lineage).\n- Measure tooling impact with concrete signals — e.g. how often a developer has to resubmit the same patch (first attempt fails, second passes); moving that from ~30% to ~10% is a measurable win. Qualitative/process work (docs) is tracked with surveys.\n- Watch the budget: running large test suites costs real money, so cost-per-test is part of the equation.\n- Monorepo vs multirepo is the perennial debate: everyone wants to share code, but a monorepo is hard to get right. At Dropbox a server repo and a separate client repo led them to build a TypeScript-syncing scheme — which became fragile when refactors on one side weren't synced and broke the other."
   },
   {
     "id": "reccGiPmREC8zeubL",
@@ -12359,16 +12373,20 @@
     "title": "Software and Entrepreneurship with Seth Godin Holiday Repeat",
     "url": "https://softwareengineeringdaily.com/2017/12/27/software-and-entrepreneurship-with-seth-godin-holiday-repeat/",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Engineering Career",
+      "Inspirational"
+    ],
     "speakers": [
       "Seth Godin"
     ],
-    "description": "Very inspiring episode of Software Engineering Daily with Seth Godin.\n",
-    "core_topic": "",
+    "description": "SE Daily interview with Seth Godin on software and entrepreneurship: why going wide beats going deep, why college is a badge not a skill set, and why the real potential of ubiquitous computing is still unbuilt — and the engineers listening are the ones to build it.",
+    "core_topic": "Startup",
     "year": 2015,
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2018/01/interesting-talkspodcasts-2018-jan.html",
-    "registered_at": "2020-01-19T20:33:08.000Z"
+    "registered_at": "2020-01-19T20:33:08.000Z",
+    "notes": "In this Software Engineering Daily interview, Seth Godin (author of The Dip and What to Do When It's Your Turn) reflects on software and entrepreneurship, arguing that his best work — and most people's — comes from connecting things that don't seem connected, a habit he built by going wide rather than deep.\n\n- He deliberately took six courses a semester across disciplines (earning CS and philosophy degrees with the minimum passing grades) to go wide: you almost never use what you technically learned in college — college is a badge that gets you a job, after which you apprentice for years before doing significant work.\n- On 1980s CS myths: the field was taught as something done by people \"in shiny clean rooms,\" with the computer as \"a giant furnace you shovel coal into\" — the idea that computing would become ubiquitous, democratic and open to anyone who could type was alien to everyone.\n- His 15-year-old predictions — computing essentially free, a supercomputer in everyone's pocket, Wi-Fi everywhere — have all come true; now \"multiply by 100,\" with hundreds of millions more people about to come online in India and China.\n- The provocation: the purpose of the internet can't be cat videos and finding your friends — there's something much bigger possible, and the engineers listening are the ones who will build it."
   },
   {
     "id": "rechbEi0S7vX0LS7D",
@@ -15831,15 +15849,20 @@
     "title": "Episode 279 | Fred George - Making Sure the Right Decisions Are Made",
     "url": "http://developeronfire.com/podcast/episode-279-fred-george-making-sure-the-right-decisions-are-made",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Engineering Culture",
+      "Teams",
+      "Agile"
+    ],
     "speakers": [
       "Fred George"
     ],
-    "description": "DeveloperOnFire Podcast\n",
-    "core_topic": "",
+    "description": "Developer on Fire with Fred George on Programmer Anarchy — self-directed teams that strip away handoff roles to go fast — and pushing decisions down to where the right ones actually get made.",
+    "core_topic": "Engineering Culture",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2017/11/good-talkspodcasts-october-2017-part-ii.html",
-    "registered_at": "2020-01-19T20:43:05.000Z"
+    "registered_at": "2020-01-19T20:43:05.000Z",
+    "notes": "On Developer on Fire, Fred George explains \"Programmer Anarchy,\" the self-organizing team model he developed at a London consulting startup, and why removing roles and pushing decisions down lets teams go fast — which is itself a competitive advantage.\n\n- He borrowed the catchy-name trick from Kent Beck's \"Extreme Programming\": recruiting programmers in London (against banks and Google) was hard, so naming their unusual, fun way of working \"Programmer Anarchy\" became a draw — even if it scared some executives.\n- Anarchy is literal here: a self-directed team whose organization isn't imposed from outside. Because going fast is a competitive advantage, they stripped out sundry roles — handoffs take too much time.\n- The flip side of pushing autonomy down is making sure the right decisions get made: decisions belong with the people closest to the work, not handed up a hierarchy.\n- The underlying bet is that a small, trusted, role-light team optimizing for speed outperforms a process-heavy one for the kinds of problems worth solving."
   },
   {
     "id": "recrrxGYISUI1J65X",
@@ -16359,15 +16382,19 @@
     "title": "ep 302: Kent Beck Primary and secondary emotions",
     "url": "http://developeronfire.com/podcast/episode-302-kent-beck-primary-and-secondary-emotions",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Engineering Career",
+      "Inspirational"
+    ],
     "speakers": [
       "Kent Beck"
     ],
-    "description": "Developer On Fire podcast. A very interesting episode about how to deal with emotions from the point of view of a great Engineer. Not the expected topic for a podcast with Kent Beck, but very interesting.  It reminded me of David Roncero, Diego Rojas - Workshop: Emociones en equipos de trabajo  (in Spanish)\n",
-    "core_topic": "",
+    "description": "Developer on Fire with Kent Beck on the human side of engineering: why managing your emotions matters, told through his own breakdown and the long work of rebuilding a self he could be happy with.",
+    "core_topic": "Engineering Culture",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2018/01/interesting-talkspodcasts-2018-jan-ii.html",
-    "registered_at": "2020-01-19T20:33:15.000Z"
+    "registered_at": "2020-01-19T20:33:15.000Z",
+    "notes": "On Developer on Fire, Kent Beck speaks candidly about emotions and the inner life of a software developer, using his own story to explore why learning to feel and manage emotions is a real engineering-career skill.\n\n- Around 2002 he had a thorough breakdown: a lifetime of suppressing emotions caught up with him (the classic midlife collapse of coping strategies), he fell into severe depression and even lost the ability to code, and he had to rebuild his personality into one he could be happy with.\n- After that \"dam burst,\" a flood of emotions from his first 40 years came crashing down; \"putting the cork back in the bottle\" was no longer an option, so he had to learn skills to manage them in order to be functional.\n- The frame of primary vs secondary emotions: an outburst (e.g. anger) is worth examining rather than simply justifying — understanding why you feel what you feel is the work.\n- The deeper point: technical excellence and emotional health are connected; ignoring the emotional dimension eventually costs you, including your ability to do the work."
   },
   {
     "id": "rectXkWeulLTb4Ym1",
@@ -17723,20 +17750,20 @@
     "url": "https://www.youtube.com/watch?v=8LlM0knBuLQ",
     "duration": 900,
     "topics": [
+      "Observability",
       "Devex",
-      "Devops",
-      "Platform",
-      "Platform as a product"
+      "Continuous Delivery"
     ],
     "speakers": [
       "Borja Burgos"
     ],
-    "description": "Observability is often associated with production and live environments, but it shouldn't be! In this talk we'll explore innovative ways in which modern observability tools and best practices can be leveraged during development to: improve developer productivity, identify regressions earlier in the SDLC, and increase the performance and reliability of our CI/CD workflows.\n",
-    "core_topic": "",
+    "description": "Borja Burgos (Datadog) on turning observability inward: instead of only monitoring production, instrument the development and CI workflow, and measure its health with \"DevDora\" — the DORA metrics without the ops.",
+    "core_topic": "Platform Engineering",
     "conference_name": "DevX Conf",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/10/good-talkspodcasts-october-2021-i.html",
-    "registered_at": "2021-10-03T20:47:24.000Z"
+    "registered_at": "2021-10-03T20:47:24.000Z",
+    "notes": "Borja Burgos — a developer-tools founder whose platform startup was acquired by Docker in 2015, later building the testing-observability tool Scope and now at Datadog — gives a lightning talk arguing that observability shouldn't only point at production. The same tools that watch live systems can be turned inward to instrument the development and CI process, where most teams have little visibility.\n\n- Traditional observability watches production via the \"three pillars\" — metrics, logs and traces; the insight is to apply that same lens to the development and CI workflow instead.\n- He proposes \"DevDora\" — the DORA metrics without the ops — so they apply even to teams that don't control the rate or frequency of deployments to production.\n- The five dev/CI metrics: mean time to resolution (fixing the default branch after breaking it), change failure rate (merges/PRs that result in failure), merge frequency, mean lead time for changes, and mean time between failure (average time between fixing and re-breaking the default branch).\n- Tracking these improves the reliability and performance of development and CI workflows — observability as a developer-experience tool, not just an ops one."
   },
   {
     "id": "recyQ6cSTI3w5yg9j",
