@@ -12742,17 +12742,19 @@
     "url": "https://vimeo.com/77415896",
     "duration": 4020,
     "topics": [
+      "Software Design",
       "OOP",
-      "Software Design"
+      "Craftmanship"
     ],
     "speakers": [
       "David West"
     ],
-    "description": "Interesting talk about object orientation, the history and how in many cases we don't understand it correctly. It's a bit ranty, but very interesting and inspiring in any case.\n",
-    "core_topic": "",
+    "description": "David West argues that what the industry calls OOP is dead — Java/C++ just reimplement the 1970s hierarchical program-structure-chart — and that the real value lives in Object Oriented Decomposition and Design: the thinking, not the language.",
+    "core_topic": "Software Design",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/04/good-talkspodcasts-april-2022-i.html",
-    "registered_at": "2022-04-09T18:43:26.000Z"
+    "registered_at": "2022-04-09T18:43:26.000Z",
+    "notes": "David West contends that \"object-oriented programming\" as practiced (Java, C++) is dead — not the ideas, but the reality: mainstream OO languages merely re-encode the 1970s hierarchical program-structure-chart (a master control module orchestrating afferent / transform / efferent modules), so an object becomes \"just a program with a main and subroutines.\" What actually mattered — objects as domain simulation and as autonomous message-passing entities — got lost, and the real leverage is OODD: decomposition and design (the thought), since at the execution level every program is just a Turing machine.\n\n- History lesson: Alan Kay coined \"object-oriented\" (and later said it should have been \"message-oriented\"); Smalltalk came out of Xerox PARC (Kay, Ingalls, Goldberg) and so impressed Jobs that Java was later commissioned to \"kill Smalltalk.\"\n- The classic OO features are mostly mistakes made to save machine space, not to express objects: classes (only Self lacks them), inheritance (\"perhaps the absolute biggest mistake\" — delegation is what objects actually need), multiple inheritance and friend declarations (the \"Stroustrup rule\": forgivable only once in a career), and abstract data types / typing.\n- Well-designed OO systems were tiny: methods ≤ 5±2 lines, classes ≤ 7±2 methods, programs ≤ 10–15 designed classes — differences between paradigms show only at the aggregate level, never inside an individual module.\n- Real OO would merge Simula's domain simulation with Self's prototypes; no commercial language supports it, so an elegant object model always pays a heavy tax mapping to relational databases or GUIs. The thought and design are what count, not the language."
   },
   {
     "id": "reciomo6IqlRD4Ngl",
@@ -14354,17 +14356,19 @@
     "url": "https://vimeo.com/68383352",
     "duration": 3720,
     "topics": [
+      "Testing",
       "Technical Practices",
       "XP"
     ],
     "speakers": [
       "Venkat Subramaniam"
     ],
-    "description": "Some simple techniques that can help us be quite effective with mocking\n",
-    "core_topic": "",
+    "description": "Venkat Subramaniam's live-coded TDD session building a currency-exchange service in C#, showing pragmatic mocking: eliminate dependencies where you can, invert the rest behind interfaces, and hand-roll test doubles to stay focused on your own logic.",
+    "core_topic": "Testing",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2015/06/more-interesting-podcaststalks.html",
-    "registered_at": "2020-01-19T20:37:06.000Z"
+    "registered_at": "2020-01-19T20:37:06.000Z",
+    "notes": "In a live-coding session (C# / Visual Studio), Venkat Subramaniam builds a currency-exchange service test-first to demonstrate pragmatic mocking. The throughline: TDD lets you solve one unknown at a time, moving from unknowns to knowns, and the key to testability is how you handle dependencies — untestable code is always a design problem, not a tooling one.\n\n- Start with a canary test (canary-in-a-coal-mine) to confirm the environment works, then drive behaviour incrementally: a markdown (2% off → 98), then a rate with no vendors, then with one vendor — gradually adding complexity.\n- First principle for dependencies: eliminate them wherever possible (a more important design decision than inverting); only for the dependencies you can't remove do you invert them by introducing an interface.\n- To avoid hitting the real web service, hand-roll a tiny test double that implements the vendor interface and returns a known price — keeping focus on your own logic rather than on how you talk to the service.\n- For unavoidable framework dependencies (e.g. DateTime.Now), shims/fakes can stand in, but use them sparingly — powerful yet slow. Closing message: TDD is extremely approachable; he's never met genuinely untestable code, only design issues — tools help, but it's the combination of approach and tools that makes the difference."
   },
   {
     "id": "recnJc1iEwa5YWeha",
@@ -15790,18 +15794,19 @@
     "duration": 4080,
     "topics": [
       "Agile",
-      "Technical Practices",
-      "XP"
+      "XP",
+      "Technical Practices"
     ],
     "speakers": [
       "J.B. Rainsberger"
     ],
-    "description": "Reflexive talk about the agile message, the (real) impact, the misunderstanding of the message and our attitudes and practices. An opportunity to reflect.\n",
-    "core_topic": "",
+    "description": "J.B. Rainsberger on why agile's ideas keep getting validated by research yet fail to stick: we've \"scripted the critical moves\" (the practices) but failed to convey the vision, so the world treats agile as fashion rather than transformation.",
+    "core_topic": "Agile",
     "year": 2011,
     "format": "talk",
     "blog_url": "https://www.eferro.net/2014/10/podcaststalks-2014-24-30-oct.html",
-    "registered_at": "2020-01-19T20:37:56.000Z"
+    "registered_at": "2020-01-19T20:37:56.000Z",
+    "notes": "J.B. Rainsberger revisits Kent Beck's 2003 question — \"if our ideas are so good, why aren't we rich yet?\" — and argues the problem isn't the ideas (later research like the Heath brothers' Switch validates them) but how we sell them. We've scripted the critical moves (rules, practices) without conveying the vision, so clients buy TDD / BDD / continuous-delivery training as fashion accessories and get no lasting change, because they have no real reason to change.\n\n- \"Post-agile\" means the death of the brand, not of the ideas: the practices are sound but the way they're taught creates confusion (\"follow the rules… but they're just rules\" — the Shu-Ha-Ri trap).\n- XP practices aren't a defined process to obey but études — exercises (like piano études) that build technique while still delivering working software; this is deliberate, mindful practice.\n- Scripting the critical moves (giving people a concrete step 1, 2, 3, drawn from the Heath brothers) is necessary but not sufficient: agilists have done that yet failed to convey why it matters to the person who actually has to change.\n- Call to action: treat agile as a toolbox, not a maturity-model video game with levels to conquer; find the gaps in how you explain it, stand in the client's shoes, and reach for the tool that helps them enjoy their work more (or hate it less)."
   },
   {
     "id": "recrqYZesvsKRzx1p",
@@ -15948,17 +15953,21 @@
     "title": "Banish Your Inner Critic v2.0",
     "url": "https://vimeo.com/229468993",
     "duration": 4020,
-    "topics": [],
+    "topics": [
+      "Engineering Career",
+      "Mental models"
+    ],
     "speakers": [
       "Denise Jacobs"
     ],
-    "description": "",
-    "core_topic": "",
+    "description": "Denise Jacobs on recognizing and banishing the inner critic — the fear-driven voice behind impostor syndrome — using attention, mindfulness, self-compassion and neuroplasticity to rewire it.",
+    "core_topic": "Engineering Culture",
     "year": 2017,
     "conference_name": "Agile2017",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2017/10/good-talkspodcasts-september-2017.html",
-    "registered_at": "2020-01-19T20:42:40.000Z"
+    "registered_at": "2020-01-19T20:42:40.000Z",
+    "notes": "Denise Jacobs explains where the inner critic — the voice behind impostor syndrome — comes from (our own fears, triggered by negative things people said to us, amplified by a societal context where \"a bad system will beat a good person every time\") and why our brains cling to the negative (a hunter-gatherer survival / negativity bias). The good news: it can be banished, because the same brain that built it can rewire it.\n\n- We come equipped with four \"power tools\": attention and focus (what you think about is set by what you attend to), mindfulness (step outside and observe \"I'm thinking a thought\"), self-compassion, and neuroplasticity (deliberate practice rewires the brain).\n- Self-compassion — not the inner critic — is what increases resilience, confidence and grit; the template is to treat yourself the way you'd treat a friend who came to you suffering.\n- The inner critic doesn't actually motivate you; it just makes you feel like crap. You don't need it.\n- Practical exercise: write the critical voice in the second person (\"you're not good enough…\") to recognize it, then deliberately \"swipe left\" / delete those specific voices — and step into your \"magnificence,\" using the authority you already have to change the system (echoing Jez Humble)."
   },
   {
     "id": "recsCpQvMfMCG0sn2",
@@ -16365,16 +16374,20 @@
     "title": "Beyond Value Streams: Experimental evolution in action",
     "url": "http://vimeo.com/75940359",
     "duration": 3780,
-    "topics": [],
+    "topics": [
+      "Lean",
+      "Mental models"
+    ],
     "speakers": [
       "Claudio Perrone"
     ],
-    "description": "",
-    "core_topic": "",
+    "description": "A Lean Systems Society talk arguing that, beyond mapping the value stream, organizations should surface \"learning streams\": lean is a business strategy to make money through the development of people, by improving systems rather than policing behaviour.",
+    "core_topic": "Lean",
     "conference_name": "Lean Change",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2014/12/podcaststalks-2014-20-nov-16-dic.html",
-    "registered_at": "2020-01-19T20:37:18.000Z"
+    "registered_at": "2020-01-19T20:37:18.000Z",
+    "notes": "This Lean Systems Society talk argues that the real point of lean isn't the value-stream map but what you learn by doing the work — so alongside the value stream there are \"learning streams.\" Echoing Deming (\"95% of the variation in performance is governed by the system\") and Toyota, the message is to improve the systems that let behaviours emerge, not to police people's behaviour or chase arbitrary targets.\n\n- Change the system, not the people: a Monsters Inc. analogy (laughter generates 10x the power of screams, so they redesigned the whole system and smashed the old quota) illustrates Deming's point that performance is governed by the system.\n- In Toyota, daily management equals process improvement — managers are problem-solvers who \"water the plants\" (develop people's critical thinking via A3 thinking and problem-solving school), not an add-on to \"real\" work for which there's \"no time.\"\n- Question arbitrary targets, not targets themselves: the better question is \"how are we going to change our systems to achieve it?\"\n- Lean is a business strategy to make money through the development of people; \"learning to see\" really means surfacing what we learn (e.g. A3 reports), so think in learning streams, not just value streams."
   },
   {
     "id": "rectcpSR95TCD5yxR",
