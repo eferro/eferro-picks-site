@@ -9061,15 +9061,20 @@
     "title": "hanselminutes Podcast Accelerate: The State of DevOps with Dr. Nicole Forsgren",
     "url": "https://hanselminutes.com/648/accelerate-the-state-of-devops-with-dr-nicole-forsgren",
     "duration": 1980,
-    "topics": [],
+    "topics": [
+      "Devops",
+      "Continuous Delivery",
+      "Engineering productivity"
+    ],
     "speakers": [
       "Nicole Forsgren"
     ],
-    "description": "\n",
-    "core_topic": "",
+    "description": "Hanselminutes with Dr. Nicole Forsgren on the Accelerate State of DevOps research — rigorous, vendor-agnostic science showing DevOps practices predict performance, and that industry (even highly regulated ones) doesn't change the result.",
+    "core_topic": "Devops",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2018/10/good-talkspodcasts-oct-2018-i.html",
-    "registered_at": "2020-01-19T20:33:30.000Z"
+    "registered_at": "2020-01-19T20:33:30.000Z",
+    "notes": "On Hanselminutes, Scott Hanselman talks to Dr. Nicole Forsgren about the Accelerate: State of DevOps report — and what makes it different from a typical vendor white paper: it's rigorous, academic-level, vendor- and tool-agnostic research (its sponsors include direct competitors like AWS, Azure and Google Cloud).\n\n- It's research, not marketing: PhD-level statistical rigour over 30,000+ data points worldwide, deliberately tool-agnostic so the findings aren't selling anything.\n- Headline finding: industry doesn't matter. There's no statistical evidence that being in a highly regulated field (finance, telecom, healthcare, government, insurance) changes whether DevOps / agile / digital-transformation practices work — she tested each industry separately, not just \"regulated vs not.\"\n- This kills the \"it won't work for us, we're too regulated / too special\" objection with data rather than opinion.\n- The deeper challenge: accepting that something intuitively correct (your gut says banking is too regulated to move fast) can be demonstrably wrong once you measure it."
   },
   {
     "id": "recX0efc6v0lfKr3a",
@@ -9925,15 +9930,20 @@
     "title": "Space and the next IT decade with Tom Soderstrom from JPL",
     "url": "http://hanselminutes.com/439/space-and-the-next-it-decade-with-tom-soderstrom-from-jpl",
     "duration": 2220,
-    "topics": [],
+    "topics": [
+      "Cloud",
+      "Technology Strategy",
+      "Inspirational"
+    ],
     "speakers": [
       "Tom Soderstrom"
     ],
-    "description": "En este episodio del podcast habla sobre cultura de colaboración e innovación  en una parte de la Nasa. Me ha resultado sorprendentemente interesante.\n",
-    "core_topic": "",
+    "description": "Hanselminutes with Tom Soderstrom, CTO of NASA's JPL, on the \"next IT decade\" (really the next three years): condensing tech trends to SMAC with cloud as the enabler, and treating legal and procurement as innovation partners.",
+    "core_topic": "Cloud",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2014/09/charlaspodcasts-1-7-septiembre-2014.html",
-    "registered_at": "2020-01-19T20:37:24.000Z"
+    "registered_at": "2020-01-19T20:37:24.000Z",
+    "notes": "On Hanselminutes, Scott Hanselman talks to Tom Soderstrom, chief technology and innovation officer at NASA's Jet Propulsion Laboratory (which operates ~30 spacecraft), about how a research institution thinks about the near future of IT.\n\n- JPL frames the \"next IT decade\" as the next three years — because the generation gap between a college freshman and a senior keeps shrinking, change keeps speeding up.\n- They condensed the previous decade's seven trends down to one acronym, SMAC — Social, Mobile, Analytics, Cloud — plus \"key disruptors.\"\n- Cloud is the enabler that made fast innovation possible; JPL has done cloud for ~6 years to get consumer-scale.\n- A concrete innovation: rather than negotiate every end-user license, they worked with legal and procurement to set up single contracts for each major cloud vendor (Microsoft, Amazon, Google) usable by anyone at JPL — turning legal and procurement into innovation enablers, something he says most other industries haven't cracked."
   },
   {
     "id": "recaNqdZYzJ0DvMdg",
@@ -10875,20 +10885,19 @@
     "url": "https://soundcloud.com/heavybit/20190423-o11ycast-011-rename",
     "duration": 1560,
     "topics": [
-      "Engineering Culture",
-      "Technical Practices",
-      "Devops",
       "Continuous Delivery",
-      "Platform"
+      "Operations",
+      "Incident respond"
     ],
     "speakers": [
       "Rich Archbold"
     ],
-    "description": "In episode 12 of O11ycast, Charity Majors and Liz Fong-Jones speak with Rich Archbold of Intercom. They discuss the crucial importance of timely shipping, high-cardinality metrics, and the engineering value of running less software.\n",
-    "core_topic": "",
+    "description": "o11ycast with Rich Archbold of Intercom on treating speed of deployment as a competitive advantage — \"the safest change is the smallest one\" — made safe by fast feedback, feature flags, a well-instrumented monolith and good review.",
+    "core_topic": "Continuous Delivery",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2020/12/good-talkspodcasts-dec-2020-i.html",
-    "registered_at": "2020-12-19T21:04:39.000Z"
+    "registered_at": "2020-12-19T21:04:39.000Z",
+    "notes": "On o11ycast, Rich Archbold of Intercom argues that shipping is the company's heartbeat and that speed of deployment and development is a genuine competitive advantage — one worth fighting and investing for — anchored by the principle that \"the safest change is the smallest one.\"\n\n- Speed as competitive advantage: if competitors can deploy five to seven days a week and you can't, that gap compounds — so it's worth real investment and conviction.\n- Friday (and any-day) deploys are safe when the conditions are right: a 5–10 minute feedback loop, changes behind feature flags, a safe and well-instrumented monolith, and good principal-engineer review make the chance of a break — or a delayed break — very low.\n- Reliability is engineered so the system doesn't page on-call volunteers in the middle of the night.\n- Healthy incident response: as incident commander, take control and make it easy — call in others freely and thank people for escalating rather than punishing them."
   },
   {
     "id": "recd7XT5IcESxvItO",
@@ -14073,15 +14082,20 @@
     "title": "hbr-ideacast 557-restoring-sanity-to-the-office",
     "url": "https://hbr.org/podcast/2016/12/restoring-sanity-to-the-office.html",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Company Culture",
+      "Management",
+      "Flow"
+    ],
     "speakers": [
       "Jason Fried"
     ],
-    "description": "Intreview to Basecamp CEO Jason Fried\n",
-    "core_topic": "",
+    "description": "HBR IdeaCast with Basecamp CEO Jason Fried on why the modern workday feels unproductive — sliced into meetings and chat — and his case that calm, focused work makes a 40-hour week more than enough.",
+    "core_topic": "Company Culture",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2017/01/interesting-talks-and-podcast-episodes.html",
-    "registered_at": "2020-01-19T20:42:18.000Z"
+    "registered_at": "2020-01-19T20:42:18.000Z",
+    "notes": "On the HBR IdeaCast, Sarah Green Carmichael talks to Basecamp CEO Jason Fried about why you can be busy all day and still feel you accomplished nothing — and why he thinks the office, as designed, is a broken system.\n\n- The modern workday gets sliced and diced into meetings, emails, chats and check-ins, so the day amounts to little that feels productive.\n- Tellingly, people say their real work happens early in the morning, late at night, on weekends or on a plane — anywhere but the office during work hours.\n- Companies spend heavily on offices and productivity tools yet still can't get focused work done in them — something people put up with but shouldn't.\n- Fried's alternative is a calmer way to work where protecting uninterrupted time makes a 40-hour week more than enough — restoring sanity rather than glorifying overwork."
   },
   {
     "id": "recmUlW6oy0nh41vw",
@@ -14950,17 +14964,19 @@
     "url": "https://hanselminutes.com/572/lean-customer-development-with-cindy-alvarez",
     "duration": 0,
     "topics": [
-      "Lean",
-      "Product Discovery"
+      "Product Discovery",
+      "Lean Startup",
+      "Product"
     ],
     "speakers": [
       "Cindy Alvarez"
     ],
-    "description": "Ep: 512. hanselminutes podcast\n",
-    "core_topic": "",
+    "description": "Hanselminutes with Cindy Alvarez, author of Lean Customer Development, on having explicit hypotheses and working to disprove them before building — and why a team's \"obvious\" shared hypothesis usually isn't shared at all.",
+    "core_topic": "Product",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2017/05/interesting-technical-talkspodcasts-may.html",
-    "registered_at": "2020-01-19T20:42:12.000Z"
+    "registered_at": "2020-01-19T20:42:12.000Z",
+    "notes": "On Hanselminutes, Scott Hanselman talks to Cindy Alvarez, author of Lean Customer Development, about applying lean thinking to product discovery: learn as fast as possible so you don't build things no one wants, won't buy, or that you'll be stuck supporting.\n\n- \"Lean\" here is the build-measure-learn mindset from Lean Startup — minimizing waste by learning quickly — not a buzzword.\n- The core tenet: go in prepared to be wrong. Form explicit hypotheses and actively work to disprove them; the goal is to disprove yourself as often as possible, which is deeply uncomfortable.\n- Most teams only think they share a hypothesis: a sticky-note exercise (\"this product succeeds if… / customers will most value…\") reveals that even a co-located team of ten writes ten different answers — assumed, divergent hypotheses nobody is testing.\n- On measuring success, your best customers are the ones who actually pay (usage, purchases), not just buzz; \"build an audience and monetize later\" occasionally pays off hugely (Facebook) but is a bet most companies lose."
   },
   {
     "id": "recolqA3571wuqwDp",
