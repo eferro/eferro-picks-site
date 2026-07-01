@@ -4394,18 +4394,19 @@
     "url": "https://www.ivoox.com/jeff-gothelf-sense-and-respond-lean-ux-audios-mp3_rf_18166157_1.html",
     "duration": 0,
     "topics": [
+      "Product Discovery",
       "Agile",
-      "Product",
-      "Lean"
+      "Feedback cycles"
     ],
     "speakers": [
       "Jeff Gothelf"
     ],
-    "description": "\n",
-    "core_topic": "",
+    "description": "Agile Uprising podcast with Jeff Gothelf (Sense and Respond, Lean UX) on replacing feature roadmaps and binary goals with outcome-based roadmaps — teams reporting evidence and learning against behavioural metrics.",
+    "core_topic": "Product",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2017/06/some-pending-interesting-talks.html",
-    "registered_at": "2020-01-19T20:43:00.000Z"
+    "registered_at": "2020-01-19T20:43:00.000Z",
+    "notes": "On the Agile Uprising podcast, Jeff Gothelf (co-author of Sense and Respond and Lean UX) argues for managing teams by outcomes rather than features — reducing cycle time, increasing learning, and giving leaders evidence instead of false certainty.\n\n- Outcome goals are \"muddier\" than binary ones (if you were told to raise mobile commerce 15% and got 9%, did you succeed or fail?) — but that harder conversation is the point: the job is to reduce cycle time and maximise learning.\n- Instead of end-of-project sign-off, teams report back on a cadence (monthly/quarterly): here are the experiments and discovery we ran, here's what we shipped and learned, here's the movement on the metric, and here's what we'll do next.\n- Feature-based roadmaps are \"the manager's security blanket\" — concrete steps to hand upward that are really best guesses in a complex, unpredictable domain, and usually turn out wrong.\n- Replace them with outcome-based roadmaps: pick an outcome (e.g. mobile commerce), identify its behavioural drivers (bounce rate, return visits, geo-targeting) and optimise those over the quarter — moving \"from doubt to uncertainty in small batches.\""
   },
   {
     "id": "recGOIh9mZBTDIbH5",
@@ -4898,18 +4899,23 @@
     "title": "Building a Data Science Capability",
     "url": "http://www.ivoox.com/building-a-data-science-capability-with-stephane-yee-audios-mp3_rf_25663902_1.html",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Data Science",
+      "Machine Learning",
+      "Teams"
+    ],
     "speakers": [
       "Stephane Yee",
       "Matei Zaharia",
       "Sid Anand",
       "Soups Ranjan"
     ],
-    "description": "",
-    "core_topic": "",
+    "description": "InfoQ podcast panel (Wes Reisz & Charles Humble) live at QCon AI on building a data science capability — with data leaders from Stitch Fix, Databricks, PayPal and Coinbase mapping the distinct data personas and what each contributes.",
+    "core_topic": "Data",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2018/06/index.html",
-    "registered_at": "2020-01-19T20:33:40.000Z"
+    "registered_at": "2020-01-19T20:33:40.000Z",
+    "notes": "In this InfoQ podcast panel recorded live at QCon AI (hosted by Wes Reisz and Charles Humble), data leaders discuss what it takes to build a data science capability — and how the work splits into distinct personas.\n\n- The panel: Stephanie Yee (director of client algorithms, Stitch Fix), Matei Zaharia (Stanford / chief technologist at Databricks, creator of Apache Spark), Sid Anand (chief data engineer, PayPal) and Shloop Rajan (director of data science, Coinbase).\n- A useful \"histogram\" of personas by skill: strong SQL → data analyst; SQL + stats → quant; ML + feature engineering → ML engineer; ETL and warehousing → data engineer; ML pipelines + event streaming → ML infrastructure engineer.\n- Roles map to different mandates: analysts and quants help business units derive insights and move a metric; data and ML-infrastructure engineers lay the next-generation data architecture; ML engineers are matrixed into products (fraud/compliance in risk, user acquisition in growth).\n- The theme: a data science capability isn't one role but a spread of complementary personas, each tasked differently and often embedded across products."
   },
   {
     "id": "recI0tRR0AaRwBuXj",
@@ -18223,15 +18229,20 @@
     "title": "How One CEO Creates Joy at Work",
     "url": "https://hbr.org/podcast/2018/12/how-one-ceo-creates-joy-at-work",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Company Culture",
+      "leadership",
+      "Inspirational"
+    ],
     "speakers": [
       "Richard Sheridan"
     ],
-    "description": "I always enjoy all the talks and conversation with Richard Sheridan the CEO of <https://menloinnovations.com/> for me the prototypical agile shop.\n",
-    "core_topic": "",
+    "description": "HBR IdeaCast with Richard Sheridan, co-founder of Menlo Innovations, on deliberately building a joyful workplace — inspired by Edison's Menlo Park — and the daily work of leading with \"we\" instead of \"I\".",
+    "core_topic": "Company Culture",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2019/01/good-talkspodcasts-jan-2019-i.html",
-    "registered_at": "2020-01-19T20:39:57.000Z"
+    "registered_at": "2020-01-19T20:39:57.000Z",
+    "notes": "On the HBR IdeaCast, Kurt Nickisch talks to Richard Sheridan, a longtime software engineer whose work was \"as far from joy as he could get\" — until his wife pointed out he didn't look happy and he realised he couldn't keep going the same way for 30 more years. He co-founded Menlo Innovations, named after Edison's Menlo Park lab, to make work joyful by design.\n\n- The inspiration is Edison's Menlo Park, where work was so engaging that an employee said the $12 he got each Saturday \"does not seem like work, I enjoy it.\"\n- Joy at work was a deliberate founding intent, not a perk — a response to decades of software work that had drained him.\n- Leadership vs boss: Sheridan catches himself slipping into \"I\" language instead of \"we/us,\" motivating with artificial fear, or getting angry — and works to catch it sooner; he expects to spend the rest of his life unlearning those imprinted lessons.\n- What makes it possible: people around him (and his wife) who feel safe enough to \"speak truth to power,\" plus the skill he most wants to improve — listening, \"more time with my mouth closed and my ears open.\""
   },
   {
     "id": "reczsTUBZ7dNrEzbG",
