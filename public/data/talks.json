@@ -959,21 +959,21 @@
     "url": "https://vimeo.com/52831373",
     "duration": 2700,
     "topics": [
-      "DDD",
-      "cqrs",
-      "Architecture",
-      "Architecture patterns"
+      "Architecture patterns",
+      "Big Data",
+      "Functional"
     ],
     "speakers": [
       "Pat Helland"
     ],
-    "description": "\"Accountants Don't Use Erasers\"\n",
-    "core_topic": "",
+    "description": "Pat Helland on why hardware and industry trends make immutability affordable and desirable: append-only computing, immutable versions, and deriving current state from an accumulation of changes.",
+    "core_topic": "Data",
     "year": 2012,
     "conference_name": "RICON",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2017/05/interesting-technical-talkspodcasts-may.html",
-    "registered_at": "2020-01-19T20:42:13.000Z"
+    "registered_at": "2020-01-19T20:42:13.000Z",
+    "notes": "Pat Helland (databases/distributed systems since 1978; Tandem, Microsoft, Amazon, Salesforce) argues that falling storage cost, growing distribution, and the rising penalty of locks in many-core systems make it both affordable and desirable to keep immutable copies of data instead of updating in place — how computing worked \"back in the day.\"\n\n- \"Accountants don't use erasers or they go to jail\": append-only computing records observations and derives results — the database is just a cache of the latest value per record, derived from an immutable log.\n- Immutable files/blocks make replication affordable and shareable (GFS/HDFS replicate GUID-identified blocks across fault zones); beware mutable namespaces — nothing is truly immutable if its name can change.\n- Versions should have immutable names: linear history = strongly consistent; a DAG of versions (vector clocks, merging siblings) = eventually consistent; every ACID transaction is just a new immutable version of a serializable history.\n- \"Normalization is for sissies\" — you normalize only to prevent update anomalies, so don't normalize immutable data; big-data systems (MapReduce, Hadoop) rely on functional, idempotent computation over immutable parts that can be freely restarted."
   },
   {
     "id": "rec3kcsAi7KgeUv5c",
@@ -1825,21 +1825,21 @@
     "url": "https://www.churn.fm/episode/how-the-best-leaders-empower-their-product-teams-and-set-them-up-for-success",
     "duration": 2160,
     "topics": [
-      "Product",
-      "Product Team",
-      "Lean Product Management",
-      "Inspirational"
+      "Product Leadership",
+      "Product Strategy",
+      "Product Team"
     ],
     "speakers": [
       "Marty Cagan"
     ],
-    "description": "An interesting conversation about the tremendous gap between how the best companies operate and how the rest work, what they do differently, and why. \nThey also discussed how the best leaders empower their teams, how real product discovery and product work happens and then talked about how alignment is a consequence of a good product strategy.\n",
-    "core_topic": "",
+    "description": "Churn.fm with Marty Cagan (SVPG) on how the best leaders empower product teams — giving them problems to solve rather than roadmaps of features — and why much \"product management\" is really project management.",
+    "core_topic": "Product",
     "year": 2024,
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/10/good-talkspodcasts-october-2021-i.html",
     "registered_at": "2021-10-03T21:21:29.000Z",
-    "rating": 4
+    "rating": 4,
+    "notes": "Marty Cagan (SVPG; author of INSPIRED and EMPOWERED) argues the gap between the best product companies and the rest is fundamental and rooted in how work is organised: the best treat technology as a profit centre and give empowered teams problems to solve, not roadmaps of features to build.\n\n- Give teams \"problems to solve,\" not \"roadmaps of features\": empowerment means the team finds the best solution. Netflix's \"lead with context, not control\" and Jobs' \"we hire smart people to show us what's possible\" capture it.\n- Outsourcing engineering breaks innovation: outsourced engineers are \"mercenaries\" who aren't in the room when roadmaps form; innovative products (iPhone, Alexa, Stripe, Slack) came from engineers working daily with the enabling technology.\n- Much \"product\" work is really project management (backlog, scrums, shipping) — the Agile product-owner role, not product management; he blames coaches who never did the job (\"the CSPO pathology\").\n- The biggest change of his career: teams now get feedback before building, not after — validate that a solution is valuable, usable, feasible and viable before writing code (he cites Slack's Huddles discovery and \"highly aligned but loosely coupled\" teams)."
   },
   {
     "id": "rec6vxNvl606hoeCB",
@@ -1946,16 +1946,21 @@
     "title": "Traps and Cookies: A Mystery Package from Your Former Self",
     "url": "https://www.usenix.org/conference/lisa16/workshop-program/presentation/reilly",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Operations",
+      "Incident respond",
+      "Engineering Culture"
+    ],
     "speakers": [
       "Tanya Reilly"
     ],
-    "description": "A great talk about how can we avoid to generate a mine field in our projects. :)\n",
-    "core_topic": "",
+    "description": "Tanya Reilly (ex-Google SRE) on the \"traps and cookies\" every engineering decision leaves for your future self and colleagues — designing for how people really behave, and why blame is what makes production unmanageable.",
+    "core_topic": "Devops",
     "conference_name": "USENIX",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2017/02/more-interesting-talks-teams-agile.html",
-    "registered_at": "2020-01-19T20:41:08.000Z"
+    "registered_at": "2020-01-19T20:41:08.000Z",
+    "notes": "Every engineering decision leaves either a \"trap\" or a \"cookie\" for whoever inherits your code, library or production environment. Tanya Reilly (an ex-Google SRE) argues you must design for how people actually behave — they won't read the docs, they'll paste blindly and press the dangerous button — and that culture, not cleverness, is what keeps systems safe.\n\n- Put the safety check right next to the dangerous operation, not at the call site: her Google story of a function that erased all servers when passed an empty disk list, because the check drifted away during refactoring — assume dangerous code will be called the wrong way.\n- Don't waste on-call adrenaline: don't page for non-urgent things (disk at 90% for five years), kill memorised log noise, and link a runbook from every alert with just what a tired 3 AM responder needs; run a quarterly Fix-it Week.\n- Go beyond blameless postmortems — say \"thank you\" when someone breaks something (for finding the edge case, the hole in the docs); a New Year's outage was fixed in seconds because a colleague felt safe to say \"I was trying a thing, I'll stop.\"\n- Confront \"haunted graveyards\" (the library nobody dares touch, the server nobody dares reboot) on your own terms; make dangerous tools ask \"Are you sure?\", and send your future self predictable, cookie-cutter tooling instead of traps."
   },
   {
     "id": "rec7gcn6dUC6wv7L6",
@@ -2282,15 +2287,20 @@
     "title": "Interview of Kevin Kelly, Co-Founder of WIRED, Polymath, Most Interesting Man In The World?",
     "url": "http://fourhourworkweek.com/2014/08/29/kevin-kelly/",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Mental models",
+      "Inspirational",
+      "Engineering Career"
+    ],
     "speakers": [
       "Kevin Kelly"
     ],
-    "description": "Esta es una entrevista recomendada por @Pasku que me ha resultado bastante enriquecedora. Entiendo que en su caso está bastante alineada con lo que pretende hacer como nómada digital.\n",
-    "core_topic": "",
+    "description": "Tim Ferriss interviews Kevin Kelly (Wired co-founder) on voluntary simplicity as the foundation of risk-taking, writing as thinking, and the \"creator's dilemma\" of escaping a local optimum.",
+    "core_topic": "Startup",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2014/09/charlaspodcasts-8-14-septiembre-2014.html",
-    "registered_at": "2020-01-19T20:37:32.000Z"
+    "registered_at": "2020-01-19T20:37:32.000Z",
+    "notes": "Tim Ferriss interviews Kevin Kelly — co-founder of Wired, board member of the Long Now Foundation — who argues that the most valuable skill, especially young, is learning how little you actually need to be content, because that removes the fear that pushes people into premature optimization and lets them take real risks.\n\n- \"Voluntary simplicity\" / thrift (backpacking, Thoreau's Walden, eating oatmeal): once you know you can be content on very little, you can take risks by answering \"what's the worst that could happen?\"\n- Writing as thinking: \"I write in order to think\" — he has no ideas until he writes them; early online communities (~1981) taught him direct, concrete writing beats \"writerly\" composition.\n- The \"creator's dilemma\" (like the innovator's dilemma): optimizing your strengths gives higher returns, but escaping a local optimum means descending into low-margin, high-failure territory — exactly why startups start there (\"the gift of few options\").\n- Vet ideas by giving them away and trying to kill them; the ones only you can do keep coming back. He uses a mortality exercise (counting remaining days) and Stewart Brand's five-year increments to concentrate time on the work only he can do."
   },
   {
     "id": "rec9S1TCWALLhQvvt",
@@ -2711,16 +2721,21 @@
     "title": "a16z Podcast: Improving Leadership",
     "url": "https://a16z.com/2018/03/22/costolo-levine-breakline-2018/",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "leadership",
+      "Management",
+      "Mental models"
+    ],
     "speakers": [
       "Dick Costolo",
       "Peter Levine"
     ],
-    "description": "",
-    "core_topic": "",
+    "description": "a16z Podcast with Dick Costolo (former Twitter CEO) on leadership: correcting mistakes fast rather than preventing them, staying grounded through market volatility, and surrounding yourself with advisors who tell you the truth.",
+    "core_topic": "Company Culture",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2018/05/good-talkspodcasts-april-2018.html",
-    "registered_at": "2020-01-19T20:32:57.000Z"
+    "registered_at": "2020-01-19T20:32:57.000Z",
+    "notes": "Dick Costolo, former CEO of Twitter, reflects on leadership lessons, arguing that great CEOs are defined by resilience and by correcting mistakes fast rather than trying to prevent them — because a prevention mindset makes everyone ask permission and slows the company to a crawl.\n\n- On mistakes (quoting Ed Catmull's Creativity, Inc.): a leader's job isn't to prevent mistakes but to correct them as fast as possible; he modelled this by publicly owning his own screw-ups, like a botched reorg.\n- Resilience through volatility: Twitter's 2013 IPO swung from ~$16 to $47 in a day to ~$75 by year-end while \"the company didn't get 5 times better\" — his refrain: not as good as it seems in good times, not as bad in bad times.\n- Thrust into geopolitics: White House calls, the Arab Spring (keeping Twitter accessible after Egypt shut it down), and onboarding world leaders — prompting a dedicated government-relations team.\n- Storytelling and truth-tellers: he used a Michelangelo's David image to focus the company, and deliberately kept advisors who'd tell him the unvarnished truth regardless of rank (Kim Scott, Bill Campbell), plus finding a mentor early."
   },
   {
     "id": "recAw0UyFeVFTL4vl",
@@ -5322,23 +5337,23 @@
     "url": "https://www.jamesshore.com/v2/books/aoad2/book_club/evolutionary_design",
     "duration": 2520,
     "topics": [
-      "Software Design",
       "Evolutionary Design",
-      "Agile",
-      "Technical Practices"
+      "simplicity",
+      "Small Safe Steps (3s)"
     ],
     "speakers": [
       "James Shore",
       "Kent Beck"
     ],
-    "description": "This was one of the best talks I've heard on software design in a long time. Excellent points on evolutionary design, testing, technical practices, etc. A full three quarters of an hour of wisdom.\n",
-    "core_topic": "Agile-XP",
+    "description": "James Shore's Agile Book Club with Kent Beck on evolutionary design — flattening the cost-of-change curve by reducing design lookahead, the economics of coupling and optionality, and why it scales.",
+    "core_topic": "Software Design",
     "year": 2022,
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2022/11/good-talkspodcasts-nov-2022-i.html",
     "registered_at": "2022-11-05T13:01:48.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "Kent Beck (with host James Shore) argues that evolutionary design is what keeps agile viable: instead of making expensive decisions upfront, you flatten the cost-of-change curve so changing your mind stays cheap. He makes the case from personal experiment and from economics.\n\n- His experiment: he cut his design lookahead from two years to six months, a month, a week, a day, and finally to making no design decision until the code that needed it existed — each cut gave simpler designs, faster feedback and less anxiety. Run it yourself.\n- The economics for stakeholders: cost of software ≈ cost of change ≈ cost of big changes ≈ coupling, so reducing coupling reduces cost; and investing in structure creates optionality that has value whether or not you exercise it (like options a VC pays for).\n- It needs feedback loops, not necessarily TDD: one for behaviour preservation (because \"small safe steps\" occasionally aren't safe) and one for design quality (did decoupling actually work). TDD is one skill-dependent way to get both.\n- It scales: at Facebook he saw it replace a 100-billion-photo store with a trillion-photo one with zero downtime, and run five key-value stores before unifying to one. He rejects the \"but not here\" objection — \"it's all just design.\""
   },
   {
     "id": "recJj5CkUuT3Im6BR",
@@ -6642,15 +6657,20 @@
     "title": "DevOps Cafe Ep. 76 - Guest: Randy Shoup",
     "url": "https://www.mixcloud.com/devopscafepodcast/devops-cafe-ep-76-guest-randy-shoup/",
     "duration": 3600,
-    "topics": [],
+    "topics": [
+      "Continuous Delivery",
+      "Engineering Culture",
+      "Architecture"
+    ],
     "speakers": [
       "Randy Shoup"
     ],
-    "description": "\n",
-    "core_topic": "",
+    "description": "DevOps Cafe with Randy Shoup (Stitch Fix) on why speed and safety are complementary — small changes are geometrically less risky — and how cloud, open source and culture unlock high performance.",
+    "core_topic": "Devops",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2017/10/index.html",
-    "registered_at": "2020-01-19T20:42:37.000Z"
+    "registered_at": "2020-01-19T20:42:37.000Z",
+    "notes": "On DevOps Cafe (hosts Damon Edwards and John Willis), Randy Shoup (VP Engineering at Stitch Fix; ex-eBay, Google App Engine) argues that speed and safety are complementary, not opposed: small, frequent changes are geometrically-to-exponentially less risky than large batches.\n\n- Change risk is super-linear: a 20-line change is ~4x riskier than a 10-line one, a 100-line change ~100x, because small changes fit in your head and are easy to roll back — enabled by automated testing, immutable deployments and continuous delivery.\n- The 10-year contrast: eBay bragged in 2006 about releasing every two weeks (with feature flags and circuit breakers); by 2017 the state of the art is tens of deploys a day, helped by the cloud, open source now beating commercial tools, and buying non-core infrastructure.\n- Culture is the \"why\": Theory Y, blameless post-mortems where teams almost compete over who contributed to a failure, and management getting out of the way — backed by the DevOps/Forsgren survey data. To spread it: run a bounded experiment with metrics, or \"change your organization or change your organization.\"\n- Stitch Fix scales ML across the business (~100 engineers to ~80 data scientists, near 1:1): scoring every item for every client daily to augment 3,500 human stylists, plus buying, warehousing and demand prediction."
   },
   {
     "id": "recOIkOnNZoSuxBIC",
@@ -7164,20 +7184,22 @@
     "url": "https://www.thisamericanlife.org/561/nummi-2015",
     "duration": 3840,
     "topics": [
-      "Lean",
-      "Lean Manufacturing"
+      "Lean Manufacturing",
+      "Company Culture",
+      "Transformation"
     ],
     "speakers": [
       "Frank Langfitt"
     ],
-    "description": "The interesting history of the NUMMI plant and the joint venture between GM & Toyota. \nA good story to understand some of the lean principles. There is a previous version of the podcast with other interviews at https://www.thisamericanlife.org/403/nummi-2010\n",
+    "description": "This American Life's NUMMI episode: how the GM-Toyota joint venture turned GM's worst plant into one of its best with the same workers — and why GM still couldn't copy the system for 15 years.",
     "core_topic": "Lean",
     "year": 2015,
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2023/05/good-talkspodcasts-may-2023-i.html",
     "registered_at": "2023-05-06T20:09:18.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "Narrated by Frank Langfitt, this This American Life episode tells how GM's worst factory (Fremont — absenteeism, sabotage, drinking, union warfare) reopened in 1984 as the GM-Toyota NUMMI joint venture with 85%+ of the same \"bad\" workers, who became one of the best workforces in the country. The lesson: it was the system, not the people.\n\n- The Andon cord inverted Ford's \"never stop the line\": at GM stopping the line got you fired; at NUMMI pulling the cord summoned help and stopped production to fix defects immediately. Ex-GM worker Rick Madrid: \"one bolt changed my attitude.\"\n- The UAW rehired the same leadership that had warred with GM (\"the system made it bad, not the people\"); Toyota flew workers to Toyota City in groups of 30, ending in emotional sushi parties.\n- The real system was invisible and off the floor: cross-functional cooperation where line problems triggered supplier fixes and part redesigns — GM was a \"throw it over the wall\" org asking \"all the wrong questions.\"\n- GM spent ~15 years failing to diffuse it against entrenched brand fiefdoms and plant-manager power (one report effectively titled \"won't work here\"); by the time it internalised NUMMI, the 2008 crash pushed it into the largest industrial bankruptcy in US history."
   },
   {
     "id": "recQGfbwsNl5WtAws",
@@ -8156,21 +8178,22 @@
     "duration": 3660,
     "topics": [
       "tdd",
-      "testing",
-      "Technical Practices"
+      "hexagonal",
+      "Testing"
     ],
     "speakers": [
       "Ian Cooper"
     ],
-    "description": "Essential talk about how to do TDD in an efficient way and getting a battery of tests that support continuous refactoring. It fundamentally changed my approach to TDD. I highly recommend it.\n",
-    "core_topic": "Agile-XP",
+    "description": "Ian Cooper on how TDD drifted from what Kent Beck actually described — test behaviours not implementations, refactor without adding tests against internals, and mock only at the edges.",
+    "core_topic": "Testing",
     "year": 2013,
     "conference_name": "NDC",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2022/01/good-talkspodcasts-january-2022-ii.html",
     "registered_at": "2022-01-22T18:36:50.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "Ian Cooper argues TDD has drifted from Kent Beck's original meaning, producing large, brittle suites that break on refactoring. He diagnoses two causes — testing methods instead of behaviours, and coupling tests to implementation details — and prescribes testing at the module's perimeter.\n\n- The trigger for a new test is a new behaviour, not a new method/class; test the API surface (the ports), which keeps suites small and lets you refactor freely. Beck's \"unit\" means isolated from other tests (no shared state), not a class isolated by mocks.\n- In red-green-refactor, go green fast \"committing whatever sins are necessary\" (speed trumps design in that moment); SOLID, patterns and code smells belong only in the refactor step. Critically, do NOT add tests against the internals you extract while refactoring — coupling, not DRY, is the enemy.\n- Use ports-and-adapters (hexagonal): unit-test the domain at the ports, integration-test adapters, keep system tests small (the pyramid). Don't test the domain through the UI — a rewrite from Web Forms to MVC kills UI-bound tests.\n- Mock only at the edges (other ports, outgoing adapters), never internals or things you don't own (Hibernate, REST frameworks). The acid test: if you threw a test away, would the behaviour still be expressed? If yes, delete it. ATDD tools (FitNesse, SpecFlow, Cucumber) failed because customers won't engage."
   },
   {
     "id": "recTLLUeNHzpm3ciV",
@@ -8566,17 +8589,19 @@
     "url": "http://podcast.agileuprising.com/manifesto-co-author-interview-martin-fowler/",
     "duration": 3240,
     "topics": [
-      "Agile",
-      "XP"
+      "Refactoring",
+      "XP",
+      "Technical Practices"
     ],
     "speakers": [
       "Martin Fowler"
     ],
-    "description": "Great episode to know about the history of agile movement, including XP and the first steps of the community.\n",
-    "core_topic": "",
+    "description": "Agile Uprising interviews Martin Fowler (ThoughtWorks) on the Chrysler C3 birth of Extreme Programming, the Agile Manifesto's \"this over that\", and why teams still neglect the technical practices that make agility possible.",
+    "core_topic": "Agile-XP",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2017/02/more-interesting-talks-teams-agile.html",
-    "registered_at": "2020-01-19T20:41:05.000Z"
+    "registered_at": "2020-01-19T20:41:05.000Z",
+    "notes": "Martin Fowler (Chief Scientist at ThoughtWorks, Agile Manifesto signatory) traces his path from the Chrysler C3 project — the birthplace of Extreme Programming with Kent Beck and Ron Jeffries — to the Manifesto, and laments that 20 years on, teams still skip the technical practices that make agility real.\n\n- Two things at C3 convinced him XP was special: Beck's testing approach (the Smalltalk framework that became the genesis of JUnit/xUnit) and watching Beck refactor in tiny steps in a hotel room — which led Fowler to write the Refactoring book.\n- The Manifesto's \"over\" is comparative, not \"instead of\": both sides matter, the left just matters more; \"individuals and interactions over processes and tools\" was felt unanimously to be the number-one value. All four values can be sensibly reversed (his \"Comparative Values\" piece).\n- \"You can't be Agile if you're knee-deep in mud\" (Rachel Laycock): his \"Flaccid Scrum\" critique is that process without technical practices (refactoring, testing, CI, automated DB migrations) fails.\n- He's proud they gave the movement away rather than commercialising it (Beck not trademarking XP, Cunningham's wiki, Berners-Lee's Web) — contrasted with SAFe — while acknowledging the 17 signatories were not a diverse group."
   },
   {
     "id": "recV0aPgSdTeSObb0",
@@ -9087,15 +9112,20 @@
     "title": "How to Go from Fear Driven to Freedom-Centric organizations",
     "url": "https://thefutureorganization.com/go-fear-driven-freedom-centric-organizations/",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Company Culture",
+      "Teams",
+      "Management"
+    ],
     "speakers": [
       "Matt Perez"
     ],
-    "description": "Podcast The Future Organization.  With Matt Perez from Nearsoft, a software development company with a great culture\n",
-    "core_topic": "",
+    "description": "Future of Work Podcast with Matt Perez (Nearsoft) on running a ~200-person software company with no managers and no titles — and why removing hierarchy demands more structure, not less.",
+    "core_topic": "Company Culture",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2016/07/index.html",
-    "registered_at": "2020-01-19T20:35:04.000Z"
+    "registered_at": "2020-01-19T20:35:04.000Z",
+    "notes": "On the Future of Work Podcast (host Jacob Morgan), Matt Perez describes how Nearsoft (a ~200-person software company with offices in Mexico) operates fully self-managed, with no managers and no titles — arguing that treating people like responsible adults, not children, is the foundation of a freedom-centric organisation.\n\n- No managers and no titles; new hires keep asking \"who's my real boss?\", so onboarding (being expanded to six weeks) plus assigned mentors help them adjust to being accountable adults.\n- Governance runs on \"leadership teams\": anyone can start one by email on any topic (from trivial matters to year-end bonuses), usually capped ~seven people, with the only hard rule that minutes are kept and published transparently.\n- A written \"decision matrix\" defines who must be involved per decision type; even \"fate of the company\" decisions legally requiring the two founders still mandate transparent input — the one line Perez would cross is if the team tried to install a hierarchy.\n- Accountability comes from peers, not bosses: pair programming (often one person in Mexico, one in the US), small reviewed check-ins, and honest biannual peer assessments where you pick your reviewers; goals via quarterly OKRs tied to a five-year vision."
   },
   {
     "id": "recXAwtzoEcLOlfWu",
@@ -9780,17 +9810,18 @@
     "duration": 540,
     "topics": [
       "Continuous Delivery",
-      "Lean Software Development",
-      "Lean"
+      "Lean",
+      "Feedback cycles"
     ],
     "speakers": [
       "Adam Hawkins"
     ],
-    "description": "This podcast describes a few software delivery concepts (Lead time, Deployment frequency, MTTR, Change Failure Rate, Jidoka, Kaizen).\n",
-    "core_topic": "",
+    "description": "A solo Small Batches episode reading draft entries from a \"software delivery glossary\" — defining the four Accelerate delivery KPIs and the Lean/Toyota concepts (jidoka, TPS, kaizen) that underpin them.",
+    "core_topic": "Continuous Delivery",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/10/good-talkspodcasts-october-2021-i.html",
-    "registered_at": "2021-10-03T21:09:10.000Z"
+    "registered_at": "2021-10-03T21:09:10.000Z",
+    "notes": "In this solo Small Batches episode, the host previews a work-in-progress \"software delivery glossary\" (50 entries so far), reading ~6-7 draft definitions. The aim isn't exhaustive coverage but enough context that a listener meeting a term has background on what it is and how it's applied.\n\n- The four Accelerate KPIs: lead time (commit to running in production), deployment frequency, mean time to resolve (detection to resolution of an incident), and change failure rate (percentage of changes causing incidents). Lead time and deployment frequency are inversely correlated; high performers deploy multiple times a day, commit-to-prod in under an hour, with 0-15% change failure rate.\n- Jidoka: building quality in, from Sakichi Toyoda's loom that stopped on a fault so the operator could fix it — a pillar of the Toyota Production System, and how you reduce change failure rate.\n- Toyota Production System: Taiichi Ohno's post-war approach for low demand and high variety — quick changeovers, low inventories, flexibility, blending jidoka and just-in-time.\n- Kaizen: \"change for the better\" / continuous improvement as an iterative, scientific process; plus a \"Type 3 Problem: Target Condition\" (from Four Types of Problems) — proactive improvement beyond the status quo rather than reacting to a gap from standard."
   },
   {
     "id": "recZgHMilz9QPYCZ9",
@@ -10287,20 +10318,19 @@
     "url": "https://packetpushers.net/podcast/day-two-cloud-111/",
     "duration": 3180,
     "topics": [
-      "Platform",
-      "Cloud",
-      "Platform as a product",
       "Infrastructure",
+      "Kubernetes",
       "Devops"
     ],
     "speakers": [
       "Kris Nóva"
     ],
-    "description": "thought-provoking podcast episode. Kris Nóva, claims that managing infrastructure using tools like Terraform isn’t that far away from just writing your own code to do the job yourself.\n",
-    "core_topic": "",
+    "description": "Day Two Cloud with Kris Nóva (Twilio) on why \"infrastructure as code\" is really \"infrastructure as software\": the moment config gets an if-statement it's Turing complete, so learn a real language.",
+    "core_topic": "Devops",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/09/good-talkspodcasts-september-2021-ii.html",
-    "registered_at": "2021-09-05T15:35:34.000Z"
+    "registered_at": "2021-09-05T15:35:34.000Z",
+    "notes": "Kris Nóva (Senior Principal Software Engineer at Twilio) argues the line between config management and software engineering is artificial: the instant a config format gains a logical switch it's Turing complete, so you're already building an application — just in \"config-land.\"\n\n- The \"line in the sand\" is Turing completeness: add one `if production, TLS` switch and you've entered the application-building business; she illustrates the escalation with the children's book *If You Give a Moose a Muffin*.\n- Her ideal: minimal static config plus swappable controllers — on Kubernetes Cluster API they declared tiny common logic (\"run Kubernetes 1.15\") and replaced the reconciling controller per environment (separate AWS/Azure/VMware) rather than branching in config.\n- Config DSLs lack real tooling: unit-testing Terraform or Helm charts drops you into Go anyway; her tool *naml* shows a Kubernetes deployment.go is near-identical to deployment.yaml — the difference is trivial syntax.\n- The barrier is cultural, not technical: ops engineers already writing Puppet if-statements are already programming (\"training wheels\"), so learning Go/Python/Ruby is a small jump — she frames it as imposter syndrome and invites the two cultures to unify."
   },
   {
     "id": "recbHb9Z2j3NTfOeU",
@@ -10309,19 +10339,21 @@
     "duration": 3420,
     "topics": [
       "Lean",
-      "Lean Manufacturing"
+      "Culture",
+      "leadership"
     ],
     "speakers": [
       "Paul Akers"
     ],
-    "description": "Very interesting conversation with Paul Akers who speaks from experience on how to apply lean thinking and continuous improvement.\n",
+    "description": "Paul Akers (FastCap, \"2 Second Lean\") on lean as the ability to see your own weaknesses and waste, why all waste flows from overproduction, and the daily habits that develop people.",
     "core_topic": "Lean",
     "year": 2023,
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2024/01/good-talkspodcasts-jan-2024-i.html",
     "registered_at": "2024-01-14T10:32:53.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "Paul Akers (founder of FastCap, author of \"2 Second Lean\") describes lean as the ability to peer into your own weaknesses and attack waste aggressively — which starts with leaders checking their egos and admitting they are \"clueless.\" The payoff is developing people and freeing time, not just efficiency.\n\n- His first consultants cut a die-change setup from 45 minutes to 5 and scrap from a full bin to 5 sheets; an employee then redesigned the die for $30,000/month more profit.\n- The eight wastes taught via a \"salad story\" (all waste stems from overproduction) — remember the story, not an acronym.\n- The daily operating system: 3S every morning (Sweep, Sort, Standardize) for ~10-15 minutes to work in flow, plus a ~10-minute university-style morning meeting where all ~50 people develop their thinking before any work.\n- Contrarian structure: no marketing/sales/HR/finance departments, six people running 800 products across 40 countries, a CFO who works four days a month, and hiring via a 60-second phone video (no resumes) to test whether you can listen and follow instructions."
   },
   {
     "id": "recbPgwllMN0O9rA6",
@@ -10376,16 +10408,19 @@
     "url": "https://www.geepawhill.org/2022/10/25/slash-the-load/",
     "duration": 300,
     "topics": [
-      "Inspirational"
+      "Small Safe Steps (3s)",
+      "Feedback cycles",
+      "Technical Practices"
     ],
     "speakers": [
       "GeePaw Hill"
     ],
-    "description": "Inspiring short article on how the load affects us.\n",
-    "core_topic": "",
+    "description": "GeePaw Hill on the Mob Mentality Show: his \"blind advice\" to take many more, much smaller steps — dropping the rule that every step add user value — because that's how you go faster, and \"the code works for you, you don't work for the code.\"",
+    "core_topic": "Agile-XP",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2022/11/good-talkspodcasts-nov-2022-ii.html",
-    "registered_at": "2022-11-19T18:41:40.000Z"
+    "registered_at": "2022-11-19T18:41:40.000Z",
+    "notes": "GeePaw Hill (40-year programmer, XP/mob-programming coach) offers software's version of a chef's \"too much rice, not enough garlic\": take many more, much smaller steps than you do now, because you actually go faster that way. The key shift is dropping the requirement that each step add positive user value.\n\n- \"Stride-limited activated steps\": go from activated (shipped, or emotionally ready to ship) back to activated in ~15 minutes (up to 45 before `git reset --hard`); stories under ~1.5 team-days; process changes under a week.\n- Reframe the acceptance criterion from \"greater than\" (must add value) to \"greater than or equal to\" — his \"no non-negative experience\" rule unlocks tiny increments and kills sunk-cost attachment to long plans; the straight-line model of development is a Euclidean fallacy.\n- Coaching approach: \"easiest, nearest owie first,\" everything as a time-boxed experiment (\"what's the worst that could happen — try it for a week\"), with patience as the key attribute for changing anything.\n- \"The code works for you, you don't work for the code\": the six-hour focus block or the $40k/month dev/stage/prod environments exist only because you packaged it that way — turn service guts into libraries with a thin HTTP wrapper and run them locally; bugs are in your own logic, not Spring Boot's routing."
   },
   {
     "id": "recbZzYh8iwAqHBJ3",
@@ -11750,19 +11785,19 @@
     "url": "https://www.producttalk.org/2019/10/managing-outcomes/",
     "duration": 3600,
     "topics": [
-      "Engineering Culture",
+      "Product Leadership",
       "Management",
-      "Inspirational",
-      "Product"
+      "Product Discovery"
     ],
     "speakers": [
       "Teresa Torres"
     ],
-    "description": "Interesting tips to make this mental shift. The talk is targeted at managers and leaders.\n",
-    "core_topic": "",
+    "description": "Teresa Torres on actually managing by outcomes: breaking the micromanagement vicious cycle by teaching teams to communicate problem-framing and leaders to give input without dictating outputs.",
+    "core_topic": "Product",
     "format": "talk",
     "blog_url": "http://www.eferro.net/2020/03/good-talkspodcasts-march-2020-i.html",
-    "registered_at": "2020-03-14T09:06:56.000Z"
+    "registered_at": "2020-03-14T09:06:56.000Z",
+    "notes": "Everyone claims to manage by outcomes, but in practice leaders still dictate outputs because they don't trust teams to reach the outcome. Teresa Torres shows how to break that cycle by making teams' thinking visible and keeping leaders out of true preference calls.\n\n- The vicious cycle: leaders don't trust teams → micromanage outputs → teams stop sharing what they're doing → even less visibility and trust. Break it by teaching teams to communicate how they frame the problem and leaders to give input without dictating.\n- The \"red balloon vs blue balloon\" trap: leaders impose personal preferences disguised as expertise where there's no real customer difference — \"the HiPPO always wins,\" so the leader's job is to not be the HiPPO.\n- The opportunity solution tree (she'd rebrand it \"outcome map\"): business outcome on top, customer needs framed in the customer's own words, then solutions; test a real opportunity by asking \"is there more than one way to solve this?\"\n- Anchors: John Dewey (\"maintain a state of doubt and carry on systematic inquiry\") to resist the first solution, and the scurvy example (oranges → grapefruit → apples) showing how iterative steps drift off-target — even great teams hit under 50%."
   },
   {
     "id": "recfix1I3ofri2rgQ",
@@ -13184,13 +13219,18 @@
     "title": "Open Source World",
     "url": "https://www.npr.org/programs/ted-radio-hour/449179937/open-source-world",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Technology",
+      "Inspirational",
+      "Culture"
+    ],
     "speakers": [],
-    "description": "TED Radio Hour. Great episode for the general public about the influence of the open source and other related movements (open hardware, web technology, direct democracy, etc.). Very interesting. It surprised me that they didn't say anything about RMS and the free software movement :(\n",
-    "core_topic": "",
+    "description": "A TED Radio Hour segment (Guy Raz) with Tim Berners-Lee on why the Web won: CERN gave away all IP rights royalty-free, so it reached critical mass where the proprietary alternatives fragmented.",
+    "core_topic": "System Thinking",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2018/01/interesting-talkspodcasts-2018-jan-ii.html",
-    "registered_at": "2020-01-19T20:33:14.000Z"
+    "registered_at": "2020-01-19T20:33:14.000Z",
+    "notes": "In this TED Radio Hour segment, host Guy Raz and Tim Berners-Lee (inventor of the World Wide Web, then at CERN) tell the origin of the Web as the archetypal case for open source: it dominated not just because of its design but because CERN relinquished all intellectual-property rights and made it royalty-free.\n\n- The competing Gopher system (University of Minnesota) was actually spreading faster in the early '90s — until the university announced it would charge a fee to run the server, and its traffic dropped off.\n- On 30 April 1993 CERN signed an announcement relinquishing all IP rights to the Web's code \"for anyone to use,\" royalty-free — the decisive move that let it take off.\n- The URL was the crucial piece: it asked anyone with information to mint one per document — a \"massive ask\" that only works if you don't also demand a specific computer, browser, or per-click payment.\n- He rejects the idea that staying proprietary would have made him a fortune: a walled-garden Web would have splintered into incompatible systems you couldn't link across, so it never would have reached critical mass."
   },
   {
     "id": "recjwN6WkwLuCtm1h",
@@ -13292,18 +13332,19 @@
     "url": "https://slideslive.com/38911397/monoliths-migrations-and-microservices",
     "duration": 2460,
     "topics": [
-      "Architecture",
-      "Architecture patterns",
-      "Microservices"
+      "Microservices",
+      "Evolutionary Architecture",
+      "Architecture"
     ],
     "speakers": [
       "Randy Shoup"
     ],
-    "description": "",
-    "core_topic": "",
+    "description": "Randy Shoup on why nobody starts with microservices but everyone co-evolves toward them — matching architecture to business phase, deliberately under-engineering early, and migrating incrementally.",
+    "core_topic": "Architecture",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2018/index.html",
-    "registered_at": "2020-01-19T20:32:05.000Z"
+    "registered_at": "2020-01-19T20:32:05.000Z",
+    "notes": "Randy Shoup (VP Engineering at WeWork; ex-eBay, Google App Engine, Stitch Fix) argues no company beyond a certain scale starts with microservices, but nearly all co-evolve toward them — while ~90% of applications are perfectly well served by a monolith and never need them.\n\n- Big companies started small and rewrote repeatedly: eBay's C++ monolith hit 3.4M lines in one DLL; Twitter began as the Ruby \"Monorail\"; Amazon spent 2000-2005 re-implementing as services before AWS launched in 2006.\n- Match architecture to phase and deliberately under-engineer early: \"if you don't end up regretting your early technology decisions, you probably over-engineered\" — idea phase uses spreadsheets and \"do things that don't scale.\"\n- Re-architect only when the monolith runs out of gas: falling velocity, new engineers taking months, scaling limits, parts needing independent scaling or deployment.\n- Migrate incrementally, never big-bang (\"the only thing a big-bang migration guarantees is a big bang\"): de-risking pilot first, attack highest-revenue pages first, find a seam (Feathers) behind a tested interface; give each service its own database and don't stop halfway."
   },
   {
     "id": "reckLLBX9RVTL7oFm",
