@@ -3422,17 +3422,19 @@
     "url": "http://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford/",
     "duration": 0,
     "topics": [
-      "Architecture",
-      "Engineering Culture"
+      "Engineering Career",
+      "Technical leadership",
+      "Architecture"
     ],
     "speakers": [
       "Neil Ford"
     ],
-    "description": "\n",
-    "core_topic": "",
+    "description": "SE Radio with Neal Ford (Thoughtworks) on the success skills architects actually need: breadth over depth, communication with business and tech, and policing complexity — because \"metawork is more interesting than work.\"",
+    "core_topic": "Architecture",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2018/03/interesting-talkspodcasts-2018-march-i.html",
-    "registered_at": "2020-01-19T20:31:54.000Z"
+    "registered_at": "2020-01-19T20:31:54.000Z",
+    "notes": "On SE Radio, Neal Ford (Thoughtworks) argues that becoming a successful software architect is far less about deepening technical expertise than about breadth and soft skills — especially writing and presenting to both business and technical audiences. Architecture is a meeting-heavy leadership role, and the biggest surprise for \"accidental architects\" is the communication demand.\n\n- Trade depth for breadth: as an architect, knowing that five frameworks exist for a problem beats knowing how to implement it in one — but stay in the code without being on the critical path (agile spikes, regular pairing).\n- Capture decisions with lightweight Architecture Decision Records (Nygard) — text in version control, status proposed/accepted/superseded — and prefer Simon Brown's C4 model over UML (\"too technical for non-technical people, not technical enough for technical people\").\n- Complexity and over-engineering creep in because \"metawork is more interesting than work,\" so architects must constantly police feasibility, value, and architectural erosion.\n- Don't block good behaviour: demanding aggressive refactoring while forcing feature branching is contradictory — use feature toggles with trunk-based development, and keep a separate technical-debt backlog. Learn from history (CORBA services reappearing in microservices)."
   },
   {
     "id": "recCtlo35BNB4e9Cv",
@@ -5000,15 +5002,20 @@
     "title": "SE Radio 208: Randy Shoup on Hiring in the Software Industry",
     "url": "http://www.se-radio.net/2014/08/episode-208-randy-shoup-on-hiring-in-the-software-industry",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Engineering Culture",
+      "Company Culture",
+      "Engineering Career"
+    ],
     "speakers": [
       "Randy Shoup"
     ],
-    "description": "\n",
-    "core_topic": "",
+    "description": "SE Radio with Randy Shoup (then CTO at KIXEYE) on hiring: engineer the process to accept false negatives but never false positives, use an independent hiring committee, and remember A-players hire A-players.",
+    "core_topic": "Engineering Culture",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2014/09/charlaspodcasts-25-31-agosto-2014.html",
-    "registered_at": "2020-01-19T20:37:28.000Z"
+    "registered_at": "2020-01-19T20:37:28.000Z",
+    "notes": "On SE Radio, Randy Shoup (CTO at KIXEYE; ex-eBay, Google App Engine) argues that hiring should target a baseline of demonstrable skill plus strong team and cultural fit, not just raw individual excellence — and that the process itself matters more than any single interviewer.\n\n- Google's process is built to tolerate false negatives but never false positives; rejected candidates are encouraged to reapply in ~6 months (he cites Steve Yegge).\n- Decisions are made by an independent hiring committee of senior engineers who never interviewed the candidate and aren't the hiring manager; team placement and cultural-fit come only after the hire/no-hire call.\n- A-players hire A-players (they want to learn from the best), while B-players hire C-players out of insecurity — so large orgs degrade unless you guard against it.\n- No interview beats a referral from someone who worked with the candidate for years (\"talk for an hour and then get married\"); add rigour with take-home coding tests used as an icebreaker, and refine the process with data and local culture."
   },
   {
     "id": "recI9kcHkBYaTdaqk",
@@ -5431,15 +5438,20 @@
     "title": "se-radio-episode-234-barry-oreilly-on-lean-enterprise",
     "url": "http://www.se-radio.net/2015/08/se-radio-episode-234-barry-oreilly-on-lean-enterprise/",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Lean",
+      "Lean Startup",
+      "Transformation"
+    ],
     "speakers": [
       "Barry O'Reilly"
     ],
-    "description": "A interesting interview about the book Lean Enterprise and the application of Lean and Agile principles to drive innovation and product creation at our \"disruptive\" era.\n",
-    "core_topic": "",
+    "description": "SE Radio with Barry O'Reilly (co-author of Lean Enterprise) on extending Lean Startup's scientific thinking to whole organizations: treat initiatives as a portfolio of options and manage them across three horizons.",
+    "core_topic": "Lean",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2015/10/index.html",
-    "registered_at": "2020-01-19T20:36:57.000Z"
+    "registered_at": "2020-01-19T20:36:57.000Z",
+    "notes": "On SE Radio, Barry O'Reilly (Thoughtworks; co-author of Lean Enterprise with Jez Humble and Joanne Molesky) explains how to extend Lean Startup's build-measure-learn beyond product discovery to entire large organizations — including HR and finance — building a culture of experimentation where empowered teams improve things without asking permission.\n\n- Build-measure-learn is the scientific method simplified: run the smallest experiment that reduces (not eliminates) uncertainty. His FotoVino example: a fake wine-seller account tweeting offers to people photographing red wine, then a landing page to test purchase intent.\n- Treat initiatives as stock options: spread a budget across ~10 small bets, cut losers, scale winners — avoiding the sunk-cost, too-big-to-fail mega-project.\n- Manage across the McKinsey three horizons (H1 cash flow, H2 growth, H3 experimental) with different success metrics per horizon — Intuit funds ~60/30/10 (TurboTax, QuickBooks Online, SnapTax); a single scorecard is the big mistake.\n- Gov.uk shows it works in the large: after the ~£10bn NHS records failure, it started with 14 people, £261k and 12 weeks (discovery/alpha/beta/live) plus procurement reforms (no contracts over 2 years or £100M)."
   },
   {
     "id": "recK5kMUi3D1ogO09",
@@ -5578,19 +5590,19 @@
     "url": "http://www.se-radio.net/2014/12/episode-216-adrian-cockcroft-on-the-modern-cloud-based-platform/",
     "duration": 0,
     "topics": [
+      "Microservices",
       "Cloud",
-      "Engineering Culture",
-      "Operations",
-      "Devops"
+      "Resilience"
     ],
     "speakers": [
       "Adrian Cockcroft"
     ],
-    "description": "Very interesting talk about the patterns and practices to use design / operate software in the cloud.\n",
-    "core_topic": "",
+    "description": "SE Radio with Adrian Cockcroft (ex-Netflix cloud architect) on cloud as self-service, ephemeral infrastructure — and Netflix's migration to AWS and microservices with circuit-breaker resilience.",
+    "core_topic": "Cloud",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2015/01/index.html",
-    "registered_at": "2020-01-19T20:36:42.000Z"
+    "registered_at": "2020-01-19T20:36:42.000Z",
+    "notes": "On SE Radio, Adrian Cockcroft (former Netflix cloud architect) argues the essence of cloud is self-service, on-demand, ephemeral infrastructure that turns operations into an API and speeds up software development — now the universal competitive advantage.\n\n- A 2008 SAN corruption that took down the Oracle monolith, plus streaming traffic ~1000x the DVD business, forced a multi-year AWS migration (batch 2009, front end 2010, DB 2011, open source 2012); Netflix grew from 6M DVD users to 50M streaming.\n- Microservices (~500-1000 services, versions coexisting) solved monolith pains — QA integration collisions and one broken item rolling back the whole train — using the immutable-server pattern, Eureka for version-aware routing, and DDD bounded contexts.\n- Resilience via clear failure boundaries plus Hystrix (circuit breaker / bulkhead, inspired by Nygard's Release It!); PagerDuty routes alerts to whoever wrote the broken dependency, so developers-on-call build more robust code.\n- Open-sourcing (~45 Apache-licensed projects) escapes lock-in, recruits engineers who already know the code, and forces cleanup (\"open source your code\" beats \"clean up your code\"). He recommends starting with Docker."
   },
   {
     "id": "recKVdulRpgPVbaLK",
@@ -7233,15 +7245,20 @@
     "title": "SE-Radio Episode 355: Randy Shoup Scaling Technology and Organization",
     "url": "http://www.se-radio.net/2019/02/se-radio-episode-355-randy-shoup-scaling-technology-and-organization/",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Microservices",
+      "Scalability",
+      "Teams"
+    ],
     "speakers": [
       "Randy Shoup"
     ],
-    "description": "interesting interview about how to scale technology, team and culture.\n",
-    "core_topic": "",
+    "description": "SE Radio with Randy Shoup (VP Eng at WeWork) on scaling: DevOps as end-to-end feedback loops, teams splitting by \"cellular mitosis,\" and using Conway's Law to shape architecture by shaping the org.",
+    "core_topic": "Architecture",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2019/03/good-talkspodcasts-feb-2019-ii.html",
-    "registered_at": "2020-01-19T20:38:32.000Z"
+    "registered_at": "2020-01-19T20:38:32.000Z",
+    "notes": "On SE Radio, Randy Shoup (VP Engineering at WeWork; ex-Stitch Fix, Google, eBay) frames DevOps not as tools but as applying agile and lean end-to-end to tighten feedback loops, delivered through cross-functional full-stack teams that own software from idea to operation.\n\n- Scale orgs via \"cellular mitosis\": split teams at natural seams (eBay buyer/seller, Uber driver/rider) into two-pizza teams; by Conway's Law architecture mirrors org structure, so you shape the architecture by restructuring the org first.\n- Software should evolve with company phase; ~90-99% of apps are best served by a monolith. Warning signs to split: feature velocity (eBay's 3.4M-line C++ DLL), load/vertical-scaling limits, and deployment independence (fast UI vs stable auth).\n- Migrate with the strangler pattern and Feathers' \"seams\": wrap an interface, write tests, extract a service.\n- Management is Theory Y / servant leadership: remove roadblocks, grow the team, celebrate successes and failures. Fund tech debt transparently — fold it into feature work, or negotiate an explicit budget (eBay \"headroom\" 20-30%, Stitch Fix 25%)."
   },
   {
     "id": "recQOMvCh9ARZzmvU",
@@ -7548,17 +7565,19 @@
     "url": "https://www.se-radio.net/2023/01/episode-548-alex-hidalgo-on-implementing-service-level-objectives/",
     "duration": 2880,
     "topics": [
-      "Devops",
-      "Operations"
+      "Observability",
+      "Monitoring",
+      "Resilience"
     ],
     "speakers": [
       "Alex Hidalgo"
     ],
-    "description": "The episode examines how to define error budgets and policies to influence engineering work, how to tell if your project is under or over budget, and how to respond to being over budget, as well as how to derive value from using up excess error budget.\n",
-    "core_topic": "",
+    "description": "SE Radio with Alex Hidalgo (author of Implementing SLOs) on the reliability stack — SLIs, SLOs, error budgets — as better data for better conversations, not hardline rules.",
+    "core_topic": "Operations",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2023/02/good-talkspodcasts-feb-2023-i.html",
-    "registered_at": "2023-02-19T20:58:56.000Z"
+    "registered_at": "2023-02-19T20:58:56.000Z",
+    "notes": "On SE Radio, Alex Hidalgo (author of Implementing Service Level Objectives) starts from accepting that failure is inevitable and 100% reliability burns out people and budgets, so you should target the level of service users actually need.\n\n- The reliability stack: SLIs (user-experience metrics split good/bad — CPU/memory are NOT SLIs), then SLO targets (percentage of time you want to be good), then error budgets (the inverse of the SLO) tracked over a window.\n- The \"nines\" are brutal: 99.9% ≈ 43 min/month and five nines is 4m32s/year — a 20-minute on-call response already burns half a 99.9% monthly budget.\n- Error budgets shouldn't be hardline: ignore black-swan events, and budgets are also for spending — running at ~100% too long makes users expect it, so burn it via chaos engineering (Google's Chubby team deliberately shut it off to expose wrong dependencies).\n- Set targets from user feedback correlated with business metrics (buffering within 10s vs subscription churn); error-budget status becomes data for decisions — he cancelled a 3-month hardware-failover project because they were out of budget after an incident."
   },
   {
     "id": "recRGemuzb1VbhcSj",
@@ -9771,15 +9790,20 @@
     "title": "SE-Radio Episode 284: John Allspaw on System Failures: Preventing, Responding, and Learning From",
     "url": "http://www.se-radio.net/2017/03/se-radio-episode-284-john-allspaw-on-system-failures-preventing-responding-and-learning-from/",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Resilience",
+      "Incident respond",
+      "Engineering Culture"
+    ],
     "speakers": [
       "John Allspaw"
     ],
-    "description": "\n",
-    "core_topic": "",
+    "description": "SE Radio with John Allspaw (Etsy) on resilience engineering: failures are never single-cause, design for recoverability over prevention, and use post-mortems to learn how work normally succeeds.",
+    "core_topic": "Operations",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2017/05/interesting-technical-talkspodcasts-may.html",
-    "registered_at": "2020-01-19T20:42:15.000Z"
+    "registered_at": "2020-01-19T20:42:15.000Z",
+    "notes": "On SE Radio, John Allspaw (CTO of Etsy, with a master's in human factors and system safety) argues that preventive design has a hard limit — complex systems on an open internet always retain the capacity to surprise us — so failures are never single-cause but arise from multiple jointly-sufficient conditions.\n\n- Reframe failures as context-specific \"untoward events\" (Richard Cook: \"what should surprise us is not that our systems go down… but that they work at all\" — and they work because of people).\n- Design for recoverability, not just prevention: optimize time-to-detect and time-to-respond, not only time-between-failures (the \"Jeep with a spare tire\" over the Rolls Royce); denormalized schemas and annotated time-series graphs aid debugging.\n- Blameless post-mortems should use the incident as an anchor to ask how work normally succeeds — narrowing to a \"root cause\" only ever finds \"somebody who did something wrong.\"\n- Inject faults in production (his ACM article predated Chaos Monkey): \"if you're not comfortable doing it in production, it just means you're not done yet,\" because no staging environment mirrors production's traffic and there are always things you don't know to test for."
   },
   {
     "id": "recZW4aFGILBBfNv1",
@@ -12363,15 +12387,20 @@
     "title": "SE-Radio Episode 217: James Turnbull on Docker",
     "url": "http://www.se-radio.net/2015/01/episode-217-james-turnbull-on-docker/",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Devops",
+      "Infrastructure",
+      "Cloud"
+    ],
     "speakers": [
       "James Turnbull"
     ],
-    "description": "Good and basic explanation about Docker.\n",
-    "core_topic": "",
+    "description": "SE Radio with James Turnbull (Docker) on containers: lightweight kernel-level virtualization, layered copy-on-write images, and reducing the dev-to-prod friction behind \"works on my machine.\"",
+    "core_topic": "Devops",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2015/01/index.html",
-    "registered_at": "2020-01-19T20:36:42.000Z"
+    "registered_at": "2020-01-19T20:36:42.000Z",
+    "notes": "On SE Radio, James Turnbull (VP of Services at Docker) explains Docker as lightweight container virtualization that runs directly on the Linux kernel (no hypervisor), so containers launch in sub-second and pack densely — its deeper value being to reduce dev-test-staging-prod friction so what you build locally looks the same in production.\n\n- Layered images use copy-on-write union filesystems (AUFS, Btrfs, Device Mapper); each change adds only a new layer, analogous to a git commit, with caching for fast rebuilds.\n- Isolation relies on two kernel features: namespaces (process/network/filesystem) and cgroups (resource limits, e.g. capping a container to 128MB).\n- Networking: ports closed by default and mapped explicitly, fronted by HAProxy/Nginx with service discovery (ZooKeeper, etcd, Consul); container \"links\" expose DNS/env vars between containers.\n- Docker is complementary to Chef/Puppet/Ansible (immutable infrastructure = kill and recreate rather than manage drift); the shipping-container analogy separates the payload from the transport, decoupling developers from operations."
   },
   {
     "id": "rechQinVg9p5VtZhE",
@@ -12876,15 +12905,20 @@
     "title": "SE Radio Episode 221: Jez Humble on Continuous Delivery",
     "url": "http://www.se-radio.net/2015/02/episode-221-jez-humble-on-continuous-delivery/",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Continuous Delivery",
+      "Devops",
+      "Trunk Based Development"
+    ],
     "speakers": [
       "Jez Humble"
     ],
-    "description": "\n",
-    "core_topic": "",
+    "description": "SE Radio with Jez Humble (co-author of Continuous Delivery) on changing the economics of delivery so small batches are cheap — deployment pipelines, trunk-based development, and building quality in.",
+    "core_topic": "Continuous Delivery",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2015/06/more-interesting-podcaststalks.html",
-    "registered_at": "2020-01-19T20:37:07.000Z"
+    "registered_at": "2020-01-19T20:37:07.000Z",
+    "notes": "On SE Radio, Jez Humble (co-author of Continuous Delivery) frames CD as fundamentally changing the economics of software delivery so that working in small batches becomes cheap, letting teams take small changes safely from check-in to production — grounded in Lean (Jidoka, building quality in).\n\n- Deployment pipeline plus blue-green deployments (Netflix's red-black): deploy, switch the router/DNS, and roll forward rather than back, since data-laden rollback is risky and rarely tested.\n- Trunk-based development over long-lived branches: the problem isn't branching but merging (including semantic merges), whose pain grows combinatorially with team size — HP LaserJet firmware (400 people, 10M lines, ~100 changes/day) delivered an 8x productivity gain.\n- Small-batch releases reduce risk (you practice deploying, it forces re-architecting, failures are easier to find) — paired with A/B testing, since Kohavi's data shows two-thirds of features deliver zero or negative value.\n- Put everything except data in version control (config, schema, networking) to enable system-level tests and DR; \"you build it, you run it\" and scoped risk beat heavyweight change advisory boards, which the State of DevOps report found slow throughput without improving stability."
   },
   {
     "id": "recirj5AuNw3fWErr",
@@ -13731,15 +13765,20 @@
     "title": "SE-Radio Episode 359: Engineering Maturity",
     "url": "https://www.se-radio.net/2019/03/se-radio-episode-359-engineering-maturity-with-jean-denis-greze/",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Engineering Culture",
+      "Management",
+      "Technical leadership"
+    ],
     "speakers": [
       "Jean-Denis Greze"
     ],
-    "description": "Good insights for anyone leading technical teams.\n",
-    "core_topic": "",
+    "description": "SE Radio with Jean-Denis Greze (Plaid) on engineering maturity: apply the individual leveling model (L1…staff) to teams and systems as an objective, multi-level maturity map instead of relying on a heroic VP.",
+    "core_topic": "Engineering Culture",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2019/04/good-talkspodcasts-april-2019-i.html",
-    "registered_at": "2020-01-19T20:39:24.000Z"
+    "registered_at": "2020-01-19T20:39:24.000Z",
+    "notes": "On SE Radio, Jean-Denis Greze (head of engineering at Plaid, ex-Dropbox) argues that fast-growing orgs never have the maturity their problems demand, and the usual fix — hiring a VP who \"has seen the growth before\" — is a fragile, person-centric solution with bus-factor risk.\n\n- Borrow the individual leveling model (L1, L2, senior, staff) and apply it at the team, system and org level: an objective, multi-dimensional maturity map (7-10 levels) that teams climb ~one level every six months.\n- Real immaturity isn't having level-one teams — it's having no systematic way to think about where you are vs where you need to be, which leaves you reactive, paying down debt only once things are catastrophically broken.\n- Concrete ladders: on-call (manual/ad-hoc → daytime + 50% playbooks → 24/7 auto-remediated, all failure domains enumerated, SLAs met), common SLAs, and test coverage (doesn't matter → common definitions → coverage delta shown in the pull request → PR blocked if it drops).\n- At Plaid he grew 20→70 engineers in two years; recruiting is his most mature dimension, while constant prioritization over quarterly planning, formal levels, and systematic manager training are open weak spots. (Transcript truncates before the close.)"
   },
   {
     "id": "reclgtwynFJI24hnI",
@@ -15819,16 +15858,18 @@
     "duration": 0,
     "topics": [
       "Legacy code",
-      "Software Design"
+      "Testing",
+      "Refactoring"
     ],
     "speakers": [
       "Michael Feathers"
     ],
-    "description": "Software Engineering Radio Podcast\n",
-    "core_topic": "",
+    "description": "SE Radio with Michael Feathers (author of Working Effectively with Legacy Code) reframing legacy code as code without tests, and the tools to change it safely: characterization tests and seams.",
+    "core_topic": "Testing",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2017/09/good-talkspodcasts-august-2017.html",
-    "registered_at": "2020-01-19T20:41:55.000Z"
+    "registered_at": "2020-01-19T20:41:55.000Z",
+    "notes": "On SE Radio, Michael Feathers reframes legacy code not by age but as \"code without tests,\" because automated tests are what make code safe to change — so code written yesterday without tests already qualifies.\n\n- Characterization testing: rather than guessing expected values, exercise the existing code, capture what it actually produces, and lock that in — the tests \"document the behaviour, not correct behaviour,\" because shipped code becomes its own specification (users depend even on its bugs).\n- \"Seams\" are places you can swap one behaviour for another without editing the code there — e.g. an object seam (subclass and override a method to return a fake) or a link seam in C; you can inject a seam by extracting a method (e.g. the part doing file I/O).\n- Coverage targets are the wrong goal — drive tests from the change you're making; his most-reached-for dependency-breaking technique is parameterizing the constructor (add a constructor taking a mock, keep the old one for production).\n- There's a deep synergy between testability and good design (single responsibility, separation of concerns); a hard-to-test thing is usually a design problem, and teams must surface code quality / readiness-for-change to the business, not just features and estimates."
   },
   {
     "id": "recrZiu65sTc9GX7h",
