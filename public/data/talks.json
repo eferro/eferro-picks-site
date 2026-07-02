@@ -4299,6 +4299,7 @@
     "duration": 4260,
     "topics": [
       "XP",
+      "Feedback cycles",
       "Software Design"
     ],
     "speakers": [
@@ -4307,11 +4308,12 @@
       "Malcom Sparks",
       "James Henderson"
     ],
-    "description": "Interesting conversation about the concept of eventual business consistency (<https://tidyfirst.substack.com/p/eventual-business-consistency>) / bitemporality and about XP.\n",
-    "core_topic": "",
+    "description": "JUXT Cast special with Kent Beck: bi-temporality (two clocks — when a fact became true vs when the system learned it), \"helping geeks feel safe,\" the origin of continuous integration, and software design as an underdeveloped skill.",
+    "core_topic": "Agile-XP",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2024/03/good-talkspodcasts-mar-2024-i.html",
-    "registered_at": "2024-03-30T16:30:25.000Z"
+    "registered_at": "2024-03-30T16:30:25.000Z",
+    "notes": "On this JUXT Cast special (hosts Malcolm Sparks, Jeremy Taylor, James Henderson), Kent Beck ranges over bi-temporality, feedback loops and software design — tied together by his mission of \"helping geeks feel safe in the world.\"\n\n- Bi-temporality uses two timestamps — when a fact became true in the world vs when the system found out — enabling automated reprocessing of retroactive changes (from 25 years with Swiss insurer Lifeware). Its adoption is held back by implementation-centric naming (transaction/valid time, system/application time, posting/effective).\n- \"Feeling safe\": geeks sometimes feel unsafe when they're safe, and safe when they're not (creating bugs, damaging relationships); TDD lowers defect rates so you can, e.g., deploy Friday at 4:30.\n- Continuous integration came from taking \"do things as intensely as possible\" to the extreme on a ~12-person team — challenging them to integrate after one hour's work (the same extremism that named XP).\n- \"Succession\" is an underappreciated skill: slice and order a problem and shrink experiments to their essence (1000 five-minute tests → 100 one-hour → 10 one-day). Rapid feedback (a Clojure REPL) matters because it gives reversibility, and TDD reifies what a REPL produces — previewing his \"Tidy First?\" work."
   },
   {
     "id": "recG2ivMQduOM2RD3",
@@ -13988,19 +13990,19 @@
     "url": "https://podcasts.apple.com/us/podcast/why-it-pays-to-raise-pay/id1346314086?i=1000521240998",
     "duration": 2640,
     "topics": [
-      "Inspirational",
+      "Company Culture",
       "Management",
-      "Culture",
-      "Company Culture"
+      "leadership"
     ],
     "speakers": [
       "Adam Grant"
     ],
-    "description": "When employees are paid more, they give more. Going above market pay might sound like a fantasy, but in a growing number of companies it’s becoming a profitable reality. Peek inside workplaces that have reinvented their pay structures to give employees their worth and more—and explore the science of how it can pay off for everyone in the long run.\n",
-    "core_topic": "",
+    "description": "Adam Grant's WorkLife on why raising pay is smart, not just kind: underpayment traps workers, while generous pay unlocks gratitude, loyalty and ownership — with evidence from Gravity Payments and Semco's self-set salaries.",
+    "core_topic": "Company Culture",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/09/good-talkspodcasts-september-2021-i.html",
-    "registered_at": "2021-08-14T21:18:03.000Z"
+    "registered_at": "2021-08-14T21:18:03.000Z",
+    "notes": "On his WorkLife podcast, organizational psychologist Adam Grant argues that paying people well — beyond a living wage into fair and even generous territory — is economically smart, not just moral: underpayment traps workers in a vicious cycle, while generous pay unlocks gratitude, loyalty and ownership.\n\n- Underpayment has a cognitive toll: constant money worry can drop IQ by ~13 points; Rosita Barlow worked a $30K Gravity Payments job plus McDonald's night shifts for 18 months until a raise let her quit the second job.\n- Surprise raises lift the lowest performers most: Canadian tree-planters given an $80 bonus saw bottom performers jump 35% (vs ~10% for the rest); Indian freelancers raised $3→$4/hr became 20% more productive.\n- Gravity Payments set a $70K minimum in 2015 (CEO Dan Price cut his own >$1M pay); ~6 years on, revenue tripled, customers doubled, headcount grew 70% and 70% of staff paid down debt.\n- Semco (Ricardo Semler) let ~5,000 employees across 19 countries set their own salaries with full transparency; ~80-85% landed within ±5% of expected, and economists find self-set pay raises both take-home and profits. The reframe: pay signals how much you value people; treat employees as assets, not costs to minimise."
   },
   {
     "id": "recm6WOgLtGXbgL6b",
@@ -14662,15 +14664,20 @@
     "title": "Rebuilding the Inbox: The Corporate and Cultural Adventures of Modernizing Yahoo Mail",
     "url": "https://atscaleconference.com/videos/systems-scale-2018-rebuilding-the-inbox-the-corporate-and-cultural-adventures-of-modernizing-yahoo-mail/",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Engineering Culture",
+      "Scalability",
+      "leadership"
+    ],
     "speakers": [
       "Jeff Bonforte"
     ],
-    "description": "\n",
-    "core_topic": "",
+    "description": "Jeff Bonforte on rebuilding Yahoo Mail's backend at massive scale — and why the leadership job is to be the \"patron\" (Medici, not Michelangelo) who buys engineers time to build correctly against tech's cult of impatience.",
+    "core_topic": "Engineering Culture",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2018/10/good-talkspodcasts-oct-2018-i.html",
-    "registered_at": "2020-01-19T20:33:31.000Z"
+    "registered_at": "2020-01-19T20:33:31.000Z",
+    "notes": "Jeff Bonforte (SVP/GM of Yahoo Mail; earlier founded Xobni, acquired by Yahoo) recounts rebuilding Yahoo Mail's backend at massive scale, arguing that tech's cult of impatience quietly makes smart engineers do dumb, debt-accruing work — and that the leadership job is to be the \"patron\" (Lorenzo de' Medici, not Michelangelo) who buys them time to build correctly.\n\n- The scale that justifies \"different physics\": ~300M monthly users, ~30B attempted emails/day (~4B delivered), ~120B transactions/day, ~250 petabytes — >50% of Yahoo page views and >85% of logged-in users.\n- \"Project Dakar\" (2014): after a sub-1% outage drew board attention, he froze all features for a quarter to pay down technical debt — it became a lasting cultural term for \"doing engineering right\" (later using GDPR as cover to rethink the storage/delete flow).\n- Failure-first, excess-capacity practices (from Vinod Khosla): \"engineer on the assumption of failure,\" scale from ~65 A/B tests a week to 65,000 always keeping a back bucket to verify claimed gains, and fight for ~$50M of servers so the ML \"mail-on-grid\" system had breathing room.\n- Culture hacks against short-termism: re-release old features as \"new\" to satisfy short-tenure product/sales people (only ~7% use any feature), and David Weiden's \"capital-D Done\" — anything \"basically done\" is 100% NOT done, which is why running old and new systems in parallel yields negative returns until the migration fully completes."
   },
   {
     "id": "recnnQul0ekn6r0B9",
@@ -15895,17 +15902,19 @@
     "url": "https://theburningmonk.com/2018/03/serverless-design-patterns-slides-and-video/",
     "duration": 2280,
     "topics": [
-      "Architecture",
-      "Serverless"
+      "Serverless",
+      "Architecture patterns",
+      "Cloud"
     ],
     "speakers": [
       "Yan Cui"
     ],
-    "description": "",
-    "core_topic": "",
+    "description": "A catalog of practical AWS Lambda serverless design patterns — automating platform conventions with CloudTrail/CloudWatch Events, single-page web apps, multi-region resilience, data pipelines, and the saga pattern via Step Functions.",
+    "core_topic": "Cloud",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2018/03/interesting-talkspodcasts-2018-march-i.html",
-    "registered_at": "2020-01-19T20:31:54.000Z"
+    "registered_at": "2020-01-19T20:31:54.000Z",
+    "notes": "This talk (by an AWS Lambda practitioner, not named in the recording) walks through concrete serverless design patterns, with a recurring theme: compose managed AWS services with Lambda to get capabilities cheaply and with little code, while being deliberate about cost and concurrency.\n\n- Automate platform conventions: use CloudTrail + CloudWatch Events to react to API calls (e.g. \"create log group\") and trigger a Lambda that auto-subscribes log shipping and forces sane retention (default \"never expire\" → ~7 days), enforces p95 latency alarms on new API Gateway endpoints, and flags suspicious logins / unexpected EC2 activity.\n- The dominant use case is web apps: an SPA in S3 behind CloudFront, API Gateway + Lambda + DynamoDB, Route 53 for DNS, and Cognito for auth (SRP so the password is never exchanged, MFA, federated identities exchanging an OAuth JWT for temporary IAM creds).\n- Multi-region resilience via DynamoDB global tables plus API Gateway regional endpoints, with active-active failover through Route 53 routing.\n- Lower-level tradeoffs: DynamoDB streams auto-scale shards but lose concurrency control and cap retention at 24h, and emit item-level (not domain) events; Kinesis wins at scale but costs more. Closes with the saga pattern (Lambda actions + compensating actions orchestrated by Step Functions) for failures in distributed transactions."
   },
   {
     "id": "recrrAkWT0SMQMMXv",
