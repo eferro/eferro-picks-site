@@ -1807,17 +1807,19 @@
     "url": "http://www.fullstackradio.com/80",
     "duration": 0,
     "topics": [
-      "Architecture",
-      "Architecture patterns"
+      "Architecture patterns",
+      "Software Design",
+      "Scalability"
     ],
     "speakers": [
       "Tom Schlick"
     ],
-    "description": "Interesting conversation about the different approaches to create multitenant systems.\n",
-    "core_topic": "",
+    "description": "Full Stack Radio with Tom Schlick on building multi-tenant applications: shared-database (tenant_id) vs multi-database (one DB per tenant), how to decide, and isolating files, search, cache and webhooks.",
+    "core_topic": "Architecture",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2018/02/interesting-talkspodcasts-2018-feb-i.html",
-    "registered_at": "2020-01-19T20:32:21.000Z"
+    "registered_at": "2020-01-19T20:32:21.000Z",
+    "notes": "On Full Stack Radio (host Adam Wathan), Tom Schlick explains building multi-tenant applications — one instance serving many customers with strictly segmented data — where the central decision is how to isolate that data.\n\n- Two core models: shared database with a `tenant_id` column on every table plus query-scoping, vs a multi-database setup with a shared \"router\" table mapping each tenant to its own full database copy — the latter collapses many fragile scoping checkpoints down to one connection-switch step.\n- The decision rule: go multi-database when tenants rarely need cross-tenant queries (dashboards handled by nightly roll-up jobs), go shared-database when you frequently mix datasets; a hybrid keeps a shared users table with a pivot mapping users to tenants (the Stripe/Spark shared-login model).\n- Tenant identification: single shared domain (log in and resolve), subdomain (`acme.yourapp.com`, lets you route by DNS to regional clusters), or full white-label custom domain — resolved in middleware with \"safe by default\" global scopes.\n- Isolation extends beyond the DB: prefix S3 uploads by tenant folder, use per-tenant search indexes and cache prefixes, and route external webhooks via a dedicated subdomain reading the tenant ID from metadata. Multi-database also makes outages hit 10% not 100%, eases per-tenant backups and staged migrations, and lets third-party packages work unmodified."
   },
   {
     "id": "rec6miv38YvgtCONY",
@@ -15530,15 +15532,20 @@
     "title": "How to Improve Your Management Skills with Jocelyn Goldfein",
     "url": "http://simpleleadership.io/how-to-improve-your-management-skills-with-jocelyn-goldfein/",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Management",
+      "Engineering Culture",
+      "Engineering Career"
+    ],
     "speakers": [
       "Jocelyn Goldfein"
     ],
-    "description": "\n",
-    "core_topic": "",
+    "description": "Simple Leadership with Jocelyn Goldfein (ex-Facebook/VMware) on management: the skills are teachable but the motivation isn't, praise as a superpower, and \"culture is the behavior you reward and punish.\"",
+    "core_topic": "Engineering Culture",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/index.html",
-    "registered_at": "2020-01-19T20:35:37.000Z"
+    "registered_at": "2020-01-19T20:35:37.000Z",
+    "notes": "On the Simple Leadership podcast (host Christian McCarrick), Jocelyn Goldfein (former engineering director at Facebook and VMware, now a VC) argues that great engineering managers are made by motivation, not skill: the skills (communication, alignment, conflict) are teachable, but you must genuinely care about coaching people rather than seeking authority, control, or ego.\n\n- \"I cannot teach you the motivation\": managers driven by authority or ego are an anti-pattern; you need to care about coaching and feel proprietary responsibility for the team shipping, even when you're not writing code.\n- Praise is a superpower: incentives are rarely financial — \"praise and encouragement is like sunshine to a plant,\" and it builds long-term loyalty better than bonuses, urgency or guilt.\n- \"Culture is the behavior you reward and punish\": people copy high-status people (~90% behaviour vs <10% the poster on the wall), so promoting a \"brilliant jerk\" teaches everyone that jerks get ahead; bake diversity, span of responsibility and mentoring into the career ladder instead.\n- Treat the org as a system: at Facebook, over-fear of false positives created rampant false negatives at the phone screen — bringing rejects onsite anyway gave near-identical offer rates, so relaxing the screen (\"an efficiency slider\") doubled hires without lowering the bar."
   },
   {
     "id": "recqZwmfIMth4GnWj",
@@ -16795,16 +16802,19 @@
     "url": "http://www.se-radio.net/2018/01/se-radio-episode-315-jeroen-janssens-on-tools-for-data-science/",
     "duration": 0,
     "topics": [
-      "Data Science"
+      "Data Science",
+      "Python",
+      "Programming language"
     ],
     "speakers": [
       "Jeroen Janssens"
     ],
-    "description": "Good introduction for anyone.\n",
-    "core_topic": "",
+    "description": "SE Radio with Jeroen Janssens (Data Science at the Command Line) on tools for data science: the OSEMN model, the command line for the obtain/scrub/explore phases, and Python vs R.",
+    "core_topic": "Data",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2018/02/interesting-talkspodcasts-2018-feb-i.html",
-    "registered_at": "2020-01-19T20:32:23.000Z"
+    "registered_at": "2020-01-19T20:32:23.000Z",
+    "notes": "On SE Radio, Jeroen Janssens (author of Data Science at the Command Line) defines data science broadly as \"extracting value from data\" — far more than statistics — framed via Mason & Wiggins' OSEMN model (obtain, scrub, explore, model, interpret), where statistics and ML are just the modeling step.\n\n- The command line shines in the early obtain/scrub/explore phases (e.g. inspecting log files on a machine with nothing installed); his toolkit covers 80+ small composable tools — curl, jq, GNU parallel, XML Starlet, pup, CSV Kit — bundled in a Docker image.\n- No single best language: Python and R are both scripting languages with REPLs (Jupyter, R Markdown) ideal for exploratory, low-boilerplate analysis; R was \"created by statisticians for statisticians,\" while Python wins for production (he had to re-implement an R model in Python to serve an API).\n- Reproducibility: version-control the code that fetches data rather than the data itself, parameterize with from/to dates, and back up raw data (he stopped a startup from discarding its raw data).\n- Engineers and data scientists should learn each other's practices (version control, testing, documentation); ML testing means train/test splits plus unit tests with mock data — he flags the \"technical debt of machine learning\" paper."
   },
   {
     "id": "recuJ3mMaYCeeBFEl",
@@ -17247,15 +17257,20 @@
     "title": "Why Becoming an Effective Leader Involves Changing the Language You Use",
     "url": "http://simpleleadership.io/why-becoming-an-effective-leader-involves-changing-the-language-you-use-with-krister-ungerbock/",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "leadership",
+      "Management",
+      "Culture"
+    ],
     "speakers": [
       "Krister Ungerböck"
     ],
-    "description": "\n",
-    "core_topic": "",
+    "description": "Simple Leadership with Krister Ungerbock (The Language of Leadership) on how leadership effectiveness comes from the words you choose — leading with questions, granting permission, and expressing real emotions.",
+    "core_topic": "Company Culture",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2019/08/good-talkspodcasts-august-2019-i.html",
-    "registered_at": "2020-01-19T20:38:53.000Z"
+    "registered_at": "2020-01-19T20:38:53.000Z",
+    "notes": "On the Simple Leadership podcast (host Christian McCarrick), Krister Ungerbock (former award-winning software CEO, author of The Language of Leadership) argues leadership effectiveness is far less about personality than the specific words leaders choose — a single \"language of leadership\" that works equally well at work and at home.\n\n- The \"language of expertise\" (leading with answers) attracts low-engagement employees and repels top performers; past ~10-30 people, leading from expertise becomes impossible (he was getting 200 emails/day past 100 employees).\n- Use open \"what/how\" questions instead of leading yes/no ones — \"questions lead and answers follow.\"\n- The \"scale of 1 to 10\" technique: ask for commitment or openness to feedback, then the real value is the follow-up (\"what's the difference between a seven and a nine?\"), which surfaces concrete, actionable specifics.\n- Emotional intelligence via word choice: \"I feel like/that\" are disguised thoughts that trigger defensiveness; use the five core emotions (mad, sad, glad, afraid, hurt) and treat anger as an alarm bell masking fear (\"I'm afraid we'll lose our biggest customer\" beats \"I'm angry the project is late\"). Draws on Goleman and Rosenberg's Nonviolent Communication."
   },
   {
     "id": "recwD4IuQr97vYWZz",
