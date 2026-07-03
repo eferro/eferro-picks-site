@@ -4721,21 +4721,20 @@
     "url": "https://www.stitcher.com/podcast/agile-for-humans/e/59811508",
     "duration": 0,
     "topics": [
-      "Agile",
-      "Technology Strategy",
-      "Company Culture",
-      "XP",
-      "Mental models"
+      "Product Strategy",
+      "Mental models",
+      "Lean Startup"
     ],
     "speakers": [
       "Kent Beck"
     ],
-    "description": "Kent Beck (@kentbeck) joined Ryan Ripley (@ryanripley) to discuss product development, Extreme Programming, certifications, and his new book on software design.\n",
-    "core_topic": "",
+    "description": "Agile for Humans with Kent Beck on his 3X model — Explore, Expand, Extract — arguing that product development is three fundamentally different games, each needing its own engineering, management and finance.",
+    "core_topic": "Lean Startup",
     "format": "podcast",
     "blog_url": "http://www.eferro.net/2020/03/good-talkspodcasts-march-2020-i.html",
     "registered_at": "2020-03-14T08:56:58.000Z",
-    "rating": 4
+    "rating": 4,
+    "notes": "On Agile for Humans (host Ryan Ripley), Kent Beck lays out his 3X model — Explore, Expand, Extract — arguing that development follows three fundamentally different disciplines depending on a project's risk profile, and applying XP, Scrum or OKRs uniformly across them misses the point.\n\n- Explore: maximize diversity and minimize latency between \"here's an idea\" and \"here's how users behave\"; run cheap experiments expecting most to fail. Under a power-law distribution more misses actually raise the magnitude of the eventual hit (his tweet impressions vary 30-to-1, unpredictably).\n- The phases are different \"games,\" not better/worse versions — his analogy: the referee swaps a soccer ball for a rugby ball and brings a new opposing team; keep playing soccer and you get crushed.\n- Expand: once you find value you WILL break your infrastructure (disk, then bandwidth, then floor space, then recruiting) — each an existential crisis requiring focus on the single rate-limiting metric, then the next (Weinberg's \"Rudy's Rutabaga Problem\").\n- Extract is the responsible-adult phase (predictable costs/benefits) that funds exploration — the danger is getting so good at extracting you defend the vein instead of finding new ones. Related: reframe \"failure\" as learning, and \"by the time you make a big bet it better not be a bet.\""
   },
   {
     "id": "recHTVTL3hM9YyEuY",
@@ -4985,19 +4984,20 @@
     "url": "http://www.dotnetrocks.com/default.aspx?ShowNum=1436",
     "duration": 0,
     "topics": [
-      "Agile",
-      "Engineering Culture",
-      "Devops"
+      "Devops",
+      "Transformation",
+      "Continuous Delivery"
     ],
     "speakers": [
       "Jez Humble",
       "Nicole Forsgren"
     ],
-    "description": "\n",
-    "core_topic": "",
+    "description": ".NET Rocks with Jez Humble and Nicole Forsgren on a DevOps readiness assessment: software delivery performance predicts value in every industry, so the \"we're a special snowflake\" excuse doesn't hold.",
+    "core_topic": "Devops",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2017/08/good-talkspodcasts-episodes-purging.html",
-    "registered_at": "2020-01-19T20:41:16.000Z"
+    "registered_at": "2020-01-19T20:41:16.000Z",
+    "notes": "On .NET Rocks (Carl Franklin & Richard Campbell), Jez Humble and Nicole Forsgren argue that software delivery performance (speed plus stability) is a proven, statistically stable value driver across every industry and regulatory environment — dismantling the \"we're a special snowflake\" excuse.\n\n- Their readiness assessment measures the system that builds software (not the deployed apps), using the same psychometric methods and 20-24 capabilities as the State of DevOps report to benchmark against company, industry and high-performer averages.\n- Regulation is no excuse: Humble applied the practices to US federal systems with 325 NIST 800-53 controls; cloud.gov (continuously delivered on AWS) shrank the security-plan approval to ~20 controls.\n- \"Our people aren't good enough\" is really a management/system problem — Adrian Cockcroft's \"I get them from you\"; fix the system and invest in people rather than hiring elite talent.\n- Performance follows a J-curve: medium performers can have a worse change-failure rate than low ones because they speed up without paying down technical debt (architecture and process) — so fix underlying debt and focus on three or four high-leverage constraints, not everything at once."
   },
   {
     "id": "recI8vDbaMJUnfGJt",
@@ -6916,19 +6916,20 @@
     "url": "https://www.honeycomb.io/resources/ep-29-testing-in-production-with-glen-mailer-of-circleci/",
     "duration": 2100,
     "topics": [
-      "testing",
-      "Operations",
-      "Testing in production"
+      "Observability",
+      "Testing in production",
+      "Devops"
     ],
     "speakers": [
       "Glen Mailer",
       "Charity Majors"
     ],
-    "description": "An interesting discussion about testing in production and rethinking socio-technical systems from the ground up.\n",
-    "core_topic": "",
+    "description": "o11ycast with Glen Mailer (CircleCI) on testing in production and observability: wide, high-cardinality events let you ask \"what do these weird things have in common?\" — and can replace staging.",
+    "core_topic": "Operations",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/03/good-talkspodcasts-march-2021-i.html",
-    "registered_at": "2021-02-06T22:57:45.000Z"
+    "registered_at": "2021-02-06T22:57:45.000Z",
+    "notes": "On o11ycast (Charity Majors and co-host, Honeycomb), Glen Mailer of CircleCI argues that testing in production is about feedback and confidence, not provable correctness: you ship small changes and watch how they behave live.\n\n- True observability means arbitrarily wide, high-cardinality structured events (one per request per service) so you can ask \"these things are weird — what do they have in common?\" — something metrics and traditional logs can't do.\n- Sell it by meeting people where they are: \"metrics are just derived logs\" and wide events are \"just really, really good logs\" (most people have never seen good logs).\n- Wide events can replace staging: 300-400 attributes of context per job often tell you everything needed to diagnose an issue without reproducing it (a subtle unpinned kernel change was caught via trickling out-of-memory tickets and rolled back).\n- Reframe: metrics are the right tool for infrastructure (capacity, provisioning), observability for the business-differentiating code where every request must succeed; \"DevOps is ops, but measured on business outcomes,\" and the next decade is teaching developers to live in production. (Cost tension: dynamic sampling keeps signal, drops noise.)"
   },
   {
     "id": "recOxqFBf8ctdFeJt",
@@ -14630,15 +14631,20 @@
     "title": "How to Grade DevOps Teams with Nicole Forsgren, PhD",
     "url": "https://www.screaminginthecloud.com/episodes/how-to-grade-devops-teams-with-nicole-forsgren-phd",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Devops",
+      "Engineering productivity",
+      "Continuous Delivery"
+    ],
     "speakers": [
       "Nicole Forsgren"
     ],
-    "description": "Screaming in the cloud:\n",
-    "core_topic": "",
+    "description": "Screaming in the Cloud with Nicole Forsgren (DORA/Accelerate) on grading DevOps teams with the four key metrics — and six years of data showing speed and stability don't trade off.",
+    "core_topic": "Devops",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2019/09/good-talkspodcasts-september-2019-i.html",
-    "registered_at": "2020-01-19T20:39:02.000Z"
+    "registered_at": "2020-01-19T20:39:02.000Z",
+    "notes": "On Screaming in the Cloud, Corey Quinn talks to Dr. Nicole Forsgren (lead author of the Accelerate State of DevOps report / DORA) about measuring DevOps performance rigorously — with academically designed research (hypothesis testing, cluster analysis) that finds the capabilities statistically predictive of success rather than testing specific tools.\n\n- The four key metrics split into speed (deployment frequency; lead time for changes, commit-to-production) and stability (time to restore service; change failure rate). Six years of data show speed and stability do NOT trade off.\n- Teams cluster into elite/high/medium/low: elite deploy on demand, lead time <1 day, restore <1 hour, 0-15% change failure; low deploy monthly-to-6-monthly with 46-60% failure. Classification is per team, so one org can be both.\n- Improve with a constraints-based approach: pick your three or four biggest bottlenecks from the capability list, focus for six months, then re-evaluate.\n- Delay and large batch sizes increase blast radius and instability; outsourcing by function correlates with low performance, and top performers scale via communities of practice and grassroots efforts that survive reorgs (not Big Bang or Centers of Excellence)."
   },
   {
     "id": "recnhIPaWkZpDSgib",
@@ -16054,21 +16060,20 @@
     "url": "https://projecttoproduct.org/podcast/gene-kim-part-2/",
     "duration": 1620,
     "topics": [
-      "Agile",
       "Engineering Culture",
-      "Continuous Delivery",
-      "Inspirational",
-      "Product"
+      "Transformation",
+      "Flow"
     ],
     "speakers": [
       "Mik Kersten",
       "Gene Kim"
     ],
-    "description": "They talk about the last three ideals described in The Unicorn Project; Improvement of Daily Work, Psychological Safety and Customer Focus.\n",
-    "core_topic": "",
+    "description": "Mik + One with Gene Kim on the last three of his Five Ideals (improvement of daily work, psychological safety, customer focus) — and why optimizing internal process over customer value wastes transformation spend.",
+    "core_topic": "Devops",
     "format": "podcast",
     "blog_url": "http://www.eferro.net/2020/03/good-talkspodcasts-march-2020-i.html",
-    "registered_at": "2020-03-14T09:04:30.000Z"
+    "registered_at": "2020-03-14T09:04:30.000Z",
+    "notes": "On the Mik + One podcast, Dr. Mik Kersten and Gene Kim (The Unicorn Project, The DevOps Handbook) cover the final three of Kim's Five Ideals — improvement of daily work, psychological safety, and customer focus — arguing transformations fail when organizations optimize internal process instead of customer value.\n\n- Improvement of daily work matters as much as the work: the Toyota Andon cord is pulled ~3,500 times a day, stopping the line only if a problem can't be fixed within the ~55s tact time — systemic fixes beat hitting daily targets, because tech debt recurs downstream.\n- Dev-productivity investment separates the giants from the stuck: Google reportedly ~$1B/year and ~1,500 developers on it, Microsoft 3,000-5,000 — versus organizations that \"put a summer intern on it.\"\n- The Flow Framework's four categories — features, defects, risks, debt — as a mental model: a team at 100% features and 0% tech debt should make a leader panic (eBay rebuilt ~5 times; Microsoft's 2002 Trustworthy Computing memo).\n- Psychological safety (Westrum's pathological/bureaucratic/generative cultures; Google's Project Aristotle) is the prerequisite for surfacing problems; customer focus (Geoffrey Moore's core vs context) is the North Star — a Compuware team removed \"context\" systems to save $8M to reinvest in customer-valued R&D."
   },
   {
     "id": "recs0zczltdpOS1Zg",
