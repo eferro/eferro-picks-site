@@ -1934,15 +1934,20 @@
     "title": "Episode 34 google at work",
     "url": "https://podtail.com/podcast/hidden-brain/episode-34-google-at-work/",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Company Culture",
+      "Teams",
+      "Management"
+    ],
     "speakers": [
       "Laszlo Bock"
     ],
-    "description": "Hidden Brain podcast\n",
-    "core_topic": "",
+    "description": "NPR Hidden Brain with Laszlo Bock (Google's head of People Operations) on Google's people analytics: Project Aristotle and psychological safety, stripping managers of unilateral power, and data-driven hiring.",
+    "core_topic": "Company Culture",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2016/07/index.html",
-    "registered_at": "2020-01-19T20:35:05.000Z"
+    "registered_at": "2020-01-19T20:35:05.000Z",
+    "notes": "On NPR's Hidden Brain (host Shankar Vedantam), Laszlo Bock (head of Google's People Operations, author of Work Rules!) explains Google's approach to people: assume people are fundamentally good and do better work when they feel ownership, reinforced with universal stock, radical transparency, and flat access up the hierarchy.\n\n- Project Aristotle found that combining stars does not create a superstar team; the driver of effective teams is psychological safety — and teams with high psychological safety benefit tremendously from diversity while those without it don't.\n- Google strips managers of unilateral power: separate committees decide promotions, pay, hiring and team composition, leaving managers only coaching/guidance (the downside: big pushes like Google Plus move slower).\n- A gendered hiring signal from self-ratings: for men, rating oneself 4/5 as an engineer was most predictive of success (self-awareness); for women, 5/5 was most predictive (hypothesized higher EQ despite pressure to be modest).\n- Ownership mechanisms: everyone gets stock regardless of role; weekly all-hands with leadership where any question is allowed and everyone's goals are visible; a peer-bonus system where any employee can award ~$100 to a colleague — plus a defence of \"power-law\" pay for top performers who generate most of the value."
   },
   {
     "id": "rec7esb5ikErFD88K",
