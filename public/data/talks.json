@@ -1764,8 +1764,8 @@
     "url": "https://www.codurance.com/publications/challenges-oportunities-platform-engineering-devops",
     "duration": 0,
     "topics": [
-      "Platform",
       "Platform as a product",
+      "Platform teams",
       "Devops"
     ],
     "speakers": [
@@ -1773,11 +1773,12 @@
       "Markus Seebacher",
       "José Rodríguez Huerta"
     ],
-    "description": "The three of them shared thoughts about common mistakes such as not knowing who your clients are, coupling to services, coupling to custom implementations or team silos, and how you can identify them rapidly. \n",
-    "core_topic": "",
+    "description": "Codurance Talks with Marcus (ex-Pagantis CTO) and Phil Taprogge on platform engineering: treat the platform as a product, \"zero Ops\" is a myth, default to buy over build, and escape Big Bang releases.",
+    "core_topic": "Platform Engineering",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/01/good-talkspodcasts-jan-2021-i.html",
-    "registered_at": "2021-01-30T20:34:08.000Z"
+    "registered_at": "2021-01-30T20:34:08.000Z",
+    "notes": "On Codurance Talks (host JR from Codurance), Marcus (former CTO of Pagantis) and Phil Taprogge (Principal Platform/SRE at Codurance) argue platform engineering and DevOps only work when the goal is autonomous teams delivering value with low friction, and internal platforms are treated as products with real ownership — not a leaderless \"everyone owns it\" pile.\n\n- Anti-pattern \"DevOps within teams\": one DevOps person per team gave so much autonomy that everyone invented their own practices (\"microplatforms\") — fixed by a centralized platform team with a dedicated product owner (Heroku is the developer-experience standard to beat).\n- \"Zero Ops\" is a myth — toil always exists and needs owners; buy vs build should default to managed services: their in-house Kubernetes PaaS took 9 months and paged every ~6 weeks, while AWS denied K8s existed for 6 months, U-turned, and shipped a better managed service in 3.\n- Escape Big Bang releases and Black Friday change-freezes via small batches, observability and automated rollback (Black Friday traffic predicted 2x came in 10x — caught by monitoring, not customers, and fixed by deploying more pods same day).\n- Frame reliability as a money tradeoff with SLOs and error budgets (99.9% ≈ 40 min/month vs 99.999%), and run it data-driven per Accelerate/DORA (deploy frequency, lead time, time to restore, change failure rate)."
   },
   {
     "id": "rec6dNBlOT9adUKdG",
@@ -9312,24 +9313,23 @@
     "url": "https://itrevolution.com/the-idealcast-episode-23/",
     "duration": 7320,
     "topics": [
-      "Architecture",
-      "Architecture patterns",
       "Functional",
-      "Technical leadership",
-      "Technology Strategy"
+      "Systems Thinking",
+      "cqrs"
     ],
     "speakers": [
       "Scott Havens",
       "Gene Kim"
     ],
-    "description": "Havens shares his views on what makes great architecture great. He details what happened when an API call required 23 other synchronous procedures calls to return a correct answer. He discusses the challenges of managing inventory at Walmart, how one implements event sourcing patterns on that scale, and the functional programming principles that it depends upon. Lastly, he talks about how much category theory you need to know to do functional programming and considerations when creating code in complex systems. It is recommended to first watch the talk https://www.youtube.com/watch?v=n5S3hScE6dU or listen to the podcast https://itrevolution.com/the-idealcast-episode-22/\n",
+    "description": "The Idealcast (Gene Kim) with Scott Havens on simplifying Walmart/Jet.com inventory: applying functional programming to whole systems — pre-computed lookups and event-driven architecture — to collapse 23 API calls into 2.",
     "core_topic": "Architecture",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2021/10/good-talkspodcasts-october-2021-ii.html",
     "registered_at": "2021-10-17T14:40:43.000Z",
     "rating": 5,
     "language": "English",
-    "year": 2020
+    "year": 2020,
+    "notes": "On The Idealcast, Gene Kim interviews Scott Havens (who built inventory architecture at Jet.com and Walmart) on applying functional-programming principles to entire distributed systems — treating a whole service as a pure function so item-availability (originally 23 nested synchronous API calls) collapses into two key-value lookups.\n\n- Pre-computation via currying and cardinality: availability depends on ~12 warehouses, ~43,000 zip codes, ~12 carriers, etc.; including SKUs/weight is an impossible 7.4×10^19 entries, so they curried out the high-cardinality inputs to a ~6M-entry lookup table — 23 API calls become 2 lookups.\n- Loose coupling is about independent testing and deployment, not just code decomposition: 23 teams could build features independently but had to traverse the whole synchronous call graph to test (nightly deploy windows, rollbacks, 100-person incident calls); async Kafka event streams let each team test only against its direct consumer, containing the blast radius.\n- Functional core / imperative shell: keep business logic as a pure function (command + state → new state/events) with side effects pushed to the edges — enabling property-based testing of invariants (inventory never negative) without a database.\n- Inventory must be unified per item/warehouse: two competing systems either strand stock or oversell, and \"a lying inventory system is worse than none.\" The Jet/Walmart merger was a real A/B test that produced the evidence to spread the event-driven architecture (CQRS/event sourcing, strangler pattern)."
   },
   {
     "id": "recXtA7phfvXSLFlc",
