@@ -17651,19 +17651,19 @@
     "url": "https://getdx.com/podcast/27",
     "duration": 3120,
     "topics": [
-      "Platform",
-      "Platform teams",
       "Platform as a product",
-      "Devex"
+      "Technical leadership",
+      "Engineering productivity"
     ],
     "speakers": [
       "Jean-Michel Lemieux"
     ],
-    "description": "Jean-Michel Lemieux, former CTO of Shopify and VP of Engineering at Atlassian, explains how to advocate for investing in platform work, which projects to fund, and what distinguishes a great platform leader.\n",
-    "core_topic": "",
+    "description": "Engineering Enablement (DX) with Jean-Michel Lemieux (ex-CTO Shopify) on how much R&D to invest in platform work — his deliberately provocative 50% thesis — and why platform work is customer-centric, not a tech-debt black hole.",
+    "core_topic": "Platform Engineering",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2023/01/good-talkspodcasts-jan-2023-i.html",
-    "registered_at": "2023-01-08T17:40:56.000Z"
+    "registered_at": "2023-01-08T17:40:56.000Z",
+    "notes": "On the Engineering Enablement podcast (host Abi Noda, DX), Jean-Michel Lemieux (former CTO of Shopify, ex-VP Engineering at Atlassian) argues that platform work — anything giving outsized medium-to-long-term leverage (infrastructure, dev environments, architecture, security, and above all core domain/data models and APIs) — should command roughly 50% of R&D spend, a number meant to provoke the conversation.\n\n- The 50% figure is a deliberate \"tripwire\": companies typically sit at 10-20%, get \"screwed,\" and it takes ~3 years to unwind — the burden of proof should be on execs to justify why NOT 50%.\n- Platform work is customer-centric (performance, scalability, reliability, feature-enabling), not a black hole; it deserves a roadmap and a full-time product-owner mindset. Twitch building its own video-streaming server in the first 18 months gave 10x lower cost and still keeps it alive.\n- A dedicated \"platform team\" owning the whole platform roadmap is an anti-pattern — every team has a platform component; specialized accelerator teams (Rails, mobile infra, CI/CD) only cover 10-20% of the real platform work.\n- Shopify example: adding subscriptions meant making the order model mutable (a scary core-domain change justified by five years of roadmap), ~2.5-3 years, shipped for Black Friday. \"Keeping the lights on\" (gardening) is only ~10-20%; the metric that matters is \"are we getting better or worse year-over-year?\" (he'd `rm -rf` his source dir weekly to test he could still ship a fix)."
   },
   {
     "id": "recySUpRyik02pieD",
