@@ -307,25 +307,6 @@
     "notes": "Focusing on the **care and feeding of rapid feedback cycles** allows organizations to replace risky speculation with empirical evidence, ultimately transforming them into highly competitive learning organizations. By **automating processes** and driving testing to the lowest possible level, teams drastically reduce feedback latency and ensure their implementations truly align with actual user needs.\n\n* **Feedback cycles** consist of doing a thing, observing the result, and adjusting (steering) accordingly based on what was learned.\n* There are **three essential feedback loops** in development: checking if intentions match needs, if implementation matches intentions, and if the final implementation actually meets the need.\n* **Feedback latency**—the time it takes to go from action to observation—directly determines project risk; reducing this time is the most effective way to manage uncertainty.\n* **Empirical evidence trumps speculation** every time; requirements and design documents are merely forms of speculation until the software is running in production.\n* The **\"risk curve\"** represents the accumulation of speculation over time; long cycles without validation create massive, hidden risks that lead to budget and schedule overruns.\n* **\"Fragile\" agile** occurs when teams utilize \"stabilization sprints,\" which act as mini-waterfalls that prevent software from being truly \"done-done\" and delay critical feedback.\n* **Automation of \"all the things\"** is required to shorten cycles and free engineers from the manual, repetitive tasks that hinder exploration and rapid delivery.\n* **Quality is a collective responsibility**; having a separate, siloed QA team creates weight states and communication gaps that break feedback loops.\n* A healthy ecosystem requires **layered feedback**: local unit tests (first line of defense), automated CI, continuous story acceptance, exploratory testing, and production monitoring.\n* **Product Managers should own story acceptance** and perform it as soon as a story is ready, rather than waiting for a sprint demo.\n* **Exploratory testing** is vital for discovering unknown risks and ensuring the team is not \"fooling themselves\" with passing automated tests.\n* The **\"Tetris Principle of Testing\"** involves driving tests to the lowest possible level (unit tests) to maximize execution speed and efficiency.\n* **Visibility of feedback** is crucial; teams should be surrounded by real-time data via dashboards and monitors showing build health and production metrics.\n* High-functioning feedback loops transform a company into a **\"learning organization,\"** which is the ultimate competitive advantage in a rapidly changing world."
   },
   {
-    "id": "rec0y0YDWPOzKxVXq",
-    "title": "Talking Serverless #27 - Gojko Adzic Partner at Neuri Consulting",
-    "url": "https://anchor.fm/talking-serverless/episodes/27---Gojko-Adzic-Partner-at-Neuri-Consulting-ejrt5c",
-    "duration": 0,
-    "topics": [
-      "Serverless",
-      "Microservices",
-      "Architecture"
-    ],
-    "speakers": [
-      "Gojko Adzic"
-    ],
-    "description": "",
-    "core_topic": "",
-    "format": "podcast",
-    "blog_url": "https://www.eferro.net/2020/11/good-talkspodcasts-nov-2020-i.html",
-    "registered_at": "2020-11-09T08:53:41.000Z"
-  },
-  {
     "id": "rec12qxzKwjSXh9X7",
     "title": "What Does Tech Excellence Look Like?",
     "url": "https://www.youtube.com/watch?v=Avs70dZ3Vlk",
@@ -712,7 +693,7 @@
     "speakers": [
       "Dave Farley"
     ],
-    "description": "",
+    "description": "Dave Farley explains how to build acceptance tests as maintainable executable specifications that capture what a system should do rather than how, using a four-layer architecture, functional isolation and internal DSLs to keep them fast, deterministic and trustworthy at scale.",
     "core_topic": "Testing",
     "conference_name": "InfoQ",
     "format": "talk",
@@ -1354,7 +1335,13 @@
     "title": "Protocols - The Glue for Applications",
     "url": "http://www.infoq.com/presentations/erlang-async-protocols",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Architecture",
+      "erlang",
+      "Resilience",
+      "Software Design",
+      "Functional"
+    ],
     "speakers": [
       "Torben Hoffmann"
     ],
@@ -1815,25 +1802,6 @@
     "notes": "Udi Dahan (site: udidahan.com) gave this talk on Command-Query Responsibility Segregation (CQRS) at QCon London 2010. His core thesis is that the standard cookie-cutter distributed architecture (UI / services / business logic / data access / database) is a habit inherited unexamined, ill-suited to a world where data is no longer authoritative paper but lives in the machine and is shared by many concurrent, collaborating users. He argues that by separating the read side (queries) from the write side (commands) and, crucially, by capturing user intent at the UI, the hardest architectural problems — scalability, availability, staleness, concurrency — can be traded away for much simpler ones. He takes a deliberately roundabout, history-first approach, urging the audience to \"think different\" and make no assumptions about what they are building.\n\n* **The balance of power flipped from man to machine**: Business once ran on paper filled out \"in triplicate,\" where in any conflict \"the printed page won\" as the source of truth and the user was king. After decades of data entry, the machine became authoritative — \"in any conflict between the printed page and what's in the machine, what's in the machine rules\" — so now \"we're afraid of our users\" and IT work shifted toward validating everything they enter.\n\n* **The patterns never changed even as the world did**: We moved from structured to object-oriented programming and from minicomputers to PCs, the web brought \"millions of users\" collaborating in real time, yet \"the code that we wrote 10 years ago and the code that we wrote 20 years ago, it looks pretty much the same.\" Much of what we do is \"habit, or mysticism\" justified by \"You don't understand, son.\"\n\n* **Staleness is physics, not a bug**: Once two users view the same data and one changes it, the other is \"necessarily looking at stale data\" — \"It's physics. Gravity. You can't argue with it.\" IT tends to sweep this under the rug with last-one-wins/first-one-wins concurrency, but \"business people tend to care very much about this kind of stuff,\" and the right response is to ask how old the data is and what decisions ride on it.\n\n* **Queries are just data, not objects**: Data shown to a user is a stale snapshot with no behavior; since \"the definition of an object is data encapsulated by behavior,\" for queries \"there is no object... just data.\" So why throw an object-relational mapper (NHibernate, Entity Framework) and stacks of transformations (entities → DTOs → view models) at the read side? \"Maybe our query architecture can be as simple as select star from a table.\"\n\n* **Store data the way you show it**: For the read model you don't need referential integrity or foreign keys (\"the data as it was 10 minutes ago does not change\"), only indexes for fast lookup. Pre-calculate and pre-aggregate per screen (e.g. lifetime customer value as a stored column kept in sync by background processes), embracing data duplication just as we already do with search and caches.\n\n* **Role-based security via one-table-per-screen**: Instead of column-based security on a wide 12-column table, have two tables — one with five columns for the customer-care rep, one with twelve for the supervisor — and grant select permissions per table. \"One screen equals one table, one table is used only by one screen,\" giving role-based security simply.\n\n* **Users don't want search, they want to find things**: \"Users don't give a shit about search. They care about finding things.\" They hammer F5 on filtered combo-box grids because they want to know when matching rows appear or disappear — a real-world event. Better to store the query they care about and use complex event processing to email them, rather than \"200 call center representatives click, click, clicking F5.\"\n\n* **The query model enables preliminary validation of commands**: Because the cached, immutable read data is everywhere, it can sanity-check commands before they are sent — uniqueness (e.g. a Yahoo username already taken), that related IDs exist, geocoding of addresses. This shifts the balance of power: \"Most of the commands that would have been rejected won't even have been sent,\" except by hackers, who don't deserve a good user experience.\n\n* **Validation and business rules are two different questions**: Validation asks \"Are they speaking the right language? Have they ticked all the boxes?\" — it can be a component placed anywhere (even on the client), since \"layers don't have to be tiers.\" Business rules ask, given that the user acted on stale data, \"should we do what you're asking?\" — answered against the current authoritative system state.\n\n* **Capture user intent at the UI to dissolve hard problems**: An editable data grid hides intent — was changing two fields one transaction or two? Was an address edit a typo fix or a move (different permissions)? In a multi-user session, two edits may safely merge (address + marital status) or must conflict (a discount based on a credit balance someone else just changed). \"Solving that from a data-up perspective is very difficult.\"\n\n* **Ticketmaster seat-reservation example**: Checkbox-per-seat works for one person but collapses for a family — overlapping users grab seats in the same \"free zone,\" forcing endless uncheck/refresh/resubmit cycles that multiply load. Instead, capture intent (number of people, seat type, budget, keep-us-together) and run a \"packing algorithm\" offline, then email results. This removes the freshness requirement so the seat map becomes \"just a picture\" served from a CDN — solving scalability and freshness at once, \"all because you thought a little bit more about the UI.\"\n\n* **Commands should be asynchronous; banking is risk management, not transactions**: A good command UI just says \"your confirmation email will arrive shortly,\" like ordering on Amazon. Making commands asynchronous (via a queue/JMS, or HTTP PUT to a sub-resource) frees HTTP connections immediately. Banking never worked like the textbook account-transfer; it is \"all about managing risk\" — a Platinum customer's account type and single ($1,000) / daily ($5,000) withdrawal limits change rarely and can be cached at the ATM, so a $50 withdrawal needs little more than a local check plus queuing the transaction.\n\n* **The domain model shrinks dramatically**: With queries handled by separate denormalized stores, the domain model no longer needs deep entity relationships (customer.orders.orderlines.products.pricinghistory...) or every field — \"the vast majority of commands are specific about one specific entity type.\" You can partition data into what rules run on (the domain model) and what is query-only (thrown over the wall). The stores need not be relational — the query side can be a non-relational indexed/transactional store, the command side possibly an object database (\"not only SQL\").\n\n* **Tooling and takeaways**: On the read side data flows out via events into a denormalized query model. Dahan notes .NET lacked good queuing and publish-subscribe (\"BizTalk doesn't count\"), so he built the open-source NServiceBus (nservicebus.com) over four years, in production ~four years, used by banks, insurers, telcos and internet firms. Summary: keep queries simple (no DTOs/messaging/multi-tier needed), think hard about user intent and \"sit down with your users\" — it can make brute-force scalability and reliability nightmares \"a moot point,\" delivering async, event-driven benefits while still \"programming in the exact same single-threaded transactional model as before.\""
   },
   {
-    "id": "rec7MZ8xz4AKYUSJ5",
-    "title": "060: Coping with Complexity with Kent Beck",
-    "url": "https://www.greaterthancode.com/coping-with-complexity",
-    "duration": 0,
-    "topics": [
-      "Agile",
-      "Engineering Culture",
-      "Technical Practices"
-    ],
-    "speakers": [
-      "Kent Beck"
-    ],
-    "description": "Greater Than Code podcast. Some interesting points during the interview with Kent Beck. Part of the conversation was related to this Beck's blog post one-bite-at-a-time-partitioning-complexity.\n",
-    "core_topic": "",
-    "format": "podcast",
-    "blog_url": "https://www.eferro.net/2018/01/interesting-talkspodcasts-2018-jan.html",
-    "registered_at": "2020-01-19T20:33:08.000Z"
-  },
-  {
     "id": "rec7NPbH4POd8KrJS",
     "title": "The science of batch size",
     "url": "https://www.youtube.com/watch?v=QsGL1RkmnyU",
@@ -1993,7 +1961,7 @@
     "speakers": [
       "Hans Rosling"
     ],
-    "description": "",
+    "description": "Hans and Ola Rosling use a live multiple-choice quiz to show that educated audiences hold systematically negative and outdated views of global development, and offer four rules of thumb to replace biased intuition with a fact-based worldview.",
     "core_topic": "Inspirational",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2017/04/interesting-talkspodcasts-april-2017.html",
@@ -2014,7 +1982,7 @@
     "speakers": [
       "Fred George"
     ],
-    "description": "\n",
+    "description": "Fred George reports on 'programmer anarchy' at Forward: keeping agile values while discarding roles, estimates, iterations and most practices, trusting self-organizing developers driven by business metrics and continuous deployment of tiny, short-lived applications.",
     "core_topic": "Engineering Culture",
     "conference_name": "InfoQ",
     "format": "talk",
@@ -2048,11 +2016,17 @@
     "title": "Instrumentation, Observability & Monitoring of Machine Learning Models",
     "url": "https://www.infoq.com/presentations/instrumentation-observability-monitoring-ml/",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Operations",
+      "Observability",
+      "Monitoring",
+      "Machine Learning",
+      "MLOps"
+    ],
     "speakers": [
       "Josh Wills"
     ],
-    "description": "",
+    "description": "Josh Wills (Slack) argues that monitoring machine learning is about handling failure rather than optimizing success, and that because ML failure modes are unpredictable, testing in production is mandatory—covering the ELK stack, Prometheus, tracing, model versioning and second-order feedback loops.",
     "core_topic": "Operations",
     "conference_name": "InfoQ",
     "format": "talk",
@@ -2183,11 +2157,16 @@
     "title": "Data Modeling for Scale with Riak Data Types",
     "url": "http://www.infoq.com/presentations/data-modeling-riak",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Data Engineering",
+      "Architecture",
+      "Scalability",
+      "Resilience"
+    ],
     "speakers": [
       "Sean Cribbs"
     ],
-    "description": "\n",
+    "description": "Sean Cribbs (Basho) explains how conflict-free replicated data types (CRDTs) give Riak a rigorous, formally grounded alternative to brittle ad-hoc conflict resolution in eventually consistent systems, with practical data-modeling use cases for counters, sets and maps.",
     "core_topic": "Data Engineering",
     "conference_name": "InfoQ",
     "format": "talk",
@@ -2744,7 +2723,13 @@
     "title": "What Breaks Our Systems: A  Taxonomy of Black Swans",
     "url": "https://www.infoq.com/presentations/taxonomy-black-swans/",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Operations",
+      "Resilience",
+      "Incident respond",
+      "Observability",
+      "Scalability"
+    ],
     "speakers": [
       "Laura Nolan"
     ],
@@ -2993,11 +2978,14 @@
     "title": "Why people believe weird things",
     "url": "http://www.ted.com/talks/michael_shermer_on_believing_strange_things",
     "duration": 840,
-    "topics": [],
+    "topics": [
+      "Inspirational",
+      "Mental models"
+    ],
     "speakers": [
       "Michael Shermer"
     ],
-    "description": "\n",
+    "description": "Michael Shermer argues that belief in the paranormal and pseudoscience stems not from stupidity but from how the human brain processes patterns, faces and statistics, and that skepticism is a method: always asking what the more likely explanation is, and counting misses as well as hits.",
     "core_topic": "Inspirational",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2014/09/charlaspodcasts-8-14-septiembre-2014.html",
@@ -3144,7 +3132,13 @@
     "title": "Climbing Off The Ladder, Before We Fall Off (spotify-happiness-retention)",
     "url": "http://www.infoq.com/presentations/spotify-happiness-retention",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Engineering Culture",
+      "Engineering Career",
+      "Company Culture",
+      "Teams",
+      "Management"
+    ],
     "speakers": [
       "Chris Angove"
     ],
@@ -3813,11 +3807,14 @@
     "title": "Success is a continuous journey",
     "url": "http://www.ted.com/talks/richard_st_john_success_is_a_continuous_journey",
     "duration": 300,
-    "topics": [],
+    "topics": [
+      "Inspirational",
+      "Engineering Career"
+    ],
     "speakers": [
       "Richard St. John"
     ],
-    "description": "\n",
+    "description": "Richard St. John warns that the most dangerous moment in a career is believing you have arrived, using his own collapse to show that success is not a destination but a continuous journey sustained by the same eight principles that got you to the top.",
     "core_topic": "Inspirational",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2014/09/charlaspodcasts-25-31-agosto-2014.html",
@@ -4025,11 +4022,14 @@
     "title": "Less stuff more happiness",
     "url": "http://blog.ted.com/2011/10/05/less-stuff-more-happiness-graham-hill-on-ted-com/",
     "duration": 360,
-    "topics": [],
+    "topics": [
+      "Inspirational",
+      "simplicity"
+    ],
     "speakers": [
       "Graham Hill"
     ],
-    "description": "",
+    "description": "Graham Hill argues that less stuff and less space can mean more money, freedom and time, proposing that we 'edit' our lives to keep only what we truly love—illustrated by his crowd-sourced 420-square-foot transforming Manhattan apartment.",
     "core_topic": "Inspirational",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2014/09/index.html",
@@ -4071,7 +4071,7 @@
     "speakers": [
       "Baron Schwartz"
     ],
-    "description": "",
+    "description": "Baron Schwartz argues the database is one of the last holdouts of DevOps and shows how applying the same tooling, culture and shared ownership escapes the gatekeeping-DBA bottleneck and turns the role into a Database Reliability Engineer.",
     "core_topic": "Devops",
     "conference_name": "InfoQ",
     "format": "talk",
@@ -4239,27 +4239,6 @@
     "notes": "Organizations must prioritize rapid learning through targeted experimentation and assumption mapping to identify and discard non-viable ideas before scaling, thereby saving significant resources and time. Success in this process requires a culture of psychological safety where leaders value evidence-based decision-making and celebrate the discovery of what doesn't work as a vital step toward achieving true customer delight.\n\n* **Optimize for Learning over Scaling**: Minimum Viable Products (MVPs) should be designed to maximize learning rather than immediate growth. While the team determines what is \"minimal,\" only the customer can decide if a product is \"viable.\"\n* **Cross-Industry Application**: Lean Startup and Modern Agile principles are not limited to software; they are successfully applied in automotive, fashion, consumer packaged goods, and service industries.\n* **Shift to Mobility and Outcomes**: Companies are moving from selling specific products (like cars) to solving broader customer needs (like mobility or hygiene), requiring a focus on speed-to-delight.\n* **Continuous Discovery and Testing**: Use fast feedback loops to test value propositions and assumptions before building. Slow feedback loops prevent informed decision-making and increase the risk of failure.\n* **Safety as a Prerequisite**: Innovation requires a culture where it is safe to fail or pivot. Leaders must lead with questions rather than commands and ensure that stopping a non-viable project is viewed as a success, not a personal failure.\n* **Financial Value of \"Killing\" Ideas**: Significant value is created by saving resources—sometimes tens of millions of dollars—by identifying and stopping bad ideas early based on evidence.\n* **Diversity of Experimentation**: Teams should use multiple validation methods, including customer interviews, search trend analysis, landing pages, and paper prototyping, rather than relying on a single type of test.\n* **Targeted Validation**: Experiments that target people actively seeking solutions (such as search-based advertising) often yield much higher conversion and better data than passive \"push\" advertising.\n* **Assumption Mapping**: Use a framework to map assumptions based on **Desirability** (do people want it?), **Viability** (should we do it?), and **Feasibility** (can we build it?).\n* **Focus on the Unknown**: Prioritize experiments on assumptions that are high-importance but low-certainty to reduce the biggest risks first.\n* **Nurturing Intrapreneurs**: Corporations should identify and celebrate internal entrepreneurs, providing them with the tools and \"superpowers\" to navigate discovery and validation processes.\n* **The \"Andon Cord\" in Knowledge Work**: Teams must have the authority to \"stop the line\" to reflect and improve without fear of retribution, ensuring quality and long-term revenue over short-term output."
   },
   {
-    "id": "recG5OJBNIEhM8uU8",
-    "title": "The Software Industry's Evolution, Complex Architecture & Problem-Solving At Scale | Michael Nygard In The Engineering Room Ep. 35",
-    "url": "https://open.spotify.com/episode/1OQkqwv30ScqG6f1MZLFHe",
-    "duration": 2640,
-    "topics": [
-      "Architecture",
-      "Platform",
-      "Platform engineering",
-      "Data Engineering"
-    ],
-    "speakers": [
-      "Michael T. Nygard",
-      "Dave Farley"
-    ],
-    "description": "A discussion between two experts on incremental design and architecture, including data mesh solutions, managing complexity, platform engineering, and the challenges of balancing innovation with stability\n",
-    "core_topic": "",
-    "format": "podcast",
-    "blog_url": "https://www.eferro.net/2025/03/good-talkspodcasts-march-i.html",
-    "registered_at": "2025-03-02T18:10:24.000Z"
-  },
-  {
     "id": "recG6Ka8kibyQjvdT",
     "title": "What We Got Wrong - Lessons from the Birth of Microservices",
     "url": "https://www.youtube.com/watch?v=-pDyNsB9Zr0",
@@ -4423,11 +4402,15 @@
     "title": "Agile programming for your family",
     "url": "http://www.ted.com/talks/bruce_feiler_agile_programming_for_your_family",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Agile",
+      "Teams",
+      "Feedback cycles"
+    ],
     "speakers": [
       "Bruce Feiler"
     ],
-    "description": "\n",
+    "description": "Bruce Feiler argues that the tools to reduce family chaos come from agile software development—self-managing teams, constant feedback and small iterative wins—distilled into a three-plank 'Agile Family Manifesto': adapt all the time, empower your children, and tell your family story.",
     "core_topic": "Agile",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2014/09/index.html",
@@ -4704,7 +4687,13 @@
     "title": "datomic-functional-database",
     "url": "http://www.infoq.com/presentations/datomic-functional-database",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Data Engineering",
+      "Functional",
+      "Software Design",
+      "simplicity",
+      "Architecture"
+    ],
     "speakers": [
       "Rich Hickey"
     ],
@@ -5992,24 +5981,6 @@
     "notes": "**True progress in both software engineering and business is achieved by relentlessly shortening feedback loops and prioritizing measurable impact over mere effort or rigid adherence to methodological dogmas.** Success depends on the courage to challenge assumptions and adapt practices to fit the specific values and constraints of your unique context.\n\n* **Shorten feedback loops:** Shortening feedback cycles is a fundamental engineering activity; engineers should focus not just on building the program, but on \"engineering the making of the program\".\n* **Challenge the \"cost of change\":** Factors like the cost of change, the cost of delay, and cycle times are choices determined by infrastructure and systems rather than immutable laws.\n* **Avoid dogmatism:** Adopting practices like TDD or pair programming as a \"religion\" is counterproductive; every practice must be evaluated within its specific context.\n* **Derive solutions from first principles:** Effective problem-solving requires re-deriving solutions from first principles for each situation rather than applying \"cookie-cutter\" templates or memorized formulas.\n* **Align organizational values:** Technical practices cannot succeed if they contradict the organization’s actual values; success requires a foundation of communication, simplicity, feedback, courage, and respect.\n* **Prioritize validated learning:** In environments of high uncertainty, focus on \"validated learning\" to determine if product decisions are correct, rather than relying on a product owner’s authoritative roadmap.\n* **Reward impact over effort:** Organizations should measure and reward people based on their actual impact rather than their effort, checklist compliance, or adherence to a \"low-risk\" plan.\n* **Transition to human systems engineering:** To increase impact, contributors must move from individual \"virtuosity\" to \"human systems engineering\"—cultivating communities and helping others make things.\n* **Implement subtractive coaching:** Instead of trying to \"add\" motivation, coaching should focus on removing the fears and organizational barriers that prevent employees from being naturally engaged and creative.\n* **Address procurement and process in large projects:** Massive project failures are often rooted in waterfall procurement, lack of accountability, and proprietary cultures rather than technical complexity.\n* **Evolve the Agile Manifesto:** Modern development should prioritize team vision and discipline over interactions, validated learning over working software, customer discovery over collaboration, and initiating change over merely responding to it."
   },
   {
-    "id": "recMLLKXSakluERMk",
-    "title": "073: Driven By Need, Guided By Example with Dan North",
-    "url": "https://www.greaterthancode.com/driven-by-need-guided-by-example",
-    "duration": 0,
-    "topics": [
-      "Agile",
-      "Technical Practices"
-    ],
-    "speakers": [
-      "Dan North"
-    ],
-    "description": "\n",
-    "core_topic": "",
-    "format": "podcast",
-    "blog_url": "https://www.eferro.net/2018/10/good-talkspodcasts-oct-2018-i.html",
-    "registered_at": "2020-01-19T20:33:30.000Z"
-  },
-  {
     "id": "recMLt6qAzvtKDVJE",
     "title": "Vibe Coding For Grownups with Gene Kim",
     "url": "https://www.youtube.com/watch?v=0aJRtCn_WqM",
@@ -6151,11 +6122,16 @@
     "title": "Preparing Humans for the Second Machine Age",
     "url": "https://www.infoq.com/presentations/tech-2020",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Company Culture",
+      "Teams",
+      "Management",
+      "Engineering Culture"
+    ],
     "speakers": [
       "Dominic Price"
     ],
-    "description": "",
+    "description": "Dominic Price (Atlassian) argues that as AI and automation reshape work the real challenge is getting better at being human: organisations keep buying tools to fix people problems while carrying Industrial-Revolution ways of working—answered by Atlassian's free Team Playbook of health monitors and plays.",
     "core_topic": "Company Culture",
     "year": 2020,
     "conference_name": "InfoQ",
@@ -7268,7 +7244,13 @@
     "title": "As work gets more complex, 6 rules to simplify",
     "url": "https://www.ted.com/talks/yves_morieux_as_work_gets_more_complex_6_rules_to_simplify",
     "duration": 720,
-    "topics": [],
+    "topics": [
+      "Management",
+      "Company Culture",
+      "Teams",
+      "simplicity",
+      "Systems Thinking"
+    ],
     "speakers": [
       "Yves Morieux"
     ],
@@ -7350,7 +7332,13 @@
     "title": "Cultivating Production Excellence - Taming Complex Distributed Systems",
     "url": "https://www.infoq.com/presentations/complex-distributed-systems",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Operations",
+      "Observability",
+      "Resilience",
+      "Monitoring",
+      "Engineering Culture"
+    ],
     "speakers": [
       "Liz Fong-Jones"
     ],
@@ -7387,7 +7375,13 @@
     "title": "Resilient Predictive Data Pipelines",
     "url": "https://www.infoq.com/presentations/agari-resilient-predictive-data-pipes",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Data Engineering",
+      "Resilience",
+      "Architecture",
+      "Scalability",
+      "Cloud"
+    ],
     "speakers": [
       "Sid Anand"
     ],
@@ -7464,11 +7458,17 @@
     "title": "How to Build Observable Distributed Systems",
     "url": "https://www.infoq.com/presentations/observable-distributed-ststems",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Operations",
+      "Observability",
+      "Monitoring",
+      "Resilience",
+      "Microservices"
+    ],
     "speakers": [
       "Pierre Vincent"
     ],
-    "description": "\n",
+    "description": "Pierre (Poppulo SRE) argues that production should be treated as the starting point rather than the end goal, walking through health checks, metrics, structured logging and tracing—and why observability complements monitoring and rests on a blameless culture of trust.",
     "core_topic": "Operations",
     "conference_name": "InfoQ",
     "format": "talk",
@@ -7547,20 +7547,21 @@
     "url": "https://francliment.com/embedded-tdd/unembedding-embedded-systems-with-tdd-at-embo2022-conference/",
     "duration": 3120,
     "topics": [
-      "testing",
       "tdd",
-      "XP",
+      "Testing",
+      "Software Design",
       "Technical Practices",
-      "Agile"
+      "Quality"
     ],
     "speakers": [
       "Francisco Climent"
     ],
-    "description": "Interesting talk about the benefits of using TDD in embedded systems. The talk is full of useful tips, patterns, and strategies very useful in both embedded and non-embedded environments. Special mention to how Francisco uses mutation testing in the development process.\n\n",
-    "core_topic": "",
+    "description": "Fran Climent argues that embedded development only feels \"that hard\" because of an accidental-complexity, waterfall \"software factory\" culture, and shows how James Grenning's dual-target TDD—test doubles for hardware, a thin portable firmware layer, mutation testing and a plug-in architecture—removes the hardware bottleneck and makes embedded code testable, portable and refactorable.",
+    "core_topic": "Testing",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2023/01/good-talkspodcasts-jan-2023-ii.html",
-    "registered_at": "2022-12-11T19:48:39.000Z"
+    "registered_at": "2022-12-11T19:48:39.000Z",
+    "notes": "Fran Climent, a telecommunications/electronics engineer with 17 years in embedded development, argues that the widespread belief that \"embedded is that hard\" is mostly an illusion created by accidental complexity and a \"software factory\" culture of waterfall and interconnected silos. His thesis, grounded in James Grenning's \"Test-Driven Development for Embedded C\", is that a dual-target TDD workflow—test doubles standing in for hardware, a thin portable firmware layer, and mutation testing—removes the hardware bottleneck and lets embedded code become testable, portable and freely refactorable. The talk walks through the technical practices and, more importantly, the principles, fallacies and \"traps\" that sustain the old way.\n\n* **Escaping the software factory / Plato's cave**: For most of his career he \"barely managed to survive,\" failing to follow a sustainable, iterative, defect-free process—and every teammate shared the belief that embedded was inherently that hard. Discovering Grenning's book seven years ago, which led him to XP, agile and craftsmanship, was a game changer that felt like leaving Plato's cave.\n* **Hardware is the special function registers; test doubles substitute the real world**: From the embedded code's point of view, \"nothing happens in the real world if it doesn't change a special function register bit.\" Driving real temperature or speed to flip those bits is slow, expensive and a poor feedback loop, so test doubles interact with the registers directly—the code responds identically regardless of how the register flag was set. \"That's the whole point.\"\n* **Firmware is \"firm\" because of hard-to-change dependencies**: Citing Grenning and Robert C. Martin's Clean Architecture, software can have a long useful life, while firmware becomes rigid as hardware evolves—firmware is firm \"because of what it depends on and how hard it is to change those dependencies.\" Non-embedded developers also write firmware whenever they spread OS, RTOS or vendor-library dependencies through their business logic.\n* **Make it work / make it right / make it fast**: These must be separate steps because almost no human can do them well at once. Make-it-work is about understanding the problem, make-it-right is engineering the code so it is easy to understand, maintain and evolve, and make-it-fast is fulfilling timing requirements if any exist.\n* **The biggest lie is finding the right solution on the first iteration**: A fully decoupled, portable architecture is never designed up front in a single iteration, in embedded or non-embedded worlds. The key difference: making a simple thing work is \"orders of magnitude harder\" in embedded, because you must manage low-level details all at once on hardware that is often scarce, non-existent or faulty.\n* **The main() god and the IC-driver layer violate SOLID**: The \"main god\" localizes everything—including hardware access—tying the code to a specific microcontroller and cross-compiler and violating every SOLID principle. Adding an IC-driver layer improves cohesion but still binds drivers to the running microcontroller (breaking dependency inversion) and the application to concrete integrated circuits (breaking open-closed).\n* **The hardware bottleneck and the \"liar\" anti-pattern**: Debugging directly on hardware means you cannot tell whether a failure is in the firmware, the hardware, or both, which erodes team trust. Sad paths (e.g. the error states in a flash-memory write sequence) are nearly impossible to reproduce on real hardware, so they are left either unimplemented or implemented-but-untested—opening the door to the \"liar,\" a test suite that looks comprehensive but isn't. A stub provides those indirect inputs so the desired code path can be exercised.\n* **The vendor trap**: Vendor IDEs, frameworks and libraries must be treated as low-level details, decoupled and hidden from the application—\"the vendor is not our partner\" and the running processor should be a low-level detail. Ignoring this creates a competitive disadvantage: migrating platforms becomes an enormous effort, a real risk now that the semiconductor shortage has removed the multi-year migration slack companies used to enjoy.\n* **The compliance-mindset trap and code coverage**: Safety standards (IEC 61508, and ISO 26262 for automotive) treat dynamic testing as the primary validation technique and push toward 100% code coverage. But coverage is a necessary, not sufficient, condition for a comprehensive suite: 100% coverage assured by default when you follow TDD, yet standards permit lower coverage mainly to accommodate test-later approaches' inabilities.\n* **Mutation testing measures the quality of the tests**: An automatic fault-injection technique that finds counter-examples to the conjecture \"our suite is comprehensive because it has 100% coverage.\" A live mutant means a line could be changed or removed without any test noticing. He cites an industrial 60,000-line C system with full coverage that produced over 27,000 live mutants; a 200-mutant sample revealed at least two real production bugs, extrapolating to ~271 latent defects despite 100% coverage. Mutants also expose unspecified corner cases (e.g. whether the actuator should fire exactly at the temperature limit).\n* **Coverage fallacies and the cheating problem**: \"The code coverage is useless\" and \"harmful\" are wrong; the only valid target is 100%, because any unexecuted code is out of your control. When developers cheat coverage, \"this is not a Matrix fault—it's a sign of a bigger cultural and professional problem.\" The deeper question: do we test to fulfill a certification, or should certification simply be a consequence of following good internal standards?\n* **TDD is about internal quality, via the refactor step**: Red (write only enough test to fail), green (write only enough production code to pass—here you may be \"a complete sinner\"), then refactor. The refactor phase is where TDD really happens and where the make-it-right engineering—simple design, SOLID, design patterns, managing dependencies—lives. Test-later techniques touch only external quality and say nothing about design: \"inspection does not improve quality; the quality is already there.\"\n* **Dual-target TDD workflow**: Grenning's approach runs the red-green-refactor loop fast on the host (seconds to a minute), then re-runs the full suite on the target microcontroller (or a vendor simulator), because the end machine differs from the host—Daniel Penny's talk on \"the hidden risks of on-target testing\" explains why the target run is nearly mandatory. A CI/CD pipeline then runs static analysis, dynamic analysis, coverage, mutation coverage and cyclomatic complexity on host and target on every change.\n* **The portable plug-in architecture**: A thin PAL / microcontroller-firmware layer is the only code allowed to touch the special function registers (so only it is tied to the MCU); reusable IC drivers are developed against test doubles to capture the datasheet interpretation; system components implement application-level abstractions per hardware variant; and a Factory reads a config file to instantiate the right components. The result is a plug-in architecture where the hardware and microcontroller become plug-ins to portable business logic expressed in the language of the domain.\n* **Performance last, measured not speculated**: Quoting Fowler, don't speculate about performance—nine times out of ten you optimize uselessly while hurting readability and maintainability. First ask \"how fast?\", turn the answer into a self-checking timing spec, make it pass, then refactor: \"write tunable software first and then tune it.\"\n* **Debugging means you already failed; be a humble programmer**: Debugging adds zero value—when you debug, earlier steps failed—so measure lead time to find your real bottlenecks. TDD is a design and development technique, not merely a testing one, and the unit under test must always be an externally observable behavior, never a specific implementation, or you couple the tests to the implementation and lose the ability to refactor. Closing with Dijkstra: write your quality standard \"as high as you can live with,\" because that is the only way to learn how to push the boundary forward."
   },
   {
     "id": "recRoW7H98iu4QBDI",
@@ -7811,11 +7812,17 @@
     "title": "Enabling Awesome Engineering Teams",
     "url": "https://www.infoq.com/presentations/team-success-fundamentals",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Engineering Culture",
+      "Company Culture",
+      "Teams",
+      "Agile",
+      "Continuous Delivery"
+    ],
     "speakers": [
       "Alexandre Freire"
     ],
-    "description": "",
+    "description": "Alexandre Freire (Industrial Logic) argues that the practices teams copy (Scrum, the Spotify model, mob programming) are not the secret—an underlying culture of shared values is—framing the talk around Modern Agile's four principles and the science of psychological safety.",
     "core_topic": "Engineering Culture",
     "conference_name": "InfoQ",
     "format": "talk",
@@ -8085,11 +8092,16 @@
     "title": "Testing the Hard Stuff and Staying Sane",
     "url": "http://www.infoq.com/presentations/automated-testing",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Testing",
+      "Functional",
+      "Quality",
+      "erlang"
+    ],
     "speakers": [
       "John Hughes"
     ],
-    "description": "\n",
+    "description": "John Hughes, co-creator of QuickCheck, argues conventional testing doesn't scale and that you should generate tests, not write them: state general properties, generate random API-call sequences until one fails, then automatically shrink to a minimal example—demonstrated on AUTOSAR, Riak and Erlang's DETS.",
     "core_topic": "Testing",
     "conference_name": "InfoQ",
     "format": "talk",
@@ -8390,11 +8402,17 @@
     "title": "Achieving High Load in Advertising Technology",
     "url": "https://www.infoq.com/presentations/digital-high-load-ad",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Architecture",
+      "Scalability",
+      "Performance",
+      "Data Engineering",
+      "Devops"
+    ],
     "speakers": [
       "Peter Milne"
     ],
-    "description": "",
+    "description": "Peter Milne (Adform) walks through achieving high load—velocity, scale and availability—across real-time bidding, a data management platform, DevOps and data stores, arguing you must pick the right technology per problem, fall back to first-principles computer science at the limits, and treat people and economics as seriously as tech.",
     "core_topic": "Architecture",
     "conference_name": "InfoQ",
     "format": "talk",
@@ -9087,7 +9105,12 @@
     "title": "Lead Like the Great Conductors",
     "url": "http://www.ted.com/talks/itay_talgam_lead_like_the_great_conductors",
     "duration": 1380,
-    "topics": [],
+    "topics": [
+      "Inspirational",
+      "leadership",
+      "Management",
+      "Teams"
+    ],
     "speakers": [
       "Itay Talgam"
     ],
@@ -9552,7 +9575,7 @@
     "speakers": [
       "Gwen Shapira"
     ],
-    "description": "",
+    "description": "Gwen Shapira presents proven design patterns for cloud-native data architectures on Apache Kafka—event publishing, local state, real-time stream processing and schema governance—arguing that data must be treated as the opposite of microservices.",
     "core_topic": "Architecture",
     "conference_name": "InfoQ",
     "format": "talk",
@@ -9671,11 +9694,16 @@
     "title": "Easier, Better, Faster, Safer Deployment with Docker and Immutable Containers",
     "url": "http://www.infoq.com/presentations/immutable-servers-docker",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Devops",
+      "Infrastructure",
+      "Continuous Delivery",
+      "Architecture"
+    ],
     "speakers": [
       "Jerome Petazzoni"
     ],
-    "description": "",
+    "description": "Jerome Petazzoni (Docker) explains how immutable infrastructure—never modifying a running server but replacing it with a freshly built one—eliminates configuration drift and enables reliable rollbacks, and how containers deliver those benefits far faster and cheaper than golden-image VMs.",
     "core_topic": "Devops",
     "conference_name": "InfoQ",
     "format": "talk",
@@ -9733,7 +9761,10 @@
     "title": "Your Body Language May Shape Who You Are",
     "url": "http://www.ted.com/talks/amy_cuddy_your_body_language_shapes_who_you_are",
     "duration": 1260,
-    "topics": [],
+    "topics": [
+      "Inspirational",
+      "leadership"
+    ],
     "speakers": [
       "Amy Cuddy"
     ],
@@ -10334,17 +10365,21 @@
     "duration": 780,
     "topics": [
       "Engineering Culture",
+      "Company Culture",
       "Agile",
-      "Company Culture"
+      "Teams",
+      "Continuous Delivery",
+      "Lean Startup"
     ],
     "speakers": [
       "Henrik Kniberg"
     ],
-    "description": "Spotify engineering culture (Part 1 & 2). From now on these are the videos I'll send to anyone asking me about Agile culture :-)\n",
-    "core_topic": "",
+    "description": "Henrik Kniberg narrates Spotify's agile engineering culture: autonomous, mission-driven squads organized into tribes, chapters and guilds and held together by \"aligned autonomy\", trust over control and an internal open-source model, plus a fail-friendly, Lean-Startup approach (think it, build it, ship it, tweak it) with limited blast radius, release trains, feature toggles and continuous improvement.",
+    "core_topic": "Engineering Culture",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2014/09/podcaststalks-2014-15-21sept.html",
-    "registered_at": "2020-01-19T20:37:44.000Z"
+    "registered_at": "2020-01-19T20:37:44.000Z",
+    "notes": "This two-part video (narrated by Henrik Kniberg) describes Spotify's agile engineering culture as it was and as it aspired to become. Its central argument is that culture is an invisible but decisive success factor, and that Spotify scales agile not through standardized process but through autonomous, mission-driven squads held together by strong alignment, mutual trust, and a fail-friendly, experiment-driven mindset. The narrator repeatedly stresses this is \"a mix of what we are today and what we are trying to become.\"\n\n* **Agile matters more than Scrum**: Spotify launched in 2008 as a Scrum company, but as it grew some standard Scrum practices got in the way, so they made them optional — \"rules are a good start, but then break them when needed.\" They renamed Scrum Master to agile coach (wanting servant leaders, not process masters) and Scrum team to squad, with autonomy as the key driving force.\n* **Autonomous squads**: A squad is a small (usually <8), cross-functional, self-organizing team that sits together with end-to-end responsibility (design, commit, deploy, operations) and a long-term mission. Autonomy means the squad decides what to build, how, and how to work together — bounded by the mission, product strategy, and quarterly goals. Autonomy motivates, and lets decisions happen locally instead of via managers and committees, minimizing handoffs and dependencies.\n* **Aligned autonomy — two dimensions, not a scale**: Alignment and autonomy are separate axes. The goal is high-alignment/high-autonomy, where leaders communicate what problem to solve and why, and squads figure out how. \"Alignment enables autonomy\" — the stronger the alignment, the more autonomy you can afford to grant. The metaphor is a jazz band: each musician is autonomous but they listen to each other and focus on the whole song. The principle: \"be autonomous but don't sub-optimize.\"\n* **Little standardization, strong cross-pollination**: With autonomy there is almost no standardization — the answer to \"which editor / how do you plan?\" is \"depends on the squad\" (some Scrum, some Kanban). Instead of formal standards, when enough squads adopt a tool (e.g. Git) it becomes the path of least resistance and a de facto standard, giving consistency without mandate. On authoritative-vs-liberal they lean liberal.\n* **Internal open source and peer review**: The architecture is 100+ small, decoupled systems with clear interfaces, each technically owned by a squad — but \"culture is more about sharing than owning.\" Anyone can edit any code (rather than wait on the owning squad), then asks the owners to review — spreading knowledge and improving quality.\n* **Tribes, chapters, guilds — community over structure**: Squads group into tribes (a lightweight matrix). Each person belongs to a squad (product delivery) and a chapter (a competency area whose lead is the servant-leader line manager, so you can switch squads without a new manager). Guilds are voluntary cross-company communities of interest. \"Most organizational charts are an illusion\" — the focus is community, and a strong community can run on an informal, volatile structure.\n* **Trust over control, and no fear**: Letting each squad ship to production without central control is scary and they \"do screw up sometimes,\" but \"trust is more important than control\" — \"why would we hire someone we don't trust?\" Agile at scale requires trust at scale, which means no politics and no fear, because fear kills not just trust but innovation.\n* **Easy releases → frequent releases**: If releasing is hard you release seldom, making each release bigger and harder — a vicious cycle; if releasing is easy you release small and often. They invest heavily in test automation and continuous delivery, and made big architectural bets (the monolithic desktop client became \"a web browser in disguise\" via Chromium Embedded Framework) so squads could release independently. They evolved feature squads, client-app squads, and infrastructure squads.\n* **Release trains, feature toggles, and self-service**: Client apps have release trains departing on a fixed schedule (weekly or every three weeks); unfinished features ride the train hidden behind feature toggles, which exposes integration problems early, minimizes branching (unmerged code is technical debt), and enables A/B tests and gradual rollout. A self-service model (\"like a buffet\") avoids handoffs \"like the plague\" — infra/ops squads make it easy for feature squads to deploy their own code, not deploy it for them.\n* **Make mistakes faster than anyone else**: Founder Daniel Ek's framing — failure is learning, so failing fast means learning and improving fast (the toddler analogy: a child kept in the crib is safe but learns nothing). Spotify is a fail-friendly environment favoring fast failure recovery over failure avoidance, with a \"fail wall,\" blog posts like \"Celebrate Failure,\" and blameless postmortems that ask what happened / what did we learn / what will we change — \"fix the process, not just the product.\" An incident ticket closes only when the learnings are captured.\n* **Limited blast radius**: Failure must be non-lethal. A decoupled architecture means a squad's mistake usually hits only a small part of the system, and end-to-end ownership means fast fixes. Features roll out gradually to a tiny percentage of users, monitored, then widened — so problems affect \"a small number of users for a short period of time.\" This gives squads courage to run many small experiments rather than trying to predict and control all risk up front (Mario Andretti: \"if everything's under control, you're going too slow\").\n* **Lean-Startup product development**: The mantra is \"think it, build it, ship it, tweak it.\" Because the biggest risk is building the wrong thing, they research demand, write a narrative (a press-release/elevator pitch of the benefits), define hypotheses about user behavior and core metrics, and prototype — then build a minimum viable (\"lovable\") product, release it to a few percent, A/B test against the hypotheses, tweak until the desired impact appears, and only then roll out. \"Impact is always more important than velocity\" — a feature isn't done until it achieves the desired impact.\n* **Innovation over predictability**: They mostly don't plan fixed dates because \"100% predictability means 0% innovation.\" When commitments are genuinely needed (partner integrations, marketing events) they use standard techniques (velocity, burn-up charts) but defer the commitment until the feature is proven and nearly ready, so squads deliver value instead of serving an arbitrary plan.\n* **Experiment-friendly, data-driven, waste-repellent**: Everyone spends ~10% of time on hack days/weeks (the twice-yearly company hack week's mantra is \"make cool things real\"), because trying enough ideas strikes gold and the knowledge often outlives the hack. Decisions default to experiments (\"let's try both and measure\") over ego/authority. The culture is \"waste-repellent\" — things kept (retrospectives, stand-ups, Git, unconferences) versus things dropped (time reports, handoffs, separate test teams/phases, task estimates) — and wary of \"big projects\" (many squads tightly coordinated for months = big risk), which they break into smaller efforts or, when unavoidable, run with visualized progress, daily syncs, biweekly integrated demos, and a small tech/product/design leadership group.\n* **Minimum viable bureaucracy, definition of awesome, and self-healing culture**: Growth risks either chaos or, if over-corrected, bureaucracy (\"even worse\"), so the question is the \"minimum viable bureaucracy.\" Squads define a \"definition of awesome\" (a direction, not a place — e.g. \"build, test and ship my feature within a week… improved version live in week two\") and track it with Toyota-Kata-style improvement boards (current situation, awesome, realistic target, next three actions). Most problems are short-lived because people fix the architecture, process or org: \"healthy culture heals broken process.\" Culture is reinforced by People Operations, ~30 agile coaches, boot camps, and above all storytelling — \"you are the culture, so model the behavior you want to see.\""
   },
   {
     "id": "recc0PZAq20p3ZJuT",
@@ -10380,7 +10415,7 @@
     "speakers": [
       "Seb Rose"
     ],
-    "description": "",
+    "description": "Seb Rose argues user stories were never meant to capture requirements but to defer analysis and schedule increments, dismantling the INVEST acronym and proposing RIVET (Reduce risk, Increase learning, Verifiable, Expeditious, Tracer bullet) as a more actionable replacement.",
     "core_topic": "Agile",
     "conference_name": "InfoQ",
     "format": "talk",
@@ -10945,7 +10980,13 @@
     "title": "Experimentation Mindset",
     "url": "http://www.infoq.com/presentations/experimentation-mindset",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Engineering Culture",
+      "Company Culture",
+      "Agile",
+      "Lean Startup",
+      "Teams"
+    ],
     "speakers": [
       "Michael Norton"
     ],
@@ -11424,11 +11465,17 @@
     "title": "Designing Events-First Microservices",
     "url": "https://www.infoq.com/presentations/microservices-events-first-design",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Architecture",
+      "Microservices",
+      "DDD",
+      "Resilience",
+      "cqrs"
+    ],
     "speakers": [
       "Jonas Bonér"
     ],
-    "description": "",
+    "description": "Jonas Bonér argues the right reason to do microservices is to scale the organization into autonomous teams, and that you should model the verbs (events) rather than DDD's nouns—covering events vs commands, eventual consistency as the right default, resilience by design, and event sourcing with CQRS.",
     "core_topic": "Architecture",
     "conference_name": "InfoQ",
     "format": "talk",
@@ -11632,7 +11679,13 @@
     "title": "Building Event-Driven Microservices with Scala, Functional Domain Models and Spring Boot",
     "url": "http://www.infoq.com/presentations/event-microservice-scala-spring-boot",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Microservices",
+      "Architecture",
+      "cqrs",
+      "DDD",
+      "Functional"
+    ],
     "speakers": [
       "Chris Richardson"
     ],
@@ -12061,12 +12114,18 @@
     "title": "Demystifying DynamoDB Streams",
     "url": "https://www.infoq.com/presentations/dynamodb-streams#downloadPresentationMp3",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Data Engineering",
+      "Architecture",
+      "Scalability",
+      "Cloud",
+      "Resilience"
+    ],
     "speakers": [
       "Akshat Vig",
       "Khawaja Shams"
     ],
-    "description": "",
+    "description": "Khawaja Shams and Akshat Vig (AWS) argue the database log is a powerful primitive, and that exposing DynamoDB's internal change log as a Kinesis stream lets developers solve cross-region replication, point-in-time restore, materialized views and serverless triggers—if they get ordering, checkpointing, deduplication and delivery semantics right.",
     "core_topic": "Data Engineering",
     "conference_name": "InfoQ",
     "format": "talk",
@@ -13005,11 +13064,16 @@
     "title": "Serverless Architectures",
     "url": "https://www.infoq.com/presentations/serverless-introduction",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "Architecture",
+      "Serverless",
+      "Cloud",
+      "Devops"
+    ],
     "speakers": [
       "Mike Roberts"
     ],
-    "description": "",
+    "description": "Mike Roberts introduces serverless as the next economic evolution of the cloud—Backend as a Service plus Functions as a Service—delivering cheaper, better and faster development, while warning of an architectural 'jolt' toward event-driven, short-lived, stateless functions.",
     "core_topic": "Architecture",
     "conference_name": "InfoQ",
     "format": "talk",
@@ -14024,11 +14088,16 @@
     "title": "AI as a Service at Scale: Retail Case Study",
     "url": "https://www.infoq.com/presentations/ai-jetlore",
     "duration": 0,
-    "topics": [],
+    "topics": [
+      "AI",
+      "Machine Learning",
+      "Product",
+      "Cloud"
+    ],
     "speakers": [
       "Eldar Sadikov"
     ],
-    "description": "",
+    "description": "Eldar Sadikov (Jetlore) argues that cloud and SaaS—not new algorithms—are what make AI broadly relevant, because hyper-specialized services accumulate enough domain data to learn, and that B2C retail will be transformed as rule-based marketing gives way to per-user learning-to-rank.",
     "core_topic": "AI",
     "conference_name": "InfoQ",
     "format": "talk",
@@ -14064,11 +14133,14 @@
     "title": "How to gain control of your free time",
     "url": "https://www.ted.com/talks/laura_vanderkam_how_to_gain_control_of_your_free_time",
     "duration": 660,
-    "topics": [],
+    "topics": [
+      "Inspirational",
+      "Management"
+    ],
     "speakers": [
       "Laura Vanderkam"
     ],
-    "description": "",
+    "description": "Laura Vanderkam argues that shaving minutes off tasks gets time management backward: we don't build the lives we want by saving time, we build the lives we want and then time saves itself—reframing time as a question of priorities, since 'I don't have time' really means 'it's not a priority'.",
     "core_topic": "Inspirational",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2017/11/good-talkspodcasts-october-2017-part-ii.html",
@@ -14991,7 +15063,7 @@
     "speakers": [
       "Richard Sheridan"
     ],
-    "description": "",
+    "description": "Richard Sheridan explains how Menlo Innovations builds an intentionally joyful culture by letting the team decide hiring, firing and promotion democratically, through experiential group interviews that reward collaboration over resumes and peer evaluation over annual reviews.",
     "core_topic": "Company Culture",
     "conference_name": "Freedom at Work Summit",
     "format": "talk",
@@ -15540,16 +15612,21 @@
     "url": "http://www.firsthuman.com/podcast/23-leaving-facebook-with-kent-beck/",
     "duration": 4920,
     "topics": [
-      "Engineering Culture"
+      "XP",
+      "agile-XP",
+      "Agile",
+      "Engineering Culture",
+      "Nature of Software Development"
     ],
     "speakers": [
       "Kent Beck"
     ],
-    "description": "Being Human Podcast. As usual, an interesting interview with Kent Beck. Interesting info about internals about the culture at Facebook.\n",
-    "core_topic": "",
+    "description": "Kent Beck, interviewed on the Being Human podcast, revisits the original intent of Extreme Programming, argues Scrum won on economics (certifications) rather than merit, and warns agile has reverted to waterfall—then distills seven years at Facebook into the Explore/Expand/Extract model and how impact-only incentives corrupt decision-making at scale.",
+    "core_topic": "Agile-XP",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2018/09/index.html",
-    "registered_at": "2020-01-19T20:32:43.000Z"
+    "registered_at": "2020-01-19T20:32:43.000Z",
+    "notes": "Kent Beck, creator of Extreme Programming, is interviewed on the \"Being Human\" podcast (host Richard Atherton). His central argument is that good software development refuses to front-load decisions, because deciding everything up front is \"a bet that you're not going to learn anything\" — and that is a bad bet. He traces XP's original intent, explains why Scrum outgrew XP economically, warns that agile has quietly reverted to waterfall under new vocabulary, and distills seven years at Facebook into the Explore/Expand/Extract model and a critique of impact-only incentives.\n\n* **It's about the order of decisions, not avoiding them**: The classic method — specify everything, design everything, then implement — fails because \"when you start implementing you realize hey this is not what we want.\" Beck reframes it as sequencing: \"nobody's saying you don't have to decide what the system has to do, but the question is how much of it do you have to decide when.\" Loading decisions up front assumes no learning will happen. He applies the same thinking to painting a picture and to life generally.\n* **Software development is a social process**: The number-one observation behind XP is that development is social, and the urge to plan everything perfectly is partly a way to avoid having to talk to each other — a real pull for programmers, \"the stereotype for a reason,\" himself included. XP therefore builds predictable social interaction into the work: a weekly cadence to plan and review, and two people at one computer for those who like it.\n* **Use the resources already there — the weekly cycle**: Rather than invent 4-day or 9-day rhythms, XP leans on the seven-day cycle \"baked into the world\" (daily, weekly, monthly, quarterly rhythms), each producing some value someone can see — replacing the receding \"nine months… twelve months\" delivery promise with \"once a week, here's what the system does.\"\n* **\"Compared to what?\"**: His stock consultant response to the fear that agile loses control: with big-upfront-spec you also \"discover it's not what you want, it's delivered late,\" so you never had that control either. Agile gives influence and visibility rather than control — and surfacing disagreements early is a feature, not a bug: \"the trouble was already there at the bottom of the soup, I stirred it, now it floats to the surface.\"\n* **The team is everyone affected by the software**: The first edition of XP scoped \"team\" to programmers; the second edition widened it to everyone affected — executive sponsors, data scientists, salespeople, designers — who can step in at their own rhythm, orient, and offer perspective without any one person dictating.\n* **Why Scrum outgrew XP — economics, not merit**: Beck attributes Scrum's dominance largely to its built-in business model. Certifications made it rational for people to devote capital, not just talent, to promoting Scrum; \"the more it grew the more attractive it was to capital.\" XP \"never generated an industry,\" was hard, vulnerable work, and was marketed to programmers, who have less decision-making power than the project managers Scrum targeted.\n* **Certification as a lie without skin in the game**: He calls \"Certified Scrum Master\" dishonest — it should be \"Attended Scrum Training,\" since two days can't make a master. A real certification would mean the certifier carries liability (\"if you go and blow a hundred million dollars, somebody comes to me\"); without skin in the game it \"starts to look like a pyramid scheme.\" He concedes the branding brilliantly accomplished its purpose in a way he never did, and offers the critique as possibly \"sour grapes.\"\n* **Agile has reverted to waterfall under new vocabulary**: A person at Agile Africa told him they wanted to write programs \"but we just can't stand all this ceremony and agile stuff\" — and it brought tears to his eyes that a movement meant to strip away the inessential had circled back. The same up-front mindset reappears as \"validate the business model\" and \"validate the architecture,\" producing \"a big fat pile of information\" that would have \"looked very comfortable\" in the old analysis documents. The only improvement over waterfall is \"we have customers instead of testers.\"\n* **There is no autopilot for software development**: \"We can't dial in a destination and then the plane takes itself off and flies itself\" — the belief that you can predict everything went underground when it was unfashionable and has \"popped up its ugly head\" because it \"sounds so adult.\" The honest alternative starts from the assumption that you will learn, so everything must be prepared to change.\n* **Facebook's culture: react, don't predict; engineer reversibility**: With features that could \"blow up bigger than any feature ever,\" over-engineering just in case would collapse the whole edifice, so the engineering culture was built on improvisation — \"we know we're gonna have to react, so let's prepare to react,\" 24/7/365. Much effort goes into making decisions reversible: their networking-hardware characterization lab exists mainly to confirm \"if we switch this thing on, can we switch it off,\" because scale is always something the equipment has never seen.\n* **Explore / Expand / Extract (3X) — three different games**: Beck's biggest lesson from Facebook is the S-curve of any idea. Explore is cheap, diverse, safe experimentation (the shorter each experiment, the better, so you can run more). Expand is the vertical-growth phase where users are \"yelling at you\" — wonderful news, because a week ago nobody cared — and you react to whatever bottleneck (servers, bandwidth, hiring) threatens next. Extract is the mature, high-stakes phase with a team of a hundred and \"a lot to lose,\" where ROI matters (e.g. 10,000 servers down to 8,000) and being cautious pays.\n* **Match process — and people — to the phase**: The three phases need different team structures, rhythms, management styles, and amounts of capital; explorations should be on a tight budget, expansion just gets money shoveled at it, extraction is measured. XP's value of \"courage\" is a good idea in exploration but \"a bad idea when you're in the extract phase\" — there, being chicken and analyzing first is right. Temperamentally an explorer, Beck says he is \"dead\" by the 21st city, and it's a relief there are people who love executing the run-book.\n* **Waterfall is a broken attempt at extraction**: Reframing waterfall charitably (\"what if they're not idiots\"), it tries to do careful extraction but, by abandoning feedback, creates waste; applying it to exploration is an even bigger mistake, since the only question — \"does anybody care?\" — could be answered in a week, not a year. An effective way to do extraction exists but looks nothing like waterfall.\n* **Impact-only reviews corrupt decisions at scale**: Facebook's six-month cycle requires proving your personal \"impact,\" which suits exploration and expansion but breaks in extraction: all incentives point at upside, so nobody is rewarded for the good decision to NOT ship a feature whose downsides (privacy, clutter, social engineering) outweigh a +22% metric. He argues the company must shift from rewarding impact to rewarding decision quality — and notes the hard part is that then reward \"devolves to your ability to present this as a good decision.\" He got fired trying to have this conversation.\n* **The feedback filter and working on himself**: His first filter on any feedback — praise or blame — is \"what of this is about me and what is about them.\" Losing his role says more about Facebook than about him, but also teaches him he can be \"abrasive\" and fails to predict how his words land. He describes \"molting\" into a new level of social subtext (helped by a more socially adept partner), building emotional control through serious poker, and using music, journaling, abstract \"mind-map\" art, one-on-one coaching (\"the coach learns more than the student\"), and storytelling — waiting for \"the story to tap me on the shoulder\" — to help people \"come alive\" in his presence."
   },
   {
     "id": "recr9psXCCS4XmZA6",
@@ -15853,7 +15930,7 @@
     "speakers": [
       "Damon Edwards"
     ],
-    "description": "",
+    "description": "Damon Edwards narrates the origin story of DevOps—from Patrick Dubois and the first DevOpsDays in Ghent to enterprise adoption—arguing it is a grassroots movement built by practitioners for practitioners, not by vendors or analysts.",
     "core_topic": "Devops",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2017/10/index.html",
@@ -16003,7 +16080,7 @@
     "speakers": [
       "Glenn Vanderburg"
     ],
-    "description": "",
+    "description": "Glenn Vanderburg argues software development genuinely is an engineering discipline, and that both the 'make it like engineering' and 'it isn't engineering' camps share the same misconception—that engineering is planned and predictable—when it is really the use of heuristics to cause the best change in a poorly understood situation.",
     "core_topic": "Engineering Culture",
     "conference_name": "O'Reilly Software Architecture Conference",
     "format": "talk",
@@ -16257,7 +16334,7 @@
     "speakers": [
       "Neil J. Gunther"
     ],
-    "description": "",
+    "description": "Neil Gunther presents the Universal Scalability Law, a mathematical model that quantifies scalability through contention and coherency coefficients, exposes where systems hit ceilings or decline, and explains why apparent 'superlinear' speedup is an illusion you always pay back later.",
     "core_topic": "Architecture",
     "year": 2014,
     "conference_name": "LISA",
@@ -16966,7 +17043,7 @@
     "speakers": [
       "Jeffrey Snover"
     ],
-    "description": "",
+    "description": "Jeffrey Snover, inventor of PowerShell, argues careers advance by correctly riding industry transitions rather than steady effort, drawing on his 13-year fight to ship PowerShell and Geoffrey Moore's core/context distinction to navigate the software-eats-the-world shift.",
     "core_topic": "Management",
     "year": 2018,
     "conference_name": "DOES",
@@ -16988,7 +17065,7 @@
     "speakers": [
       "Niels Pflaeging"
     ],
-    "description": "",
+    "description": "Niels Pflaeging argues that management is a dead Industrial-Age social technology and that complex markets demand radical decentralization of decision-making toward the periphery that touches the market—the 'peach' model replacing the pyramid.",
     "core_topic": "Management",
     "year": 2015,
     "conference_name": "Stretch Leadership Conference",
@@ -17293,7 +17370,7 @@
     "speakers": [
       "Rafael Lopez Diez"
     ],
-    "description": "\n",
+    "description": "Rafael Lopez Diez recounts his own descent into work addiction and recovery to argue that workaholism is a destructive condition leaders must prevent rather than reward, because tolerating long hours hides problems, burns out good engineers and ultimately costs more than it saves.",
     "core_topic": "Engineering Culture",
     "year": 2017,
     "conference_name": "The Lead Developer New York",
@@ -17354,11 +17431,14 @@
     "title": "The happy secret to better work",
     "url": "https://www.ted.com/talks/shawn_achor_the_happy_secret_to_better_work",
     "duration": 720,
-    "topics": [],
+    "topics": [
+      "Inspirational",
+      "Company Culture"
+    ],
     "speakers": [
       "Shawn Achor"
     ],
-    "description": "",
+    "description": "Shawn Achor argues the success formula is backwards: happiness fuels success, not the reverse. Drawing on positive psychology, he shows that raising present-moment positivity produces a measurable performance advantage, and closes with five trainable two-minute habits that rewire the brain.",
     "core_topic": "Inspirational",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2017/01/interesting-talks-and-podcast-episodes.html",
@@ -17509,7 +17589,7 @@
     "speakers": [
       "David Marquet"
     ],
-    "description": "\n",
+    "description": "David Marquet recounts turning the U.S. Navy's worst-performing submarine crew into its best by giving up top-down control and building the competence, clarity and psychological safety in which people lead themselves—captured in the 'I intend to' language shift.",
     "core_topic": "Management",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2018/10/good-talkspodcasts-oct-2018-i.html",
@@ -17756,7 +17836,7 @@
     "speakers": [
       "Mitchell Hashimoto"
     ],
-    "description": "",
+    "description": "Mitchell Hashimoto shares the testing techniques HashiCorp evolved across millions of lines of Go—table-driven tests, golden files, real network connections and subprocesses instead of mocks—and how to structure code so it can be tested at all.",
     "core_topic": "Testing",
     "year": 2016,
     "conference_name": "NewStore",
@@ -17801,7 +17881,7 @@
     "speakers": [
       "April Wensel"
     ],
-    "description": "",
+    "description": "April Wensel reframes emotional intelligence from dismissed 'soft skills' into a concrete, practical discipline essential for effective engineering and inclusive teams, offering the STEP run book (Slow down, Tend to needs, Empathize, Proceed) for handling distressing emotions.",
     "core_topic": "Engineering Culture",
     "year": 2018,
     "conference_name": "ngAtlanta",
