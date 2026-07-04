@@ -25,21 +25,6 @@
     "notes": "Justin Kitagawa, platform leader at Twilio responsible for platform foundation (five teams spanning edge infrastructure and cloud orchestration), argues that internal platforms are a lever that lets every engineering team \"stand on the shoulders of giants\" and unlock developer effectiveness. His core thesis is that a platform rebuilt around four principles—API-first, self-service, declarative over imperative, and built with empathy—transformed Twilio from a company that couldn't reliably ship into one deploying around 100 times a day. He frames platform engineering as \"Twilio for Twilio,\" the intersection of DevOps and software.\n\n* **Organizational context shapes the platform**: Twilio is ~100 \"two-pizza box\" teams (a model inherited from Amazon, where CEO Jeff Lawson was an early AWS PM), each a mini-startup running its own polyglot microservices (Java, Scala, Python, PHP), with 1000+ server roles across tens of thousands of VMs in nine points of presence.\n* **DevOps is the culture, not a role**: \"You build it, you run it.\" There is no centralized QA, build, or release team. The guiding saying is \"job number one: operations and security; job number two: everything else.\"\n* **The broken \"before\" state**: Five years prior the platform was imperative infrastructure-as-code requiring engineers to know Chef, with a Turing-complete DSL checked into Git as the control plane. The core deployment system hit only \"two nines\" reliability against a five-nines aspiration—an existential threat where \"the company that ships software couldn't ship.\"\n* **Anti-patterns named explicitly**: an era of gatekeepers (the dreaded \"I-request\" Jira tickets manually routed and executed by a platform engineer), lack of empathy (platform teams not using their own tooling), and vendor sprawl (every team needing its own Jenkins administrator).\n\n### The four principles\n* **API-first**: The REST/web API—not Git, a CLI, or a UI—is the platform's control plane. Twilio wraps everything, including third-party vendors, behind APIs to ease migrations and avoid lock-in. If you don't publish an interface, engineers will find one (their service discovery once had five hacked entry points). Thin language wrappers call platform sidecar REST services so all polyglot languages benefit equally.\n* **Self-service over gatekeepers**: Cited as the most important principle, drawing on Bezos's 2011 shareholder letter that even well-meaning gatekeepers slow innovation. He warns against the \"automation fallacy\": if something only runs on someone's laptop or a special Jenkins server, it is scripted, not automated, because it is not self-service.\n* **Declarative over imperative (the what over the how)**: Prefer data models over code; users declare desired state and the \"how\" is codified into the platform, reducing cognitive load. Embedding the how means engineers automatically inherit evolving best practices. This emerged in parallel with Twilio's own declarative product APIs (Proxy and Notify).\n\n### Declarative platform in practice\n* **Starship and API definitions**: Starship is the edge gateway that routes, transforms, filters, authenticates, authorizes, and applies concurrency limits on all Twilio API traffic. The entire REST API is declared as per-resource API definitions; code compiles them into gateway code and loads it into Starship, replacing the old consulting model where cycle time ran weeks to months.\n* **What the definitions unlock**: schema-aware filtering of internal attributes to prevent leaking sensitive data; shadow deployments (mirror production traffic to v1 and v2 and diff responses); gradual feature-flag rollouts; auto-generated helper libraries via a transpiler called Yoyodyne that turns JSON definitions into SDK code across six languages, refreshed weekly, ending manual SDK drift; and auto-generated docs including GDPR PII annotations.\n* **Declarative deployments via Admiral**: Deployments decompose into software (a manifest of versioned RPM artifacts), hardware (a formation, e.g. 40 nodes of given RAM/disk/CPU), and externalized config per Heroku's 12-factor—all exposed as APIs and via the Admiral console. Twilio runs disposable infrastructure (cattle not pets) with zero-downtime red-black deployments via canary and load-balancer cutover, auto-spreading across three AZs.\n* **Container migration without mental-model shift**: Kubernetes is the eventual orchestrator, but \"having engineers know the intricacies of Kubernetes is a failure state.\" Teams specify a container manifest instead of RPMs; today these deploy as a pod onto a single VM and will later transpose onto Kubernetes pods with no migration pain.\n* **Zero-downtime MySQL deployments**: Schema migrations always run on a replica, never the primary, with S3 backup, replica promotion, and an SSH tunnel forwarding outstanding writes. Previously semi-manual scripts were a constant drain across the ~30% of roles using MySQL; now Admiral handles it declaratively, drawing emotional Slack reactions.\n* **Service mesh (moving to Envoy)**: Because red-black deployments constantly change IPs, a sidecar daemon on every host acts as the mesh control plane (WebSockets for push, REST for pull); services reach each other through a local-host HAProxy virtual IP acting as a client-side load balancer, removing remote-call latency and scaling linearly. The mesh is being upgraded from HAProxy+NGINX to Envoy via a declarative service catalog where engineers just name downstream dependencies.\n\n### Build with empathy\n* **Drink your own champagne**: Platform builders must use the platform so they feel the same pain and \"file down the sharp burrs.\" Value feedback over opinion—\"an opinion is a hypothesis, feedback is data.\"\n* **Hospitality over service**: Citing restaurateur Danny Meyer, treat engineers as paying customers; internal-tool UX matters, and platform outages deserve the same scrutiny as product outages.\n* **Measuring with NPS**: A quarterly survey to all engineers; Twilio's internal-platform NPS rose from -59 four years ago to +20 last quarter, targeting 50+. A per-product Slackbot also gathers feedback (one request for a deploy progress bar was committed to).\n* **Results and closing**: ~100 production deployments per day (~30,000+/year) and two days between customer-facing features landing. No single technology is a magic bullet, but adopting some or all of the four principles makes engineers more effective."
   },
   {
-    "id": "rec06Uk2oxLVg2O10",
-    "title": "What is this cloud native thing anyway?",
-    "url": "http://www.ustream.tv/recorded/114914685",
-    "duration": 0,
-    "topics": [],
-    "speakers": [
-      "Sam Newman"
-    ],
-    "description": "A good summary of the topic.\n",
-    "core_topic": "",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2018/05/good-talkspodcasts-may-2018-i.html",
-    "registered_at": "2020-01-19T20:33:01.000Z"
-  },
-  {
     "id": "rec0EB7A5GPNShEca",
     "title": "The Root Cause of Product Failure",
     "url": "https://www.youtube.com/watch?v=jVbVEdF75PE",
@@ -446,25 +431,6 @@
     "notes": "Mastering the balance between **quickness and haste** is essential for true agility, as moving quickly allows for speed and ease while maintaining control, whereas hurrying leads to being out of control and making mistakes. You should remember to operate on that **laser-thin edge** where you move as fast as possible without losing the grace and control necessary to avoid waste.\n\n* **\"Be Quick But Don't Hurry\" Mantra**: A fundamental principle for success in both sports and business, emphasizing speed without losing composure.\n* **Quickness vs. Haste**: Quickness is moving with ease, grace, and control. Haste (or hurrying) is being out of control, which leads to waste, errors, and potential harm.\n* **Defining Agile**: In an agile context, being \"agile\" means being quick, easy, and graceful in execution.\n* **The \"Laser Thin Edge\"**: There is a very fine line between moving at maximum speed and falling into haste. Finding this balance is a critical skill.\n* **Maintaining Control**: Speed is valuable as long as you remain in control, even when pushed to the edge of your abilities. Once control is lost, quickness turns into waste-producing haste.\n* **Practice**: Mastering the ability to be quick without hurrying is a difficult discipline that requires consistent practice."
   },
   {
-    "id": "rec1XEvSduXUMZFkK",
-    "title": "How to Get People to Follow You",
-    "url": "https://www.youtube.com/watch?v=ldh8E6LCLhM",
-    "duration": 0,
-    "topics": [
-      "Management",
-      "Inspirational",
-      "Company Culture"
-    ],
-    "speakers": [
-      "Simon Sinek"
-    ],
-    "description": "Inside Quest\n",
-    "core_topic": "Management",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2017/01/interesting-talks-i-saw-these-days-work.html",
-    "registered_at": "2020-01-19T20:42:29.000Z"
-  },
-  {
     "id": "rec1jjoG9pOImPjMo",
     "title": "No Vibes Allowed: Solving Hard Problems in Complex Codebases – Dex Horthy, HumanLayer",
     "url": "https://www.youtube.com/watch?v=rmvDxxNubIg",
@@ -647,26 +613,6 @@
     "rating": 5,
     "language": "English",
     "year": 2025
-  },
-  {
-    "id": "rec2OjotXEUQMg9Nc",
-    "title": "The Beautiful Mess",
-    "url": "https://www.mindtheproduct.com/the-beautiful-mess-by-john-cutler/",
-    "duration": 0,
-    "topics": [
-      "Agile",
-      "Management",
-      "Product",
-      "Company Culture"
-    ],
-    "speakers": [
-      "John Cutler"
-    ],
-    "description": "John explains how we must all embrace ‘the beautiful mess’ and learn to navigate change in order to be more successful.\n",
-    "core_topic": "",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2020/03/good-talkspodcasts-march-2020-ii.html",
-    "registered_at": "2020-03-14T23:30:54.000Z"
   },
   {
     "id": "rec2WCUcQ5UxqWwOp",
@@ -1593,25 +1539,6 @@
     "blog_url": "https://www.eferro.net/2017/05/interesting-technical-talkspodcasts-may.html",
     "registered_at": "2020-01-19T20:42:16.000Z",
     "notes": "Adopting decoupled architectures like hexagonal design and CQRS enables the creation of highly testable, secure, and performant systems by isolating the application core from external dependencies and separating write operations from read operations. These patterns provide a robust framework for managing high-volume data while ensuring architectural flexibility and rigorous security standards.\n\n* **Hexagonal Architecture** isolates the application core from the external world, using adapters for both user interfaces and databases to ensure the application remains unaware of external technical details.\n* **Testability** is a primary benefit of this design, as adapters for the UI and database can be swapped for unit tests or loopback mechanisms to test the application in isolation.\n* **Command Event DTO Architecture** (Greg Young’s extension) wraps the application in an API where user intentions are processed as **commands** and database changes are emitted as **events**.\n* **Security and Monitoring** are enhanced because all database interactions are exposed as events, allowing for full auditing and the prevention of \"backdoor\" access to the data store.\n* **Command Query Responsibility Separation (CQRS)** involves completely separating the write side (commands) from the read side (queries) within the architecture.\n* **Architectural Optimization** is possible under CQRS by allowing the read side to use different patterns, such as publish-subscribe or asynchronous updates, to handle high-volume data streams efficiently.\n* **Scalability and Performance** benefits make these patterns suitable for high-security, high-performance systems like automated stock trading."
-  },
-  {
-    "id": "rec64rM6lRjRsVUYH",
-    "title": "We Talked To Product Management Legend Marty Cagan. Here’s What We Learned | BUILD Podcast",
-    "url": "https://www.youtube.com/watch?v=MRygMUT0xQw",
-    "duration": 0,
-    "topics": [
-      "Product",
-      "Product Discovery",
-      "Product Strategy"
-    ],
-    "speakers": [
-      "Marty Cagan"
-    ],
-    "description": "A great podcast episode about product management, product teams, with the great Marty Cagan. As always, many insights for any company selling tech-based products.\n",
-    "core_topic": "Product",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2019/07/index.html",
-    "registered_at": "2020-01-19T20:40:10.000Z"
   },
   {
     "id": "rec6BnGkociVtZV3W",
@@ -3172,21 +3099,6 @@
     "notes": "Effective software delivery is a **socio-technical endeavor** that requires balancing technical excellence—such as continuous delivery and domain-driven design—with strong product management to ensure you are \"baking the right cake\" for the business. You should remember that the most impactful improvements in engineering come from **aligning code with the language of the domain** and fostering a human-centered culture where communication and organizational flow take priority over technical complexity.\n\n*   **Agile Normalization:** Agile practices have become so ubiquitous over the last 20 years that they are now the industry standard, moving from a \"maverick\" approach to a normalized, everyday part of software delivery.\n*   **Cross-Functional Teams:** The industry has shifted away from siloed gated processes toward cross-functional teams that handle a \"full-ish stack\" to deliver capabilities rather than just isolated components.\n*   **Economic Impact of Architecture:** Efficient code and \"green software\" are economic imperatives; well-architected systems reduce server resources, electricity consumption, and operational costs, especially in cloud environments.\n*   **Serverless Paradigm:** Serverless architecture should be viewed as \"shared nothing\" rather than strictly stateless. Optimizing the startup and shared components of functions can enable massive scaling at extremely low costs.\n*   **Go-Style Testing:** Unlike the traditional xUnit school that stops at the first failure, Go's testing allows for a \"roadworthiness\" approach where multiple failures are registered in a single run, providing a comprehensive list of what needs fixing.\n*   **Domain-Driven Design (DDD):** Incorporating the language of the business domain directly into the code makes complex business rules explicit and allows developers and stakeholders to communicate without needing a translator.\n*   **Innovation through Necessity:** Many industry standards, such as CI/CD pipelines, blue-green deployments, and single deployable artifacts, were invented to solve high-pressure, \"impossible\" delivery challenges in real-world projects.\n*   **Theory of Constraints:** Bottlenecks in software delivery often shift: once development becomes agile, the bottleneck moves to operations (release), and once operations is automated, it moves upstream to product management (idea batching).\n*   **Product vs. Project Funding:** Project-based funding focuses on cost and perceived risk, while product-based funding acts like a venture investment, prioritizing continuous value delivery and reducing \"value at risk.\"\n*   **Socio-Technical Systems:** Programming is a socio-technical activity that is as much about human communication and team energy as it is about technology; technical excellence alone is insufficient for long-term organizational success.\n*   **Baking the Right Cake:** High-performing organizations must balance engineering excellence (\"baking the cake right\") with effective product strategy (\"baking the right cake\") to avoid efficiently building the wrong thing.\n*   **Redefining the \"Best\" Programmer:** Mastery in programming is not strictly tied to formal education; a computer science degree is neither a requirement for being a top-tier programmer nor a guarantee of expertise."
   },
   {
-    "id": "recCQqPHzmbJv7cvR",
-    "title": "Story telling - The art of delighting your audience",
-    "url": "https://channel9.msdn.com/Events/Microsoft-Spain-Events/MVP-Summit-2017-Spain/Story-telling-The-art-of-delighting-your-audience",
-    "duration": 2760,
-    "topics": [],
-    "speakers": [
-      "Ester de Nicolas"
-    ],
-    "description": "",
-    "core_topic": "",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2017/08/good-talkspodcasts-purging-queue-ii.html",
-    "registered_at": "2020-01-19T20:41:27.000Z"
-  },
-  {
     "id": "recCTXXPpMeHzHRXI",
     "title": "Shared Mental Models Part 2",
     "url": "https://www.youtube.com/watch?v=PmS_BAoJssg",
@@ -3672,25 +3584,6 @@
     "blog_url": "https://www.eferro.net/2019/05/good-talkspodcasts-may-2019-i.html",
     "registered_at": "2020-01-19T20:39:40.000Z",
     "notes": "Software is exhilarating at small/startup scale but breaks down at enterprise scale, and the disconnect is in the managerial layer, not the engineering one. The fix is to stop managing software as finite projects and manage it as long-running product value streams — measured with flow metrics tied to business results.\n\n- Enterprises apply management techniques meant for building dams and bridges (the Gantt chart, definitive-end projects) to software, where work is really continuous streams of value that customers pull — i.e. products (lean thinking).\n- The gap is language: developers talk story points; MBA/finance leaders making the investment decisions don't. Startups avoid this (founder-CEO) and every tech giant has a software-developer CEO — but traditional businesses must learn to speak software. The Flow Framework is the simple business-meaningful language that sits on top of Agile/DevOps.\n- Carlota Perez (Technological Revolutions and Financial Capital): tech surges have an installation period (financial capital chasing 10x, a Cambrian explosion of startups) and, after a turning point, a deployment period where production capital takes over. We're ~50 years into the age of software, at the turning point — companies that change how they manage software survive it; those that wait for managers to retire decline.\n- Don't gut-and-restart (outsourcing everything is another failure pattern) — change incrementally and now, before the Harvard case studies arrive too late.\n- How to start: pick a real product (internal is fine, as long as it has a value metric and a customer), connect its whole value-stream network (more than a feature team — bring in marketing etc.), measure the flow metrics, and correlate them to value, cost, quality and happiness, then show leadership. This beats the project \"watermelon\" (green outside, red inside until it's too late) and gives teams autonomy."
-  },
-  {
-    "id": "recDh53A78GLSgFoT",
-    "title": "Five key challenges for software quality tomorrow",
-    "url": "http://www.ustream.tv/recorded/114861540",
-    "duration": 0,
-    "topics": [
-      "testing",
-      "Testing in production",
-      "Cloud"
-    ],
-    "speakers": [
-      "Gojko Adzic"
-    ],
-    "description": "This talk help us to understand the new challenges to test our systems in this new and changing world (ML, AI, cloud services, etc).\n",
-    "core_topic": "",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2018/05/good-talkspodcasts-may-2018-i.html",
-    "registered_at": "2020-01-19T20:33:02.000Z"
   },
   {
     "id": "recDklMtlc4USqvjh",
@@ -4845,24 +4738,6 @@
     "notes": "True mastery depends on recognizing that cognitive resources are a finite, shared pool that must be protected by breaking skills into small, masterable subtasks and leveraging high-volume exposure to high-quality examples for rapid, unconscious pattern matching. By minimizing \"cognitive leaks\" and moving skills quickly into automaticity, we can bypass the mental overload that typically stalls progress and achieve expertise far more efficiently than through traditional, effortful study.\n\n*   **Cognitive Resource Scarcity:** Humans have a limited, single \"tank\" of cognitive resources used for both high-level thinking/problem-solving and willpower. Depleting one reduces the capacity for the other.\n*   **Human vs. Humanoid:** Most systems, documentation, and management styles treat developers as \"humanoids\" with infinite cognitive resources and perfect memory, rather than humans with physiological limits.\n*   **Cognitive Leaks:** \"Death by a thousand micro-leaks\" occurs when small, unnecessary drains—like poor interfaces, bad remote designs, or unproductive meetings—bleed cognitive resources dry before meaningful work can begin.\n*   **The Three-Board Framework:** Learning progress is tracked across three stages:\n    *   **Board A:** Skills you cannot do yet.\n    *   **Board B:** Skills you can do with effort (these drain cognitive resources).\n    *   **Board C:** Skills that are mastered/automatic (these do not drain resources).\n*   **Managing Board B (The Learning Plateau):** A \"pile-up\" on Board B happens when too many things require effort simultaneously. To fix this, skills must be broken down into tiny sub-skills that can be mastered within one to three sessions of 45–90 minutes each.\n*   **Half-Skill vs. Half-Assed Skill:** It is more effective to fully master a \"half-skill\" (moving it to Board C) than to be mediocre at a whole skill (leaving it on Board B).\n*   **Practice Makes Permanent:** Practicing while \"crappy\" or mediocre reinforces those poor habits. Rapidly moving through the beginner phase to the intermediate phase is essential to avoid \"practicing being a beginner.\"\n*   **Revisiting Mastered Skills:** High-level experts periodically pull skills from Board C back to Board B to refine or update them, ensuring their automated habits aren't outdated or holding them back.\n*   **Perceptual Learning:** The brain can bypass conscious effort (Board B) and go straight to mastery (Board C) through \"perceptual learning\"—the ability to pattern-match underlying structures without being able to explain the rules.\n*   **High-Quantity, High-Quality Examples:** To trigger perceptual learning, the brain requires 200–300 high-quality examples in a compressed timeframe. This volume allows the brain to filter \"signal from noise\" and identify core patterns automatically.\n*   **The \"Code Smell\" Phenomenon:** Expert intuition, such as sensing a \"code smell\" before identifying the specific bug, is a result of the brain's subconscious pattern-matching capabilities developed through exposure."
   },
   {
-    "id": "recHngAdo7AO8yvRR",
-    "title": "SWARMing: Scaling Without A Religious Methodology",
-    "url": "https://www.ustream.tv/recorded/114900246",
-    "duration": 0,
-    "topics": [
-      "Agile",
-      "Management"
-    ],
-    "speakers": [
-      "Dan North"
-    ],
-    "description": "",
-    "core_topic": "Agile",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2018/06/index.html",
-    "registered_at": "2020-01-19T20:33:36.000Z"
-  },
-  {
     "id": "recHo9rUnEJjSBAcK",
     "title": "Consistency without consensus in production systems",
     "url": "https://www.youtube.com/watch?v=em9zLzM8O7c",
@@ -5198,26 +5073,6 @@
     "registered_at": "2025-12-22T10:56:49.000Z",
     "rating": 5,
     "language": "English"
-  },
-  {
-    "id": "recIpeGLRiiX3Wxw8",
-    "title": "The GIST Framework",
-    "url": "https://www.mindtheproduct.com/the-gist-framework-by-itamar-gilad/",
-    "duration": 1680,
-    "topics": [
-      "Product",
-      "Product Discovery",
-      "Product Strategy",
-      "Lean Product Management"
-    ],
-    "speakers": [
-      "Itamar Gilad"
-    ],
-    "description": "In this talk from #MTP Engage Manchester consultant Itamar Gilad takes us through his GIST (goals, ideas, steps, tasks) framework.\n",
-    "core_topic": "",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2020/11/good-talkspodcasts-nov-2020-i.html",
-    "registered_at": "2020-11-09T08:50:02.000Z"
   },
   {
     "id": "recIrMS6QNWvtkTzW",
@@ -6600,30 +6455,6 @@
     "blog_url": "https://www.eferro.net/2019/03/good-talkspodcasts-march-2019-i.html",
     "registered_at": "2020-01-19T20:38:35.000Z",
     "notes": "Effective software engineering requires prioritizing **collaborative learning and behavioral design** over rigid data structures to ensure that technical architecture aligns with actual business processes rather than organizational silos. By using discovery techniques like **Event Storming**, teams can disentangle complex legacy systems into manageable, independent domains that support continuous delivery.\n\n* **Design is how it works:** Design should focus on **behavior** and system interaction rather than just aesthetics or documentation.\n* **Conway’s Law:** Organizations inevitably produce system designs that are copies of their own **communication structures**. Siloed teams lead to siloed, \"spaghetti\" architectures.\n* **Event Storming:** A collaborative tool for learning and visualizing the business domain.\n    * **Big Picture:** Used to find the \"domain events\" (relevant business occurrences in the past tense) and identify **bottlenecks** or \"hotspots.\"\n    * **Process Modeling:** A deeper dive using **commands** (actions), **read models** (information for decisions), and **policies** (business rules).\n    * **Software Modeling:** Translating the process into technical aggregates and state machines.\n* **Policies as Behavior:** The most critical parts of a system are the **policies** (\"Whenever X happens, then do Y\"). This is where business logic and behavior changes occur.\n* **Theory of Constraints:** Focus improvements on the **primary bottleneck** of the system. Adding capacity elsewhere (e.g., adding seats to a restaurant when the oven is the limit) does not improve throughput.\n* **Bounded Contexts:** Use **Domain-Driven Design (DDD)** to define clear boundaries based on language. Each context should have its own model to avoid \"spaghetti\" dependencies.\n* **Inverse Conway Maneuver:** Evolutionarily change the organizational structure to match the **desired software architecture**, rather than letting the old structure dictate the design.\n* **Disentangling the Monolith:** Also known as the **Strangler Pattern**, this involves gradually carving out new, small bounded contexts with their own **Continuous Delivery** pipelines.\n* **Hexagonal (Ports and Adapters) Architecture:** Use an \"Alcatraz\" approach to architecture to **isolate the domain model** from external systems, preserving the integrity of the domain language.\n* **Imperfect Design:** Accept that **all models are wrong**, but focus on creating models that are **useful** for solving specific business problems."
-  },
-  {
-    "id": "recNuR7PNPTKDGUJb",
-    "title": "Reboot Your Team",
-    "url": "https://www.mindtheproduct.com/reboot-your-team-by-christina-wodtke/",
-    "duration": 1920,
-    "topics": [
-      "Engineering Culture",
-      "Teams",
-      "Product",
-      "Product Team"
-    ],
-    "speakers": [
-      "Christina Wodtke"
-    ],
-    "description": "Christina told us how to reboot the team you have, or build a healthy one from the ground up.\n",
-    "core_topic": "Engineering Culture",
-    "year": 2018,
-    "conference_name": "Mind the Product",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2020/11/good-talkspodcasts-nov-2020-i.html",
-    "registered_at": "2020-11-09T09:04:54.000Z",
-    "rating": 5,
-    "language": "English"
   },
   {
     "id": "recO0DG5oqYcZ55lA",
@@ -8287,28 +8118,6 @@
     "blog_url": "https://www.eferro.net/2021/07/good-talkspodcasts-jul-2021-i.html",
     "registered_at": "2021-07-03T06:47:40.000Z",
     "notes": "Implementing production readiness reviews as a collaborative knowledge-sharing tool helps teams reduce production anxiety and build more reliable systems by providing clear rationales for operational best practices. To be effective, these reviews must be integrated early into the design phase and kept lightweight and evolving to ensure they remain a valuable resource rather than a bureaucratic burden.\n\n*   **Production Readiness Reviews (PRRs)** serve two primary functions: ensuring a service meets basic operational standards and allowing teams to benefit from organization-wide knowledge.\n*   PRRs should be integrated into the **design phase** rather than being a final \"check-box\" exercise, allowing operational needs to influence architectural trade-offs early.\n*   Effective checklists must include **rationales and historical context** for each item so engineers understand the \"why\" behind the rules and can identify when they become obsolete.\n*   **Design for Independence:** Ensure builds are reproducible without relying on external services (like GitHub) so that teams can still perform **emergency rollbacks** during third-party outages.\n*   **Release Consistency:** Document release processes step-by-step and ensure **rollbacks follow the same procedure as rollouts** to prevent panic and confusion during production incidents.\n*   **Configuration Safety:** Development environments should never inherit from production to prevent accidental **PII leaks** or unauthorized access to user data.\n*   **Observability and SLOs:** Define Service Level Indicators (SLIs) and Objectives (SLOs) at design time; tune alerts to reduce \"toil\" and ensure dashboards include metrics for external dependencies.\n*   **Security Best Practices:** Encrypt external requests, isolate resources by network, and use Access Control Lists (ACLs) to strictly **limit access to debugging endpoints**.\n*   **Capacity Planning:** Document exactly how a service scales (e.g., by user count or payload size) and identify potential **resource constraints** or cloud provider rate limits.\n*   **Blameless Culture:** By standardizing knowledge and reducing trial-and-error mistakes, PRRs help foster a **blameless engineering culture** and reduce \"production anxiety\".\n*   **Process Efficiency:** Keep the review process light and useful; if it is perceived as a \"compliance burden,\" it will limit release velocity and be abandoned by teams.\n*   Use a **combination of manual and automated checks** to handle both trivial validations and complex design reviews."
-  },
-  {
-    "id": "recTZlj6ecEgPAWIC",
-    "title": "JavaZone 2019, Room 5 - Survival Tips For Women in Tech",
-    "url": "https://www.pscp.tv/w/1BdGYepvvLQGX",
-    "duration": 0,
-    "topics": [
-      "Culture",
-      "Inspirational"
-    ],
-    "speakers": [
-      "Patricia Aas"
-    ],
-    "description": "Essential talk especially to open our eyes to privileged people like me (white male in tech).\n",
-    "core_topic": "Engineering Culture",
-    "year": 2019,
-    "conference_name": "JavaZone",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2019/11/good-talkspodcasts-october-november.html",
-    "registered_at": "2020-01-19T20:40:44.000Z",
-    "rating": 5,
-    "language": "English"
   },
   {
     "id": "recU3ahWWaBZfihRf",
@@ -10194,21 +10003,6 @@
     "blog_url": "https://www.eferro.net/2021/03/good-talkspodcasts-march-2021-i.html",
     "registered_at": "2021-03-07T08:15:44.000Z",
     "notes": "Focus your time and energy on the unique aspects of your product by **outsourcing \"undifferentiated heavy lifting\" like infrastructure management** to serverless platforms and managed services. Adopting these higher-level abstractions, even through small and incremental steps, allows for **faster software delivery** and ensures you are no longer serving the machines you own.\n\n* **Speed to Production:** The primary goal of software engineering is to lower the barriers between having an idea and getting that code into production as quickly as possible.\n* **Undifferentiated Heavy Lifting:** Most infrastructure management (running servers, managing operating systems, hypervisors) is \"undifferentiated heavy lifting\" that does not make a product better for users or differentiate a company from its competitors.\n* **The Infrastructure Trap:** While many believe the world has moved to the cloud, roughly 70% of IT spend remains on-premise. Organizations often end up \"serving their machines\" (hiring people to maintain them) instead of the machines serving the business.\n* **Kubernetes Limitations:** While Kubernetes has a powerful ecosystem, it is primarily an infrastructure management tool, not a developer-friendly platform. It requires significant training and operational overhead that can hollow out an organization's ability to deliver software.\n* **Definition of Serverless:** A true serverless offering must have four characteristics: no server management, automatic scaling based on use, built-in high availability, and a pay-as-you-go billing model.\n* **Broad Scope of Serverless:** Serverless is not just Function as a Service (FaaS); it includes storage (S3), messaging (SQS), and databases (DynamoDB or Aurora).\n* **FaaS Benefits:** Function as a Service allows developers to focus purely on application code. The platform handles the container operating system, scaling, and the execution lifecycle.\n* **FaaS Constraints:** Developers must accept platform-specific abstractions, including limited programming language versions, statelessness (functions cannot persist state internally), and reliance on the provider's observability tools.\n* **Microservices Strategy:** When moving microservices to a serverless model, start with a 1:1 mapping where a single function encapsulates a whole microservice. This simplifies deployment and avoids \"function explosion\" while the team learns the tooling.\n* **Aggregate-Based Boundaries:** For more granular decomposition, use Domain-Driven Design \"Aggregates\" as the boundary for functions. Avoid splitting functions down to the level of individual operations (e.g., \"pay invoice\") as this leads to data inconsistency and management complexity.\n* **Information Hiding:** The choice to use functions should be an implementation detail. To external consumers, a microservice should appear as a logical unit, regardless of whether it is deployed on a server, a container, or multiple functions.\n* **Database Transitions:** Moving to serverless databases often requires a paradigm shift (e.g., from relational Postgres to non-relational DynamoDB). Managed relational options like Aurora provide a \"serverless\" experience without requiring code changes to handle different data models.\n* **Private Cloud Maturity Gap:** True serverless experiences for storage and messaging (analogous to S3 or SQS) are largely non-existent for on-premise Kubernetes environments, making the public cloud significantly more efficient for these patterns.\n* **The \"Baby Steps\" Approach:** Transitioning to serverless should be done incrementally. Start with small, non-critical tasks—such as administrative scripts or background processes—to gain experience before migrating core business logic."
-  },
-  {
-    "id": "recasz60F11RyD4TN",
-    "title": "Five XP Practices for Agile Development",
-    "url": "https://www.ustream.tv/recorded/114914811",
-    "duration": 0,
-    "topics": [],
-    "speakers": [
-      "David Bernstein"
-    ],
-    "description": "",
-    "core_topic": "",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2018/09/index.html",
-    "registered_at": "2020-01-19T20:32:41.000Z"
   },
   {
     "id": "recavoPWWFLRyf1R0",
@@ -12629,21 +12423,6 @@
     "notes": "DuckDB is to analytics what SQLite is to transactions: an in-process, zero-dependency database you `pip install` and embed in your Python process, with a columnar, vectorized engine that runs big aggregations and joins — even larger-than-RAM, terabyte-scale on a laptop — blazingly fast.\n\n- In-process, not in-memory: pre-compiled wheel, zero dependencies; runs anywhere Python runs (laptop, Lambda, CI, browser via Wasm, even iOS/Android). Hit 1.0 in 2024 with a stable, ~5-year-compatible file format.\n- Columnar + vectorized: processes ~2,000 rows at a time to use CPU caches well while conserving memory; ~5x compression vs row stores; built for big bulk aggregations and joins, not many tiny transactions.\n- Handles larger-than-memory data by streaming from disk and spilling intermediates — \"solve 1TB problems on your laptop.\"\n- Tight data-science interop: results to/from pandas, Polars, Arrow (often zero-copy), NumPy, even TensorFlow/PyTorch tensors; can run SQL directly over a DataFrame variable by reading Python locals — no explicit hand-off.\n- A universal reader: queries Parquet/CSV/JSON (best-in-class CSV sniffer) and even live Postgres/MySQL/SQLite/BigQuery without importing first (data virtualization); reads and writes directly on S3-style object stores, fetching only the files/bytes a query needs.\n- Friendlier SQL: e.g. GROUP BY ALL infers the grouping columns; auto-creates tables and infers schema from a query or file; full typing (unlike SQLite), nullable by default, with a union type for mixed columns.\n- Concurrency trade-off: single-process for read-write (multi-threaded within it), multi-process fine read-only. For full multi-user/cloud, MotherDuck wraps DuckDB as a serverless warehouse that can split one query between laptop and cloud.\n- Governance: MIT-licensed and owned by a non-profit DuckDB Foundation, so a \"rug pull\" is structurally impossible; an extension ecosystem lets you add capabilities.\n- \"Big data era is over\" thesis: laptops and single big nodes are fast enough that ease of use, not scale, is what matters — great for data apps and for replacing slow Postgres/DBT analytical jobs (hours to minutes)."
   },
   {
-    "id": "reci6bvnjICGvynVy",
-    "title": "Simplify the stack",
-    "url": "http://www.ustream.tv/recorded/114916328",
-    "duration": 0,
-    "topics": [],
-    "speakers": [
-      "Matt Aimonetti"
-    ],
-    "description": "Good talk about simplicity and how you can use \"Requests For Comments\" to discuss design ideas.\n",
-    "core_topic": "",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2018/05/good-talkspodcasts-may-2018-i.html",
-    "registered_at": "2020-01-19T20:33:03.000Z"
-  },
-  {
     "id": "reci6hmP68Wu5dCl2",
     "title": "Improving Observability and Testing In Production",
     "url": "https://www.youtube.com/watch?v=Nmu4URA7pSM",
@@ -14769,26 +14548,6 @@
     "blog_url": "https://www.eferro.net/2014/10/podcaststalks-2014-1-15-oct.html",
     "registered_at": "2020-01-19T20:37:59.000Z",
     "notes": "Running a global organization (FINCA: 12,000 employees, 23 countries, 2M microfinance customers) comes down to trust: you have to empower people and give them permission to make mistakes, but balanced between blind trust and no trust, with the systems and controls to weed out the bad actors.\n\n- Empowerment works but requires training: decentralizing the fertilizer warehouses to 35 villages succeeded, but one undertrained person came up short and resented it — empowering people is right, but you must train them well enough.\n- Trust is how the organization scales: FINCA grew by trusting others to run pilots (training CARE and Save the Children in village banking) and four social entrepreneurs with $10k each — risky bets that paid off.\n- Hire people smarter than you, especially the CFO; founders who didn't trust or delegate to competent staff hit a ~10,000-client ceiling and failed.\n- Don't over-correct: after frauds in the 1990s FINCA swung to \"trust no one,\" played defense for a decade, lost its strategy and let competitors catch up — learning the controls lesson too well was itself a costly mistake.\n- Land in the middle: no-trust drives away good employees and customers; the goal is controls that catch bad actors without creating an atmosphere of distrust.\n- Give permission to fail by example and by real latitude: give people \"a pile of chips, not the whole casino\" — small-stakes risks they can learn from; someone who can't admit a mistake can't learn.\n- Leadership is destination (where you're taking the org), credibility (a toolbox of solved problems) and toughness (getting back up after reverses) — plus not taking yourself too seriously, and sacrifice (put yourself last).\n- Hire for values, not just skills: ask \"why do you want this job?\"; betrayal hurts, but most people are trustworthy, so stay tough and keep trusting."
-  },
-  {
-    "id": "recnxIHCyhvx74jhP",
-    "title": "Agile data science",
-    "url": "https://soundcloud.com/thoughtworks/agile_data_science",
-    "duration": 1260,
-    "topics": [
-      "Agile",
-      "Data Science"
-    ],
-    "speakers": [
-      "Rebecca Parsons",
-      "Alexey Boas",
-      "David Johnston"
-    ],
-    "description": "ThoughtWorks podcast. Interesting to understand how to have a great collaboration between data scientists and developers when creating a product.\n",
-    "core_topic": "",
-    "format": "podcast",
-    "blog_url": "https://www.eferro.net/2018/09/index.html",
-    "registered_at": "2020-01-19T20:32:43.000Z"
   },
   {
     "id": "recnyzknPWJh5BuFV",
@@ -17387,26 +17146,6 @@
     "language": "English"
   },
   {
-    "id": "recwX7fcCwTj99GfR",
-    "title": "Episode 066: From OO to FP & All the Things in Between w/ Sandi Metz",
-    "url": "https://soundcloud.com/elixirfountain/episode-066-from-oo-to-fp-all-the-things-in-between-w-sandi-metz",
-    "duration": 0,
-    "topics": [
-      "Technical Practices",
-      "Software Design",
-      "Functional",
-      "OOP"
-    ],
-    "speakers": [
-      "Sandi Metz"
-    ],
-    "description": "Podcast:   The Elixir Fountain Podcast\n",
-    "core_topic": "",
-    "format": "podcast",
-    "blog_url": "https://www.eferro.net/2017/08/good-talkspodcasts-purging-queue-ii.html",
-    "registered_at": "2020-01-19T20:41:23.000Z"
-  },
-  {
     "id": "recwYaEtkcKY4fmvT",
     "title": "Making developer experience a reality",
     "url": "https://www.thoughtworks.com/podcasts/developer-effectiveness",
@@ -17842,25 +17581,6 @@
     "rating": 5,
     "language": "English",
     "notes": "**Prioritizing Service Level Objectives (SLOs)** and **error budgets** shifts the focus from individual system metrics to the actual user experience, ensuring that teams only respond to failures that genuinely impact customers.\n\n* **Focus on user impact rather than infrastructure metrics** like CPU usage.\n* **Quantify reliability through SLIs** that measure whether critical user journeys are functioning correctly.\n* **Avoid aiming for 100% reliability**; set realistic SLOs that balance user satisfaction with product velocity.\n* **Define \"good\" versus \"bad\" events** using specific thresholds.\n* **Establish an error budget**, the total allowed unavailability over a specific time window.\n* **Alert only when the error budget is in danger** of being exhausted quickly.\n* **Use error budgets as a decision tool** to determine when to focus on reliability versus shipping features.\n* **Utilize high-cardinality observability** to drill down from SLO alerts into individual traces."
-  },
-  {
-    "id": "recy9pfGthIhVLFim",
-    "title": "Test-Driven: The Four-Step Dance",
-    "url": "http://www.ustream.tv/recorded/114916388",
-    "duration": 0,
-    "topics": [
-      "Agile",
-      "Technical Practices",
-      "XP"
-    ],
-    "speakers": [
-      "Tim Ottinger"
-    ],
-    "description": "Very interesting detail for improving our TDD practice.\n",
-    "core_topic": "",
-    "format": "talk",
-    "blog_url": "https://www.eferro.net/2018/05/good-talkspodcasts-may-2018-i.html",
-    "registered_at": "2020-01-19T20:33:01.000Z"
   },
   {
     "id": "recyCkKA0x3HPvZnc",
