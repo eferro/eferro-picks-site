@@ -18,7 +18,7 @@ export function CategoryIndex({ categories, onCategoryClick }: CategoryIndexProp
   if (categories.length === 0) {
     return (
       <nav
-        className="sticky top-4 bg-white rounded-lg shadow-sm p-4"
+        className="sticky top-4 max-h-[calc(100vh-2rem)] overflow-y-auto bg-white rounded-lg shadow-sm p-4"
         aria-label="Category navigation"
       >
         <h3 className="text-sm font-medium text-gray-900 mb-3">Categories</h3>
@@ -28,7 +28,7 @@ export function CategoryIndex({ categories, onCategoryClick }: CategoryIndexProp
 
   return (
     <nav
-      className="sticky top-4 bg-white rounded-lg shadow-sm p-4"
+      className="sticky top-4 max-h-[calc(100vh-2rem)] overflow-y-auto bg-white rounded-lg shadow-sm p-4"
       aria-label="Category navigation"
     >
       <h3 className="text-sm font-medium text-gray-900 mb-3">Categories</h3>
@@ -38,9 +38,9 @@ export function CategoryIndex({ categories, onCategoryClick }: CategoryIndexProp
             <button
               type="button"
               onClick={() => onCategoryClick(category.name)}
-              className="w-full text-left text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded px-2 py-1 transition-colors"
+              className="w-full flex items-baseline justify-between gap-2 text-left text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded px-2 py-1 transition-colors"
             >
-              <span className="block truncate">{category.name}</span>
+              <span className="truncate">{category.name}</span>
               <span className="text-xs text-gray-400">({category.count})</span>
             </button>
           </li>
