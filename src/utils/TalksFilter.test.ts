@@ -496,9 +496,62 @@ describe('TalksFilter', () => {
         expect(filter.filter([talk])).toEqual([talk]);
       });
 
-      it('should match partial word in title', () => {
+      it('should match a word prefix in title', () => {
+        const talk = createTalk({ title: 'Refactoring Legacy Code' });
+        const filter = new TalksFilter({ query: 'Refactor' });
+        expect(filter.filter([talk])).toEqual([talk]);
+      });
+
+      it('should NOT match a fragment from the middle of a word', () => {
         const talk = createTalk({ title: 'Refactoring Legacy Code' });
         const filter = new TalksFilter({ query: 'factor' });
+        expect(filter.filter([talk])).toEqual([]);
+      });
+    });
+
+    describe('Word-prefix Matching (short terms)', () => {
+      it('should NOT match XP inside unrelated words like experience', () => {
+        const talk = createTalk({
+          title: 'Learning from experience',
+          description: 'An expert explains how to experiment'
+        });
+        const filter = new TalksFilter({ query: 'XP' });
+        expect(filter.filter([talk])).toEqual([]);
+      });
+
+      it('should match the exact topic XP', () => {
+        const talk = createTalk({
+          title: 'Talk Title',
+          topics: ['XP', 'TDD']
+        });
+        const filter = new TalksFilter({ query: 'XP' });
+        expect(filter.filter([talk])).toEqual([talk]);
+      });
+
+      it('should match hyphenated topics clicked as a whole', () => {
+        const talk = createTalk({
+          title: 'Talk Title',
+          topics: ['Lean-Agile']
+        });
+        const filter = new TalksFilter({ query: 'Lean-Agile' });
+        expect(filter.filter([talk])).toEqual([talk]);
+      });
+
+      it('should find terms inside hyphenated words', () => {
+        const talk = createTalk({
+          title: 'Talk Title',
+          topics: ['Agile-XP']
+        });
+        const filter = new TalksFilter({ query: 'XP' });
+        expect(filter.filter([talk])).toEqual([talk]);
+      });
+
+      it('should match words adjacent to punctuation', () => {
+        const talk = createTalk({
+          title: 'Talk Title',
+          notes: 'Covers generics, iterators and (XP) practices.'
+        });
+        const filter = new TalksFilter({ query: 'generics XP' });
         expect(filter.filter([talk])).toEqual([talk]);
       });
     });

@@ -3,14 +3,28 @@ import { hasMeaningfulNotes } from "./talks";
 import { normalizeText } from "./normalizeText";
 
 /**
+ * Splits normalized text into searchable words.
+ * Words break on any character that is not a letter, digit, '+' or '#'
+ * (kept for terms like "c++" or "c#"), so hyphenated topics like
+ * "Lean-Agile" are searchable both as a whole and by their parts.
+ */
+function tokenize(text: string): string[] {
+  return normalizeText(text)
+    .split(/[^a-z0-9+#]+/)
+    .filter(Boolean);
+}
+
+/**
  * Searches for query terms in multiple talk fields (title, description, speakers, topics, notes)
- * All terms must match (AND logic) in any combination of fields
+ * All terms must match (AND logic) in any combination of fields.
+ * Each term matches at word starts only ("Refactor" matches "Refactoring"),
+ * never inside words ("XP" does not match "experience").
  */
 function searchInFields(talk: Talk, query: string): boolean {
-  if (!query.trim()) return true;
+  const searchTerms = tokenize(query);
+  if (searchTerms.length === 0) return true;
 
-  const searchTerms = query.trim().split(/\s+/).map(normalizeText);
-  const searchableText = normalizeText([
+  const searchableWords = tokenize([
     talk.title,
     talk.description || '',
     ...(talk.speakers || []),
@@ -18,7 +32,9 @@ function searchInFields(talk: Talk, query: string): boolean {
     talk.notes || ''
   ].join(' '));
 
-  return searchTerms.every(term => searchableText.includes(term));
+  return searchTerms.every(term =>
+    searchableWords.some(word => word.startsWith(term))
+  );
 }
 
 export interface TalksFilterData {
