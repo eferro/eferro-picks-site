@@ -18275,5 +18275,106 @@
     "rating": 5,
     "year": 2026,
     "language": "English"
+  },
+  {
+    "id": "rec2otWikXixQYcqsHEc",
+    "title": "SE Radio 525: Randy Shoup on Evolving Architecture and Organization at eBay",
+    "url": "https://se-radio.net/2022/08/episode-525-randy-shoup-on-evolving-architecture-and-organization-at-ebay/",
+    "duration": 3533,
+    "topics": [
+      "Architecture",
+      "Continuous Delivery",
+      "Developer Productivity",
+      "Infrastructure",
+      "Lean Software Development",
+      "Microservices"
+    ],
+    "speakers": [
+      "Randy Shoup"
+    ],
+    "description": "Randy Shoup explores eBay's architectural transformation and the strategic use of lean software practices to drastically improve developer productivity and delivery speed — a masterclass in applying the Accelerate metrics to optimize engineering workflows and drive better business outcomes at scale.",
+    "core_topic": "Continuous Delivery",
+    "conference_name": null,
+    "format": "podcast",
+    "blog_url": "https://www.eferro.net/2026/07/good-talkspodcasts-jul-i.html",
+    "registered_at": "2026-07-05T12:59:41.000Z",
+    "rating": null,
+    "notes": "Host Jeremy Jung speaks with Randy Shoup, VP of Engineering and Chief Architect at eBay, about the historical evolution of eBay's technical architecture and modern strategies for improving developer productivity and software delivery velocity. His core message: applying continuous delivery and lean software practices — optimizing the delivery value stream and automating — universally improves both engineering productivity and business outcomes at any scale.\n\n* **Architectural evolution**: eBay went from a massive C++ monolith (3.4 million lines of code in a single class) toward microservices where individual services own their own data storage, avoiding the pitfalls of shared mutable state.\n* **Value stream mapping**: A critical tool for finding bottlenecks by analyzing the end-to-end path from idea to customer-facing feature — which usually reveals software delivery as the main area to optimize.\n* **The Accelerate metrics**: A scientific framework for measuring performance via deployment frequency, lead time for change, change failure rate, and mean time to restore.\n* **Optimizing software delivery**: Can drastically cut lead times — at eBay some teams moved from a 10-day deployment cycle to a 2-day cycle by adding automated testing and continuous delivery pipelines.\n* **Infrastructure strategy**: Prefer public cloud for startups and growing companies; self-operated data centers only become cost-effective at massive \"hyperscale\".\n* **Modern resilience techniques**: Canary deployments and traffic mirroring let teams test new code against production traffic in a black-box way to catch unintended behavioral changes before a full rollout.\n* **Organizational collaboration**: A weekly \"scrum of scrums\" lets platform and product teams share wins, pilot new capabilities, and clear blockers together.\n* **Universal lean practices**: Trunk-based development and frequent code reviews work across organizations of all scales, showing industry-standard techniques solve even complex scaling challenges."
+  },
+  {
+    "id": "rece2NukJ9JOzMoIrUtP",
+    "title": "Building Resilient Platforms: Insights from 20+ Years in Mission-Critical Infrastructure",
+    "url": "https://www.infoq.com/presentations/infrastructure-financial-services/",
+    "duration": 2893,
+    "topics": [
+      "Cloud",
+      "Culture",
+      "Infrastructure",
+      "Platform engineering",
+      "Resilience",
+      "Scalability"
+    ],
+    "speakers": [
+      "Matthew Liste"
+    ],
+    "description": "Drawing on twenty-five years of experience in financial-services infrastructure, Matthew Liste offers a blueprint for building resilient and scalable platforms through principles like intuitive design, dogmatic automation, and sustainable decision-making — balancing stability and security with the hidden complexity required to deliver a 'magical' user experience at enterprise scale.",
+    "core_topic": "Platform Engineering",
+    "conference_name": "InfoQ",
+    "format": "talk",
+    "blog_url": "https://www.eferro.net/2026/07/good-talkspodcasts-jul-i.html",
+    "registered_at": "2026-07-05T16:55:49.000Z",
+    "rating": null,
+    "notes": "Matthew Liste, Head of Infrastructure at American Express, outlines eleven fundamental principles for building and maintaining resilient, scalable, and intuitive technology platforms, based on twenty-five years in infrastructure and financial services. His through-line: success depends on a 'long-term greedy' commitment to automation and 'evergreen' maintenance, delivering non-negotiable stability and scalability through an intuitive experience that hides complexity from the consumer.\n\n* **Prioritize intuitive experiences**: Hide underlying complexity so the platform feels 'magical' and simple for the consumer to use.\n* **Build with interchangeable components**: Ensure consistency across the stack by dictating common standards for foundational services like identity and observability (Lego-brick approach).\n* **Maintain the three non-negotiables**: Stability, security, and scalability are essential requirements that cannot be compromised for mission-critical systems.\n* **Commit to an evergreen strategy**: Continuous patching and updates prevent security vulnerabilities and technical debt from becoming unmanageable.\n* **Avoid undifferentiated heavy lifting**: Leverage existing tools and engines rather than rebuilding common technologies like databases or message brokers from scratch.\n* **Be opinionated and say no**: Decline custom requests that threaten sustainability, focusing on the 80% use case to keep the platform maintainable.\n* **Adopt a long-term greedy mindset**: Only introduce a new technology if you are prepared to commit the resources to feed and care for it for a decade or more.\n* **Establish explicit shared responsibility**: Use written contracts and SLOs that clearly define the obligations of both platform provider and consumer.\n* **Abstract without obfuscating**: Provide high-level interfaces while still letting technical users introspect and troubleshoot the underlying machinery.\n* **Leverage open source and standards**: Stand on the 'shoulders of giants' for portability across environments and global community innovation.\n* **Focus on a healthy culture**: Team empowerment and diversity of thought drive great products.\n* **Enforce dogmatic automation**: Automate all processes so the platform can handle massive scale without falling into a manual 'spiral of death'."
+  },
+  {
+    "id": "rec0HSjgR0I1z6KRkmQw",
+    "title": "Can You Measure The Value Of Refactoring",
+    "url": "https://www.youtube.com/watch?v=re7whFXlOFk",
+    "duration": 1252,
+    "topics": [
+      "AI",
+      "Developer Productivity",
+      "Quality",
+      "Refactoring",
+      "Small Safe Steps (3s)",
+      "Testing"
+    ],
+    "speakers": [
+      "Trisha Gee",
+      "Emily Bache"
+    ],
+    "description": "Trisha Gee and Emily Bache explore how to quantify the value of refactoring through its impact on code health, delivery predictability, and developer satisfaction, with practical insights on using deterministic tools and small, safe, incremental steps so technical improvements translate into measurable business value.",
+    "core_topic": "Software Design",
+    "conference_name": null,
+    "format": "podcast",
+    "blog_url": "https://www.eferro.net/2026/07/good-talkspodcasts-jul-i.html",
+    "registered_at": "2026-07-05T21:48:47.000Z",
+    "rating": null,
+    "notes": "Trisha Gee and Emily Bache discuss whether the value of refactoring can be measured, exploring its impact on code quality, developer satisfaction, and the predictability of software delivery. Their core message: refactoring provides measurable value by improving code health — leading to more predictable delivery, fewer bugs, and higher developer satisfaction — and is maximized through small, safe steps using reliable tools that keep technical improvements tied to delivering features to users.\n\n* **Measurable business impact**: Improving code quality through refactoring leads to a measurable reduction in bugs, faster bug resolution, and more reliable delivery predictions.\n* **Predictability and estimation**: High-quality code is easier to understand, which allows more accurate estimates and reduces variance in how long tasks take.\n* **Developer satisfaction and retention**: Code design directly affects developers' mood and job satisfaction; a clean codebase helps prevent burnout and retain talent.\n* **Safety through tooling**: Deterministic IDE tools enable safe, automated transformations (renaming, method extraction) that eliminate the risks of manual search-and-replace.\n* **Incremental architectural progress**: Large-scale architectural payoffs come from a planned sequence of small, safe, tool-supported steps rather than high-risk sweeping changes.\n* **Preparatory refactoring**: The most effective approach refactors with a clear 'why' — restructuring the existing design specifically to make an upcoming feature easier to implement.\n* **Confidence through testing**: Automated tests provide a vital safety net for complex changes, while reliable tools let experienced developers make small, low-risk changes that first make difficult code testable.\n* **Limitations of AI**: AI can help spot patterns or suggest design ideas, but currently lacks the structural reliability of deterministic tools that manipulate the code's underlying syntax tree.\n* **Holistic measurement**: To assess refactoring's value, move beyond activity metrics like lines of code and focus on code health, delivery speed, and qualitative developer surveys."
+  },
+  {
+    "id": "recOoi2d2av3VJt4lubR",
+    "title": "Coder vs Developer vs Software Engineer, What's the Difference?",
+    "url": "https://www.youtube.com/watch?v=fcjBfSiyI0k",
+    "duration": 1018,
+    "topics": [
+      "AI",
+      "Company Culture",
+      "Continuous Delivery",
+      "Engineering Culture",
+      "Nature of Software Development",
+      "Professionalism"
+    ],
+    "speakers": [
+      "Dave Farley"
+    ],
+    "description": "Dave Farley explores the mindsets that distinguish coders, software developers, and engineers, arguing that shifting from mere instruction-following to ownership and scientific rigor is the key to professional excellence — and, highlighting the limitations of traditional management, offers a roadmap for adopting disciplines like continuous delivery to deliver better results and more fulfilling work.",
+    "core_topic": "Engineering Culture",
+    "conference_name": null,
+    "format": "podcast",
+    "blog_url": "https://www.eferro.net/2026/07/good-talkspodcasts-jul-i.html",
+    "registered_at": "2026-07-05T21:56:54.000Z",
+    "rating": null,
+    "notes": "Dave Farley (Modern Software Engineering channel) categorizes programmers into three distinct groups — the coder, the software developer, and the software engineer — based on mindset, organizational environment, and approach to problem-solving. His argument: effective software development means moving beyond being a 'coder' who merely translates instructions into syntax, toward a developer/engineer who takes ownership of problem-solving and applies scientific rigor to keep the system releasable.\n\n* **Three distinct categories**: Coder, software developer, and software engineer are distinguished by mindset, behavior, and how they organize their work — not just years of experience.\n* **The coder as translator**: Coders focus on translating detailed descriptions into syntax, often treating problem-solving and testing as someone else's job, which can breed 'learned helplessness' in restrictive organizational cultures.\n* **Ownership defines the developer**: Software developers take personal responsibility for the whole system, seeing software as a tool to solve problems for people and prioritizing design over mere translation.\n* **Scientific rigor defines the engineer**: Software engineering is a scientifically rational approach to problem-solving plus the ability to keep the system releasable after every small change.\n* **Continuous delivery as a core discipline**: Adopting the technical and organizational disciplines that enable continuous delivery is the most effective way to produce better software faster while keeping quality high.\n* **The failure of Taylorism in software**: 'Scientific management' / assembly-line thinking fails in software because it limits the creative freedom and ownership humans need to solve complex, unpredictable problems.\n* **The shifting value of programmers**: As AI gets better at translating instructions into code, a programmer's value shifts away from syntax knowledge toward the harder, more critical work of understanding problems and creating elegant designs.\n* **Progression toward excellence**: Moving from a coder mindset toward an engineer mindset raises professional value — better economic outcomes, superior products, and more fulfilling work."
   }
 ]
