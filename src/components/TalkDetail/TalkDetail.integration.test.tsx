@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { screen, fireEvent, waitFor } from '@testing-library/react';
 import { renderIntegration } from '../../test/integration/IntegrationTestHelpers';
 import { TalkDetail } from '.';
+import { TalksList } from '../TalksList';
 import { useTalks } from '../../hooks/useTalks';
 import { createTalk } from '../../test/utils';
 import { Routes, Route } from 'react-router-dom';
@@ -252,16 +253,19 @@ describe('TalkDetail Integration', () => {
     });
   });
 
-  describe('Speaker Filter Interaction', () => {
-    it('user can click speaker to search by speaker name', async () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
-        talks: [mockTalk],
-        loading: false,
-        error: null
-      });
+  describe('Metadata Navigation', () => {
+    const otherTalk = createTalk({
+      id: 'other-1',
+      title: 'Unrelated Talk',
+      speakers: ['Carol White'],
+      conference_name: 'Other Conf',
+      topics: ['python']
+    });
 
+    const renderDetailWithList = () =>
       renderIntegration(
         <Routes>
+          <Route path="/" element={<TalksList />} />
           <Route path="/talk/:id" element={<TalkDetail />} />
         </Routes>,
         {
@@ -269,131 +273,60 @@ describe('TalkDetail Integration', () => {
         }
       );
 
-      // Click speaker button
-      const speakerButton = screen.getByText('Alice Smith');
-      fireEvent.click(speakerButton);
-
-      // Speaker button should show active state (query set to speaker name)
-      await waitFor(() => {
-        expect(speakerButton).toHaveAttribute('aria-pressed', 'true');
-      });
-    });
-
-    it('user can toggle speaker filter off by clicking again', async () => {
+    beforeEach(() => {
       (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
-        talks: [mockTalk],
+        talks: [mockTalk, otherTalk],
         loading: false,
         error: null
       });
-
-      // Start with query set to speaker name
-      renderIntegration(
-        <Routes>
-          <Route path="/talk/:id" element={<TalkDetail />} />
-        </Routes>,
-        {
-          initialPath: '/talk/test-123',
-          initialParams: new URLSearchParams('query=Alice Smith')
-        }
-      );
-
-      const speakerButton = screen.getByText('Alice Smith');
-      expect(speakerButton).toHaveAttribute('aria-pressed', 'true');
-
-      // Click to remove filter
-      fireEvent.click(speakerButton);
-
-      // Button should return to inactive state
-      await waitFor(() => {
-        expect(speakerButton).toHaveAttribute('aria-pressed', 'false');
-      });
     });
 
-    it('clicking a different speaker replaces the current query', async () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
-        talks: [mockTalk],
-        loading: false,
-        error: null
-      });
+    it('clicking a speaker navigates to the talks list filtered by that speaker', async () => {
+      renderDetailWithList();
 
-      // Start with query set to first speaker
-      renderIntegration(
-        <Routes>
-          <Route path="/talk/:id" element={<TalkDetail />} />
-        </Routes>,
-        {
-          initialPath: '/talk/test-123',
-          initialParams: new URLSearchParams('query=Alice Smith')
-        }
+      fireEvent.click(
+        screen.getByRole('link', { name: 'See all talks by Alice Smith' })
       );
 
-      // Click the other speaker
-      const bobButton = screen.getByText('Bob Jones');
-      fireEvent.click(bobButton);
-
-      // Bob should become active, Alice inactive
+      // Lands on the list, filtered and with a visible removable chip
       await waitFor(() => {
-        expect(bobButton).toHaveAttribute('aria-pressed', 'true');
+        expect(
+          screen.getByRole('button', { name: /remove search filter/i })
+        ).toBeInTheDocument();
       });
-      expect(screen.getByText('Alice Smith')).toHaveAttribute('aria-pressed', 'false');
-    });
-  });
-
-  describe('Conference Filter Interaction', () => {
-    it('user can click conference to apply filter', async () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
-        talks: [mockTalk],
-        loading: false,
-        error: null
-      });
-
-      renderIntegration(
-        <Routes>
-          <Route path="/talk/:id" element={<TalkDetail />} />
-        </Routes>,
-        {
-          initialPath: '/talk/test-123'
-        }
-      );
-
-      // Click conference button
-      const conferenceButton = screen.getByText('NDC London');
-      fireEvent.click(conferenceButton);
-
-      // Button should show active state
-      await waitFor(() => {
-        expect(conferenceButton).toHaveAttribute('aria-pressed', 'true');
-      });
+      expect(screen.getByText('Search:')).toBeInTheDocument();
+      expect(screen.getByText('Advanced TypeScript')).toBeInTheDocument();
+      expect(screen.queryByText('Unrelated Talk')).not.toBeInTheDocument();
     });
 
-    it('user can toggle conference filter off', async () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
-        talks: [mockTalk],
-        loading: false,
-        error: null
-      });
+    it('clicking a topic navigates to the talks list filtered by that topic', async () => {
+      renderDetailWithList();
 
-      // Start with conference filter active
-      renderIntegration(
-        <Routes>
-          <Route path="/talk/:id" element={<TalkDetail />} />
-        </Routes>,
-        {
-          initialPath: '/talk/test-123',
-          initialParams: new URLSearchParams('conference=NDC London')
-        }
+      fireEvent.click(
+        screen.getByRole('link', { name: 'See all talks about typescript' })
       );
 
-      const conferenceButton = screen.getByText('NDC London');
-      expect(conferenceButton).toHaveAttribute('aria-pressed', 'true');
-
-      // Click to remove filter
-      fireEvent.click(conferenceButton);
-
-      // Button should return to inactive state
       await waitFor(() => {
-        expect(conferenceButton).toHaveAttribute('aria-pressed', 'false');
+        expect(
+          screen.getByRole('button', { name: /remove search filter/i })
+        ).toBeInTheDocument();
       });
+      expect(screen.getByText('Advanced TypeScript')).toBeInTheDocument();
+      expect(screen.queryByText('Unrelated Talk')).not.toBeInTheDocument();
+    });
+
+    it('clicking the conference navigates to the talks list filtered by that conference', async () => {
+      renderDetailWithList();
+
+      fireEvent.click(
+        screen.getByRole('link', { name: 'See all talks from NDC London' })
+      );
+
+      await waitFor(() => {
+        expect(screen.getByText('Conference:')).toBeInTheDocument();
+      });
+      expect(screen.getByText('Advanced TypeScript')).toBeInTheDocument();
+      expect(screen.queryByText('Unrelated Talk')).not.toBeInTheDocument();
     });
   });
 
@@ -673,16 +606,15 @@ describe('TalkDetail Integration', () => {
   });
 
   describe('Complete User Journey', () => {
-    it('user can view talk details, filter by conference, and navigate to related talk', async () => {
-      const relatedTalk = createTalk({
-        id: 'related-1',
-        title: 'Related Talk',
-        speakers: ['Alice Smith'],
-        conference_name: 'NDC London'
+    it('user views a talk, jumps to all talks by its speaker, and clears the filter', async () => {
+      const unrelatedTalk = createTalk({
+        id: 'unrelated-1',
+        title: 'Unrelated Talk',
+        speakers: ['Carol White']
       });
 
       (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
-        talks: [mockTalk, relatedTalk],
+        talks: [mockTalk, unrelatedTalk],
         loading: false,
         error: null
       });
@@ -690,6 +622,7 @@ describe('TalkDetail Integration', () => {
       // User views talk detail
       renderIntegration(
         <Routes>
+          <Route path="/" element={<TalksList />} />
           <Route path="/talk/:id" element={<TalkDetail />} />
         </Routes>,
         {
@@ -697,21 +630,25 @@ describe('TalkDetail Integration', () => {
         }
       );
 
-      // User clicks conference to filter
-      const conferenceButton = screen.getByText('NDC London');
-      fireEvent.click(conferenceButton);
-
-      // Conference filter is active
-      await waitFor(() => {
-        expect(conferenceButton).toHaveAttribute('aria-pressed', 'true');
-      });
-
-      // User clicks related talk
-      const relatedLink = screen.getByText('Related Talk').closest('a');
-      expect(relatedLink).toHaveAttribute(
-        'href',
-        expect.stringContaining('conference=NDC+London')
+      // User clicks a speaker and lands on the filtered list
+      fireEvent.click(
+        screen.getByRole('link', { name: 'See all talks by Alice Smith' })
       );
+
+      await waitFor(() => {
+        expect(screen.getByText('Search:')).toBeInTheDocument();
+      });
+      expect(screen.queryByText('Unrelated Talk')).not.toBeInTheDocument();
+
+      // User removes the filter and sees the full collection again
+      fireEvent.click(
+        screen.getByRole('button', { name: /remove search filter/i })
+      );
+
+      await waitFor(() => {
+        expect(screen.getAllByText('Unrelated Talk').length).toBeGreaterThanOrEqual(1);
+      });
+      expect(screen.queryByText('Search:')).not.toBeInTheDocument();
     });
   });
 });

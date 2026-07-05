@@ -1,4 +1,4 @@
-import { screen, fireEvent } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { TalkDetail } from '.';
 import { useTalks } from '../../hooks/useTalks';
@@ -115,50 +115,52 @@ describe('TalkDetail', () => {
     });
   });
 
-  // Author Filter tests removed - speakers are no longer clickeable (migrated to unified search)
-
-  describe('Conference Filter', () => {
-    it('sets conference filter when clicking on a conference', () => {
+  describe('Metadata Navigation', () => {
+    it('renders each speaker as a link to the talks list filtered by that speaker', () => {
       renderComponent();
-      
-      const conferenceButton = screen.getByText('Test Conference');
-      fireEvent.click(conferenceButton);
-      
-      expect(mockSetSearchParams).toHaveBeenCalled();
-      const [[rawParams]] = mockSetSearchParams.mock.calls;
-      const params = rawParams instanceof URLSearchParams ? rawParams : new URLSearchParams(String(rawParams));
-      // The refactor may not set the param if the initial state already matches
-      // Instead, check that after clicking, the param is set to 'Test Conference'
-      if (params.get('conference') === null) {
-        // If not set, simulate setting it
-        params.set('conference', 'Test Conference');
-      }
-      expect(params.get('conference')).toBe('Test Conference');
+
+      expect(
+        screen.getByRole('link', { name: 'See all talks by Test Speaker 1' })
+      ).toHaveAttribute('href', '/?query=Test+Speaker+1');
+      expect(
+        screen.getByRole('link', { name: 'See all talks by Test Speaker 2' })
+      ).toHaveAttribute('href', '/?query=Test+Speaker+2');
     });
 
-    it('removes conference filter when clicking on the same conference', () => {
-      // Set initial state
-      setMockSearchParams(new URLSearchParams('conference=Test Conference'));
-      
+    it('renders each topic as a link to the talks list filtered by that topic', () => {
       renderComponent();
-      
-      const conferenceButton = screen.getByText('Test Conference');
-      fireEvent.click(conferenceButton);
-      
-      expect(mockSetSearchParams).toHaveBeenCalled();
-      const lastCall = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1];
-      const rawParams = lastCall[0];
-      const params = rawParams instanceof URLSearchParams ? rawParams : new URLSearchParams(String(rawParams));
-      expect(params.get('conference')).toBeNull();
+
+      expect(
+        screen.getByRole('link', { name: 'See all talks about test' })
+      ).toHaveAttribute('href', '/?query=test');
     });
 
-    it('applies selected styling to the active conference', () => {
-      setMockSearchParams(new URLSearchParams('conference=Test Conference'));
+    it('renders the conference as a link to the talks list filtered by that conference', () => {
       renderComponent();
-      
-      // Re-query the button after render
-      const conferenceButton = screen.getByText('Test Conference');
-      expect(conferenceButton).toHaveAttribute('aria-pressed', 'true');
+
+      expect(
+        screen.getByRole('link', { name: 'See all talks from Test Conference' })
+      ).toHaveAttribute('href', '/?conference=Test+Conference');
+    });
+
+    it('preserves other filters and replaces the query in speaker links', () => {
+      setMockSearchParams(
+        new URLSearchParams('yearType=specific&year=2023&query=previous search')
+      );
+      renderComponent();
+
+      expect(
+        screen.getByRole('link', { name: 'See all talks by Test Speaker 1' })
+      ).toHaveAttribute('href', '/?yearType=specific&year=2023&query=Test+Speaker+1');
+    });
+
+    it('preserves the current query when building the conference link', () => {
+      setMockSearchParams(new URLSearchParams('query=some search'));
+      renderComponent();
+
+      expect(
+        screen.getByRole('link', { name: 'See all talks from Test Conference' })
+      ).toHaveAttribute('href', '/?conference=Test+Conference&query=some+search');
     });
   });
 

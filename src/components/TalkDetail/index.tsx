@@ -2,10 +2,10 @@ import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTalks } from '../../hooks/useTalks';
 import { useUrlFilter } from '../../hooks/useUrlFilter';
-import { useFilterHandlers } from '../../hooks/useFilterHandlers';
+import { TalksFilter, type TalksFilterData } from '../../utils/TalksFilter';
 import { PlayIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { StarIcon } from '@heroicons/react/24/solid';
-import { LoadingSpinner, ErrorMessage, PageContainer, Button } from '../ui';
+import { LoadingSpinner, ErrorMessage, PageContainer } from '../ui';
 import { Talk } from '../../types/talks';
 import { formatDuration } from '../../utils/format';
 import ReactMarkdown from 'react-markdown';
@@ -16,8 +16,13 @@ import { hasMeaningfulNotes } from '../../utils/talks';
 
 function TalkDetail() {
   const { id } = useParams<{ id: string }>();
-  const { filter, updateFilter } = useUrlFilter();
-  const { handleTopicClick, handleConferenceClick } = useFilterHandlers(filter, updateFilter);
+  const { filter } = useUrlFilter();
+
+  // Links to the talks list with one filter field replaced, keeping the rest
+  const linkToFilteredList = (updates: TalksFilterData) => ({
+    pathname: '..',
+    search: new TalksFilter({ ...filter, ...updates }).toParams(),
+  });
 
   const { talks, loading, error } = useTalks();
 
@@ -77,19 +82,14 @@ function TalkDetail() {
           <div className="flex items-center text-gray-600 mb-6">
             <div className="flex flex-wrap gap-2">
               {talk.speakers.map(speaker => (
-                <button
+                <Link
                   key={speaker}
-                  onClick={() => handleTopicClick(speaker)}
-                  aria-label={`Filter by speaker ${speaker}`}
-                  aria-pressed={filter.query === speaker}
-                  className={`font-medium px-3 py-1 rounded-full text-sm transition-colors ${
-                    filter.query === speaker
-                      ? 'bg-blue-500 text-white'
-                      : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
-                  }`}
+                  to={linkToFilteredList({ query: speaker })}
+                  aria-label={`See all talks by ${speaker}`}
+                  className="font-medium px-3 py-1 rounded-full text-sm bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors"
                 >
                   {speaker}
-                </button>
+                </Link>
               ))}
             </div>
             <div className="flex items-center ml-4 gap-2">
@@ -110,15 +110,13 @@ function TalkDetail() {
           {(talk.conference_name || talk.year) && (
             <div className="text-sm text-gray-600 -mt-4 mb-6">
               {talk.conference_name && (
-                <Button
-                  variant="tag"
-                  size="sm"
-                  shape="pill"
-                  active={filter.conference === talk.conference_name}
-                  onClick={() => handleConferenceClick(talk.conference_name!)}
+                <Link
+                  to={linkToFilteredList({ conference: talk.conference_name })}
+                  aria-label={`See all talks from ${talk.conference_name}`}
+                  className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors"
                 >
                   {talk.conference_name}
-                </Button>
+                </Link>
               )}
               {talk.conference_name && talk.year && <span className="mx-1">·</span>}
               {talk.year && <span>{talk.year}</span>}
@@ -184,12 +182,14 @@ function TalkDetail() {
               <h3 className="text-sm font-medium text-gray-500 mb-2">Topics</h3>
               <div className="flex flex-wrap gap-2">
                 {talk.topics.map(topic => (
-                  <span 
+                  <Link
                     key={topic}
-                    className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-blue-100 text-blue-800"
+                    to={linkToFilteredList({ query: topic })}
+                    aria-label={`See all talks about ${topic}`}
+                    className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-blue-100 text-blue-800 hover:bg-blue-200 transition-colors"
                   >
                     {topic}
-                  </span>
+                  </Link>
                 ))}
               </div>
             </div>
