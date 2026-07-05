@@ -1,7 +1,7 @@
 # eferro-picks-site Makefile
 # Development and validation commands
 
-.PHONY: help test test-integration test-coverage test-ui lint typecheck build dev validate clean local-setup
+.PHONY: help test test-integration test-e2e test-coverage test-ui lint typecheck build dev validate clean local-setup
 
 # Default target
 help:
@@ -10,6 +10,7 @@ help:
 	@echo "  validate      - Run all pre-commit validations (tests + lint + typecheck)"
 	@echo "  test          - Run all unit tests with --run flag"
 	@echo "  test-integration - Run integration tests (isolated)"
+	@echo "  test-e2e      - Run E2E browser tests (Playwright)"
 	@echo "  test-coverage - Run tests with coverage report"
 	@echo "  test-ui       - Open visual test interface"
 	@echo "  lint          - Run ESLint validation"
@@ -26,6 +27,11 @@ test:
 test-integration:
 	@echo "🧪 Running integration tests..."
 	npx vitest run --config vitest.integration.config.ts
+
+test-e2e:
+	@echo "🎭 Running E2E tests..."
+	npx playwright install chromium
+	npx playwright test
 
 test-coverage:
 	@echo "🧪 Running tests with coverage..."
