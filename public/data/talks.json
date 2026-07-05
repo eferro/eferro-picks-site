@@ -2435,24 +2435,6 @@
     "language": "English"
   },
   {
-    "id": "recABM6yOE21zVLfd",
-    "title": "Podcast. Interview Ron Jeffries (Agile.FM)",
-    "url": "https://agile.fm/agilefm/2018/4/12/ron-jeffries",
-    "duration": 0,
-    "topics": [
-      "XP",
-      "Agile"
-    ],
-    "speakers": [
-      "Ron Jeffries"
-    ],
-    "description": "Very interesting interview (darkscrum, agile adoption failures, number agile coaches vs the number of agile developers).\n",
-    "core_topic": "",
-    "format": "podcast",
-    "blog_url": "https://www.eferro.net/2018/05/good-talkspodcasts-april-2018.html",
-    "registered_at": "2020-01-19T20:32:58.000Z"
-  },
-  {
     "id": "recAIkpCKXiZCft7V",
     "title": "LISA17 - Scalability Is Quantifiable: The Universal Scalability Law",
     "url": "https://www.youtube.com/watch?v=lZU6RK0oazM",
@@ -2657,20 +2639,23 @@
     "url": "https://www.madetech.com/resources/podcasts/episode-15-geepaw-hill/",
     "duration": 3000,
     "topics": [
-      "tdd",
-      "testing",
+      "Craftmanship",
+      "Feedback cycles",
+      "Software Design",
       "Technical Practices",
-      "Agile"
+      "Trunk Based Development",
+      "tdd"
     ],
     "speakers": [
       "Clare Sudbery",
       "GeePaw Hill"
     ],
-    "description": "Clare talks to  Geepaw Hill about why he loves TDD so much and how he spreads that love to software teams all over the world.\n",
-    "core_topic": "",
+    "description": "GeePaw Hill makes the economic case for Test-Driven Development, advocating small, incremental steps to reduce risk and accelerate value delivery, and showing how TDD produces steerable designs and the tight feedback loops behind high-performance engineering.",
+    "core_topic": "Testing",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/10/good-talkspodcasts-october-2021-i.html",
-    "registered_at": "2021-10-03T20:59:52.000Z"
+    "registered_at": "2021-10-03T20:59:52.000Z",
+    "notes": "GeePaw Hill (Michael Hill), interviewed by Claire Sudbury on Made Tech's Making Tech Better podcast, discusses the principles, economic benefits, and practical implementation of test-driven development. His central argument: TDD is primarily an economic strategy that lets developers ship higher value faster by using small, incremental steps to catch errors immediately and cut time-consuming manual testing, while fostering \"steerable\" designs that manage complexity and risk through a continuous feedback loop.\n\n* **TDD in a sentence**: An iterative approach where you write a failing test before the code that passes it, ensuring every piece of the application does exactly what is intended.\n* **The value premise**: TDD is primarily an economic strategy — ship higher value faster by catching errors immediately and reducing expensive, time-consuming manual testing.\n* **Efficiency gains**: TDD dramatically reduces time spent studying existing code and doing manual \"geek-at-keyboard\" testing, even though the actual time spent typing code goes up.\n* **Steerable design**: Treating testability as a first-class participant yields cheaper tests and more flexible, robust code that manages complexity effectively.\n* **Take small steps**: Steps of roughly 10 to 30 minutes give frequent feedback (\"dopamine hits\"), keep the workflow interruptible, and prevent the cognitive overload of juggling too many variables.\n* **Trunk-based development**: Preferred over long-lived branches to avoid the high risk and difficulty of merging large, complex changes back into the main code.\n* **Mentorship and pairing**: The most effective ways to master TDD, which is a nuanced skill of professional judgment that can take years to perform at an expert level.\n* **Wider awareness**: Developers should look beyond their monitors — acknowledging social-justice issues and fostering community through \"geek friendship\" groups to sustain long-term motivation and growth."
   },
   {
     "id": "recB1sUzKv0w60CcT",
@@ -5127,26 +5112,6 @@
     "rating": 5,
     "language": "English",
     "notes": "To achieve high-performing software delivery, organizations must cultivate a **virtuous cycle of continuous improvement** and **psychological safety**, where modular architecture and focused flow allow teams to prioritize meaningful customer outcomes over mere technical output. Success depends on the insight that **improving daily work is as vital as the work itself**, requiring a disciplined, blameless approach to problem-solving and a commitment to diverse, inclusive collaboration.\n\n*   **Locality and Simplicity**: Architectural changes should be local and isolated to prevent breaking distant parts of the system. This principle drives the evolution from monoliths to modular microservices, as seen at companies like eBay, Twitter, and Amazon [1-3].\n*   **Conway's Law**: A duality should exist between modular architecture and modular organization, where small, autonomous teams manage individual services to allow for independent design, development, and deployment.\n*   **Focus as a Predictor of Excellence**: Cognitive control—the ability to focus—is the best predictor of high achievement and individual success. Practices like mindfulness or meditation can help train this attention.\n*   **The Flow State**: High performance is achieved when individuals are in a \"flow state,\" where there is a perfect balance between the work challenge and the person's skills.\n*   **Maker vs. Manager Schedules**: Developers (makers) require long, uninterrupted blocks of time to maintain flow, while managers often operate on fragmented schedules. Leaders should protect developer time by avoiding meetings scheduled in the middle of these work blocks.\n*   **Limiting Work in Progress (WIP)**: Teams should focus on fewer tasks at once and release incremental units of work to get faster feedback and reduce the risk of abandoning large amounts of unfinished work [11-13].\n*   **Improvement Budget**: Teams should break the cycle of technical debt by allocating a dedicated budget (often 20–30%) for improving tools, builds, and infrastructure rather than negotiating every small fix.\n*   **The Improvement Kata**: Improving daily work is even more important than doing daily work itself. Use the \"Plan-Do-Check-Act\" cycle to conduct small experiments that iteratively improve the system.\n*   **Psychological Safety**: This is the most critical factor for team success; it allows members to take interpersonal risks and bring their \"whole selves\" to work without fear of punishment or humiliation [19-21].\n*   **Blameless Postmortems**: After an incident, teams should focus on systems-level learning—improving detection, diagnosis, and prevention—rather than finding individuals to blame.\n*   **Diversity and Decision-Making**: Diverse and inclusive teams make measurably better business decisions and deliver stronger results than homogeneous teams.\n*   **Outcomes Over Outputs**: Success should be measured by business results (revenue, profitability, market share) and customer metrics rather than just the volume of code produced [25-27].\n*   **Disciplined Problem Solving**: The core job of an engineer is to solve customer problems; sometimes the most efficient solution involves process or assembly line changes rather than writing new code [28-30]."
-  },
-  {
-    "id": "recJ383HkMXqK0sLl",
-    "title": "Product Roadmaps with Bruce McCarthy",
-    "url": "https://www.buildbettersoftware.fm/8",
-    "duration": 0,
-    "topics": [
-      "Product",
-      "Product Strategy",
-      "Lean Product Management",
-      "Product Discovery"
-    ],
-    "speakers": [
-      "Bruce McCarthy"
-    ],
-    "description": "A talk about Product Roadmaps and how changing how businesses see roadmaps will help teams build more impactful software for their customers.\n",
-    "core_topic": "",
-    "format": "podcast",
-    "blog_url": "https://www.eferro.net/2021/01/good-talkspodcasts-jan-2021-i.html",
-    "registered_at": "2021-01-30T20:03:17.000Z"
   },
   {
     "id": "recJ4xDeqnTvukNmQ",
@@ -10494,26 +10459,6 @@
     "notes": "To achieve true developer effectiveness, organizations must transition from restrictive, gatekeeping infrastructure to **self-service, API-first platforms** that prioritize developer flow and empathy. By using **declarative models** to embed best practices and eliminate manual roadblocks, platform teams can reduce cognitive load and empower engineering squads to ship software faster and more reliably.\n\n*   **Internal Platforms as a Force Multiplier:** Platforms act as a lever that allows product teams to focus on their core services (e.g., Voice, Messaging) while leveraging shared, robust infrastructure to scale effectively.\n*   **DevOps Culture (\"You Build It, You Run It\"):** Engineering teams are organized as \"two-pizza\" mini-startups that own their entire service lifecycle. **Job number one is operations and security**; everything else is secondary.\n*   **API-First Strategy:** The API is the primary control plane, prioritized over UIs or CLIs. Defining interfaces upfront provides a **level of indirection** that prevents vendor lock-in and facilitates easier migrations.\n*   **The Criticality of Self-Service:** Moving away from \"gatekeepers\" (like JIRA tickets) to self-service tools preserves developer **flow** and enables the testing of \"improbable ideas\" without manual bottlenecks.\n*   **Declarative over Imperative:** Users should specify the desired state (the \"what\") rather than the specific execution steps (the \"how\"). This **data-model-over-code** approach embeds best practices and reduces cognitive load for engineers.\n*   **Sidecar Pattern for Polyglot Support:** Using sidecar daemons on VMs allows platform services to be language-agnostic and upgradable without requiring teams to rebuild or update specific application libraries.\n*   **Automated SDK and Documentation Generation:** Utilizing centralized **API Definitions** allows for the automatic transpilation of helper libraries (SDKs) and documentation, ensuring they are always in sync with production deployments.\n*   **Safe Deployment via Shadowing and Switching:** Techniques like **request shadowing** (running old and new versions concurrently to compare results) and **feature switching** allow for high-fidelity testing and incremental rollouts with zero downtime.\n*   **Infrastructure Abstraction (Admiral):** Deployment platforms should manage software (manifests), hardware (formations), and configuration separately, allowing engineers to deploy code without needing to master the intricacies of underlying systems like Kubernetes.\n*   **Automated Database Management:** Applying declarative models to complex database operations—such as MySQL pivots and schema migrations—reduces manual errors and significantly improves developer experience and reliability.\n*   **Service Mesh for Resilient Discovery:** Implementing a service mesh with sidecars (e.g., HAProxy) avoids reliance on flaky DNS and manages dynamic private IPs in ephemeral cloud environments."
   },
   {
-    "id": "reccNlMl6JcDotm1s",
-    "title": "LOTE #7: Kelsey Hightower on Developer Experience, PaaS, and Testing in Production",
-    "url": "https://www.getambassador.io/podcasts/kelsey-hightower-on-developer-experience-paas-and-testing-in-production/",
-    "duration": 2460,
-    "topics": [
-      "Platform as a product",
-      "Cloud",
-      "Devex",
-      "Developer Productivity"
-    ],
-    "speakers": [
-      "Kelsey Hightower"
-    ],
-    "description": "In the seventh episode of the Ambassador Livin’ on the Edge podcast, Kelsey Hightower, technologist at Google, discusses his thought on cloud developer experience, modern Platform-as-a-Service (PaaS), and explores the reality that every organisation is testing in production\n",
-    "core_topic": "",
-    "format": "podcast",
-    "blog_url": "https://www.eferro.net/2022/06/good-talkspodcasts-jun-2022-ii.html",
-    "registered_at": "2022-06-17T13:40:57.000Z"
-  },
-  {
     "id": "reccPJ6664PBbQ5jf",
     "title": "Why Everyone Needs DevOps Now: A Fourteen Year Study Of High Performing IT Organizations",
     "url": "https://www.agilealliance.org/resources/videos/why-everyone-needs-devops-now/",
@@ -10561,18 +10506,22 @@
     "url": "https://www.softwaretalks.io/v/4568/why-the-fuss-about-serverless-simon-wardley-at-ijs-london-2018",
     "duration": 2400,
     "topics": [
-      "Architecture",
-      "Technology",
-      "Technology Strategy"
+      "Agile",
+      "Business models",
+      "Cloud",
+      "Serverless",
+      "Strategy",
+      "Wardley maps"
     ],
     "speakers": [
       "Simon Wardley"
     ],
-    "description": "A great talk to improve our orientation skills in the world of technology. Makes an excellent introduction to Wardley's maps and uses them to describe the evolution of technology and what serverless implies.\n",
-    "core_topic": "",
+    "description": "Simon Wardley shows how to replace superficial business strategy with situational awareness through visual mapping, giving leaders a framework to anticipate technological evolution and capitalize on the shift toward serverless computing and API-driven ecosystems.",
+    "core_topic": "Architecture",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2019/04/index.html",
-    "registered_at": "2020-01-19T20:39:19.000Z"
+    "registered_at": "2020-01-19T20:39:19.000Z",
+    "notes": "Simon Wardley (iJS London 2018) argues that organizations must move beyond strategy based on stories and generic \"magic frameworks\" toward situational awareness built with mapping. Mapping lets leaders anticipate how components evolve from novel experiments to utility services, apply the right management method to each, and exploit economic patterns such as the shift toward serverless computing.\n\n* **Situational awareness over storytelling**: Most business strategy relies on stories and generic \"magic frameworks\" that lack the context and positional awareness needed for good decisions — the same way sailors once navigated by stories before maps.\n* **The essentials of mapping**: A true strategic map needs an anchor (the user and their needs), the position of components relative to a value chain, and movement — how those components evolve over time.\n* **Evolutionary life cycles**: All components evolve from genesis and custom-built stages through products to commodities; as they evolve they shift from chaotic and uncertain to industrialized and stable.\n* **Appropriate management methods**: There is no one-size-fits-all approach — agile suits uncharted, novel components, lean suits products, and Six Sigma suits highly industrialized commodities.\n* **The ILC ecosystem strategy**: The \"Innovate-Leverage-Commoditize\" model uses APIs to let an ecosystem innovate on your behalf while the provider mines metadata to spot and industrialize the next successful utility.\n* **Serverless as a utility shift**: Serverless represents the industrialization of the runtime layer into a utility, moving away from high-maintenance infrastructure toward functional billing and new architectural practices.\n* **Overcoming strategic inertia**: Success in a previous phase of evolution creates inertia, where organizations resist new shifts because they are committed to old business models or outdated architectural practices."
   },
   {
     "id": "reccaIj8uTrWW1PIM",
@@ -10968,25 +10917,6 @@
     "notes": "Software development should be treated as a scientific process of discovery and learning, where the primary goal is to optimize the feedback loop between a business idea and its delivery to users. By implementing **Continuous Delivery** and replacing guesswork with evidence-based automation, organizations can achieve higher quality, lower costs, and more reliable outcomes.\n\n* **Software Development as Learning:** Software development is fundamentally an exercise in creativity and learning. The goal is to take a business idea, get it into the hands of users quickly and efficiently, and use the resulting feedback to adapt.\n* **The Scientific Method:** Effective software engineering should move away from guesswork and apply the scientific method. This involves evidence-based decision-making, experimentation, and establishing effective feedback loops at both technical and business levels.\n* **Continuous Delivery Definition:** Continuous Delivery is a holistic, cultural approach to software development where the software is maintained in a constantly releasable state throughout its lifecycle.\n* **The Release Candidate Model:** Every change committed to version control should be treated as a \"release candidate.\" The role of the deployment pipeline and automated testing is to attempt to prove that a candidate is *not* fit for production.\n* **Cycle Time Optimization:** Organizations should optimize for cycle time—the speed at which a single-line change can move through the entire process to production. Shorter cycle times create faster feedback loops and higher performance.\n* **Automation and Version Control:** To achieve a repeatable, reliable process, everything must be automated and version-controlled, including source code, configurations, deployment tools, and environment definitions.\n* **Continuous Delivery vs. Continuous Deployment:** Continuous Delivery means the software is always *releasable* from a technical standpoint. Continuous Deployment is the practice of automatically pushing every successful change into production, which is a business choice that may not be appropriate for every industry.\n* **Safety through Small Batches:** Working in smaller batches with more frequent releases is safer than infrequent, large-scale releases. High-frequency deployment reduces the risk of outages and dramatically increases software quality.\n* **Scalability:** These practices scale to the largest systems in the world, as evidenced by organizations like Google and Amazon managing billions of lines of code and thousands of daily deployments.\n* **Business Outcomes:** Adopting Continuous Delivery leads to measurable improvements, including higher quality software, reduced development costs, fewer defects, and increased organizational profitability.\n* **Broad Applicability:** These principles are not limited to simple websites; they are successfully applied to complex systems, including high-performance financial exchanges, firmware for hardware, and safety-critical medical and industrial systems."
   },
   {
-    "id": "recddxnT3Kb9awl7Q",
-    "title": "S1E08: Corporate Liberation with Isaac Getz LeadWise podcast",
-    "url": "https://podtail.com/podcast/leading-wisely/s1e08-corporate-liberation-with-isaac-getz/",
-    "duration": 0,
-    "topics": [
-      "Management",
-      "Inspirational",
-      "Company Culture"
-    ],
-    "speakers": [
-      "Isaac Getz"
-    ],
-    "description": "\n",
-    "core_topic": "",
-    "format": "podcast",
-    "blog_url": "https://www.eferro.net/2017/06/some-pending-interesting-talks.html",
-    "registered_at": "2020-01-19T20:42:55.000Z"
-  },
-  {
     "id": "recdiXifrhouHKgI5",
     "title": "Experimentation Mindset",
     "url": "http://www.infoq.com/presentations/experimentation-mindset",
@@ -11361,24 +11291,6 @@
     "rating": 5,
     "language": "English",
     "notes": "High-performing organizations must prioritize high-trust individuals over toxic high-performers, as a person's character and ability to support others is more vital to long-term collective success than individual technical skill. Prioritizing trustworthiness over lopsided performance metrics ensures a healthy team environment and prevents the promotion of toxicity that eventually destroys an organization.\n\n*   The Navy SEALs evaluate individuals using two distinct metrics: **Performance** (technical skills) and **Trust** (character and reliability).\n*   A **high performer with low trust** is identified as a **toxic leader** and a toxic team member who can eventually destroy an organization.\n*   High-performing organizations often prefer a **medium or low performer with high trust** over a high performer who cannot be trusted.\n*   Traditional business metrics are typically **lopsided**, focusing heavily on performance while possessing negligible metrics for measuring trustworthiness.\n*   Promoting or bonusing individuals based solely on performance metrics inadvertently rewards **toxicity** within the business.\n*   Toxic individuals and highly trusted team members are **easily identified by their peers**; teams consistently know who the \"asshole\" is and who always has their back.\n*   The most valuable team members are often **natural leaders** who prioritize creating an environment where others can succeed, regardless of their own individual performance ranking."
-  },
-  {
-    "id": "receZQFTy2Xv8ZsQm",
-    "title": "Don’t Sugar Coat Your Culture",
-    "url": "https://ecorner.stanford.edu/podcasts/dont-sugar-coat-your-culture/",
-    "duration": 0,
-    "topics": [
-      "Company Culture",
-      "Inspirational"
-    ],
-    "speakers": [
-      "Patty McCord"
-    ],
-    "description": "Friction Podcast Patty McCord. Interesting conversation about Netflix culture of freedom and responsibility.\n",
-    "core_topic": "",
-    "format": "podcast",
-    "blog_url": "https://www.eferro.net/2019/07/index.html",
-    "registered_at": "2020-01-19T20:40:12.000Z"
   },
   {
     "id": "recehxlAC5CHRMob5",
@@ -12150,21 +12062,25 @@
     "url": "https://www.ivoox.com/e3-marty-cagan-founder-amp-partner-a-silicon-audios-mp3_rf_67502194_1.html",
     "duration": 2400,
     "topics": [
-      "Lean Product Management",
-      "Product",
-      "Product Team"
+      "Agile",
+      "Company Culture",
+      "Leadership",
+      "Product Leadership",
+      "Product Team",
+      "Transformation"
     ],
     "speakers": [
       "Marty Cagan"
     ],
-    "description": "Very interesting conversation about Empowered Product Teams, Product Culture.\n",
+    "description": "Marty Cagan explores the fundamental shift from delivery-focused feature teams to empowered product teams that prioritize solving customer problems over shipping output, making the case that active CEO leadership and a culture of trust are necessary to drive true organizational innovation.",
     "core_topic": "Product",
     "year": 2021,
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2021/04/good-talkspodcasts-april-2021-i.html",
     "registered_at": "2021-04-24T19:30:29.000Z",
     "rating": 5,
-    "language": "English"
+    "language": "English",
+    "notes": "Marty Cagan, founder of Silicon Valley Product Group, is interviewed on the Ready Tech podcast about the core differences between feature teams and empowered product teams, and the leadership and cultural changes a company needs to become truly customer-led. His central argument: product excellence comes from moving away from a command-and-control focus on feature delivery toward an empowered team model centered on solving customer problems — a transformation that must be led and structurally supported by the CEO.\n\n* **Focus on outcomes over outputs**: Empowered product teams are tasked with solving specific customer problems and achieving business results, rather than simply delivering a roadmap of pre-defined features.\n* **Active CEO leadership**: A successful shift to a product-led model requires the CEO's direct involvement and \"air cover\", because the transition fundamentally changes how finance, HR, and sales operate.\n* **The product manager as CEO of the product**: In empowered teams the product manager owns the product's value and viability — the \"CEO of the product\" (a notion Cagan notes he didn't coin) — a role that essentially doesn't exist in command-and-control feature teams, where the PM is reduced to \"herding cats\".\n* **Technology as a core competency**: Companies must treat technology as a core competency and profit center — a primary enabler of innovation — rather than an outsourced cost center or a mere delivery mechanism.\n* **Early risk assessment**: Effective product development validates value, usability, feasibility, and viability before writing any code, to avoid the high cost of product failure.\n* **Attracting and retaining top talent**: Skilled engineers and designers \"vote with their feet\" and leave organizations that treat them as order-takers instead of partners in inventing solutions.\n* **Rejection of rigid scaling frameworks**: Process-heavy frameworks like SAFe are criticized as having nothing to do with agile — essentially repackaged waterfall that stifles the innovation and agility they claim to promote."
   },
   {
     "id": "recgu2Tmle3n64G5u",
@@ -12237,7 +12153,10 @@
     "url": "https://www.honeycomb.io/resources/webinars/slo-theory-why-the-business-needs-slos",
     "duration": 2280,
     "topics": [
-      "Technical Practices",
+      "Devops",
+      "Engineering Culture",
+      "Incident respond",
+      "Monitoring",
       "Observability",
       "Operations"
     ],
@@ -12245,14 +12164,15 @@
       "Danyel Fisher",
       "Nathen Harvey"
     ],
-    "description": "Great explanation about SLI, SLOs, error budgets and how to introduce them to improve our production operations.\n",
-    "core_topic": "Operations",
+    "description": "Danielle Fischer (Honeycomb) and Nathan Harvey (Google) explain how to use Service Level Objectives and error budgets to bridge technical reliability and business goals, offering a framework for using customer-centric metrics to balance feature velocity with system stability.",
+    "core_topic": "Devops",
     "format": "talk",
     "blog_url": "https://www.eferro.net/2020/12/good-talkspodcasts-dec-2020-ii.html",
     "registered_at": "2020-12-19T21:48:10.000Z",
     "rating": 5,
     "language": "English",
-    "year": 2020
+    "year": 2020,
+    "notes": "Danielle Fischer of Honeycomb and Nathan Harvey (Developer Advocate at Google) present a webcast on the theory and practical implementation of Service Level Objectives (SLOs) and error budgets as a way to align engineering and business stakeholders on reliability. Their core message: effective SLOs define acceptable reliability based on what customers actually need rather than chasing impossible perfection, and error budgets let teams make objective, data-driven decisions about when to prioritize stability over shipping features.\n\n* **Aligning stakeholders**: SLOs provide a data-driven, shared language that bridges engineering goals like system stability and business goals like feature velocity.\n* **Rejecting 100% reliability**: Perfect reliability is the wrong target for nearly every service — it is prohibitively expensive and usually exceeds what customers actually require.\n* **Using error budgets**: An error budget represents the acceptable level of unreliability, a buffer that lets teams take risks, run experiments, and release features.\n* **Prioritizing engineering work**: When the error budget is exhausted, the organization shifts focus from new features to reliability improvements, such as post-mortem action items or better automation.\n* **Customer-centric SLIs**: Service Level Indicators should measure quantifiable events customers actually experience — like latency or availability — rather than internal metrics like CPU utilization.\n* **28-day rolling windows**: Evaluating performance over a rolling 28-day window accounts for weekly seasonality and gives a stable timeframe for prioritization decisions.\n* **Burn-down and human impact**: Tracking how fast the error budget burns down distinguishes critical failures that need waking someone at night from slower trends that can be handled during business hours.\n* **Committing to iteration**: SLOs are not static; they must be refined continuously as teams learn more about their systems, user behavior, and the difference between system errors and user-driven errors."
   },
   {
     "id": "rechOxykWf8TgOgfW",
@@ -17779,18 +17699,22 @@
     "url": "https://xebia.com/podcasts/jessica-kerr-on-how-software-keeps-evolving-and-is-never-done-e37/",
     "duration": 2640,
     "topics": [
-      "Inspirational",
-      "Systems Thinking",
-      "Mental models"
+      "Engineering Culture",
+      "Feedback cycles",
+      "Legacy code",
+      "MobProgramming",
+      "Nature of Software Development",
+      "Observability"
     ],
     "speakers": [
       "Jessica Kerr"
     ],
-    "description": "Interesting conversation in which Jessica explains how software behaves in a very similar way to biology. Lots of interesting points to learn from. Very aligned with this dynamic view of systems and their constant evolution.\n",
-    "core_topic": "",
+    "description": "Jessica Kerr explains why software behaves as an evolving organism that must continuously adapt to shifting user expectations and external dependencies, offering insights on the 'coastline problem' of rewrites and on prioritizing developer happiness and shared mental models over rigid manufacturing efficiency.",
+    "core_topic": "Engineering Culture",
     "format": "podcast",
     "blog_url": "https://www.eferro.net/2022/11/good-talkspodcasts-nov-2022-i.html",
-    "registered_at": "2022-11-05T12:55:21.000Z"
+    "registered_at": "2022-11-05T12:55:21.000Z",
+    "notes": "Jessica Kerr, interviewed by Patrick Akil on the Beyond Coding podcast (episode 37), argues that software is never truly finished; it behaves as an evolving organism that must continuously adapt to a changing world of user expectations and external dependencies to remain valuable. Success depends on embracing that evolution through small feedback cycles, shared mental models, and prioritizing the long-term ability to change over short-term manufacturing efficiency.\n\n* **Software as an evolving organism**: Rather than a static product, software must continuously adapt to stay compatible with a changing world of user expectations, security threats, and external dependencies.\n* **Legacy is a relationship, not a code property**: It is often useful, money-making software that is no longer understood by the people now tasked with changing or interacting with it.\n* **The coastline problem makes rewrites deceptive**: Projects look simple from a high-level view but reveal infinite complexity and hidden \"wiggly\" details as you zoom into the implementation.\n* **Manufacturing efficiency is the wrong focus**: Engineering is about making novel decisions rather than repetitive tasks, so effectiveness and decision-making speed matter more than typing speed.\n* **Duplication can beat code sharing**: Sharing code creates coupling, forcing teams to maintain \"extra arms\" and \"17-fingered hands\" to preserve backwards compatibility.\n* **Shared mental models are the core of effective teams**: Practices like ensemble programming synchronize knowledge and decisions in real time, preventing the friction of handoffs and merge conflicts.\n* **Developer happiness as a proxy for quality**: Developers are most satisfied when they can reliably ship impactful features without being hindered by brittle, unchangeable systems.\n* **Small, continuous feedback cycles beat big-bang transitions**: They let developers observe how users actually interact with features and adjust to the \"biology\" of the system's real-world environment."
   },
   {
     "id": "recydBs8se9YsFl9Q",
