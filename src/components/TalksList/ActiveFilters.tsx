@@ -11,6 +11,7 @@ interface ActiveFiltersProps {
   onRemoveRating: () => void;
   onRemoveQuickWatch: () => void;
   onRemoveFormat: (format: string) => void;
+  onRemoveQuery: () => void;
 }
 
 export function ActiveFilters({
@@ -22,6 +23,7 @@ export function ActiveFilters({
   onRemoveRating,
   onRemoveQuickWatch,
   onRemoveFormat,
+  onRemoveQuery,
 }: ActiveFiltersProps) {
   // Check if any filters are active
   const hasActiveFilters =
@@ -30,7 +32,8 @@ export function ActiveFilters({
     filter.hasNotes ||
     filter.quickWatch ||
     filter.rating === 5 ||
-    filter.formats.length > 0;
+    filter.formats.length > 0 ||
+    filter.query.trim() !== '';
 
   if (!hasActiveFilters) {
     return null;
@@ -38,6 +41,18 @@ export function ActiveFilters({
 
   return (
     <div className="mb-6 space-y-2 sm:space-y-3">
+      {filter.query.trim() !== '' && (
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs sm:text-sm text-gray-500">Search:</span>
+          <FilterChip
+            onRemove={onRemoveQuery}
+            ariaLabel="Remove search filter"
+          >
+            {filter.query}
+          </FilterChip>
+        </div>
+      )}
+
       {filter.conference && (
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs sm:text-sm text-gray-500">Conference:</span>

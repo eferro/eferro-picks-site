@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { screen } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import { renderIntegration } from '../../test/integration/IntegrationTestHelpers';
 import { TalksList } from '.';
 import { useTalks } from '../../hooks/useTalks';
@@ -145,6 +145,57 @@ describe('TalksList Integration', () => {
   });
 
   describe('Search Functionality', () => {
+    it('displays a removable search chip when arriving with a query in the URL', () => {
+      const talks = [
+        createTalk({ id: '1', title: 'Talk 1', speakers: ['Ismael Castillo'] }),
+        createTalk({ id: '2', title: 'Talk 2', speakers: ['Bob Jones'] })
+      ];
+
+      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+        talks,
+        loading: false,
+        error: null
+      });
+
+      renderIntegration(<TalksList />, {
+        initialParams: new URLSearchParams('query=Ismael Castillo')
+      });
+
+      // Filter is applied and visible as a chip
+      expect(screen.getByText('Talk 1')).toBeInTheDocument();
+      expect(screen.queryByText('Talk 2')).not.toBeInTheDocument();
+      expect(screen.getByText('Search:')).toBeInTheDocument();
+      expect(
+        screen.getByRole('button', { name: /remove search filter/i })
+      ).toBeInTheDocument();
+    });
+
+    it('removes the query filter and restores the full list when the search chip is clicked', () => {
+      const talks = [
+        createTalk({ id: '1', title: 'Talk 1', speakers: ['Ismael Castillo'] }),
+        createTalk({ id: '2', title: 'Talk 2', speakers: ['Bob Jones'] })
+      ];
+
+      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+        talks,
+        loading: false,
+        error: null
+      });
+
+      renderIntegration(<TalksList />, {
+        initialParams: new URLSearchParams('query=Ismael Castillo')
+      });
+
+      fireEvent.click(
+        screen.getByRole('button', { name: /remove search filter/i })
+      );
+
+      // Full list restored, chip gone
+      expect(screen.getAllByText('Talk 1').length).toBeGreaterThanOrEqual(1);
+      expect(screen.getAllByText('Talk 2').length).toBeGreaterThanOrEqual(1);
+      expect(screen.queryByText('Search:')).not.toBeInTheDocument();
+    });
+
     it('filters talks by query matching title', () => {
       const talks = [
         createTalk({ id: '1', title: 'React Testing', speakers: ['Alice'], topics: ['react'] }),

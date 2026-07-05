@@ -164,6 +164,7 @@ export function TalksList() {
         onRemoveRating={handleRatingClick}
         onRemoveQuickWatch={handleQuickWatchClick}
         onRemoveFormat={(format) => handleFormatChange(filter.formats.filter(f => f !== format))}
+        onRemoveQuery={() => updateFilter({ query: '' })}
       />
 
       {/* Results count */}

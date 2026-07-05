@@ -11,6 +11,7 @@ const mockHandlers = {
   onRemoveHasNotes: vi.fn(),
   onRemoveRating: vi.fn(),
   onRemoveFormat: vi.fn(),
+  onRemoveQuery: vi.fn(),
 };
 
 describe('ActiveFilters', () => {
@@ -53,6 +54,39 @@ describe('ActiveFilters', () => {
   });
 
   // Topics filter test removed - functionality migrated to unified search
+
+  it('renders search query filter with remove button', () => {
+    const filterWithQuery = new TalksFilter({ query: 'Ismael Castillo' });
+
+    render(
+      <ActiveFilters
+        filter={filterWithQuery}
+        yearFilter={null}
+        {...mockHandlers}
+      />
+    );
+
+    expect(screen.getByText('Search:')).toBeInTheDocument();
+    expect(screen.getByText('Ismael Castillo')).toBeInTheDocument();
+
+    const removeButton = screen.getByLabelText('Remove search filter');
+    fireEvent.click(removeButton);
+    expect(mockHandlers.onRemoveQuery).toHaveBeenCalledTimes(1);
+  });
+
+  it('renders nothing when query is only whitespace', () => {
+    const filterWithBlankQuery = new TalksFilter({ query: '   ' });
+
+    const { container } = render(
+      <ActiveFilters
+        filter={filterWithBlankQuery}
+        yearFilter={null}
+        {...mockHandlers}
+      />
+    );
+
+    expect(container.firstChild).toBeNull();
+  });
 
   it('renders year filter for specific year', () => {
     const emptyFilter = new TalksFilter();
