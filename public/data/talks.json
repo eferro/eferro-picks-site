@@ -18376,5 +18376,307 @@
     "registered_at": "2026-07-05T21:56:54.000Z",
     "rating": null,
     "notes": "Dave Farley (Modern Software Engineering channel) categorizes programmers into three distinct groups — the coder, the software developer, and the software engineer — based on mindset, organizational environment, and approach to problem-solving. His argument: effective software development means moving beyond being a 'coder' who merely translates instructions into syntax, toward a developer/engineer who takes ownership of problem-solving and applies scientific rigor to keep the system releasable.\n\n* **Three distinct categories**: Coder, software developer, and software engineer are distinguished by mindset, behavior, and how they organize their work — not just years of experience.\n* **The coder as translator**: Coders focus on translating detailed descriptions into syntax, often treating problem-solving and testing as someone else's job, which can breed 'learned helplessness' in restrictive organizational cultures.\n* **Ownership defines the developer**: Software developers take personal responsibility for the whole system, seeing software as a tool to solve problems for people and prioritizing design over mere translation.\n* **Scientific rigor defines the engineer**: Software engineering is a scientifically rational approach to problem-solving plus the ability to keep the system releasable after every small change.\n* **Continuous delivery as a core discipline**: Adopting the technical and organizational disciplines that enable continuous delivery is the most effective way to produce better software faster while keeping quality high.\n* **The failure of Taylorism in software**: 'Scientific management' / assembly-line thinking fails in software because it limits the creative freedom and ownership humans need to solve complex, unpredictable problems.\n* **The shifting value of programmers**: As AI gets better at translating instructions into code, a programmer's value shifts away from syntax knowledge toward the harder, more critical work of understanding problems and creating elegant designs.\n* **Progression toward excellence**: Moving from a coder mindset toward an engineer mindset raises professional value — better economic outcomes, superior products, and more fulfilling work."
+  },
+  {
+    "id": "recF2S8RaVtzq7UCwaqi",
+    "title": "From Friction to Flow: How Great DevEx Makes Everything Awesome",
+    "url": "https://www.infoq.com/presentations/devex-highlights/",
+    "duration": 2253,
+    "topics": [
+      "AI",
+      "Devex",
+      "Developer Productivity",
+      "Devops",
+      "Engineering Culture",
+      "Generative AI"
+    ],
+    "speakers": [
+      "Nicole Forsgren"
+    ],
+    "description": "Nicole Forsgren lays out a systematic approach to identifying and removing the friction points that hinder software delivery, ensuring AI-driven productivity gains translate into sustainable business value — with actionable frameworks and metrics to optimize developer experience, protect flow state, and navigate the challenges of the AI era.",
+    "core_topic": "Devops",
+    "conference_name": "InfoQ",
+    "format": "talk",
+    "blog_url": "https://www.eferro.net/index.html",
+    "registered_at": "2026-07-05T22:02:13.000Z",
+    "rating": null,
+    "notes": "Nicole Forsgren (author of Accelerate and a new book on developer experience) discusses how organizations can improve software delivery by systematically identifying and removing friction points, particularly as AI-driven code generation amplifies existing bottlenecks in the development lifecycle. Her core message: prioritizing a seamless developer experience is a matter of competitive survival, ensuring technical efficiency turns into real business value rather than faster-accumulating bottlenecks.\n\n* **AI as a friction multiplier**: AI speeds up code generation but often exposes or worsens existing bottlenecks in the 'outer loop', such as deployment processes that can still take months.\n* **The economic cost of friction**: Technical debt and avoidable rework account for trillions in lost value and drain developer productivity, making friction removal a competitive imperative.\n* **Core developer-experience pillars**: Success depends on optimizing feedback loops, protecting deep-work flow states, and minimizing the cognitive load caused by overly complex tools and processes.\n* **Performance measurement through DORA**: High-performing teams use DORA metrics — deployment frequency, lead time, change fail rate, and recovery time — to move from technical constraints to business-driven decisions.\n* **Building the business case**: Organizational buy-in requires making friction visible to executives, using actionable data, and translating technical toil into clear dollar impact.\n* **A systematic improvement framework**: A structured seven-step process — qualitative listening to developers, securing visible quick wins, and data-backed prioritization before scaling improvements.\n* **Prioritization via RICE**: Evaluate improvements by Reach, Impact, Confidence, and Effort to find high-value, low-effort wins like streamlining code review.\n* **Evolving metrics for the AI era**: As 'lines of code' becomes obsolete, shift toward measuring prompting efficiency, trust calibration, and the 'survivability' of AI-generated code in the pipeline.\n* **Immediate next steps**: Individuals can map their weekly workflows, teams can run friction retrospectives, and leaders can interview staff directly to uncover organizational blockers."
+  },
+  {
+    "id": "recychN4yc3AobcQud8k",
+    "title": "How Kent Beck shapes the software engineering industry",
+    "url": "https://www.youtube.com/watch?v=ddHQQtjIOpw",
+    "duration": 8924,
+    "topics": [
+      "AI Assisted Engineering",
+      "Agile",
+      "Engineering Culture",
+      "Technical Practices",
+      "XP",
+      "tdd"
+    ],
+    "speakers": [
+      "Kent Beck"
+    ],
+    "description": "Legendary engineer Kent Beck traces the evolution of software development from the creation of the Agile Manifesto to the rise of the AI 'genie', emphasizing that engineering is fundamentally a discipline of human trust — and why developers must prioritize technical mastery and domain understanding as the industry enters a new, high-stakes phase of exploration.",
+    "core_topic": "Engineering Culture",
+    "conference_name": null,
+    "format": "podcast",
+    "blog_url": "https://www.eferro.net/index.html",
+    "registered_at": "2026-07-05T22:32:26.000Z",
+    "rating": null,
+    "notes": "On The Pragmatic Engineer podcast, host Gergely Orosz interviews Kent Beck about his career-spanning impact on the industry — the origins of Extreme Programming, Test-Driven Development, and the Agile Manifesto — and his contemporary views on the role of AI in software engineering. A recurring theme: software engineering is fundamentally a human discipline of trust, and in the AI era we are accumulating code faster than we accumulate trust.\n\n* **Software engineering is a human-centric discipline**: Though it involves machines, success is ultimately gated by a developer's ability to communicate, empathize, and build trust with other people — not just understanding the computer.\n* **The 'Swiss cheese' model of reliability**: Stability at scale comes from multiple overlapping feedback layers — code reviews, phased rollouts, observability — even when traditional unit testing is minimal.\n* **The 3X lifecycle of projects**: Development must adapt to three distinct phases — Explore (many cheap experiments), Expand (focus on what works to ride growth), and Extract (optimize for efficiency and scale).\n* **The psychological purpose of TDD**: Test-Driven Development is a practical tool for reducing anxiety and managing discovery, letting programmers take confident steps by knowing what to expect before they build.\n* **The risk of the 'AI genie'**: We are accumulating code faster than we accumulate trust, as automated tools deliver finished products without the human struggle that builds understanding and connection.\n* **A preference for 'Extreme' over 'Agile'**: 'Agile' lacks defensibility because anyone can claim it, whereas 'Extreme' requires a visible, difficult investment in high-level technical skills.\n* **The value of 'stupid ideas'**: Major industry shifts often come from cheap, reversible experiments others consider foolish — such as the original decision to write failing tests before the code.\n* **The necessity of 'skin in the game'**: Good design and architecture require staying close to the problem and its consequences, rather than giving distant advice like a 'seagull architect'.\n* **Coaching through productive discomfort**: A mentor's role is to spot where growth has stalled and induce the discomfort needed to push a developer to the next level.\n* **Adapting to a clean-slate era**: Because AI has wiped away old playbooks, developers must return to an 'Explore' mindset — trying everything and sharing findings in community rather than relying on established manifestos."
+  },
+  {
+    "id": "rec7UroHQaTkFdV9pAFv",
+    "title": "Susanne Kaiser on DDD, Wardley Mapping, & Team Topologies",
+    "url": "https://www.infoq.com/podcasts/ddd-wardley-mapping-team-topologies/",
+    "duration": 1986,
+    "topics": [
+      "Architecture",
+      "DDD",
+      "Flow",
+      "Strategy",
+      "Team Topologies",
+      "Wardley maps"
+    ],
+    "speakers": [
+      "Susanne Kaiser"
+    ],
+    "description": "Susanne Kaiser details a holistic framework for designing adaptive socio-technical systems by integrating Wardley Mapping, Domain-Driven Design, and Team Topologies to optimize for a fast flow of change — aligning business strategy with architecture while managing team cognitive load and delivering continuous value.",
+    "core_topic": "Architecture",
+    "conference_name": null,
+    "format": "podcast",
+    "blog_url": "https://www.eferro.net/index.html",
+    "registered_at": "2026-07-05T23:20:03.000Z",
+    "rating": null,
+    "notes": "On The InfoQ Podcast, host Wes Reisz interviews Susanne Kaiser about integrating Wardley Mapping, Domain-Driven Design, and Team Topologies to help organizations design adaptive systems optimized for a fast flow of change. Her core message: combining business strategy, software architecture, and team organization lets teams build the right thing effectively while keeping the efficiency needed to deliver value and manage cognitive load.\n\n* **Integrating three core perspectives**: Wardley Mapping, Domain-Driven Design, and Team Topologies together align business strategy, software architecture, and organizational design for a fast flow of change.\n* **Balancing effectiveness and efficiency**: Success depends on both 'building the right thing' (effectiveness) and 'building the thing right' (efficiency) to deliver value quickly and adaptively.\n* **Prioritizing team cognitive load**: High cognitive load is a major barrier to flow; identifying friction points like legacy 'big balls of mud' or unclear boundaries is a critical first step in redesign.\n* **Strategic decomposition with DDD**: Domain-Driven Design breaks complex systems into modular bounded contexts and prioritizes investment in core domains that provide competitive advantage.\n* **Mapping the evolution of components**: Wardley Mapping visualizes where components sit from Genesis to Commodity, guiding build-vs-buy decisions.\n* **Structuring for fast flow**: Team Topologies — stream-aligned teams supported by platform and enabling teams — minimizes handovers and empowers autonomous work.\n* **Starting with a thin viable platform**: Smaller organizations can begin with 'thin' platforms (shared documentation and standards) before evolving into full digital self-service infrastructure.\n* **Visualizing architectural risks**: Mapping components reveals hidden instabilities, such as stable, critical business functions built on volatile or experimental technologies.\n* **Supporting dynamic yet stable teams**: Team structures should be long-lived to maintain expertise, while letting individuals switch teams supports growth, knowledge sharing, and retention."
+  },
+  {
+    "id": "recXe0wntCUvMgborXh3",
+    "title": "Is Your AI assisted Coding Strategy Quietly Backfiring?",
+    "url": "https://www.youtube.com/watch?v=dQ1apxgvOa0",
+    "duration": 667,
+    "topics": [
+      "AI Assisted Engineering",
+      "Devops",
+      "Flow",
+      "WIP",
+      "Agile",
+      "Performance"
+    ],
+    "speakers": [
+      "Antony Marcano"
+    ],
+    "description": "Antony Marcano examines how AI-assisted coding acts as a performance magnifier that can inadvertently increase work-in-process and expose systemic bottlenecks in software delivery — with practical guidance on using DORA metrics and flow optimization so AI-driven code generation results in genuine organizational throughput.",
+    "core_topic": "AI Assisted Engineering",
+    "conference_name": null,
+    "format": "talk",
+    "blog_url": "https://www.eferro.net/index.html",
+    "registered_at": "2026-07-05T23:36:08.000Z",
+    "rating": null,
+    "notes": "Antony Marcano (RiverGlide) argues that AI-assisted coding acts as a performance magnifier: it benefits high-performing software organizations but can backfire in struggling ones by increasing work-in-process and amplifying existing systemic bottlenecks. Drawing on DORA research, his core message is that to leverage AI successfully companies must first reduce work-in-process and master core agile engineering practices so their delivery pipeline can sustain the increased code output.\n\n* **Performance magnification**: AI-assisted coding amplifies the existing strengths of high-performing teams while exposing and worsening the dysfunctions and bottlenecks of struggling ones.\n* **The bottleneck problem**: Increasing code-generation rate without addressing delivery bottlenecks — manual testing, slow pull requests — raises work-in-process (WIP) and actually slows overall delivery time.\n* **Increased system instability**: AI usage often raises rework rates and instability, reducing total throughput as more code is forced back through the system for fixes.\n* **Essential performance metrics**: Monitor lead time for changes, deployment frequency, and rework rate to tell whether AI is helping or hindering the pipeline.\n* **Flow over output**: The key to being effective with AI is being effective without it — reduce work-in-process and optimize the value stream before adding AI-driven capacity."
+  },
+  {
+    "id": "recmfTZnLzBUvJXKp0sN",
+    "title": "Platform Engineering: Lessons from the Rise and Fall of eBay",
+    "url": "https://www.youtube.com/watch?v=d5TprArcWX0",
+    "duration": 2690,
+    "topics": [
+      "Company Culture",
+      "Continuous Delivery",
+      "Engineering productivity",
+      "Platform engineering",
+      "Strategy",
+      "Transformation"
+    ],
+    "speakers": [
+      "Randy Shoup"
+    ],
+    "description": "Randy Shoup shows how eBay's Velocity program doubled engineering productivity, then explains why a dysfunctional, risk-averse culture prevented those technical gains from driving business growth — a case study in why technical excellence must be paired with a generative organizational culture to achieve lasting success.",
+    "core_topic": "Company Culture",
+    "conference_name": "Craft Conf",
+    "format": "talk",
+    "blog_url": "https://www.eferro.net/index.html",
+    "registered_at": "2026-07-06T05:00:29.000Z",
+    "rating": null,
+    "notes": "Randy Shoup, former chief architect and VP of platform engineering at eBay, recounts how he led a technical transformation that doubled engineering productivity but ultimately failed to save the company from its pathological organizational culture and risk-averse strategy. The core lesson: even a successful technical transformation won't drive business growth if undermined by a culture of fear and centralized planning — technical excellence must be backed by psychological safety and autonomy.\n\n* **Successful technical transformation**: The 'Velocity' program doubled engineering productivity, moving eBay from a 'medium' to a 'high' performer on DORA metrics like deployment frequency and lead time for change.\n* **Strategic use of pilot programs**: To change at scale, the team focused on a 10% set of pilot domains and used an 'embedding model' where senior architects worked directly with teams to identify and remove specific bottlenecks.\n* **Automation and continuous delivery**: Gains came from automating manual toil, fully automated test-and-deploy pipelines for nearly 99% of applications, and shifting site-wide upgrades from annual to monthly cycles.\n* **The 'feature factory' bottleneck**: Despite higher productivity, a centralized waterfall planning model kept focusing on milestones and 'train seats' (engineering effort) rather than business outcomes.\n* **Technology dead-ends**: A history of custom-forking open-source software like Kubernetes and OpenStack left eBay's internal versions years behind the industry mainline.\n* **Pathological organizational culture**: A culture of fear, lack of psychological safety, and executive 'empire-building' created a risk-averse environment where acknowledging failure was discouraged and autonomy was limited.\n* **The limits of technical excellence**: The ultimate lesson — 'culture eats strategy for breakfast' — a successful technical transformation cannot save a company whose culture remains dysfunctional and resistant to change."
+  },
+  {
+    "id": "rec2iZrlDLbrhGPJiwkE",
+    "title": "Save HOURS Of Work & Automate Your AI Agent's Feedback Loop (Do This)",
+    "url": "https://www.youtube.com/watch?v=hgZj02hPZuw",
+    "duration": 783,
+    "topics": [
+      "AI Assisted Engineering",
+      "Continuous Delivery",
+      "Developer Productivity",
+      "Feedback cycles",
+      "Quality",
+      "Technical Practices"
+    ],
+    "speakers": [
+      "Dave Farley"
+    ],
+    "description": "Dave Farley shows how meta-automation leverages AI agents to create deterministic feedback tools and custom linting rules, replacing unreliable 'markdown prayers' with automated loops — enabling teams of any size to scale advanced engineering practices and maintain project consistency across different AI models.",
+    "core_topic": "AI Assisted Engineering",
+    "conference_name": null,
+    "format": "podcast",
+    "blog_url": "https://www.eferro.net/index.html",
+    "registered_at": "2026-07-06T06:13:37.000Z",
+    "rating": null,
+    "notes": "Dave Farley (Modern Software Engineering), drawing on work with early adopters of AI agentic development, introduces 'meta automation': using agents to create deterministic feedback tools and custom rules that improve software quality and engineering processes. His core message: move beyond unreliable 'markdown prayers' and redundant agent-based reviews by having AI agents generate their own deterministic checks that give immediate, actionable feedback and scale engineering standards.\n\n* **Meta automation defined**: A second-order process where you automate how AI agents receive feedback on their work, going beyond simple code generation to improve engineering quality.\n* **Move beyond markdown prayers**: Markdown guidelines are a good start but are often ignored; relying on extra 'review agents' to fix failures adds complexity and cost without solving the reliability issue.\n* **Implement deterministic tools**: Turn contextual, domain-specific rules into deterministic checks — custom linting rules or static analysis — that give consistent feedback independent of the AI agent.\n* **Leverage agents for tooling**: Use AI agents to research, write, and unit-test these custom rules, making it easy to automate enforcement of complex architectural policies.\n* **Prioritize actionable feedback**: Automated error messages must give concrete advice and examples of how to fix violations, so agents don't get stuck in unproductive loops.\n* **Democratize high-level engineering**: Because agents make custom automation nearly free to build and maintain, even one-person teams can adopt rigorous standards once feasible only for large organizations.\n* **Ensure model-agnostic consistency**: Decoupling project rules from agent instructions into external tools lets teams switch AI models while keeping strict project consistency and better build-pipeline security."
+  },
+  {
+    "id": "recSsz9iY6E9O41iaKYz",
+    "title": "A Conversation with Amazon CTO Werner Vogels",
+    "url": "https://softwareengineeringdaily.com/2025/08/28/a-conversation-with-amazon-cto-werner-vogels/",
+    "duration": 2894,
+    "topics": [
+      "Architecture",
+      "Business models",
+      "Cloud",
+      "Engineering Culture",
+      "Evolutionary Architecture",
+      "Programming language"
+    ],
+    "speakers": [
+      "Werner Vogels"
+    ],
+    "description": "Amazon CTO Werner Vogels details the principles of 'frugal architecture', offering a pragmatic framework for aligning technical costs with business value and revenue growth — with insights on building sustainable, evolvable systems while navigating the trade-offs of technical debt and reliability at high scale.",
+    "core_topic": "Architecture",
+    "conference_name": null,
+    "format": "podcast",
+    "blog_url": "https://www.eferro.net/index.html",
+    "registered_at": "2026-07-06T08:51:52.000Z",
+    "rating": null,
+    "notes": "On Software Engineering Daily, host Kevin Ball interviews Amazon CTO Werner Vogels about the history of AWS and the principles of the 'frugal architect': how engineers can align technology costs with business value while keeping architectures sustainable and evolvable. The through-line: frugality is about maximizing value per dollar, not choosing the cheapest option.\n\n* **Frugal architecture maximizes value**: Being a 'frugal architect' doesn't mean picking the cheapest option, but ensuring every dollar spent on technology delivers the highest possible value and return for the business.\n* **Align cost dimensions with revenue growth**: Technology costs must scale along the same dimensions as income — e.g. a pay-as-you-go cost model is risky when paired with fixed-price subscription revenue.\n* **Integrate engineering and business teams**: Engineers should work in the same room as business stakeholders so technical decisions and architectures truly meet evolving business requirements.\n* **Apply a tiered approach to reliability**: Not all parts of an application need the same investment; critical paths like 'checkout' get high redundancy, while non-essential features like 'bestseller lists' can be cheaper with lower availability targets.\n* **Make cost and usage metrics visible**: Just as an energy meter in the hallway reduces home electricity use, making real-time infrastructure costs visible to engineers motivates them to cut waste.\n* **Architect for constant evolvability**: Design systems so their underlying implementations — storage models, languages — can be upgraded over time without ever taking the service down for customers.\n* **Actively pay down technical debt**: Treat technical debt like a mortgage; if it isn't periodically refactored, it eventually haunts the organization through poor reliability, high costs, and degraded performance.\n* **Prioritize programming-language efficiency**: Choosing efficient languages like Rust over less efficient ones like Python or Ruby can yield large gains in performance, security, and sustainability while lowering compute cost.\n* **Support innovation through experimentation and failure**: Real innovation requires willingness to fail on experiments (the Fire phone) to discover business-defining successes like AWS, Kindle, or Prime.\n* **Measure precisely to avoid flying blind**: Move beyond 'vibes' and averages to track metrics like the 99.9th percentile of latency, to understand the true customer experience and the cost of improving it."
+  },
+  {
+    "id": "recM5GLNFtU8MAugldxI",
+    "title": "Software engineering with LLMs in 2025: reality check",
+    "url": "https://www.youtube.com/watch?v=EO3_qN_Ynsk",
+    "duration": 1517,
+    "topics": [
+      "AI Assisted Engineering",
+      "AI",
+      "Developer Productivity",
+      "Engineering Culture",
+      "Generative AI",
+      "Nature of Software Development"
+    ],
+    "speakers": [
+      "Gergely Orosz"
+    ],
+    "description": "Gergely Orosz cuts through the executive hype to give a grounded 'reality check' on how engineers across AI startups, Big Tech, and independent work actually use LLMs in 2025 — finding a genuine but nuanced shift, and arguing the right response is to experiment more and learn what has become cheap versus expensive.",
+    "core_topic": "AI Assisted Engineering",
+    "conference_name": "LDX3",
+    "format": "talk",
+    "blog_url": "https://www.eferro.net/index.html",
+    "registered_at": "2026-07-06T15:42:28.000Z",
+    "rating": null,
+    "notes": "Gergely Orosz (The Pragmatic Engineer), at LDX3 by LeadDev, offers a 'reality check' on how software engineers are actually using LLMs in 2025 — cutting through executive hype by asking engineers across different types of companies what really works. His conclusion: something is genuinely shifting, but the reality is more nuanced than the headlines, and the right response is to experiment more.\n\n* **The hype-vs-reality disconnect**: Executives make bold claims (Microsoft's '30% of code written by AI', Anthropic's '90% in months', Google's Jeff Dean on junior-coder-level AI 'in a year'), while on the ground an AI agent adds a bug that costs $700 and Microsoft's own Copilot agent visibly struggles in its .NET codebase.\n* **AI dev-tool startups report very high usage (with obvious bias)**: Anthropic says ~90% of Claude Code is written with Claude Code and saw 160% usage growth in under a month; Windsurf claims 95%; Cursor is more candid at ~40-50%.\n* **Big Tech — deep investment, growing usage**: Google integrates LLMs across its custom stack (the Cider IDE, Critique review, Code Search) with a deliberately cautious rollout, and builds org-specific GenAI tooling partly because 'that's how you get funding'; some SREs are preparing infra for 10x the lines of code reaching production.\n* **Amazon may be 'MCP-first' because it was 'API-first'**: Having mandated service APIs since ~2002 (Bezos's mandate), most internal tools already have MCP support, and devs automate large parts of their workflow with Amazon Q and Claude.\n* **AI startups are hit-or-miss**: incident.io is going AI-first and sharing prompt tips team-wide, while a biotech protein startup finds LLMs don't stick because it is often faster to write novel code than to review the model's.\n* **Experienced independent engineers turned enthusiastic**: Armin Ronacher (Flask), Peter Steinberger (PSPDFKit), Birgitta Boeckeler (Thoughtworks — LLMs usable at any abstraction level, a 'lateral' move across the stack) and Simon Willison (Django — 'coding agents actually work' after a 6-month tipping point).\n* **The Model Context Protocol (MCP) is spreading fast**: Open-sourced by Anthropic in late 2024, adopted by OpenAI, Google and Microsoft within months, now thousands of MCP servers connecting IDEs and agents to databases, GitHub, Drive, and more.\n* **Four open questions remain**: why founders and CEOs are far more excited than engineers; how mainstream usage really is (a DX survey of 38,000 devs shows a median of ~50% weekly use, ~60% at top companies); how much time is actually saved (~4 hours/week, not 10x); and why the tools help individuals far more than teams or orgs.\n* **A genuine step change, but non-deterministic**: Martin Fowler likens LLMs to the assembler-to-high-level-language shift, but stresses these tools are non-deterministic for the first time in computing.\n* **Kent Beck's take after 52 years**: he is 'having more fun programming than ever', compares LLMs to microprocessors, the internet and smartphones, and says 'the whole landscape of what is cheap and what is expensive has shifted' — so we need to try things. Gergely's takeaway: experiment more, learning what is now cheap versus expensive."
+  },
+  {
+    "id": "recdQK0CZfbt6iClPSXo",
+    "title": "Thinking Like an Architect",
+    "url": "https://www.infoq.com/presentations/architecture-best-practices/",
+    "duration": 2854,
+    "topics": [
+      "Agile",
+      "Architecture",
+      "Cloud",
+      "Mental models",
+      "Strategy",
+      "Technical leadership"
+    ],
+    "speakers": [
+      "Gregor Hohpe"
+    ],
+    "description": "Gregor Hohpe reframes the architect's role as a strategic 'IQ booster': using the 'architect elevator' to bridge organizational levels, metaphors to translate technical complexity into business options, and simple evocative models to empower teams and manage uncertainty for better decision-making across the whole organization.",
+    "core_topic": "Architecture",
+    "conference_name": "InfoQ",
+    "format": "talk",
+    "blog_url": "https://www.eferro.net/index.html",
+    "registered_at": "2026-07-06T16:08:44.000Z",
+    "rating": null,
+    "notes": "Gregor Hohpe (author of The Software Architect Elevator, with experience at AWS and in the insurance industry) argues that the core mission of architecture is to 'make everybody else smarter'. Rather than making all the decisions himself, the architect acts as an 'IQ booster' — using the architect elevator, metaphors, and simple models to help others across the organization make better, more informed decisions, reframing architecture as the strategic management of uncertainty and options.\n\n* **Act as an IQ booster**: Empower teams to make better, more informed decisions rather than simply making all the choices yourself.\n* **Ride the 'architect elevator'**: Bridge the gap between high-level business strategy and technical implementation so organizational goals and technical reality stay aligned.\n* **Employ metaphors**: Translate complex technical concepts into familiar domains so stakeholders can 'think along' and reach their own strategic conclusions.\n* **Expand the solution space**: Move beyond binary 'either/or' thinking and visualize problems in multiple dimensions to enable ROI-based trade-off discussions.\n* **View architecture as trading options**: Standardize certain components to gain flexibility elsewhere, managing volatility and uncertainty by deferring decisions until more information is available.\n* **Use simple, evocative models**: Sharpen collective thinking and moderate discussions, avoiding overly complex 'tapestries' that obscure the path to a decision.\n* **Practice the 'architect boomerang'**: Step back to fully understand the problem before proposing a solution, which leads to stronger buy-in and more effective results.\n* **Reverse-engineer underlying beliefs**: When facing organizational resistance, understand the rational assumptions driving others' behavior so you can address the root cause of their concerns."
+  },
+  {
+    "id": "recicSDpCyroPcHnBiGk",
+    "title": "Top AI Trends From 100 Interviews | AI Briefings: nWave",
+    "url": "https://www.youtube.com/watch?v=8WJ1XVBh8NA",
+    "duration": 1076,
+    "topics": [
+      "AI Assisted Engineering",
+      "Architecture",
+      "Generative AI",
+      "Nature of Software Development",
+      "Small Safe Steps (3s)",
+      "Software Design"
+    ],
+    "speakers": [
+      "Dave Farley",
+      "Michele Brissoni",
+      "Alessandro Di Gioia"
+    ],
+    "description": "Dave Farley interviews Mike and Alessandro, creators of the open-source tool nWave, on how AI shifts the developer's role toward 'behavioral engineering' — deeply understanding and specifying the problem space — while disciplined small iterative steps and agent 'teammates' bound by engineering principles keep AI-generated software solving the right problem.",
+    "core_topic": "AI Assisted Engineering",
+    "conference_name": null,
+    "format": "podcast",
+    "blog_url": "https://www.eferro.net/index.html",
+    "registered_at": "2026-07-06T17:00:28.000Z",
+    "rating": null,
+    "notes": "In the first episode of AI Briefings, host Dave Farley interviews Mike and Alessandro, creators of the open-source tool nWave, about how AI is transforming software development by shifting the human role toward 'behavioral engineering', problem understanding, and small iterative cycles supported by AI agents. The core message: developers must pivot from technical coding to deeply understanding and defining the problem space, applying human architectural taste and a disciplined small-steps approach so AI-generated solutions actually address the real problem.\n\n* **Shift in developer focus**: Developers must move from 'coders' to 'software engineers' whose primary skill is defining the problem space, since AI can now translate requirements into code faster and cheaper than humans.\n* **Behavioral engineering**: A human-centric approach focused on communication and understanding — describing the nature of a problem in verifiable detail so the software solves the right problem for the user.\n* **Architectural good taste**: Humans provide the broad context and subjective 'good taste' needed to steer AI toward suitable solutions for complex, high-consequence systems beyond simple single-user apps.\n* **Small iterative steps**: Working with AI requires a disciplined, incremental approach; generating large amounts of code in one step is ineffective because software development is fundamentally a process of discovery.\n* **Fine-grained specification**: Instead of Big Design Up Front or waterfall, specify and test small portions of software iteratively to refine the AI's understanding and minimize disappointing output.\n* **Agents as teammates**: AI tools can be structured as specific personas or 'agents' with distinct roles and boundaries that follow engineering principles like SOLID, reducing hallucinations and keeping development organized.\n* **Essential human oversight**: Critical responsibilities like observability, logging, and production readiness remain human tasks, as AI needs specific instruction to build systems that stay maintainable during outages or complex failures."
+  },
+  {
+    "id": "recU43BoMLuLzsLRzryD",
+    "title": "Turing Award Winner: Data Abstraction, Dijkstra, Distributed Systems | Barbara Liskov",
+    "url": "https://www.youtube.com/watch?v=T9CGjbPZeaM",
+    "duration": 2084,
+    "topics": [
+      "Architecture patterns",
+      "Diversity",
+      "Engineering Career",
+      "OOP",
+      "Programming language",
+      "Software Design"
+    ],
+    "speakers": [
+      "Barbara Liskov"
+    ],
+    "description": "Turing Award winner Barbara Liskov offers a profound look into the creation of modern software engineering, detailing how her pioneering work on data abstraction and distributed systems solved the 1970s 'software crisis' — with lessons on building reliable systems through strict encapsulation and modularity, and a career philosophy of solving fundamental problems rather than incremental ones.",
+    "core_topic": "Software Design",
+    "conference_name": null,
+    "format": "podcast",
+    "blog_url": "https://www.eferro.net/index.html",
+    "registered_at": "2026-07-06T17:36:35.000Z",
+    "rating": null,
+    "notes": "On Ryan Peterman's podcast, Turing Award winner Barbara Liskov discusses her pioneering career and foundational contributions to computer science: data abstraction, modularity in programming languages like CLU, and distributed systems. Her through-line: meaningful impact comes from solving fundamental problems through modularity and encapsulation — keeping complex systems reliable and understandable — paired with a persistent readiness to embrace new opportunities and career 'zigzags'.\n\n* **Overcoming the software crisis**: In the 1970s the inability to build reliable large-scale programs led to the 'software crisis', which Liskov addressed by developing modularity and the concept of data abstraction.\n* **The power of data abstraction**: She introduced a new kind of module where internal implementation and data are hidden behind a public interface, letting developers reason about correctness one piece at a time.\n* **The essential role of encapsulation**: Making modularity work requires strict encapsulation to stop external code interfering with a module's internal logic — critical for team-based software development.\n* **The Liskov Substitution Principle**: A foundational OOP principle: a subclass must behave like its superclass so it can be substituted without changing the program's correctness.\n* **Innovations in distributed computing**: She co-invented viewstamped replication and contributed to Byzantine fault tolerance, providing the theoretical basis for reliable decentralized systems and cloud storage.\n* **Avoiding incremental work**: A key research philosophy — avoid minor improvements to existing ideas and instead focus on fundamental, high-impact problems that match your skill set.\n* **The invisibility of fundamental success**: Her contributions became so universal that modern programmers take them for granted and can't imagine a time before data abstraction existed.\n* **Resilience through career zigzags**: Her path shows the value of persistence and flexibility — from navigating gender-based rejection in graduate school to pivoting from artificial intelligence to systems research."
+  },
+  {
+    "id": "recItzwi7270wQxGg6eS",
+    "title": "War Is Peace, Freedom Is Slavery, Ignorance Is Strength, Scrum Is Agile",
+    "url": "https://www.youtube.com/watch?v=41CES2sNPxs",
+    "duration": 3782,
+    "topics": [
+      "Agile",
+      "Systems Thinking",
+      "Management",
+      "Feedback cycles",
+      "Slicing",
+      "Company Culture"
+    ],
+    "speakers": [
+      "Allen Holub"
+    ],
+    "description": "Allen Holub makes a compelling case for reclaiming agility from the rigid 'Agile Industrial Complex', emphasizing human interaction and continuous learning over bureaucratic tools and frameworks — with insights on reducing business risk and accelerating revenue through autonomous teams and a systems-thinking approach.",
+    "core_topic": "Agile",
+    "conference_name": "GOTO",
+    "format": "talk",
+    "blog_url": "https://www.eferro.net/index.html",
+    "registered_at": "2026-07-06T18:47:31.000Z",
+    "rating": null,
+    "notes": "Allen Holub, at GOTO 2020, contrasts true organizational agility — a flexible, learning-based system — with the rigid, often destructive 'Agile Industrial Complex'. His core message: real agility is an ongoing learning process that prioritizes team autonomy and rapid feedback over pre-packaged frameworks and bureaucratic tools, and it requires a systemic shift toward delivering small, valuable slices of work while continuously adapting to real-world results.\n\n* **Critique of the Agile Industrial Complex**: Rigid, pre-packaged frameworks like Scrum and SAFe often create a 'slavery to process' that generates bureaucracy rather than true organizational flexibility.\n* **Holistic systems thinking**: An organization is an interdependent system like a car — you cannot improve overall performance by tweaking individual parts or technical layers in isolation.\n* **Agility as a learning process**: True agility is not a fixed state or a certification but a continuous process of 'uncovering' better ways of working through experimentation and adaptation.\n* **Essential team autonomy**: Agility requires autonomous, self-organized teams that can invent their own working methods and interact directly with users without bureaucratic interference.\n* **Focus on vertical slices**: Organize work into small, end-to-end 'vertical slices' of functionality that deliver immediate value to the customer and enable faster learning.\n* **Rapid feedback loops**: The most critical factor in agility is the speed of feedback from real users, which requires rapid delivery cycles and a high level of trust.\n* **Priority of human interaction**: Tools like Jira can be actively destructive when they prioritize rigid documentation and management surveillance over the human interactions that drive real progress.\n* **The business case for agility**: Present agility to management as a way to reduce financial risk, lower the cost of delay, and generate revenue earlier by delivering value sooner."
   }
 ]
