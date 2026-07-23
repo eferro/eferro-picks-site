@@ -18397,7 +18397,7 @@
     "core_topic": "Devops",
     "conference_name": "InfoQ",
     "format": "talk",
-    "blog_url": "https://www.eferro.net/index.html",
+    "blog_url": "https://www.eferro.net/2026/07/good-talkspodcasts-jul-ii.html",
     "registered_at": "2026-07-05T22:02:13.000Z",
     "rating": null,
     "notes": "Nicole Forsgren (author of Accelerate and a new book on developer experience) discusses how organizations can improve software delivery by systematically identifying and removing friction points, particularly as AI-driven code generation amplifies existing bottlenecks in the development lifecycle. Her core message: prioritizing a seamless developer experience is a matter of competitive survival, ensuring technical efficiency turns into real business value rather than faster-accumulating bottlenecks.\n\n* **AI as a friction multiplier**: AI speeds up code generation but often exposes or worsens existing bottlenecks in the 'outer loop', such as deployment processes that can still take months.\n* **The economic cost of friction**: Technical debt and avoidable rework account for trillions in lost value and drain developer productivity, making friction removal a competitive imperative.\n* **Core developer-experience pillars**: Success depends on optimizing feedback loops, protecting deep-work flow states, and minimizing the cognitive load caused by overly complex tools and processes.\n* **Performance measurement through DORA**: High-performing teams use DORA metrics — deployment frequency, lead time, change fail rate, and recovery time — to move from technical constraints to business-driven decisions.\n* **Building the business case**: Organizational buy-in requires making friction visible to executives, using actionable data, and translating technical toil into clear dollar impact.\n* **A systematic improvement framework**: A structured seven-step process — qualitative listening to developers, securing visible quick wins, and data-backed prioritization before scaling improvements.\n* **Prioritization via RICE**: Evaluate improvements by Reach, Impact, Confidence, and Effort to find high-value, low-effort wins like streamlining code review.\n* **Evolving metrics for the AI era**: As 'lines of code' becomes obsolete, shift toward measuring prompting efficiency, trust calibration, and the 'survivability' of AI-generated code in the pipeline.\n* **Immediate next steps**: Individuals can map their weekly workflows, teams can run friction retrospectives, and leaders can interview staff directly to uncover organizational blockers."
@@ -18422,7 +18422,7 @@
     "core_topic": "Engineering Culture",
     "conference_name": null,
     "format": "podcast",
-    "blog_url": "https://www.eferro.net/index.html",
+    "blog_url": "https://www.eferro.net/2026/07/good-talkspodcasts-jul-ii.html",
     "registered_at": "2026-07-05T22:32:26.000Z",
     "rating": null,
     "notes": "On The Pragmatic Engineer podcast, host Gergely Orosz interviews Kent Beck about his career-spanning impact on the industry — the origins of Extreme Programming, Test-Driven Development, and the Agile Manifesto — and his contemporary views on the role of AI in software engineering. A recurring theme: software engineering is fundamentally a human discipline of trust, and in the AI era we are accumulating code faster than we accumulate trust.\n\n* **Software engineering is a human-centric discipline**: Though it involves machines, success is ultimately gated by a developer's ability to communicate, empathize, and build trust with other people — not just understanding the computer.\n* **The 'Swiss cheese' model of reliability**: Stability at scale comes from multiple overlapping feedback layers — code reviews, phased rollouts, observability — even when traditional unit testing is minimal.\n* **The 3X lifecycle of projects**: Development must adapt to three distinct phases — Explore (many cheap experiments), Expand (focus on what works to ride growth), and Extract (optimize for efficiency and scale).\n* **The psychological purpose of TDD**: Test-Driven Development is a practical tool for reducing anxiety and managing discovery, letting programmers take confident steps by knowing what to expect before they build.\n* **The risk of the 'AI genie'**: We are accumulating code faster than we accumulate trust, as automated tools deliver finished products without the human struggle that builds understanding and connection.\n* **A preference for 'Extreme' over 'Agile'**: 'Agile' lacks defensibility because anyone can claim it, whereas 'Extreme' requires a visible, difficult investment in high-level technical skills.\n* **The value of 'stupid ideas'**: Major industry shifts often come from cheap, reversible experiments others consider foolish — such as the original decision to write failing tests before the code.\n* **The necessity of 'skin in the game'**: Good design and architecture require staying close to the problem and its consequences, rather than giving distant advice like a 'seagull architect'.\n* **Coaching through productive discomfort**: A mentor's role is to spot where growth has stalled and induce the discomfort needed to push a developer to the next level.\n* **Adapting to a clean-slate era**: Because AI has wiped away old playbooks, developers must return to an 'Explore' mindset — trying everything and sharing findings in community rather than relying on established manifestos."
@@ -18497,7 +18497,7 @@
     "core_topic": "Company Culture",
     "conference_name": "Craft Conf",
     "format": "talk",
-    "blog_url": "https://www.eferro.net/index.html",
+    "blog_url": "https://www.eferro.net/2026/07/good-talkspodcasts-jul-ii.html",
     "registered_at": "2026-07-06T05:00:29.000Z",
     "rating": null,
     "notes": "Randy Shoup, former chief architect and VP of platform engineering at eBay, recounts how he led a technical transformation that doubled engineering productivity but ultimately failed to save the company from its pathological organizational culture and risk-averse strategy. The core lesson: even a successful technical transformation won't drive business growth if undermined by a culture of fear and centralized planning — technical excellence must be backed by psychological safety and autonomy.\n\n* **Successful technical transformation**: The 'Velocity' program doubled engineering productivity, moving eBay from a 'medium' to a 'high' performer on DORA metrics like deployment frequency and lead time for change.\n* **Strategic use of pilot programs**: To change at scale, the team focused on a 10% set of pilot domains and used an 'embedding model' where senior architects worked directly with teams to identify and remove specific bottlenecks.\n* **Automation and continuous delivery**: Gains came from automating manual toil, fully automated test-and-deploy pipelines for nearly 99% of applications, and shifting site-wide upgrades from annual to monthly cycles.\n* **The 'feature factory' bottleneck**: Despite higher productivity, a centralized waterfall planning model kept focusing on milestones and 'train seats' (engineering effort) rather than business outcomes.\n* **Technology dead-ends**: A history of custom-forking open-source software like Kubernetes and OpenStack left eBay's internal versions years behind the industry mainline.\n* **Pathological organizational culture**: A culture of fear, lack of psychological safety, and executive 'empire-building' created a risk-averse environment where acknowledging failure was discouraged and autonomy was limited.\n* **The limits of technical excellence**: The ultimate lesson — 'culture eats strategy for breakfast' — a successful technical transformation cannot save a company whose culture remains dysfunctional and resistant to change."
@@ -18597,7 +18597,7 @@
     "core_topic": "Architecture",
     "conference_name": "InfoQ",
     "format": "talk",
-    "blog_url": "https://www.eferro.net/index.html",
+    "blog_url": "https://www.eferro.net/2026/07/good-talkspodcasts-jul-ii.html",
     "registered_at": "2026-07-06T16:08:44.000Z",
     "rating": null,
     "notes": "Gregor Hohpe (author of The Software Architect Elevator, with experience at AWS and in the insurance industry) argues that the core mission of architecture is to 'make everybody else smarter'. Rather than making all the decisions himself, the architect acts as an 'IQ booster' — using the architect elevator, metaphors, and simple models to help others across the organization make better, more informed decisions, reframing architecture as the strategic management of uncertainty and options.\n\n* **Act as an IQ booster**: Empower teams to make better, more informed decisions rather than simply making all the choices yourself.\n* **Ride the 'architect elevator'**: Bridge the gap between high-level business strategy and technical implementation so organizational goals and technical reality stay aligned.\n* **Employ metaphors**: Translate complex technical concepts into familiar domains so stakeholders can 'think along' and reach their own strategic conclusions.\n* **Expand the solution space**: Move beyond binary 'either/or' thinking and visualize problems in multiple dimensions to enable ROI-based trade-off discussions.\n* **View architecture as trading options**: Standardize certain components to gain flexibility elsewhere, managing volatility and uncertainty by deferring decisions until more information is available.\n* **Use simple, evocative models**: Sharpen collective thinking and moderate discussions, avoiding overly complex 'tapestries' that obscure the path to a decision.\n* **Practice the 'architect boomerang'**: Step back to fully understand the problem before proposing a solution, which leads to stronger buy-in and more effective results.\n* **Reverse-engineer underlying beliefs**: When facing organizational resistance, understand the rational assumptions driving others' behavior so you can address the root cause of their concerns."
@@ -18624,7 +18624,7 @@
     "core_topic": "AI Assisted Engineering",
     "conference_name": null,
     "format": "podcast",
-    "blog_url": "https://www.eferro.net/index.html",
+    "blog_url": "https://www.eferro.net/2026/07/good-talkspodcasts-jul-ii.html",
     "registered_at": "2026-07-06T17:00:28.000Z",
     "rating": null,
     "notes": "In the first episode of AI Briefings, host Dave Farley interviews Mike and Alessandro, creators of the open-source tool nWave, about how AI is transforming software development by shifting the human role toward 'behavioral engineering', problem understanding, and small iterative cycles supported by AI agents. The core message: developers must pivot from technical coding to deeply understanding and defining the problem space, applying human architectural taste and a disciplined small-steps approach so AI-generated solutions actually address the real problem.\n\n* **Shift in developer focus**: Developers must move from 'coders' to 'software engineers' whose primary skill is defining the problem space, since AI can now translate requirements into code faster and cheaper than humans.\n* **Behavioral engineering**: A human-centric approach focused on communication and understanding — describing the nature of a problem in verifiable detail so the software solves the right problem for the user.\n* **Architectural good taste**: Humans provide the broad context and subjective 'good taste' needed to steer AI toward suitable solutions for complex, high-consequence systems beyond simple single-user apps.\n* **Small iterative steps**: Working with AI requires a disciplined, incremental approach; generating large amounts of code in one step is ineffective because software development is fundamentally a process of discovery.\n* **Fine-grained specification**: Instead of Big Design Up Front or waterfall, specify and test small portions of software iteratively to refine the AI's understanding and minimize disappointing output.\n* **Agents as teammates**: AI tools can be structured as specific personas or 'agents' with distinct roles and boundaries that follow engineering principles like SOLID, reducing hallucinations and keeping development organized.\n* **Essential human oversight**: Critical responsibilities like observability, logging, and production readiness remain human tasks, as AI needs specific instruction to build systems that stay maintainable during outages or complex failures."
@@ -18674,9 +18674,84 @@
     "core_topic": "Agile",
     "conference_name": "GOTO",
     "format": "talk",
-    "blog_url": "https://www.eferro.net/index.html",
+    "blog_url": "https://www.eferro.net/2026/07/good-talkspodcasts-jul-ii.html",
     "registered_at": "2026-07-06T18:47:31.000Z",
     "rating": null,
     "notes": "Allen Holub, at GOTO 2020, contrasts true organizational agility — a flexible, learning-based system — with the rigid, often destructive 'Agile Industrial Complex'. His core message: real agility is an ongoing learning process that prioritizes team autonomy and rapid feedback over pre-packaged frameworks and bureaucratic tools, and it requires a systemic shift toward delivering small, valuable slices of work while continuously adapting to real-world results.\n\n* **Critique of the Agile Industrial Complex**: Rigid, pre-packaged frameworks like Scrum and SAFe often create a 'slavery to process' that generates bureaucracy rather than true organizational flexibility.\n* **Holistic systems thinking**: An organization is an interdependent system like a car — you cannot improve overall performance by tweaking individual parts or technical layers in isolation.\n* **Agility as a learning process**: True agility is not a fixed state or a certification but a continuous process of 'uncovering' better ways of working through experimentation and adaptation.\n* **Essential team autonomy**: Agility requires autonomous, self-organized teams that can invent their own working methods and interact directly with users without bureaucratic interference.\n* **Focus on vertical slices**: Organize work into small, end-to-end 'vertical slices' of functionality that deliver immediate value to the customer and enable faster learning.\n* **Rapid feedback loops**: The most critical factor in agility is the speed of feedback from real users, which requires rapid delivery cycles and a high level of trust.\n* **Priority of human interaction**: Tools like Jira can be actively destructive when they prioritize rigid documentation and management surveillance over the human interactions that drive real progress.\n* **The business case for agility**: Present agility to management as a way to reduce financial risk, lower the cost of delay, and generate revenue earlier by delivering value sooner."
+  },
+  {
+    "id": "recOJ6SRUShrnbmlsO2e",
+    "title": "Augmented Coding: Mapping the Uncharted Territory",
+    "url": "https://www.youtube.com/watch?v=_LSK2bVf0Lc",
+    "duration": 9270,
+    "topics": [
+      "AI",
+      "AI Assisted Engineering",
+      "Developer Productivity",
+      "Generative AI",
+      "Mental models",
+      "Technical Practices"
+    ],
+    "speakers": [
+      "Lada Kesseler"
+    ],
+    "description": "Lada Kesseler offers a practical framework for mastering AI-assisted coding, turning unpredictable LLMs into reliable, structured partners through patterns like knowledge checkpoints and specialist agents — with actionable strategies for managing context and non-determinism so developers harness AI's creative breadth without sacrificing technical precision.",
+    "core_topic": "AI Assisted Engineering",
+    "conference_name": "Calgary Software Crafters",
+    "format": "talk",
+    "blog_url": "https://www.eferro.net/index.html",
+    "registered_at": "2026-07-06T19:29:30.000Z",
+    "rating": 5,
+    "notes": "Lada Kesseler, drawing on a year of exploration, maps practical patterns and strategies for developers to code effectively with AI, addressing challenges like context management, non-determinism, and instruction-following. Her core message: effective AI coding means moving beyond treating the model as a simple tool to actively managing its non-deterministic nature through structured context, focused specialist agents, and rigorous alignment checks — treating the AI as an active partner rather than a passive order-taker.\n\n* **Manage context actively**: LLMs are stateless and degrade as the conversation grows, so use knowledge documents and ground rules to keep the context window clean and focused.\n* **Prioritize specialist agents**: Small, focused agents beat general ones because every irrelevant detail added to the context dilutes the AI's attention.\n* **Leverage non-determinism**: Since output is inconsistent, run parallel implementations in different branches to compare results and combine the best parts of each.\n* **Offload deterministic tasks**: Move repeatable, predictable tasks into shell scripts and tools rather than relying on the AI to perform them non-deterministically.\n* **Enforce active partnership**: Counteract the AI's 'compliance bias' by explicitly giving it permission to push back, ask clarifying questions, and highlight errors instead of silently agreeing.\n* **Use semantic zoom**: Control information density by instructing the AI to 'zoom in' for deep technical detail or 'zoom out' for high-level, scannable summaries.\n* **Validate small steps**: Break tasks into a chain of small, verifiable steps and use 'predictive TDD' to snap the AI out of making invalid logical leaps.\n* **Stay text-native**: Harness the AI's strength in text manipulation by using ASCII diagrams and descriptive markdown as a lightweight bridge between visual designs and functional code."
+  },
+  {
+    "id": "recrO5yeMm7BLUYd8oF1",
+    "title": "Marty Cagan on the Current \"Golden Era\" for Product Management (Full Interview)",
+    "url": "https://www.youtube.com/watch?v=lu0a-VRkKeY",
+    "duration": 3714,
+    "topics": [
+      "AI",
+      "Generative AI",
+      "Product Discovery",
+      "Product Strategy",
+      "Product",
+      "Agile"
+    ],
+    "speakers": [
+      "Marty Cagan"
+    ],
+    "description": "Marty Cagan explores the disruptive impact of AI on product management, arguing for a shift from project-driven output to strategic, outcome-oriented discovery and 'building to learn' — while stressing the indispensable role of human judgment and 'product sense' in achieving business viability.",
+    "core_topic": "Product",
+    "conference_name": null,
+    "format": "podcast",
+    "blog_url": "https://www.eferro.net/index.html",
+    "registered_at": "2026-07-06T19:54:49.000Z",
+    "rating": 5,
+    "notes": "In this Udacity interview, product management expert Marty Cagan explores the intersection of AI and product management, focusing on how AI is disrupting traditional project-based models and pushing teams toward outcome-oriented product discovery and strategy. His core message: to stay essential in the AI era, product managers must move beyond the project-driven 'feature factory' to an outcome-oriented approach built on strategic discovery and deep business judgment, 'building to learn' through rapid experimentation to solve problems AI-automated delivery cannot address alone.\n\n* **Shift to the product model**: Product managers must transition from the project-based 'feature factory' to an outcome-oriented approach to avoid being replaced by AI-driven automation.\n* **Build to learn vs. build to earn**: Product managers and designers focus on discovery ('build to learn') to find solutions worth building, while engineers focus on delivery ('build to earn') to make those solutions reliable and scalable.\n* **AI as an accelerator for discovery**: Generative AI lets teams create high-fidelity prototypes and run rapid experiments far faster and cheaper, enhancing product discovery.\n* **The irreplaceable value of product sense**: AI can automate repetitive tasks, but the 'product sense' needed to judge business viability, customer value, and complex constraints remains a uniquely human skill.\n* **Strategic differentiation**: As AI makes delivery a commodity, competitive advantage shifts toward effective product strategy and high-quality discovery.\n* **Amplify, don't abdicate thinking**: Use AI to enhance insights and as a personal coach, but never delegate the core responsibility of strategic decision-making to the tool.\n* **Evolving team dynamics**: The 'product trio' of PM, designer, and engineer stays crucial for consistent results at scale, even as AI lets smaller teams be more versatile and efficient."
+  },
+  {
+    "id": "recB4e7E8v3XZj4qWtOZ",
+    "title": "Pragmatic Architecture: How to Know When It's Enough",
+    "url": "https://www.youtube.com/watch?v=DaI_nJBhy9A",
+    "duration": 2928,
+    "topics": [
+      "Architecture",
+      "DDD",
+      "Software Design",
+      "Architecture patterns",
+      "Evolutionary Design",
+      "simplicity"
+    ],
+    "speakers": [
+      "Vlad Khononov"
+    ],
+    "description": "Vlad Khononov offers a pragmatic framework for balancing software modularity against business value by aligning architectural effort with the essential volatility of each subdomain — managing integration strength and component distance to avoid the waste of both overengineering and underengineering.",
+    "core_topic": "Architecture",
+    "conference_name": "Plain Concepts",
+    "format": "talk",
+    "blog_url": "https://www.eferro.net/2026/07/good-talkspodcasts-jul-ii.html",
+    "registered_at": "2026-07-06T20:50:15.000Z",
+    "rating": 5,
+    "notes": "Vlad Khononov, software architect and author, discusses how to achieve equilibrium between software architecture and business value by evaluating domain volatility and managing integration coupling, avoiding the waste of both overengineering and underengineering. His core argument: align design modularity with the volatility of specific subdomains — invest in advanced patterns for core, high-change areas and keep stable areas simple — and manage the inverse relationship between integration strength and distance so components that change together live together.\n\n* **Strategic alignment**: Architecture must balance design modularity against business value, investing in modularity in proportion to the volatility of the business domain.\n* **Domain volatility**: Essential volatility is driven by change in the problem domain, especially in core subdomains that provide competitive advantage and warrant the most advanced design patterns.\n* **Integration strength model**: Integration methods share varying amounts of knowledge across boundaries, from high sharing (intrusive and functional coupling) to minimal sharing (contract coupling).\n* **Accidental volatility**: The 'evil' form — weak boundaries let changes in a volatile component ripple across the system; prevent it by reducing shared knowledge.\n* **Distance and coordination**: The cost of change is proportional to the distance between components, so if high integration strength is unavoidable, bring components closer or merge them.\n* **Balanced coupling**: True modularity comes from managing the inverse relationship between integration strength and distance, ensuring components that must change together are located together.\n* **Avoiding waste**: Overengineering applies high modularity to stable domains; underengineering leaves volatile domains without enough modularity to handle frequent change."
   }
 ]
