@@ -1,645 +1,292 @@
-import { screen, fireEvent, cleanup } from '@testing-library/react';
-import { vi, describe, it, expect, beforeEach } from 'vitest';
+import { screen, fireEvent, within, act } from '@testing-library/react';
+import { vi, describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { TalksList } from '.';
 import { useTalks } from '../../hooks/useTalks';
-import { renderWithRouter, getMockSearchParams, mockSetSearchParams, createTalk, setMockSearchParams } from '../../test/utils';
+import type { Talk } from '../../types/talks';
+import { createTalk } from '../../test/builders';
+import { renderWithRouter, currentParams } from '../../test/router';
 
-// Mock child components with minimal stubs — real behavior is tested in integration tests
-vi.mock('./TalkSection', () => ({
-  TalkSection: ({ coreTopic, talks }: { coreTopic: string; talks: Array<{ id: string; title: string }> }) => (
-    <section data-testid={`section-${coreTopic}`}>
-      <h2>{coreTopic} ({talks.length})</h2>
-      {talks.map(talk => <div key={talk.id} role="article">{talk.title}</div>)}
-    </section>
-  )
-}));
-
-vi.mock('./YearFilter', () => ({
-  YearFilter: ({ onFilterChange }: { onFilterChange: (filter: { type: string }) => void }) => (
-    <button onClick={() => onFilterChange({ type: 'last2' })}>Year Filter</button>
-  )
-}));
-
-// Mock RecentlyAddedTalks component
-vi.mock('../RecentlyAddedTalks', () => ({
-  RecentlyAddedTalks: ({ talks }: { talks: Array<{ id: string; title: string; registered_at?: string }> }) => (
-    <section data-testid="recently-added-talks" aria-label="Recently added talks">
-      <h2>Recently Added</h2>
-      <div data-testid="recently-added-count">{talks.length} talks</div>
-      {talks.map(talk => (
-        <div key={talk.id} data-testid={`recently-added-${talk.id}`}>
-          {talk.title}
-        </div>
-      ))}
-    </section>
-  )
-}));
-
-// Mock the hooks
+// Only the data source is mocked: child components, URL state and
+// filtering are real, so assertions are on what the user sees.
 vi.mock('../../hooks/useTalks');
-vi.mock('react-router-dom', async () => {
-  const actual = await vi.importActual('react-router-dom');
-  return {
-    ...actual,
-    useSearchParams: () => [getMockSearchParams(), mockSetSearchParams]
-  };
-});
 
-// Author Filter tests for TalksList
-// Author Filter tests removed - functionality migrated to unified search
+const givenTalks = (talks: Talk[]) => {
+  vi.mocked(useTalks).mockReturnValue({ talks, loading: false, error: null });
+};
 
-describe('Rating Filter', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-    setMockSearchParams(new URLSearchParams());
-    vi.mocked(useTalks).mockImplementation(() => ({
-      talks: [ createTalk({ id: '1', title: 'Star talk' }) ],
-      loading: false,
-      error: null
-    }));
+const renderTalksList = (params = '') => renderWithRouter(<TalksList />, { params });
+
+/** Titles of the talks listed in the topic sections (excludes Recently Added). */
+const listedTitles = () =>
+  screen.queryAllByTestId('talk-section').flatMap(section =>
+    within(section).getAllByRole('article').map(card => card.getAttribute('aria-label')?.replace('Talk: ', ''))
+  );
+
+const sectionHeadings = () =>
+  screen.queryAllByTestId('talk-section').map(section => within(section).getByRole('heading', { level: 2 }).textContent);
+
+const openYearMenu = async () => {
+  await act(async () => {
+    fireEvent.click(screen.getByRole('button', { name: /filter by year/i }));
   });
-
-  it('shows the rating filter button with correct initial state', () => {
-    // Default (no rating param) shows "Top Picks" label (inactive)
-    renderWithRouter(<TalksList />);
-    const button = screen.getByRole('button', { name: /toggle top picks filter/i });
-    expect(button).toBeInTheDocument();
-    expect(button).toHaveTextContent('Top Picks');
-    expect(button).toHaveAttribute('aria-pressed', 'false');
-    expect(mockSetSearchParams).not.toHaveBeenCalled();
-  });
-
-  it('shows tooltip on the rating filter button', () => {
-    renderWithRouter(<TalksList />);
-    const button = screen.getByRole('button', { name: /toggle top picks filter/i });
-    expect(button).toHaveAttribute('title', "Show only 5-star talks — the curator's top recommendations");
-  });
-
-  it('toggles the rating filter and updates URL params', () => {
-    // Initial state shows all talks (no rating filter)
-    renderWithRouter(<TalksList />);
-    const [toggle] = screen.getAllByRole('button', { name: /toggle top picks filter/i });
-    // Click to enable rating filter (to show 5 stars only)
-    fireEvent.click(toggle);
-    expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
-    let params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
-    expect(params.get('rating')).toBe('5');
-
-    // Update mockSearchParams to match new params
-    setMockSearchParams(params);
-    // Re-render after click to simulate navigation
-    cleanup();
-    renderWithRouter(<TalksList />);
-    const [updated] = screen.getAllByRole('button', { name: /toggle top picks filter/i });
-    // After the first click the button is active
-    expect(updated).toHaveAttribute('aria-pressed', 'true');
-    expect(updated).toHaveTextContent('⭐ Top Picks');
-    // Click to disable rating filter (back to showing all)
-    fireEvent.click(updated);
-    expect(mockSetSearchParams).toHaveBeenCalledTimes(2);
-    params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
-    expect(params.get('rating')).toBeNull();
-  });
-
-  it('should not force rating=5 when user explicitly turns off rating filter', () => {
-    // Start with rating filter off (no rating param)
-    setMockSearchParams(new URLSearchParams(''));
-    renderWithRouter(<TalksList />);
-    
-    // The component should not force rating=5 just because there's no rating param
-    // This test will fail because of the bug in the initialization logic
-    const button = screen.getByRole('button', { name: /toggle top picks filter/i });
-    expect(button).toHaveAttribute('aria-pressed', 'false');
-    expect(button).not.toHaveTextContent('⭐');
-  });
-});
-
-describe('Format Filter', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-    setMockSearchParams(new URLSearchParams());
-    vi.mocked(useTalks).mockImplementation(() => ({
-      talks: [
-        createTalk({ id: '1', format: 'talk' }),
-        createTalk({ id: '2', format: 'podcast' })
-      ],
-      loading: false,
-      error: null
-    }));
-  });
-
-  it('updates format parameter when selecting from dropdown', () => {
-    renderWithRouter(<TalksList />);
-    
-    // Click the Format dropdown button to open it
-    const formatButton = screen.getByRole('button', { name: /format/i });
-    fireEvent.click(formatButton);
-    
-    // Click the Podcasts option in the dropdown
-    const podcastOption = screen.getByRole('menuitem', { name: /podcasts/i });
-    fireEvent.click(podcastOption);
-    
-    const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
-    expect(params.get('format')).toBe('podcast');
-  });
-});
-
-// Mock the hasMeaningfulNotes function
-vi.mock('../../utils/talks', () => ({
-  hasMeaningfulNotes: (notes: string | undefined) => {
-    if (!notes) return false;
-    return notes.trim().length > 0;
-  }
-}));
+};
 
 describe('TalksList', () => {
   beforeEach(() => {
-    vi.clearAllMocks();
-    setMockSearchParams(new URLSearchParams());
-
-    vi.mocked(useTalks).mockImplementation(() => ({
-      talks: [
-        createTalk({ id: '1', title: 'Talk with both topics 1', speakers: ['Test Speaker'], topics: ['react', 'typescript'], core_topic: 'Engineering Culture', year: 2025 }),
-        createTalk({ id: '2', title: 'Talk with only first topic', speakers: ['Test Speaker'], topics: ['react'], core_topic: 'Engineering Culture', year: 2025 }),
-        createTalk({ id: '3', title: 'Talk with only second topic', speakers: ['Test Speaker'], topics: ['typescript'], core_topic: 'Engineering Culture', year: 2025 }),
-        createTalk({ id: '4', title: 'Talk with both topics 2', speakers: ['Test Speaker'], topics: ['react', 'typescript', 'testing'], core_topic: 'Engineering Culture', year: 2025 }),
-        createTalk({ id: '5', title: 'Talk with no matching topics', speakers: ['Test Speaker'], topics: ['testing'], core_topic: 'Engineering Culture', year: 2025 }),
-      ],
-      loading: false,
-      error: null
-    }));
+    givenTalks([]);
   });
 
-  const renderComponent = () => renderWithRouter(<TalksList />);
+  describe('Loading and error states', () => {
+    it('shows a spinner while loading', () => {
+      vi.mocked(useTalks).mockReturnValue({ talks: [], loading: true, error: null });
 
-  it('renders without crashing', () => {
-    renderComponent();
-    expect(screen.getByText('Engineering Culture (5)')).toBeInTheDocument();
-    // Updated: check for both unique titles
-    expect(screen.getAllByText('Talk with both topics 1').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('Talk with both topics 2').length).toBeGreaterThan(0);
-  });
+      renderTalksList();
 
-  // Navigation preservation tested in TalkCard.test.tsx and integration tests
-
-  describe('Year Filter Integration', () => {
-    it('removes year filter when clicking chip remove button', () => {
-      const talks = [
-        createTalk({ id: '1', year: 2024, title: 'Recent Talk' }),
-        createTalk({ id: '2', year: 2020, title: 'Old Talk' }),
-      ];
-
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks,
-        loading: false,
-        error: null,
-      }));
-
-      // Start with year filter active
-      setMockSearchParams(new URLSearchParams('yearType=last2'));
-
-      renderWithRouter(<TalksList />);
-
-      // Verify filter chip is rendered
-      expect(screen.getByText('Last 2 Years')).toBeInTheDocument();
-
-      // Click remove button on the chip
-      const removeButton = screen.getByRole('button', { name: /last 2 years/i });
-      fireEvent.click(removeButton);
-
-      // Verify URL parameters were cleared
-      const updatedParams = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0] as URLSearchParams;
-      expect(updatedParams.get('yearType')).toBeNull();
-      expect(updatedParams.get('year')).toBeNull();
+      expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
     });
 
-    it('removes specific year filter when clicking chip remove button', () => {
-      const talks = [
-        createTalk({ id: '1', year: 2023, title: 'Talk from 2023' }),
-        createTalk({ id: '2', year: 2024, title: 'Talk from 2024' }),
-      ];
+    it('shows the error message when loading fails', () => {
+      vi.mocked(useTalks).mockReturnValue({ talks: [], loading: false, error: new Error('Boom') });
 
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks,
-        loading: false,
-        error: null,
-      }));
+      renderTalksList();
 
-      // Start with specific year filter active
-      setMockSearchParams(new URLSearchParams('year=2023&yearType=specific'));
-
-      renderWithRouter(<TalksList />);
-
-      // Verify filter chip is rendered
-      expect(screen.getByText('2023')).toBeInTheDocument();
-
-      // Click remove button on the chip
-      const removeButton = screen.getByRole('button', { name: /2023/i });
-      fireEvent.click(removeButton);
-
-      // Verify both URL parameters were cleared
-      const updatedParams = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0] as URLSearchParams;
-      expect(updatedParams.get('year')).toBeNull();
-      expect(updatedParams.get('yearType')).toBeNull();
-    });
-
-    it('removes last5 year filter when clicking chip remove button', () => {
-      const talks = [createTalk({ id: '1', year: 2024 })];
-
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks,
-        loading: false,
-        error: null,
-      }));
-
-      setMockSearchParams(new URLSearchParams('yearType=last5'));
-
-      renderWithRouter(<TalksList />);
-
-      expect(screen.getByText('Last 5 Years')).toBeInTheDocument();
-
-      const removeButton = screen.getByRole('button', { name: /last 5 years/i });
-      fireEvent.click(removeButton);
-
-      const updatedParams = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0] as URLSearchParams;
-      expect(updatedParams.get('yearType')).toBeNull();
-      expect(updatedParams.get('year')).toBeNull();
-    });
-
-    it('removes before year filter when clicking chip remove button', () => {
-      const talks = [createTalk({ id: '1', year: 2019 })];
-
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks,
-        loading: false,
-        error: null,
-      }));
-
-      setMockSearchParams(new URLSearchParams('year=2020&yearType=before'));
-
-      renderWithRouter(<TalksList />);
-
-      expect(screen.getByText('Before 2020')).toBeInTheDocument();
-
-      const removeButton = screen.getByRole('button', { name: /before 2020/i });
-      fireEvent.click(removeButton);
-
-      const updatedParams = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0] as URLSearchParams;
-      expect(updatedParams.get('year')).toBeNull();
-      expect(updatedParams.get('yearType')).toBeNull();
-    });
-
-    it('removes after year filter when clicking chip remove button', () => {
-      const talks = [createTalk({ id: '1', year: 2021 })];
-
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks,
-        loading: false,
-        error: null,
-      }));
-
-      setMockSearchParams(new URLSearchParams('year=2020&yearType=after'));
-
-      renderWithRouter(<TalksList />);
-
-      expect(screen.getByText('After 2020')).toBeInTheDocument();
-
-      const removeButton = screen.getByRole('button', { name: /after 2020/i });
-      fireEvent.click(removeButton);
-
-      const updatedParams = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0] as URLSearchParams;
-      expect(updatedParams.get('year')).toBeNull();
-      expect(updatedParams.get('yearType')).toBeNull();
-    });
-
-    it('preserves other filters when removing year filter', () => {
-      const talks = [createTalk({ id: '1', year: 2024, notes: 'Great talk' })];
-
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks,
-        loading: false,
-        error: null,
-      }));
-
-      // Start with year filter AND hasNotes filter
-      setMockSearchParams(new URLSearchParams('yearType=last2&hasNotes=true'));
-
-      renderWithRouter(<TalksList />);
-
-      // Remove year filter
-      const yearRemoveButton = screen.getByRole('button', { name: /last 2 years/i });
-      fireEvent.click(yearRemoveButton);
-
-      // Verify year params cleared but hasNotes preserved
-      const updatedParams = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0] as URLSearchParams;
-      expect(updatedParams.get('yearType')).toBeNull();
-      expect(updatedParams.get('year')).toBeNull();
-      expect(updatedParams.get('hasNotes')).toBe('true');
+      expect(screen.getByText(/Boom/)).toBeInTheDocument();
     });
   });
 
-});
-
-describe('Has Notes Filter', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-    setMockSearchParams(new URLSearchParams());
-    vi.mocked(useTalks).mockReturnValue({ talks: [], loading: false, error: null });
-  });
-
-  it('shows the Has Notes filter button', () => {
-    vi.mocked(useTalks).mockImplementation(() => ({
-      talks: [],
-      loading: false,
-      error: null
-    }));
-
-    renderWithRouter(<TalksList />);
-    const button = screen.getByRole('button', { name: /toggle has notes filter/i });
-    expect(button).toBeInTheDocument();
-    expect(button).toHaveAttribute('aria-pressed', 'false');
-  });
-
-  it('activates the Has Notes filter when its button is clicked', () => {
-    // Filtering itself is covered with the real router in TalksList.integration.test.tsx
-    renderWithRouter(<TalksList />);
-
-    fireEvent.click(screen.getByRole('button', { name: /toggle has notes filter/i }));
-
-    const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
-    expect(params.get('hasNotes')).toBe('true');
-
-    setMockSearchParams(params);
-    cleanup();
-    renderWithRouter(<TalksList />);
-    expect(screen.getByRole('button', { name: /toggle has notes filter/i })).toHaveAttribute('aria-pressed', 'true');
-  });
-
-});
-
-describe('URL parameters for other filters', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-    setMockSearchParams(new URLSearchParams());
-
-    vi.mocked(useTalks).mockImplementation(() => ({
-      talks: [
-        createTalk({ id: '1', topics: ['react', 'typescript'] })
-      ],
-      loading: false,
-      error: null
-    }));
-  });
-
-  // Topics parameter test removed - functionality migrated to unified search
-
-it('updates yearType parameter when selecting year filter', () => {
-  renderWithRouter(<TalksList />);
-  const yearButton = screen.getByRole('button', { name: /year filter/i });
-  fireEvent.click(yearButton);
-
-  let params = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0];
-  if (!(params instanceof URLSearchParams)) {
-    params = new URLSearchParams(String(params));
-  }
-  // For range filters like 'last2', yearType should be 'last2' and year should be null
-  expect(params.get('yearType')).toBe('last2');
-  expect(params.get('year')).toBeNull();
-});
-
-it('displays search box for user input', () => {
-  renderWithRouter(<TalksList />);
-
-  const searchInput = screen.getByPlaceholderText(/search in titles, speakers, topics/i);
-  expect(searchInput).toBeInTheDocument();
-
-  const searchForm = screen.getByTestId('search-form');
-  expect(searchForm).toBeInTheDocument();
-});
-
-it('integrates search box with filter system', () => {
-  const talks = [
-    createTalk({ id: '1', title: 'React Testing', speakers: ['Alice'], topics: ['react', 'testing'] }),
-    createTalk({ id: '2', title: 'Vue Basics', speakers: ['Bob'], topics: ['vue'] })
-  ];
-
-  vi.mocked(useTalks).mockImplementation(() => ({
-    talks,
-    loading: false,
-    error: null
-  }));
-
-  renderWithRouter(<TalksList />);
-
-  const searchInput = screen.getByPlaceholderText(/search in titles, speakers, topics/i);
-
-  // Type a search query (unified search without prefixes)
-  fireEvent.change(searchInput, { target: { value: 'Alice react' } });
-  fireEvent.submit(screen.getByTestId('search-form'));
-
-  // Verify URL parameters were updated with unified query
-  const lastCall = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1];
-  const params = lastCall[0] as URLSearchParams;
-
-  expect(params.get('query')).toBe('Alice react');
-  expect(params.get('author')).toBeNull(); // Migrated to query
-  expect(params.get('topics')).toBeNull(); // Migrated to query
-});
-
-describe('Recently Added Talks Integration', () => {
-  it('should show Recently Added section when no filters are active', () => {
-    const talks = [
-      createTalk({
-        id: '1',
-        title: 'Recent Talk 1',
-        registered_at: '2023-11-01T00:00:00Z',
-        core_topic: 'Engineering Culture'
-      }),
-      createTalk({
-        id: '2',
-        title: 'Recent Talk 2',
-        registered_at: '2023-10-01T00:00:00Z',
-        core_topic: 'Engineering Culture'
-      })
+  describe('Sections by core topic', () => {
+    const categorized = [
+      createTalk({ id: '4', title: 'A1', core_topic: 'Agile' }),
+      createTalk({ id: '5', title: 'D1', core_topic: 'DevOps' }),
+      createTalk({ id: '6', title: 'D2', core_topic: 'DevOps' }),
+    ];
+    const uncategorized = [
+      createTalk({ id: '1', title: 'U1', core_topic: '' }),
+      createTalk({ id: '2', title: 'U2', core_topic: '' }),
+      createTalk({ id: '3', title: 'U3', core_topic: '' }),
     ];
 
-    vi.mocked(useTalks).mockImplementation(() => ({
-      talks,
-      loading: false,
-      error: null
-    }));
+    // Both input orders, so the comparator must handle Uncategorized on either side
+    it.each([
+      ['first', [...uncategorized, ...categorized]],
+      ['last', [...categorized, ...uncategorized]],
+    ])('groups talks by core topic, largest first and Uncategorized last (Uncategorized %s in data)', (_label, talks) => {
+      givenTalks(talks);
 
-    // No filters active (empty URL params)
-    setMockSearchParams(new URLSearchParams(''));
+      renderTalksList();
 
-    renderWithRouter(<TalksList />);
+      expect(sectionHeadings()).toEqual(['DevOps (2)', 'Agile (1)', 'Uncategorized (3)']);
+    });
 
-    // Should show Recently Added section
-    expect(screen.getByTestId('recently-added-talks')).toBeInTheDocument();
-    expect(screen.getByText('Recently Added')).toBeInTheDocument();
-    expect(screen.getByTestId('recently-added-count')).toHaveTextContent('2 talks');
+    it('shows the results count', () => {
+      givenTalks([
+        createTalk({ id: '1', notes: 'Notes' }),
+        createTalk({ id: '2', notes: undefined }),
+      ]);
+
+      renderTalksList('hasNotes=true');
+
+      expect(screen.getByText('Showing 1 of 2 talks')).toBeInTheDocument();
+    });
+
+    it('shows an empty state when no talk matches', () => {
+      givenTalks([createTalk({ id: '1', notes: undefined })]);
+
+      renderTalksList('hasNotes=true');
+
+      expect(screen.getByText('No talks found matching your criteria.')).toBeInTheDocument();
+    });
   });
 
-  it('should hide Recently Added section when filters are active', () => {
-    const talks = [
-      createTalk({
-        id: '1',
-        title: 'Recent Talk with Notes',
-        registered_at: '2023-11-01T00:00:00Z',
-        core_topic: 'Engineering Culture',
-        notes: 'Some meaningful notes'
-      })
+  describe('Category index', () => {
+    const twoCategories = [
+      createTalk({ id: '1', core_topic: 'Agile' }),
+      createTalk({ id: '2', core_topic: 'DevOps' }),
     ];
 
-    vi.mocked(useTalks).mockImplementation(() => ({
-      talks,
-      loading: false,
-      error: null
-    }));
+    it('is hidden when there is only one category', () => {
+      givenTalks([createTalk({ id: '1', core_topic: 'Agile' })]);
 
-    // Set hasNotes filter active
-    setMockSearchParams(new URLSearchParams('hasNotes=true'));
+      renderTalksList();
 
-    renderWithRouter(<TalksList />);
+      expect(screen.queryByRole('navigation', { name: 'Category navigation' })).not.toBeInTheDocument();
+    });
 
-    // Should NOT show Recently Added section
-    expect(screen.queryByTestId('recently-added-talks')).not.toBeInTheDocument();
-    expect(screen.queryByText('Recently Added')).not.toBeInTheDocument();
+    it('scrolls to the section of the clicked category', () => {
+      givenTalks(twoCategories);
+      const scrollIntoView = vi.fn();
+      Element.prototype.scrollIntoView = scrollIntoView;
+
+      renderTalksList();
+      const nav = screen.getByRole('navigation', { name: 'Category navigation' });
+      fireEvent.click(within(nav).getByRole('button', { name: /DevOps/ }));
+
+      expect(scrollIntoView).toHaveBeenCalledTimes(1);
+      expect(scrollIntoView.mock.contexts[0]).toHaveAttribute('data-category', 'DevOps');
+    });
   });
 
-  it('should hide Recently Added section when query filter is active', () => {
+  describe('Toggle filters', () => {
     const talks = [
-      createTalk({
-        id: '1',
-        title: 'Search Result Talk',
-        registered_at: '2023-11-01T00:00:00Z',
-        core_topic: 'Engineering Culture'
-      })
+      createTalk({ id: '1', title: 'Top short talk with notes', rating: 5, duration: 600, notes: 'Notes' }),
+      createTalk({ id: '2', title: 'Long talk', rating: 3, duration: 3600, notes: undefined }),
     ];
 
-    vi.mocked(useTalks).mockImplementation(() => ({
-      talks,
-      loading: false,
-      error: null
-    }));
+    beforeEach(() => {
+      givenTalks(talks);
+    });
 
-    // Set query filter active
-    setMockSearchParams(new URLSearchParams('query=testing'));
+    it.each([
+      ['Top Picks', 'rating', '5'],
+      ['Has Notes', 'hasNotes', 'true'],
+      ['Quick Watch', 'quickWatch', 'true'],
+    ])('activating %s updates the URL, the button state and the list', (name, param, value) => {
+      renderTalksList();
+      const toggle = () => screen.getByRole('button', { name: new RegExp(`toggle ${name} filter`, 'i') });
+      expect(toggle()).toHaveAttribute('aria-pressed', 'false');
 
-    renderWithRouter(<TalksList />);
+      fireEvent.click(toggle());
 
-    // Should NOT show Recently Added section
-    expect(screen.queryByTestId('recently-added-talks')).not.toBeInTheDocument();
-    expect(screen.queryByText('Recently Added')).not.toBeInTheDocument();
+      expect(currentParams().get(param)).toBe(value);
+      expect(toggle()).toHaveAttribute('aria-pressed', 'true');
+      expect(listedTitles()).toEqual(['Top short talk with notes']);
+    });
+
+    it.each([
+      ['Top Picks', 'rating=5', 'rating'],
+      ['Has Notes', 'hasNotes=true', 'hasNotes'],
+      ['Quick Watch', 'quickWatch=true', 'quickWatch'],
+    ])('deactivating %s removes it from the URL and shows all talks', (name, params, param) => {
+      renderTalksList(params);
+
+      fireEvent.click(screen.getByRole('button', { name: new RegExp(`toggle ${name} filter`, 'i') }));
+
+      expect(currentParams().get(param)).toBeNull();
+      expect(listedTitles()).toEqual(['Top short talk with notes', 'Long talk']);
+    });
+
+    it('shows the active star label for Top Picks', () => {
+      renderTalksList('rating=5');
+
+      expect(screen.getByRole('button', { name: /toggle top picks filter/i })).toHaveTextContent('⭐ Top Picks');
+    });
+
+    it('explains Top Picks in a tooltip', () => {
+      renderTalksList();
+
+      expect(screen.getByRole('button', { name: /toggle top picks filter/i }))
+        .toHaveAttribute('title', "Show only 5-star talks — the curator's top recommendations");
+    });
   });
 
-  it('should hide Recently Added section when year filter is active', () => {
-    const talks = [
-      createTalk({
-        id: '1',
-        title: 'Filtered Talk',
-        registered_at: '2023-11-01T00:00:00Z',
-        core_topic: 'Engineering Culture',
-        year: 2023
-      })
-    ];
+  describe('Format filter', () => {
+    it('shows only podcasts after selecting Podcasts', () => {
+      givenTalks([
+        createTalk({ id: '1', title: 'A talk', format: 'talk' }),
+        createTalk({ id: '2', title: 'A podcast', format: 'podcast' }),
+      ]);
+      renderTalksList();
 
-    vi.mocked(useTalks).mockImplementation(() => ({
-      talks,
-      loading: false,
-      error: null
-    }));
+      fireEvent.click(screen.getByRole('button', { name: /format/i }));
+      fireEvent.click(screen.getByRole('menuitem', { name: /podcasts/i }));
 
-    // Set year filter active
-    setMockSearchParams(new URLSearchParams('yearType=last2'));
-
-    renderWithRouter(<TalksList />);
-
-    // Should NOT show Recently Added section
-    expect(screen.queryByTestId('recently-added-talks')).not.toBeInTheDocument();
-    expect(screen.queryByText('Recently Added')).not.toBeInTheDocument();
+      expect(currentParams().get('format')).toBe('podcast');
+      expect(listedTitles()).toEqual(['A podcast']);
+    });
   });
 
-  it('should show Recently Added section with correct positioning', () => {
-    const talks = [
-      createTalk({
-        id: '1',
-        title: 'Recent Talk',
-        registered_at: '2023-11-01T00:00:00Z',
-        core_topic: 'Engineering Culture'
-      })
-    ];
+  describe('Year filter', () => {
+    afterEach(() => {
+      vi.useRealTimers();
+    });
 
-    vi.mocked(useTalks).mockImplementation(() => ({
-      talks,
-      loading: false,
-      error: null
-    }));
+    it('selecting "Last 2 Years" sets a relative year filter without a year', async () => {
+      vi.useFakeTimers({ toFake: ['Date'] });
+      vi.setSystemTime(new Date(2024, 5, 15));
+      givenTalks([
+        createTalk({ id: '1', title: 'Recent', year: 2023 }),
+        createTalk({ id: '2', title: 'Old', year: 2015 }),
+      ]);
+      renderTalksList();
 
-    // No filters active
-    setMockSearchParams(new URLSearchParams(''));
+      await openYearMenu();
+      fireEvent.click(screen.getByRole('menuitem', { name: 'Last 2 Years' }));
 
-    renderWithRouter(<TalksList />);
+      expect(currentParams().get('yearType')).toBe('last2');
+      expect(currentParams().get('year')).toBeNull();
+      expect(listedTitles()).toEqual(['Recent']);
+    });
 
-    // Get all main sections in order
-    const searchBox = screen.getByPlaceholderText(/search in titles, speakers, topics/i);
-    const recentlyAdded = screen.getByTestId('recently-added-talks');
-    const filterButtons = screen.getByText('Year Filter');
+    it.each([
+      ['yearType=last2', 'Last 2 Years'],
+      ['yearType=last5', 'Last 5 Years'],
+      ['yearType=specific&year=2023', '2023'],
+      ['yearType=before&year=2020', 'Before 2020'],
+      ['yearType=after&year=2020', 'After 2020'],
+    ])('removing the "%s" chip clears year and yearType', (params, chipLabel) => {
+      givenTalks([createTalk({ id: '1', year: 2023 })]);
+      renderTalksList(params);
 
-    // Verify positioning: SearchBox -> Recently Added -> Filters -> Main List
-    expect(searchBox).toBeInTheDocument();
-    expect(recentlyAdded).toBeInTheDocument();
-    expect(filterButtons).toBeInTheDocument();
+      fireEvent.click(screen.getByRole('button', { name: new RegExp(`^${chipLabel}\\s*×$`) }));
 
-    // In jsdom, getBoundingClientRect returns 0 values, so check DOM order instead
-    const pageContainer = searchBox.closest('[role="main"]');
-    expect(pageContainer).toBeInTheDocument();
+      expect(currentParams().get('year')).toBeNull();
+      expect(currentParams().get('yearType')).toBeNull();
+    });
 
-    const children = Array.from(pageContainer!.children);
-    const searchBoxIndex = children.findIndex(child => child.contains(searchBox));
-    const recentlyAddedIndex = children.findIndex(child => child.contains(recentlyAdded));
-    const filtersIndex = children.findIndex(child => child.contains(filterButtons));
+    it('keeps other filters when removing the year chip', () => {
+      givenTalks([createTalk({ id: '1', year: 2024, notes: 'Great talk' })]);
+      renderTalksList('yearType=last2&hasNotes=true');
 
-    // Verify correct order: SearchBox -> Recently Added -> Filters
-    expect(recentlyAddedIndex).toBeGreaterThan(searchBoxIndex);
-    expect(filtersIndex).toBeGreaterThan(recentlyAddedIndex);
+      fireEvent.click(screen.getByRole('button', { name: /^Last 2 Years\s*×$/ }));
+
+      expect(currentParams().toString()).toBe('hasNotes=true');
+    });
   });
 
-  it('should pass talks with registered_at to RecentlyAddedTalks component', () => {
-    const talks = [
-      createTalk({
-        id: '1',
-        title: 'Talk with Date',
-        registered_at: '2023-11-01T00:00:00Z',
-        core_topic: 'Engineering Culture'
-      }),
-      createTalk({
-        id: '2',
-        title: 'Talk without Date',
-        core_topic: 'Engineering Culture'
-        // no registered_at
-      })
-    ];
+  describe('Search', () => {
+    it('filters the list by the submitted query', () => {
+      givenTalks([
+        createTalk({ id: '1', title: 'React Testing', speakers: ['Alice'], topics: ['react'] }),
+        createTalk({ id: '2', title: 'Vue Basics', speakers: ['Bob'], topics: ['vue'] }),
+      ]);
+      renderTalksList();
 
-    vi.mocked(useTalks).mockImplementation(() => ({
-      talks,
-      loading: false,
-      error: null
-    }));
+      fireEvent.change(screen.getByPlaceholderText(/search in titles, speakers, topics/i), {
+        target: { value: 'Alice react' },
+      });
+      fireEvent.submit(screen.getByTestId('search-form'));
 
-    // No filters active
-    setMockSearchParams(new URLSearchParams(''));
+      expect(currentParams().toString()).toBe('query=Alice+react');
+      expect(listedTitles()).toEqual(['React Testing']);
+    });
+  });
 
-    renderWithRouter(<TalksList />);
+  describe('Recently Added', () => {
+    const recentTalk = createTalk({
+      id: '1',
+      title: 'Recent Talk',
+      registered_at: '2023-11-01T00:00:00Z',
+      year: 2023,
+      notes: 'Some notes',
+    });
 
-    // Should show Recently Added section with all talks passed
-    expect(screen.getByTestId('recently-added-talks')).toBeInTheDocument();
-    expect(screen.getByTestId('recently-added-count')).toHaveTextContent('2 talks');
+    it('is shown when no filters are active', () => {
+      givenTalks([recentTalk]);
 
-    // Component should receive both talks (filtering happens inside RecentlyAddedTalks)
-    expect(screen.getByTestId('recently-added-1')).toBeInTheDocument();
-    expect(screen.getByTestId('recently-added-2')).toBeInTheDocument();
+      renderTalksList();
+
+      expect(screen.getByRole('region', { name: 'Recently added talks' })).toBeInTheDocument();
+    });
+
+    it.each(['hasNotes=true', 'query=recent', 'yearType=last5', 'rating=5'])(
+      'is hidden when a filter is active (%s)',
+      (params) => {
+        givenTalks([{ ...recentTalk, rating: 5 }]);
+
+        renderTalksList(params);
+
+        expect(screen.queryByRole('region', { name: 'Recently added talks' })).not.toBeInTheDocument();
+      }
+    );
   });
 });
-});
-
