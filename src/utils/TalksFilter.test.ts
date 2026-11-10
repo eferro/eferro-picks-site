@@ -1598,4 +1598,56 @@ describe('TalksFilter', () => {
       expect(realQuery.isEmpty()).toBe(false);
     });
   });
+
+  describe('isEmpty with direct author/topics (constructor API)', () => {
+    it.each([
+      ['author', { author: 'Alice' }],
+      ['topics', { topics: ['tdd'] }],
+    ])('is not empty when %s is set', (_field, data) => {
+      expect(new TalksFilter(data).isEmpty()).toBe(false);
+    });
+  });
+
+  describe('search terms with + and #', () => {
+    const cpp = createTalk({ id: 'cpp', title: 'C++ Tips', description: '', topics: [], speakers: ['Ann'], notes: '' });
+    const csharp = createTalk({ id: 'csharp', title: 'C# in depth', description: '', topics: [], speakers: ['Bob'], notes: '' });
+    const clean = createTalk({ id: 'clean', title: 'Clean Code', description: '', topics: [], speakers: ['Carl'], notes: '' });
+    const talks = [cpp, csharp, clean];
+
+    it.each([
+      ['c++', ['cpp']],
+      ['c#', ['csharp']],
+    ])('query "%s" matches only the talk about that language', (query, expectedIds) => {
+      const result = new TalksFilter({ query }).filter(talks);
+      expect(result.map(t => t.id)).toEqual(expectedIds);
+    });
+  });
+
+  describe('URL round trip (fromUrlParams -> toParams)', () => {
+    it.each([
+      'yearType=last2',
+      'yearType=last5',
+      'yearType=specific&year=2023',
+      'yearType=before&year=2020',
+      'yearType=after&year=2020',
+      'conference=Agile+Conf',
+      'hasNotes=true',
+      'rating=5',
+      'query=tdd+ddd',
+      'format=podcast',
+      'format=talk%2Cpodcast',
+      'quickWatch=true',
+      'yearType=after&year=2020&conference=XP&hasNotes=true&rating=5&query=tdd&format=talk&quickWatch=true',
+    ])('preserves "%s"', (params) => {
+      expect(TalksFilter.fromUrlParams(params).toParams()).toBe(params);
+    });
+
+    it.each(['last2', 'last5'] as const)('does not write a year for relative yearType %s', (yearType) => {
+      expect(new TalksFilter({ yearType, year: 2020 }).toParams()).toBe(`yearType=${yearType}`);
+    });
+
+    it('parses comma separated formats into a list', () => {
+      expect(TalksFilter.fromUrlParams('format=talk,podcast').formats).toEqual(['talk', 'podcast']);
+    });
+  });
 });
