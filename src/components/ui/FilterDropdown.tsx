@@ -92,7 +92,10 @@ export function FilterDropdown({
                   >
                     <span className="flex-1">Any</span>
                     {selectedValues.length === 0 && (
-                      <span className="text-blue-600">✓</span>
+                      <>
+                        <span className="text-blue-600" aria-hidden="true">✓</span>
+                        <span className="sr-only">, selected</span>
+                      </>
                     )}
                   </button>
                 )}
@@ -120,8 +123,11 @@ export function FilterDropdown({
                     )}
                     <span className="flex-1 text-left">{option.label}</span>
                     {isSelected(option.value) && !allowMultiple && (
-                      <span className="text-blue-600">✓</span>
+                      <span className="text-blue-600" aria-hidden="true">✓</span>
                     )}
+                    {/* Headless UI forces role="menuitem", so aria-checked is not
+                        available: announce the selection in the accessible name */}
+                    {isSelected(option.value) && <span className="sr-only">, selected</span>}
                   </button>
                 )}
               </Menu.Item>
