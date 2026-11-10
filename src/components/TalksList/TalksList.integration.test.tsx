@@ -3,7 +3,7 @@ import { screen, fireEvent } from '@testing-library/react';
 import { renderIntegration } from '../../test/integration/IntegrationTestHelpers';
 import { TalksList } from '.';
 import { useTalks } from '../../hooks/useTalks';
-import { createTalk } from '../../test/utils';
+import { createTalk } from '../../test/builders';
 
 /**
  * TalksList Integration Tests

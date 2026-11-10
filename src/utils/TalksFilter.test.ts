@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { TalksFilter, TalksFilterData } from './TalksFilter';
-import { createTalk } from '../test/utils';
+import { createTalk } from '../test/builders';
 import { FIXED_TEST_YEAR, createTestYear, createBoundaryYearTalks } from '../test/testHelpers';
 import type { Talk } from '../types/talks';
 

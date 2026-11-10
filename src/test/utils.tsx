@@ -2,8 +2,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { vi, beforeEach, Mock } from 'vitest';
-import { Talk } from '../types/talks';
 import { TalkCard } from '../components/TalksList/TalkCard';
+import { mockTalk } from './builders';
 
 // Mock navigation - cached instances for better performance
 export const mockNavigate = vi.fn();
@@ -65,22 +65,7 @@ beforeEach(() => {
   });
 });
 
-// Mock data for testing
-export const mockTalk: Talk = {
-  id: '1',
-  title: 'Test Talk',
-  speakers: ['Test Speaker'],
-  conference_name: 'Test Conference',
-  duration: 3600, // 1 hour in seconds
-  topics: ['test'],
-  core_topic: 'test',
-  url: 'https://example.com',
-  description: 'Test description',
-  notes: undefined,
-  format: 'talk',
-  registered_at: '2023-01-01T00:00:00Z',
-  rating: undefined
-};
+export { mockTalk, createTalk } from './builders';
 
 // Types for mock handlers
 type MockHandlers = {
@@ -103,11 +88,6 @@ export const createMockHandlers = (overrides: Partial<MockHandlers> = {}): MockH
 // For backward compatibility
 export const mockHandlers = createMockHandlers();
 
-// Helper to create a talk with overrides
-export const createTalk = (overrides: Partial<Talk> = {}): Talk => ({
-  ...mockTalk,
-  ...overrides
-});
 
 // Helper to render a TalkCard with default props
 export const renderTalkCard = (props: Partial<React.ComponentProps<typeof TalkCard>> = {}) => {

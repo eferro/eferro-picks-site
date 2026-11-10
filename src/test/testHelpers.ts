@@ -1,4 +1,4 @@
-import { createTalk } from './utils';
+import { createTalk } from './builders';
 import type { Talk } from '../types/talks';
 
 /**

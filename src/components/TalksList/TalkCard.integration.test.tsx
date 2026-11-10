@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { screen, fireEvent } from '@testing-library/react';
 import { renderIntegration } from '../../test/integration/IntegrationTestHelpers';
 import { TalkCard } from './TalkCard';
-import { createTalk } from '../../test/utils';
+import { createTalk } from '../../test/builders';
 
 describe('TalkCard Integration', () => {
 

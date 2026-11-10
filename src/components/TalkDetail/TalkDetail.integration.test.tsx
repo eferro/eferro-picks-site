@@ -4,7 +4,7 @@ import { renderIntegration } from '../../test/integration/IntegrationTestHelpers
 import { TalkDetail } from '.';
 import { TalksList } from '../TalksList';
 import { useTalks } from '../../hooks/useTalks';
-import { createTalk } from '../../test/utils';
+import { createTalk } from '../../test/builders';
 import { Routes, Route } from 'react-router-dom';
 
 /**
