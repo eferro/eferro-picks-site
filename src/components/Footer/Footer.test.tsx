@@ -25,10 +25,16 @@ describe('Footer', () => {
     expect(link).toHaveAttribute('rel', 'noopener noreferrer');
   });
 
-  it('renders the counter image', () => {
+  it('renders the counter image with a text alternative', () => {
     renderWithRouter(<Footer />);
-    const img = screen.getByRole('img');
+    const img = screen.getByRole('img', { name: 'Visit counter by LibreCounter' });
     expect(img).toHaveAttribute('src', 'https://librecounter.org/counter.svg');
+  });
+
+  it('gives the counter link an accessible name', () => {
+    renderWithRouter(<Footer />);
+    expect(screen.getByRole('link', { name: 'Visit counter by LibreCounter' }))
+      .toHaveAttribute('href', 'https://librecounter.org/refer/show');
   });
 
   it('displays JSON API link pointing to talks data', () => {

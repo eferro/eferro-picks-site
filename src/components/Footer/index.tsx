@@ -26,6 +26,7 @@ export function Footer() {
           <a href="https://librecounter.org/refer/show" target="_blank" rel="noopener noreferrer">
             <img 
               src="https://librecounter.org/counter.svg" 
+              alt="Visit counter by LibreCounter"
               referrerPolicy="unsafe-url" 
               className="h-6 w-auto opacity-50 hover:opacity-75 transition-opacity"
             />
