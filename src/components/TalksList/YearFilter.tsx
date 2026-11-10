@@ -17,6 +17,9 @@ interface YearFilterProps {
   onFilterChange: (filter: YearFilterData | null) => void;
 }
 
+const isSameFilter = (a: YearFilterData | null, b: YearFilterData | null) =>
+  a?.type === b?.type && a?.year === b?.year;
+
 export function YearFilter({ talks, selectedFilter, onFilterChange }: YearFilterProps) {
   // Get unique years from talks, sorted in descending order
   const availableYears = [...new Set(talks
@@ -25,6 +28,18 @@ export function YearFilter({ talks, selectedFilter, onFilterChange }: YearFilter
   )].sort((a, b) => b - a);
 
   const currentYear = new Date().getFullYear();
+
+  const presetGroups: { label: string; filter: YearFilterData | null }[][] = [
+    [
+      { label: 'All Years', filter: null },
+      { label: 'Last 2 Years', filter: { type: 'last2' } },
+      { label: 'Last 5 Years', filter: { type: 'last5' } },
+    ],
+    [
+      { label: `After ${currentYear - 5}`, filter: { type: 'after', year: currentYear - 5 } },
+      { label: `Before ${currentYear - 5}`, filter: { type: 'before', year: currentYear - 5 } },
+    ],
+  ];
 
   const getFilterLabel = (filter: YearFilterData | null) => {
     if (!filter) return 'Filter by Year';
@@ -63,76 +78,30 @@ export function YearFilter({ talks, selectedFilter, onFilterChange }: YearFilter
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items className="absolute left-0 z-50 mt-2 w-48 sm:w-56 origin-top-left divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <div className="py-1">
-            <Menu.Item>
-              {({ active }: { active: boolean }) => (
-                <button
-                  onClick={() => onFilterChange(null)}
-                  className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block w-full px-4 py-2 text-left text-sm'
-                  )}
-                >
-                  All Years
-                </button>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }: { active: boolean }) => (
-                <button
-                  onClick={() => onFilterChange({ type: 'last2' })}
-                  className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block w-full px-4 py-2 text-left text-sm'
-                  )}
-                >
-                  Last 2 Years
-                </button>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }: { active: boolean }) => (
-                <button
-                  onClick={() => onFilterChange({ type: 'last5' })}
-                  className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block w-full px-4 py-2 text-left text-sm'
-                  )}
-                >
-                  Last 5 Years
-                </button>
-              )}
-            </Menu.Item>
-          </div>
-
-          <div className="py-1">
-            <Menu.Item>
-              {({ active }: { active: boolean }) => (
-                <button
-                  onClick={() => onFilterChange({ type: 'after', year: currentYear - 5 })}
-                  className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block w-full px-4 py-2 text-left text-sm'
-                  )}
-                >
-                  After {currentYear - 5}
-                </button>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }: { active: boolean }) => (
-                <button
-                  onClick={() => onFilterChange({ type: 'before', year: currentYear - 5 })}
-                  className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block w-full px-4 py-2 text-left text-sm'
-                  )}
-                >
-                  Before {currentYear - 5}
-                </button>
-              )}
-            </Menu.Item>
-          </div>
+          {presetGroups.map((group, groupIndex) => (
+            <div className="py-1" key={groupIndex}>
+              {group.map(({ label, filter }) => {
+                const selected = isSameFilter(filter, selectedFilter);
+                return (
+                  <Menu.Item key={label}>
+                    {({ active }: { active: boolean }) => (
+                      <button
+                        onClick={() => onFilterChange(filter)}
+                        className={classNames(
+                          active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                          'block w-full px-4 py-2 text-left text-sm'
+                        )}
+                      >
+                        {label}
+                        {/* Headless UI forces role="menuitem": announce selection in the name */}
+                        {selected && <span className="sr-only">, selected</span>}
+                      </button>
+                    )}
+                  </Menu.Item>
+                );
+              })}
+            </div>
+          ))}
 
           <div className="py-1">
             <Menu.Item>
@@ -143,6 +112,7 @@ export function YearFilter({ talks, selectedFilter, onFilterChange }: YearFilter
                     <button
                       key={year}
                       onClick={() => onFilterChange({ type: 'specific', year })}
+                      aria-pressed={selectedFilter?.type === 'specific' && selectedFilter.year === year}
                       className={classNames(
                         selectedFilter?.type === 'specific' && selectedFilter.year === year
                           ? 'bg-blue-100 text-blue-800'

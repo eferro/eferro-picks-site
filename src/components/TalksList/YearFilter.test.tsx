@@ -1,7 +1,6 @@
-import { screen, fireEvent, act } from '@testing-library/react';
+import { render, screen, fireEvent, act, within } from '@testing-library/react';
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { YearFilter } from './YearFilter';
-import { renderWithRouter } from '../../test/router';
+import { YearFilter, type YearFilterData } from './YearFilter';
 import { createTalk } from '../../test/builders';
 
 // Opening the headless-ui menu triggers an async Transition state update,
@@ -21,7 +20,7 @@ describe('YearFilter', () => {
       createTalk({ year: 2023 }),
     ];
 
-    renderWithRouter(
+    render(
       <YearFilter talks={talks} selectedFilter={null} onFilterChange={() => {}} />
     );
 
@@ -36,7 +35,7 @@ describe('YearFilter', () => {
     const talks = [createTalk({ year: 2023 })];
     const onFilterChange = vi.fn();
 
-    renderWithRouter(
+    render(
       <YearFilter talks={talks} selectedFilter={null} onFilterChange={onFilterChange} />
     );
 
@@ -48,7 +47,7 @@ describe('YearFilter', () => {
 
   it('shows label for selected filter', () => {
     const filter = { type: 'specific', year: 2023 } as const;
-    renderWithRouter(
+    render(
       <YearFilter talks={[]} selectedFilter={filter} onFilterChange={() => {}} />
     );
     expect(screen.getByRole('button')).toHaveTextContent('Year: 2023');
@@ -61,7 +60,7 @@ describe('YearFilter', () => {
     [{ type: 'last5' } as const, 'Last 5 Years'],
     [null, 'Filter by Year'],
   ])('shows the correct trigger label for %o', (filter, expectedLabel) => {
-    renderWithRouter(
+    render(
       <YearFilter talks={[]} selectedFilter={filter} onFilterChange={() => {}} />
     );
     expect(screen.getByRole('button')).toHaveTextContent(expectedLabel);
@@ -78,7 +77,7 @@ describe('YearFilter', () => {
       vi.setSystemTime(new Date(2024, 5, 15));
 
       const onFilterChange = vi.fn();
-      renderWithRouter(
+      render(
         <YearFilter talks={[]} selectedFilter={null} onFilterChange={onFilterChange} />
       );
 
@@ -96,7 +95,7 @@ describe('YearFilter', () => {
       vi.setSystemTime(new Date(2024, 5, 15));
 
       const onFilterChange = vi.fn();
-      renderWithRouter(
+      render(
         <YearFilter talks={[]} selectedFilter={null} onFilterChange={onFilterChange} />
       );
 
@@ -112,7 +111,7 @@ describe('YearFilter', () => {
       vi.useFakeTimers();
       vi.setSystemTime(new Date(2026, 5, 15));
 
-      renderWithRouter(
+      render(
         <YearFilter talks={[]} selectedFilter={null} onFilterChange={() => {}} />
       );
 
@@ -131,7 +130,7 @@ describe('YearFilter', () => {
       ];
       const onFilterChange = vi.fn();
 
-      renderWithRouter(
+      render(
         <YearFilter talks={talks} selectedFilter={null} onFilterChange={onFilterChange} />
       );
 
@@ -140,6 +139,79 @@ describe('YearFilter', () => {
       // Test specific year selection - should use exact year value
       fireEvent.click(screen.getByText('2023'));
       expect(onFilterChange).toHaveBeenCalledWith({ type: 'specific', year: 2023 });
+    });
+  });
+
+  describe('preset options', () => {
+    afterEach(() => {
+      vi.useRealTimers();
+    });
+
+    it.each<[string, YearFilterData | null]>([
+      ['All Years', null],
+      ['Last 2 Years', { type: 'last2' }],
+      ['Last 5 Years', { type: 'last5' }],
+    ])('"%s" sends the matching filter', async (label, expected) => {
+      const onFilterChange = vi.fn();
+      render(<YearFilter talks={[]} selectedFilter={{ type: 'specific', year: 2020 }} onFilterChange={onFilterChange} />);
+      await openMenu();
+
+      fireEvent.click(screen.getByRole('menuitem', { name: new RegExp(`^${label}`) }));
+
+      expect(onFilterChange).toHaveBeenCalledWith(expected);
+    });
+
+    it.each<[string | null, YearFilterData | null]>([
+      ['All Years', null],
+      ['Last 2 Years', { type: 'last2' }],
+      ['Last 5 Years', { type: 'last5' }],
+      ['After 2019', { type: 'after', year: 2019 }],
+      ['Before 2019', { type: 'before', year: 2019 }],
+      [null, { type: 'after', year: 2010 }], // a year without a preset selects none
+    ])('announces "%s" as the only selected preset', async (label, selectedFilter) => {
+      vi.useFakeTimers({ toFake: ['Date'] });
+      vi.setSystemTime(new Date(2024, 5, 15));
+      render(<YearFilter talks={[]} selectedFilter={selectedFilter} onFilterChange={() => {}} />);
+      await openMenu();
+
+      const items = screen.getAllByRole('menuitem').filter(item => item.textContent?.trim());
+      const selected = items.filter(item => /, selected$/.test(item.textContent ?? ''));
+      if (label === null) {
+        expect(selected).toHaveLength(0);
+      } else {
+        expect(selected).toHaveLength(1);
+        expect(selected[0]).toHaveAccessibleName(new RegExp(`^${label}\\s*, selected$`));
+      }
+    });
+  });
+
+  describe('specific years', () => {
+    it('lists only years present in the talks', async () => {
+      render(
+        <YearFilter
+          talks={[createTalk({ year: 2021 }), createTalk({ year: undefined }), createTalk({ year: 2021 })]}
+          selectedFilter={null}
+          onFilterChange={() => {}}
+        />
+      );
+      await openMenu();
+
+      const yearButtons = within(screen.getByRole('menu')).getAllByRole('button');
+      expect(yearButtons.map(b => b.textContent)).toEqual(['2021']);
+    });
+
+    it('marks the selected year as pressed', async () => {
+      render(
+        <YearFilter
+          talks={[createTalk({ year: 2022 }), createTalk({ year: 2023 })]}
+          selectedFilter={{ type: 'specific', year: 2023 }}
+          onFilterChange={() => {}}
+        />
+      );
+      await openMenu();
+
+      expect(screen.getByRole('button', { name: '2023' })).toHaveAttribute('aria-pressed', 'true');
+      expect(screen.getByRole('button', { name: '2022' })).toHaveAttribute('aria-pressed', 'false');
     });
   });
 });
