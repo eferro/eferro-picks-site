@@ -231,4 +231,43 @@ describe('useFilterHandlers', () => {
       expect(firstResult.handleQuickWatchClick).toBe(secondResult.handleQuickWatchClick);
     });
   });
+
+  describe('handlers use the latest filter after a re-render', () => {
+    type Handlers = ReturnType<typeof useFilterHandlers>;
+
+    // Each handler must read the current filter, not the one from the first render
+    it.each<[string, TalksFilterData, TalksFilterData, (h: Handlers) => void, TalksFilterData]>([
+      ['handleHasNotesClick', { hasNotes: false }, { hasNotes: true }, h => h.handleHasNotesClick(), { hasNotes: false }],
+      ['handleRatingClick', { rating: null }, { rating: 5 }, h => h.handleRatingClick(), { rating: null }],
+      ['handleQuickWatchClick', { quickWatch: false }, { quickWatch: true }, h => h.handleQuickWatchClick(), { quickWatch: false }],
+      ['handleConferenceClick', { conference: null }, { conference: 'XP' }, h => h.handleConferenceClick('XP'), { conference: null }],
+      ['handleTopicClick', { query: '' }, { query: 'tdd' }, h => h.handleTopicClick('tdd'), { query: '' }],
+    ])('%s', (_name, initial, updated, act_, expected) => {
+      const { result, rerender } = renderHook(
+        ({ filter }) => useFilterHandlers(filter, mockUpdateFilter),
+        { initialProps: { filter: new TalksFilter(initial) } }
+      );
+
+      rerender({ filter: new TalksFilter(updated) });
+      act(() => act_(result.current));
+
+      expect(mockUpdateFilter).toHaveBeenLastCalledWith(expected);
+    });
+
+    it('calls the latest updateFilter function', () => {
+      const firstUpdate = vi.fn<(updates: TalksFilterData) => void>();
+      const latestUpdate = vi.fn<(updates: TalksFilterData) => void>();
+      const filter = new TalksFilter();
+      const { result, rerender } = renderHook(
+        ({ update }) => useFilterHandlers(filter, update),
+        { initialProps: { update: firstUpdate } }
+      );
+
+      rerender({ update: latestUpdate });
+      act(() => result.current.handleFormatChange(['podcast']));
+
+      expect(firstUpdate).not.toHaveBeenCalled();
+      expect(latestUpdate).toHaveBeenCalledWith({ formats: ['podcast'] });
+    });
+  });
 });
