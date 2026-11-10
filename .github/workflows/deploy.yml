@@ -39,6 +39,22 @@ jobs:
       - name: Build
         run: make build
 
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      # Browser tests against the built site, served like GitHub Pages;
+      # a failure stops the deploy
+      - name: E2E tests
+        run: npx playwright test
+
+      - name: Upload E2E report on failure
+        if: failure()
+        uses: actions/upload-artifact@v6
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
+
       - name: Setup Pages
         uses: actions/configure-pages@v6
 

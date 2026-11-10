@@ -23,8 +23,8 @@ test:
 	@echo "🧪 Running unit tests..."
 	npm test -- --run
 
-test-e2e:
-	@echo "🎭 Running E2E tests..."
+test-e2e: build
+	@echo "🎭 Running E2E tests against the production build..."
 	npx playwright install chromium
 	npx playwright test
 

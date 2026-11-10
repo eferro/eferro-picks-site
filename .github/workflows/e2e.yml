@@ -1,8 +1,8 @@
 name: E2E Tests
 
+# Pushes to main run the E2E suite inside the deploy workflow, before
+# publishing; this workflow covers pull requests.
 on:
-  push:
-    branches: ['main']
   pull_request:
   workflow_dispatch:
 
@@ -29,6 +29,9 @@ jobs:
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
+
+      - name: Build
+        run: make build
 
       - name: Run E2E tests
         run: npx playwright test
