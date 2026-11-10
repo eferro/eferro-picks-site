@@ -169,31 +169,74 @@ describe('useTalks', () => {
     const { result } = await renderUseTalksHook();
 
     expect(result.current.error).toBeInstanceOf(Error);
-    expect(result.current.error?.message).toContain('Invalid data format');
+    expect(result.current.error?.message).toBe(
+      'Unable to load talks: Invalid data format: expected an array of talks. Please check your connection and try again.'
+    );
     expect(result.current.talks).toHaveLength(0);
   });
 
-  it('filters talks by rating when requested', async () => {
-    const lowRatingTalk = { ...mockTalk, rating: 2 };
-    const highRatingTalk = { ...mockTalk, rating: 5 };
+  describe('rating filter', () => {
+    const nearlyTop = { ...mockTalk, id: 'four', rating: 4 };
+    const top = { ...mockTalk, id: 'five', rating: 5 };
 
-    vi.restoreAllMocks();
-    mockFetchResponse([lowRatingTalk, highRatingTalk]);
-
-    const { result } = renderHook(() => useTalks(true));
-
-    await waitFor(() => {
-      expect(result.current.loading).toBe(false);
+    beforeEach(() => {
+      vi.restoreAllMocks();
+      mockFetchResponse([nearlyTop, top]);
     });
 
-    expect(result.current.talks).toHaveLength(1);
-    expect(result.current.talks[0].rating).toBe(5);
+    it('keeps talks of every rating by default', async () => {
+      const { result } = await renderUseTalksHook();
+
+      expect(result.current.talks.map(t => t.id)).toEqual(['four', 'five']);
+    });
+
+    it('keeps only 5-star talks when requested', async () => {
+      const { result } = renderHook(() => useTalks(true));
+
+      await waitFor(() => expect(result.current.loading).toBe(false));
+
+      expect(result.current.talks.map(t => t.id)).toEqual(['five']);
+    });
+
+    it('reloads with the new rating filter when it changes', async () => {
+      const { result, rerender } = renderHook(({ topOnly }) => useTalks(topOnly), {
+        initialProps: { topOnly: false },
+      });
+      await waitFor(() => expect(result.current.talks).toHaveLength(2));
+
+      rerender({ topOnly: true });
+
+      await waitFor(() => expect(result.current.talks.map(t => t.id)).toEqual(['five']));
+      expect(global.fetch).toHaveBeenCalledTimes(2);
+    });
+  });
+
+  it('starts loading with no talks and no error', () => {
+    const { result } = renderHook(() => useTalks());
+
+    expect(result.current).toEqual({ talks: [], loading: true, error: null });
+  });
+
+  it('clears a previous error when it reloads successfully', async () => {
+    vi.restoreAllMocks();
+    vi.spyOn(global, 'fetch')
+      .mockResolvedValueOnce({ ok: true, json: () => Promise.resolve('not an array') } as Response)
+      .mockResolvedValueOnce({ ok: true, json: () => Promise.resolve([mockTalk]) } as Response);
+    const { result, rerender } = renderHook(({ topOnly }) => useTalks(topOnly), {
+      initialProps: { topOnly: false },
+    });
+    await waitFor(() => expect(result.current.error).toBeInstanceOf(Error));
+
+    rerender({ topOnly: true });
+
+    await waitFor(() => expect(result.current.talks).toHaveLength(1));
+    expect(result.current.error).toBeNull();
   });
 
   it('fetches the talks data file', async () => {
     await renderUseTalksHook();
 
-    expect(global.fetch).toHaveBeenCalledWith(expect.stringMatching(/data\/talks\.json$/));
+    expect(global.fetch).toHaveBeenCalledWith(`${import.meta.env.BASE_URL}data/talks.json`);
   });
 
   describe('retry with exponential backoff', () => {
