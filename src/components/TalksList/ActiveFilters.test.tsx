@@ -10,6 +10,7 @@ const mockHandlers = {
   onRemoveYearFilter: vi.fn(),
   onRemoveHasNotes: vi.fn(),
   onRemoveRating: vi.fn(),
+  onRemoveQuickWatch: vi.fn(),
   onRemoveFormat: vi.fn(),
   onRemoveQuery: vi.fn(),
 };
@@ -110,7 +111,7 @@ describe('ActiveFilters', () => {
 
   it('renders year filter for "last2" type', () => {
     const emptyFilter = new TalksFilter();
-    const yearFilter: YearFilterData = { type: 'last2', year: null };
+    const yearFilter: YearFilterData = { type: 'last2' };
 
     render(
       <ActiveFilters
@@ -125,7 +126,7 @@ describe('ActiveFilters', () => {
 
   it('calls onRemoveYearFilter when clicking last2 year filter chip', () => {
     const emptyFilter = new TalksFilter();
-    const yearFilter: YearFilterData = { type: 'last2', year: null };
+    const yearFilter: YearFilterData = { type: 'last2' };
 
     render(
       <ActiveFilters
@@ -143,7 +144,7 @@ describe('ActiveFilters', () => {
 
   it('calls onRemoveYearFilter when clicking last5 year filter chip', () => {
     const emptyFilter = new TalksFilter();
-    const yearFilter: YearFilterData = { type: 'last5', year: null };
+    const yearFilter: YearFilterData = { type: 'last5' };
 
     render(
       <ActiveFilters
@@ -237,6 +238,21 @@ describe('ActiveFilters', () => {
     const removeButton = screen.getByLabelText('Remove Top Picks filter');
     fireEvent.click(removeButton);
     expect(mockHandlers.onRemoveRating).toHaveBeenCalledTimes(1);
+  });
+
+  it('renders the Quick Watch chip and removes it on click', () => {
+    render(
+      <ActiveFilters
+        filter={new TalksFilter({ quickWatch: true })}
+        yearFilter={null}
+        {...mockHandlers}
+      />
+    );
+
+    expect(screen.getByText('Quick Watch')).toBeInTheDocument();
+    fireEvent.click(screen.getByLabelText('Remove Quick Watch filter'));
+
+    expect(mockHandlers.onRemoveQuickWatch).toHaveBeenCalledTimes(1);
   });
 
   it('renders format filters with remove buttons', () => {

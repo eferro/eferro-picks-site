@@ -6,7 +6,7 @@ import type { TalksFilterData } from '../utils/TalksFilter';
 import type { YearFilterData } from '../components/TalksList/YearFilter';
 
 // Mock updateFilter function
-const mockUpdateFilter = vi.fn<[TalksFilterData], void>();
+const mockUpdateFilter = vi.fn<(updates: TalksFilterData) => void>();
 
 describe('useFilterHandlers', () => {
   beforeEach(() => {
@@ -196,7 +196,7 @@ describe('useFilterHandlers', () => {
     it('sets last2 year filter with null year', () => {
       const filter = new TalksFilter();
       const { result } = renderHook(() => useFilterHandlers(filter, mockUpdateFilter));
-      const yearFilter: YearFilterData = { type: 'last2', year: null };
+      const yearFilter: YearFilterData = { type: 'last2' };
 
       act(() => {
         result.current.handleYearFilterChange(yearFilter);

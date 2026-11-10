@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach, type MockInstance } from 'vitest';
 import { screen, fireEvent } from '@testing-library/react';
 import { renderTalkCard, createTalk, setMockSearchParams, mockNavigate } from '../../test/utils';
 
@@ -194,7 +194,7 @@ describe('TalkCard', () => {
     });
 
     describe('Open in new tab', () => {
-      let openSpy: ReturnType<typeof vi.spyOn>;
+      let openSpy: MockInstance<typeof window.open>;
 
       beforeEach(() => {
         openSpy = vi.spyOn(window, 'open').mockImplementation(() => null);

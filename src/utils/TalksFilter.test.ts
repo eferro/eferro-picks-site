@@ -949,7 +949,7 @@ describe('TalksFilter', () => {
         conference_name: 'DDD Europe',
         notes: 'Excellent talk about bounded contexts',
         rating: 5,
-        format: 'video'
+        format: 'article'
       });
 
       const wrongYear = createTalk({
@@ -983,7 +983,7 @@ describe('TalksFilter', () => {
         conference: 'DDD Europe',
         hasNotes: true,
         rating: 5,
-        formats: ['video'],
+        formats: ['article'],
         query: 'Domain'
       });
 
@@ -998,7 +998,7 @@ describe('TalksFilter', () => {
         conference_name: 'TestConf',
         notes: 'test notes',
         rating: 5,
-        format: 'video'
+        format: 'article'
       });
 
       // Missing query match - should filter out
@@ -1008,7 +1008,7 @@ describe('TalksFilter', () => {
         conference: 'TestConf',
         hasNotes: true,
         rating: 5,
-        formats: ['video'],
+        formats: ['article'],
         query: 'Domain' // This doesn't match 'Test Talk'
       });
 
@@ -1024,7 +1024,7 @@ describe('TalksFilter', () => {
         conference_name: 'DDD Europe',
         notes: 'Strategic patterns',
         rating: 5,
-        format: 'video',
+        format: 'article',
         description: 'An in-depth exploration of bounded contexts'
       });
 
@@ -1034,7 +1034,7 @@ describe('TalksFilter', () => {
         conference: 'DDD Europe',
         hasNotes: true,
         rating: 5,
-        formats: ['video'],
+        formats: ['article'],
         query: 'Domain Eric patterns' // All three terms must match
       });
 
@@ -1048,7 +1048,7 @@ describe('TalksFilter', () => {
         speakers: ['Eric Evans'],
         conference_name: 'DDD Europe',
         notes: 'Great talk',
-        format: 'video'
+        format: 'article'
       });
 
       // All filters match except format
@@ -1057,7 +1057,7 @@ describe('TalksFilter', () => {
         year: 2023,
         conference: 'DDD Europe',
         hasNotes: true,
-        formats: ['podcast'], // Talk has format 'video', not 'podcast'
+        formats: ['podcast'], // Talk has format 'article', not 'podcast'
         query: 'Domain'
       });
 
@@ -1204,17 +1204,17 @@ describe('TalksFilter', () => {
     });
 
     it('should handle talks with null format when format filter is active', () => {
-      const talkWithFormat = createTalk({ id: '1', format: 'video' });
+      const talkWithFormat = createTalk({ id: '1', format: 'article' });
       const talkWithoutFormat = createTalk({ id: '2', format: undefined });
 
-      const filter = new TalksFilter({ formats: ['video'] });
+      const filter = new TalksFilter({ formats: ['article'] });
       const result = filter.filter([talkWithFormat, talkWithoutFormat]);
 
       expect(result).toEqual([talkWithFormat]);
     });
 
     it('should treat talks without format as talk format when no format filter', () => {
-      const talkWithFormat = createTalk({ id: '1', format: 'video' });
+      const talkWithFormat = createTalk({ id: '1', format: 'article' });
       const talkWithoutFormat = createTalk({ id: '2', format: undefined });
 
       const filter = new TalksFilter({ formats: ['talk'] });
@@ -1392,11 +1392,11 @@ describe('TalksFilter', () => {
 
   describe('Formats Array Logic - Critical Mutation Tests', () => {
     it('should use OR logic for multiple formats', () => {
-      const filter = new TalksFilter({ formats: ['video', 'podcast'] });
+      const filter = new TalksFilter({ formats: ['article', 'podcast'] });
       const talks = [
-        createTalk({ id: '1', format: 'video' }),    // Should match
+        createTalk({ id: '1', format: 'article' }),    // Should match
         createTalk({ id: '2', format: 'podcast' }),  // Should match
-        createTalk({ id: '3', format: 'article' }),  // Should NOT match
+        createTalk({ id: '3', format: 'talk' }),     // Should NOT match
       ];
       const result = filter.filter(talks);
       expect(result).toHaveLength(2);
@@ -1406,7 +1406,7 @@ describe('TalksFilter', () => {
     it('should match all talks when formats array is empty', () => {
       const filter = new TalksFilter({ formats: [] });
       const talks = [
-        createTalk({ id: '1', format: 'video' }),
+        createTalk({ id: '1', format: 'article' }),
         createTalk({ id: '2', format: 'podcast' }),
       ];
       const result = filter.filter(talks);
@@ -1488,7 +1488,7 @@ describe('TalksFilter', () => {
         year: 2023,
         conference_name: 'TestConf',
         notes: 'Good notes',
-        format: 'video',
+        format: 'article',
         title: 'Domain Talk'
       });
 
@@ -1498,7 +1498,7 @@ describe('TalksFilter', () => {
         year: 2023,
         conference: 'TestConf',
         hasNotes: true,
-        formats: ['video'],
+        formats: ['article'],
         query: 'Domain'
       });
 
@@ -1510,7 +1510,7 @@ describe('TalksFilter', () => {
         year: 2022, // Wrong year
         conference: 'TestConf',
         hasNotes: true,
-        formats: ['video'],
+        formats: ['article'],
         query: 'Domain'
       });
 
@@ -1567,7 +1567,7 @@ describe('TalksFilter', () => {
         new TalksFilter({ hasNotes: true }),
         new TalksFilter({ rating: 5 }),
         new TalksFilter({ query: 'test' }),
-        new TalksFilter({ formats: ['video'] }),
+        new TalksFilter({ formats: ['article'] }),
         new TalksFilter({ quickWatch: true }),
       ];
 

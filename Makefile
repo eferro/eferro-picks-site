@@ -47,7 +47,7 @@ lint:
 
 typecheck:
 	@echo "📝 Running TypeScript type check..."
-	npx tsc --noEmit
+	npm run typecheck
 
 # Development commands
 build:

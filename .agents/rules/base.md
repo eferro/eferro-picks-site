@@ -421,8 +421,8 @@ const talks = [
 ```typescript
 // ✅ EXCELLENT: Typed mock handlers
 const mockHandlers = createMockHandlers({
-  onTopicClick: vi.fn<[string], void>(),
-  onConferenceClick: vi.fn<[string], void>()
+  onTopicClick: vi.fn<(value: string) => void>(),
+  onConferenceClick: vi.fn<(value: string) => void>()
 });
 
 // Test interaction
@@ -510,7 +510,7 @@ fireEvent.click(button);
 await waitFor(() => expect(result).toBe(expected));
 
 // DO: Typed mocks
-const mockFn = vi.fn<[string], void>();
+const mockFn = vi.fn<(value: string) => void>();
 
 // DO: Proper cleanup (maintains isolation)
 beforeEach(() => {

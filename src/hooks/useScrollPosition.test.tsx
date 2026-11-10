@@ -86,7 +86,7 @@ describe('useScrollPosition', () => {
         get: () => spiedWindow.scrollY,
         configurable: true
       });
-      (window as Window).scrollTo = spiedWindow.scrollTo as typeof window.scrollTo;
+      (window as Window).scrollTo = spiedWindow.scrollTo as unknown as typeof window.scrollTo;
       (window as Window).addEventListener = spiedWindow.addEventListener as typeof window.addEventListener;
       (window as Window).removeEventListener = spiedWindow.removeEventListener as typeof window.removeEventListener;
       (window as Window).dispatchEvent = spiedWindow.dispatchEvent as typeof window.dispatchEvent;
@@ -249,7 +249,7 @@ describe('useScrollPosition', () => {
         get: () => partialWindow.scrollY,
         configurable: true
       });
-      (window as Window).scrollTo = partialWindow.scrollTo as typeof window.scrollTo;
+      (window as Window).scrollTo = partialWindow.scrollTo as unknown as typeof window.scrollTo;
 
       // Save a scroll position
       spiedWindow.sessionStorage.setItem(SCROLL_INDEX_KEY, '500');
@@ -295,7 +295,7 @@ describe('useScrollPosition', () => {
           get: () => partialWindow.scrollY,
           configurable: true
         });
-        (window as Window).scrollTo = partialWindow.scrollTo as typeof window.scrollTo;
+        (window as Window).scrollTo = partialWindow.scrollTo as unknown as typeof window.scrollTo;
         spiedWindow.sessionStorage.setItem(SCROLL_INDEX_KEY, '500');
       });
 
@@ -346,7 +346,7 @@ describe('useScrollPosition', () => {
       // Setup: Create custom window double that succeeds on second attempt
       let callCount = 0;
       const customWindow = createWindowDouble();
-      const customScrollTo = vi.fn((x: number, y: number) => {
+      const customScrollTo = vi.fn((_x: number, y: number) => {
         callCount++;
         if (callCount === 1) {
           // First attempt: partial scroll (simulates DOM not ready)
@@ -362,7 +362,7 @@ describe('useScrollPosition', () => {
         get: () => customWindow.scrollY,
         configurable: true
       });
-      (window as Window).scrollTo = customScrollTo as typeof window.scrollTo;
+      (window as Window).scrollTo = customScrollTo as unknown as typeof window.scrollTo;
 
       // Save a scroll position
       spiedWindow.sessionStorage.setItem(SCROLL_INDEX_KEY, '300');
@@ -506,9 +506,8 @@ describe('useScrollPosition', () => {
       vi.advanceTimersByTime(TEST_CONFIG.initialDelayMs + TEST_CONFIG.maxDelayMs);
 
       // scrollTo should only be called with (0,0) for non-index, never with (0,300)
-      const scrollToCalls = (spiedWindow.scrollTo as Mock).mock.calls;
-      const restorationCalls = scrollToCalls.filter(
-        (call: [number, number]) => call[0] === 0 && call[1] === 300
+      const restorationCalls = spiedWindow.scrollTo.mock.calls.filter(
+        ([x, y]) => x === 0 && y === 300
       );
       expect(restorationCalls).toHaveLength(0);
     });

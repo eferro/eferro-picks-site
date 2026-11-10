@@ -1,3 +1,5 @@
+import type { Mock, VitestUtils } from 'vitest';
+
 /**
  * Window Test Double
  *
@@ -93,7 +95,7 @@ export function createWindowDouble(options: WindowDoubleOptions = {}): WindowDou
       return scrollY;
     },
 
-    scrollTo(x: number, y: number) {
+    scrollTo(_x: number, y: number) {
       switch (scrollBehavior) {
         case 'instant':
           // Normal scroll - reaches target immediately
@@ -176,12 +178,12 @@ export function createWindowDouble(options: WindowDoubleOptions = {}): WindowDou
  * ```
  */
 export function createSpiedWindowDouble(
-  vi: { fn: <T extends (...args: unknown[]) => unknown>(implementation?: T) => T },
+  vi: Pick<VitestUtils, 'fn'>,
   options: WindowDoubleOptions = {}
 ): WindowDouble & {
-  scrollTo: ReturnType<typeof vi.fn>;
-  addEventListener: ReturnType<typeof vi.fn>;
-  removeEventListener: ReturnType<typeof vi.fn>;
+  scrollTo: Mock<(x: number, y: number) => void>;
+  addEventListener: Mock<(event: string, handler: EventListener) => void>;
+  removeEventListener: Mock<(event: string, handler: EventListener) => void>;
 } {
   const windowDouble = createWindowDouble(options);
 
