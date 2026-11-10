@@ -12,7 +12,7 @@ import { Routes, Route } from 'react-router-dom';
  *
  * APPROACH: Test real user workflows with minimal mocking
  * - Mock only useTalks (data boundary)
- * - Use real child components (MoreTalksBySpeaker, etc.)
+ * - Use real child components
  * - Use real utilities (hasMeaningfulNotes, formatDuration)
  * - Verify user-visible behavior
  *

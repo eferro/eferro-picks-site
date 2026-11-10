@@ -58,9 +58,6 @@ export default defineConfig({
         'node_modules/',
         'src/test/setup.ts',
         'src/test/utils.tsx',
-        'src/test/context/',
-        'src/test/mocks/',
-        'src/test/consolidated/',
       ],
     },
     

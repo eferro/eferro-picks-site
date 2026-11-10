@@ -140,18 +140,3 @@ export const renderWithRouter = (ui: React.ReactElement) => {
 export const renderWithoutRouter = (ui: React.ReactElement) => {
   return render(ui);
 };
-
-// Fast shallow test helper for component prop validation
-export const validateComponentProps = <P extends object>(
-  Component: React.ComponentType<P>,
-  props: P
-) => {
-  // Just verify the component can be instantiated with props
-  // without full DOM rendering - much faster for prop validation
-  try {
-    const element = React.createElement(Component, props);
-    return { success: true, element };
-  } catch (error) {
-    return { success: false, error };
-  }
-};

@@ -385,9 +385,6 @@ createMockHandlers(overrides?) // Generate mock event handlers
 // Component Testing
 renderTalkCard(props?)         // Specialized TalkCard renderer
 renderWithoutRouter(component) // For components not using router
-
-// Performance Utilities
-validateComponentProps(Component, props) // Fast prop validation without DOM
 ```
 
 **Test Setup Utilities:**
@@ -693,13 +690,10 @@ make help                # Show all available targets
 ### Hook Testing (Custom React Hooks)
 ```typescript
 import { renderHook, act, waitFor } from '@testing-library/react';
-import { TestProvider } from '../test/context/TestContext';
 
 describe('useCustomHook', () => {
   it('handles async operations with proper error handling', async () => {
-    const { result } = renderHook(() => useCustomHook(), {
-      wrapper: TestProvider  // Provides Router and other context
-    });
+    const { result } = renderHook(() => useCustomHook());
 
     // Test loading state
     expect(result.current.loading).toBe(true);
@@ -777,9 +771,7 @@ describe('Error Handling', () => {
   it('handles network errors with retry logic', async () => {
     mockFetchError(new Error('Network error'));
 
-    const { result } = await renderHook(() => useTalks(), {
-      wrapper: TestProvider
-    });
+    const { result } = renderHook(() => useTalks());
 
     // Verify error handling and retry behavior
     expect(result.current.error).toBeDefined();

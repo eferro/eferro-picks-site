@@ -1,6 +1,5 @@
 import { renderHook, waitFor, act } from '@testing-library/react';
 import { useTalks } from './useTalks';
-import { TestProvider } from '../test/context/TestContext';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 // Helper functions for mocking fetch using vi.spyOn (better isolation than global mutation)
@@ -31,9 +30,7 @@ const mockFetchFailure = (status = 404, statusText = 'Not Found') => {
 
 // Helper function for rendering hook and waiting for load
 const renderUseTalksHook = async (timeout: number = 1000) => {
-  const hook = renderHook(() => useTalks(), {
-    wrapper: TestProvider
-  });
+  const hook = renderHook(() => useTalks());
 
   await waitFor(() => {
     expect(hook.result.current.loading).toBe(false);
@@ -92,7 +89,7 @@ describe('useTalks', () => {
     vi.restoreAllMocks();
     mockFetchFailure();
 
-    const hook = renderHook(() => useTalks(), { wrapper: TestProvider });
+    const hook = renderHook(() => useTalks());
 
     await runRetryTimersAndRestore();
 
@@ -109,7 +106,7 @@ describe('useTalks', () => {
     vi.restoreAllMocks();
     mockFetchError(new Error('Network error'));
 
-    const hook = renderHook(() => useTalks(), { wrapper: TestProvider });
+    const hook = renderHook(() => useTalks());
 
     await runRetryTimersAndRestore();
 
@@ -151,7 +148,7 @@ describe('useTalks', () => {
     vi.restoreAllMocks();
     mockFetchFailure(404, 'Not Found');
 
-    const hook = renderHook(() => useTalks(), { wrapper: TestProvider });
+    const hook = renderHook(() => useTalks());
 
     await runRetryTimersAndRestore();
 
@@ -183,7 +180,7 @@ describe('useTalks', () => {
     vi.restoreAllMocks();
     mockFetchResponse([lowRatingTalk, highRatingTalk]);
 
-    const { result } = renderHook(() => useTalks(true), { wrapper: TestProvider });
+    const { result } = renderHook(() => useTalks(true));
 
     await waitFor(() => {
       expect(result.current.loading).toBe(false);
