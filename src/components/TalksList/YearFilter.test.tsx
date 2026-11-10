@@ -1,5 +1,5 @@
 import { screen, fireEvent, act } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 import { YearFilter } from './YearFilter';
 import { createTalk, renderWithRouter } from '../../test/utils';
 
@@ -67,10 +67,14 @@ describe('YearFilter', () => {
   });
 
   describe('year arithmetic mutation tests', () => {
+    afterEach(() => {
+      vi.useRealTimers();
+    });
+
     it('should use correct year calculations for after filter', async () => {
-      // Mock the current year for deterministic testing
+      // Mid-year local date: the current year is 2024 in every timezone
       vi.useFakeTimers();
-      vi.setSystemTime(new Date('2024-01-01'));
+      vi.setSystemTime(new Date(2024, 5, 15));
 
       const onFilterChange = vi.fn();
       renderWithRouter(
@@ -83,14 +87,12 @@ describe('YearFilter', () => {
       const afterButton = screen.getByRole('menuitem', { name: /after 2019/i });
       fireEvent.click(afterButton);
       expect(onFilterChange).toHaveBeenCalledWith({ type: 'after', year: 2019 });
-
-      vi.useRealTimers();
     });
 
     it('should use correct year calculations for before filter', async () => {
-      // Mock the current year for deterministic testing
+      // Mid-year local date: the current year is 2024 in every timezone
       vi.useFakeTimers();
-      vi.setSystemTime(new Date('2024-01-01'));
+      vi.setSystemTime(new Date(2024, 5, 15));
 
       const onFilterChange = vi.fn();
       renderWithRouter(
@@ -103,13 +105,11 @@ describe('YearFilter', () => {
       const beforeButton = screen.getByRole('menuitem', { name: /before 2019/i });
       fireEvent.click(beforeButton);
       expect(onFilterChange).toHaveBeenCalledWith({ type: 'before', year: 2019 });
-
-      vi.useRealTimers();
     });
 
     it('should display correct year labels based on current year calculation', async () => {
       vi.useFakeTimers();
-      vi.setSystemTime(new Date('2026-01-01'));
+      vi.setSystemTime(new Date(2026, 5, 15));
 
       renderWithRouter(
         <YearFilter talks={[]} selectedFilter={null} onFilterChange={() => {}} />
@@ -120,8 +120,6 @@ describe('YearFilter', () => {
       // Should show "After 2021" (2026-5=2021) and "Before 2021"
       expect(screen.getByRole('menuitem', { name: /after 2021/i })).toBeInTheDocument();
       expect(screen.getByRole('menuitem', { name: /before 2021/i })).toBeInTheDocument();
-
-      vi.useRealTimers();
     });
 
     it('should handle boundary values in year filtering', async () => {
