@@ -97,18 +97,4 @@ describe('formatDuration', () => {
       expect(formatDuration(360000)).toBe('100h 0m');
     });
   });
-
-  describe('return value construction (template literals)', () => {
-    it('builds the hours format as `${h}h ${m}m`', () => {
-      expect(formatDuration(3600)).toMatch(/^\d+h \d+m$/);
-    });
-
-    it('builds the minutes format as `${m}m`', () => {
-      expect(formatDuration(300)).toMatch(/^\d+m$/);
-    });
-
-    it('builds the seconds format as `${s}s`', () => {
-      expect(formatDuration(45)).toMatch(/^\d+(\.\d+)?s$/);
-    });
-  });
 });

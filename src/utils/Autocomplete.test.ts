@@ -1,249 +1,78 @@
 import { describe, it, expect } from 'vitest';
 import { getSuggestions } from './Autocomplete';
+import { createTalk } from '../test/builders';
 import type { Talk } from '../types/talks';
-import { createManyTalks } from '../test/testHelpers';
+
+const talkWith = (speakers: string[], topics: string[]): Talk => createTalk({ speakers, topics });
+
+const values = (talks: Talk[], query: string, max?: number) =>
+  getSuggestions(talks, query, max).map(s => s.value);
 
 describe('getSuggestions', () => {
-  const talks: Talk[] = [
-    {
-      id: '1',
-      title: 'T1',
-      url: '',
-      duration: 0,
-      topics: ['React', 'TypeScript'],
-      speakers: ['Alice', 'Bob'],
-      description: '',
-      core_topic: ''
-    },
-    {
-      id: '2',
-      title: 'T2',
-      url: '',
-      duration: 0,
-      topics: ['Testing', 'TDD'],
-      speakers: ['Carol'],
-      description: '',
-      core_topic: ''
-    }
+  const talks = [
+    talkWith(['Alice', 'Bob'], ['React', 'TypeScript']),
+    talkWith(['Carol', 'José García'], ['Testing', 'TDD']),
   ];
 
-  describe('Empty Query Handling', () => {
-    it('should return empty array for empty query', () => {
-      expect(getSuggestions(talks, '')).toEqual([]);
+  describe('no suggestions', () => {
+    it.each([
+      ['an empty query', ''],
+      // A space would otherwise match every multi-word name such as "José García"
+      ['a whitespace-only query', '   '],
+    ])('for %s', (_case, query) => {
+      expect(getSuggestions(talks, query)).toEqual([]);
     });
 
-    it('should return empty array for whitespace-only query', () => {
-      expect(getSuggestions(talks, '   \n  ')).toEqual([]);
-    });
-  });
-
-  describe('Speaker and Topic Ordering', () => {
-    it('should place every speaker before every topic when both match', () => {
-      // Query 'a' matches speakers (Alice, Carol) AND a topic (React),
-      // so ordering is actually exercised. This kills a mutant that swaps
-      // the spread order to [...matchingTopics, ...matchingSpeakers].
-      const result = getSuggestions(talks, 'a');
-      const types = result.map(s => s.type);
-
-      expect(types).toContain('speaker');
-      expect(types).toContain('topic');
-      expect(result[0].type).toBe('speaker');
-      expect(types.lastIndexOf('speaker')).toBeLessThan(types.indexOf('topic'));
-    });
-
-    it('should return only speakers when no topics match', () => {
-      const result = getSuggestions(talks, 'Alice');
-      expect(result.every(s => s.type === 'speaker')).toBe(true);
-    });
-
-    it('should return only topics when no speakers match', () => {
-      const result = getSuggestions(talks, 'TypeScript');
-      expect(result.every(s => s.type === 'topic')).toBe(true);
-    });
-  });
-
-  describe('MaxSuggestions Limit', () => {
-    it('should respect maxSuggestions limit', () => {
-      const manyTalks = createManyTalks(20);
-      const result = getSuggestions(manyTalks, 'e', 5);
-      expect(result.length).toBeLessThanOrEqual(5);
-    });
-
-    it('should return exactly maxSuggestions when more matches available', () => {
-      const manyTalks = createManyTalks(20, { topics: [] });
-      const result = getSuggestions(manyTalks, 'Speaker', 7);
-      expect(result.length).toBe(7);
-    });
-
-    it('should return fewer than maxSuggestions when fewer matches available', () => {
-      const result = getSuggestions(talks, 'Alice', 10);
-      expect(result.length).toBeLessThan(10);
-      expect(result.length).toBeGreaterThan(0);
-    });
-
-    it('should use default maxSuggestions of 10 when not specified', () => {
-      const manyTalks = createManyTalks(20);
-      const result = getSuggestions(manyTalks, 'e');
-      expect(result.length).toBeLessThanOrEqual(10);
-    });
-  });
-
-  describe('Deduplication', () => {
-    it('should deduplicate speakers across talks', () => {
-      const duplicateSpeakers = createManyTalks(3, {
-        speakers: ['Alice'],
-        topics: []
-      });
-      const result = getSuggestions(duplicateSpeakers, 'Alice');
-      expect(result).toHaveLength(1);
-      expect(result[0].value).toBe('Alice');
-    });
-
-    it('should deduplicate topics across talks', () => {
-      const duplicateTopics = createManyTalks(3, {
-        topics: ['React'],
-        speakers: []
-      });
-      const result = getSuggestions(duplicateTopics, 'React');
-      expect(result).toHaveLength(1);
-      expect(result[0].value).toBe('React');
-    });
-  });
-
-  describe('Accent Handling', () => {
-    it('should handle accent-insensitive matching for speakers', () => {
-      const accentTalks = [
-        {
-          id: '1',
-          title: 'Talk',
-          url: '',
-          duration: 0,
-          topics: [],
-          speakers: ['José García'],
-          description: '',
-          core_topic: ''
-        }
-      ];
-      const result = getSuggestions(accentTalks, 'jose');
-      expect(result.some(s => s.value === 'José García')).toBe(true);
-    });
-
-    it('should handle accent-insensitive matching for topics', () => {
-      const accentTalks = [
-        {
-          id: '1',
-          title: 'Talk',
-          url: '',
-          duration: 0,
-          topics: ['Diseño'],
-          speakers: [],
-          description: '',
-          core_topic: ''
-        }
-      ];
-      const result = getSuggestions(accentTalks, 'diseno');
-      expect(result.some(s => s.value === 'Diseño')).toBe(true);
-    });
-
-    it('should match with accents in query against text without accents', () => {
-      const accentTalks = [
-        {
-          id: '1',
-          title: 'Talk',
-          url: '',
-          duration: 0,
-          topics: ['Design'],
-          speakers: ['Jose Garcia'],
-          description: '',
-          core_topic: ''
-        }
-      ];
-      const result = getSuggestions(accentTalks, 'José');
-      expect(result.some(s => s.value === 'Jose Garcia')).toBe(true);
-    });
-  });
-
-  describe('Case Insensitivity', () => {
-    it('should match speakers case-insensitively', () => {
-      const result = getSuggestions(talks, 'ALICE');
-      expect(result.some(s => s.value === 'Alice')).toBe(true);
-    });
-
-    it('should match topics case-insensitively', () => {
-      const result = getSuggestions(talks, 'react');
-      expect(result.some(s => s.value === 'React')).toBe(true);
-    });
-  });
-
-  describe('Partial Matching', () => {
-    it('should match partial speaker names', () => {
-      const result = getSuggestions(talks, 'Ali');
-      expect(result.some(s => s.value === 'Alice')).toBe(true);
-    });
-
-    it('should match partial topic names', () => {
-      const result = getSuggestions(talks, 'Tes');
-      expect(result.some(s => s.value === 'Testing')).toBe(true);
-    });
-  });
-
-  describe('Suggestion Structure', () => {
-    it('should return suggestions with correct structure for speakers', () => {
-      const result = getSuggestions(talks, 'Alice');
-      const speaker = result.find(s => s.value === 'Alice');
-      expect(speaker).toEqual({
-        type: 'speaker',
-        value: 'Alice',
-        label: 'Alice'
-      });
-    });
-
-    it('should return suggestions with correct structure for topics', () => {
-      const result = getSuggestions(talks, 'React');
-      const topic = result.find(s => s.value === 'React');
-      expect(topic).toEqual({
-        type: 'topic',
-        value: 'React',
-        label: 'React'
-      });
-    });
-  });
-
-  describe('Edge Cases', () => {
-    it('should handle empty talks array', () => {
+    it('when there are no talks', () => {
       expect(getSuggestions([], 'query')).toEqual([]);
     });
 
-    it('should handle talks with undefined speakers', () => {
-      const talksWithUndefined = [
-        {
-          id: '1',
-          title: 'T1',
-          url: '',
-          duration: 0,
-          topics: ['React'],
-          speakers: undefined as unknown as string[],
-          description: '',
-          core_topic: ''
-        }
-      ];
-      expect(() => getSuggestions(talksWithUndefined, 'query')).not.toThrow();
+    it('when talks have no speakers or topics', () => {
+      const incomplete = [createTalk({ speakers: undefined, topics: undefined })] as unknown as Talk[];
+
+      expect(getSuggestions(incomplete, 'a')).toEqual([]);
+    });
+  });
+
+  describe('matching', () => {
+    it.each([
+      ['the start of a speaker name', 'Ali', ['Alice']],
+      ['the middle of a speaker name', 'garc', ['José García']],
+      ['the start of a topic', 'Tes', ['Testing']],
+      ['ignoring case', 'ALICE', ['Alice']],
+      ['ignoring accents in the data', 'jose', ['José García']],
+      ['ignoring accents in the query', 'Jósé', ['José García']],
+    ])('matches %s', (_case, query, expected) => {
+      expect(values(talks, query)).toEqual(expected);
+    });
+  });
+
+  it('describes each suggestion with its type, value and label', () => {
+    expect(getSuggestions(talks, 'Alice')).toEqual([{ type: 'speaker', value: 'Alice', label: 'Alice' }]);
+    expect(getSuggestions(talks, 'React')).toEqual([{ type: 'topic', value: 'React', label: 'React' }]);
+  });
+
+  it('lists every matching speaker before any matching topic', () => {
+    // 'a' matches speakers (Alice, Carol, José García) and a topic (React)
+    expect(values(talks, 'a')).toEqual(['Alice', 'Carol', 'José García', 'React']);
+  });
+
+  it('suggests each speaker and topic only once', () => {
+    const repeated = [talkWith(['Alice'], ['React']), talkWith(['Alice'], ['React'])];
+
+    expect(values(repeated, 'Alice')).toEqual(['Alice']);
+    expect(values(repeated, 'React')).toEqual(['React']);
+  });
+
+  describe('limit', () => {
+    const manySpeakers = Array.from({ length: 20 }, (_, i) => talkWith([`Speaker ${i}`], []));
+
+    it('returns at most 10 suggestions by default', () => {
+      expect(getSuggestions(manySpeakers, 'Speaker')).toHaveLength(10);
     });
 
-    it('should handle talks with undefined topics', () => {
-      const talksWithUndefined = [
-        {
-          id: '1',
-          title: 'T1',
-          url: '',
-          duration: 0,
-          topics: undefined as unknown as string[],
-          speakers: ['Alice'],
-          description: '',
-          core_topic: ''
-        }
-      ];
-      expect(() => getSuggestions(talksWithUndefined, 'query')).not.toThrow();
+    it('returns at most the requested number of suggestions', () => {
+      expect(getSuggestions(manySpeakers, 'Speaker', 7)).toHaveLength(7);
     });
   });
 });

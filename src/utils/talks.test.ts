@@ -35,20 +35,12 @@ describe('talks utils', () => {
       expect(hasMeaningfulNotes('  Some notes  \n')).toBe(true);
     });
 
-    describe('boundary mutation detection', () => {
-      it('should detect length boundary mutations (> vs >=)', () => {
-        // These tests would catch `> 0` → `>= 0` mutations
-        expect(hasMeaningfulNotes('')).toBe(false);  // length = 0, should be false
-        expect(hasMeaningfulNotes('a')).toBe(true);  // length = 1, should be true
-        expect(hasMeaningfulNotes(' ')).toBe(false); // length = 1 after trim = 0, should be false
-      });
+    it('returns false for string with only tabs', () => {
+      expect(hasMeaningfulNotes('\t\t')).toBe(false);
+    });
 
-      it('should verify string trimming is essential', () => {
-        // These verify that .trim() is actually applied (not just .length)
-        expect(hasMeaningfulNotes('  ')).toBe(false);    // Would be true if no trim()
-        expect(hasMeaningfulNotes('\n\n')).toBe(false);  // Would be true if no trim()
-        expect(hasMeaningfulNotes('\t\t')).toBe(false);  // Would be true if no trim()
-      });
+    it('returns true for a single character', () => {
+      expect(hasMeaningfulNotes('a')).toBe(true);
     });
   });
 });

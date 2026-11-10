@@ -66,8 +66,6 @@ describe('useTalks', () => {
   };
 
   beforeEach(() => {
-    vi.clearAllMocks();
-    vi.restoreAllMocks();
     mockFetchResponse([mockTalk]);
   });
 
@@ -86,7 +84,6 @@ describe('useTalks', () => {
 
   it('handles fetch error correctly', async () => {
     vi.useFakeTimers();
-    vi.restoreAllMocks();
     mockFetchFailure();
 
     const hook = renderHook(() => useTalks());
@@ -103,7 +100,6 @@ describe('useTalks', () => {
 
   it('handles network errors correctly with retry logic', async () => {
     vi.useFakeTimers();
-    vi.restoreAllMocks();
     mockFetchError(new Error('Network error'));
 
     const hook = renderHook(() => useTalks());
@@ -124,7 +120,6 @@ describe('useTalks', () => {
   });
 
   it('handles invalid JSON response', async () => {
-    vi.restoreAllMocks();
     vi.spyOn(global, 'fetch').mockImplementation(() =>
       Promise.resolve({
         ok: true,
@@ -145,7 +140,6 @@ describe('useTalks', () => {
 
   it('handles HTTP error responses with retry logic', async () => {
     vi.useFakeTimers();
-    vi.restoreAllMocks();
     mockFetchFailure(404, 'Not Found');
 
     const hook = renderHook(() => useTalks());
@@ -163,7 +157,6 @@ describe('useTalks', () => {
   });
 
   it('handles invalid data format', async () => {
-    vi.restoreAllMocks();
     mockFetchResponse({ invalid: 'data', not: 'array' });
 
     const { result } = await renderUseTalksHook();
@@ -180,7 +173,6 @@ describe('useTalks', () => {
     const top = { ...mockTalk, id: 'five', rating: 5 };
 
     beforeEach(() => {
-      vi.restoreAllMocks();
       mockFetchResponse([nearlyTop, top]);
     });
 
@@ -218,7 +210,6 @@ describe('useTalks', () => {
   });
 
   it('clears a previous error when it reloads successfully', async () => {
-    vi.restoreAllMocks();
     vi.spyOn(global, 'fetch')
       .mockResolvedValueOnce({ ok: true, json: () => Promise.resolve('not an array') } as Response)
       .mockResolvedValueOnce({ ok: true, json: () => Promise.resolve([mockTalk]) } as Response);
@@ -248,7 +239,6 @@ describe('useTalks', () => {
 
     it('waits 1s before the second attempt and 2s before the third', async () => {
       vi.useFakeTimers();
-      vi.restoreAllMocks();
       mockFetchError(new Error('Network error'));
 
       renderHook(() => useTalks());
@@ -268,7 +258,6 @@ describe('useTalks', () => {
 
     it('recovers when a retry succeeds after a failed attempt', async () => {
       vi.useFakeTimers();
-      vi.restoreAllMocks();
       vi.spyOn(global, 'fetch')
         .mockRejectedValueOnce(new Error('Network error'))
         .mockResolvedValueOnce({ ok: true, json: () => Promise.resolve([mockTalk]) } as Response);
