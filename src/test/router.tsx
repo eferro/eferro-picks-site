@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { ReactElement } from 'react';
+import { ReactElement, ReactNode } from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter, Routes, Route, useLocation, type Location } from 'react-router-dom';
 
@@ -23,21 +23,16 @@ function LocationSpy() {
 }
 
 /**
- * Renders a component inside a real in-memory router (no mocked hooks).
- * Navigation and setSearchParams update the router state, so components
- * re-render exactly as in the browser. Inspect the resulting URL with
- * currentLocation() / currentParams().
+ * Wrapper that provides a real in-memory router (no mocked hooks).
+ * Use directly with renderHook; components use renderWithRouter.
  */
-export function renderWithRouter(
-  ui: ReactElement,
-  { path = '/', params = '', routePath }: RouterOptions = {}
-) {
+export function routerWrapper({ path = '/', params = '', routePath }: RouterOptions = {}) {
   const search = params.toString();
   const initialEntry = search ? `${path}?${search}` : path;
   lastLocation = null;
 
-  return render(ui, {
-    wrapper: ({ children }) => (
+  return function RouterWrapper({ children }: { children: ReactNode }) {
+    return (
       <MemoryRouter initialEntries={[initialEntry]}>
         <LocationSpy />
         {routePath ? (
@@ -47,8 +42,18 @@ export function renderWithRouter(
           </Routes>
         ) : children}
       </MemoryRouter>
-    )
-  });
+    );
+  };
+}
+
+/**
+ * Renders a component inside a real in-memory router (no mocked hooks).
+ * Navigation and setSearchParams update the router state, so components
+ * re-render exactly as in the browser. Inspect the resulting URL with
+ * currentLocation() / currentParams().
+ */
+export function renderWithRouter(ui: ReactElement, options: RouterOptions = {}) {
+  return render(ui, { wrapper: routerWrapper(options) });
 }
 
 /** The router location after the latest render (pathname, search, ...). */

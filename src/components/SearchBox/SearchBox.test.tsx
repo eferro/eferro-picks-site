@@ -1,6 +1,7 @@
 import { screen, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { renderWithRouter, mockSetSearchParams, createTalk } from '../../test/utils';
+import { renderWithRouter, currentParams } from '../../test/router';
+import { createTalk } from '../../test/builders';
 import { SearchBox } from './index';
 
 const talks = [
@@ -21,9 +22,7 @@ describe('SearchBox', () => {
     const input = screen.getByRole('textbox');
     fireEvent.change(input, { target: { value: 'Alice react' } });
     fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
-    await waitFor(() => expect(mockSetSearchParams).toHaveBeenCalled());
-    const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
-    expect(params.get('query')).toBe('Alice react');
+    await waitFor(() => expect(currentParams().get('query')).toBe('Alice react'));
   });
 
   it('handles multi-word author names correctly', async () => {
@@ -36,10 +35,7 @@ describe('SearchBox', () => {
     fireEvent.change(input, { target: { value: 'Kent Beck' } });
     fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
 
-    await waitFor(() => expect(mockSetSearchParams).toHaveBeenCalled());
-    const params = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0] as URLSearchParams;
-
-    expect(params.get('query')).toBe('Kent Beck');
+    await waitFor(() => expect(currentParams().get('query')).toBe('Kent Beck'));
   });
 
   it('shows no suggestions for empty input', () => {
@@ -55,9 +51,7 @@ describe('SearchBox', () => {
     fireEvent.change(input, { target: { value: '  react  ' } });
     fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
 
-    await waitFor(() => expect(mockSetSearchParams).toHaveBeenCalled());
-    const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
-    expect(params.get('query')).toBe('react');
+    await waitFor(() => expect(currentParams().get('query')).toBe('react'));
   });
 
   it('shows no suggestions when input does not match any talk data', () => {

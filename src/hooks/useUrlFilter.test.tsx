@@ -1,133 +1,74 @@
-import { renderHook } from '@testing-library/react';
+import { renderHook, act } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { setMockSearchParams, mockSetSearchParams, getMockSearchParams } from '../test/utils';
 import { useUrlFilter } from './useUrlFilter';
-import { MemoryRouter } from 'react-router-dom';
-import { vi } from 'vitest';
-import { ReactNode } from 'react';
+import { routerWrapper, currentParams } from '../test/router';
 
-// Mock react-router-dom to use our mock search params
-vi.mock('react-router-dom', async () => {
-  const actual = await vi.importActual('react-router-dom');
-  return {
-    ...actual,
-    useSearchParams: () => [getMockSearchParams(), mockSetSearchParams]
-  };
-});
-
-// Wrapper component for tests
-function Wrapper({ children }: { children: ReactNode }) {
-  return <MemoryRouter>{children}</MemoryRouter>;
-}
+const renderUseUrlFilter = (params = '') =>
+  renderHook(() => useUrlFilter(), { wrapper: routerWrapper({ params }) });
 
 describe('useUrlFilter', () => {
-  it('parses filter from url params (unified query)', () => {
-    setMockSearchParams(new URLSearchParams('query=testing'));
-    const { result } = renderHook(() => useUrlFilter(), { wrapper: Wrapper });
+  it('parses the filter from the URL', () => {
+    const { result } = renderUseUrlFilter('query=testing');
+
     expect(result.current.filter.query).toBe('testing');
   });
 
-  it('updates search params when calling updateFilter', () => {
-    setMockSearchParams(new URLSearchParams());
-    const { result } = renderHook(() => useUrlFilter(), { wrapper: Wrapper });
-    result.current.updateFilter({ query: 'Alice react' });
-    const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
-    expect(params.get('query')).toBe('Alice react');
+  it('writes the updated filter to the URL', () => {
+    const { result } = renderUseUrlFilter();
+
+    act(() => result.current.updateFilter({ query: 'Alice react' }));
+
+    expect(currentParams().get('query')).toBe('Alice react');
+  });
+
+  it('exposes the updated filter after the URL changes', () => {
+    const { result } = renderUseUrlFilter();
+
+    act(() => result.current.updateFilter({ hasNotes: true }));
+
+    expect(result.current.filter.hasNotes).toBe(true);
   });
 
   it('preserves unrelated params when updating', () => {
-    setMockSearchParams(new URLSearchParams('page=2'));
-    const { result } = renderHook(() => useUrlFilter(), { wrapper: Wrapper });
-    result.current.updateFilter({ query: 'testing' });
-    const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
-    expect(params.get('page')).toBe('2');
-    expect(params.get('query')).toBe('testing');
+    const { result } = renderUseUrlFilter('page=2');
+
+    act(() => result.current.updateFilter({ query: 'testing' }));
+
+    expect(currentParams().toString()).toBe('query=testing&page=2');
   });
 
-  it('updateFilter overrides existing filter values (spread order)', () => {
-    // Start with existing query value
-    setMockSearchParams(new URLSearchParams('query=oldValue&hasNotes=true'));
-    const { result } = renderHook(() => useUrlFilter(), { wrapper: Wrapper });
+  it('overrides existing values and keeps the other filters', () => {
+    // Kills the spread order mutation {...updates, ...filter}
+    const { result } = renderUseUrlFilter('query=oldValue&hasNotes=true');
 
-    // Update query to new value
-    result.current.updateFilter({ query: 'newValue' });
+    act(() => result.current.updateFilter({ query: 'newValue' }));
 
-    const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
-    expect(params.get('query')).toBe('newValue');  // Should be new, not old
-    expect(params.get('hasNotes')).toBe('true');   // Other filters preserved
-
-    // This test kills the spread order mutation:
-    // Wrong order: {...updates, ...filter} would keep 'oldValue'
-    // Correct order: {...filter, ...updates} uses 'newValue' ✅
+    expect(currentParams().get('query')).toBe('newValue');
+    expect(currentParams().get('hasNotes')).toBe('true');
   });
 
-  describe('Year Filter Removal', () => {
-    it('clears year filter including yearType parameter', () => {
-      setMockSearchParams(new URLSearchParams('year=2023&yearType=specific'));
-      const { result } = renderHook(() => useUrlFilter(), { wrapper: Wrapper });
+  describe('clearing the year filter', () => {
+    it.each([
+      'year=2023&yearType=specific',
+      'yearType=last2',
+      'yearType=last5',
+      'year=2020&yearType=before',
+      'year=2020&yearType=after',
+    ])('removes year and yearType for "%s"', (params) => {
+      const { result } = renderUseUrlFilter(params);
 
-      // Clear year filter
-      result.current.updateFilter({ year: null, yearType: null });
+      act(() => result.current.updateFilter({ year: null, yearType: null }));
 
-      const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
-      expect(params.get('year')).toBeNull();
-      expect(params.get('yearType')).toBeNull();
+      expect(currentParams().get('year')).toBeNull();
+      expect(currentParams().get('yearType')).toBeNull();
     });
 
-    it('clears last2 year filter', () => {
-      setMockSearchParams(new URLSearchParams('yearType=last2'));
-      const { result } = renderHook(() => useUrlFilter(), { wrapper: Wrapper });
+    it('preserves non-filter params', () => {
+      const { result } = renderUseUrlFilter('yearType=last2&page=3&scroll=100');
 
-      result.current.updateFilter({ yearType: null, year: null });
+      act(() => result.current.updateFilter({ yearType: null, year: null }));
 
-      const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
-      expect(params.get('yearType')).toBeNull();
-      expect(params.get('year')).toBeNull();
-    });
-
-    it('clears last5 year filter', () => {
-      setMockSearchParams(new URLSearchParams('yearType=last5'));
-      const { result } = renderHook(() => useUrlFilter(), { wrapper: Wrapper });
-
-      result.current.updateFilter({ yearType: null, year: null });
-
-      const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
-      expect(params.get('yearType')).toBeNull();
-    });
-
-    it('clears before year filter', () => {
-      setMockSearchParams(new URLSearchParams('year=2020&yearType=before'));
-      const { result } = renderHook(() => useUrlFilter(), { wrapper: Wrapper });
-
-      result.current.updateFilter({ year: null, yearType: null });
-
-      const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
-      expect(params.get('year')).toBeNull();
-      expect(params.get('yearType')).toBeNull();
-    });
-
-    it('clears after year filter', () => {
-      setMockSearchParams(new URLSearchParams('year=2020&yearType=after'));
-      const { result } = renderHook(() => useUrlFilter(), { wrapper: Wrapper });
-
-      result.current.updateFilter({ year: null, yearType: null });
-
-      const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
-      expect(params.get('year')).toBeNull();
-      expect(params.get('yearType')).toBeNull();
-    });
-
-    it('preserves non-filter params when clearing year filter', () => {
-      setMockSearchParams(new URLSearchParams('yearType=last2&page=3&scroll=100'));
-      const { result } = renderHook(() => useUrlFilter(), { wrapper: Wrapper });
-
-      result.current.updateFilter({ yearType: null, year: null });
-
-      const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
-      expect(params.get('yearType')).toBeNull();
-      expect(params.get('year')).toBeNull();
-      expect(params.get('page')).toBe('3');
-      expect(params.get('scroll')).toBe('100');
+      expect(currentParams().toString()).toBe('page=3&scroll=100');
     });
   });
 });
