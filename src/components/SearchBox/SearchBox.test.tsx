@@ -107,4 +107,11 @@ describe('SearchBox', () => {
     renderWithRouter(<SearchBox talks={talks} />);
     expect(screen.getByPlaceholderText(/search in titles/i)).toBeInTheDocument();
   });
+
+  it('exposes a labelled search landmark and input to assistive technology', () => {
+    renderWithRouter(<SearchBox talks={talks} />);
+
+    expect(screen.getByRole('search')).toBeInTheDocument();
+    expect(screen.getByRole('textbox', { name: 'Search talks' })).toBeInTheDocument();
+  });
 });

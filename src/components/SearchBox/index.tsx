@@ -51,9 +51,10 @@ export function SearchBox({ talks }: SearchBoxProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="relative" data-testid="search-form">
+    <form onSubmit={handleSubmit} role="search" className="relative" data-testid="search-form">
       <input
         type="text"
+        aria-label="Search talks"
         value={value}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
