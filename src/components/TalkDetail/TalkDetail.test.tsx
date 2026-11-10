@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { TalkDetail } from '.';
 import { useTalks } from '../../hooks/useTalks';
@@ -80,18 +80,45 @@ describe('TalkDetail', () => {
     expect(screen.queryByRole('link', { name: /mentioned in curator's blog/i })).not.toBeInTheDocument();
   });
 
+  it('shows the core topic', () => {
+    givenTalks([{ ...currentTalk, core_topic: 'Engineering Culture' }]);
+
+    renderTalkDetail();
+
+    expect(screen.getByRole('heading', { name: 'Core Topic' })).toBeInTheDocument();
+    expect(screen.getByText('Engineering Culture')).toBeInTheDocument();
+  });
+
   describe('More by Speaker Section', () => {
     const talkBySpeaker1 = createTalk({ id: '2', title: 'Another Talk by Speaker 1', speakers: ['Test Speaker 1'] });
     const talkBySpeaker2 = createTalk({ id: '3', title: 'Talk by Speaker 2', speakers: ['Test Speaker 2'] });
+    const relatedSection = () => screen.getByRole('region', { name: 'More talks by this speaker' });
+
+    it('names every speaker of the current talk in the heading', () => {
+      givenTalks([currentTalk, talkBySpeaker1]);
+
+      renderTalkDetail();
+
+      expect(within(relatedSection()).getByRole('heading', { level: 2 }))
+        .toHaveTextContent('More by Test Speaker 1 & Test Speaker 2');
+    });
+
+    it('links each related talk to its own detail page, keeping the filters', () => {
+      givenTalks([currentTalk, talkBySpeaker1]);
+
+      renderTalkDetail('hasNotes=true&query=tdd');
+
+      expect(within(relatedSection()).getByRole('link', { name: /Another Talk by Speaker 1/ }))
+        .toHaveAttribute('href', '/talk/2?hasNotes=true&query=tdd');
+    });
 
     it('excludes the current talk from the related talks list', () => {
       givenTalks([currentTalk, talkBySpeaker1]);
 
       renderTalkDetail();
 
-      const relatedSection = screen.getByText(/More by/).closest('section');
-      expect(relatedSection).not.toHaveTextContent('Test Talk');
-      expect(relatedSection).toHaveTextContent('Another Talk by Speaker 1');
+      expect(relatedSection()).not.toHaveTextContent('Test Talk');
+      expect(relatedSection()).toHaveTextContent('Another Talk by Speaker 1');
     });
 
     it('shows talks from any speaker of a multi-speaker talk', () => {
