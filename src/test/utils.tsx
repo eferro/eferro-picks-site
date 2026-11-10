@@ -41,11 +41,11 @@ vi.mock('react-router-dom', async () => {
     useNavigate: () => mockNavigate,
     useLocation: () => ({ pathname: '/', search: getMockSearchParams().toString() }),
     useParams: () => ({}),
-    Link: ({ children, to }: { children: React.ReactNode, to: string | { pathname?: string; search?: string } }) => {
+    Link: ({ children, to, ...rest }: { children: React.ReactNode, to: string | { pathname?: string; search?: string } } & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'>) => {
       const search = typeof to === 'string' ? '' : to.search;
       const pathname = typeof to === 'string' ? to : to.pathname;
       const href = search ? `${pathname}?${search}` : pathname;
-      return <a href={href} data-testid="link">{children}</a>;
+      return <a {...rest} href={href} data-testid="link">{children}</a>;
     }
   };
 });

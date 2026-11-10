@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { screen, fireEvent } from '@testing-library/react';
 import { renderTalkCard, createTalk, setMockSearchParams, mockNavigate } from '../../test/utils';
 
@@ -202,6 +202,71 @@ describe('TalkCard', () => {
       expect(mockNavigate).toHaveBeenCalledWith({
         pathname: `/talk/test-id`,
         search: 'topics=test'
+      });
+    });
+
+    describe('Open in new tab', () => {
+      let openSpy: ReturnType<typeof vi.spyOn>;
+
+      beforeEach(() => {
+        openSpy = vi.spyOn(window, 'open').mockImplementation(() => null);
+        setMockSearchParams(new URLSearchParams('topics=test'));
+      });
+
+      afterEach(() => {
+        openSpy.mockRestore();
+      });
+
+      it('renders the title as a link to the talk detail preserving filters', () => {
+        renderTalkCard({ talk: createTalk({ id: 'test-id', title: 'Linked Talk' }) });
+
+        const titleLink = screen.getByRole('link', { name: 'Linked Talk' });
+        expect(titleLink).toHaveAttribute('href', '/talk/test-id?topics=test');
+      });
+
+      it('does not trigger card navigation when the title link is clicked', () => {
+        renderTalkCard({ talk: createTalk({ id: 'test-id', title: 'Linked Talk' }) });
+
+        fireEvent.click(screen.getByRole('link', { name: 'Linked Talk' }));
+
+        expect(mockNavigate).not.toHaveBeenCalled();
+      });
+
+      it.each([
+        ['Ctrl', { ctrlKey: true }],
+        ['Cmd', { metaKey: true }],
+      ])('opens the talk in a new tab on %s+click on the card', (_label, modifiers) => {
+        renderTalkCard({ talk: createTalk({ id: 'test-id' }) });
+
+        fireEvent.click(screen.getByRole('article'), modifiers);
+
+        expect(openSpy).toHaveBeenCalledWith('/talk/test-id?topics=test', '_blank', 'noopener');
+        expect(mockNavigate).not.toHaveBeenCalled();
+      });
+
+      it('opens the talk in a new tab on middle click on the card', () => {
+        renderTalkCard({ talk: createTalk({ id: 'test-id' }) });
+
+        fireEvent(screen.getByRole('article'), new MouseEvent('auxclick', { bubbles: true, button: 1 }));
+
+        expect(openSpy).toHaveBeenCalledWith('/talk/test-id?topics=test', '_blank', 'noopener');
+      });
+
+      it('ignores auxiliary clicks that are not the middle button', () => {
+        renderTalkCard({ talk: createTalk({ id: 'test-id' }) });
+
+        fireEvent(screen.getByRole('article'), new MouseEvent('auxclick', { bubbles: true, button: 2 }));
+
+        expect(openSpy).not.toHaveBeenCalled();
+      });
+
+      it('does not open a new tab on a plain click on the card', () => {
+        renderTalkCard({ talk: createTalk({ id: 'test-id' }) });
+
+        fireEvent.click(screen.getByRole('article'));
+
+        expect(openSpy).not.toHaveBeenCalled();
+        expect(mockNavigate).toHaveBeenCalled();
       });
     });
 

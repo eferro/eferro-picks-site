@@ -1,5 +1,5 @@
-import { useMemo } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useMemo, type MouseEvent } from 'react';
+import { Link, useHref, useNavigate, useSearchParams } from 'react-router-dom';
 import { Talk } from '../../types/talks';
 import { formatDuration } from '../../utils/format';
 import { hasMeaningfulNotes } from '../../utils/talks';
@@ -48,17 +48,36 @@ export function TalkCard({
     [talk.topics, onTopicClick, selectedQuery]
   );
 
-  const handleCardClick = () => {
-    // Navigate to talk detail
-    navigate({
-      pathname: `/talk/${talk.id}`,
-      search: searchParams.toString()
-    });
+  const talkLocation = {
+    pathname: `/talk/${talk.id}`,
+    search: searchParams.toString()
+  };
+  const talkHref = useHref(talkLocation);
+
+  const openInNewTab = () => {
+    window.open(talkHref, '_blank', 'noopener');
+  };
+
+  const handleCardClick = (e?: MouseEvent) => {
+    // Ctrl/Cmd+click opens the talk detail in a new tab, like a regular link
+    if (e && (e.ctrlKey || e.metaKey)) {
+      openInNewTab();
+      return;
+    }
+    navigate(talkLocation);
+  };
+
+  const handleCardAuxClick = (e: MouseEvent) => {
+    // Middle click opens the talk detail in a new tab
+    if (e.button === 1) {
+      openInNewTab();
+    }
   };
 
   return (
     <div
       onClick={handleCardClick}
+      onAuxClick={handleCardAuxClick}
       onKeyDown={(e) => e.key === 'Enter' && handleCardClick()}
       role="article"
       tabIndex={0}
@@ -69,7 +88,13 @@ export function TalkCard({
         <div className="flex-1">
           <div className="flex justify-between items-start mb-2">
             <h3 className="text-lg font-semibold text-gray-900">
-              {talk.title}
+              <Link
+                to={talkLocation}
+                onClick={(e) => e.stopPropagation()}
+                className="hover:underline focus:outline-none focus-visible:underline"
+              >
+                {talk.title}
+              </Link>
             </h3>
             <div className="flex items-center gap-1">
               {talk.rating === 5 && (
