@@ -2,152 +2,61 @@ import { screen } from '@testing-library/react';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { TalkDetail } from '.';
 import { useTalks } from '../../hooks/useTalks';
-import { useSearchParams, useParams } from 'react-router-dom';
-import { renderWithRouter, setMockSearchParams, getMockSearchParams, mockSetSearchParams, createTalk } from '../../test/utils';
+import type { Talk } from '../../types/talks';
+import { createTalk } from '../../test/builders';
+import { renderWithRouter } from '../../test/router';
 
-// Mock the hooks
+/**
+ * Focused TalkDetail tests for details not covered by
+ * TalkDetail.integration.test.tsx (rendering, notes, blog link, loading
+ * and error states, navigation and the "More by" basics live there).
+ */
 vi.mock('../../hooks/useTalks');
-vi.mock('react-router-dom', async () => {
-  const actual = await vi.importActual('react-router-dom');
-  return {
-    ...actual,
-    useParams: vi.fn(),
-    useSearchParams: vi.fn()
-  };
+
+const currentTalk = createTalk({
+  id: '1',
+  title: 'Test Talk',
+  speakers: ['Test Speaker 1', 'Test Speaker 2'],
+  conference_name: 'Test Conference',
+  topics: ['test'],
 });
 
+const givenTalks = (talks: Talk[]) => {
+  vi.mocked(useTalks).mockReturnValue({ talks, loading: false, error: null });
+};
+
+const renderTalkDetail = (params = '') =>
+  renderWithRouter(<TalkDetail />, { path: '/talk/1', params, routePath: '/talk/:id' });
+
 describe('TalkDetail', () => {
-  const mockTalk = {
-    id: '1',
-    title: 'Test Talk',
-    speakers: ['Test Speaker 1', 'Test Speaker 2'],
-    conference_name: 'Test Conference',
-    duration: 3600,
-    topics: ['test'],
-    core_topic: 'test',
-    url: 'https://example.com',
-    description: 'Test description',
-    notes: 'Test notes',
-    year: 2023,
-    rating: undefined
-  };
-
   beforeEach(() => {
-    vi.mocked(useTalks).mockImplementation(() => ({
-      talks: [mockTalk],
-      loading: false,
-      error: null
-    }));
-
-    vi.mocked(useParams).mockImplementation(() => ({ id: '1' }));
-    
-    // Reset mocks and internal state
-    vi.clearAllMocks();
-    setMockSearchParams(new URLSearchParams());
-    
-    vi.mocked(useSearchParams).mockImplementation(() => [getMockSearchParams(), mockSetSearchParams]);
-  });
-
-  const renderComponent = () => renderWithRouter(<TalkDetail />);
-
-  it('renders the talk details', () => {
-    renderComponent();
-    
-    expect(screen.getByText('Test Talk')).toBeInTheDocument();
-    expect(screen.getByText('Test Speaker 1')).toBeInTheDocument();
-    expect(screen.getByText('Test Speaker 2')).toBeInTheDocument();
-    expect(screen.getByText('1h 0m')).toBeInTheDocument();
-    expect(screen.getByText('Test Conference')).toBeInTheDocument();
-    expect(screen.getByText('2023')).toBeInTheDocument();
-    expect(screen.getByText('Test description')).toBeInTheDocument();
-    expect(screen.getByText('Key Notes')).toBeInTheDocument();
-    expect(screen.getByText('Test notes')).toBeInTheDocument();
+    givenTalks([currentTalk]);
   });
 
   describe('Rating Display', () => {
-    it('displays star icon for 5-star rated talks', () => {
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks: [{ ...mockTalk, rating: 5 }],
-        loading: false,
-        error: null
-      }));
-      renderComponent();
+    it.each([
+      ['rating below 5', 4],
+      ['no rating', undefined],
+    ])('does not show the top rated star for a talk with %s', (_label, rating) => {
+      givenTalks([{ ...currentTalk, rating }]);
 
-      const starIcon = screen.getByRole('img', { name: /Top rated/i });
-      expect(starIcon).toBeInTheDocument();
-      expect(starIcon).toHaveAttribute('title', 'Top rated');
-    });
-
-    it('does not display star icon for talks with rating less than 5', () => {
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks: [{ ...mockTalk, rating: 4 }],
-        loading: false,
-        error: null
-      }));
-      renderComponent();
+      renderTalkDetail();
 
       expect(screen.queryByRole('img', { name: /Top rated/i })).not.toBeInTheDocument();
     });
 
-    it('does not display star icon for talks without rating', () => {
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks: [{ ...mockTalk, rating: undefined }],
-        loading: false,
-        error: null
-      }));
-      renderComponent();
+    it('gives the top rated star a tooltip', () => {
+      givenTalks([{ ...currentTalk, rating: 5 }]);
 
-      expect(screen.queryByRole('img', { name: /Top rated/i })).not.toBeInTheDocument();
-    });
+      renderTalkDetail();
 
-    it('has proper accessibility attributes for rating star', () => {
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks: [{ ...mockTalk, rating: 5 }],
-        loading: false,
-        error: null
-      }));
-      renderComponent();
-
-      const starIcon = screen.getByRole('img', { name: /Top rated/i });
-      expect(starIcon).toHaveAttribute('role', 'img');
-      expect(starIcon).toHaveAttribute('aria-label', 'Top rated');
-      expect(starIcon).toHaveAttribute('title', 'Top rated');
+      expect(screen.getByRole('img', { name: 'Top rated' })).toHaveAttribute('title', 'Top rated');
     });
   });
 
-  describe('Metadata Navigation', () => {
-    it('renders each speaker as a link to the talks list filtered by that speaker', () => {
-      renderComponent();
-
-      expect(
-        screen.getByRole('link', { name: 'See all talks by Test Speaker 1' })
-      ).toHaveAttribute('href', '/?query=Test+Speaker+1');
-      expect(
-        screen.getByRole('link', { name: 'See all talks by Test Speaker 2' })
-      ).toHaveAttribute('href', '/?query=Test+Speaker+2');
-    });
-
-    it('renders each topic as a link to the talks list filtered by that topic', () => {
-      renderComponent();
-
-      expect(
-        screen.getByRole('link', { name: 'See all talks about test' })
-      ).toHaveAttribute('href', '/?query=test');
-    });
-
-    it('renders the conference as a link to the talks list filtered by that conference', () => {
-      renderComponent();
-
-      expect(
-        screen.getByRole('link', { name: 'See all talks from Test Conference' })
-      ).toHaveAttribute('href', '/?conference=Test+Conference');
-    });
-
+  describe('Metadata links', () => {
     it('preserves other filters and replaces the query in speaker links', () => {
-      setMockSearchParams(
-        new URLSearchParams('yearType=specific&year=2023&query=previous search')
-      );
-      renderComponent();
+      renderTalkDetail('yearType=specific&year=2023&query=previous search');
 
       expect(
         screen.getByRole('link', { name: 'See all talks by Test Speaker 1' })
@@ -155,8 +64,7 @@ describe('TalkDetail', () => {
     });
 
     it('preserves the current query when building the conference link', () => {
-      setMockSearchParams(new URLSearchParams('query=some search'));
-      renderComponent();
+      renderTalkDetail('query=some search');
 
       expect(
         screen.getByRole('link', { name: 'See all talks from Test Conference' })
@@ -164,266 +72,35 @@ describe('TalkDetail', () => {
     });
   });
 
-  describe('Loading and Error States', () => {
-    it('shows loading state', () => {
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks: [],
-        loading: true,
-        error: null
-      }));
-      
-      renderComponent();
-      expect(screen.getByRole('status')).toBeInTheDocument();
-    });
+  it('does not render the blog link when blog_url is an empty string', () => {
+    givenTalks([{ ...currentTalk, blog_url: '' }]);
 
-    it('shows error state', () => {
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks: [],
-        loading: false,
-        error: new Error('Test error')
-      }));
-      
-      renderComponent();
-      expect(screen.getByText(/Error loading talk/)).toBeInTheDocument();
-    });
-  });
+    renderTalkDetail();
 
-  describe('Blog Link', () => {
-    it('renders blog link when blog_url is present', () => {
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks: [createTalk({ blog_url: 'https://www.eferro.net/2017/03/interesting-talkspodcasts-march.html' })],
-        loading: false,
-        error: null
-      }));
-      renderComponent();
-
-      const blogLink = screen.getByRole('link', { name: /mentioned in curator's blog/i });
-      expect(blogLink).toBeInTheDocument();
-      expect(blogLink).toHaveAttribute('href', 'https://www.eferro.net/2017/03/interesting-talkspodcasts-march.html');
-      expect(blogLink).toHaveAttribute('target', '_blank');
-      expect(blogLink).toHaveAttribute('rel', 'noopener noreferrer');
-    });
-
-    it('does not render blog link when blog_url is absent', () => {
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks: [createTalk({ blog_url: undefined })],
-        loading: false,
-        error: null
-      }));
-      renderComponent();
-
-      expect(screen.queryByRole('link', { name: /mentioned in curator's blog/i })).not.toBeInTheDocument();
-    });
-
-    it('does not render blog link when blog_url is empty string', () => {
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks: [createTalk({ blog_url: '' })],
-        loading: false,
-        error: null
-      }));
-      renderComponent();
-
-      expect(screen.queryByRole('link', { name: /mentioned in curator's blog/i })).not.toBeInTheDocument();
-    });
-  });
-
-  describe('Notes Section', () => {
-    it('does not render notes section when notes are not present', () => {
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks: [createTalk({ notes: undefined })],
-        loading: false,
-        error: null
-      }));
-      renderComponent();
-      expect(screen.queryByText('Key Notes')).not.toBeInTheDocument();
-    });
-
-    it('does not render notes section when notes are just whitespace', () => {
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks: [createTalk({ notes: '   \n  \r\n  ' })],
-        loading: false,
-        error: null
-      }));
-      renderComponent();
-      expect(screen.queryByText('Key Notes')).not.toBeInTheDocument();
-    });
-
-    it('renders notes section when notes have meaningful content', () => {
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks: [createTalk({ notes: 'Some actual notes' })],
-        loading: false,
-        error: null
-      }));
-      renderComponent();
-      expect(screen.getByText('Key Notes')).toBeInTheDocument();
-      expect(screen.getByText('Some actual notes')).toBeInTheDocument();
-    });
-
-    it('sanitizes HTML in notes to prevent XSS', () => {
-      const maliciousNotes = '<img src=x onerror="alert(1)" /><script>alert("xss")</script>'; 
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks: [createTalk({ notes: maliciousNotes })],
-        loading: false,
-        error: null
-      }));
-
-      const { container } = renderComponent();
-
-      expect(container.querySelector('script')).toBeNull();
-      expect(container.querySelector('img')).toBeNull();
-    });
-  });
-
-  describe('Navigation', () => {
-    it('preserves filters when going back to talks', () => {
-      // Set complete params with yearType for proper filter state (using unified query)
-      const mockParams = new URLSearchParams('yearType=specific&year=2023&query=Test%20Speaker');
-      setMockSearchParams(mockParams);
-
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks: [mockTalk],
-        loading: false,
-        error: null
-      }));
-
-      vi.mocked(useParams).mockImplementation(() => ({ id: '1' }));
-      vi.mocked(useSearchParams).mockImplementation(() => [mockParams, mockSetSearchParams]);
-
-      renderComponent();
-
-      const backLink = screen.getByRole('link', { name: /back to talks/i });
-      // Expect the complete URL params with yearType (+ encoding for spaces)
-      expect(backLink).toHaveAttribute('href', '/?yearType=specific&year=2023&query=Test+Speaker');
-    });
+    expect(screen.queryByRole('link', { name: /mentioned in curator's blog/i })).not.toBeInTheDocument();
   });
 
   describe('More by Speaker Section', () => {
-    const talkBySpeaker1 = createTalk({
-      id: '2',
-      title: 'Another Talk by Speaker 1',
-      speakers: ['Test Speaker 1'],
-      duration: 1800,
-      year: 2022,
-    });
-
-    const talkBySpeaker2 = createTalk({
-      id: '3',
-      title: 'Talk by Speaker 2',
-      speakers: ['Test Speaker 2'],
-      duration: 2700,
-      year: 2021,
-    });
-
-    const talkByOtherSpeaker = createTalk({
-      id: '4',
-      title: 'Unrelated Talk',
-      speakers: ['Other Speaker'],
-      duration: 3600,
-      year: 2020,
-    });
-
-    it('shows "More by" section when other talks by the same speaker exist', () => {
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks: [mockTalk, talkBySpeaker1, talkByOtherSpeaker],
-        loading: false,
-        error: null,
-      }));
-
-      renderComponent();
-
-      expect(screen.getByText(/More by/)).toBeInTheDocument();
-      expect(screen.getByText('Another Talk by Speaker 1')).toBeInTheDocument();
-    });
-
-    it('does not show "More by" section when no other talks by the speaker exist', () => {
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks: [mockTalk, talkByOtherSpeaker],
-        loading: false,
-        error: null,
-      }));
-
-      renderComponent();
-
-      expect(screen.queryByText(/More by/)).not.toBeInTheDocument();
-    });
+    const talkBySpeaker1 = createTalk({ id: '2', title: 'Another Talk by Speaker 1', speakers: ['Test Speaker 1'] });
+    const talkBySpeaker2 = createTalk({ id: '3', title: 'Talk by Speaker 2', speakers: ['Test Speaker 2'] });
 
     it('excludes the current talk from the related talks list', () => {
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks: [mockTalk, talkBySpeaker1],
-        loading: false,
-        error: null,
-      }));
+      givenTalks([currentTalk, talkBySpeaker1]);
 
-      renderComponent();
+      renderTalkDetail();
 
       const relatedSection = screen.getByText(/More by/).closest('section');
       expect(relatedSection).not.toHaveTextContent('Test Talk');
-      expect(screen.getByText('Another Talk by Speaker 1')).toBeInTheDocument();
+      expect(relatedSection).toHaveTextContent('Another Talk by Speaker 1');
     });
 
     it('shows talks from any speaker of a multi-speaker talk', () => {
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks: [mockTalk, talkBySpeaker1, talkBySpeaker2],
-        loading: false,
-        error: null,
-      }));
+      givenTalks([currentTalk, talkBySpeaker1, talkBySpeaker2]);
 
-      renderComponent();
+      renderTalkDetail();
 
       expect(screen.getByText('Another Talk by Speaker 1')).toBeInTheDocument();
       expect(screen.getByText('Talk by Speaker 2')).toBeInTheDocument();
-    });
-
-    it('displays title, duration, and year for related talks', () => {
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks: [mockTalk, talkBySpeaker1],
-        loading: false,
-        error: null,
-      }));
-
-      renderComponent();
-
-      expect(screen.getByText('Another Talk by Speaker 1')).toBeInTheDocument();
-      expect(screen.getByText('30m')).toBeInTheDocument();
-      expect(screen.getByText('2022')).toBeInTheDocument();
-    });
-
-    it('limits related talks to a maximum of 5', () => {
-      const manyTalks = Array.from({ length: 8 }, (_, i) =>
-        createTalk({
-          id: `extra-${i}`,
-          title: `Extra Talk ${i}`,
-          speakers: ['Test Speaker 1'],
-          duration: 1800,
-          year: 2020 + i,
-        })
-      );
-
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks: [mockTalk, ...manyTalks],
-        loading: false,
-        error: null,
-      }));
-
-      renderComponent();
-
-      const relatedLinks = screen.getAllByRole('link').filter(
-        (link) => link.getAttribute('href')?.startsWith('/talk/')
-      );
-      expect(relatedLinks).toHaveLength(5);
-    });
-
-    it('renders related talks as links to their detail pages', () => {
-      vi.mocked(useTalks).mockImplementation(() => ({
-        talks: [mockTalk, talkBySpeaker1],
-        loading: false,
-        error: null,
-      }));
-
-      renderComponent();
-
-      const relatedLink = screen.getByText('Another Talk by Speaker 1').closest('a');
-      expect(relatedLink).toHaveAttribute('href', expect.stringContaining('/talk/2'));
     });
   });
 });
