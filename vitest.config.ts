@@ -19,8 +19,16 @@ export default defineConfig({
     poolOptions: {
       forks: {
         singleFork: true,
-        isolate: false,
+        // Each test file gets a fresh module registry so per-file vi.mock
+        // factories cannot leak into other files
+        isolate: true,
       }
+    },
+
+    // Random order surfaces hidden dependencies between tests and files.
+    // Reproduce a failing run with: npx vitest run --sequence.seed=<seed>
+    sequence: {
+      shuffle: true,
     },
     
     // Disable CSS processing for tests (major speed improvement)

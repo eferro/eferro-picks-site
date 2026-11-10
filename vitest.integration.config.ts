@@ -20,6 +20,11 @@ export default defineConfig({
       }
     },
 
+    // Random order surfaces hidden dependencies between tests and files
+    sequence: {
+      shuffle: true,
+    },
+
     css: false,
 
     reporter: process.env.CI ? ['junit', 'github-actions'] : ['default'],
