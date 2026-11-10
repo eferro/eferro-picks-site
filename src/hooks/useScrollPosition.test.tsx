@@ -65,9 +65,11 @@ describe('useScrollPosition', () => {
     let originalRemoveEventListener: typeof window.removeEventListener;
     let originalDispatchEvent: typeof window.dispatchEvent;
     let originalSessionStorage: typeof window.sessionStorage;
+    let originalScrollYDescriptor: PropertyDescriptor | undefined;
 
     beforeEach(() => {
       vi.useFakeTimers();
+      originalScrollYDescriptor = Object.getOwnPropertyDescriptor(window, 'scrollY');
 
       // Save original window methods for restoration
       originalScrollTo = window.scrollTo;
@@ -105,6 +107,11 @@ describe('useScrollPosition', () => {
 
     afterEach(() => {
       // Restore original window methods
+      if (originalScrollYDescriptor) {
+        Object.defineProperty(window, 'scrollY', originalScrollYDescriptor);
+      } else {
+        delete (window as { scrollY?: number }).scrollY;
+      }
       (window as Window).scrollTo = originalScrollTo;
       (window as Window).addEventListener = originalAddEventListener;
       (window as Window).removeEventListener = originalRemoveEventListener;
@@ -270,6 +277,62 @@ describe('useScrollPosition', () => {
 
       // Verify multiple retry attempts were made
       expect(partialWindow.scrollTo).toHaveBeenCalledTimes(TEST_CONFIG.maxRetries);
+    });
+
+    describe('retry backoff timing', () => {
+      // Small base delay and low cap so the cap is reached within a few retries
+      const BACKOFF_CONFIG: ScrollConfig = {
+        ...TEST_CONFIG,
+        retryDelayMs: 10,
+        maxRetries: 6,
+        maxDelayMs: 50,
+      };
+      let partialWindow: ReturnType<typeof createSpiedWindowDouble>;
+
+      beforeEach(() => {
+        partialWindow = createSpiedWindowDouble(vi, { scrollBehavior: 'partial', scrollOffset: 20 });
+        Object.defineProperty(window, 'scrollY', {
+          get: () => partialWindow.scrollY,
+          configurable: true
+        });
+        (window as Window).scrollTo = partialWindow.scrollTo as typeof window.scrollTo;
+        spiedWindow.sessionStorage.setItem(SCROLL_INDEX_KEY, '500');
+      });
+
+      const expectScrollAttemptAfter = (delayMs: number, expectedCalls: number) => {
+        vi.advanceTimersByTime(delayMs - 1);
+        expect(partialWindow.scrollTo).toHaveBeenCalledTimes(expectedCalls - 1);
+        vi.advanceTimersByTime(1);
+        expect(partialWindow.scrollTo).toHaveBeenCalledTimes(expectedCalls);
+      };
+
+      it('doubles the delay between retries until it reaches the maximum delay', () => {
+        renderHook(() => useScrollPosition(BACKOFF_CONFIG), {
+          wrapper: createRouterWrapper('/')
+        });
+
+        vi.advanceTimersByTime(BACKOFF_CONFIG.initialDelayMs);
+        expect(partialWindow.scrollTo).toHaveBeenCalledTimes(1);
+
+        expectScrollAttemptAfter(10, 2); // first check uses the base delay
+        expectScrollAttemptAfter(20, 3); // 10 * 2^1
+        expectScrollAttemptAfter(40, 4); // 10 * 2^2
+        expectScrollAttemptAfter(50, 5); // 10 * 2^3 = 80, capped at 50
+        expectScrollAttemptAfter(50, 6); // stays at the cap
+      });
+
+      it('stops retrying after unmount', () => {
+        const { unmount } = renderHook(() => useScrollPosition(BACKOFF_CONFIG), {
+          wrapper: createRouterWrapper('/')
+        });
+        vi.advanceTimersByTime(BACKOFF_CONFIG.initialDelayMs + 10);
+        const callsBeforeUnmount = partialWindow.scrollTo.mock.calls.length;
+
+        unmount();
+        vi.advanceTimersByTime(10_000);
+
+        expect(partialWindow.scrollTo).toHaveBeenCalledTimes(callsBeforeUnmount);
+      });
     });
 
     it('stops retrying when scroll position is reached', () => {
