@@ -1,11 +1,29 @@
 import { describe, it, expect, vi, beforeEach, afterEach, type MockInstance } from 'vitest';
 import { screen, fireEvent } from '@testing-library/react';
-import { renderTalkCard, createTalk, setMockSearchParams, mockNavigate } from '../../test/utils';
+import { ComponentProps } from 'react';
+import { TalkCard } from './TalkCard';
+import { createTalk, mockTalk } from '../../test/builders';
+import { renderWithRouter, currentLocation } from '../../test/router';
+
+const renderTalkCard = (
+  props: Partial<ComponentProps<typeof TalkCard>> = {},
+  params = ''
+) =>
+  renderWithRouter(
+    <TalkCard
+      talk={mockTalk}
+      onConferenceClick={vi.fn()}
+      onTopicClick={vi.fn()}
+      selectedConference={null}
+      selectedQuery=""
+      {...props}
+    />,
+    { params }
+  );
 
 describe('TalkCard', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    setMockSearchParams(new URLSearchParams());
   });
 
   describe('Rendering', () => {
@@ -152,7 +170,7 @@ describe('TalkCard', () => {
       fireEvent.click(screen.getByRole('button', { name: /Filter by topic testing/i }));
 
       expect(onTopicClick).toHaveBeenCalledWith('testing');
-      expect(mockNavigate).not.toHaveBeenCalled();
+      expect(currentLocation().pathname).toBe('/');
     });
 
     it('filters by conference without opening the talk when the conference is clicked', () => {
@@ -162,35 +180,27 @@ describe('TalkCard', () => {
       fireEvent.click(screen.getByRole('button', { name: /Filter by conference Test Conference/i }));
 
       expect(onConferenceClick).toHaveBeenCalledWith('Test Conference');
-      expect(mockNavigate).not.toHaveBeenCalled();
+      expect(currentLocation().pathname).toBe('/');
     });
 
     it('navigates to talk page when card is clicked', () => {
       const talk = createTalk({ id: 'test-id' });
-      setMockSearchParams(new URLSearchParams('topics=test'));
-      renderTalkCard({ talk });
+      renderTalkCard({ talk }, 'topics=test');
       
       const card = screen.getByRole('article', { name: /Talk: Test Talk/i });
       fireEvent.click(card);
       
-      expect(mockNavigate).toHaveBeenCalledWith({
-        pathname: `/talk/test-id`,
-        search: 'topics=test'
-      });
+      expect(currentLocation()).toMatchObject({ pathname: '/talk/test-id', search: '?topics=test' });
     });
 
     it('navigates to talk page when Enter key is pressed', () => {
       const talk = createTalk({ id: 'test-id' });
-      setMockSearchParams(new URLSearchParams('topics=test'));
-      renderTalkCard({ talk });
+      renderTalkCard({ talk }, 'topics=test');
       
       const card = screen.getByRole('article', { name: /Talk: Test Talk/i });
       fireEvent.keyDown(card, { key: 'Enter' });
       
-      expect(mockNavigate).toHaveBeenCalledWith({
-        pathname: `/talk/test-id`,
-        search: 'topics=test'
-      });
+      expect(currentLocation()).toMatchObject({ pathname: '/talk/test-id', search: '?topics=test' });
     });
 
     describe('Open in new tab', () => {
@@ -198,7 +208,6 @@ describe('TalkCard', () => {
 
       beforeEach(() => {
         openSpy = vi.spyOn(window, 'open').mockImplementation(() => null);
-        setMockSearchParams(new URLSearchParams('topics=test'));
       });
 
       afterEach(() => {
@@ -206,34 +215,34 @@ describe('TalkCard', () => {
       });
 
       it('renders the title as a link to the talk detail preserving filters', () => {
-        renderTalkCard({ talk: createTalk({ id: 'test-id', title: 'Linked Talk' }) });
+        renderTalkCard({ talk: createTalk({ id: 'test-id', title: 'Linked Talk' }) }, 'topics=test');
 
         const titleLink = screen.getByRole('link', { name: 'Linked Talk' });
         expect(titleLink).toHaveAttribute('href', '/talk/test-id?topics=test');
       });
 
-      it('does not trigger card navigation when the title link is clicked', () => {
-        renderTalkCard({ talk: createTalk({ id: 'test-id', title: 'Linked Talk' }) });
+      it('navigates to the talk detail when the title link is clicked', () => {
+        renderTalkCard({ talk: createTalk({ id: 'test-id', title: 'Linked Talk' }) }, 'topics=test');
 
         fireEvent.click(screen.getByRole('link', { name: 'Linked Talk' }));
 
-        expect(mockNavigate).not.toHaveBeenCalled();
+        expect(currentLocation()).toMatchObject({ pathname: '/talk/test-id', search: '?topics=test' });
       });
 
       it.each([
         ['Ctrl', { ctrlKey: true }],
         ['Cmd', { metaKey: true }],
       ])('opens the talk in a new tab on %s+click on the card', (_label, modifiers) => {
-        renderTalkCard({ talk: createTalk({ id: 'test-id' }) });
+        renderTalkCard({ talk: createTalk({ id: 'test-id' }) }, 'topics=test');
 
         fireEvent.click(screen.getByRole('article'), modifiers);
 
         expect(openSpy).toHaveBeenCalledWith('/talk/test-id?topics=test', '_blank', 'noopener');
-        expect(mockNavigate).not.toHaveBeenCalled();
+        expect(currentLocation().pathname).toBe('/');
       });
 
       it('opens the talk in a new tab on middle click on the card', () => {
-        renderTalkCard({ talk: createTalk({ id: 'test-id' }) });
+        renderTalkCard({ talk: createTalk({ id: 'test-id' }) }, 'topics=test');
 
         fireEvent(screen.getByRole('article'), new MouseEvent('auxclick', { bubbles: true, button: 1 }));
 
@@ -241,7 +250,7 @@ describe('TalkCard', () => {
       });
 
       it('ignores auxiliary clicks that are not the middle button', () => {
-        renderTalkCard({ talk: createTalk({ id: 'test-id' }) });
+        renderTalkCard({ talk: createTalk({ id: 'test-id' }) }, 'topics=test');
 
         fireEvent(screen.getByRole('article'), new MouseEvent('auxclick', { bubbles: true, button: 2 }));
 
@@ -249,12 +258,12 @@ describe('TalkCard', () => {
       });
 
       it('does not open a new tab on a plain click on the card', () => {
-        renderTalkCard({ talk: createTalk({ id: 'test-id' }) });
+        renderTalkCard({ talk: createTalk({ id: 'test-id' }) }, 'topics=test');
 
         fireEvent.click(screen.getByRole('article'));
 
         expect(openSpy).not.toHaveBeenCalled();
-        expect(mockNavigate).toHaveBeenCalled();
+        expect(currentLocation().pathname).toBe('/talk/test-id');
       });
     });
 
@@ -263,7 +272,7 @@ describe('TalkCard', () => {
 
       fireEvent.click(screen.getByRole('link', { name: /Watch Test Talk/i }));
 
-      expect(mockNavigate).not.toHaveBeenCalled();
+      expect(currentLocation().pathname).toBe('/');
     });
   });
 
