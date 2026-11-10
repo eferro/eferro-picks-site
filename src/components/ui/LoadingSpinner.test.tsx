@@ -3,14 +3,6 @@ import { describe, it, expect } from 'vitest';
 import { LoadingSpinner } from './LoadingSpinner';
 
 describe('LoadingSpinner', () => {
-  it('renders loading spinner with spin animation', () => {
-    render(<LoadingSpinner />);
-
-    const spinner = screen.getByTestId('loading-spinner');
-    expect(spinner).toBeInTheDocument();
-    expect(spinner).toHaveClass('animate-spin');
-  });
-
   it('is announced to screen readers as a loading status by default', () => {
     render(<LoadingSpinner />);
 

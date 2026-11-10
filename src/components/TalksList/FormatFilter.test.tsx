@@ -1,4 +1,4 @@
-import { screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent, act } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { FormatFilter } from './FormatFilter';
 import { renderWithRouter } from '../../test/router';
@@ -32,13 +32,15 @@ describe('FormatFilter', () => {
     expect(screen.getByRole('button', { name: /format \(2\)/i })).toBeInTheDocument();
   });
 
-  it('opens dropdown menu on button click', () => {
+  it('opens dropdown menu on button click', async () => {
     renderWithRouter(
       <FormatFilter selectedFormats={[]} onChange={() => {}} />
     );
-    const button = screen.getByRole('button');
-    fireEvent.click(button);
-    
+    // Headless UI opens the menu through an async transition
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button'));
+    });
+
     expect(screen.getByText(/any/i)).toBeInTheDocument();
     expect(screen.getByText(/talks/i)).toBeInTheDocument();
     expect(screen.getByText(/podcasts/i)).toBeInTheDocument();

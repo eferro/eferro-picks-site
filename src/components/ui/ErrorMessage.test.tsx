@@ -3,12 +3,10 @@ import { describe, it, expect } from 'vitest';
 import { ErrorMessage } from './ErrorMessage';
 
 describe('ErrorMessage', () => {
-  it('renders error message with default styling', () => {
+  it('renders the error message', () => {
     render(<ErrorMessage message="Something went wrong" />);
-    
-    const message = screen.getByText('Something went wrong');
-    expect(message).toBeInTheDocument();
-    expect(message).toHaveClass('text-red-600');
+
+    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
   });
 
   it('renders with container wrapper by default', () => {

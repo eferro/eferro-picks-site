@@ -11,20 +11,19 @@ const talksCount = (JSON.parse(
   readFileSync(join(process.cwd(), 'public', 'data', 'talks.json'), 'utf-8')
 ) as unknown[]).length;
 
+// Rendering every real talk takes ~1-2s; give it explicit headroom so a
+// slow CI runner reports a missing element, not a test timeout.
+const RENDER_TIMEOUT_MS = 10_000;
+
 describe('App', () => {
-  it('loads the real talks data and lists every talk on the home page', async () => {
+  it('renders the home page with every real talk, inside the header and footer', async () => {
     render(<App />);
 
     expect(
-      await screen.findByText(`Showing ${talksCount} of ${talksCount} talks`, {}, { timeout: 5000 })
+      await screen.findByText(`Showing ${talksCount} of ${talksCount} talks`, {}, { timeout: RENDER_TIMEOUT_MS })
     ).toBeInTheDocument();
-  });
-
-  it('renders the header, search and footer around the list', async () => {
-    render(<App />);
-
     expect(screen.getByRole('img', { name: "eferro's picks logo" })).toBeInTheDocument();
-    expect(await screen.findByRole('search')).toBeInTheDocument();
+    expect(screen.getByRole('search')).toBeInTheDocument();
     expect(screen.getByRole('contentinfo')).toHaveTextContent('Edu Ferro');
-  });
+  }, RENDER_TIMEOUT_MS + 5_000);
 });
