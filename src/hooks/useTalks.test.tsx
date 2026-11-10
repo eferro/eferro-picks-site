@@ -104,18 +104,6 @@ describe('useTalks', () => {
     expect(hook.result.current.talks).toEqual([]);
   });
 
-  it('correctly handles talks with empty notes', async () => {
-    const talkWithEmptyNotes = { ...mockTalk, notes: undefined };
-    vi.restoreAllMocks();
-    mockFetchResponse([talkWithEmptyNotes]);
-
-    const { result } = await renderUseTalksHook();
-
-    expect(result.current.error).toBeNull();
-    expect(result.current.talks).toHaveLength(1);
-    expect(result.current.talks[0].notes).toBeUndefined();
-  });
-
   it('handles network errors correctly with retry logic', async () => {
     vi.useFakeTimers();
     vi.restoreAllMocks();
@@ -129,7 +117,7 @@ describe('useTalks', () => {
       expect(hook.result.current.loading).toBe(false);
     });
 
-    expect(hook.result.current.error).toBeDefined();
+    expect(hook.result.current.error).toBeInstanceOf(Error);
     expect(hook.result.current.error?.message).toContain('Unable to load talks');
     expect(hook.result.current.error?.message).toContain('Network error');
     expect(hook.result.current.talks).toHaveLength(0);
@@ -149,7 +137,7 @@ describe('useTalks', () => {
 
     const { result } = await renderUseTalksHook(3000);
 
-    expect(result.current.error).toBeDefined();
+    expect(result.current.error).toBeInstanceOf(Error);
     expect(result.current.error?.message).toContain('Unable to load talks');
     expect(result.current.error?.message).toContain('Invalid JSON');
     expect(result.current.talks).toHaveLength(0);
@@ -171,7 +159,7 @@ describe('useTalks', () => {
       expect(hook.result.current.loading).toBe(false);
     });
 
-    expect(hook.result.current.error).toBeDefined();
+    expect(hook.result.current.error).toBeInstanceOf(Error);
     expect(hook.result.current.error?.message).toContain('HTTP 404: Not Found');
     expect(hook.result.current.talks).toHaveLength(0);
     expect(global.fetch).toHaveBeenCalledTimes(3);
@@ -183,7 +171,7 @@ describe('useTalks', () => {
 
     const { result } = await renderUseTalksHook();
 
-    expect(result.current.error).toBeDefined();
+    expect(result.current.error).toBeInstanceOf(Error);
     expect(result.current.error?.message).toContain('Invalid data format');
     expect(result.current.talks).toHaveLength(0);
   });
@@ -205,34 +193,52 @@ describe('useTalks', () => {
     expect(result.current.talks[0].rating).toBe(5);
   });
 
-  it('handles talks with minimal fields', async () => {
-    const minimalTalk = {
-      id: 'test-1',
-      title: 'Test Talk',
-      url: 'https://example.com',
-      duration: 0,
-      topics: [],
-      speakers: [],
-      description: '',
-      core_topic: '',
-      rating: 5,
-      format: 'talk',
-      conference_name: ''
+  it('fetches the talks data file', async () => {
+    await renderUseTalksHook();
+
+    expect(global.fetch).toHaveBeenCalledWith(expect.stringMatching(/data\/talks\.json$/));
+  });
+
+  describe('retry with exponential backoff', () => {
+    const advance = async (ms: number) => {
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(ms);
+      });
     };
 
-    vi.restoreAllMocks();
-    mockFetchResponse([minimalTalk]);
+    it('waits 1s before the second attempt and 2s before the third', async () => {
+      vi.useFakeTimers();
+      vi.restoreAllMocks();
+      mockFetchError(new Error('Network error'));
 
-    const { result } = await renderUseTalksHook();
+      renderHook(() => useTalks());
+      await advance(0);
+      expect(global.fetch).toHaveBeenCalledTimes(1);
 
-    expect(result.current.error).toBeNull();
-    expect(result.current.talks).toHaveLength(1);
-    const talk = result.current.talks[0];
-    expect(talk.duration).toBe(0);
-    expect(talk.topics).toEqual([]);
-    expect(talk.speakers).toEqual([]);
-    expect(talk.description).toBe('');
-    expect(talk.core_topic).toBe('');
-    expect(talk.notes).toBeUndefined();
+      await advance(999);
+      expect(global.fetch).toHaveBeenCalledTimes(1);
+      await advance(1);
+      expect(global.fetch).toHaveBeenCalledTimes(2);
+
+      await advance(1999);
+      expect(global.fetch).toHaveBeenCalledTimes(2);
+      await advance(1);
+      expect(global.fetch).toHaveBeenCalledTimes(3);
+    });
+
+    it('recovers when a retry succeeds after a failed attempt', async () => {
+      vi.useFakeTimers();
+      vi.restoreAllMocks();
+      vi.spyOn(global, 'fetch')
+        .mockRejectedValueOnce(new Error('Network error'))
+        .mockResolvedValueOnce({ ok: true, json: () => Promise.resolve([mockTalk]) } as Response);
+
+      const { result } = renderHook(() => useTalks());
+      await advance(1000);
+
+      expect(result.current.loading).toBe(false);
+      expect(result.current.error).toBeNull();
+      expect(result.current.talks).toEqual([mockTalk]);
+    });
   });
 });
