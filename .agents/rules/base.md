@@ -24,7 +24,7 @@ This is **eferro's picks** - a curated collection of software development talks 
 - **Always write tests first** before implementing features
 - Use small, focused test cases that verify one behavior at a time
 - All components and utilities must have corresponding test files
-- Tests should use the existing test utilities in `src/test/utils.tsx`
+- Tests should use the shared test helpers in `src/test/router.tsx` and `src/test/builders.ts`
 
 ### 3. Component Structure
 - Components are organized by feature in `src/components/`
@@ -106,14 +106,14 @@ setSearchParams(nextFilter.toParams());
 
 **Required Test Utilities (ALWAYS use centralized utilities):**
 ```typescript
-// From src/test/utils.tsx - NEVER mock React Router directly
+// NEVER mock React Router: render with the real in-memory router
 import {
-  renderWithRouter,     // For components using React Router
-  createTalk,          // For consistent test data generation
-  mockNavigate,        // For navigation testing
-  setMockSearchParams, // For URL parameter testing
-  createMockHandlers   // For event handler testing
-} from '../../test/utils';
+  renderWithRouter,  // Render inside a real MemoryRouter: { path, params, routePath }
+  routerWrapper,     // Same router as a renderHook wrapper
+  currentLocation,   // Router location after interactions (pathname, search)
+  currentParams      // Current query string as URLSearchParams
+} from '../../test/router';
+import { createTalk } from '../../test/builders'; // Consistent test data
 ```
 
 **Filter System Testing (PROJECT-CRITICAL):**
@@ -242,8 +242,6 @@ export function Component({ prop1, prop2 }: ComponentProps) {
 describe('ComponentName', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    setMockSearchParams(new URLSearchParams());
-    // DON'T recreate expensive objects - they're cached for performance
   });
 
   describe('Rendering', () => {
@@ -287,16 +285,11 @@ describe('ComponentName', () => {
 // ✅ EXCELLENT: Test user behavior, not implementation
 it('navigates to talk detail when card is clicked', () => {
   const talk = createTalk({ id: 'test-id' });
-  setMockSearchParams(new URLSearchParams('topics=test'));
-  renderTalkCard({ talk });
+  renderWithRouter(<TalkCard talk={talk} {...handlers} />, { params: 'topics=test' });
 
-  const card = screen.getByRole('article', { name: /Talk: Test Talk/i });
-  fireEvent.click(card);
+  fireEvent.click(screen.getByRole('article', { name: /Talk: Test Talk/i }));
 
-  expect(mockNavigate).toHaveBeenCalledWith({
-    pathname: `/talk/test-id`,
-    search: 'topics=test'
-  });
+  expect(currentLocation()).toMatchObject({ pathname: '/talk/test-id', search: '?topics=test' });
 });
 
 // ❌ BAD: Testing implementation details
@@ -329,7 +322,7 @@ This project achieves **exceptional Test Desiderata compliance** across all 12 p
 
 | Property | Status | Implementation |
 |----------|---------|---------------|
-| **Isolated** ✅ | Excellent | Proper cleanup, cached mocks, no shared state |
+| **Isolated** ✅ | Excellent | Per-file isolation, random test order, no global router mock |
 | **Composable** ✅ | Excellent | Reusable utilities (`createTalk`, `renderWithRouter`) |
 | **Deterministic** ✅ | Excellent | Mocked time, consistent test data, no randomness |
 | **Fast** ✅ | Outstanding | happy-dom (3x faster), cached utilities, optimized config |
@@ -361,31 +354,29 @@ vi.useRealTimers();
 
 // Proper cleanup maintaining isolation
 beforeEach(() => {
-  vi.clearAllMocks();                           // Reset behavior
-  setMockSearchParams(new URLSearchParams());   // Reset URL state
-  // DON'T recreate cached objects for performance
+  vi.clearAllMocks();   // Reset behavior; each render starts a fresh router
 });
 ```
 
 ### Centralized Test Utilities Reference
 
-**Available in `src/test/utils.tsx` (ALWAYS use these):**
+**Available helpers (ALWAYS use these):**
 
 ```typescript
-// Router Testing
-renderWithRouter(component)     // Renders with BrowserRouter context
-mockNavigate                   // Mock function for navigation testing
-setMockSearchParams(params)    // Set URL parameters for tests
-getMockSearchParams()          // Get current mock URL parameters
+// src/test/router.tsx - real MemoryRouter, no mocked hooks
+renderWithRouter(ui, { path?, params?, routePath? }) // routePath e.g. '/talk/:id' for useParams
+routerWrapper({ path?, params?, routePath? })        // wrapper for renderHook
+currentLocation()                                    // { pathname, search, ... } after interactions
+currentParams()                                      // URLSearchParams of the current location
 
-// Data Generation
-createTalk(overrides?)         // Generate consistent test talk data
-createMockHandlers(overrides?) // Generate mock event handlers
-
-// Component Testing
-renderTalkCard(props?)         // Specialized TalkCard renderer
-renderWithoutRouter(component) // For components not using router
+// src/test/builders.ts - side-effect free test data
+createTalk(overrides?)  // Consistent test talk data
+mockTalk                // Default talk
 ```
+
+Assert on what the user sees and on the resulting URL, never on calls to
+mocked router hooks. Mock only data sources such as `useTalks`, with
+`vi.mocked(useTalks).mockReturnValue(...)` so the return type is checked.
 
 **Test Setup Utilities:**
 ```typescript
@@ -420,10 +411,10 @@ const talks = [
 **Mock Handler Patterns:**
 ```typescript
 // ✅ EXCELLENT: Typed mock handlers
-const mockHandlers = createMockHandlers({
+const mockHandlers = {
   onTopicClick: vi.fn<(value: string) => void>(),
   onConferenceClick: vi.fn<(value: string) => void>()
-});
+};
 
 // Test interaction
 fireEvent.click(screen.getByRole('button', { name: /filter by topic/i }));
@@ -499,8 +490,8 @@ it('should work', () => { /* ... */ });
 
 ### ✅ Correct Testing Patterns (ALWAYS DO THIS):
 ```typescript
-// DO: Use centralized utilities
-import { renderWithRouter, mockNavigate } from '../../test/utils';
+// DO: Use the real-router helpers
+import { renderWithRouter, currentParams } from '../../test/router';
 
 // DO: Test public behavior
 expect(screen.getByText('Expected Output')).toBeInTheDocument();
@@ -515,7 +506,6 @@ const mockFn = vi.fn<(value: string) => void>();
 // DO: Proper cleanup (maintains isolation)
 beforeEach(() => {
   vi.clearAllMocks();
-  setMockSearchParams(new URLSearchParams());
 });
 
 // DO: Descriptive test names
@@ -642,8 +632,8 @@ make help                # Show all available targets
 ### Testing Setup
 - Uses Vitest with **happy-dom** environment (3x faster than jsdom)
 - React Testing Library for component testing
-- Comprehensive mocking system for React Router
-- Test utilities in `src/test/utils.tsx` for common patterns
+- Real in-memory router in tests (`src/test/router.tsx`), never mocked
+- Test files are isolated and run in random order (`sequence.shuffle`)
 - **Exceptional Test Desiderata score (12/12)** - all properties optimized
 
 ## AI Agent Guidelines
@@ -679,7 +669,7 @@ make help                # Show all available targets
 - **Accessibility First**: Every interactive component must have accessibility tests
 
 **Test Utilities Usage (MANDATORY):**
-- Use existing test utilities and mocking patterns from `src/test/utils.tsx`
+- Use the helpers in `src/test/router.tsx` and `src/test/builders.ts`
 - Test user interactions through proper event simulation with `fireEvent`
 - Verify filter state changes through TalksFilter class (NEVER bypass)
 - Maintain or improve test coverage with each change
@@ -734,13 +724,9 @@ describe('Component Integration', () => {
     fireEvent.change(searchBox, { target: { value: 'Kent Beck' } });
     fireEvent.keyDown(searchBox, { key: 'Enter' });
 
-    // Verify URL parameters updated via TalksFilter
+    // Verify the real URL was updated via TalksFilter
     await waitFor(() => {
-      expect(mockSetSearchParams).toHaveBeenCalledWith(
-        expect.objectContaining({
-          query: 'Kent Beck'
-        })
-      );
+      expect(currentParams().get('query')).toBe('Kent Beck');
     });
   });
 });
