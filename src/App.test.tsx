@@ -1,51 +1,30 @@
-import { render, screen, waitFor, cleanup } from '@testing-library/react';
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-
-// Mock all child components to isolate App testing
-// These mocks must be defined before the App import
-vi.mock('./components/TalksList', () => ({
-  TalksList: () => <div data-testid="talks-list">Mocked TalksList</div>
-}));
-vi.mock('./components/TalkDetail', () => ({
-  TalkDetail: () => <div data-testid="talk-detail">Mocked TalkDetail</div>
-}));
-vi.mock('./components/BackToTopButton', () => ({
-  BackToTopButton: () => <div data-testid="back-to-top">Mocked BackToTopButton</div>
-}));
-vi.mock('./components/Footer', () => ({
-  Footer: () => <div data-testid="footer">Mocked Footer</div>
-}));
-
-// Import App after mocks are set up
+import { render, screen } from '@testing-library/react';
+import { describe, it, expect } from 'vitest';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 import App from './App';
 
-describe('App layout', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-  });
+// Smoke test of the whole app: no component mocks. setup.ts serves the
+// real public/data/talks.json through fetch. Routing under the GitHub
+// Pages base path (/eferro-picks-site/) is covered by the e2e tests.
+const talksCount = (JSON.parse(
+  readFileSync(join(process.cwd(), 'public', 'data', 'talks.json'), 'utf-8')
+) as unknown[]).length;
 
-  afterEach(() => {
-    cleanup();
-  });
-
-  it('includes the BackToTopButton component', async () => {
+describe('App', () => {
+  it('loads the real talks data and lists every talk on the home page', async () => {
     render(<App />);
-    await waitFor(() => {
-      expect(screen.getByTestId('back-to-top')).toBeInTheDocument();
-    });
+
+    expect(
+      await screen.findByText(`Showing ${talksCount} of ${talksCount} talks`, {}, { timeout: 5000 })
+    ).toBeInTheDocument();
   });
 
-  it('includes the Footer component', async () => {
+  it('renders the header, search and footer around the list', async () => {
     render(<App />);
-    await waitFor(() => {
-      expect(screen.getByTestId('footer')).toBeInTheDocument();
-    });
-  });
 
-  it('includes the TalksList on the home route', async () => {
-    render(<App />);
-    await waitFor(() => {
-      expect(screen.getByTestId('talks-list')).toBeInTheDocument();
-    });
+    expect(screen.getByRole('img', { name: "eferro's picks logo" })).toBeInTheDocument();
+    expect(await screen.findByRole('search')).toBeInTheDocument();
+    expect(screen.getByRole('contentinfo')).toHaveTextContent('Edu Ferro');
   });
 });
