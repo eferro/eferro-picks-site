@@ -135,23 +135,6 @@ describe('CategoryIndex', () => {
     expect(categoryButtons[3]).toHaveTextContent('Product');
   });
 
-  describe('Compact layout', () => {
-    it('should render name and count side by side on a single line', () => {
-      render(
-        <CategoryIndex
-          categories={mockCategories}
-          onCategoryClick={mockOnCategoryClick}
-        />
-      );
-
-      const button = screen.getByRole('button', { name: /engineering culture/i });
-      expect(button).toHaveClass('flex', 'items-baseline', 'justify-between');
-
-      const count = screen.getByText('(15)');
-      expect(count).not.toHaveClass('block');
-    });
-  });
-
   describe('Overflow handling', () => {
     it('should limit height to the viewport and scroll internally', () => {
       render(

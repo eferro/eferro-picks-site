@@ -60,19 +60,8 @@ describe('useFilterHandlers', () => {
       expect(mockUpdateFilter).toHaveBeenCalledWith({ rating: null });
     });
 
-    it('sets rating to 5 when currently 4', () => {
-      const filter = new TalksFilter({ rating: 4 });
-      const { result } = renderHook(() => useFilterHandlers(filter, mockUpdateFilter));
-
-      act(() => {
-        result.current.handleRatingClick();
-      });
-
-      expect(mockUpdateFilter).toHaveBeenCalledWith({ rating: 5 });
-    });
-
-    it('sets rating to 5 when currently 3', () => {
-      const filter = new TalksFilter({ rating: 3 });
+    it.each([4, 3])('sets rating to 5 when currently %i', (rating) => {
+      const filter = new TalksFilter({ rating });
       const { result } = renderHook(() => useFilterHandlers(filter, mockUpdateFilter));
 
       act(() => {
