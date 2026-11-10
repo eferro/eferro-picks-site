@@ -11,11 +11,10 @@ describe('LoadingSpinner', () => {
     expect(spinner).toHaveClass('animate-spin');
   });
 
-  it('renders with accessibility role when specified', () => {
-    render(<LoadingSpinner role="status" />);
-    
-    const spinner = screen.getByRole('status');
-    expect(spinner).toBeInTheDocument();
+  it('is announced to screen readers as a loading status by default', () => {
+    render(<LoadingSpinner />);
+
+    expect(screen.getByRole('status', { name: 'Loading' })).toBeInTheDocument();
   });
 
   it('renders with container wrapper by default', () => {

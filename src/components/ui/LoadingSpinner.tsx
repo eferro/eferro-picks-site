@@ -1,5 +1,5 @@
 interface LoadingSpinnerProps {
-  /** Add accessibility role (e.g., 'status') */
+  /** Accessibility role. Defaults to 'status' so screen readers announce loading */
   role?: string;
   /** Disable container wrapper */
   noContainer?: boolean;
@@ -8,7 +8,7 @@ interface LoadingSpinnerProps {
 }
 
 export function LoadingSpinner({ 
-  role, 
+  role = 'status', 
   noContainer = false, 
   className = '' 
 }: LoadingSpinnerProps) {
@@ -16,6 +16,7 @@ export function LoadingSpinner({
     <div 
       data-testid="loading-spinner"
       role={role}
+      aria-label="Loading"
       className={`animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 ${className}`}
     />
   );

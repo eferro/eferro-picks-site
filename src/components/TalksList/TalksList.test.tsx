@@ -37,12 +37,12 @@ describe('TalksList', () => {
   });
 
   describe('Loading and error states', () => {
-    it('shows a spinner while loading', () => {
+    it('announces the loading state to screen readers', () => {
       vi.mocked(useTalks).mockReturnValue({ talks: [], loading: true, error: null });
 
       renderTalksList();
 
-      expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
+      expect(screen.getByRole('status', { name: 'Loading' })).toBeInTheDocument();
     });
 
     it('shows the error message when loading fails', () => {
