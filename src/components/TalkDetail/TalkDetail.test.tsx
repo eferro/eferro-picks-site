@@ -33,19 +33,19 @@ describe('TalkDetail', () => {
   };
 
   beforeEach(() => {
-    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+    vi.mocked(useTalks).mockImplementation(() => ({
       talks: [mockTalk],
       loading: false,
       error: null
     }));
 
-    (useParams as ReturnType<typeof vi.fn>).mockImplementation(() => ({ id: '1' }));
+    vi.mocked(useParams).mockImplementation(() => ({ id: '1' }));
     
     // Reset mocks and internal state
     vi.clearAllMocks();
     setMockSearchParams(new URLSearchParams());
     
-    (useSearchParams as ReturnType<typeof vi.fn>).mockImplementation(() => [getMockSearchParams(), mockSetSearchParams]);
+    vi.mocked(useSearchParams).mockImplementation(() => [getMockSearchParams(), mockSetSearchParams]);
   });
 
   const renderComponent = () => renderWithRouter(<TalkDetail />);
@@ -66,7 +66,7 @@ describe('TalkDetail', () => {
 
   describe('Rating Display', () => {
     it('displays star icon for 5-star rated talks', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks: [{ ...mockTalk, rating: 5 }],
         loading: false,
         error: null
@@ -79,7 +79,7 @@ describe('TalkDetail', () => {
     });
 
     it('does not display star icon for talks with rating less than 5', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks: [{ ...mockTalk, rating: 4 }],
         loading: false,
         error: null
@@ -90,7 +90,7 @@ describe('TalkDetail', () => {
     });
 
     it('does not display star icon for talks without rating', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks: [{ ...mockTalk, rating: undefined }],
         loading: false,
         error: null
@@ -101,7 +101,7 @@ describe('TalkDetail', () => {
     });
 
     it('has proper accessibility attributes for rating star', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks: [{ ...mockTalk, rating: 5 }],
         loading: false,
         error: null
@@ -166,7 +166,7 @@ describe('TalkDetail', () => {
 
   describe('Loading and Error States', () => {
     it('shows loading state', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks: [],
         loading: true,
         error: null
@@ -177,7 +177,7 @@ describe('TalkDetail', () => {
     });
 
     it('shows error state', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks: [],
         loading: false,
         error: new Error('Test error')
@@ -190,7 +190,7 @@ describe('TalkDetail', () => {
 
   describe('Blog Link', () => {
     it('renders blog link when blog_url is present', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks: [createTalk({ blog_url: 'https://www.eferro.net/2017/03/interesting-talkspodcasts-march.html' })],
         loading: false,
         error: null
@@ -205,7 +205,7 @@ describe('TalkDetail', () => {
     });
 
     it('does not render blog link when blog_url is absent', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks: [createTalk({ blog_url: undefined })],
         loading: false,
         error: null
@@ -216,7 +216,7 @@ describe('TalkDetail', () => {
     });
 
     it('does not render blog link when blog_url is empty string', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks: [createTalk({ blog_url: '' })],
         loading: false,
         error: null
@@ -229,7 +229,7 @@ describe('TalkDetail', () => {
 
   describe('Notes Section', () => {
     it('does not render notes section when notes are not present', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks: [createTalk({ notes: undefined })],
         loading: false,
         error: null
@@ -239,7 +239,7 @@ describe('TalkDetail', () => {
     });
 
     it('does not render notes section when notes are just whitespace', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks: [createTalk({ notes: '   \n  \r\n  ' })],
         loading: false,
         error: null
@@ -249,7 +249,7 @@ describe('TalkDetail', () => {
     });
 
     it('renders notes section when notes have meaningful content', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks: [createTalk({ notes: 'Some actual notes' })],
         loading: false,
         error: null
@@ -261,7 +261,7 @@ describe('TalkDetail', () => {
 
     it('sanitizes HTML in notes to prevent XSS', () => {
       const maliciousNotes = '<img src=x onerror="alert(1)" /><script>alert("xss")</script>'; 
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks: [createTalk({ notes: maliciousNotes })],
         loading: false,
         error: null
@@ -280,14 +280,14 @@ describe('TalkDetail', () => {
       const mockParams = new URLSearchParams('yearType=specific&year=2023&query=Test%20Speaker');
       setMockSearchParams(mockParams);
 
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks: [mockTalk],
         loading: false,
         error: null
       }));
 
-      (useParams as ReturnType<typeof vi.fn>).mockImplementation(() => ({ id: '1' }));
-      (useSearchParams as ReturnType<typeof vi.fn>).mockImplementation(() => [mockParams, mockSetSearchParams]);
+      vi.mocked(useParams).mockImplementation(() => ({ id: '1' }));
+      vi.mocked(useSearchParams).mockImplementation(() => [mockParams, mockSetSearchParams]);
 
       renderComponent();
 
@@ -323,7 +323,7 @@ describe('TalkDetail', () => {
     });
 
     it('shows "More by" section when other talks by the same speaker exist', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks: [mockTalk, talkBySpeaker1, talkByOtherSpeaker],
         loading: false,
         error: null,
@@ -336,7 +336,7 @@ describe('TalkDetail', () => {
     });
 
     it('does not show "More by" section when no other talks by the speaker exist', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks: [mockTalk, talkByOtherSpeaker],
         loading: false,
         error: null,
@@ -348,7 +348,7 @@ describe('TalkDetail', () => {
     });
 
     it('excludes the current talk from the related talks list', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks: [mockTalk, talkBySpeaker1],
         loading: false,
         error: null,
@@ -362,7 +362,7 @@ describe('TalkDetail', () => {
     });
 
     it('shows talks from any speaker of a multi-speaker talk', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks: [mockTalk, talkBySpeaker1, talkBySpeaker2],
         loading: false,
         error: null,
@@ -375,7 +375,7 @@ describe('TalkDetail', () => {
     });
 
     it('displays title, duration, and year for related talks', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks: [mockTalk, talkBySpeaker1],
         loading: false,
         error: null,
@@ -399,7 +399,7 @@ describe('TalkDetail', () => {
         })
       );
 
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks: [mockTalk, ...manyTalks],
         loading: false,
         error: null,
@@ -410,11 +410,11 @@ describe('TalkDetail', () => {
       const relatedLinks = screen.getAllByRole('link').filter(
         (link) => link.getAttribute('href')?.startsWith('/talk/')
       );
-      expect(relatedLinks.length).toBeLessThanOrEqual(5);
+      expect(relatedLinks).toHaveLength(5);
     });
 
     it('renders related talks as links to their detail pages', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks: [mockTalk, talkBySpeaker1],
         loading: false,
         error: null,

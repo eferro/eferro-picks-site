@@ -145,36 +145,24 @@ describe('TalkCard', () => {
   });
 
   describe('Interactions', () => {
-    it('calls onTopicClick when a topic tag is clicked and stops event propagation', () => {
+    it('filters by topic without opening the talk when a topic tag is clicked', () => {
       const onTopicClick = vi.fn();
-      const talk = createTalk({ topics: ['testing', 'agile'] });
-      renderTalkCard({ talk, onTopicClick });
+      renderTalkCard({ talk: createTalk({ topics: ['testing', 'agile'] }), onTopicClick });
 
-      const topicButton = screen.getByRole('button', { name: /Filter by topic testing/i });
-      const clickEvent = new MouseEvent('click', { bubbles: true });
-      Object.defineProperty(clickEvent, 'stopPropagation', { value: vi.fn() });
-
-      fireEvent(topicButton, clickEvent);
+      fireEvent.click(screen.getByRole('button', { name: /Filter by topic testing/i }));
 
       expect(onTopicClick).toHaveBeenCalledWith('testing');
-      expect(clickEvent.stopPropagation).toHaveBeenCalled();
+      expect(mockNavigate).not.toHaveBeenCalled();
     });
 
-    it('calls onConferenceClick when conference is clicked and stops event propagation', () => {
+    it('filters by conference without opening the talk when the conference is clicked', () => {
       const onConferenceClick = vi.fn();
-      const talk = createTalk({ 
-        conference_name: 'Test Conference'
-      });
-      const { onConferenceClick: handler } = renderTalkCard({ talk, onConferenceClick });
-      
-      const conferenceButton = screen.getByRole('button', { name: /Filter by conference Test Conference/i });
-      const clickEvent = new MouseEvent('click', { bubbles: true });
-      Object.defineProperty(clickEvent, 'stopPropagation', { value: vi.fn() });
-      
-      fireEvent(conferenceButton, clickEvent);
-      
-      expect(handler).toHaveBeenCalledWith('Test Conference');
-      expect(clickEvent.stopPropagation).toHaveBeenCalled();
+      renderTalkCard({ talk: createTalk({ conference_name: 'Test Conference' }), onConferenceClick });
+
+      fireEvent.click(screen.getByRole('button', { name: /Filter by conference Test Conference/i }));
+
+      expect(onConferenceClick).toHaveBeenCalledWith('Test Conference');
+      expect(mockNavigate).not.toHaveBeenCalled();
     });
 
     it('navigates to talk page when card is clicked', () => {
@@ -270,20 +258,12 @@ describe('TalkCard', () => {
       });
     });
 
-    it('stops event propagation when watch talk link is clicked', () => {
-      const talk = createTalk({ 
-        title: 'Test Talk',
-        url: 'https://example.com/test' 
-      });
-      renderTalkCard({ talk });
-      
-      const link = screen.getByRole('link', { name: /Watch Test Talk/i });
-      const clickEvent = new MouseEvent('click', { bubbles: true });
-      Object.defineProperty(clickEvent, 'stopPropagation', { value: vi.fn() });
-      
-      fireEvent(link, clickEvent);
-      
-      expect(clickEvent.stopPropagation).toHaveBeenCalled();
+    it('does not open the talk detail when the watch link is clicked', () => {
+      renderTalkCard({ talk: createTalk({ title: 'Test Talk', url: 'https://example.com/test' }) });
+
+      fireEvent.click(screen.getByRole('link', { name: /Watch Test Talk/i }));
+
+      expect(mockNavigate).not.toHaveBeenCalled();
     });
   });
 
@@ -316,50 +296,34 @@ describe('TalkCard', () => {
   });
 
   describe('Accessibility', () => {
-    it('has proper accessibility attributes', () => {
+    it('exposes every control with a descriptive accessible name', () => {
       const talk = createTalk({
         title: 'Test Talk',
         speakers: ['Test Speaker'],
         conference_name: 'Test Conference',
         topics: ['test'],
-        core_topic: 'test',
-        description: 'Test Description',
-        year: 2023,
-        duration: 1800,
-        notes: 'Test notes'
       });
 
       renderTalkCard({ talk });
 
-      // Main card accessibility
-      const card = screen.getByRole('article');
-      expect(card).toHaveAttribute('aria-label', 'Talk: Test Talk');
-
-      // Topic button accessibility (now clickeable)
-      const topicButton = screen.getByRole('button', { name: /filter by topic test/i });
-      expect(topicButton).toHaveAttribute('aria-label', 'Filter by topic test');
-
-      // Speaker span accessibility (no longer clickeable)
-      const speakerSpan = screen.getByLabelText(/speaker: test speaker/i);
-      expect(speakerSpan).toHaveAttribute('aria-label', 'Speaker: Test Speaker');
-
-      // Conference button accessibility (still clickeable)
-      const conferenceButton = screen.getByRole('button', { name: /filter by conference test conference/i });
-      expect(conferenceButton).toHaveAttribute('aria-label', 'Filter by conference Test Conference');
-
-      // Watch link accessibility
-      const watchLink = screen.getByRole('link', { name: /watch test talk/i });
-      expect(watchLink).toHaveAttribute('aria-label', 'Watch Test Talk');
+      expect(screen.getByRole('article', { name: 'Talk: Test Talk' })).toBeInTheDocument();
+      expect(screen.getByRole('link', { name: 'Test Talk' })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Filter by topic test' })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Filter by conference Test Conference' })).toBeInTheDocument();
+      expect(screen.getByRole('link', { name: 'Watch Test Talk' })).toBeInTheDocument();
+      expect(screen.getByLabelText('Speaker: Test Speaker')).toBeInTheDocument();
     });
 
-    it('has proper accessibility attributes for rating star', () => {
-      const talk = createTalk({ rating: 5 });
-      renderTalkCard({ talk });
+    it('makes the card focusable with the keyboard', () => {
+      renderTalkCard({ talk: createTalk() });
 
-      const starIcon = screen.getByRole('img', { name: /Top rated/i });
-      expect(starIcon).toHaveAttribute('role', 'img');
-      expect(starIcon).toHaveAttribute('aria-label', 'Top rated');
-      expect(starIcon).toHaveAttribute('title', 'Top rated');
+      expect(screen.getByRole('article')).toHaveAttribute('tabindex', '0');
+    });
+
+    it('gives the top rated star a tooltip', () => {
+      renderTalkCard({ talk: createTalk({ rating: 5 }) });
+
+      expect(screen.getByRole('img', { name: 'Top rated' })).toHaveAttribute('title', 'Top rated');
     });
   });
 

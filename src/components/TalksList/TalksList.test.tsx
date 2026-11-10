@@ -52,7 +52,7 @@ describe('Rating Filter', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     setMockSearchParams(new URLSearchParams());
-    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+    vi.mocked(useTalks).mockImplementation(() => ({
       talks: [ createTalk({ id: '1', title: 'Star talk' }) ],
       loading: false,
       error: null
@@ -82,7 +82,7 @@ describe('Rating Filter', () => {
     // Click to enable rating filter (to show 5 stars only)
     fireEvent.click(toggle);
     expect(mockSetSearchParams).toHaveBeenCalledTimes(1);
-    let params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+    let params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
     expect(params.get('rating')).toBe('5');
 
     // Update mockSearchParams to match new params
@@ -91,12 +91,13 @@ describe('Rating Filter', () => {
     cleanup();
     renderWithRouter(<TalksList />);
     const [updated] = screen.getAllByRole('button', { name: /toggle top picks filter/i });
-    // After first click, button should show star emoji with "Top Picks" (active state)
-    expect(updated.textContent?.trim()).toContain('Top Picks');
+    // After the first click the button is active
+    expect(updated).toHaveAttribute('aria-pressed', 'true');
+    expect(updated).toHaveTextContent('⭐ Top Picks');
     // Click to disable rating filter (back to showing all)
     fireEvent.click(updated);
     expect(mockSetSearchParams).toHaveBeenCalledTimes(2);
-    params = mockSetSearchParams.mock.calls[1][0] as URLSearchParams;
+    params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
     expect(params.get('rating')).toBeNull();
   });
 
@@ -108,7 +109,8 @@ describe('Rating Filter', () => {
     // The component should not force rating=5 just because there's no rating param
     // This test will fail because of the bug in the initialization logic
     const button = screen.getByRole('button', { name: /toggle top picks filter/i });
-    expect(button.textContent).toContain('Top Picks'); // Should show 'Top Picks' when rating filter is off
+    expect(button).toHaveAttribute('aria-pressed', 'false');
+    expect(button).not.toHaveTextContent('⭐');
   });
 });
 
@@ -116,7 +118,7 @@ describe('Format Filter', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     setMockSearchParams(new URLSearchParams());
-    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+    vi.mocked(useTalks).mockImplementation(() => ({
       talks: [
         createTalk({ id: '1', format: 'talk' }),
         createTalk({ id: '2', format: 'podcast' })
@@ -137,7 +139,7 @@ describe('Format Filter', () => {
     const podcastOption = screen.getByRole('menuitem', { name: /podcasts/i });
     fireEvent.click(podcastOption);
     
-    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+    const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
     expect(params.get('format')).toBe('podcast');
   });
 });
@@ -155,7 +157,7 @@ describe('TalksList', () => {
     vi.clearAllMocks();
     setMockSearchParams(new URLSearchParams());
 
-    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+    vi.mocked(useTalks).mockImplementation(() => ({
       talks: [
         createTalk({ id: '1', title: 'Talk with both topics 1', speakers: ['Test Speaker'], topics: ['react', 'typescript'], core_topic: 'Engineering Culture', year: 2025 }),
         createTalk({ id: '2', title: 'Talk with only first topic', speakers: ['Test Speaker'], topics: ['react'], core_topic: 'Engineering Culture', year: 2025 }),
@@ -178,14 +180,6 @@ describe('TalksList', () => {
     expect(screen.getAllByText('Talk with both topics 2').length).toBeGreaterThan(0);
   });
 
-  it('initializes with yearType from URL', () => {
-    // Set initial state
-    getMockSearchParams().set('yearType', 'last2');
-    
-    renderComponent();
-    expect(screen.getByText('Year Filter')).toBeInTheDocument();
-  });
-
   // Navigation preservation tested in TalkCard.test.tsx and integration tests
 
   describe('Year Filter Integration', () => {
@@ -195,9 +189,9 @@ describe('TalksList', () => {
         createTalk({ id: '2', year: 2020, title: 'Old Talk' }),
       ];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks,
-        isLoading: false,
+        loading: false,
         error: null,
       }));
 
@@ -225,9 +219,9 @@ describe('TalksList', () => {
         createTalk({ id: '2', year: 2024, title: 'Talk from 2024' }),
       ];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks,
-        isLoading: false,
+        loading: false,
         error: null,
       }));
 
@@ -252,9 +246,9 @@ describe('TalksList', () => {
     it('removes last5 year filter when clicking chip remove button', () => {
       const talks = [createTalk({ id: '1', year: 2024 })];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks,
-        isLoading: false,
+        loading: false,
         error: null,
       }));
 
@@ -275,9 +269,9 @@ describe('TalksList', () => {
     it('removes before year filter when clicking chip remove button', () => {
       const talks = [createTalk({ id: '1', year: 2019 })];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks,
-        isLoading: false,
+        loading: false,
         error: null,
       }));
 
@@ -298,9 +292,9 @@ describe('TalksList', () => {
     it('removes after year filter when clicking chip remove button', () => {
       const talks = [createTalk({ id: '1', year: 2021 })];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks,
-        isLoading: false,
+        loading: false,
         error: null,
       }));
 
@@ -321,9 +315,9 @@ describe('TalksList', () => {
     it('preserves other filters when removing year filter', () => {
       const talks = [createTalk({ id: '1', year: 2024, notes: 'Great talk' })];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+      vi.mocked(useTalks).mockImplementation(() => ({
         talks,
-        isLoading: false,
+        loading: false,
         error: null,
       }));
 
@@ -350,10 +344,11 @@ describe('Has Notes Filter', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     setMockSearchParams(new URLSearchParams());
+    vi.mocked(useTalks).mockReturnValue({ talks: [], loading: false, error: null });
   });
 
   it('shows the Has Notes filter button', () => {
-    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+    vi.mocked(useTalks).mockImplementation(() => ({
       talks: [],
       loading: false,
       error: null
@@ -365,65 +360,19 @@ describe('Has Notes Filter', () => {
     expect(button).toHaveAttribute('aria-pressed', 'false');
   });
 
-  it('filters talks to show only those with notes', () => {
-    // Explicitly reset search params to empty before rendering
-    setMockSearchParams(new URLSearchParams());
-    const talkWithNotes = createTalk({ 
-      id: '1',
-      title: 'Talk with notes',
-      notes: 'Some meaningful notes' 
-    });
-    const talkWithoutNotes = createTalk({ 
-      id: '2',
-      title: 'Talk without notes',
-      notes: undefined 
-    });
-    const talkWithEmptyNotes = createTalk({ 
-      id: '3',
-      title: 'Talk with empty notes',
-      notes: '\n  \n' 
-    });
-
-    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
-      talks: [talkWithNotes, talkWithoutNotes, talkWithEmptyNotes],
-      loading: false,
-      error: null
-    }));
-
+  it('activates the Has Notes filter when its button is clicked', () => {
+    // Filtering itself is covered with the real router in TalksList.integration.test.tsx
     renderWithRouter(<TalksList />);
-    
-    // Initially all talks should be visible
-    const initialArticles = screen.queryAllByRole('article');
-    if (initialArticles.length === 0) {
-      expect(screen.getByText('No talks found matching your criteria.')).toBeInTheDocument();
-    } else {
-      expect(initialArticles).toHaveLength(3);
-      expect(screen.getAllByText('Talk with notes')).toHaveLength(2); // Once in Recently Added, once in main list
-      expect(screen.getAllByText('Talk without notes')).toHaveLength(2);
-    }
 
-    // Click the Has Notes filter
-    const button = screen.getByRole('button', { name: /toggle has notes filter/i });
-    fireEvent.click(button);
+    fireEvent.click(screen.getByRole('button', { name: /toggle has notes filter/i }));
 
-    // Update mockSearchParams to match new params and re-render
-    const lastParams = mockSetSearchParams.mock.calls[mockSetSearchParams.mock.calls.length - 1][0];
-    setMockSearchParams(lastParams instanceof URLSearchParams ? lastParams : new URLSearchParams(String(lastParams)));
+    const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
+    expect(params.get('hasNotes')).toBe('true');
+
+    setMockSearchParams(params);
     cleanup();
     renderWithRouter(<TalksList />);
-    const filteredArticles = screen.queryAllByRole('article');
-    if (filteredArticles.length === 0) {
-      expect(screen.getByText('No talks found matching your criteria.')).toBeInTheDocument();
-    } else {
-      expect(filteredArticles).toHaveLength(1);
-      expect(screen.getByText('Talk with notes')).toBeInTheDocument();
-      expect(screen.queryByText('Talk without notes')).not.toBeInTheDocument();
-    }
-
-    // Re-query the Has Notes filter button after re-render
-    const updatedButton = screen.getByRole('button', { name: /toggle has notes filter/i });
-    // Verify the button state changed
-    expect(updatedButton).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.getByRole('button', { name: /toggle has notes filter/i })).toHaveAttribute('aria-pressed', 'true');
   });
 
 });
@@ -433,7 +382,7 @@ describe('URL parameters for other filters', () => {
     vi.clearAllMocks();
     setMockSearchParams(new URLSearchParams());
 
-    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+    vi.mocked(useTalks).mockImplementation(() => ({
       talks: [
         createTalk({ id: '1', topics: ['react', 'typescript'] })
       ],
@@ -474,7 +423,7 @@ it('integrates search box with filter system', () => {
     createTalk({ id: '2', title: 'Vue Basics', speakers: ['Bob'], topics: ['vue'] })
   ];
 
-  (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+  vi.mocked(useTalks).mockImplementation(() => ({
     talks,
     loading: false,
     error: null
@@ -514,7 +463,7 @@ describe('Recently Added Talks Integration', () => {
       })
     ];
 
-    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+    vi.mocked(useTalks).mockImplementation(() => ({
       talks,
       loading: false,
       error: null
@@ -542,7 +491,7 @@ describe('Recently Added Talks Integration', () => {
       })
     ];
 
-    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+    vi.mocked(useTalks).mockImplementation(() => ({
       talks,
       loading: false,
       error: null
@@ -568,7 +517,7 @@ describe('Recently Added Talks Integration', () => {
       })
     ];
 
-    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+    vi.mocked(useTalks).mockImplementation(() => ({
       talks,
       loading: false,
       error: null
@@ -595,7 +544,7 @@ describe('Recently Added Talks Integration', () => {
       })
     ];
 
-    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+    vi.mocked(useTalks).mockImplementation(() => ({
       talks,
       loading: false,
       error: null
@@ -621,7 +570,7 @@ describe('Recently Added Talks Integration', () => {
       })
     ];
 
-    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+    vi.mocked(useTalks).mockImplementation(() => ({
       talks,
       loading: false,
       error: null
@@ -672,7 +621,7 @@ describe('Recently Added Talks Integration', () => {
       })
     ];
 
-    (useTalks as ReturnType<typeof vi.fn>).mockImplementation(() => ({
+    vi.mocked(useTalks).mockImplementation(() => ({
       talks,
       loading: false,
       error: null

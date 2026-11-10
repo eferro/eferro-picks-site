@@ -36,7 +36,7 @@ describe('TalksList Integration', () => {
         createTalk({ id: '2', title: 'Talk Two' })
       ];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks,
         loading: false,
         error: null
@@ -55,7 +55,7 @@ describe('TalksList Integration', () => {
         createTalk({ id: '2', title: 'A Talk', format: 'talk' })
       ];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks,
         loading: false,
         error: null
@@ -79,7 +79,7 @@ describe('TalksList Integration', () => {
         createTalk({ id: '3', title: 'Talk with whitespace', notes: '   \n  ' })
       ];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks,
         loading: false,
         error: null
@@ -104,7 +104,7 @@ describe('TalksList Integration', () => {
         createTalk({ id: '4', title: 'Nothing matches', format: 'talk', notes: undefined })
       ];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks,
         loading: false,
         error: null
@@ -127,7 +127,7 @@ describe('TalksList Integration', () => {
         createTalk({ id: '1', title: 'Podcast with notes', format: 'podcast', notes: 'Notes' })
       ];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks,
         loading: false,
         error: null
@@ -151,7 +151,7 @@ describe('TalksList Integration', () => {
         createTalk({ id: '2', title: 'Talk 2', speakers: ['Bob Jones'] })
       ];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks,
         loading: false,
         error: null
@@ -176,7 +176,7 @@ describe('TalksList Integration', () => {
         createTalk({ id: '2', title: 'Talk 2', speakers: ['Bob Jones'] })
       ];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks,
         loading: false,
         error: null
@@ -202,7 +202,7 @@ describe('TalksList Integration', () => {
         createTalk({ id: '2', title: 'Vue Basics', speakers: ['Bob'], topics: ['vue'] })
       ];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks,
         loading: false,
         error: null
@@ -224,7 +224,7 @@ describe('TalksList Integration', () => {
         createTalk({ id: '2', title: 'Talk 2', speakers: ['Bob Jones'] })
       ];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks,
         loading: false,
         error: null
@@ -244,7 +244,7 @@ describe('TalksList Integration', () => {
         createTalk({ id: '2', title: 'Talk 2', topics: ['refactoring'] })
       ];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks,
         loading: false,
         error: null
@@ -267,7 +267,7 @@ describe('TalksList Integration', () => {
         createTalk({ id: '2', title: 'Old talk', year: currentYear - 3 })
       ];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks,
         loading: false,
         error: null
@@ -288,7 +288,7 @@ describe('TalksList Integration', () => {
         createTalk({ id: '2', title: 'Talk from 2024', year: 2024 })
       ];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks,
         loading: false,
         error: null
@@ -305,7 +305,7 @@ describe('TalksList Integration', () => {
     it('displays year filter chip when active', () => {
       const talks = [createTalk({ id: '1', title: 'Talk from 2023', year: 2023 })];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks,
         loading: false,
         error: null
@@ -332,7 +332,7 @@ describe('TalksList Integration', () => {
         createTalk({ id: '2', title: 'Another Talk', conference_name: 'JSConf' })
       ];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks,
         loading: false,
         error: null
@@ -352,7 +352,7 @@ describe('TalksList Integration', () => {
         createTalk({ id: '1', title: 'NDC Talk', conference_name: 'NDC London' })
       ];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks,
         loading: false,
         error: null
@@ -371,7 +371,7 @@ describe('TalksList Integration', () => {
         createTalk({ id: '1', title: 'React Talk', topics: ['react', 'hooks'] })
       ];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks,
         loading: false,
         error: null
@@ -387,7 +387,7 @@ describe('TalksList Integration', () => {
 
   describe('Loading and Error States', () => {
     it('shows loading spinner while fetching talks', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [],
         loading: true,
         error: null
@@ -399,7 +399,7 @@ describe('TalksList Integration', () => {
     });
 
     it('shows error message on fetch failure', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [],
         loading: false,
         error: new Error('Failed to fetch')
@@ -415,7 +415,7 @@ describe('TalksList Integration', () => {
         createTalk({ id: '1', title: 'A Talk', format: 'talk' })
       ];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks,
         loading: false,
         error: null
@@ -438,7 +438,7 @@ describe('TalksList Integration', () => {
         createTalk({ id: '3', format: 'podcast' })
       ];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks,
         loading: false,
         error: null
@@ -458,7 +458,7 @@ describe('TalksList Integration', () => {
         createTalk({ id: '1', title: 'Some talk' })
       ];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks,
         loading: false,
         error: null
@@ -475,7 +475,7 @@ describe('TalksList Integration', () => {
         createTalk({ id: '1', title: 'Short talk', duration: 900 })
       ];
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks,
         loading: false,
         error: null

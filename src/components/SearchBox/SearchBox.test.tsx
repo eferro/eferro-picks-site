@@ -22,7 +22,7 @@ describe('SearchBox', () => {
     fireEvent.change(input, { target: { value: 'Alice react' } });
     fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
     await waitFor(() => expect(mockSetSearchParams).toHaveBeenCalled());
-    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+    const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
     expect(params.get('query')).toBe('Alice react');
   });
 
@@ -56,7 +56,7 @@ describe('SearchBox', () => {
     fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
 
     await waitFor(() => expect(mockSetSearchParams).toHaveBeenCalled());
-    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+    const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
     expect(params.get('query')).toBe('react');
   });
 

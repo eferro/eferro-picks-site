@@ -47,7 +47,7 @@ describe('TalkDetail Integration', () => {
 
   describe('Talk Display', () => {
     it('renders complete talk information', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [mockTalk],
         loading: false,
         error: null
@@ -73,7 +73,7 @@ describe('TalkDetail Integration', () => {
     });
 
     it('shows top rated indicator for 5-star talks', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [mockTalk],
         loading: false,
         error: null
@@ -94,7 +94,7 @@ describe('TalkDetail Integration', () => {
     it('does not show top rated indicator for non-5-star talks', () => {
       const regularTalk = createTalk({ rating: 4 });
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [regularTalk],
         loading: false,
         error: null
@@ -115,7 +115,7 @@ describe('TalkDetail Integration', () => {
 
   describe('Notes Section', () => {
     it('displays notes section when talk has meaningful notes', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [mockTalk],
         loading: false,
         error: null
@@ -138,7 +138,7 @@ describe('TalkDetail Integration', () => {
     it('hides notes section when notes are empty', () => {
       const talkNoNotes = createTalk({ notes: undefined });
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [talkNoNotes],
         loading: false,
         error: null
@@ -159,7 +159,7 @@ describe('TalkDetail Integration', () => {
     it('hides notes section when notes are only whitespace', () => {
       const talkWhitespace = createTalk({ notes: '   \n\t  ' });
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [talkWhitespace],
         loading: false,
         error: null
@@ -183,7 +183,7 @@ describe('TalkDetail Integration', () => {
         notes: '<script>alert("xss")</script><img src=x onerror="alert(1)">'
       });
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [maliciousTalk],
         loading: false,
         error: null
@@ -210,7 +210,7 @@ describe('TalkDetail Integration', () => {
         blog_url: 'https://blog.example.com/post'
       });
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [talkWithBlog],
         loading: false,
         error: null
@@ -234,7 +234,7 @@ describe('TalkDetail Integration', () => {
     it('hides blog link when blog_url is absent', () => {
       const talkNoBlog = createTalk({ blog_url: undefined });
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [talkNoBlog],
         loading: false,
         error: null
@@ -274,7 +274,7 @@ describe('TalkDetail Integration', () => {
       );
 
     beforeEach(() => {
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [mockTalk, otherTalk],
         loading: false,
         error: null
@@ -332,7 +332,7 @@ describe('TalkDetail Integration', () => {
 
   describe('Navigation with Filter Preservation', () => {
     it('preserves all filters when navigating back to talks list', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [mockTalk],
         loading: false,
         error: null
@@ -357,7 +357,7 @@ describe('TalkDetail Integration', () => {
     });
 
     it('preserves search query in navigation', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [mockTalk],
         loading: false,
         error: null
@@ -402,7 +402,7 @@ describe('TalkDetail Integration', () => {
         speakers: ['Carol White']
       });
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [mockTalk, otherTalkBySpeaker1, otherTalkBySpeaker2, unrelatedTalk],
         loading: false,
         error: null
@@ -443,7 +443,7 @@ describe('TalkDetail Integration', () => {
         speakers: ['Different Speaker']
       });
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [mockTalk, unrelatedTalk],
         loading: false,
         error: null
@@ -470,7 +470,7 @@ describe('TalkDetail Integration', () => {
         year: 2022
       });
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [mockTalk, relatedTalk],
         loading: false,
         error: null
@@ -501,7 +501,7 @@ describe('TalkDetail Integration', () => {
         })
       );
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [mockTalk, ...manyRelatedTalks],
         loading: false,
         error: null
@@ -518,7 +518,7 @@ describe('TalkDetail Integration', () => {
 
       const relatedSection = screen.getByText(/More by/).closest('section');
       const relatedLinks = relatedSection?.querySelectorAll('a[href*="/talk/"]');
-      expect(relatedLinks?.length).toBeLessThanOrEqual(5);
+      expect(relatedLinks).toHaveLength(5);
     });
 
     it('related talk links preserve current filters', () => {
@@ -528,7 +528,7 @@ describe('TalkDetail Integration', () => {
         speakers: ['Alice Smith']
       });
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [mockTalk, relatedTalk],
         loading: false,
         error: null
@@ -552,7 +552,7 @@ describe('TalkDetail Integration', () => {
 
   describe('Loading and Error States', () => {
     it('shows loading spinner while fetching', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [],
         loading: true,
         error: null
@@ -571,7 +571,7 @@ describe('TalkDetail Integration', () => {
     });
 
     it('shows error message on fetch failure', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [],
         loading: false,
         error: new Error('Network error')
@@ -590,7 +590,7 @@ describe('TalkDetail Integration', () => {
     });
 
     it('shows not found message when talk ID does not exist', () => {
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [mockTalk],
         loading: false,
         error: null
@@ -613,7 +613,7 @@ describe('TalkDetail Integration', () => {
         speakers: ['Carol White']
       });
 
-      (useTalks as ReturnType<typeof vi.fn>).mockReturnValue({
+      vi.mocked(useTalks).mockReturnValue({
         talks: [mockTalk, unrelatedTalk],
         loading: false,
         error: null

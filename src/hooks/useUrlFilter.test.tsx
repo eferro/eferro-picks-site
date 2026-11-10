@@ -31,7 +31,7 @@ describe('useUrlFilter', () => {
     setMockSearchParams(new URLSearchParams());
     const { result } = renderHook(() => useUrlFilter(), { wrapper: Wrapper });
     result.current.updateFilter({ query: 'Alice react' });
-    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+    const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
     expect(params.get('query')).toBe('Alice react');
   });
 
@@ -39,7 +39,7 @@ describe('useUrlFilter', () => {
     setMockSearchParams(new URLSearchParams('page=2'));
     const { result } = renderHook(() => useUrlFilter(), { wrapper: Wrapper });
     result.current.updateFilter({ query: 'testing' });
-    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+    const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
     expect(params.get('page')).toBe('2');
     expect(params.get('query')).toBe('testing');
   });
@@ -52,7 +52,7 @@ describe('useUrlFilter', () => {
     // Update query to new value
     result.current.updateFilter({ query: 'newValue' });
 
-    const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+    const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
     expect(params.get('query')).toBe('newValue');  // Should be new, not old
     expect(params.get('hasNotes')).toBe('true');   // Other filters preserved
 
@@ -69,7 +69,7 @@ describe('useUrlFilter', () => {
       // Clear year filter
       result.current.updateFilter({ year: null, yearType: null });
 
-      const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+      const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
       expect(params.get('year')).toBeNull();
       expect(params.get('yearType')).toBeNull();
     });
@@ -80,7 +80,7 @@ describe('useUrlFilter', () => {
 
       result.current.updateFilter({ yearType: null, year: null });
 
-      const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+      const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
       expect(params.get('yearType')).toBeNull();
       expect(params.get('year')).toBeNull();
     });
@@ -91,7 +91,7 @@ describe('useUrlFilter', () => {
 
       result.current.updateFilter({ yearType: null, year: null });
 
-      const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+      const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
       expect(params.get('yearType')).toBeNull();
     });
 
@@ -101,7 +101,7 @@ describe('useUrlFilter', () => {
 
       result.current.updateFilter({ year: null, yearType: null });
 
-      const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+      const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
       expect(params.get('year')).toBeNull();
       expect(params.get('yearType')).toBeNull();
     });
@@ -112,7 +112,7 @@ describe('useUrlFilter', () => {
 
       result.current.updateFilter({ year: null, yearType: null });
 
-      const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+      const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
       expect(params.get('year')).toBeNull();
       expect(params.get('yearType')).toBeNull();
     });
@@ -123,7 +123,7 @@ describe('useUrlFilter', () => {
 
       result.current.updateFilter({ yearType: null, year: null });
 
-      const params = mockSetSearchParams.mock.calls[0][0] as URLSearchParams;
+      const params = mockSetSearchParams.mock.lastCall?.[0] as URLSearchParams;
       expect(params.get('yearType')).toBeNull();
       expect(params.get('year')).toBeNull();
       expect(params.get('page')).toBe('3');
