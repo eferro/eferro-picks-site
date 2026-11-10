@@ -303,7 +303,69 @@ describe('TalksList', () => {
     });
   });
 
+  describe('Filters from the URL', () => {
+    it('applies several filters at once', () => {
+      givenTalks([
+        createTalk({ id: '1', title: 'Perfect match', format: 'podcast', notes: 'Notes' }),
+        createTalk({ id: '2', title: 'No notes', format: 'podcast', notes: undefined }),
+        createTalk({ id: '3', title: 'Wrong format', format: 'talk', notes: 'Notes' }),
+      ]);
+
+      renderTalksList('format=podcast&hasNotes=true');
+
+      expect(listedTitles()).toEqual(['Perfect match']);
+    });
+
+    it('filters by a specific year', () => {
+      givenTalks([
+        createTalk({ id: '1', title: 'Talk from 2023', year: 2023 }),
+        createTalk({ id: '2', title: 'Talk from 2024', year: 2024 }),
+      ]);
+
+      renderTalksList('yearType=specific&year=2023');
+
+      expect(listedTitles()).toEqual(['Talk from 2023']);
+    });
+  });
+
   describe('Search', () => {
+    const searchable = [
+      createTalk({ id: '1', title: 'Hexagonal architecture', speakers: ['Alistair Cockburn'], topics: ['design'] }),
+      createTalk({ id: '2', title: 'Continuous delivery', speakers: ['Dave Farley'], topics: ['devops'] }),
+    ];
+
+    it.each([
+      ['title', 'hexagonal'],
+      ['speaker', 'Cockburn'],
+      ['topic', 'design'],
+    ])('finds talks by %s', (_field, query) => {
+      givenTalks(searchable);
+
+      renderTalksList(`query=${query}`);
+
+      expect(listedTitles()).toEqual(['Hexagonal architecture']);
+    });
+
+    it('shows the active search as a removable chip', () => {
+      givenTalks(searchable);
+
+      renderTalksList('query=Cockburn');
+
+      expect(screen.getByRole('button', { name: 'Remove search filter' })).toHaveTextContent('Cockburn');
+    });
+
+    it('restores the full list and empties the search box when the search chip is removed', () => {
+      givenTalks(searchable);
+      renderTalksList('query=Cockburn');
+
+      fireEvent.click(screen.getByRole('button', { name: 'Remove search filter' }));
+
+      expect(currentParams().get('query')).toBeNull();
+      expect(listedTitles()).toEqual(['Hexagonal architecture', 'Continuous delivery']);
+      expect(screen.getByRole('textbox', { name: 'Search talks' })).toHaveValue('');
+      expect(screen.queryByRole('button', { name: 'Remove search filter' })).not.toBeInTheDocument();
+    });
+
     it('filters the list by the submitted query', () => {
       givenTalks([
         createTalk({ id: '1', title: 'React Testing', speakers: ['Alice'], topics: ['react'] }),

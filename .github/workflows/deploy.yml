@@ -33,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Validate (unit + integration tests, lint, type check)
+      - name: Validate (tests, lint, type check)
         run: make validate
 
       - name: Build
