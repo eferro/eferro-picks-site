@@ -362,7 +362,7 @@ describe('TalksList', () => {
 
       expect(currentParams().get('query')).toBeNull();
       expect(listedTitles()).toEqual(['Hexagonal architecture', 'Continuous delivery']);
-      expect(screen.getByRole('textbox', { name: 'Search talks' })).toHaveValue('');
+      expect(screen.getByRole('combobox', { name: 'Search talks' })).toHaveValue('');
       expect(screen.queryByRole('button', { name: 'Remove search filter' })).not.toBeInTheDocument();
     });
 

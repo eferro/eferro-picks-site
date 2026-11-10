@@ -1,4 +1,4 @@
-import { screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor, within } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import { useSearchParams } from 'react-router-dom';
 import { renderWithRouter, currentParams } from '../../test/router';
@@ -7,132 +7,188 @@ import { SearchBox } from './index';
 
 const talks = [
   createTalk({ speakers: ['Alice'], topics: ['react'] }),
-  createTalk({ speakers: ['Bob'], topics: ['javascript'] }),
+  createTalk({ speakers: ['Bob'], topics: ['javascript', 'redux'] }),
 ];
 
+const searchBox = () => screen.getByRole('combobox', { name: 'Search talks' });
+const typeInto = (value: string) => fireEvent.change(searchBox(), { target: { value } });
+const press = (key: string) => fireEvent.keyDown(searchBox(), { key });
+const options = () => screen.queryAllByRole('option');
+
 describe('SearchBox', () => {
-  it('suggests topics based on input', () => {
-    renderWithRouter(<SearchBox talks={talks} />);
-    const input = screen.getByRole('textbox');
-    fireEvent.change(input, { target: { value: 'r' } });
-    expect(screen.getByText(/react/)).toBeInTheDocument();
-  });
+  describe('accessibility', () => {
+    it('is a labelled combobox inside a search landmark', () => {
+      renderWithRouter(<SearchBox talks={talks} />);
 
-  it('updates url params on submit', async () => {
-    renderWithRouter(<SearchBox talks={talks} />);
-    const input = screen.getByRole('textbox');
-    fireEvent.change(input, { target: { value: 'Alice react' } });
-    fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
-    await waitFor(() => expect(currentParams().get('query')).toBe('Alice react'));
-  });
+      expect(within(screen.getByRole('search')).getByRole('combobox')).toBe(searchBox());
+      expect(searchBox()).toHaveAttribute('aria-autocomplete', 'list');
+      expect(searchBox()).toHaveAttribute('aria-expanded', 'false');
+    });
 
-  it('handles multi-word author names correctly', async () => {
-    const talksWithMultiWordNames = [
-      createTalk({ id: '1', title: 'Test Talk', speakers: ['Kent Beck'] })
-    ];
-    renderWithRouter(<SearchBox talks={talksWithMultiWordNames} />);
+    it('keeps the descriptive placeholder', () => {
+      renderWithRouter(<SearchBox talks={talks} />);
 
-    const input = screen.getByRole('textbox');
-    fireEvent.change(input, { target: { value: 'Kent Beck' } });
-    fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
+      expect(screen.getByPlaceholderText(/search in titles/i)).toBe(searchBox());
+    });
 
-    await waitFor(() => expect(currentParams().get('query')).toBe('Kent Beck'));
-  });
+    it('exposes the suggestions as a listbox controlled by the input', () => {
+      renderWithRouter(<SearchBox talks={talks} />);
 
-  it('shows no suggestions for empty input', () => {
-    renderWithRouter(<SearchBox talks={talks} />);
-    const input = screen.getByRole('textbox');
-    fireEvent.change(input, { target: { value: '' } });
-    expect(screen.queryByRole('button', { name: /react/i })).not.toBeInTheDocument();
-  });
+      typeInto('re');
 
-  it('trims whitespace on submit', async () => {
-    renderWithRouter(<SearchBox talks={talks} />);
-    const input = screen.getByRole('textbox');
-    fireEvent.change(input, { target: { value: '  react  ' } });
-    fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
-
-    await waitFor(() => expect(currentParams().get('query')).toBe('react'));
-  });
-
-  it('shows no suggestions when input does not match any talk data', () => {
-    renderWithRouter(<SearchBox talks={talks} />);
-    const input = screen.getByRole('textbox');
-    fireEvent.change(input, { target: { value: 'xyznonexistent' } });
-    expect(screen.queryAllByRole('button')).toHaveLength(0);
-  });
-
-  it('replaces last word with suggestion when clicked', () => {
-    renderWithRouter(<SearchBox talks={talks} />);
-    const input = screen.getByRole('textbox');
-    fireEvent.change(input, { target: { value: 'hello rea' } });
-
-    const suggestion = screen.getByRole('button', { name: /react/ });
-    fireEvent.click(suggestion);
-
-    expect((input as HTMLInputElement).value).toBe('hello react');
-  });
-
-  it('clears suggestions after clicking a suggestion', () => {
-    renderWithRouter(<SearchBox talks={talks} />);
-    const input = screen.getByRole('textbox');
-    fireEvent.change(input, { target: { value: 'rea' } });
-    expect(screen.getByRole('button', { name: /react/ })).toBeInTheDocument();
-
-    fireEvent.click(screen.getByRole('button', { name: /react/ }));
-    expect(screen.queryByRole('button', { name: /react/ })).not.toBeInTheDocument();
-  });
-
-  it('clears suggestions after form submit', async () => {
-    renderWithRouter(<SearchBox talks={talks} />);
-    const input = screen.getByRole('textbox');
-    fireEvent.change(input, { target: { value: 'rea' } });
-    expect(screen.getByRole('button', { name: /react/ })).toBeInTheDocument();
-
-    fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
-    await waitFor(() => {
-      expect(screen.queryByRole('button', { name: /react/ })).not.toBeInTheDocument();
+      expect(searchBox()).toHaveAttribute('aria-expanded', 'true');
+      const listbox = screen.getByRole('listbox');
+      expect(searchBox()).toHaveAttribute('aria-controls', listbox.id);
     });
   });
 
-  it('displays speaker and topic icons in suggestions', () => {
-    renderWithRouter(<SearchBox talks={talks} />);
-    const input = screen.getByRole('textbox');
-    fireEvent.change(input, { target: { value: 'Ali' } });
+  describe('suggestions', () => {
+    it('suggests speakers and topics matching the last word typed', () => {
+      renderWithRouter(<SearchBox talks={talks} />);
 
-    const suggestion = screen.getByRole('button', { name: /Alice/ });
-    expect(suggestion.textContent).toContain('👤');
+      typeInto('hello re');
+
+      expect(options().map(o => o.textContent)).toEqual(['🏷️ react', '🏷️ redux']);
+    });
+
+    it('marks speakers and topics with different icons', () => {
+      renderWithRouter(<SearchBox talks={talks} />);
+
+      typeInto('Ali');
+
+      expect(screen.getByRole('option', { name: /Alice/ })).toHaveTextContent('👤');
+    });
+
+    it.each([
+      ['an empty input', ''],
+      ['input that matches nothing', 'xyznonexistent'],
+    ])('shows none for %s', (_case, value) => {
+      renderWithRouter(<SearchBox talks={talks} />);
+
+      typeInto(value);
+
+      expect(options()).toHaveLength(0);
+      expect(searchBox()).toHaveAttribute('aria-expanded', 'false');
+    });
+
+    it('shows at most 10', () => {
+      const manySpeakers = Array.from({ length: 12 }, (_, i) => createTalk({ speakers: [`Speaker ${i}`], topics: [] }));
+      renderWithRouter(<SearchBox talks={manySpeakers} />);
+
+      typeInto('Speaker');
+
+      expect(options()).toHaveLength(10);
+    });
+
+    it('replaces the last word with the clicked suggestion and closes the list', () => {
+      renderWithRouter(<SearchBox talks={talks} />);
+      typeInto('hello rea');
+
+      fireEvent.click(screen.getByRole('option', { name: /react/ }));
+
+      expect(searchBox()).toHaveValue('hello react');
+      expect(options()).toHaveLength(0);
+    });
   });
 
-  it('has an accessible search placeholder', () => {
-    renderWithRouter(<SearchBox talks={talks} />);
-    expect(screen.getByPlaceholderText(/search in titles/i)).toBeInTheDocument();
+  describe('keyboard', () => {
+    it('moves the highlighted suggestion with the arrow keys', () => {
+      renderWithRouter(<SearchBox talks={talks} />);
+      typeInto('re');
+
+      press('ArrowDown');
+      expect(screen.getByRole('option', { name: /react/ })).toHaveAttribute('aria-selected', 'true');
+      expect(searchBox()).toHaveAttribute('aria-activedescendant', screen.getByRole('option', { name: /react/ }).id);
+
+      press('ArrowDown');
+      expect(screen.getByRole('option', { name: /redux/ })).toHaveAttribute('aria-selected', 'true');
+      expect(screen.getByRole('option', { name: /react/ })).toHaveAttribute('aria-selected', 'false');
+
+      press('ArrowUp');
+      expect(screen.getByRole('option', { name: /react/ })).toHaveAttribute('aria-selected', 'true');
+    });
+
+    it('does not move past the first or last suggestion', () => {
+      renderWithRouter(<SearchBox talks={talks} />);
+      typeInto('re');
+
+      press('ArrowDown');
+      press('ArrowDown');
+      press('ArrowDown');
+      expect(screen.getByRole('option', { name: /redux/ })).toHaveAttribute('aria-selected', 'true');
+
+      press('ArrowUp');
+      press('ArrowUp');
+      press('ArrowUp');
+      expect(screen.getByRole('option', { name: /react/ })).toHaveAttribute('aria-selected', 'true');
+    });
+
+    it('accepts the highlighted suggestion with Enter without searching yet', () => {
+      renderWithRouter(<SearchBox talks={talks} />);
+      typeInto('hello re');
+
+      press('ArrowDown');
+      press('Enter');
+
+      expect(searchBox()).toHaveValue('hello react');
+      expect(options()).toHaveLength(0);
+      expect(currentParams().get('query')).toBeNull();
+    });
+
+    it('drops the highlight when the user keeps typing, so Enter searches the typed text', async () => {
+      renderWithRouter(<SearchBox talks={talks} />);
+      typeInto('re');
+      press('ArrowDown');
+
+      typeInto('redu');
+      press('Enter');
+
+      await waitFor(() => expect(currentParams().get('query')).toBe('redu'));
+    });
+
+    it('closes the suggestions with Escape and keeps the text', () => {
+      renderWithRouter(<SearchBox talks={talks} />);
+      typeInto('re');
+
+      press('Escape');
+
+      expect(options()).toHaveLength(0);
+      expect(searchBox()).toHaveValue('re');
+      expect(searchBox()).toHaveAttribute('aria-expanded', 'false');
+    });
+
+    it('does not search while typing other keys', () => {
+      renderWithRouter(<SearchBox talks={talks} />);
+      typeInto('react');
+
+      press('a');
+
+      expect(currentParams().get('query')).toBeNull();
+    });
   });
 
-  it('exposes a labelled search landmark and input to assistive technology', () => {
-    renderWithRouter(<SearchBox talks={talks} />);
+  describe('searching', () => {
+    it.each([
+      ['a multi-word query', 'Alice react', 'Alice react'],
+      ['a multi-word author name', 'Kent Beck', 'Kent Beck'],
+      ['surrounding whitespace', '  react  ', 'react'],
+    ])('searches %s with Enter when no suggestion is highlighted', async (_case, typed, query) => {
+      renderWithRouter(<SearchBox talks={talks} />);
+      typeInto(typed);
 
-    expect(screen.getByRole('search')).toBeInTheDocument();
-    expect(screen.getByRole('textbox', { name: 'Search talks' })).toBeInTheDocument();
-  });
+      press('Enter');
 
-  it('does not search while typing, only on Enter', () => {
-    renderWithRouter(<SearchBox talks={talks} />);
-    const input = screen.getByRole('textbox', { name: 'Search talks' });
+      await waitFor(() => expect(currentParams().get('query')).toBe(query));
+    });
 
-    fireEvent.change(input, { target: { value: 'react' } });
-    fireEvent.keyDown(input, { key: 'a' });
+    it('closes the suggestions after searching', async () => {
+      renderWithRouter(<SearchBox talks={talks} />);
+      typeInto('rea');
 
-    expect(currentParams().get('query')).toBeNull();
-  });
+      press('Enter');
 
-  it('shows at most 10 suggestions', () => {
-    const manySpeakers = Array.from({ length: 12 }, (_, i) => createTalk({ speakers: [`Speaker ${i}`], topics: [] }));
-    renderWithRouter(<SearchBox talks={manySpeakers} />);
-
-    fireEvent.change(screen.getByRole('textbox', { name: 'Search talks' }), { target: { value: 'Speaker' } });
-
-    expect(screen.getAllByRole('button', { name: /Speaker \d+/ })).toHaveLength(10);
+      await waitFor(() => expect(options()).toHaveLength(0));
+    });
   });
 
   describe('sync with the URL query', () => {
@@ -145,7 +201,7 @@ describe('SearchBox', () => {
     it('shows the query from the URL when the page opens', () => {
       renderWithRouter(<SearchBox talks={talks} />, { params: 'query=tdd' });
 
-      expect(screen.getByRole('textbox', { name: 'Search talks' })).toHaveValue('tdd');
+      expect(searchBox()).toHaveValue('tdd');
     });
 
     it('clears the input when the query is removed from the URL elsewhere', () => {
@@ -159,14 +215,13 @@ describe('SearchBox', () => {
 
       fireEvent.click(screen.getByRole('button', { name: 'clear query' }));
 
-      expect(screen.getByRole('textbox', { name: 'Search talks' })).toHaveValue('');
+      expect(searchBox()).toHaveValue('');
     });
 
     it('removes the query from the URL when an empty search is submitted', async () => {
       renderWithRouter(<SearchBox talks={talks} />, { params: 'query=tdd&hasNotes=true' });
-      const input = screen.getByRole('textbox', { name: 'Search talks' });
 
-      fireEvent.change(input, { target: { value: '' } });
+      typeInto('');
       fireEvent.submit(screen.getByRole('search'));
 
       await waitFor(() => expect(currentParams().toString()).toBe('hasNotes=true'));
