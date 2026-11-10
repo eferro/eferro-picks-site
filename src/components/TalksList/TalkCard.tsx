@@ -1,4 +1,4 @@
-import { useMemo, type MouseEvent } from 'react';
+import { useMemo, type KeyboardEvent, type MouseEvent } from 'react';
 import { Link, useHref, useNavigate, useSearchParams } from 'react-router-dom';
 import { Talk } from '../../types/talks';
 import { formatDuration } from '../../utils/format';
@@ -67,6 +67,15 @@ export function TalkCard({
     navigate(talkLocation);
   };
 
+  const handleCardKeyDown = (e: KeyboardEvent) => {
+    // Only keys pressed on the card itself, not on the buttons and links inside it
+    if (e.target !== e.currentTarget) return;
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault(); // Space would otherwise scroll the page
+      navigate(talkLocation);
+    }
+  };
+
   const handleCardAuxClick = (e: MouseEvent) => {
     // Middle click opens the talk detail in a new tab
     if (e.button === 1) {
@@ -78,7 +87,7 @@ export function TalkCard({
     <div
       onClick={handleCardClick}
       onAuxClick={handleCardAuxClick}
-      onKeyDown={(e) => e.key === 'Enter' && handleCardClick()}
+      onKeyDown={handleCardKeyDown}
       role="article"
       tabIndex={0}
       aria-label={`Talk: ${talk.title}`}

@@ -203,6 +203,24 @@ describe('TalkCard', () => {
       expect(currentLocation()).toMatchObject({ pathname: '/talk/test-id', search: '?topics=test' });
     });
 
+    it('navigates to talk page when Space is pressed and does not scroll the page', () => {
+      renderTalkCard({ talk: createTalk({ id: 'test-id' }) }, 'topics=test');
+
+      const notPrevented = fireEvent.keyDown(screen.getByRole('article'), { key: ' ' });
+
+      expect(currentLocation()).toMatchObject({ pathname: '/talk/test-id', search: '?topics=test' });
+      expect(notPrevented).toBe(false);
+    });
+
+    it('ignores Enter and Space pressed inside the card controls', () => {
+      renderTalkCard({ talk: createTalk({ id: 'test-id', topics: ['tdd'] }) });
+
+      fireEvent.keyDown(screen.getByRole('button', { name: 'Filter by topic tdd' }), { key: ' ' });
+      fireEvent.keyDown(screen.getByRole('button', { name: 'Filter by topic tdd' }), { key: 'Enter' });
+
+      expect(currentLocation().pathname).toBe('/');
+    });
+
     describe('Open in new tab', () => {
       let openSpy: MockInstance<typeof window.open>;
 
