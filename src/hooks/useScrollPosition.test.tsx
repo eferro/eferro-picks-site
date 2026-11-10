@@ -3,7 +3,6 @@ import { renderHook } from '@testing-library/react';
 import { useScrollPosition, ScrollConfig } from './useScrollPosition';
 import { vi, describe, it, expect, beforeEach, afterEach, Mock } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
-import { setMockSearchParams } from '../test/utils';
 import { createWindowDouble, createSpiedWindowDouble } from '../test/doubles/window';
 
 const SCROLL_INDEX_KEY = 'scroll_index';
@@ -101,8 +100,6 @@ describe('useScrollPosition', () => {
       vi.spyOn(spiedWindow.sessionStorage, 'getItem');
       vi.spyOn(spiedWindow.sessionStorage, 'removeItem');
 
-      // Reset search params to simulate index page
-      setMockSearchParams(new URLSearchParams());
     });
 
     afterEach(() => {
