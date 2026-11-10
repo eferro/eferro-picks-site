@@ -1,7 +1,8 @@
 import { screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import { RecentlyAddedTalks } from './index';
-import { renderWithRouter, createTalk } from '../../test/utils';
+import { renderWithRouter } from '../../test/router';
+import { createTalk } from '../../test/builders';
 
 describe('RecentlyAddedTalks', () => {
   describe('basic rendering', () => {

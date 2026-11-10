@@ -1,7 +1,8 @@
 import { screen, fireEvent, act } from '@testing-library/react';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 import { YearFilter } from './YearFilter';
-import { createTalk, renderWithRouter } from '../../test/utils';
+import { renderWithRouter } from '../../test/router';
+import { createTalk } from '../../test/builders';
 
 // Opening the headless-ui menu triggers an async Transition state update,
 // so flush it inside act() to keep tests free of "not wrapped in act" warnings.

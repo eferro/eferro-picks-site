@@ -1,7 +1,8 @@
 import { screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { TalkSection } from './TalkSection';
-import { createTalk, renderWithRouter } from '../../test/utils';
+import { renderWithRouter } from '../../test/router';
+import { createTalk } from '../../test/builders';
 
 // Mock TalkCard to simplify testing and expose handler props
 interface MockTalkCardProps {

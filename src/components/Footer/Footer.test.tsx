@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { renderWithRouter } from '../../test/utils';
+import { renderWithRouter } from '../../test/router';
 import { Footer } from './index';
 
 describe('Footer', () => {

@@ -1,7 +1,7 @@
 import { screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { FormatFilter } from './FormatFilter';
-import { renderWithRouter } from '../../test/utils';
+import { renderWithRouter } from '../../test/router';
 
 describe('FormatFilter', () => {
   it('renders dropdown button with default Format label', () => {
