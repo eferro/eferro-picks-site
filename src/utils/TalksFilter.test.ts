@@ -1,1625 +1,190 @@
 import { describe, it, expect } from 'vitest';
-import { TalksFilter } from './TalksFilter';
+import { TalksFilter, TalksFilterData } from './TalksFilter';
 import { createTalk } from '../test/utils';
-import {
-  FIXED_TEST_YEAR,
-  createTestYear,
-  createYearRangeTalks,
-  createBoundaryYearTalks
-} from '../test/testHelpers';
+import { FIXED_TEST_YEAR, createTestYear, createBoundaryYearTalks } from '../test/testHelpers';
+import type { Talk } from '../types/talks';
+
+const ids = (talks: Talk[]): string[] => talks.map(t => t.id);
+
+/** A talk whose searchable fields contain nothing, so only overrides can match a query. */
+const blankTalk = (overrides: Partial<Talk> = {}): Talk =>
+  createTalk({ id: 'blank', title: 'Untitled', description: '', speakers: [], topics: [], notes: '', ...overrides });
 
 describe('TalksFilter', () => {
-  describe('constructor', () => {
-    it('should parse the year from the URL parameters', () => {
-      const filter = TalksFilter.fromUrlParams('year=2023');
-      expect(filter.year).toBe(2023);
-    });
-
-    it('should parse the query from the URL parameters', () => {
-      const filter = TalksFilter.fromUrlParams('query=testing');
-      expect(filter.query).toBe('testing');
-    });
-
-    it('should parse multiple parameters from the URL', () => {
+  describe('fromUrlParams', () => {
+    it('parses year and query', () => {
       const filter = TalksFilter.fromUrlParams('year=2023&query=testing');
       expect(filter.year).toBe(2023);
       expect(filter.query).toBe('testing');
     });
 
-    it('should handle empty parameters', () => {
-      const filter = TalksFilter.fromUrlParams('');
-      expect(filter.year).toBeNull();
-      expect(filter.query).toBe('');
+    it('accepts a URLSearchParams instance', () => {
+      const filter = TalksFilter.fromUrlParams(new URLSearchParams('query=tdd&rating=4'));
+      expect(filter.query).toBe('tdd');
+      expect(filter.rating).toBe(4);
     });
 
-    it('should handle null parameters', () => {
-      const filter = TalksFilter.fromUrlParams(null as never);
+    it.each([
+      ['an empty string', ''],
+      ['null', null],
+      ['undefined', undefined],
+    ])('returns an empty filter for %s', (_name, params) => {
+      const filter = TalksFilter.fromUrlParams(params);
       expect(filter.year).toBeNull();
+      expect(filter.yearType).toBeNull();
       expect(filter.query).toBe('');
-    });
-
-    it('should handle undefined parameters', () => {
-      const filter = TalksFilter.fromUrlParams(undefined as never);
-      expect(filter.year).toBeNull();
-      expect(filter.query).toBe('');
-    });
-  });
-
-  describe('isEmpty', () => {
-    it('should return true for a completely empty filter', () => {
-      const filter = new TalksFilter();
+      expect(filter.hasNotes).toBe(false);
+      expect(filter.quickWatch).toBe(false);
+      expect(filter.formats).toEqual([]);
       expect(filter.isEmpty()).toBe(true);
     });
 
-    it('should return true when all filters are in default state', () => {
-      const filter = new TalksFilter({
-        year: null,
-        yearType: null,
-        author: null,
-        topics: [],
-        conference: null,
-        hasNotes: false,
-        rating: null,
-        query: '',
-        formats: [],
-        quickWatch: false
+    it('parses the full set of parameters', () => {
+      const filter = TalksFilter.fromUrlParams(
+        'yearType=after&year=2023&conference=ReactConf&hasNotes=true&rating=5&query=testing&format=podcast&quickWatch=true'
+      );
+      expect(filter.yearType).toBe('after');
+      expect(filter.year).toBe(2023);
+      expect(filter.conference).toBe('ReactConf');
+      expect(filter.hasNotes).toBe(true);
+      expect(filter.rating).toBe(5);
+      expect(filter.query).toBe('testing');
+      expect(filter.formats).toEqual(['podcast']);
+      expect(filter.quickWatch).toBe(true);
+    });
+
+    it.each(['last2', 'last5', 'specific', 'before', 'after'] as const)('parses yearType=%s', (yearType) => {
+      expect(TalksFilter.fromUrlParams(`yearType=${yearType}`).yearType).toBe(yearType);
+    });
+
+    it('treats an empty conference as no conference filter', () => {
+      expect(TalksFilter.fromUrlParams('conference=').conference).toBeNull();
+    });
+
+    describe('boolean flags are only enabled by the value "true"', () => {
+      it.each([
+        ['hasNotes=true', true],
+        ['hasNotes=false', false],
+        ['hasNotes=', false],
+      ])('%s -> hasNotes %s', (params, expected) => {
+        expect(TalksFilter.fromUrlParams(params).hasNotes).toBe(expected);
       });
-      expect(filter.isEmpty()).toBe(true);
-    });
 
-    it('should return false when year filter is set', () => {
-      const filter = new TalksFilter({ year: 2023, yearType: 'specific' });
-      expect(filter.isEmpty()).toBe(false);
-    });
-
-    it('should return false when yearType is set without year', () => {
-      const filter = new TalksFilter({ yearType: 'last2' });
-      expect(filter.isEmpty()).toBe(false);
-    });
-
-    it('should return false when conference filter is set', () => {
-      const filter = new TalksFilter({ conference: 'Test Conference' });
-      expect(filter.isEmpty()).toBe(false);
-    });
-
-    it('should return false when hasNotes filter is active', () => {
-      const filter = new TalksFilter({ hasNotes: true });
-      expect(filter.isEmpty()).toBe(false);
-    });
-
-    it('should return false when rating filter is set', () => {
-      const filter = new TalksFilter({ rating: 5 });
-      expect(filter.isEmpty()).toBe(false);
-    });
-
-    it('should return false when query is set', () => {
-      const filter = new TalksFilter({ query: 'test query' });
-      expect(filter.isEmpty()).toBe(false);
-    });
-
-    it('should return false when formats filter is set', () => {
-      const filter = new TalksFilter({ formats: ['podcast'] });
-      expect(filter.isEmpty()).toBe(false);
-    });
-
-    it('should return false when quickWatch filter is active', () => {
-      const filter = new TalksFilter({ quickWatch: true });
-      expect(filter.isEmpty()).toBe(false);
-    });
-
-    it('should return false when multiple filters are set', () => {
-      const filter = new TalksFilter({
-        year: 2023,
-        yearType: 'specific',
-        conference: 'Test Conference',
-        hasNotes: true
+      it.each([
+        ['quickWatch=true', true],
+        ['quickWatch=false', false],
+        ['quickWatch=', false],
+      ])('%s -> quickWatch %s', (params, expected) => {
+        expect(TalksFilter.fromUrlParams(params).quickWatch).toBe(expected);
       });
-      expect(filter.isEmpty()).toBe(false);
     });
 
-    it('should handle edge cases correctly', () => {
-      // Empty string query should be considered empty
-      const filter1 = new TalksFilter({ query: '' });
-      expect(filter1.isEmpty()).toBe(true);
-
-      // Whitespace-only query should be considered empty
-      const filter2 = new TalksFilter({ query: '   ' });
-      expect(filter2.isEmpty()).toBe(true);
-
-      // Empty array for formats should be considered empty
-      const filter3 = new TalksFilter({ formats: [] });
-      expect(filter3.isEmpty()).toBe(true);
+    describe('formats', () => {
+      it.each([
+        ['format=podcast', ['podcast']],
+        ['format=talk,podcast', ['talk', 'podcast']],
+        ['format=talk,,podcast', ['talk', 'podcast']],
+        ['format=all', []],
+        ['format=', []],
+      ])('%s -> %j', (params, expected) => {
+        expect(TalksFilter.fromUrlParams(params).formats).toEqual(expected);
+      });
     });
 
-    it('should work correctly with fromUrlParams', () => {
-      // Empty URL params should result in empty filter
-      const emptyFilter = TalksFilter.fromUrlParams('');
-      expect(emptyFilter.isEmpty()).toBe(true);
+    describe('integer parameters (year, rating)', () => {
+      it.each(['abc', 'NaN', '', '  ', 'Infinity', '-Infinity', 'invalid'])(
+        'ignores invalid value "%s"',
+        (value) => {
+          const filter = TalksFilter.fromUrlParams(`year=${value}&rating=${value}`);
+          expect(filter.year).toBeNull();
+          expect(filter.rating).toBeNull();
+        }
+      );
 
-      // URL params with filters should result in non-empty filter
-      const nonEmptyFilter = TalksFilter.fromUrlParams('query=test');
-      expect(nonEmptyFilter.isEmpty()).toBe(false);
+      it('keeps zero as a valid value', () => {
+        const filter = TalksFilter.fromUrlParams('year=0&rating=0');
+        expect(filter.year).toBe(0);
+        expect(filter.rating).toBe(0);
+      });
+
+      it.each([
+        ['08', 8],      // not octal
+        ['0020', 20],   // not octal 020 = 16
+        ['0x10', 0],    // hex prefix not interpreted with radix 10
+        ['-2023', -2023],
+        ['+2023', 2023],
+        ['2023abc', 2023], // stops at first non-digit
+        ['1e3', 1],        // no scientific notation
+      ])('parses year "%s" in base 10 as %i', (value, expected) => {
+        expect(TalksFilter.fromUrlParams(`year=${value}`).year).toBe(expected);
+      });
+
+      it('parses rating "05" in base 10 as 5', () => {
+        expect(TalksFilter.fromUrlParams('rating=05').rating).toBe(5);
+      });
+    });
+
+    describe('legacy author/topics parameters are migrated into query', () => {
+      it.each([
+        ['author=Kent+Beck', 'Kent Beck'],
+        ['topics=TDD,Refactoring', 'TDD Refactoring'],
+        ['topics=TDD,,Refactoring', 'TDD Refactoring'],
+        ['author=Kent+Beck&topics=TDD,Refactoring', 'Kent Beck TDD Refactoring'],
+        ['query=domain&author=Eric+Evans&topics=DDD', 'domain Eric Evans DDD'],
+        ['author=', ''],
+        ['topics=', ''],
+      ])('%s -> query "%s"', (params, expectedQuery) => {
+        const filter = TalksFilter.fromUrlParams(params);
+        expect(filter.query).toBe(expectedQuery);
+        expect(filter.author).toBeNull();
+        expect(filter.topics).toEqual([]);
+      });
+
+      it('preserves the other parameters during migration', () => {
+        const filter = TalksFilter.fromUrlParams('author=Kent+Beck&year=2020&yearType=specific&rating=5&hasNotes=true');
+        expect(filter.query).toBe('Kent Beck');
+        expect(filter.year).toBe(2020);
+        expect(filter.yearType).toBe('specific');
+        expect(filter.rating).toBe(5);
+        expect(filter.hasNotes).toBe(true);
+      });
+
+      it('filters by the migrated author as a search term', () => {
+        const alice = createTalk({ id: 'alice', title: 'By Alice', speakers: ['Alice'] });
+        const bob = createTalk({ id: 'bob', title: 'By Bob', speakers: ['Bob'] });
+        expect(ids(TalksFilter.fromUrlParams('author=Alice').filter([alice, bob]))).toEqual(['alice']);
+      });
+
+      it('filters by the migrated topics requiring all of them', () => {
+        const both = createTalk({ id: 'both', title: 'React TS', topics: ['react', 'typescript'] });
+        const one = createTalk({ id: 'one', title: 'React', topics: ['react'] });
+        expect(ids(TalksFilter.fromUrlParams('topics=react,typescript').filter([both, one]))).toEqual(['both']);
+      });
     });
   });
 
   describe('toParams', () => {
-    it('should return an empty string if no filters are set', () => {
-      const filter = TalksFilter.fromUrlParams('');
-      expect(filter.toParams()).toBe('');
-    });
-
-    it('should return a query string for the year', () => {
-      const filter = TalksFilter.fromUrlParams('year=2023');
-      expect(filter.toParams()).toBe('yearType=specific&year=2023');
-    });
-
-    it('should return a query string for the query', () => {
-      const filter = TalksFilter.fromUrlParams('query=testing');
-      expect(filter.toParams()).toBe('query=testing');
-    });
-
-    it('should return a query string for both year and query', () => {
-      const filter = TalksFilter.fromUrlParams('year=2023&query=testing');
-      expect(filter.toParams()).toBe('yearType=specific&year=2023&query=testing');
-    });
-
-    it('should include conference and rating when present', () => {
-      const filter = TalksFilter.fromUrlParams('conference=ReactConf&rating=4');
-      expect(filter.toParams()).toBe('conference=ReactConf&rating=4');
-    });
-  });
-
-  describe('filter', () => {
-    const talk2023 = createTalk({ id: '1', title: 'Talk 2023', year: 2023 });
-    const talk2024 = createTalk({ id: '2', title: 'Talk 2024', year: 2024 });
-    const talkWithTesting = createTalk({ id: '3', title: 'Talk about testing', year: 2024 });
-    const talks = [talk2023, talk2024, talkWithTesting];
-
-    it('should filter by year', () => {
-      const filter = TalksFilter.fromUrlParams('year=2023');
-      expect(filter.filter(talks)).toEqual([talk2023]);
-    });
-
-    it('should filter by query', () => {
-      const filter = TalksFilter.fromUrlParams('query=testing');
-      expect(filter.filter(talks)).toEqual([talkWithTesting]);
-    });
-
-    it('should filter by year and query', () => {
-      const filter = TalksFilter.fromUrlParams('year=2024&query=testing');
-      expect(filter.filter(talks)).toEqual([talkWithTesting]);
-    });
-
-    it('should return all talks if no filter is set', () => {
-      const filter = TalksFilter.fromUrlParams('');
-      expect(filter.filter(talks)).toEqual(talks);
-    });
-
-    it('should return an empty array if no talks match the filter', () => {
-      const filter = TalksFilter.fromUrlParams('year=2025');
-      expect(filter.filter(talks)).toEqual([]);
-    });
-
-    it('should return an empty array if the talks array is empty', () => {
-      const filter = TalksFilter.fromUrlParams('year=2023');
-      expect(filter.filter([])).toEqual([]);
-    });
-
-    it('should handle case-insensitive query matching', () => {
-      const filter = TalksFilter.fromUrlParams('query=TESTING');
-      expect(filter.filter(talks)).toEqual([talkWithTesting]);
-    });
-
-    it('should filter by author', () => {
-      const talkAlice = createTalk({ id: '4', title: 'By Alice', speakers: ['Alice'], conference_name: 'ConfA', notes: 'n' });
-      const talkBob = createTalk({ id: '5', title: 'By Bob', speakers: ['Bob'], conference_name: 'ConfB' });
-      const filter = TalksFilter.fromUrlParams('author=Alice');
-      expect(filter.filter([talkAlice, talkBob])).toEqual([talkAlice]);
-    });
-
-    it('should filter by topics (AND condition)', () => {
-      const talkReactTs = createTalk({ id: '6', title: 'React TS', topics: ['react', 'typescript'] });
-      const talkReact = createTalk({ id: '7', title: 'React', topics: ['react'] });
-      const filter = TalksFilter.fromUrlParams('topics=react,typescript');
-      expect(filter.filter([talkReactTs, talkReact])).toEqual([talkReactTs]);
-    });
-
-    it('should filter by conference', () => {
-      const t1 = createTalk({ id: '8', title: 'A', conference_name: 'ConfA' });
-      const t2 = createTalk({ id: '9', title: 'B', conference_name: 'ConfB' });
-      const filter = TalksFilter.fromUrlParams('conference=ConfA');
-      expect(filter.filter([t1, t2])).toEqual([t1]);
-    });
-
-    it('should filter by hasNotes', () => {
-      const withNotes = createTalk({ id: '10', title: 'Notes', notes: 'some' });
-      const withoutNotes = createTalk({ id: '11', title: 'No', notes: '' });
-      const filter = TalksFilter.fromUrlParams('hasNotes=true');
-      expect(filter.filter([withNotes, withoutNotes])).toEqual([withNotes]);
-    });
-
-    it('should filter by format', () => {
-      const talkFormat = createTalk({ id: '12', title: 't', format: 'talk' });
-      const podcast = createTalk({ id: '13', title: 'p', format: 'podcast' });
-      const filter = TalksFilter.fromUrlParams('format=podcast');
-      expect(filter.filter([talkFormat, podcast])).toEqual([podcast]);
-      expect(filter.toParams()).toContain('format=podcast');
-    });
-
-    it('should treat format=all as no format filter', () => {
-      const filter = TalksFilter.fromUrlParams('format=all');
-      expect(filter.formats).toEqual([]);
-    });
-
-    it('should respect before yearType', () => {
-      const talks = [
-        createTalk({ id: 'b1', title: '2019', year: 2019 }),
-        createTalk({ id: 'b2', title: '2021', year: 2021 })
-      ];
-      const filter = TalksFilter.fromUrlParams('yearType=before&year=2020');
-      expect(filter.filter(talks)).toEqual([talks[0]]);
-    });
-
-    it('should respect after yearType', () => {
-      const talks = [
-        createTalk({ id: 'a1', title: '2019', year: 2019 }),
-        createTalk({ id: 'a2', title: '2021', year: 2021 })
-      ];
-      const filter = TalksFilter.fromUrlParams('yearType=after&year=2020');
-      expect(filter.filter(talks)).toEqual([talks[1]]);
-    });
-
-    it('should respect last2 yearType', () => {
-      const talks = createYearRangeTalks(FIXED_TEST_YEAR, 4);
-      const filter = new TalksFilter({
-        yearType: 'last2',
-        _testCurrentYear: FIXED_TEST_YEAR
-      });
-      expect(filter.filter(talks)).toEqual([talks[0], talks[1], talks[2]]);
-    });
-
-    it('should respect last5 yearType', () => {
-      const talks = createYearRangeTalks(FIXED_TEST_YEAR, 7);
-      const filter = new TalksFilter({
-        yearType: 'last5',
-        _testCurrentYear: FIXED_TEST_YEAR
-      });
-      const result = filter.filter(talks);
-      expect(result).toHaveLength(6); // current + 5 years back
-      expect(result).not.toContain(talks[6]); // 6 years ago excluded
-    });
-  });
-
-  describe('year filter types', () => {
-    it('should parse and serialize last2 years filter', () => {
-      const filter = TalksFilter.fromUrlParams('yearType=last2');
-      expect(filter.yearType).toBe('last2');
-      expect(filter.year).toBeNull();
-      expect(filter.toParams()).toContain('yearType=last2');
-    });
-
-    it('should parse and serialize last5 years filter', () => {
-      const filter = TalksFilter.fromUrlParams('yearType=last5');
-      expect(filter.yearType).toBe('last5');
-      expect(filter.year).toBeNull();
-      expect(filter.toParams()).toContain('yearType=last5');
-    });
-
-    it('should parse and serialize before year filter', () => {
-      const filter = TalksFilter.fromUrlParams('yearType=before&year=2020');
-      expect(filter.yearType).toBe('before');
-      expect(filter.year).toBe(2020);
-      expect(filter.toParams()).toContain('yearType=before');
-      expect(filter.toParams()).toContain('year=2020');
-    });
-
-    it('should parse and serialize after year filter', () => {
-      const filter = TalksFilter.fromUrlParams('yearType=after&year=2020');
-      expect(filter.yearType).toBe('after');
-      expect(filter.year).toBe(2020);
-      expect(filter.toParams()).toContain('yearType=after');
-      expect(filter.toParams()).toContain('year=2020');
-    });
-
-    it('should parse and serialize specific year filter', () => {
-      const filter = TalksFilter.fromUrlParams('yearType=specific&year=2023');
-      expect(filter.yearType).toBe('specific');
-      expect(filter.year).toBe(2023);
-      expect(filter.toParams()).toContain('yearType=specific');
-      expect(filter.toParams()).toContain('year=2023');
-    });
-
-    it('should default to no year filter if no yearType/year', () => {
-      const filter = TalksFilter.fromUrlParams('');
-      expect(filter.yearType).toBeNull();
-      expect(filter.year).toBeNull();
-      expect(filter.toParams()).not.toContain('yearType');
-      expect(filter.toParams()).not.toContain('year=');
-    });
-  });
-
-  describe('fromUrlParams (full filter set)', () => {
-    it('should parse all filter parameters from URL', () => {
-      const params = 'year=2023&author=Alice&topics=react,typescript&conference=ReactConf&hasNotes=true&rating=5&query=testing&format=podcast';
-      const filter = TalksFilter.fromUrlParams(params);
-      expect(filter.year).toBe(2023);
-      // author and topics are migrated to query
-      expect(filter.author).toBeNull();
-      expect(filter.topics).toEqual([]);
-      expect(filter.query).toBe('testing Alice react typescript');
-      expect(filter.conference).toBe('ReactConf');
-      expect(filter.hasNotes).toBe(true);
-      expect(filter.rating).toBe(5);
-      expect(filter.formats).toEqual(['podcast']);
-      const serialized = filter.toParams();
-      expect(serialized).toContain('conference=ReactConf');
-      expect(serialized).toContain('rating=5');
-      expect(serialized).toContain('format=podcast');
-    });
-  });
-
-  describe('URL parameter validation', () => {
-    it('should handle invalid year parameters gracefully', () => {
-      const invalidYears = ['abc', 'NaN', '', '  ', 'Infinity', '-Infinity'];
-      
-      invalidYears.forEach(invalidYear => {
-        const filter = TalksFilter.fromUrlParams(`year=${invalidYear}`);
-        expect(filter.year).toBeNull();
-      });
-    });
-
-    it('should handle invalid rating parameters gracefully', () => {
-      const invalidRatings = ['abc', 'NaN', '', '  ', 'Infinity', '-Infinity'];
-      
-      invalidRatings.forEach(invalidRating => {
-        const filter = TalksFilter.fromUrlParams(`rating=${invalidRating}`);
-        expect(filter.rating).toBeNull();
-      });
-    });
-
-    it('should parse valid numeric parameters correctly', () => {
-      const filter = TalksFilter.fromUrlParams('year=2023&rating=5');
-      expect(filter.year).toBe(2023);
-      expect(filter.rating).toBe(5);
-    });
-
-    it('should handle edge case numeric values', () => {
-      const filter = TalksFilter.fromUrlParams('year=0&rating=0');
-      expect(filter.year).toBe(0);
-      expect(filter.rating).toBe(0);
-    });
-  });
-
-  describe('Legacy URL Parameter Migration', () => {
-    it('should migrate author parameter to query', () => {
-      const filter = TalksFilter.fromUrlParams('author=Kent+Beck');
-      expect(filter.query).toBe('Kent Beck');
-      expect(filter.author).toBeNull();
-    });
-
-    it('should migrate topics parameter to query', () => {
-      const filter = TalksFilter.fromUrlParams('topics=TDD,Refactoring');
-      expect(filter.query).toBe('TDD Refactoring');
-      expect(filter.topics).toEqual([]);
-    });
-
-    it('should combine author and topics in query', () => {
-      const filter = TalksFilter.fromUrlParams('author=Kent+Beck&topics=TDD,Refactoring');
-      expect(filter.query).toBe('Kent Beck TDD Refactoring');
-      expect(filter.author).toBeNull();
-      expect(filter.topics).toEqual([]);
-    });
-
-    it('should combine legacy params with existing query', () => {
-      const filter = TalksFilter.fromUrlParams('query=domain&author=Eric+Evans&topics=DDD');
-      expect(filter.query).toBe('domain Eric Evans DDD');
-    });
-
-    it('should preserve other parameters during migration', () => {
-      const filter = TalksFilter.fromUrlParams('author=Kent+Beck&year=2020&yearType=specific&rating=5&hasNotes=true');
-      expect(filter.query).toBe('Kent Beck');
-      expect(filter.year).toBe(2020);
-      expect(filter.yearType).toBe('specific');
-      expect(filter.rating).toBe(5);
-      expect(filter.hasNotes).toBe(true);
-    });
-
-    it('should handle empty author parameter', () => {
-      const filter = TalksFilter.fromUrlParams('author=');
-      expect(filter.query).toBe('');
-      expect(filter.author).toBeNull();
-    });
-
-    it('should handle empty topics parameter', () => {
-      const filter = TalksFilter.fromUrlParams('topics=');
-      expect(filter.query).toBe('');
-      expect(filter.topics).toEqual([]);
-    });
-
-    it('should filter topics with empty strings', () => {
-      const filter = TalksFilter.fromUrlParams('topics=TDD,,Refactoring');
-      expect(filter.query).toBe('TDD Refactoring');
-    });
-  });
-
-  describe('toParams - No Legacy Parameters', () => {
-    it('should not write author parameter', () => {
-      const filter = new TalksFilter({ query: 'Kent Beck' });
-      const params = filter.toParams();
-      expect(params).toBe('query=Kent+Beck');
-      expect(params).not.toContain('author');
-    });
-
-    it('should not write topics parameter', () => {
-      const filter = new TalksFilter({ query: 'TDD Refactoring' });
-      const params = filter.toParams();
-      expect(params).toBe('query=TDD+Refactoring');
-      expect(params).not.toContain('topics');
-    });
-
-    it('should preserve other parameters', () => {
-      const filter = new TalksFilter({
-        query: 'domain',
-        year: 2020,
-        yearType: 'specific',
-        rating: 5,
-      });
-      const params = filter.toParams();
-      expect(params).toContain('query=domain');
-      expect(params).toContain('year=2020');
-      expect(params).toContain('yearType=specific');
-      expect(params).toContain('rating=5');
-      expect(params).not.toContain('author');
-      expect(params).not.toContain('topics');
-    });
-  });
-
-  describe('Multi-field Search (searchInFields)', () => {
-    describe('Empty Query Handling', () => {
-      it('should return all talks when query is empty', () => {
-        const talks = [createTalk({ id: '1' }), createTalk({ id: '2' })];
-        const filter = new TalksFilter({ query: '' });
-        expect(filter.filter(talks)).toEqual(talks);
-      });
-
-      it('should return all talks when query is only whitespace', () => {
-        const talks = [createTalk({ id: '1' }), createTalk({ id: '2' })];
-        const filter = new TalksFilter({ query: '   \n  \t  ' });
-        expect(filter.filter(talks)).toEqual(talks);
-      });
-    });
-
-    describe('Search in Title', () => {
-      it('should match query in title', () => {
-        const talk = createTalk({ title: 'Domain Driven Design' });
-        const filter = new TalksFilter({ query: 'Domain' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-
-      it('should match a word prefix in title', () => {
-        const talk = createTalk({ title: 'Refactoring Legacy Code' });
-        const filter = new TalksFilter({ query: 'Refactor' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-
-      it('should NOT match a fragment from the middle of a word', () => {
-        const talk = createTalk({ title: 'Refactoring Legacy Code' });
-        const filter = new TalksFilter({ query: 'factor' });
-        expect(filter.filter([talk])).toEqual([]);
-      });
-    });
-
-    describe('Word-prefix Matching (short terms)', () => {
-      it('should NOT match XP inside unrelated words like experience', () => {
-        const talk = createTalk({
-          title: 'Learning from experience',
-          description: 'An expert explains how to experiment'
-        });
-        const filter = new TalksFilter({ query: 'XP' });
-        expect(filter.filter([talk])).toEqual([]);
-      });
-
-      it('should match the exact topic XP', () => {
-        const talk = createTalk({
-          title: 'Talk Title',
-          topics: ['XP', 'TDD']
-        });
-        const filter = new TalksFilter({ query: 'XP' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-
-      it('should match hyphenated topics clicked as a whole', () => {
-        const talk = createTalk({
-          title: 'Talk Title',
-          topics: ['Lean-Agile']
-        });
-        const filter = new TalksFilter({ query: 'Lean-Agile' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-
-      it('should find terms inside hyphenated words', () => {
-        const talk = createTalk({
-          title: 'Talk Title',
-          topics: ['Agile-XP']
-        });
-        const filter = new TalksFilter({ query: 'XP' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-
-      it('should match words adjacent to punctuation', () => {
-        const talk = createTalk({
-          title: 'Talk Title',
-          notes: 'Covers generics, iterators and (XP) practices.'
-        });
-        const filter = new TalksFilter({ query: 'generics XP' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-    });
-
-    describe('Search in Description', () => {
-      it('should match query in description', () => {
-        const talk = createTalk({
-          title: 'Talk Title',
-          description: 'This talk covers microservices architecture'
-        });
-        const filter = new TalksFilter({ query: 'microservices' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-
-      it('should handle missing description gracefully', () => {
-        const talk = createTalk({
-          title: 'Talk Title',
-          description: undefined
-        });
-        const filter = new TalksFilter({ query: 'something' });
-        expect(filter.filter([talk])).toEqual([]);
-      });
-
-      it('should handle empty description', () => {
-        const talk = createTalk({
-          title: 'Talk Title',
-          description: ''
-        });
-        const filter = new TalksFilter({ query: 'something' });
-        expect(filter.filter([talk])).toEqual([]);
-      });
-    });
-
-    describe('Search in Speakers', () => {
-      it('should match query in speakers', () => {
-        const talk = createTalk({
-          title: 'Talk Title',
-          speakers: ['Kent Beck', 'Martin Fowler']
-        });
-        const filter = new TalksFilter({ query: 'Kent' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-
-      it('should match partial speaker name', () => {
-        const talk = createTalk({
-          title: 'Talk Title',
-          speakers: ['Robert Martin']
-        });
-        const filter = new TalksFilter({ query: 'Mart' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-
-      it('should handle missing speakers gracefully', () => {
-        const talk = createTalk({
-          title: 'Talk Title',
-          speakers: undefined
-        });
-        const filter = new TalksFilter({ query: 'someone' });
-        expect(filter.filter([talk])).toEqual([]);
-      });
-    });
-
-    describe('Search in Topics', () => {
-      it('should match query in topics', () => {
-        const talk = createTalk({
-          title: 'Talk Title',
-          topics: ['TDD', 'Refactoring', 'Clean Code']
-        });
-        const filter = new TalksFilter({ query: 'Refactoring' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-
-      it('should match partial topic', () => {
-        const talk = createTalk({
-          title: 'Talk Title',
-          topics: ['Domain-Driven Design']
-        });
-        const filter = new TalksFilter({ query: 'Domain' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-
-      it('should handle missing topics gracefully', () => {
-        const talk = createTalk({
-          title: 'Talk Title',
-          topics: undefined
-        });
-        const filter = new TalksFilter({ query: 'topic' });
-        expect(filter.filter([talk])).toEqual([]);
-      });
-    });
-
-    describe('Search in Notes', () => {
-      it('should match query in notes', () => {
-        const talk = createTalk({
-          title: 'Talk Title',
-          notes: 'Excellent explanation of hexagonal architecture'
-        });
-        const filter = new TalksFilter({ query: 'hexagonal' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-
-      it('should handle missing notes gracefully', () => {
-        const talk = createTalk({
-          title: 'Talk Title',
-          notes: undefined
-        });
-        const filter = new TalksFilter({ query: 'note' });
-        expect(filter.filter([talk])).toEqual([]);
-      });
-
-      it('should handle empty notes', () => {
-        const talk = createTalk({
-          title: 'Talk Title',
-          notes: ''
-        });
-        const filter = new TalksFilter({ query: 'note' });
-        expect(filter.filter([talk])).toEqual([]);
-      });
-    });
-
-    describe('Multiple Search Terms (AND Logic)', () => {
-      it('should match when ALL terms are found across different fields', () => {
-        const talk = createTalk({
-          title: 'Domain Modeling',
-          speakers: ['Eric Evans'],
-          topics: ['DDD'],
-          description: 'Strategic patterns for software design'
-        });
-        const filter = new TalksFilter({ query: 'Eric Domain patterns' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-
-      it('should NOT match when only SOME terms are found', () => {
-        const talk = createTalk({
-          title: 'Domain Modeling',
-          speakers: ['Eric Evans'],
-          description: 'Strategic patterns'
-        });
-        // 'hexagonal' is not in any field
-        const filter = new TalksFilter({ query: 'Domain hexagonal' });
-        expect(filter.filter([talk])).toEqual([]);
-      });
-
-      it('should handle multiple spaces between search terms', () => {
-        const talk = createTalk({
-          title: 'Refactoring patterns',
-          speakers: ['Martin Fowler']
-        });
-        const filter = new TalksFilter({ query: 'Refactoring    Martin' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-
-      it('should match three terms across different fields', () => {
-        const talk = createTalk({
-          title: 'Clean Code',
-          speakers: ['Robert Martin'],
-          topics: ['Craftsmanship'],
-          description: 'Best practices for writing maintainable code'
-        });
-        const filter = new TalksFilter({ query: 'Clean Robert Craftsmanship' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-    });
-
-    describe('Cross-field Combinations', () => {
-      it('should match term in title and another in description', () => {
-        const talk = createTalk({
-          title: 'Microservices Architecture',
-          description: 'Discusses resilience patterns'
-        });
-        const filter = new TalksFilter({ query: 'Microservices resilience' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-
-      it('should match term in speaker and another in notes', () => {
-        const talk = createTalk({
-          speakers: ['Kent Beck'],
-          notes: 'Great explanation of TDD workflow'
-        });
-        const filter = new TalksFilter({ query: 'Kent workflow' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-
-      it('should match all fields when same term appears in multiple fields', () => {
-        const talk = createTalk({
-          title: 'Testing strategies',
-          topics: ['Testing'],
-          description: 'Advanced testing techniques',
-          notes: 'Focus on testing pyramid'
-        });
-        const filter = new TalksFilter({ query: 'Testing' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-    });
-
-    describe('Accent Normalization', () => {
-      it('should match queries with accents against text without accents', () => {
-        const talk = createTalk({
-          title: 'Jose Garcia talks about refactoring'
-        });
-        const filter = new TalksFilter({ query: 'José García' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-
-      it('should match queries without accents against text with accents', () => {
-        const talk = createTalk({
-          title: 'José García talks about Diseño'
-        });
-        const filter = new TalksFilter({ query: 'Jose Garcia Diseno' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-
-      it('should handle multiple accented characters', () => {
-        const talk = createTalk({
-          title: 'Introducción a la programación funcional'
-        });
-        const filter = new TalksFilter({ query: 'Introduccion programacion' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-
-      it('should handle mixed accents in query and content', () => {
-        const talk = createTalk({
-          speakers: ['Raúl López'],
-          description: 'Técnicas avanzadas'
-        });
-        const filter = new TalksFilter({ query: 'Raul Tecnicas' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-
-      it('should match accented speakers', () => {
-        const talk = createTalk({
-          speakers: ['José García', 'María Pérez']
-        });
-        const filter = new TalksFilter({ query: 'Jose Maria' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-
-      it('should match accented topics', () => {
-        const talk = createTalk({
-          topics: ['Diseño de Software', 'Programación']
-        });
-        const filter = new TalksFilter({ query: 'Diseno Programacion' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-
-      it('should match accented notes', () => {
-        const talk = createTalk({
-          notes: 'Explicación detallada de técnicas avanzadas'
-        });
-        const filter = new TalksFilter({ query: 'Explicacion tecnicas' });
-        expect(filter.filter([talk])).toEqual([talk]);
-      });
-    });
-  });
-
-  describe('Year Filter Boundaries', () => {
-    // Using FIXED_TEST_YEAR for deterministic testing
-    const testYear = FIXED_TEST_YEAR;
-
-    describe('last2 filter', () => {
-      it('includes current year', () => {
-        const talk = createTalk({ year: testYear });
-        const filter = new TalksFilter({ yearType: 'last2', _testCurrentYear: testYear });
-        expect(filter.filter([talk])).toContain(talk);
-      });
-
-      it('includes one year ago', () => {
-        const talk = createTalk({ year: createTestYear(-1) });
-        const filter = new TalksFilter({ yearType: 'last2', _testCurrentYear: testYear });
-        expect(filter.filter([talk])).toContain(talk);
-      });
-
-      it('includes exactly two years ago', () => {
-        const talk = createTalk({ year: createTestYear(-2) });
-        const filter = new TalksFilter({ yearType: 'last2', _testCurrentYear: testYear });
-        expect(filter.filter([talk])).toContain(talk);
-      });
-
-      it('excludes three years ago', () => {
-        const talk = createTalk({ year: createTestYear(-3) });
-        const filter = new TalksFilter({ yearType: 'last2', _testCurrentYear: testYear });
-        expect(filter.filter([talk])).not.toContain(talk);
-      });
-
-      it('returns correct count for boundary range', () => {
-        const talks = createBoundaryYearTalks(testYear);
-        const filter = new TalksFilter({ yearType: 'last2', _testCurrentYear: testYear });
-        const result = filter.filter([talks.current, talks.minus1, talks.minus2, talks.minus3]);
-        expect(result).toHaveLength(3);
-      });
-    });
-
-    describe('last5 filter', () => {
-      it('includes current year', () => {
-        const talk = createTalk({ year: testYear });
-        const filter = new TalksFilter({ yearType: 'last5', _testCurrentYear: testYear });
-        expect(filter.filter([talk])).toContain(talk);
-      });
-
-      it('includes exactly five years ago', () => {
-        const talk = createTalk({ year: createTestYear(-5) });
-        const filter = new TalksFilter({ yearType: 'last5', _testCurrentYear: testYear });
-        expect(filter.filter([talk])).toContain(talk);
-      });
-
-      it('excludes six years ago', () => {
-        const talk = createTalk({ year: createTestYear(-6) });
-        const filter = new TalksFilter({ yearType: 'last5', _testCurrentYear: testYear });
-        expect(filter.filter([talk])).not.toContain(talk);
-      });
-
-      it('returns correct count for boundary range', () => {
-        const talks = createBoundaryYearTalks(testYear);
-        const filter = new TalksFilter({ yearType: 'last5', _testCurrentYear: testYear });
-        const result = filter.filter([talks.current, talks.minus5, talks.minus6]);
-        expect(result).toHaveLength(2);
-      });
-    });
-
-    describe('before filter', () => {
-      const referenceYear = 2020;
-
-      it('includes year before reference', () => {
-        const talk = createTalk({ year: 2019 });
-        const filter = new TalksFilter({ yearType: 'before', year: referenceYear });
-        expect(filter.filter([talk])).toContain(talk);
-      });
-
-      it('excludes exact reference year', () => {
-        const talk = createTalk({ year: referenceYear });
-        const filter = new TalksFilter({ yearType: 'before', year: referenceYear });
-        expect(filter.filter([talk])).not.toContain(talk);
-      });
-
-      it('excludes year after reference', () => {
-        const talk = createTalk({ year: 2021 });
-        const filter = new TalksFilter({ yearType: 'before', year: referenceYear });
-        expect(filter.filter([talk])).not.toContain(talk);
-      });
-    });
-
-    describe('after filter', () => {
-      const referenceYear = 2020;
-
-      it('includes year after reference', () => {
-        const talk = createTalk({ year: 2021 });
-        const filter = new TalksFilter({ yearType: 'after', year: referenceYear });
-        expect(filter.filter([talk])).toContain(talk);
-      });
-
-      it('excludes exact reference year', () => {
-        const talk = createTalk({ year: referenceYear });
-        const filter = new TalksFilter({ yearType: 'after', year: referenceYear });
-        expect(filter.filter([talk])).not.toContain(talk);
-      });
-
-      it('excludes year before reference', () => {
-        const talk = createTalk({ year: 2019 });
-        const filter = new TalksFilter({ yearType: 'after', year: referenceYear });
-        expect(filter.filter([talk])).not.toContain(talk);
-      });
-    });
-
-    describe('specific filter', () => {
-      const referenceYear = 2020;
-
-      it('includes exact reference year', () => {
-        const talk = createTalk({ year: referenceYear });
-        const filter = new TalksFilter({ yearType: 'specific', year: referenceYear });
-        expect(filter.filter([talk])).toContain(talk);
-      });
-
-      it('excludes year before reference', () => {
-        const talk = createTalk({ year: 2019 });
-        const filter = new TalksFilter({ yearType: 'specific', year: referenceYear });
-        expect(filter.filter([talk])).not.toContain(talk);
-      });
-
-      it('excludes year after reference', () => {
-        const talk = createTalk({ year: 2021 });
-        const filter = new TalksFilter({ yearType: 'specific', year: referenceYear });
-        expect(filter.filter([talk])).not.toContain(talk);
-      });
-    });
-  });
-
-  describe('Combined Filters Integration', () => {
-    it('should apply all filters simultaneously', () => {
-      const matchingTalk = createTalk({
-        id: '1',
-        title: 'Domain Modeling',
-        year: 2023,
-        speakers: ['Eric Evans'],
-        topics: ['DDD'],
-        conference_name: 'DDD Europe',
-        notes: 'Excellent talk about bounded contexts',
-        rating: 5,
-        format: 'article'
-      });
-
-      const wrongYear = createTalk({
-        ...matchingTalk,
-        id: '2',
-        year: 2020,
-        title: 'Domain Modeling Old'
-      });
-
-      const wrongConference = createTalk({
-        ...matchingTalk,
-        id: '3',
-        conference_name: 'Other Conf'
-      });
-
-      const wrongFormat = createTalk({
-        ...matchingTalk,
-        id: '4',
-        format: 'podcast'
-      });
-
-      const noNotes = createTalk({
-        ...matchingTalk,
-        id: '5',
-        notes: ''
-      });
-
-      const filter = new TalksFilter({
-        yearType: 'specific',
-        year: 2023,
-        conference: 'DDD Europe',
-        hasNotes: true,
-        rating: 5,
-        formats: ['article'],
-        query: 'Domain'
-      });
-
-      const talks = [matchingTalk, wrongYear, wrongConference, wrongFormat, noNotes];
-      expect(filter.filter(talks)).toEqual([matchingTalk]);
-    });
-
-    it('should fail when any filter condition is not met', () => {
-      const talk = createTalk({
-        title: 'Test Talk',
-        year: 2023,
-        conference_name: 'TestConf',
-        notes: 'test notes',
-        rating: 5,
-        format: 'article'
-      });
-
-      // Missing query match - should filter out
-      const filterWithQuery = new TalksFilter({
-        year: 2023,
-        yearType: 'specific',
-        conference: 'TestConf',
-        hasNotes: true,
-        rating: 5,
-        formats: ['article'],
-        query: 'Domain' // This doesn't match 'Test Talk'
-      });
-
-      expect(filterWithQuery.filter([talk])).toEqual([]);
-    });
-
-    it('should match when all filters are satisfied with multiple search terms', () => {
-      const talk = createTalk({
-        title: 'Domain Driven Design',
-        year: 2023,
-        speakers: ['Eric Evans'],
-        topics: ['DDD', 'Architecture'],
-        conference_name: 'DDD Europe',
-        notes: 'Strategic patterns',
-        rating: 5,
-        format: 'article',
-        description: 'An in-depth exploration of bounded contexts'
-      });
-
-      const filter = new TalksFilter({
-        yearType: 'specific',
-        year: 2023,
-        conference: 'DDD Europe',
-        hasNotes: true,
-        rating: 5,
-        formats: ['article'],
-        query: 'Domain Eric patterns' // All three terms must match
-      });
-
-      expect(filter.filter([talk])).toEqual([talk]);
-    });
-
-    it('should fail when multiple filters match but one does not', () => {
-      const talk = createTalk({
-        title: 'Domain Modeling',
-        year: 2023,
-        speakers: ['Eric Evans'],
-        conference_name: 'DDD Europe',
-        notes: 'Great talk',
-        format: 'article'
-      });
-
-      // All filters match except format
-      const filter = new TalksFilter({
-        yearType: 'specific',
-        year: 2023,
-        conference: 'DDD Europe',
-        hasNotes: true,
-        formats: ['podcast'], // Talk has format 'article', not 'podcast'
-        query: 'Domain'
-      });
-
-      expect(filter.filter([talk])).toEqual([]);
-    });
-
-    it('should handle combined year filter and query correctly', () => {
-      const talks = [
-        createTalk({ id: '1', title: 'TDD Basics', year: 2023 }),
-        createTalk({ id: '2', title: 'TDD Advanced', year: 2022 }),
-        createTalk({ id: '3', title: 'Refactoring', year: 2023 })
-      ];
-
-      const filter = new TalksFilter({
-        yearType: 'specific',
-        year: 2023,
-        query: 'TDD'
-      });
-
-      expect(filter.filter(talks)).toEqual([talks[0]]);
-    });
-  });
-
-  describe('Rating Filter', () => {
-    it('should include talks with exact rating match', () => {
-      const fiveStarTalk = createTalk({ rating: 5 });
-      const fourStarTalk = createTalk({ rating: 4 });
-      const threeStarTalk = createTalk({ rating: 3 });
-
-      const filter = new TalksFilter({ rating: 5 });
-      const result = filter.filter([fiveStarTalk, fourStarTalk, threeStarTalk]);
-
-      expect(result).toEqual([fiveStarTalk]);
-    });
-
-    it('should exclude talks with different ratings', () => {
-      const fourStarTalk = createTalk({ rating: 4 });
-      const filter = new TalksFilter({ rating: 5 });
-
-      expect(filter.filter([fourStarTalk])).toEqual([]);
-    });
-
-    it('should include talks without rating when filtering for null rating', () => {
-      const ratedTalk = createTalk({ rating: 5 });
-      const unratedTalk = createTalk({ rating: undefined });
-
-      const filter = new TalksFilter({ rating: null });
-      const result = filter.filter([ratedTalk, unratedTalk]);
-
-      expect(result).toEqual([ratedTalk, unratedTalk]);
-    });
-
-    it('should exclude unrated talks when filtering for specific rating', () => {
-      const unratedTalk = createTalk({ rating: undefined });
-      const filter = new TalksFilter({ rating: 5 });
-
-      expect(filter.filter([unratedTalk])).toEqual([]);
-    });
-
-    it('should parse rating from URL parameters', () => {
-      const filter = TalksFilter.fromUrlParams('rating=5');
-      expect(filter.rating).toBe(5);
-    });
-
-    it('should handle invalid rating in URL parameters', () => {
-      const filter = TalksFilter.fromUrlParams('rating=invalid');
-      expect(filter.rating).toBeNull();
-    });
-
-    it('should include rating in URL params when set', () => {
-      const filter = new TalksFilter({ rating: 5 });
-      const params = filter.toParams();
-      expect(params).toContain('rating=5');
-    });
-
-    it('should not include rating in URL params when null', () => {
-      const filter = new TalksFilter({ rating: null });
-      const params = filter.toParams();
-      expect(params).not.toContain('rating');
-    });
-  });
-
-  describe('parseValidInt - Radix Edge Cases', () => {
-    it('should parse octal-looking strings correctly with radix 10', () => {
-      const filter = TalksFilter.fromUrlParams('year=08');
-      expect(filter.year).toBe(8); // Not 0 (octal interpretation)
-    });
-
-    it('should parse octal-looking strings for rating correctly', () => {
-      const filter = TalksFilter.fromUrlParams('rating=05');
-      expect(filter.rating).toBe(5); // Not octal interpretation
-    });
-
-    it('should not interpret hex strings when using radix 10', () => {
-      const filter = TalksFilter.fromUrlParams('year=0x10');
-      expect(filter.year).toBe(0); // parseInt('0x10', 10) returns 0
-    });
-
-    it('should handle leading zeros correctly', () => {
-      const filter = TalksFilter.fromUrlParams('year=0020');
-      expect(filter.year).toBe(20); // Not 16 (octal 020)
-    });
-
-    it('should handle negative numbers correctly', () => {
-      const filter = TalksFilter.fromUrlParams('year=-2023');
-      expect(filter.year).toBe(-2023);
-    });
-
-    it('should handle numbers with leading plus sign', () => {
-      const filter = TalksFilter.fromUrlParams('year=+2023');
-      expect(filter.year).toBe(2023);
-    });
-
-    it('should stop parsing at first non-digit character', () => {
-      const filter = TalksFilter.fromUrlParams('year=2023abc');
-      expect(filter.year).toBe(2023);
-    });
-
-    it('should handle scientific notation correctly', () => {
-      const filter = TalksFilter.fromUrlParams('year=1e3');
-      expect(filter.year).toBe(1); // parseInt stops at 'e'
-    });
-  });
-
-  describe('Filter Method - null/undefined Edge Cases', () => {
-    it('should handle talks with null year when year filter is active', () => {
-      const talkWithYear = createTalk({ id: '1', year: 2023 });
-      const talkWithoutYear = createTalk({ id: '2', year: undefined });
-
-      const filter = new TalksFilter({ yearType: 'specific', year: 2023 });
-      const result = filter.filter([talkWithYear, talkWithoutYear]);
-
-      expect(result).toEqual([talkWithYear]);
-    });
-
-    it('should handle talks with null conference when conference filter is active', () => {
-      const talkWithConf = createTalk({ id: '1', conference_name: 'TestConf' });
-      const talkWithoutConf = createTalk({ id: '2', conference_name: undefined });
-
-      const filter = new TalksFilter({ conference: 'TestConf' });
-      const result = filter.filter([talkWithConf, talkWithoutConf]);
-
-      expect(result).toEqual([talkWithConf]);
-    });
-
-    it('should handle talks with null format when format filter is active', () => {
-      const talkWithFormat = createTalk({ id: '1', format: 'article' });
-      const talkWithoutFormat = createTalk({ id: '2', format: undefined });
-
-      const filter = new TalksFilter({ formats: ['article'] });
-      const result = filter.filter([talkWithFormat, talkWithoutFormat]);
-
-      expect(result).toEqual([talkWithFormat]);
-    });
-
-    it('should treat talks without format as talk format when no format filter', () => {
-      const talkWithFormat = createTalk({ id: '1', format: 'article' });
-      const talkWithoutFormat = createTalk({ id: '2', format: undefined });
-
-      const filter = new TalksFilter({ formats: ['talk'] });
-      const result = filter.filter([talkWithFormat, talkWithoutFormat]);
-
-      expect(result).toEqual([talkWithoutFormat]);
-    });
-  });
-
-  describe('Quick Watch (Under 15 Minutes) Filter', () => {
-    it('should include talks under 15 minutes when quickWatch is true', () => {
-      const shortTalk = createTalk({ id: '1', duration: 600 }); // 10 min
-      const longTalk = createTalk({ id: '2', duration: 3600 }); // 60 min
-
-      const filter = new TalksFilter({ quickWatch: true });
-      expect(filter.filter([shortTalk, longTalk])).toEqual([shortTalk]);
-    });
-
-    it('should include all talks when quickWatch is false', () => {
-      const shortTalk = createTalk({ id: '1', duration: 600 });
-      const longTalk = createTalk({ id: '2', duration: 3600 });
-
-      const filter = new TalksFilter({ quickWatch: false });
-      expect(filter.filter([shortTalk, longTalk])).toEqual([shortTalk, longTalk]);
-    });
-
-    it('should exclude talks exactly at 15 minutes (900 seconds)', () => {
-      const exactlyFifteen = createTalk({ id: '1', duration: 900 });
-
-      const filter = new TalksFilter({ quickWatch: true });
-      expect(filter.filter([exactlyFifteen])).toEqual([]);
-    });
-
-    it('should include talks just under 15 minutes', () => {
-      const justUnder = createTalk({ id: '1', duration: 899 });
-
-      const filter = new TalksFilter({ quickWatch: true });
-      expect(filter.filter([justUnder])).toEqual([justUnder]);
-    });
-
-    it('should exclude talks with zero duration when quickWatch is true', () => {
-      const zeroDuration = createTalk({ id: '1', duration: 0 });
-
-      const filter = new TalksFilter({ quickWatch: true });
-      expect(filter.filter([zeroDuration])).toEqual([]);
-    });
-
-    it('should include talks with positive duration under 15 minutes when quickWatch is true', () => {
-      const shortTalk = createTalk({ id: '1', duration: 300 }); // 5 minutes
-
-      const filter = new TalksFilter({ quickWatch: true });
-      expect(filter.filter([shortTalk])).toEqual([shortTalk]);
-    });
-
-    it('should default quickWatch to false', () => {
-      const filter = new TalksFilter({});
-      expect(filter.quickWatch).toBe(false);
-    });
-
-    it('should combine with other filters', () => {
-      const shortDDD = createTalk({ id: '1', duration: 600, year: 2023, conference_name: 'DDD Europe' });
-      const longDDD = createTalk({ id: '2', duration: 3600, year: 2023, conference_name: 'DDD Europe' });
-      const shortOther = createTalk({ id: '3', duration: 600, year: 2023, conference_name: 'Other' });
-
-      const filter = new TalksFilter({ quickWatch: true, conference: 'DDD Europe' });
-      expect(filter.filter([shortDDD, longDDD, shortOther])).toEqual([shortDDD]);
-    });
-
-    describe('URL parameter serialization', () => {
-      it('should serialize quickWatch=true to URL params', () => {
-        const filter = new TalksFilter({ quickWatch: true });
-        expect(filter.toParams()).toContain('quickWatch=true');
-      });
-
-      it('should not serialize quickWatch=false to URL params', () => {
-        const filter = new TalksFilter({ quickWatch: false });
-        expect(filter.toParams()).not.toContain('quickWatch');
-      });
-
-      it('should parse quickWatch from URL params', () => {
-        const filter = TalksFilter.fromUrlParams('quickWatch=true');
-        expect(filter.quickWatch).toBe(true);
-      });
-
-      it('should default quickWatch to false when not in URL', () => {
-        const filter = TalksFilter.fromUrlParams('');
-        expect(filter.quickWatch).toBe(false);
-      });
-
-      it('should round-trip quickWatch through URL params', () => {
-        const original = new TalksFilter({ quickWatch: true });
-        const restored = TalksFilter.fromUrlParams(original.toParams());
-        expect(restored.quickWatch).toBe(true);
-      });
-    });
-  });
-
-  describe('Author Filter (constructor) - Critical Mutation Tests', () => {
-    it('should match only talks whose speakers include the author', () => {
-      const talkAlice = createTalk({ id: '1', speakers: ['Alice', 'Bob'] });
-      const talkBob = createTalk({ id: '2', speakers: ['Bob'] });
-      const filter = new TalksFilter({ author: 'Alice' });
-      expect(filter.filter([talkAlice, talkBob])).toEqual([talkAlice]);
-    });
-
-    it('should exclude talks when the author is not among the speakers', () => {
-      const talk = createTalk({ id: '1', speakers: ['Bob', 'Carol'] });
-      const filter = new TalksFilter({ author: 'Alice' });
-      expect(filter.filter([talk])).toEqual([]);
-    });
-
-    it('should match all talks when author is null (no author filter)', () => {
-      const t1 = createTalk({ id: '1', speakers: ['Alice'] });
-      const t2 = createTalk({ id: '2', speakers: ['Bob'] });
-      const filter = new TalksFilter({ author: null });
-      expect(filter.filter([t1, t2])).toEqual([t1, t2]);
-    });
-  });
-
-  describe('Year Filter - null year with yearType (fallback branch)', () => {
-    // When a yearType requiring a reference year is set but year is null,
-    // matchesYear returns true (no filtering). These kill the `: true` -> `: false` mutant.
-    const talks = [
-      createTalk({ id: '1', year: 2019 }),
-      createTalk({ id: '2', year: 2021 })
-    ];
-
-    it('before with null year matches all talks', () => {
-      const filter = new TalksFilter({ yearType: 'before', year: null });
-      expect(filter.filter(talks)).toEqual(talks);
-    });
-
-    it('after with null year matches all talks', () => {
-      const filter = new TalksFilter({ yearType: 'after', year: null });
-      expect(filter.filter(talks)).toEqual(talks);
-    });
-
-    it('specific with null year matches all talks', () => {
-      const filter = new TalksFilter({ yearType: 'specific', year: null });
-      expect(filter.filter(talks)).toEqual(talks);
-    });
-  });
-
-  describe('Topics Array Logic - Critical Mutation Tests', () => {
-    it('should require ALL topics to match when multiple topics specified (AND logic)', () => {
-      const filter = new TalksFilter({ topics: ['React', 'TypeScript'] });
-      const talks = [
-        createTalk({ id: '1', topics: ['React'] }),               // Should NOT match (missing TypeScript)
-        createTalk({ id: '2', topics: ['TypeScript'] }),          // Should NOT match (missing React)
-        createTalk({ id: '3', topics: ['React', 'TypeScript'] }), // Should match (has both)
-        createTalk({ id: '4', topics: ['React', 'TypeScript', 'Testing'] }), // Should match (has both + more)
-      ];
-      const result = filter.filter(talks);
-      expect(result).toHaveLength(2);
-      expect(result.map(t => t.id)).toEqual(['3', '4']);
-    });
-
-    it('should match all talks when topics array is empty', () => {
-      const filter = new TalksFilter({ topics: [] });
-      const talks = [
-        createTalk({ id: '1', topics: ['React'] }),
-        createTalk({ id: '2', topics: [] }),
-      ];
-      const result = filter.filter(talks);
-      expect(result).toHaveLength(2); // Empty topics filter should match all
-    });
-
-    it('should handle edge case of talk with empty topics array', () => {
-      const filter = new TalksFilter({ topics: ['React'] });
-      const talkWithEmptyTopics = createTalk({ id: '1', topics: [] });
-      const result = filter.filter([talkWithEmptyTopics]);
-      expect(result).toHaveLength(0); // Talk with no topics can't match required topics
-    });
-  });
-
-  describe('Formats Array Logic - Critical Mutation Tests', () => {
-    it('should use OR logic for multiple formats', () => {
-      const filter = new TalksFilter({ formats: ['article', 'podcast'] });
-      const talks = [
-        createTalk({ id: '1', format: 'article' }),    // Should match
-        createTalk({ id: '2', format: 'podcast' }),  // Should match
-        createTalk({ id: '3', format: 'talk' }),     // Should NOT match
-      ];
-      const result = filter.filter(talks);
-      expect(result).toHaveLength(2);
-      expect(result.map(t => t.id)).toEqual(['1', '2']);
-    });
-
-    it('should match all talks when formats array is empty', () => {
-      const filter = new TalksFilter({ formats: [] });
-      const talks = [
-        createTalk({ id: '1', format: 'article' }),
-        createTalk({ id: '2', format: 'podcast' }),
-      ];
-      const result = filter.filter(talks);
-      expect(result).toHaveLength(2); // Empty formats filter should match all
-    });
-
-    it('should default undefined format to "talk" format', () => {
-      const filter = new TalksFilter({ formats: ['talk'] });
-      const talkWithUndefinedFormat = createTalk({ id: '1', format: undefined });
-      const result = filter.filter([talkWithUndefinedFormat]);
-      expect(result).toHaveLength(1); // undefined format should be treated as 'talk'
-    });
-  });
-
-  describe('Search Logic - Critical Mutation Tests', () => {
-    it('should use AND logic for multiple search terms', () => {
-      const talks = [
-        createTalk({ id: '1', title: 'Domain Driven Design' }),     // Has both terms
-        createTalk({ id: '2', title: 'Domain Modeling' }),          // Has 'Domain' but not 'Design'
-        createTalk({ id: '3', title: 'Good Design Practices' }),    // Has 'Design' but not 'Domain'
-        createTalk({ id: '4', title: 'Other Topic' }),              // Has neither term
-      ];
-
-      const filter = new TalksFilter({ query: 'Domain Design' });
-      const result = filter.filter(talks);
-
-      expect(result).toHaveLength(1); // Only the first talk has both terms
-      expect(result[0].id).toBe('1');
-    });
-
-    it('should catch empty string mutations in search', () => {
-      const talks = [
-        createTalk({ id: '1', title: 'React Testing' }),
-        createTalk({ id: '2', title: 'Vue Development' }),
-      ];
-
-      // Empty query should match all talks
-      const emptyFilter = new TalksFilter({ query: '' });
-      expect(emptyFilter.filter(talks)).toHaveLength(2);
-
-      // Whitespace-only query should match all talks
-      const whitespaceFilter = new TalksFilter({ query: '   \n\t   ' });
-      expect(whitespaceFilter.filter(talks)).toHaveLength(2);
-
-      // Non-empty query should filter to matching talks only
-      const realFilter = new TalksFilter({ query: 'React' });
-      expect(realFilter.filter(talks)).toHaveLength(1);
-      expect(realFilter.filter(talks)[0].id).toBe('1');
-    });
-
-    it('should search across all fields with AND logic', () => {
-      const talk = createTalk({
-        id: '1',
-        title: 'React Talk',
-        description: 'Testing strategies',
-        speakers: ['Kent Beck'],
-        topics: ['TDD'],
-        notes: 'Performance insights'
-      });
-
-      // All terms must be found across different fields
-      const filter = new TalksFilter({ query: 'React Kent Performance' });
-      const result = filter.filter([talk]);
-
-      expect(result).toHaveLength(1); // All terms found in different fields
-
-      // Missing one term should fail
-      const failingFilter = new TalksFilter({ query: 'React Kent Missing' });
-      const failingResult = failingFilter.filter([talk]);
-
-      expect(failingResult).toHaveLength(0); // 'Missing' not found anywhere
-    });
-  });
-
-  describe('Boolean Logic Mutations - Critical Tests', () => {
-    it('should detect logical operator mutations in filter combination', () => {
-      const talk = createTalk({
-        id: '1',
-        year: 2023,
-        conference_name: 'TestConf',
-        notes: 'Good notes',
-        format: 'article',
-        title: 'Domain Talk'
-      });
-
-      // Test that ALL conditions must be true (AND logic)
-      const allTrueFilter = new TalksFilter({
-        yearType: 'specific',
-        year: 2023,
-        conference: 'TestConf',
-        hasNotes: true,
-        formats: ['article'],
-        query: 'Domain'
-      });
-
-      expect(allTrueFilter.filter([talk])).toHaveLength(1);
-
-      // Change one condition to make it false - should fail if AND logic is working
-      const oneFalseFilter = new TalksFilter({
-        yearType: 'specific',
-        year: 2022, // Wrong year
-        conference: 'TestConf',
-        hasNotes: true,
-        formats: ['article'],
-        query: 'Domain'
-      });
-
-      expect(oneFalseFilter.filter([talk])).toHaveLength(0); // Should fail with AND logic
-    });
-
-    it('should catch negation mutations in hasNotes filter', () => {
-      const talkWithNotes = createTalk({ id: '1', notes: 'Some notes' });
-      const talkWithoutNotes = createTalk({ id: '2', notes: undefined });
-
-      // hasNotes: true should only match talks WITH notes
-      const hasNotesFilter = new TalksFilter({ hasNotes: true });
-      const withNotesResult = hasNotesFilter.filter([talkWithNotes, talkWithoutNotes]);
-      expect(withNotesResult).toHaveLength(1);
-      expect(withNotesResult[0].id).toBe('1');
-
-      // hasNotes: false should match talks WITHOUT notes requirement (all talks)
-      const noNotesFilter = new TalksFilter({ hasNotes: false });
-      const noNotesResult = noNotesFilter.filter([talkWithNotes, talkWithoutNotes]);
-      expect(noNotesResult).toHaveLength(2); // Both should match when hasNotes is false
-    });
-
-    it('should catch quickWatch boolean logic mutations', () => {
-      const shortTalk = createTalk({ id: '1', duration: 600 }); // 10 minutes
-      const longTalk = createTalk({ id: '2', duration: 1200 }); // 20 minutes
-      const zeroTalk = createTalk({ id: '3', duration: 0 }); // 0 minutes
-
-      // quickWatch: true should only match short talks with duration > 0 AND < 900
-      const quickFilter = new TalksFilter({ quickWatch: true });
-      const quickResult = quickFilter.filter([shortTalk, longTalk, zeroTalk]);
-      expect(quickResult).toHaveLength(1);
-      expect(quickResult[0].id).toBe('1');
-
-      // quickWatch: false should match all talks
-      const allFilter = new TalksFilter({ quickWatch: false });
-      const allResult = allFilter.filter([shortTalk, longTalk, zeroTalk]);
-      expect(allResult).toHaveLength(3);
-    });
-  });
-
-  describe('isEmpty() Logic Mutations', () => {
-    it('should catch OR vs AND mutations in isEmpty check', () => {
-      // A filter is empty only when ALL conditions are in default state
-      // This would catch mutations like && -> || in the isEmpty logic
-
-      const completelyEmpty = new TalksFilter();
-      expect(completelyEmpty.isEmpty()).toBe(true);
-
-      // Each single non-default value should make isEmpty return false
-      const filters = [
-        new TalksFilter({ year: 2023 }),
-        new TalksFilter({ yearType: 'last2' }),
-        new TalksFilter({ conference: 'Test' }),
-        new TalksFilter({ hasNotes: true }),
-        new TalksFilter({ rating: 5 }),
-        new TalksFilter({ query: 'test' }),
-        new TalksFilter({ formats: ['article'] }),
-        new TalksFilter({ quickWatch: true }),
-      ];
-
-      filters.forEach((filter) => {
-        expect(filter.isEmpty()).toBe(false); // Each should be non-empty
-      });
-
-      // Multiple non-default values should definitely be non-empty
-      const multipleFilters = new TalksFilter({
-        year: 2023,
-        conference: 'Test',
-        hasNotes: true
-      });
-      expect(multipleFilters.isEmpty()).toBe(false);
-    });
-
-    it('should handle query string edge cases in isEmpty', () => {
-      // Empty string should count as empty
-      const emptyQuery = new TalksFilter({ query: '' });
-      expect(emptyQuery.isEmpty()).toBe(true);
-
-      // Whitespace-only should count as empty (after trim)
-      const whitespaceQuery = new TalksFilter({ query: '   \n\t   ' });
-      expect(whitespaceQuery.isEmpty()).toBe(true);
-
-      // Actual content should count as non-empty
-      const realQuery = new TalksFilter({ query: 'test' });
-      expect(realQuery.isEmpty()).toBe(false);
-    });
-  });
-
-  describe('isEmpty with direct author/topics (constructor API)', () => {
-    it.each([
-      ['author', { author: 'Alice' }],
-      ['topics', { topics: ['tdd'] }],
-    ])('is not empty when %s is set', (_field, data) => {
-      expect(new TalksFilter(data).isEmpty()).toBe(false);
-    });
-  });
-
-  describe('search terms with + and #', () => {
-    const cpp = createTalk({ id: 'cpp', title: 'C++ Tips', description: '', topics: [], speakers: ['Ann'], notes: '' });
-    const csharp = createTalk({ id: 'csharp', title: 'C# in depth', description: '', topics: [], speakers: ['Bob'], notes: '' });
-    const clean = createTalk({ id: 'clean', title: 'Clean Code', description: '', topics: [], speakers: ['Carl'], notes: '' });
-    const talks = [cpp, csharp, clean];
-
-    it.each([
-      ['c++', ['cpp']],
-      ['c#', ['csharp']],
-    ])('query "%s" matches only the talk about that language', (query, expectedIds) => {
-      const result = new TalksFilter({ query }).filter(talks);
-      expect(result.map(t => t.id)).toEqual(expectedIds);
+    it.each<[string, TalksFilterData, string]>([
+      ['no filters', {}, ''],
+      ['a year without yearType (implicit specific)', { year: 2023 }, 'yearType=specific&year=2023'],
+      ['before without a year', { yearType: 'before' }, 'yearType=before'],
+      ['a query with spaces', { query: 'Kent Beck' }, 'query=Kent+Beck'],
+      ['conference and rating', { conference: 'ReactConf', rating: 4 }, 'conference=ReactConf&rating=4'],
+      ['rating zero', { rating: 0 }, 'rating=0'],
+      ['multiple formats', { formats: ['talk', 'podcast'] }, 'format=talk%2Cpodcast'],
+      ['false booleans and null rating', { hasNotes: false, quickWatch: false, rating: null }, ''],
+      ['direct author/topics (legacy, never written)', { author: 'Alice', topics: ['tdd'] }, ''],
+      [
+        'query with year and rating',
+        { query: 'domain', year: 2020, yearType: 'specific', rating: 5 },
+        'yearType=specific&year=2020&rating=5&query=domain',
+      ],
+    ])('serializes %s', (_name, data, expected) => {
+      expect(new TalksFilter(data).toParams()).toBe(expected);
+    });
+
+    it.each(['last2', 'last5'] as const)('does not write a year for relative yearType %s', (yearType) => {
+      expect(new TalksFilter({ yearType, year: 2020 }).toParams()).toBe(`yearType=${yearType}`);
     });
   });
 
@@ -1642,12 +207,390 @@ describe('TalksFilter', () => {
       expect(TalksFilter.fromUrlParams(params).toParams()).toBe(params);
     });
 
-    it.each(['last2', 'last5'] as const)('does not write a year for relative yearType %s', (yearType) => {
-      expect(new TalksFilter({ yearType, year: 2020 }).toParams()).toBe(`yearType=${yearType}`);
+    it('normalizes a bare year to an explicit specific yearType', () => {
+      expect(TalksFilter.fromUrlParams('year=2023&query=testing').toParams()).toBe('yearType=specific&year=2023&query=testing');
+    });
+  });
+
+  describe('isEmpty', () => {
+    it.each<[string, TalksFilterData]>([
+      ['no arguments', {}],
+      [
+        'every field explicitly at its default',
+        { year: null, yearType: null, author: null, topics: [], conference: null, hasNotes: false, rating: null, query: '', formats: [], quickWatch: false },
+      ],
+      ['an empty query', { query: '' }],
+      ['a whitespace-only query', { query: '   \n\t   ' }],
+    ])('is empty with %s', (_name, data) => {
+      expect(new TalksFilter(data).isEmpty()).toBe(true);
     });
 
-    it('parses comma separated formats into a list', () => {
-      expect(TalksFilter.fromUrlParams('format=talk,podcast').formats).toEqual(['talk', 'podcast']);
+    it.each<[string, TalksFilterData]>([
+      ['year', { year: 2023 }],
+      ['yearType', { yearType: 'last2' }],
+      ['author', { author: 'Alice' }],
+      ['topics', { topics: ['tdd'] }],
+      ['conference', { conference: 'Test Conference' }],
+      ['hasNotes', { hasNotes: true }],
+      ['rating', { rating: 5 }],
+      ['query', { query: 'test query' }],
+      ['formats', { formats: ['podcast'] }],
+      ['quickWatch', { quickWatch: true }],
+      ['several fields', { year: 2023, yearType: 'specific', conference: 'Test', hasNotes: true }],
+    ])('is not empty when %s is set', (_name, data) => {
+      expect(new TalksFilter(data).isEmpty()).toBe(false);
+    });
+
+    it('is not empty when parsed from a URL with a filter', () => {
+      expect(TalksFilter.fromUrlParams('query=test').isEmpty()).toBe(false);
+    });
+  });
+
+  describe('filter', () => {
+    it('returns every talk when no filter is set', () => {
+      const talks = [createTalk({ id: '1', year: 2023 }), createTalk({ id: '2', year: 2024 })];
+      expect(new TalksFilter().filter(talks)).toEqual(talks);
+    });
+
+    it('returns an empty array for an empty talks list', () => {
+      expect(TalksFilter.fromUrlParams('year=2023').filter([])).toEqual([]);
+    });
+
+    describe('query search', () => {
+      it.each([
+        ['an empty query', ''],
+        ['a whitespace-only query', '   \n  \t  '],
+      ])('returns all talks for %s', (_name, query) => {
+        const talks = [createTalk({ id: '1', title: 'React Testing' }), createTalk({ id: '2', title: 'Vue Development' })];
+        expect(new TalksFilter({ query }).filter(talks)).toEqual(talks);
+      });
+
+      it.each<{ name: string; talk: Partial<Talk>; query: string }>([
+        { name: 'title', talk: { title: 'Domain Driven Design' }, query: 'Domain' },
+        { name: 'description', talk: { description: 'This talk covers microservices architecture' }, query: 'microservices' },
+        { name: 'speakers', talk: { speakers: ['Kent Beck', 'Martin Fowler'] }, query: 'Kent' },
+        { name: 'speaker name prefix', talk: { speakers: ['Robert Martin'] }, query: 'Mart' },
+        { name: 'topics', talk: { topics: ['TDD', 'Refactoring', 'Clean Code'] }, query: 'Refactoring' },
+        { name: 'hyphenated topic part', talk: { topics: ['Domain-Driven Design'] }, query: 'Domain' },
+        { name: 'notes', talk: { notes: 'Excellent explanation of hexagonal architecture' }, query: 'hexagonal' },
+      ])('matches a term found only in $name', ({ talk, query }) => {
+        const match = blankTalk({ id: 'match', ...talk });
+        const other = blankTalk({ id: 'other' });
+        expect(ids(new TalksFilter({ query }).filter([match, other]))).toEqual(['match']);
+      });
+
+      it.each<{ name: string; talk: Partial<Talk> }>([
+        { name: 'description is undefined', talk: { description: undefined } },
+        { name: 'speakers is undefined', talk: { speakers: undefined } },
+        { name: 'topics is undefined', talk: { topics: undefined } },
+        { name: 'notes is undefined', talk: { notes: undefined } },
+      ])('does not match (nor crash) when $name', ({ talk }) => {
+        expect(new TalksFilter({ query: 'something' }).filter([blankTalk(talk)])).toEqual([]);
+      });
+
+      it('is case-insensitive', () => {
+        const talk = createTalk({ id: 't', title: 'Talk about testing' });
+        expect(ids(TalksFilter.fromUrlParams('query=TESTING').filter([talk]))).toEqual(['t']);
+      });
+
+      describe('word-start matching', () => {
+        it.each<{ name: string; talk: Partial<Talk>; query: string; matches: boolean }>([
+          { name: 'a word prefix matches', talk: { title: 'Refactoring Legacy Code' }, query: 'Refactor', matches: true },
+          { name: 'a fragment inside a word does not match', talk: { title: 'Refactoring Legacy Code' }, query: 'factor', matches: false },
+          {
+            name: 'XP does not match inside experience/expert/experiment',
+            talk: { title: 'Learning from experience', description: 'An expert explains how to experiment' },
+            query: 'XP',
+            matches: false,
+          },
+          { name: 'XP matches the exact topic', talk: { topics: ['XP', 'TDD'] }, query: 'XP', matches: true },
+          { name: 'a hyphenated topic matches as a whole', talk: { topics: ['Lean-Agile'] }, query: 'Lean-Agile', matches: true },
+          { name: 'a hyphenated topic matches by its second part', talk: { topics: ['Agile-XP'] }, query: 'XP', matches: true },
+          {
+            name: 'words next to punctuation match',
+            talk: { notes: 'Covers generics, iterators and (XP) practices.' },
+            query: 'generics XP',
+            matches: true,
+          },
+        ])('$name', ({ talk, query, matches }) => {
+          const target = blankTalk(talk);
+          expect(new TalksFilter({ query }).filter([target])).toEqual(matches ? [target] : []);
+        });
+
+        it.each([
+          ['c++', ['cpp']],
+          ['c#', ['csharp']],
+        ])('query "%s" matches only the talk about that language', (query, expectedIds) => {
+          const talks = [
+            blankTalk({ id: 'cpp', title: 'C++ Tips' }),
+            blankTalk({ id: 'csharp', title: 'C# in depth' }),
+            blankTalk({ id: 'clean', title: 'Clean Code' }),
+          ];
+          expect(ids(new TalksFilter({ query }).filter(talks))).toEqual(expectedIds);
+        });
+      });
+
+      describe('multiple terms (AND logic)', () => {
+        it('keeps only talks containing every term', () => {
+          const talks = [
+            createTalk({ id: 'both', title: 'Domain Driven Design' }),
+            createTalk({ id: 'domain', title: 'Domain Modeling' }),
+            createTalk({ id: 'design', title: 'Good Design Practices' }),
+            createTalk({ id: 'none', title: 'Other Topic' }),
+          ];
+          expect(ids(new TalksFilter({ query: 'Domain Design' }).filter(talks))).toEqual(['both']);
+        });
+
+        it.each([
+          ['title + speaker + description', 'Eric Domain patterns'],
+          ['title + speaker + topic', 'Clean Robert Craftsmanship'],
+          ['speaker + notes', 'Kent workflow'],
+          ['title + description', 'Microservices resilience'],
+          ['several spaces between terms', 'Clean    Martin'],
+        ])('matches terms spread across fields: %s', (_name, query) => {
+          const talk = blankTalk({
+            title: 'Domain Modeling Clean Microservices',
+            speakers: ['Eric Evans', 'Robert Martin', 'Kent Beck'],
+            topics: ['Craftsmanship'],
+            description: 'Strategic patterns and resilience',
+            notes: 'Great explanation of TDD workflow',
+          });
+          expect(new TalksFilter({ query }).filter([talk])).toEqual([talk]);
+        });
+
+        it('rejects a talk when one term is found nowhere', () => {
+          const talk = blankTalk({ title: 'Domain Modeling', speakers: ['Eric Evans'], description: 'Strategic patterns' });
+          expect(new TalksFilter({ query: 'Domain hexagonal' }).filter([talk])).toEqual([]);
+        });
+      });
+
+      describe('accent normalization', () => {
+        it.each<{ name: string; talk: Partial<Talk>; query: string }>([
+          { name: 'accented query vs plain title', talk: { title: 'Jose Garcia talks about refactoring' }, query: 'José García' },
+          { name: 'plain query vs accented title', talk: { title: 'José García talks about Diseño' }, query: 'Jose Garcia Diseno' },
+          { name: 'several accents in a title', talk: { title: 'Introducción a la programación funcional' }, query: 'Introduccion programacion' },
+          { name: 'speakers and description', talk: { speakers: ['Raúl López'], description: 'Técnicas avanzadas' }, query: 'Raul Tecnicas' },
+          { name: 'multiple speakers', talk: { speakers: ['José García', 'María Pérez'] }, query: 'Jose Maria' },
+          { name: 'topics', talk: { topics: ['Diseño de Software', 'Programación'] }, query: 'Diseno Programacion' },
+          { name: 'notes', talk: { notes: 'Explicación detallada de técnicas avanzadas' }, query: 'Explicacion tecnicas' },
+        ])('matches ignoring accents: $name', ({ talk, query }) => {
+          const target = blankTalk(talk);
+          expect(new TalksFilter({ query }).filter([target])).toEqual([target]);
+        });
+      });
+    });
+
+    describe('year', () => {
+      const yearTalks = [
+        createTalk({ id: '2019', year: 2019 }),
+        createTalk({ id: '2020', year: 2020 }),
+        createTalk({ id: '2021', year: 2021 }),
+        createTalk({ id: 'no-year', year: undefined }),
+      ];
+
+      it.each<[TalksFilterData['yearType'], string[]]>([
+        ['specific', ['2020']],
+        ['before', ['2019']],
+        ['after', ['2021']],
+      ])('%s 2020 keeps %j and excludes talks without year', (yearType, expectedIds) => {
+        expect(ids(new TalksFilter({ yearType, year: 2020 }).filter(yearTalks))).toEqual(expectedIds);
+      });
+
+      it.each(['specific', 'before', 'after'] as const)('%s without a reference year keeps every talk', (yearType) => {
+        expect(new TalksFilter({ yearType, year: null }).filter(yearTalks)).toEqual(yearTalks);
+      });
+
+      it('treats a year without yearType as specific', () => {
+        expect(ids(new TalksFilter({ year: 2020 }).filter(yearTalks))).toEqual(['2020']);
+        expect(ids(TalksFilter.fromUrlParams('year=2020').filter(yearTalks))).toEqual(['2020']);
+      });
+
+      describe('relative ranges (current year injected as FIXED_TEST_YEAR)', () => {
+        const b = createBoundaryYearTalks(FIXED_TEST_YEAR);
+        const rangeTalks = [b.current, b.minus1, b.minus2, b.minus3, b.minus4, b.minus5, b.minus6];
+
+        it.each<[TalksFilterData['yearType'], string[]]>([
+          ['last2', ['current', 'minus1', 'minus2']],
+          ['last5', ['current', 'minus1', 'minus2', 'minus3', 'minus4', 'minus5']],
+        ])('%s keeps %j', (yearType, expectedIds) => {
+          const filter = new TalksFilter({ yearType, _testCurrentYear: FIXED_TEST_YEAR });
+          expect(ids(filter.filter(rangeTalks))).toEqual(expectedIds);
+        });
+
+        it.each(['last2', 'last5'] as const)('%s excludes talks without year', (yearType) => {
+          const talk = createTalk({ id: 'no-year', year: undefined });
+          expect(new TalksFilter({ yearType, _testCurrentYear: FIXED_TEST_YEAR }).filter([talk])).toEqual([]);
+        });
+
+        it('measures the range from the injected current year', () => {
+          const talk = createTalk({ id: 'old', year: createTestYear(-3) });
+          const filter = new TalksFilter({ yearType: 'last2', _testCurrentYear: createTestYear(-1) });
+          expect(ids(filter.filter([talk]))).toEqual(['old']);
+        });
+      });
+    });
+
+    describe('conference', () => {
+      it('keeps only talks from that conference', () => {
+        const talks = [
+          createTalk({ id: 'a', conference_name: 'ConfA' }),
+          createTalk({ id: 'b', conference_name: 'ConfB' }),
+          createTalk({ id: 'none', conference_name: undefined }),
+        ];
+        expect(ids(TalksFilter.fromUrlParams('conference=ConfA').filter(talks))).toEqual(['a']);
+      });
+    });
+
+    describe('hasNotes', () => {
+      const talks = [
+        createTalk({ id: 'notes', notes: 'Some notes' }),
+        createTalk({ id: 'empty', notes: '' }),
+        createTalk({ id: 'blank', notes: '  \n ' }),
+        createTalk({ id: 'undefined', notes: undefined }),
+      ];
+
+      it('keeps only talks with meaningful notes when enabled', () => {
+        expect(ids(TalksFilter.fromUrlParams('hasNotes=true').filter(talks))).toEqual(['notes']);
+      });
+
+      it('keeps every talk when disabled', () => {
+        expect(new TalksFilter({ hasNotes: false }).filter(talks)).toEqual(talks);
+      });
+    });
+
+    describe('rating', () => {
+      const talks = [
+        createTalk({ id: '5', rating: 5 }),
+        createTalk({ id: '4', rating: 4 }),
+        createTalk({ id: '3', rating: 3 }),
+        createTalk({ id: 'unrated', rating: undefined }),
+      ];
+
+      it('keeps only talks with exactly that rating', () => {
+        expect(ids(new TalksFilter({ rating: 5 }).filter(talks))).toEqual(['5']);
+      });
+
+      it('keeps rated and unrated talks when rating is null', () => {
+        expect(new TalksFilter({ rating: null }).filter(talks)).toEqual(talks);
+      });
+    });
+
+    describe('author and topics (constructor API)', () => {
+      it('keeps only talks whose speakers include the author', () => {
+        const talks = [
+          createTalk({ id: 'alice-bob', speakers: ['Alice', 'Bob'] }),
+          createTalk({ id: 'bob', speakers: ['Bob'] }),
+          createTalk({ id: 'bob-carol', speakers: ['Bob', 'Carol'] }),
+        ];
+        expect(ids(new TalksFilter({ author: 'Alice' }).filter(talks))).toEqual(['alice-bob']);
+        expect(new TalksFilter({ author: null }).filter(talks)).toEqual(talks);
+      });
+
+      it('requires every selected topic (AND logic)', () => {
+        const talks = [
+          createTalk({ id: 'react', topics: ['React'] }),
+          createTalk({ id: 'ts', topics: ['TypeScript'] }),
+          createTalk({ id: 'both', topics: ['React', 'TypeScript'] }),
+          createTalk({ id: 'more', topics: ['React', 'TypeScript', 'Testing'] }),
+          createTalk({ id: 'none', topics: [] }),
+        ];
+        expect(ids(new TalksFilter({ topics: ['React', 'TypeScript'] }).filter(talks))).toEqual(['both', 'more']);
+        expect(new TalksFilter({ topics: [] }).filter(talks)).toEqual(talks);
+      });
+    });
+
+    describe('formats', () => {
+      const talks = [
+        createTalk({ id: 'article', format: 'article' }),
+        createTalk({ id: 'podcast', format: 'podcast' }),
+        createTalk({ id: 'talk', format: 'talk' }),
+        createTalk({ id: 'undefined', format: undefined }),
+      ];
+
+      it.each<[string[], string[]]>([
+        [['podcast'], ['podcast']],
+        [['article', 'podcast'], ['article', 'podcast']],
+        [['talk'], ['talk', 'undefined']], // missing format defaults to "talk"
+        [[], ['article', 'podcast', 'talk', 'undefined']],
+      ])('formats %j keep %j', (formats, expectedIds) => {
+        expect(ids(new TalksFilter({ formats }).filter(talks))).toEqual(expectedIds);
+      });
+
+      it('filters by formats parsed from the URL', () => {
+        expect(ids(TalksFilter.fromUrlParams('format=podcast').filter(talks))).toEqual(['podcast']);
+      });
+    });
+
+    describe('quickWatch (under 15 minutes)', () => {
+      it.each([
+        [0, false],
+        [300, true],
+        [600, true],
+        [899, true],
+        [900, false],
+        [1200, false],
+        [3600, false],
+      ])('duration %is is kept: %s', (duration, kept) => {
+        const talk = createTalk({ id: 'd', duration });
+        expect(new TalksFilter({ quickWatch: true }).filter([talk])).toEqual(kept ? [talk] : []);
+      });
+
+      it('keeps every talk when disabled (the default)', () => {
+        const talks = [createTalk({ id: '0', duration: 0 }), createTalk({ id: '600', duration: 600 }), createTalk({ id: '3600', duration: 3600 })];
+        expect(new TalksFilter().quickWatch).toBe(false);
+        expect(new TalksFilter({}).filter(talks)).toEqual(talks);
+      });
+    });
+
+    describe('combined filters', () => {
+      const matching = createTalk({
+        id: 'match',
+        title: 'Domain Modeling',
+        year: 2023,
+        speakers: ['Eric Evans'],
+        topics: ['DDD'],
+        conference_name: 'DDD Europe',
+        notes: 'Strategic patterns about bounded contexts',
+        rating: 5,
+        format: 'article',
+        duration: 600,
+      });
+      const allCriteria: TalksFilterData = {
+        yearType: 'specific',
+        year: 2023,
+        conference: 'DDD Europe',
+        hasNotes: true,
+        rating: 5,
+        formats: ['article'],
+        quickWatch: true,
+        query: 'Domain Eric patterns',
+      };
+
+      it('keeps a talk satisfying every criterion', () => {
+        expect(new TalksFilter(allCriteria).filter([matching])).toEqual([matching]);
+      });
+
+      it.each<[string, Partial<Talk>]>([
+        ['year', { year: 2020 }],
+        ['conference', { conference_name: 'Other Conf' }],
+        ['notes', { notes: '' }],
+        ['rating', { rating: 4 }],
+        ['format', { format: 'podcast' }],
+        ['duration', { duration: 3600 }],
+        ['query', { title: 'Test Talk', speakers: ['Someone'] }],
+      ])('rejects a talk failing only the %s criterion', (_name, change) => {
+        const failing = createTalk({ ...matching, id: 'fail', ...change });
+        expect(ids(new TalksFilter(allCriteria).filter([matching, failing]))).toEqual(['match']);
+      });
+
+      it('combines year and query', () => {
+        const talks = [
+          createTalk({ id: 'tdd-2023', title: 'TDD Basics', year: 2023 }),
+          createTalk({ id: 'tdd-2022', title: 'TDD Advanced', year: 2022 }),
+          createTalk({ id: 'ref-2023', title: 'Refactoring', year: 2023 }),
+        ];
+        expect(ids(TalksFilter.fromUrlParams('year=2023&query=TDD').filter(talks))).toEqual(['tdd-2023']);
+      });
     });
   });
 });
