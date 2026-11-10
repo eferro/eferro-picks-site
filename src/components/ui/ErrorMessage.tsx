@@ -16,7 +16,7 @@ export function ErrorMessage({
   containerClassName = ''
 }: ErrorMessageProps) {
   const messageElement = (
-    <p className={`text-red-600 ${className}`}>
+    <p role="alert" className={`text-red-600 ${className}`}>
       {message}
     </p>
   );

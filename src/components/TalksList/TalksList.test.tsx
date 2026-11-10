@@ -50,7 +50,7 @@ describe('TalksList', () => {
 
       renderTalksList();
 
-      expect(screen.getByText(/Boom/)).toBeInTheDocument();
+      expect(screen.getByRole('alert')).toHaveTextContent('Boom');
     });
   });
 
