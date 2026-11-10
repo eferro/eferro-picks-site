@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { mergeParams, TALKS_FILTER_KEYS } from './url';
+import { mergeParams } from './url';
+import { TalksFilter } from './TalksFilter';
 
 describe('mergeParams', () => {
   it('copies non-filter params', () => {
@@ -35,21 +36,33 @@ describe('mergeParams', () => {
     expect(result.get('yearType')).toBeNull();
   });
 
-  it('removes all TALKS_FILTER_KEYS parameters', () => {
-    // Build URL with ALL filter keys
-    const filterParams = TALKS_FILTER_KEYS.map(key => `${key}=test`).join('&');
-    const current = new URLSearchParams(`${filterParams}&extra=preserved`);
-    const next = new URLSearchParams();
-
-    const result = mergeParams(current, next);
-
-    // Non-filter param should be preserved
-    expect(result.get('extra')).toBe('preserved');
-
-    // ALL filter params should be removed
-    TALKS_FILTER_KEYS.forEach(key => {
-      expect(result.get(key)).toBeNull();
+  it('drops every param a fully populated filter writes when that filter is cleared', () => {
+    // Independent of TALKS_FILTER_KEYS: if a new filter param is added to
+    // TalksFilter.toParams() but not to the key list, clearing it would
+    // leave the stale value in the URL.
+    const fullFilter = new TalksFilter({
+      yearType: 'before',
+      year: 2020,
+      conference: 'Agile Conf',
+      hasNotes: true,
+      rating: 5,
+      query: 'tdd',
+      formats: ['podcast'],
+      quickWatch: true,
     });
+    const current = new URLSearchParams(`${fullFilter.toParams()}&extra=kept`);
+
+    const result = mergeParams(current, new URLSearchParams());
+
+    expect(result.toString()).toBe('extra=kept');
+  });
+
+  it.each(['author', 'topics'])('drops the legacy %s param', (legacyKey) => {
+    const current = new URLSearchParams(`${legacyKey}=value&extra=kept`);
+
+    const result = mergeParams(current, new URLSearchParams());
+
+    expect(result.toString()).toBe('extra=kept');
   });
 
   it('does not override existing params in next', () => {
