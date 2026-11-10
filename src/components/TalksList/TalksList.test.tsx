@@ -179,6 +179,66 @@ describe('TalksList', () => {
     });
   });
 
+  describe('Browsing from talk cards', () => {
+    const talks = [
+      createTalk({ id: '1', title: 'React at scale', topics: ['react'], conference_name: 'ReactConf' }),
+      createTalk({ id: '2', title: 'Lean delivery', topics: ['lean'], conference_name: 'LeanConf' }),
+    ];
+    const inList = () => within(screen.getAllByTestId('talk-section')[0]);
+
+    beforeEach(() => {
+      givenTalks(talks);
+    });
+
+    it('filters by a topic clicked on a card and marks it as selected', () => {
+      renderTalksList();
+
+      fireEvent.click(inList().getByRole('button', { name: 'Filter by topic react' }));
+
+      expect(currentParams().get('query')).toBe('react');
+      expect(listedTitles()).toEqual(['React at scale']);
+      expect(inList().getByRole('button', { name: 'Filter by topic react' })).toHaveAttribute('aria-pressed', 'true');
+    });
+
+    it('clears the query when the selected topic is clicked again', () => {
+      renderTalksList('query=react');
+
+      fireEvent.click(inList().getByRole('button', { name: 'Filter by topic react' }));
+
+      expect(currentParams().get('query')).toBeNull();
+      expect(listedTitles()).toEqual(['React at scale', 'Lean delivery']);
+    });
+
+    it('filters by a conference clicked on a card and marks it as selected', () => {
+      renderTalksList();
+
+      fireEvent.click(inList().getByRole('button', { name: 'Filter by conference LeanConf' }));
+
+      expect(currentParams().get('conference')).toBe('LeanConf');
+      expect(listedTitles()).toEqual(['Lean delivery']);
+      expect(inList().getByRole('button', { name: 'Filter by conference LeanConf' })).toHaveAttribute('aria-pressed', 'true');
+    });
+
+    it('removes the conference filter from its chip', () => {
+      renderTalksList('conference=LeanConf');
+
+      fireEvent.click(screen.getByRole('button', { name: /^LeanConf\s*×$/ }));
+
+      expect(currentParams().get('conference')).toBeNull();
+      expect(listedTitles()).toEqual(['React at scale', 'Lean delivery']);
+    });
+
+    it('filters by a topic clicked in the Recently Added section', () => {
+      renderTalksList();
+      const recentlyAdded = within(screen.getByRole('region', { name: 'Recently added talks' }));
+
+      fireEvent.click(recentlyAdded.getAllByRole('button', { name: 'Filter by topic lean' })[0]);
+
+      expect(currentParams().get('query')).toBe('lean');
+      expect(listedTitles()).toEqual(['Lean delivery']);
+    });
+  });
+
   describe('Format filter', () => {
     it('shows only podcasts after selecting Podcasts', () => {
       givenTalks([
