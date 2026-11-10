@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useUrlFilter } from '../../hooks/useUrlFilter';
 import type { Talk } from '../../types/talks';
 import { getSuggestions, Suggestion } from '../../utils/Autocomplete';
@@ -8,9 +8,15 @@ interface SearchBoxProps {
 }
 
 export function SearchBox({ talks }: SearchBoxProps) {
-  const [value, setValue] = useState('');
+  const { filter, updateFilter } = useUrlFilter();
+  const [value, setValue] = useState(filter.query);
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
-  const { updateFilter } = useUrlFilter();
+
+  // Keep the input in sync when the query changes outside the search box
+  // (e.g. removing the search chip or clicking a topic tag)
+  useEffect(() => {
+    setValue(filter.query);
+  }, [filter.query]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;

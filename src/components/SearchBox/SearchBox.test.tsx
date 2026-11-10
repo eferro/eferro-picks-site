@@ -1,5 +1,6 @@
 import { screen, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
+import { useSearchParams } from 'react-router-dom';
 import { renderWithRouter, currentParams } from '../../test/router';
 import { createTalk } from '../../test/builders';
 import { SearchBox } from './index';
@@ -113,5 +114,43 @@ describe('SearchBox', () => {
 
     expect(screen.getByRole('search')).toBeInTheDocument();
     expect(screen.getByRole('textbox', { name: 'Search talks' })).toBeInTheDocument();
+  });
+
+  describe('sync with the URL query', () => {
+    // Simulates another part of the page changing the query (e.g. removing the search chip)
+    function ClearQueryButton() {
+      const [, setSearchParams] = useSearchParams();
+      return <button onClick={() => setSearchParams('')}>clear query</button>;
+    }
+
+    it('shows the query from the URL when the page opens', () => {
+      renderWithRouter(<SearchBox talks={talks} />, { params: 'query=tdd' });
+
+      expect(screen.getByRole('textbox', { name: 'Search talks' })).toHaveValue('tdd');
+    });
+
+    it('clears the input when the query is removed from the URL elsewhere', () => {
+      renderWithRouter(
+        <>
+          <SearchBox talks={talks} />
+          <ClearQueryButton />
+        </>,
+        { params: 'query=tdd' }
+      );
+
+      fireEvent.click(screen.getByRole('button', { name: 'clear query' }));
+
+      expect(screen.getByRole('textbox', { name: 'Search talks' })).toHaveValue('');
+    });
+
+    it('removes the query from the URL when an empty search is submitted', async () => {
+      renderWithRouter(<SearchBox talks={talks} />, { params: 'query=tdd&hasNotes=true' });
+      const input = screen.getByRole('textbox', { name: 'Search talks' });
+
+      fireEvent.change(input, { target: { value: '' } });
+      fireEvent.submit(screen.getByRole('search'));
+
+      await waitFor(() => expect(currentParams().toString()).toBe('hasNotes=true'));
+    });
   });
 });
