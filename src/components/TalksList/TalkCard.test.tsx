@@ -294,8 +294,8 @@ describe('TalkCard', () => {
     });
   });
 
-  describe('Styling', () => {
-    it('applies selected styling to topic when it matches selectedQuery', () => {
+  describe('Selected state', () => {
+    it('marks the topic as pressed when it is the current query', () => {
       const talk = createTalk({ topics: ['testing'] });
       renderTalkCard({ talk, selectedQuery: 'testing' });
 
@@ -303,7 +303,7 @@ describe('TalkCard', () => {
       expect(topicButton).toHaveAttribute('aria-pressed', 'true');
     });
 
-    it('applies unselected styling to topic when it does not match selectedQuery', () => {
+    it('does not mark the topic as pressed for another query', () => {
       const talk = createTalk({ topics: ['testing'] });
       renderTalkCard({ talk, selectedQuery: 'other' });
 
@@ -311,14 +311,15 @@ describe('TalkCard', () => {
       expect(topicButton).toHaveAttribute('aria-pressed', 'false');
     });
 
-    it('applies selected styling to conference when it is selected', () => {
-      const talk = createTalk({
-        conference_name: 'Test Conference'
-      });
-      renderTalkCard({ talk, selectedConference: 'Test Conference' });
+    it.each([
+      ['the selected conference', 'Test Conference', 'true'],
+      ['another conference is selected', 'Other Conference', 'false'],
+      ['no conference is selected', null, 'false'],
+    ])('marks the conference as pressed only when it is %s', (_case, selectedConference, pressed) => {
+      renderTalkCard({ talk: createTalk({ conference_name: 'Test Conference' }), selectedConference });
 
-      const conferenceButton = screen.getByRole('button', { name: /Filter by conference Test Conference/i });
-      expect(conferenceButton).toHaveAttribute('aria-pressed', 'true');
+      expect(screen.getByRole('button', { name: /Filter by conference Test Conference/i }))
+        .toHaveAttribute('aria-pressed', pressed);
     });
   });
 

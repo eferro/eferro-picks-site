@@ -1,24 +1,24 @@
 import { screen } from '@testing-library/react';
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { describe, it, expect, afterEach, vi } from 'vitest';
 import { renderWithRouter } from '../../test/router';
 import { Footer } from './index';
 
 describe('Footer', () => {
-  beforeEach(() => {
-    vi.useFakeTimers();
-    vi.setSystemTime(new Date('2025-06-15'));
-  });
-
   afterEach(() => {
     vi.useRealTimers();
   });
 
-  it('displays current year and website link', () => {
+  it.each([2025, 2031])('shows the current year (%i) in the copyright', (year) => {
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date(year, 5, 15));
+
     renderWithRouter(<Footer />);
-    const year = '2025';
-    expect(
-      screen.getByText(new RegExp(`©\\s*${year}\\s*Edu Ferro`, 'i'))
-    ).toBeInTheDocument();
+
+    expect(screen.getByText(new RegExp(`©\\s*${year}\\s*Edu Ferro`, 'i'))).toBeInTheDocument();
+  });
+
+  it('links to the website', () => {
+    renderWithRouter(<Footer />);
     const link = screen.getByRole('link', { name: /visit my website/i });
     expect(link).toHaveAttribute('href', 'https://www.eferro.net');
     expect(link).toHaveAttribute('target', '_blank');

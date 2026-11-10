@@ -10,11 +10,7 @@ describe('PageContainer', () => {
       </PageContainer>
     );
 
-    const container = screen.getByRole('main');
-    const child = screen.getByTestId('child');
-
-    expect(container).toBeInTheDocument();
-    expect(child).toBeInTheDocument();
+    expect(screen.getByRole('main')).toContainElement(screen.getByTestId('child'));
   });
 
   it('applies custom className', () => {

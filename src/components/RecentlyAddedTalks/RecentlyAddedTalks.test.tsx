@@ -87,12 +87,18 @@ describe('RecentlyAddedTalks', () => {
       expect(screen.queryByText('Oldest Talk')).not.toBeInTheDocument();
       expect(screen.queryByText('Another Old Talk')).not.toBeInTheDocument();
 
-      // Should show the most recent talk first
-      expect(screen.getByText('Most Recent Talk')).toBeInTheDocument();
-      expect(screen.getByText('Recent Talk 6')).toBeInTheDocument();
+      // Most recent first
+      expect(screen.getAllByRole('article').map(card => card.getAttribute('aria-label'))).toEqual([
+        'Talk: Most Recent Talk',
+        'Talk: Recent Talk 2',
+        'Talk: Recent Talk 3',
+        'Talk: Recent Talk 4',
+        'Talk: Recent Talk 5',
+        'Talk: Recent Talk 6',
+      ]);
     });
 
-    it('should handle talks without registered_at gracefully', () => {
+    it('leaves out talks without a registration date', () => {
       const talks = [
         createTalk({
           id: '1',
@@ -101,8 +107,8 @@ describe('RecentlyAddedTalks', () => {
         }),
         createTalk({
           id: '2',
-          title: 'Talk without date'
-          // no registered_at field
+          title: 'Talk without date',
+          registered_at: undefined
         }),
       ];
 
@@ -111,8 +117,8 @@ describe('RecentlyAddedTalks', () => {
       // Should render without crashing
       expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('Recently Added');
 
-      // Should show the talk with date
       expect(screen.getByText('Talk with date')).toBeInTheDocument();
+      expect(screen.queryByText('Talk without date')).not.toBeInTheDocument();
     });
 
     it('should show fewer than 6 talks if not enough available', () => {

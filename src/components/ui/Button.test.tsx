@@ -199,11 +199,21 @@ describe('Button', () => {
       expect(button).toHaveAttribute('aria-label', 'Custom label');
     });
 
-    it('supports aria-pressed for toggle buttons', () => {
-      render(<Button variant="toggle" active aria-pressed>Toggle</Button>);
-      
-      const button = screen.getByRole('button');
-      expect(button).toHaveAttribute('aria-pressed');
+    it.each([
+      ['toggle', true, 'true'],
+      ['toggle', false, 'false'],
+      ['tag', true, 'true'],
+      ['tag', false, 'false'],
+    ] as const)('exposes the %s variant state as aria-pressed (active=%s)', (variant, active, pressed) => {
+      render(<Button variant={variant} active={active}>Toggle</Button>);
+
+      expect(screen.getByRole('button')).toHaveAttribute('aria-pressed', pressed);
+    });
+
+    it('does not mark non-toggle variants as pressable', () => {
+      render(<Button variant="primary" active>Save</Button>);
+
+      expect(screen.getByRole('button')).not.toHaveAttribute('aria-pressed');
     });
   });
 });

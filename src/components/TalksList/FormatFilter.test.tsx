@@ -8,7 +8,7 @@ describe('FormatFilter', () => {
     renderWithRouter(
       <FormatFilter selectedFormats={[]} onChange={() => {}} />
     );
-    expect(screen.getByRole('button', { name: /format/i })).toBeInTheDocument();
+    expect(screen.getByRole('button')).toHaveTextContent(/^Format$/);
   });
 
   it('shows Format: Talks when only talk format is selected', () => {

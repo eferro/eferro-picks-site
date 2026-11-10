@@ -116,6 +116,25 @@ describe('SearchBox', () => {
     expect(screen.getByRole('textbox', { name: 'Search talks' })).toBeInTheDocument();
   });
 
+  it('does not search while typing, only on Enter', () => {
+    renderWithRouter(<SearchBox talks={talks} />);
+    const input = screen.getByRole('textbox', { name: 'Search talks' });
+
+    fireEvent.change(input, { target: { value: 'react' } });
+    fireEvent.keyDown(input, { key: 'a' });
+
+    expect(currentParams().get('query')).toBeNull();
+  });
+
+  it('shows at most 10 suggestions', () => {
+    const manySpeakers = Array.from({ length: 12 }, (_, i) => createTalk({ speakers: [`Speaker ${i}`], topics: [] }));
+    renderWithRouter(<SearchBox talks={manySpeakers} />);
+
+    fireEvent.change(screen.getByRole('textbox', { name: 'Search talks' }), { target: { value: 'Speaker' } });
+
+    expect(screen.getAllByRole('button', { name: /Speaker \d+/ })).toHaveLength(10);
+  });
+
   describe('sync with the URL query', () => {
     // Simulates another part of the page changing the query (e.g. removing the search chip)
     function ClearQueryButton() {

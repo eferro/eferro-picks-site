@@ -213,10 +213,8 @@ describe('ActiveFilters', () => {
       />
     );
 
-    expect(screen.getByText('Has Notes')).toBeInTheDocument();
-    expect(screen.getByLabelText('Remove Has Notes filter')).toBeInTheDocument();
-    
-    const removeButton = screen.getByLabelText('Remove Has Notes filter');
+    const removeButton = screen.getByRole('button', { name: 'Remove Has Notes filter' });
+    expect(removeButton).toHaveTextContent('Has Notes');
     fireEvent.click(removeButton);
     expect(mockHandlers.onRemoveHasNotes).toHaveBeenCalledTimes(1);
   });
@@ -232,10 +230,8 @@ describe('ActiveFilters', () => {
       />
     );
 
-    expect(screen.getByText('⭐ Top Picks')).toBeInTheDocument();
-    expect(screen.getByLabelText('Remove Top Picks filter')).toBeInTheDocument();
-
-    const removeButton = screen.getByLabelText('Remove Top Picks filter');
+    const removeButton = screen.getByRole('button', { name: 'Remove Top Picks filter' });
+    expect(removeButton).toHaveTextContent('⭐ Top Picks');
     fireEvent.click(removeButton);
     expect(mockHandlers.onRemoveRating).toHaveBeenCalledTimes(1);
   });
@@ -256,7 +252,7 @@ describe('ActiveFilters', () => {
   });
 
   it('renders format filters with remove buttons', () => {
-    const filterWithFormats = new TalksFilter({ formats: ['video', 'podcast'] });
+    const filterWithFormats = new TalksFilter({ formats: ['talk', 'podcast'] });
     
     render(
       <ActiveFilters
@@ -267,18 +263,16 @@ describe('ActiveFilters', () => {
     );
 
     expect(screen.getByText('Format:')).toBeInTheDocument();
-    expect(screen.getByText('Video')).toBeInTheDocument();
-    expect(screen.getByText('Podcast')).toBeInTheDocument();
-    
-    const videoButton = screen.getByRole('button', { name: /video/i });
-    fireEvent.click(videoButton);
-    expect(mockHandlers.onRemoveFormat).toHaveBeenCalledWith('video');
+    expect(screen.getByRole('button', { name: /^Talk\s*×$/ })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: /^Podcast\s*×$/ }));
+
+    expect(mockHandlers.onRemoveFormat).toHaveBeenCalledWith('podcast');
   });
 
   it('renders multiple active filters together', () => {
     const complexFilter = new TalksFilter({
       hasNotes: true,
-      formats: ['video']
+      formats: ['talk']
     });
     const yearFilter: YearFilterData = { type: 'specific', year: 2023 };
 
@@ -290,11 +284,8 @@ describe('ActiveFilters', () => {
       />
     );
 
-    // Check remaining filters (author and topics removed)
-    expect(screen.getByText('Year:')).toBeInTheDocument();
-    expect(screen.getByText('2023')).toBeInTheDocument();
-    expect(screen.getByText('Has Notes')).toBeInTheDocument();
-    expect(screen.getByText('Format:')).toBeInTheDocument();
-    expect(screen.getByText('Video')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /^2023\s*×$/ })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Remove Has Notes filter' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /^Talk\s*×$/ })).toBeInTheDocument();
   });
 });
