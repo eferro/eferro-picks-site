@@ -22,9 +22,6 @@ const renderTalkCard = (
   );
 
 describe('TalkCard', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-  });
 
   describe('Rendering', () => {
     it('renders the talk title', () => {
@@ -287,8 +284,11 @@ describe('TalkCard', () => {
 
     it('does not open the talk detail when the watch link is clicked', () => {
       renderTalkCard({ talk: createTalk({ title: 'Test Talk', url: 'https://example.com/test' }) });
+      const watchLink = screen.getByRole('link', { name: /Watch Test Talk/i });
+      // Keep happy-dom from actually opening the external URL over the network
+      watchLink.addEventListener('click', e => e.preventDefault());
 
-      fireEvent.click(screen.getByRole('link', { name: /Watch Test Talk/i }));
+      fireEvent.click(watchLink);
 
       expect(currentLocation().pathname).toBe('/');
     });

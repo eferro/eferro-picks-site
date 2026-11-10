@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { CategoryIndex } from './CategoryIndex';
 
 interface CategoryData {
@@ -16,10 +16,6 @@ describe('CategoryIndex', () => {
   ];
 
   const mockOnCategoryClick = vi.fn();
-
-  beforeEach(() => {
-    vi.clearAllMocks();
-  });
 
   it('should render category list with counts', () => {
     render(

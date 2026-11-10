@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react';
-import { vi, describe, it, expect, beforeEach } from 'vitest';
+import { vi, describe, it, expect } from 'vitest';
 import { useFilterHandlers } from './useFilterHandlers';
 import { TalksFilter } from '../utils/TalksFilter';
 import type { TalksFilterData } from '../utils/TalksFilter';
@@ -9,9 +9,6 @@ import type { YearFilterData } from '../components/TalksList/YearFilter';
 const mockUpdateFilter = vi.fn<(updates: TalksFilterData) => void>();
 
 describe('useFilterHandlers', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-  });
 
   describe('handleHasNotesClick', () => {
     it('toggles hasNotes filter from false to true', () => {

@@ -25,3 +25,28 @@ export const createTalk = (overrides: Partial<Talk> = {}): Talk => ({
   ...mockTalk,
   ...overrides
 });
+
+/**
+ * Fixed "current year" for date-dependent tests: inject it (e.g. via
+ * TalksFilter's _testCurrentYear) instead of reading new Date().
+ */
+export const FIXED_TEST_YEAR = 2025;
+
+/** A year relative to FIXED_TEST_YEAR (negative offsets are in the past). */
+export const createTestYear = (offset: number = 0): number => FIXED_TEST_YEAR + offset;
+
+/** Talks at year offsets around a base year, for year boundary tests. */
+export function createBoundaryYearTalks(baseYear: number) {
+  return {
+    current: createTalk({ id: 'current', year: baseYear }),
+    minus1: createTalk({ id: 'minus1', year: baseYear - 1 }),
+    minus2: createTalk({ id: 'minus2', year: baseYear - 2 }),
+    minus3: createTalk({ id: 'minus3', year: baseYear - 3 }),
+    minus4: createTalk({ id: 'minus4', year: baseYear - 4 }),
+    minus5: createTalk({ id: 'minus5', year: baseYear - 5 }),
+    minus6: createTalk({ id: 'minus6', year: baseYear - 6 }),
+    before: createTalk({ id: 'before', year: baseYear - 1 }),
+    exact: createTalk({ id: 'exact', year: baseYear }),
+    after: createTalk({ id: 'after', year: baseYear + 1 }),
+  };
+}

@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { vi, describe, it, expect, beforeEach } from 'vitest';
+import { vi, describe, it, expect } from 'vitest';
 import { ActiveFilters } from './ActiveFilters';
 import { TalksFilter } from '../../utils/TalksFilter';
 import type { YearFilterData } from './YearFilter';
@@ -16,9 +16,6 @@ const mockHandlers = {
 };
 
 describe('ActiveFilters', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-  });
 
   it('renders nothing when no filters are active', () => {
     const emptyFilter = new TalksFilter();

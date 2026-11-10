@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { TalksFilter, TalksFilterData } from './TalksFilter';
-import { createTalk } from '../test/builders';
-import { FIXED_TEST_YEAR, createTestYear, createBoundaryYearTalks } from '../test/testHelpers';
+import { createTalk, FIXED_TEST_YEAR, createTestYear, createBoundaryYearTalks } from '../test/builders';
 import type { Talk } from '../types/talks';
 
 const ids = (talks: Talk[]): string[] => talks.map(t => t.id);

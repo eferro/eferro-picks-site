@@ -9,8 +9,14 @@ export default defineConfig({
   test: {
     // Switch to happy-dom for 3x faster performance
     environment: 'happy-dom',
+    // A real URL gives BrowserRouter (used by App) a window.location.origin
+    environmentOptions: {
+      happyDOM: { url: 'http://localhost:3000/' },
+    },
     globals: true,
     setupFiles: ['./src/test/setup.ts'],
+    // Reset mock call history between tests (no per-file clearAllMocks needed)
+    clearMocks: true,
     include: ['src/**/*.{test,spec}.{js,jsx,ts,tsx}'],
     exclude: ['node_modules'],
     
@@ -54,11 +60,8 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
-      exclude: [
-        'node_modules/',
-        'src/test/setup.ts',
-        'src/test/utils.tsx',
-      ],
+      include: ['src/**'],
+      exclude: ['src/test/**', 'src/**/*.test.{ts,tsx}'],
     },
     
     // Improve reporter performance

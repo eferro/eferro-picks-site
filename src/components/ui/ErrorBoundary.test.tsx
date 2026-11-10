@@ -70,11 +70,7 @@ describe('ErrorBoundary', () => {
   });
 
   it('reloads the page when Refresh Page button is clicked', () => {
-    const reloadMock = vi.fn();
-    Object.defineProperty(window, 'location', {
-      value: { ...window.location, reload: reloadMock },
-      writable: true
-    });
+    const reloadMock = vi.spyOn(window.location, 'reload').mockImplementation(() => {});
 
     render(
       <ErrorBoundary>
